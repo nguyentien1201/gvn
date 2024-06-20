@@ -21,7 +21,7 @@
                         @method('PUT')
                         <input type="hidden" name="id" value="{{$mst_stock->id}}"/>
                         <div class="row">
-                        <div class="col-md-6 form-group">
+                        <div class="col-md-4 form-group">
                                 <label>{{(__('mst_stock.code'))}} <span class="red"> *</span></label>
                                 <input type="text" name="code" autocomplete="off"
                                        class="form-control @if($errors->has('code')) is-invalid @endif"
@@ -32,7 +32,7 @@
                                     </p>
                                 @endif
                             </div>
-                            <div class="col-md-6 form-group">
+                            <div class="col-md-4 form-group">
                                 <label>{{(__('mst_stock.name'))}} <span class="red"> *</span></label>
                                 <input type="text" name="name" autocomplete="off"
                                        class="form-control @if($errors->has('name')) is-invalid @endif"
@@ -44,11 +44,23 @@
                                 @endif
                             </div>
 
-                            <div class="col-md-12 form-group">
-                                <label>{{(__('mst_stock.description'))}}</label>
-                                <textarea class="form-control textarea"
-                                          cols="30" rows="6"
-                                          name="description">{{isset($mst_stock->description) ? $mst_stock->description : ''}}</textarea>
+                            <div class="col-md-3 form-group">
+                                <label>{{(__('signal.group'))}} <span class="red"> *</span></label>
+                                <select
+                                    class="form-control select2 @if($errors->has('group')) is-invalid @endif"
+                                    name="group" autocomplete="off">
+                                        <option value="">{{__('panel.please_choose')}}</option>
+                                        @foreach($listGroup as $key=> $group)
+                                            <option value="{{$key}}"
+                                            @if($mst_stock->group == $key) selected @endif>{{$group}}</option>
+                                        @endforeach
+
+                                    </select>
+                                @if($errors->has('group'))
+                                    <p class="invalid-feedback">
+                                        {{ $errors->first('group') }}
+                                    </p>
+                                @endif
                             </div>
                         </div>
                         <a href="{{route('admin.mst-stock.index')}}" class="btn btn-secondary">

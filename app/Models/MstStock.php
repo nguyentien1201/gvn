@@ -12,7 +12,7 @@ class MstStock extends Model
 
     public $table = 'mst_stocks';
     protected $fillable = [
-        'code','name', 'description'
+        'code','name', 'group'
     ];
 
     public function getListMstStock(Request $request)

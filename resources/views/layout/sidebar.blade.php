@@ -47,7 +47,7 @@
                                class="nav-link @if(!empty($routeName) && strpos($routeName, 'signal') != false) active @endif">
                                 <i class="nav-icon far fa-user"></i>
                                 <p>
-                                    {{__('panel.mstsignal_stock')}}
+                                    {{__('panel.singal')}}
                                 </p>
                             </a>
                         </li>

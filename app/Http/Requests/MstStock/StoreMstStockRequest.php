@@ -22,7 +22,9 @@ class StoreMstStockRequest extends FormRequest
                 'required',
                 'unique:mst_stocks,name,NULL,id,deleted_at,NULL',
             ],
-            'decription' => 'nullable|email|unique:customers,email,NULL,id,deleted_at,NULL',
+           'group' => [
+                'required'
+            ],
         ];
     }
 
@@ -33,6 +35,7 @@ class StoreMstStockRequest extends FormRequest
             'code.unique' => __('stock.code') . __('panel.existed'),
             'name.required' => __('stock.name') . __('panel.required'),
             'name.unique' => __('stock.name') . __('panel.existed'),
+            'group.required' => __('stock.group') . __('panel.required'),
         ];
     }
 }

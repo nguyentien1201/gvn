@@ -10,7 +10,7 @@ return [
     'save' => 'Save',
     'success' => 'Success',
     'fail' => 'Fail',
-    'required' => ' không được trống',
+    'required' => ' is required',
     'confirm-delete' => 'Are you sure you delete this data?',
     'cancel' => 'Cancel',
     'no' => 'No.',

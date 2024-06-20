@@ -18,10 +18,10 @@
                     <form class="add-edit-frm" action="{{route('admin.mst-stock.store')}}" method="POST"
                           enctype="multipart/form-data">
                         @csrf
-                  <div class="row">
-                            <div class="col-md-6 form-group">
+                        <div class="row">
+                            <div class="col-md-4 form-group">
                                 <label>{{(__('stock.name'))}} <span class="red"> *</span></label>
-                                <input type="text" name="name" autocomplete="off"
+                                <input type="text" name="name" autocomplete="off" placeholder="1111"
                                        class="form-control @if($errors->has('name')) is-invalid @endif"
                                        value="{{old('name')}}">
                                 @if($errors->has('name'))
@@ -30,7 +30,7 @@
                                     </p>
                                 @endif
                             </div>
-                            <div class="col-md-6 form-group">
+                            <div class="col-md-4 form-group">
                                 <label>{{(__('stock.code'))}} <span class="red"> *</span></label>
                                 <input type="text" name="code" autocomplete="off"
                                        class="form-control @if($errors->has('code')) is-invalid @endif"
@@ -41,13 +41,26 @@
                                     </p>
                                 @endif
                             </div>
-                            <div class="col-md-6 form-group">
-                                <label>{{(__('stock.description'))}}</label>
-                                <textarea class="form-control textarea"
-                                          cols="30" rows="6"
-                                          name="description"></textarea>
+                            <div class="col-md-3 form-group">
+                                <label>{{(__('signal.group'))}} <span class="red"> *</span></label>
+                                <select
+                                    class="form-control select2 @if($errors->has('group')) is-invalid @endif"
+                                    name="group" autocomplete="off">
+                                        <option value="">{{__('panel.please_choose')}}</option>
+                                        @foreach($listGroup as $key=> $group)
+                                            <option value="{{$key}}"
+                                                @if(old('group') == $key) selected @endif>{{$group}}</option>
+                                        @endforeach
+
+                                    </select>
+                                @if($errors->has('group'))
+                                    <p class="invalid-feedback">
+                                        {{ $errors->first('group') }}
+                                    </p>
+                                @endif
                             </div>
                         </div>
+
                         <a href="{{route('admin.mst-stock.index')}}" class="btn btn-secondary">
                             {{__('panel.back')}}
                         </a>

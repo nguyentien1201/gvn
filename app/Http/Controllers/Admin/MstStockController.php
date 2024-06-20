@@ -16,14 +16,18 @@ class MstStockController extends AdminController
 {
     public function index(Request $request)
     {
+        $listGroup = ConstantModel::$GROUP;
         $searchMstStock = MstStock::all();
         $mstStocks = (new MstStock())->getListMstStock($request);
-        return view('admin.mst_stock.index', compact('mstStocks', 'searchMstStock'));
+
+        return view('admin.mst_stock.index', compact('mstStocks', 'searchMstStock','listGroup'));
     }
 
     public function create()
     {
-        return view('admin.mst_stock.create');
+
+        $listGroup = ConstantModel::$GROUP;
+        return view('admin.mst_stock.create',compact('listGroup'));
     }
 
     public function store(StoreMstStockRequest $request)
@@ -41,7 +45,8 @@ class MstStockController extends AdminController
 
     public function edit(mstStock $mst_stock)
     {
-        return view('admin.mst_stock.edit', compact('mst_stock'));
+        $listGroup = ConstantModel::$GROUP;
+        return view('admin.mst_stock.edit', compact('mst_stock','listGroup'));
     }
 
     public function update(mstStock $mstStock, UpdateMstStockRequest $request)

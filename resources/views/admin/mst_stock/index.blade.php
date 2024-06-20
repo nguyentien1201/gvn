@@ -29,6 +29,7 @@
                                 <th width="5%" class="text-center">{{__('panel.no')}}</th>
                                 <th width="15%">{{ __('mst_stock.code') }}</th>
                                 <th width="15%">{{ __('mst_stock.name') }}</th>
+                                <th width="15%">{{ __('mst_stock.group') }}</th>
                                 <th width="10%" class="text-nowrap text-center">{{ __('panel.action') }}</th>
                             </tr>
                             </thead>
@@ -38,6 +39,7 @@
                                     <td width="5%" class="text-center">{{$idx + 1}}</td>
                                     <td width="15%">{{$mstStock->code}}</td>
                                     <td width="15%">{{$mstStock->name}}</td>
+                                    <td width="15%">{{$listGroup[$mstStock->group] ?? ''}}</td>
                                     <td width="10%" class="text-center text-nowrap">
                                         <a href="{{ route('admin.mst-stock.edit', [$mstStock->id]) }}"
                                            class="btn btn-primary btn-circle btn-sm">
