@@ -31,11 +31,11 @@ class StoreMstStockRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'code.required' => __('stock.code') . __('panel.required'),
-            'code.unique' => __('stock.code') . __('panel.existed'),
-            'name.required' => __('stock.name') . __('panel.required'),
-            'name.unique' => __('stock.name') . __('panel.existed'),
-            'group.required' => __('stock.group') . __('panel.required'),
+            'code.required' => __('mst_stock.code') . __('panel.required'),
+            'code.unique' => __('mst_stock.code') . __('panel.existed'),
+            'name.required' => __('mst_stock.name') . __('panel.required'),
+            'name.unique' => __('mst_stock.name') . __('panel.existed'),
+            'group.required' => __('mst_stock.group') . __('panel.required'),
         ];
     }
 }

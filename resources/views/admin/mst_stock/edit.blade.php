@@ -45,7 +45,7 @@
                             </div>
 
                             <div class="col-md-3 form-group">
-                                <label>{{(__('signal.group'))}} <span class="red"> *</span></label>
+                                <label>{{(__('mst_stock.group'))}} <span class="red"> *</span></label>
                                 <select
                                     class="form-control select2 @if($errors->has('group')) is-invalid @endif"
                                     name="group" autocomplete="off">

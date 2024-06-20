@@ -20,7 +20,7 @@
                         @csrf
                         <div class="row">
                             <div class="col-md-4 form-group">
-                                <label>{{(__('stock.name'))}} <span class="red"> *</span></label>
+                                <label>{{(__('mst_stock.name'))}} <span class="red"> *</span></label>
                                 <input type="text" name="name" autocomplete="off" placeholder="1111"
                                        class="form-control @if($errors->has('name')) is-invalid @endif"
                                        value="{{old('name')}}">
@@ -31,7 +31,7 @@
                                 @endif
                             </div>
                             <div class="col-md-4 form-group">
-                                <label>{{(__('stock.code'))}} <span class="red"> *</span></label>
+                                <label>{{(__('mst_stock.code'))}} <span class="red"> *</span></label>
                                 <input type="text" name="code" autocomplete="off"
                                        class="form-control @if($errors->has('code')) is-invalid @endif"
                                        value="{{old('code')}}">
