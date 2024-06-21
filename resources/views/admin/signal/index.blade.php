@@ -55,7 +55,7 @@
                                         <a href="#confirmDelete" data-toggle="modal"
                                            onclick="removeItem(this)"
                                            data-id="{{$signal->id}}"
-                                           data-action="{{ route('admin.customers.destroy', [$signal->id])}}"
+                                           data-action="{{ route('admin.signal.destroy', [$signal->id])}}"
                                            class="btn btn-danger btn-circle btn-sm remove">
                                             <i class="fas fa-trash" aria-hidden="true"></i>
                                         </a>
