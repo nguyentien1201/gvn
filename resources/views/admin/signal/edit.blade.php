@@ -51,7 +51,9 @@
                                             <option value="2"
                                             @if($signal->trend == 2) selected @endif
                                             @if(old('trend') != '' && old('trend') == 2) selected @endif>DownTrend</option>
-
+                                            <option value="3"
+                                            @if($signal->trend == 3) selected @endif
+                                            @if(old('trend') != '' && old('trend') == 3) selected @endif>SideWay</option>
                                     </select>
                                 @if($errors->has('trend'))
                                     <p class="invalid-feedback">
@@ -71,7 +73,9 @@
                                             <option value="2"
                                             @if($signal->signal == 2) selected @endif
                                             @if(old('signal') != '' && old('signal') == 2) selected @endif>Sale</option>
-
+                                            <option value="3"
+                                            @if($signal->signal == 3) selected @endif
+                                            @if(old('signal') != '' && old('signal') == 3) selected @endif>SidWay</option>
                                     </select>
                                 @if($errors->has('signal'))
                                     <p class="invalid-feedback">
@@ -82,7 +86,7 @@
                         </div>
                         <div class="row">
                             <div class="col-md-6 form-group">
-                                <label>{{(__('signal.price_current'))}} <span class="red"> *</span></label>
+                                <label>{{(__('signal.price_current'))}}</label>
                                 <input type="number" name="price_current" autocomplete="off"
                                         class="form-control @if($errors->has('price_current')) is-invalid @endif"
                                         value="{{  $signal->price_current}}">
@@ -107,7 +111,7 @@
                         </div>
                         <div class="row">
                             <div class="col-md-6 form-group">
-                                <label>{{(__('signal.price_cumulative_from'))}} <span class="red"> *</span></label>
+                                <label>{{(__('signal.price_cumulative_from'))}} </label>
                                 <input type="number" name="price_cumulative_from" autocomplete="off"
                                         class="form-control @if($errors->has('price_cumulative_from')) is-invalid @endif"
                                         value="{{$signal->price_cumulative_from}}">
@@ -118,7 +122,7 @@
                                 @endif
                             </div>
                             <div class="col-md-6 form-group">
-                                <label>{{(__('signal.price_cumulative_to'))}} <span class="red"> *</span></label>
+                                <label>{{(__('signal.price_cumulative_to'))}}</label>
                                 <input type="number" name="price_cumulative_to" autocomplete="off"
                                         class="form-control @if($errors->has('price_cumulative_to')) is-invalid @endif"
                                         value="{{$signal->price_cumulative_to}}">
@@ -143,22 +147,18 @@
                                 @endif
                             </div>
                             <div class="col-md-3 form-group">
-                                <label>{{(__('signal.price_target'))}} <span class="red"> *</span></label>
-                                <input type="number" name="price_target" autocomplete="off"
-                                        class="form-control @if($errors->has('price_target')) is-invalid @endif"
-                                        value="{{$signal->price_target}}">
-                                @if($errors->has('price_target'))
-                                    <p class="invalid-feedback">
-                                        {{ $errors->first('price_target') }}
-                                    </p>
-                                @endif
+                                <label>{{(__('signal.profit'))}} <span class="red"> *</span></label>
+                                <input readonly="true" step="0.01" type="number" name="profit" autocomplete="off"
+                                        class="form-control"
+                                        value="{{$signal->profit}}">
                             </div>
                             <div class="col-md-3 form-group">
                                 <label>{{(__('signal.time'))}} <span class="red"> *</span></label>
                                 <div class="input-group date-time" id="date_action"
                                      data-target-input="nearest">
                                     <input type="text" data-target="#date_action" name="date_action"
-                                           value="{{$signal->date_action}}" autocomplete="off"
+                                    value="{{old('date_action', $signal->date_action ? date('m-d-Y H:i', strtotime($signal->date_action)) : '')}}"
+                                            autocomplete="off"
                                            placeholder="{{__('signal.time_place')}}"
                                            class="form-control datetimepicker-input datetimepicker @if($errors->has('date_action')) is-invalid @endif">
                                     <div class="input-group-append" data-target="#date_action"
@@ -183,6 +183,7 @@
                                           name="description"></textarea>
                             </div>
                         </div>
+
                         <a href="{{route('admin.signal.index')}}" class="btn btn-secondary">
                             {{__('panel.back')}}
                         </a>
@@ -193,3 +194,15 @@
         </div>
     </section>
 @endsection
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+<script type="text/javascript">
+
+$(document).ready(function () {
+    $("input[name='price_action'],input[name='price_stoploss']").change(function () {
+        var price_stoploss = $("input[name='price_stoploss']").val();
+        var price_action = $("input[name='price_action']").val();
+        var profit =price_stoploss- price_action;
+        $("input[name='profit']").val(profit);
+    });
+});
+ </script>

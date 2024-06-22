@@ -11,7 +11,7 @@ return [
     'signal' => 'Signal',
     'price_current' => 'Giá hiện tại',
     'price_action' => 'Giá thực hiện',
-    'price_stoploss' => 'Giá cắt lỗ',
+    'price_stoploss' => 'Giá đóng',
     'price_cumulative_from' => 'Giá tích lũy từ',
     'price_cumulative_to' => 'Giá tích lũy đến',
     'price_target'=> 'Giá mục tiêu',

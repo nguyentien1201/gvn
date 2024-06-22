@@ -31,7 +31,6 @@
                                 <th width="15%">{{ __('signal.code') }}</th>
                                 <th width="15%">{{ __('signal.trend') }}</th>
                                 <th width="10%">{{ __('signal.signal') }}</th>
-                                <th width="15%">{{ __('signal.price_current') }}</th>
                                 <th width="15%">{{ __('signal.price_action') }}</th>
                                 <th width="20%">{{ __('signal.profit') }}</th>
                                 <th width="10%" class="text-nowrap text-center">{{ __('panel.action') }}</th>
@@ -42,11 +41,13 @@
                                 <tr>
                                     <td width="5%" class="text-center">{{$idx + 1}}</td>
                                     <td width="15%">{{$signal->mstStock->code}}</td>
-                                    <td width="15%">{{$signal->trend ==1 ? 'Uptrend':'Downtrend'}}</td>
+                                    <td width="15%">{{ ($signal->trend == 1) ? 'Uptrend' : (($signal->trend == 2) ? 'Downtrend' : 'SideWay') }}</td>
                                     <td width="10%">{{$signal->signal ==1 ? 'Buy': 'Sale'}}</td>
-                                    <td width="15%">{{$signal->price_current}}</td>
                                     <td width="15%">{{$signal->price_action}}</td>
-                                    <td width="20%">{{abs($signal->price_action - $signal->price_current) }}</td>
+                                    <td width="20%"style="background-color:@if($signal->profit >0) green @endif
+                                        @if($signal->profit < 0) red @endif
+                                         @if($signal->profit == 0) yellow @endif
+                                    ">{{ $signal->profit}}</td>
                                     <td width="10%" class="text-center text-nowrap">
                                         <a href="{{ route('admin.signal.edit', [$signal->id]) }}"
                                            class="btn btn-primary btn-circle btn-sm">

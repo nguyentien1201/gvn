@@ -4,14 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\Signal\StoreSignalRequest;
 use App\Http\Requests\Signal\UpdateSignalRequest;
-use App\Imports\CustomerImport;
 use App\Models\ConstantModel;
 use App\Models\MstStock;
-use App\Models\Customer;
 use App\Models\Signal;
-use App\Service\WooCommerceApiService;
 use Illuminate\Http\Request;
-use Maatwebsite\Excel\Facades\Excel;
+use Carbon\Carbon;
 
 class SignalController extends AdminController
 {
@@ -34,6 +31,7 @@ class SignalController extends AdminController
     public function store(StoreSignalRequest $request)
     {
 
+        $request['date_action'] = Carbon::parse($request['signal_datetime'])->format('Y-m-d H:i:s');
         $signal = new Signal();
         $signal->fill($request->all());
         try {

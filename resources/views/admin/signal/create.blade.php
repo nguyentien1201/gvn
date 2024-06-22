@@ -47,6 +47,8 @@
                                             @if(old('trend') != '' && old('trend') == 1) selected @endif>UpTrend</option>
                                             <option value="2"
                                             @if(old('trend') != '' && old('trend') == 2) selected @endif>DownTrend</option>
+                                            <option value="3"
+                                            @if(old('trend') != '' && old('trend') == 3) selected @endif>SideWay</option>
 
                                     </select>
                                 @if($errors->has('trend'))
@@ -64,7 +66,9 @@
                                             <option value="1"
                                             @if(old('signal') != '' && old('signal') == 1) selected @endif>Buy</option>
                                             <option value="2"
-                                            @if(old('signal') != '' && old('signal') == 2) selected @endif>Sale</option>
+                                            @if(old('signal') != '' && old('signal') == 2) selected @endif>Sell</option>
+                                            <option value="2"
+                                            @if(old('signal') != '' && old('signal') == 3) selected @endif>SideWay</option>
 
                                     </select>
                                 @if($errors->has('signal'))
@@ -77,7 +81,7 @@
                         <div class="row">
                             <div class="col-md-6 form-group">
                                 <label>{{(__('signal.price_current'))}} <span class="red"> *</span></label>
-                                <input type="number" name="price_current" autocomplete="off"
+                                <input  step="0.01" type="number" name="price_current" autocomplete="off"
                                         class="form-control @if($errors->has('price_current')) is-invalid @endif"
                                         value="{{old('price_current')}}">
                                 @if($errors->has('price_current'))
@@ -88,7 +92,7 @@
                             </div>
                             <div class="col-md-6 form-group">
                                 <label>{{(__('signal.price_action'))}} <span class="red"> *</span></label>
-                                <input type="number" name="price_action" autocomplete="off"
+                                <input  step="0.01" type="number" name="price_action" autocomplete="off"
                                         class="form-control @if($errors->has('price_action')) is-invalid @endif"
                                         value="{{old('price_action')}}">
                                 @if($errors->has('price_action'))
@@ -101,8 +105,8 @@
                         </div>
                         <div class="row">
                             <div class="col-md-6 form-group">
-                                <label>{{(__('signal.price_cumulative_from'))}} <span class="red"> *</span></label>
-                                <input type="number" name="price_cumulative_from" autocomplete="off"
+                                <label>{{(__('signal.price_cumulative_from'))}}</label>
+                                <input step="0.01" type="number" name="price_cumulative_from" autocomplete="off"
                                         class="form-control @if($errors->has('price_cumulative_from')) is-invalid @endif"
                                         value="{{old('price_cumulative_from')}}">
                                 @if($errors->has('price_cumulative_from'))
@@ -112,8 +116,8 @@
                                 @endif
                             </div>
                             <div class="col-md-6 form-group">
-                                <label>{{(__('signal.price_cumulative_to'))}} <span class="red"> *</span></label>
-                                <input type="number" name="price_cumulative_to" autocomplete="off"
+                                <label>{{(__('signal.price_cumulative_to'))}}</label>
+                                <input  step="0.01" type="number" name="price_cumulative_to" autocomplete="off"
                                         class="form-control @if($errors->has('price_cumulative_to')) is-invalid @endif"
                                         value="{{old('price_cumulative_to')}}">
                                 @if($errors->has('price_cumulative_to'))
@@ -127,7 +131,7 @@
                         <div class="row">
                             <div class="col-md-3 form-group">
                                 <label>{{(__('signal.price_stoploss'))}} <span class="red"> *</span></label>
-                                <input type="number" name="price_stoploss" autocomplete="off"
+                                <input id="price_stoploss" step="0.01" type="number" name="price_stoploss" autocomplete="off"
                                         class="form-control @if($errors->has('price_stoploss')) is-invalid @endif"
                                         value="{{old('price_stoploss')}}">
                                 @if($errors->has('price_stoploss'))
@@ -137,15 +141,10 @@
                                 @endif
                             </div>
                             <div class="col-md-3 form-group">
-                                <label>{{(__('signal.price_target'))}} <span class="red"> *</span></label>
-                                <input type="number" name="price_target" autocomplete="off"
-                                        class="form-control @if($errors->has('price_target')) is-invalid @endif"
-                                        value="{{old('price_target')}}">
-                                @if($errors->has('price_target'))
-                                    <p class="invalid-feedback">
-                                        {{ $errors->first('price_target') }}
-                                    </p>
-                                @endif
+                                <label>{{(__('signal.profit'))}}</label>
+                                <input step="0.01" readonly="true" type="number" name="profit" autocomplete="off"
+                                        class="form-control"
+                                        value="{{old('profit')}}">
                             </div>
                             <div class="col-md-3 form-group">
                                 <label>{{(__('signal.time'))}} <span class="red"> *</span></label>
@@ -187,3 +186,16 @@
         </div>
     </section>
 @endsection
+
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+<script type="text/javascript">
+
+$(document).ready(function () {
+    $("input[name='price_action'],input[name='price_stoploss']").change(function () {
+        var price_stoploss = $(this).val();
+        var price_action = $("input[name='price_action']").val();
+        var profit =price_stoploss- price_action;
+        $("input[name='profit']").val(profit);
+    });
+});
+ </script>
