@@ -67,6 +67,11 @@
                             </tbody>
                         </table>
                     </div>
+                    @if(!empty($signals))
+                        <div class="paginations mt-3">
+                            {!! $signals->appends($_GET)->links() !!}
+                        </div>
+                    @endif
                     @include('partials.dialog-confirm-delete')
                 </div>
             </div>
