@@ -13,20 +13,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::redirect('/', '/login');
+Route::redirect('/', '/login');
 Route::group(['prefix' => '', 'as' => 'front.', 'namespace' => 'Front'], function () {
     Route::get('/', 'HomeController@index')->name('home.index');
 });
 
 Auth::routes(['register' => false]);
 
-
-
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin'], function () {
     //test send message
     Route::get('/test-send-message', 'AdminController@testSendMessage');
-    Route::get('/login', 'LoginController@getLogin')->name('login');
-    Route::post('/login', 'LoginController@postLogin')->name('postLogin');
+
     Route::get('/', function () {
         return redirect()->route('admin.customers.index');
     })->name('home');

@@ -7,6 +7,7 @@ use App\Http\Requests\MstStock\UpdateMstStockRequest;
 use App\Imports\CustomerImport;
 use App\Models\ConstantModel;
 use App\Models\Customer;
+use App\Models\GreenBeta;
 use App\Models\MstStock;
 use App\Models\SignalFree;
 use App\Service\WooCommerceApiService;
@@ -66,7 +67,9 @@ class MstStockController extends AdminController
     {
         try {
             $signal = SignalFree::where('code', $id)->get();
-            if($signal->count() > 0){
+            $greenBeta = GreenBeta::where('code', $id)->get();
+
+            if($signal->count() > 0 || $greenBeta->count() > 0){
                 return redirect()->route('admin.mst-stock.index')->with('fail', 'Không thể xóa mã cổ phiếu này');
             }
             $mstStock= mstStock::find($id);

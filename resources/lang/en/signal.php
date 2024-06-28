@@ -22,7 +22,7 @@ return [
     'time_place' => 'Thời gian đặt lệnh',
     'signal_open' => 'Tín hiệu mở',
     'freesignal' => 'Tín hiệu miễn phí',
-    'stock_free' => 'Mã tín hiệu miễn phí',
+    'stock_free' => 'Mã tín hiệu',
     'mst_stock_green' => 'Mã Tín hiệuGreen Beta',
     'trend_price'=> 'Xu hướng giá',
 ];

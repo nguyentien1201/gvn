@@ -52,15 +52,6 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{route('admin.stock-green-beta.index')}}"
-                               class="nav-link @if(!empty($path) && $path =='stock-green-beta') active @endif">
-                                <i class="nav-icon far fa-user"></i>
-                                <p>
-                                    {{__('panel.mst_stock_green')}}
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
                             <a href="{{route('admin.green-beta.index')}}"
                                class="nav-link @if(!empty($path) && $path =='green-beta') active @endif">
                                 <i class="nav-icon far fa-user"></i>

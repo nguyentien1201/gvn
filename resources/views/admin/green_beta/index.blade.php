@@ -42,7 +42,7 @@
                             @forelse($signals as $idx => $signal)
                                 <tr>
                                     <td width="5%" class="text-center">{{$idx + 1}}</td>
-                                    <td width="15%">{{$signal->mstgreenBeta->code}}</td>
+                                    <td width="15%">{{$signal->MstStock->code}}</td>
                                     <td width="15%">{{ $signal->signal_open }}</td>
                                     <td width="10%">{{$signal->price_open}}</td>
                                     <td width="10%">{{$signal->price_close}}</td>

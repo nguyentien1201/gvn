@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Requests\GreenBeta\StoreGreenBetaRequest;
 use App\Http\Requests\GreenBeta\UpdateGreenBetaRequest;
 use App\Models\ConstantModel;
-use App\Models\MstStockGreen;
+use App\Models\MstStock;
 use App\Models\GreenBeta;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
@@ -16,14 +16,14 @@ class GreenBetaController extends AdminController
     {
         $searchGreenBetas = GreenBeta::all();
         $signals = (new GreenBeta())->getListSignals($request);
-        $mstStocks = (new MstStockGreen())->getListMstStockGreen($request);
+        $mstStocks = (new MstStock())->getListMstStock($request);
 
         return view('admin.green_beta.index', compact('signals', 'searchGreenBetas','mstStocks'));
     }
 
     public function create()
     {
-        $mstStocks = (new MstStockGreen())->getListMstStockGreenIds();
+        $mstStocks = (new MstStock())->getListMstStockIds();
         return view('admin.green_beta.create',compact('mstStocks'));
     }
 
@@ -47,7 +47,7 @@ class GreenBetaController extends AdminController
     public function edit($id)
     {
         $signal = GreenBeta::find($id);
-        $mstStocks = (new MstStockGreen())->getListMstStockGreenIds();
+        $mstStocks = (new MstStock())->getListMstStockIds();
         return view('admin.green_beta.edit', compact('signal','mstStocks'));
     }
 

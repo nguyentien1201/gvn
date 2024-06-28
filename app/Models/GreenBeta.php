@@ -18,7 +18,7 @@ class GreenBeta extends Model
 
     public function getListSignals(Request $request)
     {
-        $query = self::with('mstgreenBeta')->select();
+        $query = self::with('MstStock')->select();
         return $query->orderBy('id', 'desc')->paginate(ConstantModel::$PAGINATION);
     }
 
@@ -26,8 +26,8 @@ class GreenBeta extends Model
     {
         return GreenBeta::pluck('id')->toArray();
     }
-    public function mstgreenBeta()
+    public function MstStock()
 {
-    return $this->belongsTo('App\Models\MstStockGreen', 'code');
+    return $this->belongsTo('App\Models\MstStock', 'code');
 }
 }
