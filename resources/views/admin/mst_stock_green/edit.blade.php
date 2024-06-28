@@ -4,7 +4,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>{{ __('panel.stock_free') }}</h1>
+                    <h1>{{ __('panel.signal') }}</h1>
                 </div>
             </div>
         </div>
@@ -15,7 +15,7 @@
             <div class="card">
                 <div class="card-header">{{__('panel.edit')}}</div>
                 <div class="card-body">
-                    <form class="add-edit-frm" action="{{route('admin.mst-stock.update', [$mst_stock->id])}}" method="POST"
+                    <form class="add-edit-frm" action="{{route('admin.stock-green-beta.update', [$mst_stock->id])}}" method="POST"
                           enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
@@ -63,7 +63,7 @@
                                 @endif
                             </div>
                         </div>
-                        <a href="{{route('admin.mst-stock.index')}}" class="btn btn-secondary">
+                        <a href="{{route('admin.stock-green-beta.index')}}" class="btn btn-secondary">
                             {{__('panel.back')}}
                         </a>
                         <button type="submit" class="btn btn-primary">{{__('panel.save')}}</button>

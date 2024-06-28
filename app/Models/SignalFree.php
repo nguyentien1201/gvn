@@ -6,14 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Http\Request;
 
-class Signal extends Model
+class SignalFree extends Model
 {
     use SoftDeletes;
 
-    public $table = 'signals';
+    public $table = 'signal_free';
 
     protected $fillable = [
-        'code', 'price_current', 'trend', 'signal', 'price_action', 'price_cumulative_from', 'price_cumulative_to', 'price_stoploss', 'price_target', 'profit', 'description', 'date_action'
+        'code', 'trend_price', 'last_sale', 'date_action'
     ];
 
     public function getListSignals(Request $request)

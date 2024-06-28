@@ -4,7 +4,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>{{ __('panel.signal') }}</h1>
+                    <h1>{{ __('panel.mst_stock_green') }}</h1>
                 </div>
             </div>
         </div>
@@ -12,13 +12,12 @@
     <!-- result -->
     <section class="content">
         <div class="container-fluid">
-
             <div class="card">
                 <div class="card-header">{{__('panel.list')}}</div>
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-12 form-group">
-                            <a href="{{ route('admin.signal.create') }}"
+                            <a href="{{ route('admin.stock-green-beta.create') }}"
                                class="btn btn-primary">
                                 {{ __('panel.add') }}
                             </a>
@@ -28,35 +27,28 @@
                             <thead>
                             <tr>
                                 <th width="5%" class="text-center">{{__('panel.no')}}</th>
-                                <th width="15%">{{ __('signal.code') }}</th>
-                                <th width="15%">{{ __('signal.trend') }}</th>
-                                <th width="10%">{{ __('signal.signal') }}</th>
-                                <th width="15%">{{ __('signal.price_action') }}</th>
-                                <th width="20%">{{ __('signal.profit') }}</th>
+                                <th width="15%">{{ __('mst_stock.code') }}</th>
+                                <th width="15%">{{ __('mst_stock.name') }}</th>
+                                <th width="15%">{{ __('mst_stock.group') }}</th>
                                 <th width="10%" class="text-nowrap text-center">{{ __('panel.action') }}</th>
                             </tr>
                             </thead>
                             <tbody>
-                            @forelse($signals as $idx => $signal)
+                            @forelse($MstStockGreens as $idx => $mstStock)
                                 <tr>
                                     <td width="5%" class="text-center">{{$idx + 1}}</td>
-                                    <td width="15%">{{$signal->mstStock->code}}</td>
-                                    <td width="15%">{{ ($signal->trend == 1) ? 'Uptrend' : (($signal->trend == 2) ? 'Downtrend' : 'SideWay') }}</td>
-                                    <td width="10%">{{$signal->signal ==1 ? 'Buy': 'Sale'}}</td>
-                                    <td width="15%">{{$signal->price_action}}</td>
-                                    <td width="20%"style="background-color:@if($signal->profit >0) green @endif
-                                        @if($signal->profit < 0) red @endif
-                                         @if($signal->profit == 0) yellow @endif
-                                    ">{{ $signal->profit}}</td>
+                                    <td width="15%">{{$mstStock->code}}</td>
+                                    <td width="15%">{{$mstStock->name}}</td>
+                                    <td width="15%">{{$mstStock->group ?? ''}}</td>
                                     <td width="10%" class="text-center text-nowrap">
-                                        <a href="{{ route('admin.signal.edit', [$signal->id]) }}"
+                                        <a href="{{ route('admin.stock-green-beta.edit', [$mstStock->id]) }}"
                                            class="btn btn-primary btn-circle btn-sm">
                                             <i class="fas fa-edit" aria-hidden="true"></i>
                                         </a>
                                         <a href="#confirmDelete" data-toggle="modal"
                                            onclick="removeItem(this)"
-                                           data-id="{{$signal->id}}"
-                                           data-action="{{ route('admin.signal.destroy', [$signal->id])}}"
+                                           data-id="{{$mstStock->id}}"
+                                           data-action="{{ route('admin.stock-green-beta.destroy', [$mstStock->id])}}"
                                            class="btn btn-danger btn-circle btn-sm remove">
                                             <i class="fas fa-trash" aria-hidden="true"></i>
                                         </a>

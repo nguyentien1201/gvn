@@ -8,6 +8,7 @@ use App\Imports\CustomerImport;
 use App\Models\ConstantModel;
 use App\Models\Customer;
 use App\Models\MstStock;
+use App\Models\SignalFree;
 use App\Service\WooCommerceApiService;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
@@ -16,17 +17,17 @@ class MstStockController extends AdminController
 {
     public function index(Request $request)
     {
-        $listGroup = ConstantModel::$GROUP;
+        $groups = ConstantModel::GROUP;
         $searchMstStock = MstStock::all();
         $mstStocks = (new MstStock())->getListMstStock($request);
 
-        return view('admin.mst_stock.index', compact('mstStocks', 'searchMstStock','listGroup'));
+        return view('admin.mst_stock.index', compact('mstStocks', 'searchMstStock','groups'));
     }
 
     public function create()
     {
 
-        $listGroup = ConstantModel::$GROUP;
+        $listGroup = ConstantModel::GROUP;
         return view('admin.mst_stock.create',compact('listGroup'));
     }
 
@@ -45,7 +46,7 @@ class MstStockController extends AdminController
 
     public function edit(mstStock $mst_stock)
     {
-        $listGroup = ConstantModel::$GROUP;
+        $listGroup = ConstantModel::GROUP;
         return view('admin.mst_stock.edit', compact('mst_stock','listGroup'));
     }
 
@@ -61,9 +62,14 @@ class MstStockController extends AdminController
         return redirect()->route('admin.mst-stock.index')->with('success', __('panel.success'));
     }
 
-    public function destroy(mstStock $mstStock)
+    public function destroy($id)
     {
         try {
+            $signal = SignalFree::where('code', $id)->get();
+            if($signal->count() > 0){
+                return redirect()->route('admin.mst-stock.index')->with('fail', 'Không thể xóa mã cổ phiếu này');
+            }
+            $mstStock= mstStock::find($id);
             $mstStock->delete();
         } catch (\Exception $e) {
             return redirect()->route('admin.mst-stock.index')->with('fail', __('panel.fail'));

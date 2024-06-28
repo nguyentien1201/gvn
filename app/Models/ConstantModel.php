@@ -88,7 +88,7 @@ class ConstantModel
         'address' => 'Address',
         'note' => 'Note'
     ];
-    public static $GROUP = [
+    const GROUP = [
         0 => 'Indices Future',
         1 => 'Commodities',
         2 => 'Forex',

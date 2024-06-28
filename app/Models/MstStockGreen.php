@@ -6,16 +6,16 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Http\Request;
 
-class MstStock extends Model
+class MstStockGreen extends Model
 {
     use SoftDeletes;
 
-    public $table = 'mst_stocks';
+    public $table = 'mst_green_beta';
     protected $fillable = [
         'code','name', 'group'
     ];
 
-    public function getListMstStock(Request $request)
+    public function getListMstStockGreen(Request $request)
     {
         $query = self::select();
         return $query->orderBy('id', 'desc')->paginate(ConstantModel::$PAGINATION);
@@ -23,18 +23,11 @@ class MstStock extends Model
 
     public function getSignalIds()
     {
-        return MstStock::pluck('id')->toArray();
+        return MstStockGreen::pluck('id')->toArray();
     }
-    public function getListMstStockIds()
+    public function getListMstStockGreenIds()
     {
         $query = self::select();
-        return $query->orderBy('id', 'desc')->get();
-    }
-    public function getListMstStockNotIn()
-    {
-        $usedStockIds = SignalFree::pluck('code')->toArray();
-        $query = self::select();
-        $query->whereNotIn('id', $usedStockIds);
         return $query->orderBy('id', 'desc')->get();
     }
 }

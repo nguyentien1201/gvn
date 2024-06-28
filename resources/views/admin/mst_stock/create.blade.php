@@ -4,7 +4,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>{{ __('panel.mst_stock') }}</h1>
+                    <h1>{{ __('panel.stock_free') }}</h1>
                 </div>
             </div>
         </div>
@@ -21,7 +21,7 @@
                         <div class="row">
                             <div class="col-md-4 form-group">
                                 <label>{{(__('mst_stock.name'))}} <span class="red"> *</span></label>
-                                <input type="text" name="name" autocomplete="off" placeholder="1111"
+                                <input type="text" name="name" autocomplete="off" placeholder="{{__('mst_stock.name')}}"
                                        class="form-control @if($errors->has('name')) is-invalid @endif"
                                        value="{{old('name')}}">
                                 @if($errors->has('name'))
@@ -48,7 +48,7 @@
                                     name="group" autocomplete="off">
                                         <option value="">{{__('panel.please_choose')}}</option>
                                         @foreach($listGroup as $key=> $group)
-                                            <option value="{{$key}}"
+                                            <option value="{{$group}}"
                                                 @if(old('group') == $key) selected @endif>{{$group}}</option>
                                         @endforeach
 

@@ -20,6 +20,8 @@ class AdminController extends Controller
     {
         $this->middleware('auth');
         $routeName = $request->route()->getName();
+        $path= explode('.', $routeName);
+
         $status = ConstantModel::$STATUS;
         $background = ConstantModel::$STATUS_BACKGROUND;
         $tokens = Token::orderBy('website', 'asc')->get();
@@ -27,7 +29,8 @@ class AdminController extends Controller
             'routeName' => $routeName,
             'status' => $status,
             'background' => $background,
-            'tokens' => $tokens
+            'tokens' => $tokens,
+            'path'=>$path[1] ?? ''
         ]);
     }
 

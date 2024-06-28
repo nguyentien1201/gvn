@@ -41,7 +41,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin'], fu
     //Promotions
     Route::resource('promotions', 'PromotionController')->middleware('admin');
     Route::resource('mst-stock', 'MstStockController')->middleware('admin');
-    Route::resource('signal', 'SignalController')->middleware('admin');
+    Route::resource('stock-green-beta', 'MstStockGreenController')->middleware('admin');
+    Route::resource('green-beta', 'GreenBetaController')->middleware('admin');
+    Route::resource('freesignal', 'SignalFreeController')->middleware('admin');
 });
 
 

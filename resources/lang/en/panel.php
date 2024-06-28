@@ -41,6 +41,8 @@ return [
     'setting' => 'Setting',
     'customer' => 'Customers',
     'import' => 'Import',
-    'mst_stock' => 'Mã Danh Mục',
-    'singal' => 'Chỉ Báo',
+    'freesignal' => 'Tín hiệu miễn phí',
+    'stock_free' => 'Mã tín hiệu miễn phí',
+    'mst_stock_green' => 'Mã Tín hiệuGreen Beta',
+    'singal' => 'Green Beta',
 ];
