@@ -51,10 +51,11 @@ class GreenBetaController extends AdminController
         return view('admin.green_beta.edit', compact('signal','mstStocks'));
     }
 
-    public function update(GreenBeta $signal, UpdateGreenBetaRequest $request)
+    public function update($id, UpdateGreenBetaRequest $request)
     {
         $request['open_time'] = Carbon::parse($request['open_time'])->format('Y-m-d H:i:s');
         $request['close_time'] = Carbon::parse($request['close_time'])->format('Y-m-d H:i:s');
+        $signal = GreenBeta::find($id);
         $signal->fill($request->all());
         try {
             $signal->save();

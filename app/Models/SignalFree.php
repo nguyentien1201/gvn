@@ -24,7 +24,7 @@ class SignalFree extends Model
 
     public function getSignalIds()
     {
-        return Signal::pluck('id')->toArray();
+        return SignalFree::pluck('id')->toArray();
     }
     public function mstStock()
 {

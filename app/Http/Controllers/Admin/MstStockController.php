@@ -45,15 +45,17 @@ class MstStockController extends AdminController
         return redirect()->route('admin.mst-stock.index')->with('success', __('panel.success'));
     }
 
-    public function edit(mstStock $mst_stock)
+    public function edit($id)
     {
+        $mst_stock = mstStock::find($id);
         $listGroup = ConstantModel::GROUP;
         return view('admin.mst_stock.edit', compact('mst_stock','listGroup'));
     }
 
-    public function update(mstStock $mstStock, UpdateMstStockRequest $request)
+    public function update($id, UpdateMstStockRequest $request)
     {
 
+        $mstStock = mstStock::find($id);
         $mstStock->fill($request->all());
         try {
             $mstStock->save();

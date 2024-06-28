@@ -44,7 +44,7 @@
                                 <label>{{(__('signal.trend_price'))}} <span class="red"> *</span></label>
                                 <select
                                     class="form-control select2 @if($errors->has('trend_price')) is-invalid @endif"
-                                    name="trend_price" autocomplete="off">
+                                    name="trend_price" autocomplete="off" value="{{$signalsFree->trend_price}}">
                                         <option value="">{{__('panel.please_choose')}}</option>
                                             <option value="1"
                                             @if($signalsFree->trend_price == 1) selected @endif
@@ -81,7 +81,7 @@
                                 <div class="input-group date-time" id="date_action"
                                      data-target-input="nearest">
                                     <input type="text" data-target="#date_action" name="date_action"
-                                           value="{{old('date_action', $signalsFree->date_action ? date('m-d-Y H:i', strtotime($signalsFree->date_action)) : '')}}" autocomplete="off"
+                                           value="{{$signalsFree->date_action ? date('m-d-Y H:i', strtotime($signalsFree->date_action)) : ''}}" autocomplete="off"
                                            placeholder="{{__('signal.time_place')}}"
                                            class="form-control datetimepicker-input datetimepicker @if($errors->has('date_action')) is-invalid @endif">
                                     <div class="input-group-append" data-target="#date_action"

@@ -40,7 +40,7 @@
                                 <tr>
                                     <td width="5%" class="text-center">{{$idx + 1}}</td>
                                     <td width="15%">{{$signal->mstStock->code}}</td>
-                                    <td width="15%">{{ ($signal->trend == 1) ? 'Uptrend' : (($signal->trend == 2) ? 'Downtrend' : 'SideWay') }}</td>
+                                    <td width="15%">{{ ($signal->trend_price == 1) ? 'Uptrend' : (($signal->trend_price == 2) ? 'Downtrend' : 'SideWay') }}</td>
                                     <td width="15%">{{$signal->last_sale}}</td>
                                     <td width="20%">{{ $signal->date_action ? date('m-d-Y H:i', strtotime($signal->date_action)) : ''}}</td>
                                     <td width="10%" class="text-center text-nowrap">

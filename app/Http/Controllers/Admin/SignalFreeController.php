@@ -25,6 +25,7 @@ class SignalFreeController extends AdminController
     public function create()
     {
         $mstStocks = (new MstStock())->getListMstStockNotIn();
+
         $groups = ConstantModel::GROUP;
         return view('admin.signal_free.create',compact('mstStocks','groups'));
     }
@@ -54,8 +55,10 @@ class SignalFreeController extends AdminController
         return view('admin.signal_free.edit', compact('signalsFree','mstStocks'));
     }
 
-    public function update(SignalFree $signal, UpdateSignalRequest $request)
+    public function update($id, UpdateSignalRequest $request)
     {
+        $request['date_action'] = Carbon::parse($request['date_action'])->format('Y-m-d H:i:s');
+        $signal = SignalFree::find($id);
         $signal->fill($request->all());
         try {
             $signal->save();
