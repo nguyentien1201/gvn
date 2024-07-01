@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 <div id="home-content">
     <div class="container">
         <div class="top-session-before-signal">
@@ -254,7 +256,7 @@
                     <div class="col-md-6">
                         <div class="indices-futures">
                             <h5 class="custom-title">Indices Futures</h5>
-                            <table class="table table-hover">
+                            <table class="table table-hover" id="indices">
                                 <thead>
                                     <tr>
                                         <th colspan="1" class="">
@@ -273,26 +275,7 @@
                                 </thead>
 
                                 <tbody>
-                                    @foreach($signals['indices'] as $key => $signal)
-                                        <tr class="">
-                                            <th rowspan="1" colspan="1" class="">
 
-                                                {{$signal['code']}}
-                                            </th>
-                                            <td rowspan="1" colspan="1" class="">
-
-                                                {{$signal['trend_price']}}
-                                            </td>
-                                            <td rowspan="1" colspan="1" class="">
-
-                                                {{$signal['last_sale']}}
-                                            </td>
-                                            <td rowspan="1" colspan="1" class="">
-
-                                                {{ $signal['date_action'] ? date('m-d-Y H:i', strtotime($signal['date_action'])) : ''}}
-                                            </td>
-                                        </tr>
-                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
@@ -300,7 +283,7 @@
                     <div class="col-md-6">
                         <div class="commodities">
                             <h5 class="custom-title">Commodities</h5>
-                            <table class="table table-hover">
+                            <table class="table table-hover" id="commodities">
                                 <thead>
                                     <tr>
                                         <th colspan="1" class="">
@@ -347,19 +330,19 @@
                     <div class="col-md-6">
                         <div class="top-cryptocurrencies">
                             <h5 class="custom-title">Top Cryptocurrencies</h5>
-                            <table class="table table-hover">
+                            <table class="table table-hover" id="crypto">
                                 <thead>
                                     <tr>
-                                        <th colspan="1" class="">
+                                        <th colspan="1" class="sortable">
                                             Name
                                         </th>
                                         <th colspan="1" class="">
                                             Trend
                                         </th>
-                                        <th colspan="1" class="">
+                                        <th colspan="1" class="sortable-header">
                                             PriceTrend
                                         </th>
-                                        <th colspan="1" class="">
+                                        <th colspan="1" class="sortable-header">
                                             TimeStart
                                         </th>
                                     </tr>
@@ -393,7 +376,7 @@
                     <div class="col-md-6">
                         <div class="leading-stocks">
                             <h5 class="custom-title">Forex</h5>
-                            <table class="table table-hover">
+                            <table class="table table-hover" id="forex">
                                 <thead>
                                     <tr>
                                         <th colspan="1" class="">
@@ -402,7 +385,7 @@
                                         <th colspan="1" class="">
                                             Trend
                                         </th>
-                                        <th colspan="1" class="">
+                                        <th colspan="1" class="" >
                                             PriceTrend
                                         </th>
                                         <th colspan="1" class="">
@@ -412,26 +395,7 @@
                                 </thead>
 
                                 <tbody>
-                                    @foreach($signals['forex'] as $key => $signal)
-                                        <tr class="">
-                                            <th rowspan="1" colspan="1" class="">
 
-                                                {{$signal['code']}}
-                                            </th>
-                                            <td rowspan="1" colspan="1" class="">
-
-                                                {{$signal['trend_price']}}
-                                            </td>
-                                            <td rowspan="1" colspan="1" class="">
-
-                                                {{$signal['last_sale']}}
-                                            </td>
-                                            <td rowspan="1" colspan="1" class="">
-
-                                                {{ $signal['date_action'] ? date('m-d-Y H:i', strtotime($signal['date_action'])) : ''}}
-                                            </td>
-                                        </tr>
-                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
@@ -475,3 +439,72 @@
         </div>
     </div>
 </div>
+<style>
+/* Add before your DataTables initialization script */
+table.dataTable thead .sorting { background: url('sort_both.png') no-repeat center right; }
+table.dataTable thead .sorting_asc { background: url('sort_asc.png') no-repeat center right; }
+table.dataTable thead .sorting_desc { background: url('sort_desc.png') no-repeat center right; }
+</style>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+<script>
+$(document).ready(function() {
+    var data =
+    $('#forex').DataTable({
+        searching: false,
+        lengthChange: false, //
+        paging: false,
+        info: false,
+        data:@json($signals['forex']),
+        columns: [
+            { data: 'code' },
+            { data: 'trend_price' },
+            { data: 'last_sale' },
+            { data: 'date_action' }
+        ],
+        order: [[3, 'desc']]
+    });
+    $('#crypto').DataTable({
+        searching: false,
+        lengthChange: false, //
+        paging: false,
+        info: false,
+        order: [[3, 'desc']],
+        data:@json($signals['crypto']),
+        columns: [
+            { data: 'code' },
+            { data: 'trend_price' },
+            { data: 'last_sale' },
+            { data: 'date_action' }
+        ]
+    });
+    $('#commodities').DataTable({
+        searching: false,
+        lengthChange: false, //
+        paging: false,
+        info: false,
+        order: [[3, 'desc']],
+        data:@json($signals['commodities']),
+        columns: [
+            { data: 'code' },
+            { data: 'trend_price' },
+            { data: 'last_sale' },
+            { data: 'date_action' }
+        ]
+    });
+    $('#indices').DataTable({
+        searching: false,
+        lengthChange: false, //
+        paging: false,
+        info: false,
+        order: [[3, 'desc']],
+        data:@json($signals['indices']),
+        columns: [
+            { data: 'code' },
+            { data: 'trend_price' },
+            { data: 'last_sale' },
+            { data: 'date_action' }
+        ],
+    });
+});
+</script>

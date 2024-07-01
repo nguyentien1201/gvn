@@ -32,11 +32,12 @@
     <link rel="stylesheet" href="{{asset('plugins/fullcalendar-bootstrap/main.min.css')}}">
     <link rel="stylesheet" href="{{asset('plugins/font-awesome-4.7.0/css/font-awesome.min.css')}}">
     @yield('styles')
+    <script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
 </head>
 <body>
 @include('front.common.header')
 @include('front.common.home-content')
-<script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
+
 <script src="{{ asset('plugins/jquery-ui/jquery-ui.min.js') }}"></script>
 <script src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 <script src="{{ asset('plugins/chart.js/Chart.min.js') }}"></script>
@@ -44,13 +45,9 @@
 <script src="{{ asset('plugins/jquery-knob/jquery.knob.min.js') }}"></script>
 <script src="{{asset('plugins/moment/moment-with-locales.min.js')}}"></script>
 <script src="{{ asset('plugins/daterangepicker/daterangepicker.js') }}"></script>
-<script
-        src="{{ asset('plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js') }}">
-</script>
+<script src="{{ asset('plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js') }}"></script>
 <script src="{{ asset('plugins/summernote/summernote-bs4.min.js') }}"></script>
-<script
-        src="{{ asset('plugins/overlayScrollbars/js/jquery.overlafont-awesomeyScrollbars.min.js') }}">
-</script>
+<script src="{{ asset('plugins/overlayScrollbars/js/jquery.overlafont-awesomeyScrollbars.min.js') }}"></script>
 <script src="{{ asset('dist/js/adminlte.js') }}"></script>
 <script src="{{ asset('dist/js/demo.js') }}"></script>
 <!-- InputMask -->
