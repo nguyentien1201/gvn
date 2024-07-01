@@ -94,5 +94,11 @@ class ConstantModel
         2 => 'Forex',
         3 => 'Crypto',
     ];
+    const TRENDING_PRICE = [
+        1 => 'UPTREND',
+        2 => 'DOWNTREND',
+        3 => 'SIDEWAY',
+
+    ];
 
 }

@@ -18,7 +18,7 @@ class MstStock extends Model
     public function getListMstStock(Request $request)
     {
         $query = self::select();
-        return $query->orderBy('id', 'desc')->paginate(ConstantModel::$PAGINATION);
+        return $query->orderBy('group', 'desc')->paginate(ConstantModel::$PAGINATION);
     }
 
     public function getSignalIds()
