@@ -45,10 +45,10 @@ class SignalFree extends Model
                 'date_action' => $value->date_action,
             ];
         }
-        $limitedIndices = collect($result['indices-fut'])->take(8);
-        $commodities = collect($result['commodities'])->take(8);
-        $crypto = collect($result['crypto'])->take(8);
-        $forex = collect($result['forex'])->take(8);
+        $limitedIndices = collect($result['indices-fut']);
+        $commodities = collect($result['commodities']);
+        $crypto = collect($result['crypto']);
+        $forex = collect($result['forex']);
 
         return [
             'indices' => $limitedIndices,
