@@ -18,9 +18,6 @@ class StoreGreenBetaRequest extends FormRequest
             'code' => [
                 'required',
             ],
-            'price_close' => [
-                'required'
-            ],
             'price_open' => [
                 'required'
             ],
