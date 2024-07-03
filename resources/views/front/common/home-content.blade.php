@@ -506,7 +506,7 @@
                 </h2>
                 <div class="card mb-4">
                     <div class="card-body">
-                        <h5 class="card-title">Green Beta</h5>
+                        <h5 class="card-title color-home">Green Beta</h5>
                         <p class="card-text"> <li>Phương pháp giao dịch: Position Trading</li>
                                             <li>Thời gian đầu tư: Nắm giữ trung hạn và dài hạn</li>
                                             <li>Chỉ số giao dịch: Stock Index, Commondity, Cryto…</li>
@@ -539,15 +539,7 @@
         <div class="row">
             <div class="col-12">
                 <h2 class="text-left mb-4 color-home label-color">Top tín hiệu phiên trước đó</h2>
-                <div class="card mb-4">
-                    <div class="card-body">
-                        <h5 class="card-title">Green Beta</h5>
-                        <p class="card-text"> <li>Phương pháp giao dịch: Position Trading</li>
-                                            <li>Thời gian đầu tư: Nắm giữ trung hạn và dài hạn</li>
-                                            <li>Chỉ số giao dịch: Stock Index, Commondity, Cryto…</li>
-                        </p>
-                    </div>
-                </div>
+
                 <div class="swiper-container">
                     <div class="swiper-wrapper">
                         <!-- Slide 1 -->
@@ -559,12 +551,12 @@
                                             <div class="notification-header">
                                                 <img src="{{asset('images/metatrader-icon.png')}}" alt="MetaTrader 4" class="app-icon">
                                                 <div>
-                                                    <div class="app-name">Green-Beta</div>
+                                                    <div class="app-name color-home">Green-Beta</div>
                                                     <div class="notification-time">{{ $signal->updated_at ? date('m-d-Y', strtotime($signal->closeupdated_at_time)) : ''}}</div>
                                                 </div>
                                             </div>
                                             <div class="notification-body">
-                                                <div>GREEN BETA</div>
+                                                <div class="bold">GREEN BETA</div>
                                                 <div><b>{{$signal->signal_close ? $signal->signal_close :$signal->signal_open }}:</b> {{$signal->MstStock->code}} {{$signal->price_close ? $signal->price_close :$signal->price_open }}</div>
                                                 <div>{{$signal->close_time ? $signal->close_time :$signal->open_time }}</div>
                                             </div>
@@ -594,7 +586,7 @@
                 </h2>
                 <div class="card mb-4">
                     <div class="card-body">
-                        <h5 class="card-title">Green Beta</h5>
+                        <h5 class="card-title color-home">Green Beta</h5>
                         <p class="card-text"> <li>Phương pháp giao dịch: Day Trading</li>
                                             <li>Thời gian đầu tư: Trong ngày, không giữ lệnh qua đêm</li>
                                             <li>Chỉ số giao dịch: Nasdaq, SPX500, US30 ...</li>
@@ -629,7 +621,8 @@
         <div class="col-md-4">
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title color-home">Giải pháp tự động hóa phân tích thị trường</h5>
+
+              <h5 class="card-title color-home">  <i class="fas fa-laptop icon-Computer" style="margin-right:10px"> </i>Giải pháp tự động hóa phân tích thị trường</h5>
               <p class="card-text">Dịch vụ tự động hóa phân tích cung cấp một cái nhìn khách quan nhất về xu hướng thị trường.</p>
             </div>
           </div>
@@ -637,7 +630,8 @@
         <div class="col-md-4">
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title color-home">Cung cấp các phân tích, xu hướng thị trường đến nhà đầu tư</h5>
+
+              <h5 class="card-title color-home"><i class="fas fa-chart-line" style="margin-right:10px"></i> Cung cấp các phân tích, xu hướng thị trường đến nhà đầu tư</h5>
               <p class="card-text">Các tín hiệu Buy-Sell sẽ được hệ thống tự động gửi đến điện thoại khách hàng trong khoản thời
               gian giao dịch thật</p>
             </div>
@@ -646,7 +640,7 @@
         <div class="col-md-4">
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title color-home">Tư vấn giải pháp cho nhà đầu tư hiệu quả thời gian</h5>
+              <h5 class="card-title color-home"><i class="fas fa-briefcase" style="margin-right:10px"> </i>Tư vấn giải pháp cho nhà đầu tư hiệu quả thời gian</h5>
               <p class="card-text">Dịch vụ Giải pháp đầu tư cung cấp các giải pháp và công cụ hỗ trợ cho nhà đầu tư đạt hiệu quả
               đầu tư tốt nhất</p>
             </div>
