@@ -1,6 +1,6 @@
 
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-header header">
+<nav class="navbar navbar-expand-lg navbar-light bg-white fixed-header header">
     <a class="navbar-brandbrand-logo" href="{{ route('front.home.index') }}">
         <img height="80" src="{{ asset('images/Logo-GVN-FinTrade-copy.png') }}" alt="Logo">
     </a>

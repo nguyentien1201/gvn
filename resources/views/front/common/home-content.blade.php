@@ -9,25 +9,21 @@
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
 <script>
-    $('a[data-bs-toggle="tab"]').on('shown.bs.tab', function (e) {
-        var target = $(e.target).attr("href") // activated tab
-        alert(target);
-
-    });
 
 
     $(document).ready(function () {
 
+
     var forex = $('#forex-table').DataTable({
         searching: false,
             lengthChange: false, //
-            visible: true, api: true,
+
             responsive: true,
             paging: false,
             info: false,
                 data: @json($signals['forex']),
                 scrollY: '300px',
-                scrollCollapse: true,
+
                 columns: [
                     { data: 'code' },  // Apply bold formatting to the "PriceTrend" column data},
                     { data: 'trend_price' },
@@ -38,8 +34,6 @@
                 {
                     targets: 1, // Index of the date column
                     createdCell: function(td, cellData, rowData, row, col) {
-
-                        $(td).addClass('custom-date-cell');
                         // Or apply inline styles
                         color ='yellow';
                         if(cellData =='UPTREND') {
@@ -62,22 +56,23 @@
             paging: false,
             info: false,
             scrollY: '300px',
-            scrollCollapse: true,
+
             order: [[3, 'desc']],
             data: @json($signals['crypto']),
-            autoWidth: true,
+
             columns: [
-                { data: 'code' },
-                { data: 'trend_price'},
-                { data: 'last_sale'},
-                { data: 'date_action'}
+                { data: 'code' },  // Apply bold formatting to the "PriceTrend" column data},
+                    { data: 'trend_price' },
+                    { data: 'last_sale' },
+                    { data: 'date_action' }
             ],
             columnDefs: [
                 {
                     targets: 1, // Index of the date column
                     createdCell: function(td, cellData, rowData, row, col) {
 
-                        $(td).addClass('custom-date-cell');
+
+
                         // Or apply inline styles
                         color ='yellow';
                         if(cellData =='UPTREND') {
@@ -98,22 +93,23 @@
             paging: false,
             info: false,
             scrollY: '300px',
-            scrollCollapse: true,
+
             data: @json($signals['commodities']),
             order: [[3, 'desc']],
-            autoWidth: true,
+
             columns: [
-                { data: 'code'},
-                { data: 'trend_price'},
-                { data: 'last_sale'},
-                { data: 'date_action'}
-            ],
+                { data: 'code' },  // Apply bold formatting to the "PriceTrend" column data},
+                    { data: 'trend_price' },
+                    { data: 'last_sale' },
+                    { data: 'date_action' }
+                ],
             columnDefs: [
                 {
                     targets: 1, // Index of the date column
                     createdCell: function(td, cellData, rowData, row, col) {
 
-                        $(td).addClass('custom-date-cell');
+
+
                         // Or apply inline styles
                         color ='yellow';
                         if(cellData =='UPTREND') {
@@ -129,7 +125,7 @@
         commodities.columns.adjust().draw();
         var indices=  $('#indices-table').DataTable({
             searching: false,
-            autoWidth: true,
+
             lengthChange: false, //
             responsive: true,
             paging: false,
@@ -137,7 +133,7 @@
             order: [[3, 'desc']],
             data: @json($signals['indices']),
             scrollY: '300px',
-            scrollCollapse: true,
+
             columnDefs: [{
                 targets: 'code', // Assuming 'code' is a class applied to the <th> of the column you want to make bold
                 render: function (data, type, full, meta) {
@@ -145,17 +141,17 @@
                 }
             }],
             columns: [
-                { data: 'code' },
-                { data: 'trend_price' },
-                { data: 'last_sale' },
-                { data: 'date_action' }
+                { data: 'code' },  // Apply bold formatting to the "PriceTrend" column data},
+                    { data: 'trend_price' },
+                    { data: 'last_sale' },
+                    { data: 'date_action' }
             ],
             columnDefs: [
                 {
                     targets: 1, // Index of the date column
                     createdCell: function(td, cellData, rowData, row, col) {
 
-                        $(td).addClass('custom-date-cell');
+
                         // Or apply inline styles
                         color ='yellow';
                         if(cellData =='UPTREND') {
@@ -178,7 +174,7 @@
             data: @json($favorite),
             responsive: true,
             scrollY: '338px',
-            scrollCollapse: true,
+
             columns: [
                 { data: 'code' },
                 { data: 'signal_open' },
@@ -188,6 +184,16 @@
 
             ]
         });
+        $('a[data-bs-toggle="tab"]').on('shown.bs.tab', function (e) {
+            target = e.target.getAttribute("href") // activated tab
+            console.log(target);
+    // Trigger DataTable redraw when tab becomes active
+    commodities.columns.adjust().responsive.recalc();
+    indices.columns.adjust().responsive.recalc();
+    forex.columns.adjust().responsive.recalc();
+    crypto.columns.adjust().responsive.recalc();
+
+});
 
     });
 
@@ -353,23 +359,23 @@
         .notification-body b {
             font-weight: bold;
         }
-        .dataTables_scrollHeadInner {
-    width: auto !important;
-    overflow: hidden;
-}
 
-.dataTables_scrollHeadInner table {
-    width: 100% !important;
-}
+ .label-color:{
+    color:#008000 !important;
+    font-weight: bold;
+ }
+ .color-home{
+    color:#008000 !important;
+ }
 </style>
 <section class="features text-left mt-5">
     <div class="container">
-        <h2 class="text-left mb-4">Quan tâm nhiều nhất</h2>
+        <h2 class="text-left mb-4 label-color color-home" >Quan tâm nhiều nhất</h2>
         <div class="row">
             <div class="col-md-6 form-group">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Ưa thích</h5>
+                        <h5 class="card-title label-color color-home">Ưa thích</h5>
                             <table class="table table-striped table-bordered" id="favourite">
                                 <thead>
 
@@ -387,7 +393,7 @@
             <div class="col-md-6 form-group">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Tín hiệu miễn phí</h5>
+                        <h5 class="card-title label-color color-home">Tín hiệu miễn phí</h5>
                         <ul class="nav nav-tabs">
                         <li class="nav-item">
                             <a class="nav-link active" id="indices-tab" data-bs-toggle="tab" href="#indices" >indices</a>
@@ -402,43 +408,22 @@
                             <a class="nav-link" id="forex-tab" data-bs-toggle="tab" href="#forex">Forex</a>
                         </li>
                     </ul>
-                        <!-- <ul class="nav nav-tabs" id="myTab" role="tablist">
-                            <li class="nav-item" >
-                                <button class="nav-link active" id="indices-tab" data-bs-toggle="tab"
-                                    data-bs-target="#indicestab" type="button" role="tab" aria-controls="indicestab"
-                                    aria-selected="true">Indices Futures</button>
-                            </li>
-                            <li class="nav-item" >
-                                <button class="nav-link" id="commodities-tab" data-bs-toggle="tab"
-                                    data-bs-target="#commodities" type="button" role="tab" aria-controls="commodities"
-                                    aria-selected="false">Commodities</button>
-                            </li>
-                            <li class="nav-item" >
-                                <button class="nav-link" id="cryptocurrencies-tab" data-bs-toggle="tab"
-                                    data-bs-target="#cryptocurrencies" type="button" role="tab"
-                                    aria-controls="cryptocurrencies" aria-selected="true">Cryptocurrencies</button>
-                            </li>
-                            <li class="nav-item" >
-                                <button class="nav-link" id="forex-tab" data-bs-toggle="tab" data-bs-target="#forextab"
-                                    type="button" role="tab" aria-controls="forextab"
-                                    aria-selected="true">Forex</button>
-                            </li>
-                        </ul> -->
+
                         <div class="tab-content">
                             <div class="tab-pane fade show active in" id="indices">
-                                    <table class="table table-striped table-bordered" style="width:100%" id="indices-table">
+                                    <table class="table table-striped table-bordered"  id="indices-table">
                                         <thead>
 
-                                                <th class="sortable">
+                                                <th class="sortable" class="name">
                                                     Name
                                                 </th>
-                                                <th class="">
+                                                <th class="" class="trend">
                                                     Trend
                                                 </th>
-                                                <th class="sortable-header">
+                                                <th class="sortable-header" class="trendprice">
                                                     PriceTrend
                                                 </th>
-                                                <th class="sortable-header">
+                                                <th class="sortable-header" class="trendprice">
                                                     TimeStart
                                                 </th>
 
@@ -447,7 +432,7 @@
                             </div>
                             <div class="tab-pane fade" id="commodities">
                                 <!-- Content for Profile tab -->
-                                <table class="table table-striped table-bordered" id="commodities-table">
+                                <table class="table table-striped table-bordered" id="commodities-table" >
                                     <thead>
                                         <th class="sortable">
                                             Name
@@ -465,19 +450,19 @@
                                 </table>
                             </div>
                             <div class="tab-pane fade" id="cryptocurrencies">
-                                <table class="table table-striped table-bordered" style="width:100%" id="crypto">
+                                <table class="table table-striped table-bordered"  id="crypto">
                                     <thead>
 
-                                        <th class="sortable">
+                                        <th class="sortable" width="20%">
                                             Name
                                         </th>
-                                        <th class="">
+                                        <th class="" width="25%">
                                             Trend
                                         </th>
-                                        <th class="sortable-header">
+                                        <th class="sortable-header"  width="25%">
                                             PriceTrend
                                         </th>
-                                        <th class="sortable-header">
+                                        <th class="sortable-header"  width="30%">
                                             TimeStart
                                         </th>
 
@@ -516,8 +501,8 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <h2 class="text-left mb-4"><span class="title-trading-first">Giao dịch với</span>
-                    <span class="title-trading-second">Green Beta 1.2.3</span>
+                <h2 class="text-left mb-4"><span class="title-trading-first label-color color-home">Giao dịch với</span>
+                    <span class="title-trading-second bold">Green Beta 1.2.3</span>
                 </h2>
                 <div class="card mb-4">
                     <div class="card-body">
@@ -553,7 +538,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <h2 class="text-left mb-4">Top tín hiệu phiên trước đó</h2>
+                <h2 class="text-left mb-4 color-home label-color">Top tín hiệu phiên trước đó</h2>
                 <div class="card mb-4">
                     <div class="card-body">
                         <h5 class="card-title">Green Beta</h5>
@@ -604,8 +589,8 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <h2 class="text-left mb-4"><span class="title-trading-first">Giao dịch với</span>
-                    <span class="title-trading-second">Green Beta 10.0.1</span>
+                <h2 class="text-left mb-4"><span class="title-trading-first label-color">Giao dịch với</span>
+                    <span class="title-trading-second color-home label-color">Green Beta 10.0.1</span>
                 </h2>
                 <div class="card mb-4">
                     <div class="card-body">
@@ -639,12 +624,12 @@
 </section>
 <section class="features text-center  mt-5">
     <div class="container">
-      <h2>Dịch vụ của chúng tôi</h2>
+      <h2 class="color-home label-color">Dịch vụ của chúng tôi</h2>
       <div class="row">
         <div class="col-md-4">
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Giải pháp tự động hóa phân tích thị trường</h5>
+              <h5 class="card-title color-home">Giải pháp tự động hóa phân tích thị trường</h5>
               <p class="card-text">Dịch vụ tự động hóa phân tích cung cấp một cái nhìn khách quan nhất về xu hướng thị trường.</p>
             </div>
           </div>
@@ -652,7 +637,7 @@
         <div class="col-md-4">
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Cung cấp các phân tích, xu hướng thị trường đến nhà đầu tư</h5>
+              <h5 class="card-title color-home">Cung cấp các phân tích, xu hướng thị trường đến nhà đầu tư</h5>
               <p class="card-text">Các tín hiệu Buy-Sell sẽ được hệ thống tự động gửi đến điện thoại khách hàng trong khoản thời
               gian giao dịch thật</p>
             </div>
@@ -661,7 +646,7 @@
         <div class="col-md-4">
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Tư vấn giải pháp cho nhà đầu tư hiệu quả thời gian</h5>
+              <h5 class="card-title color-home">Tư vấn giải pháp cho nhà đầu tư hiệu quả thời gian</h5>
               <p class="card-text">Dịch vụ Giải pháp đầu tư cung cấp các giải pháp và công cụ hỗ trợ cho nhà đầu tư đạt hiệu quả
               đầu tư tốt nhất</p>
             </div>

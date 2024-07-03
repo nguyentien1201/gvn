@@ -11,6 +11,14 @@
    <!-- DataTables Responsive CSS -->
    <link href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.dataTables.min.css" rel="stylesheet">
   <style>
+    body{
+        font-size: 0.9rem !important;
+    }
+    #navbarNav .nav-link {
+        font-size: 1.1rem;
+        color: #000;
+        font-weight: 600;
+    }
     .hero {
       background: url('https://via.placeholder.com/1500x800') no-repeat center center;
       background-size: cover;
