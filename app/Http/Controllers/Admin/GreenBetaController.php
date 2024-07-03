@@ -88,7 +88,7 @@ class GreenBetaController extends AdminController
 
 
         $greenBeta = new GreenBetaImport();
-        try {
+
             $arrayData = Excel::toArray(new GreenBetaImport(), $path);
             $sheetData = $arrayData[0];
         // Assuming you want to do something with the first sheet's data
@@ -97,21 +97,23 @@ class GreenBetaController extends AdminController
             $c = new GreenBeta();
             $greenBeta = [];
             // $firstTenItems = array_slice($sheetData, 0, 10);
+
             foreach ($sheetData as $sheet) {
                 if(empty($sheet['code'])) continue;
-                $openTime = str_replace('.', '-', substr($sheet['timeopen'], 9) . ' ' . substr($sheet['timeopen'], 0, 8));
-                $closeTime = str_replace('.', '-', substr($sheet['timeclose'], 9) . ' ' . substr($sheet['timeclose'], 0, 8));
-                $greenBeta = [
-                    'code' => $listCode[$sheet['code']],
-                    'signal_open' => $sheet['signal'],
-                    'price_open' => $sheet['priceopen'],
-                    'open_time' => Carbon::parse($openTime)->format('Y-m-d H:i:s'),
-                    'close_time' => Carbon::parse($closeTime)->format('Y-m-d H:i:s'),
-                    'signal_close' => $sheet['signalclose'],
-                    'price_close' => $sheet['priceclose'],
-                    'profit' => $sheet['profitloss'],
+                try {
+                    $openTime = str_replace('.', '-', substr($sheet['timeopen'], 9) . ' ' . substr($sheet['timeopen'], 0, 8));
+                    $closeTime = str_replace('.', '-', substr($sheet['timeclose'], 9) . ' ' . substr($sheet['timeclose'], 0, 8));
+                    $greenBeta = [
+                        'code' => $listCode[$sheet['code']],
+                        'signal_open' => $sheet['signal'],
+                        'price_open' => $sheet['priceopen'],
+                        'open_time' => Carbon::parse($openTime)->format('Y-m-d H:i:s'),
+                        'close_time' => Carbon::parse($closeTime)->format('Y-m-d H:i:s'),
+                        'signal_close' => $sheet['signalclose'],
+                        'price_close' => $sheet['priceclose'],
+                        'profit' => $sheet['profitloss'],
 
-                ];
+                    ];
                 $existingRecord = GreenBeta::where(['code'=>$greenBeta['code'],'price_open'=>$greenBeta['price_open'],'price_close'=>$greenBeta['price_close']])->first();
                 if ($existingRecord) {
                     $existingRecord->update($greenBeta);
@@ -119,13 +121,15 @@ class GreenBetaController extends AdminController
                     // Record does not exist, insert new
                     GreenBeta::create($greenBeta);
                 }
+                } catch (\Exception $e) {
+                    continue;
+                }
+
             }
             if ($request->type_upload == 0) {
                 return back()->with('success', __('panel.success'));
             }
-        } catch (\Exception $e) {
-dd($e);
-            return back()->with('fail', __('panel.fail'));
-        }
+
+
     }
 }
