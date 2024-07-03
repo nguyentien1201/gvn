@@ -53,5 +53,5 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin'], fu
 
 
 });
-
+Route::get('admin/greenbeta/{id}', 'Admin\GreenBetaController@getListMstock')->middleware('admin')->name('admin.green-beta.list-stock');
 Route::post('admin/import', 'Admin\GreenBetaController@import')->middleware('admin')->name('admin.green-beta.import');

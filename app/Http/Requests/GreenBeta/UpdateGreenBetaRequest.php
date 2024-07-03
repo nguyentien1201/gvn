@@ -17,24 +17,14 @@ class UpdateGreenBetaRequest extends FormRequest
             'code' => [
                 'required',
             ],
-            'price_close' => [
-                'required'
-            ],
+
             'price_open' => [
                 'required'
             ],
             'open_time' => [
                 'required',
             ],
-            'signal_close' => [
-                'required',
-            ],
-            'profit' => [
-                'required',
-            ],
-            'close_time' => [
-                'required',
-            ],
+
             'signal_open' => [
                 'required',
             ]

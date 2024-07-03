@@ -24,15 +24,6 @@ class StoreGreenBetaRequest extends FormRequest
             'open_time' => [
                 'required',
             ],
-            'signal_close' => [
-                'required',
-            ],
-            'profit' => [
-                'required',
-            ],
-            'close_time' => [
-                'required',
-            ],
             'signal_open' => [
                 'required',
             ]

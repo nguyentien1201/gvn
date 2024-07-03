@@ -582,11 +582,11 @@
         <div class="row">
             <div class="col-12">
                 <h2 class="text-left mb-4"><span class="title-trading-first label-color">Giao dịch với</span>
-                    <span class="title-trading-second color-home label-color">Green Beta 10.0.1</span>
+                    <span class="title-trading-second color-home label-color">Green Alpha 10.0.1</span>
                 </h2>
                 <div class="card mb-4">
                     <div class="card-body">
-                        <h5 class="card-title color-home">Green Beta</h5>
+                        <h5 class="card-title color-home">Green Alpha</h5>
                         <p class="card-text"> <li>Phương pháp giao dịch: Day Trading</li>
                                             <li>Thời gian đầu tư: Trong ngày, không giữ lệnh qua đêm</li>
                                             <li>Chỉ số giao dịch: Nasdaq, SPX500, US30 ...</li>

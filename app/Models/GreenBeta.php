@@ -23,7 +23,7 @@ class GreenBeta extends Model
     {
         return Carbon::parse($value)->format('d-m-Y'); // Customize the format as needed
     }
-    public function getListSignals(Request $request)
+    public function getListSignals( Request $request)
     {
         $query = self::with('MstStock')->select();
         return $query->orderBy('id', 'desc')->paginate(ConstantModel::$PAGINATION);
@@ -36,5 +36,11 @@ class GreenBeta extends Model
     public function MstStock()
 {
     return $this->belongsTo('App\Models\MstStock', 'code');
+}
+public function getListSignalsById($id, Request $request)
+{
+   $id = (int) $id;
+    $query = self::where('code',$id)->with('MstStock')->select();
+    return $query->orderBy('id', 'desc')->paginate(ConstantModel::$PAGINATION);
 }
 }

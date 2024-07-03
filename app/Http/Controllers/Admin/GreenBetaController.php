@@ -18,15 +18,23 @@ class GreenBetaController extends AdminController
     {
         $this->greenBeta = new GreenBeta();
     }
+    public function index()
+    {
 
-    public function index(Request $request)
+        $query = MstStock::select();
+        $signals = $query->orderBy('id', 'desc')->paginate(ConstantModel::$PAGINATION);
+        return view('admin.green_beta.list_stock',compact('signals'));
+    }
+    public function getListMstock($id,Request $request)
     {
         $searchGreenBetas = GreenBeta::all();
-        $signals = (new GreenBeta())->getListSignals($request);
+        $signals = (new GreenBeta())->getListSignalsById($id,$request);
+
         $mstStocks = (new MstStock())->getListMstStock($request);
 
         return view('admin.green_beta.index', compact('signals', 'searchGreenBetas','mstStocks'));
     }
+
 
     public function create()
     {
@@ -132,4 +140,9 @@ class GreenBetaController extends AdminController
 
 
     }
+    // public function getListMstock()
+    // {
+    //     $listCode = MstStock::pluck('code','id')->toArray();
+    //     return view('admin.green_beta.list_stock',compact('listCode'));
+    // }
 }
