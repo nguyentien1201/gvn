@@ -23,6 +23,23 @@
                                 {{ __('panel.add') }}
                             </a>
                         </div>
+                        <div class="col-md-12 form-group">
+                        <form class="d-flex justify-content-center" action="{{route('admin.green-beta.import')}}" method="post"
+                              enctype="multipart/form-data">
+                            {{csrf_field()}}
+                            <div class="input-group">
+                                <div class="custom-file">
+                                    <input type="file" accept=".xlsx, .xls, .csv" name="select_file" class="custom-file-input" id="inputGroupFile04" required>
+                                    <label class="custom-file-label" for="inputGroupFile04">Choose file</label>
+                                </div>
+                                <div class="input-group-append">
+                                    <button class="d-flex btn btn-primary" type="submit">
+                                       <span><i class="fa fa-upload mr-1"></i>{{__('panel.import')}}</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                        </div>
                     <div class="table-responsive">
                         <table class="table table-bordered table-truncate table-striped projects">
                             <thead>

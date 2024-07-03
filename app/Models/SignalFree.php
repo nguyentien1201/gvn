@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Carbon\Carbon;
 
 class SignalFree extends Model
 {
@@ -16,7 +17,14 @@ class SignalFree extends Model
     protected $fillable = [
         'code', 'trend_price', 'last_sale', 'date_action'
     ];
-
+    protected $casts = [
+        'date_action' => 'date',
+    ];
+    public function getDateActionAttribute($value)
+    {
+        return Carbon::parse($value)->format('d-m-Y'); // Customize the format as needed
+    }
+// get formatted datetime string for email_verified_at
     public function getListSignals(Request $request)
     {
         $query = self::with('mstStock')->select();

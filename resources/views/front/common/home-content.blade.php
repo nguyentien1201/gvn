@@ -1,417 +1,30 @@
-<link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-<!-- Bootstrap JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
-<section class="mt-5">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <h2 class="text-left mb-4">Quan tâm nhiều nhất</h2>
-                <div class="most-interested">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-6 form-group">
-                                <div class="table-responsive">
-                                    <div class="">
-                                        <table class="table table-hover" id="favourite">
-                                            <thead>
-                                                <tr>
-                                                    <th colspan="1" class="">
-                                                        Name
-                                                    </th>
-                                                    <th colspan="1" class="">
-                                                        Trend
-                                                    </th>
-                                                    <th colspan="1" class="">
-                                                        PriceTrend
-                                                    </th>
-                                                    <th colspan="1" class="">
-                                                        TimeStart
-                                                    </th>
-                                                </tr>
-                                            </thead>
-
-                                            <tbody>
-
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div class="col-md-6 form-group">
-                                <ul class="nav nav-tabs" id="myTab" role="tablist">
-                                    <li class="nav-item" role="presentation">
-                                        <button class="nav-link active" id="indicestab-tab" data-bs-toggle="tab"
-                                            data-bs-target="#indicestab" type="button" role="tab"
-                                            aria-controls="indicestab" aria-selected="true">Indices Futures</button>
-                                    </li>
-                                    <li class="nav-item" role="presentation">
-                                        <button class="nav-link" id="commoditiestab-tab" data-bs-toggle="tab"
-                                            data-bs-target="#commoditiestab" type="button" role="tab"
-                                            aria-controls="commoditiestab" aria-selected="false">Commodities</button>
-                                    </li>
-                                    <li class="nav-item" role="presentation">
-                                        <button class="nav-link" id="cryptocurrencies-tab" data-bs-toggle="tab"
-                                            data-bs-target="#cryptocurrencies" type="button" role="tab"
-                                            aria-controls="cryptocurrencies"
-                                            aria-selected="true">Cryptocurrencies</button>
-                                    </li>
-                                    <li class="nav-item" role="presentation">
-                                        <button class="nav-link" id="forextab-tab" data-bs-toggle="tab"
-                                            data-bs-target="#forextab" type="button" role="tab" aria-controls="forextab"
-                                            aria-selected="true">Forex</button>
-                                    </li>
-                                </ul>
-
-                                <!-- Tab Content -->
-                                <div class="tab-content" id="myTabContent">
-                                    <div class="tab-pane fade show active" id="indicestab" role="tabpanel"
-                                        aria-labelledby="indicestab-tab">
-                                        <div class="table-responsive">
-                                            <div class="indices-futures">
-                                                <table class="table table-hover" id="indices">
-                                                    <thead>
-                                                        <tr>
-                                                            <th colspan="1" class="">
-                                                                Name
-                                                            </th>
-                                                            <th colspan="1" class="">
-                                                                Trend
-                                                            </th>
-                                                            <th colspan="1" class="">
-                                                                PriceTrend
-                                                            </th>
-                                                            <th colspan="1" class="">
-                                                                TimeStart
-                                                            </th>
-                                                        </tr>
-                                                    </thead>
-
-                                                    <tbody>
-
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="tab-pane fade" id="commoditiestab" role="tabpanel"
-                                        aria-labelledby="commoditiestab-tab">
-                                        <!-- Content for Profile tab -->
-                                        <div class="table-responsive">
-                                            <div class="commodities">
-                                                <table class="table table-hover scrollable-table-container"
-                                                    id="commodities">
-                                                    <thead>
-                                                        <tr>
-                                                            <th colspan="1" class="">
-                                                                Name
-                                                            </th>
-                                                            <th colspan="1" class="">
-                                                                Trend
-                                                            </th>
-                                                            <th colspan="1" class="">
-                                                                PriceTrend
-                                                            </th>
-                                                            <th colspan="1" class="">
-                                                                TimeStart
-                                                            </th>
-                                                        </tr>
-                                                    </thead>
-
-                                                    <tbody>
-                                                        @foreach($signals['commodities'] as $key => $signal)
-                                                            <tr class="">
-                                                                <th rowspan="1" colspan="1" class="">
-
-                                                                    {{$signal['code']}}
-                                                                </th>
-                                                                <td rowspan="1" colspan="1" class="">
-
-                                                                    {{$signal['trend_price']}}
-                                                                </td>
-                                                                <td rowspan="1" colspan="1" class="">
-
-                                                                    {{$signal['last_sale']}}
-                                                                </td>
-                                                                <td rowspan="1" colspan="1" class="">
-
-                                                                    {{ $signal['date_action'] ? date('m-d-Y H:i', strtotime($signal['date_action'])) : ''}}
-                                                                </td>
-                                                            </tr>
-                                                        @endforeach
-
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="tab-pane fade" id="cryptocurrencies" role="tabpanel"
-                                        aria-labelledby="cryptocurrencies-tab">
-                                        <div class="table-responsive">
-                                            <div class="top-cryptocurrencies">
-
-                                                <table class="table table-hover" id="crypto">
-                                                    <thead>
-                                                        <tr>
-                                                            <th colspan="1" class="sortable">
-                                                                Name
-                                                            </th>
-                                                            <th colspan="1" class="">
-                                                                Trend
-                                                            </th>
-                                                            <th colspan="1" class="sortable-header">
-                                                                PriceTrend
-                                                            </th>
-                                                            <th colspan="1" class="sortable-header">
-                                                                TimeStart
-                                                            </th>
-                                                        </tr>
-                                                    </thead>
-
-                                                    <tbody>
-                                                        @foreach($signals['crypto'] as $key => $signal)
-                                                            <tr class="">
-                                                                <th rowspan="1" colspan="1" class="">
-
-                                                                    {{$signal['code']}}
-                                                                </th>
-                                                                <td rowspan="1" colspan="1" class="">
-
-                                                                    {{$signal['trend_price']}}
-                                                                </td>
-                                                                <td rowspan="1" colspan="1" class="">
-
-                                                                    {{$signal['last_sale']}}
-                                                                </td>
-                                                                <td rowspan="1" colspan="1" class="">
-
-                                                                    {{ $signal['date_action'] ? date('m-d-Y H:i', strtotime($signal['date_action'])) : ''}}
-                                                                </td>
-                                                            </tr>
-                                                        @endforeach
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="tab-pane fade" id="forextab" role="tabpanel"
-                                        aria-labelledby="forextab-tab">
-                                        <!-- Content for Profile tab -->
-                                        <div class="table-responsive">
-                                            <div class="leading-stocks">
-
-                                                <table class="table table-hover" id="forex">
-                                                    <thead>
-                                                        <tr>
-                                                            <th colspan="1" class="">
-                                                                Name
-                                                            </th>
-                                                            <th colspan="1" class="">
-                                                                Trend
-                                                            </th>
-                                                            <th colspan="1" class="">
-                                                                PriceTrend
-                                                            </th>
-                                                            <th colspan="1" class="">
-                                                                TimeStart
-                                                            </th>
-                                                        </tr>
-                                                    </thead>
-
-                                                    <tbody>
-
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
 
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.datatables.net/v/bs5/dt-2.0.8/date-1.5.2/fc-5.0.1/fh-4.0.1/r-3.0.2/datatables.min.js"></script>
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<section class="mt-5">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <h2 class="text-left mb-4"><span class="title-trading-first">Giao dịch với</span>
-                    <span class="title-trading-second">Green Beta 1.2.3</span>
-                </h2>
-                <div class="trading-green-beta">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-4">
-                                <img class="img-fluid" src="{{asset('images/Green-Beta.png')}}"
-                                    alt="{{asset('images/Green-Beta.png')}}">
-                                <div class="content-trading">
-                                    <ul>
-                                        <li>Phương pháp giao dịch: Position Trading</li>
-                                        <li>Thời gian đầu tư: Nắm giữ trung hạn và dài hạn</li>
-                                        <li>Chỉ số giao dịch: Stock Index, Commondity, Cryto…</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="col-md-2">
-                                <div class="text-performance">
-                                    <p class="text-plus-percent text-bold">Total Return</p>
-                                    <p class="percent text-bold">+1075%</p>
-                                    <p class="text-plus-percent text-bold">Outperformance</p>
-                                    <p class="percent text-bold">+816%</p>
-                                    <p class="text-plus-percent text-bold">Annualized Return</p>
-                                    <p class="percent text-bold">+35%</p>
-                                </div>
-
-                            </div>
-                            <div class="col-md-6">
-                                <canvas id="myChartBeta" width="400" height="230"></canvas>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<section class="mt-5">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <h2 class="text-left mb-4">Top tín hiệu phiên trước đó</h2>
-                <div class="top-session-before-signal">
-                    <swiper-container class="mySwiper" loop="true" space-between="30" slides-per-group="4"
-                        slides-per-view="4" navigation="true">
-                        <swiper-slide>
-                            <img class="border-radius-13px" src="{{asset('images/1.jpg')}}"
-                                alt="{{asset('images/1.jpg')}}">
-                        </swiper-slide>
-                        <swiper-slide>
-                            <img class="border-radius-13px" src="{{asset('images/2.jpg')}}"
-                                alt="{{asset('images/2.jpg')}}">
-                        </swiper-slide>
-                        <swiper-slide>
-                            <img class="border-radius-13px" src="{{asset('images/3.jpg')}}"
-                                alt="{{asset('images/3.jpg')}}">
-                        </swiper-slide>
-                        <swiper-slide>
-                            <img class="border-radius-13px" src="{{asset('images/4.jpg')}}"
-                                alt="{{asset('images/4.jpg')}}">
-                        </swiper-slide>
-                        <swiper-slide>
-                            <img class="border-radius-13px" src="{{asset('images/1.jpg')}}"
-                                alt="{{asset('images/1.jpg')}}">
-                        </swiper-slide>
-                        <swiper-slide>
-                            <img class="border-radius-13px" src="{{asset('images/2.jpg')}}"
-                                alt="{{asset('images/2.jpg')}}">
-                        </swiper-slide>
-                        <swiper-slide>
-                            <img class="border-radius-13px" src="{{asset('images/3.jpg')}}"
-                                alt="{{asset('images/3.jpg')}}">
-                        </swiper-slide>
-                        <swiper-slide>
-                            <img class="border-radius-13px" src="{{asset('images/4.jpg')}}"
-                                alt="{{asset('images/4.jpg')}}">
-                        </swiper-slide>
-                    </swiper-container>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<section class="mt-5">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <h2 class="text-left mb-4">  <span class="title-trading-first">Giao dịch với</span>
-                <span class="title-trading-second">Green Alpha 10.0.1</span></h2>
-                <div class="trading-green-alpha">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="content-trading">
-                                    <ul>
-                                        <li>Phương pháp giao dịch: Day Trading</li>
-                                        <li>Thời gian đầu tư: Trong ngày, không giữ lệnh qua đêm</li>
-                                        <li>Chỉ số giao dịch: Nasdaq, SPX500, US30</li>
-                                    </ul>
-                                </div>
-                                <img class="img-fluid" src="{{asset('images/robot-chatbot-icon-sign-free-vector.png')}}"
-                                    alt="{{asset('images/robot-chatbot-icon-sign-free-vector.png')}}">
-                            </div>
-                            <div class="col-md-8">
-                                <div class="chart-trading-green-beta">
-                                    <select class="select2 form-control" name="chart-type" id="chartType">
-                                        <option value="area">Area</option>
-                                        <option value="bar">Column</option>
-                                        <option value="line">Line</option>
-                                    </select>
-                                </div>
-                                <canvas id="myChart" width="400" height="230"></canvas>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-
-
-
-<div class="services-our">
-    <h3 class="mb-5 text-center">
-        <span class="title-trading-first">Dịch vụ</span>
-        <span class="title-trading-second">của chúng tôi</span>
-    </h3>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4">
-                <h4>
-                    <i class="fa fa-line-chart color-primary-custom" aria-hidden="true"></i>
-                    <span class="text-bold">Giải pháp tự động hóa phân tích thị trường</span>
-                </h4>
-                <p>Dịch vụ tự động hóa phân tích cung cấp một cái nhìn khách quan nhất về xu hướng thị trường.
-                </p>
-            </div>
-            <div class="col-md-4">
-                <h4>
-                    <i class="fa fa-line-chart color-primary-custom" aria-hidden="true"></i>
-                    <span class="text-bold">Cung cấp các phân tích, xu hướng thị trường đến nhà đầu tư</span>
-                </h4>
-                <p>Các tín hiệu Buy-Sell sẽ được hệ thống tự động gửi đến điện thoại khách hàng trong khoản thời
-                    gian giao dịch thật</p>
-            </div>
-            <div class="col-md-4">
-                <h4>
-                    <i class="fa fa-line-chart color-primary-custom" aria-hidden="true"></i>
-                    <span class="text-bold">Tư vấn giải pháp cho nhà đầu tư hiệu quả thời gian</span>
-                </h4>
-                <p>Dịch vụ Giải pháp đầu tư cung cấp các giải pháp và công cụ hỗ trợ cho nhà đầu tư đạt hiệu quả
-                    đầu tư tốt nhất</p>
-            </div>
-        </div>
-    </div>
-</div>
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
 <script>
+    $('a[data-bs-toggle="tab"]').on('shown.bs.tab', function (e) {
+        var target = $(e.target).attr("href") // activated tab
+        alert(target);
+
+    });
+
+
     $(document).ready(function () {
-        var data =
-            $('#forex').DataTable({
-                searching: false,
-                lengthChange: false, //
-                paging: false,
-                info: false,
+
+    var forex = $('#forex-table').DataTable({
+        searching: false,
+            lengthChange: false, //
+            visible: true, api: true,
+            responsive: true,
+            paging: false,
+            info: false,
                 data: @json($signals['forex']),
                 scrollY: '300px',
                 scrollCollapse: true,
@@ -421,50 +34,104 @@
                     { data: 'last_sale' },
                     { data: 'date_action' }
                 ],
-                order: [[3, 'desc']]
+                columnDefs: [
+                {
+                    targets: 1, // Index of the date column
+                    createdCell: function(td, cellData, rowData, row, col) {
+
+                        $(td).addClass('custom-date-cell');
+                        // Or apply inline styles
+                        color ='yellow';
+                        if(cellData =='UPTREND') {
+                            color='green';
+                        };
+                        if(cellData =='DOWNTREND') {
+                            color='red';
+                        };
+                        $(td).css('background-color', color);
+                    }
+                }],
+                    order: [[3, 'desc']]
             });
-        $('#crypto').DataTable({
-            searching: false,
+            forex.columns.adjust().draw();
+            var crypto = $('#crypto').DataTable({
+
+                searching: false,
             lengthChange: false, //
+            responsive: true,
             paging: false,
             info: false,
             scrollY: '300px',
             scrollCollapse: true,
             order: [[3, 'desc']],
             data: @json($signals['crypto']),
-            columnDefs: [{
-                targets: 'code', // Assuming 'code' is a class applied to the <th> of the column you want to make bold
-                render: function (data, type, full, meta) {
-                    console.log(data);
-                }
-            }],
+            autoWidth: true,
             columns: [
                 { data: 'code' },
-                { data: 'trend_price' },
-                { data: 'last_sale' },
-                { data: 'date_action' }
-            ]
+                { data: 'trend_price'},
+                { data: 'last_sale'},
+                { data: 'date_action'}
+            ],
+            columnDefs: [
+                {
+                    targets: 1, // Index of the date column
+                    createdCell: function(td, cellData, rowData, row, col) {
+
+                        $(td).addClass('custom-date-cell');
+                        // Or apply inline styles
+                        color ='yellow';
+                        if(cellData =='UPTREND') {
+                            color='green';
+                        };
+                        if(cellData =='DOWNTREND') {
+                            color='red';
+                        };
+                        $(td).css('background-color', color);
+                    }
+                }],
         });
-        $('#commodities').DataTable({
+        forex.columns.adjust().draw();
+        var commodities = $('#commodities-table').DataTable({
             searching: false,
             lengthChange: false, //
+            responsive: true,
             paging: false,
             info: false,
-
-            order: [[3, 'desc']],
-            data: @json($signals['commodities']),
             scrollY: '300px',
             scrollCollapse: true,
+            data: @json($signals['commodities']),
+            order: [[3, 'desc']],
+            autoWidth: true,
             columns: [
-                { data: 'code' },
-                { data: 'trend_price' },
-                { data: 'last_sale' },
-                { data: 'date_action' }
-            ]
+                { data: 'code'},
+                { data: 'trend_price'},
+                { data: 'last_sale'},
+                { data: 'date_action'}
+            ],
+            columnDefs: [
+                {
+                    targets: 1, // Index of the date column
+                    createdCell: function(td, cellData, rowData, row, col) {
+
+                        $(td).addClass('custom-date-cell');
+                        // Or apply inline styles
+                        color ='yellow';
+                        if(cellData =='UPTREND') {
+                            color='green';
+                        };
+                        if(cellData =='DOWNTREND') {
+                            color='red';
+                        };
+                        $(td).css('background-color', color);
+                    }
+                }],
         });
-        $('#indices').DataTable({
+        commodities.columns.adjust().draw();
+        var indices=  $('#indices-table').DataTable({
             searching: false,
+            autoWidth: true,
             lengthChange: false, //
+            responsive: true,
             paging: false,
             info: false,
             order: [[3, 'desc']],
@@ -483,28 +150,524 @@
                 { data: 'last_sale' },
                 { data: 'date_action' }
             ],
+            columnDefs: [
+                {
+                    targets: 1, // Index of the date column
+                    createdCell: function(td, cellData, rowData, row, col) {
+
+                        $(td).addClass('custom-date-cell');
+                        // Or apply inline styles
+                        color ='yellow';
+                        if(cellData =='UPTREND') {
+                            color='green';
+                        };
+                        if(cellData =='DOWNTREND') {
+                            color='red';
+                        };
+                        $(td).css('background-color', color);
+                    }
+                }],
         });
+        indices.columns.adjust().draw();
         $('#favourite').DataTable({
             searching: false,
             lengthChange: false, //
             paging: false,
             info: false,
             order: [[3, 'desc']],
-            data: @json($signals['indices']),
-            scrollY: '300px',
+            data: @json($favorite),
+            responsive: true,
+            scrollY: '338px',
             scrollCollapse: true,
-            columnDefs: [{
-                targets: 'code', // Assuming 'code' is a class applied to the <th> of the column you want to make bold
-                render: function (data, type, full, meta) {
-                    return `<strong>${data}</strong>`;
-                }
-            }],
             columns: [
                 { data: 'code' },
-                { data: 'trend_price' },
+                { data: 'signal_open' },
                 { data: 'last_sale' },
-                { data: 'date_action' }
-            ],
+                { data: 'price_open' },
+                { data: 'open_time' }
+
+            ]
         });
+
+    });
+
+    var swiper = new Swiper('.swiper-container', {
+        slidesPerView: 4,
+        spaceBetween: 10,
+        loop: true,
+        autoplay: {
+            delay: 5000, // Delay between transitions in milliseconds
+            disableOnInteraction: false, // Enable/disable autoplay on swiper interaction
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
     });
 </script>
+
+<style>
+      /* Style for Swiper Container */
+      table thead {
+        width: 100% !important;
+      }
+      .swiper-container {
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+            padding-right: 20px;
+
+        }
+
+        /* Style for Swiper Slides */
+        .swiper-slide {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-right: 15px;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            opacity: 0.8;
+        }
+
+        /* Hover effect on Swiper Slides */
+        .swiper-slide:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            opacity: 1;
+        }
+
+        /* Style for Card Title */
+        .card-title {
+            color: #007bff;
+            font-size: 1.25rem;
+        }
+        .swiper-slide .card {
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Style for Card Text */
+        .card-text {
+            color: #555;
+        }
+
+        /* Default style for Stock Signal Background */
+        .stock-signal {
+            padding: 10px;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            color: #fff; /* Text color white for better contrast */
+        }
+
+        /* Background color based on stock signal */
+        .buy {
+            background-color: #28a745; /* Green background for Buy */
+        }
+
+        .sell {
+            background-color: #dc3545; /* Red background for Sell */
+        }
+
+        .hold {
+            background-color: #ffc107; /* Yellow background for Hold */
+            color: #000; /* Text color black for better contrast on yellow */
+        }
+
+        /* Pagination Styles */
+        .swiper-pagination {
+            bottom: 10px;
+        }
+        .swiper-pagination-bullet {
+            background-color: #007bff;
+            opacity: 0.5;
+        }
+        .swiper-pagination-bullet-active {
+            opacity: 1;
+        }
+
+        /* Navigation Buttons */
+        .swiper-button-next, .swiper-button-prev {
+            color: #007bff;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            padding: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .swiper-button-next:hover, .swiper-button-prev:hover {
+            color: #fff;
+            background-color: #007bff;
+        }
+
+        /* Animation for Swiper Slide Entering */
+        .swiper-slide-active {
+            animation: fadeIn 0.8s ease;
+            opacity: 1 !important;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .notification {
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 12px;
+
+
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        .notification-header {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            margin-bottom: 8px;
+        }
+        .app-icon {
+            width: 40px;
+            height: 40px;
+            margin-right: 8px;
+        }
+        .app-name {
+            font-weight: bold;
+            font-size: 16px;
+        }
+        .notification-time {
+            font-size: 12px;
+            color: #888;
+        }
+        .notification-body {
+            font-size: 14px;
+        }
+        .notification-body b {
+            font-weight: bold;
+        }
+        .dataTables_scrollHeadInner {
+    width: auto !important;
+    overflow: hidden;
+}
+
+.dataTables_scrollHeadInner table {
+    width: 100% !important;
+}
+</style>
+<section class="features text-left mt-5">
+    <div class="container">
+        <h2 class="text-left mb-4">Quan tâm nhiều nhất</h2>
+        <div class="row">
+            <div class="col-md-6 form-group">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Ưa thích</h5>
+                            <table class="table table-striped table-bordered" id="favourite">
+                                <thead>
+
+
+                                    <th class="">Name</th>
+                                    <th class="">Action</th>
+                                    <th class="">Last Sale</th>
+                                    <th class="">Price Open</th>
+                                    <th class="">Time</th>
+                                </thead>
+                            </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 form-group">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Tín hiệu miễn phí</h5>
+                        <ul class="nav nav-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="indices-tab" data-bs-toggle="tab" href="#indices" >indices</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="commodities-tab" data-bs-toggle="tab" href="#commodities" >Commodities</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="cryptocurrencies-tab" data-bs-toggle="tab" href="#cryptocurrencies" >Cryptocurrencies</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="forex-tab" data-bs-toggle="tab" href="#forex">Forex</a>
+                        </li>
+                    </ul>
+                        <!-- <ul class="nav nav-tabs" id="myTab" role="tablist">
+                            <li class="nav-item" >
+                                <button class="nav-link active" id="indices-tab" data-bs-toggle="tab"
+                                    data-bs-target="#indicestab" type="button" role="tab" aria-controls="indicestab"
+                                    aria-selected="true">Indices Futures</button>
+                            </li>
+                            <li class="nav-item" >
+                                <button class="nav-link" id="commodities-tab" data-bs-toggle="tab"
+                                    data-bs-target="#commodities" type="button" role="tab" aria-controls="commodities"
+                                    aria-selected="false">Commodities</button>
+                            </li>
+                            <li class="nav-item" >
+                                <button class="nav-link" id="cryptocurrencies-tab" data-bs-toggle="tab"
+                                    data-bs-target="#cryptocurrencies" type="button" role="tab"
+                                    aria-controls="cryptocurrencies" aria-selected="true">Cryptocurrencies</button>
+                            </li>
+                            <li class="nav-item" >
+                                <button class="nav-link" id="forex-tab" data-bs-toggle="tab" data-bs-target="#forextab"
+                                    type="button" role="tab" aria-controls="forextab"
+                                    aria-selected="true">Forex</button>
+                            </li>
+                        </ul> -->
+                        <div class="tab-content">
+                            <div class="tab-pane fade show active in" id="indices">
+                                    <table class="table table-striped table-bordered" style="width:100%" id="indices-table">
+                                        <thead>
+
+                                                <th class="sortable">
+                                                    Name
+                                                </th>
+                                                <th class="">
+                                                    Trend
+                                                </th>
+                                                <th class="sortable-header">
+                                                    PriceTrend
+                                                </th>
+                                                <th class="sortable-header">
+                                                    TimeStart
+                                                </th>
+
+                                        </thead>
+                                    </table>
+                            </div>
+                            <div class="tab-pane fade" id="commodities">
+                                <!-- Content for Profile tab -->
+                                <table class="table table-striped table-bordered" id="commodities-table">
+                                    <thead>
+                                        <th class="sortable">
+                                            Name
+                                        </th>
+                                        <th class="">
+                                            Trend
+                                        </th>
+                                        <th class="sortable-header">
+                                            PriceTrend
+                                        </th>
+                                        <th class="sortable-header">
+                                            TimeStart
+                                        </th>
+                                    </thead>
+                                </table>
+                            </div>
+                            <div class="tab-pane fade" id="cryptocurrencies">
+                                <table class="table table-striped table-bordered" style="width:100%" id="crypto">
+                                    <thead>
+
+                                        <th class="sortable">
+                                            Name
+                                        </th>
+                                        <th class="">
+                                            Trend
+                                        </th>
+                                        <th class="sortable-header">
+                                            PriceTrend
+                                        </th>
+                                        <th class="sortable-header">
+                                            TimeStart
+                                        </th>
+
+                                    </thead>
+                                </table>
+
+                            </div>
+                            <div class="tab-pane fade" id="forex">
+                                <table class="table table-striped table-bordered" id="forex-table">
+                                    <thead >
+
+                                            <th class="sortable">
+                                                Name
+                                            </th>
+                                            <th class="">
+                                                Trend
+                                            </th>
+                                            <th class="sortable-header">
+                                                PriceTrend
+                                            </th>
+                                            <th class="sortable-header">
+                                                TimeStart
+                                            </th>
+
+                                    </thead>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+    </div>
+</section>
+<section class="features text-left  mt-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h2 class="text-left mb-4"><span class="title-trading-first">Giao dịch với</span>
+                    <span class="title-trading-second">Green Beta 1.2.3</span>
+                </h2>
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">Green Beta</h5>
+                        <p class="card-text"> <li>Phương pháp giao dịch: Position Trading</li>
+                                            <li>Thời gian đầu tư: Nắm giữ trung hạn và dài hạn</li>
+                                            <li>Chỉ số giao dịch: Stock Index, Commondity, Cryto…</li>
+                        </p>
+                    </div>
+                </div>
+
+            <!-- Data and Chart Section -->
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <!-- Data Section -->
+                        <div class="col-md-4">
+                            <img class="img-fluid" src="{{asset('images/Green-Beta.png')}}"
+                            alt="{{asset('images/Green-Beta.png')}}">
+                        </div>
+                        <!-- Chart Section -->
+                        <div class="col-md-8">
+                            <canvas id="myChartBeta" width="400" height="230"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="features text-left  mt-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h2 class="text-left mb-4">Top tín hiệu phiên trước đó</h2>
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">Green Beta</h5>
+                        <p class="card-text"> <li>Phương pháp giao dịch: Position Trading</li>
+                                            <li>Thời gian đầu tư: Nắm giữ trung hạn và dài hạn</li>
+                                            <li>Chỉ số giao dịch: Stock Index, Commondity, Cryto…</li>
+                        </p>
+                    </div>
+                </div>
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                        <!-- Slide 1 -->
+                         @foreach ($last_signal as $signal)
+                            <div class="swiper-slide col-md-3">
+                                <div class="card">
+                                    <div class="card-body">
+                                    <div class="notification">
+                                            <div class="notification-header">
+                                                <img src="{{asset('images/metatrader-icon.png')}}" alt="MetaTrader 4" class="app-icon">
+                                                <div>
+                                                    <div class="app-name">Green-Beta</div>
+                                                    <div class="notification-time">{{ $signal->updated_at ? date('m-d-Y', strtotime($signal->closeupdated_at_time)) : ''}}</div>
+                                                </div>
+                                            </div>
+                                            <div class="notification-body">
+                                                <div>GREEN BETA</div>
+                                                <div><b>{{$signal->signal_close ? $signal->signal_close :$signal->signal_open }}:</b> {{$signal->MstStock->code}} {{$signal->price_close ? $signal->price_close :$signal->price_open }}</div>
+                                                <div>{{$signal->close_time ? $signal->close_time :$signal->open_time }}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                         @endforeach
+                        </div>
+                        </div>
+                        <!-- Add more slides as needed -->
+                    </div>
+                    <!-- Add Pagination -->
+                    <div class="swiper-pagination"></div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+<section class="features text-left  mt-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h2 class="text-left mb-4"><span class="title-trading-first">Giao dịch với</span>
+                    <span class="title-trading-second">Green Beta 10.0.1</span>
+                </h2>
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">Green Beta</h5>
+                        <p class="card-text"> <li>Phương pháp giao dịch: Day Trading</li>
+                                            <li>Thời gian đầu tư: Trong ngày, không giữ lệnh qua đêm</li>
+                                            <li>Chỉ số giao dịch: Nasdaq, SPX500, US30 ...</li>
+                        </p>
+                    </div>
+                </div>
+
+            <!-- Data and Chart Section -->
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <!-- Data Section -->
+                        <div class="col-md-4">
+                            <img class="img-fluid" src="{{asset('images/Green-Beta.png')}}"
+                            alt="{{asset('images/Green-Beta.png')}}">
+                        </div>
+                        <!-- Chart Section -->
+                        <div class="col-md-8">
+                            <canvas id="myChartAnpha" width="400" height="230"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="features text-center  mt-5">
+    <div class="container">
+      <h2>Dịch vụ của chúng tôi</h2>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Giải pháp tự động hóa phân tích thị trường</h5>
+              <p class="card-text">Dịch vụ tự động hóa phân tích cung cấp một cái nhìn khách quan nhất về xu hướng thị trường.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Cung cấp các phân tích, xu hướng thị trường đến nhà đầu tư</h5>
+              <p class="card-text">Các tín hiệu Buy-Sell sẽ được hệ thống tự động gửi đến điện thoại khách hàng trong khoản thời
+              gian giao dịch thật</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Tư vấn giải pháp cho nhà đầu tư hiệu quả thời gian</h5>
+              <p class="card-text">Dịch vụ Giải pháp đầu tư cung cấp các giải pháp và công cụ hỗ trợ cho nhà đầu tư đạt hiệu quả
+              đầu tư tốt nhất</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+

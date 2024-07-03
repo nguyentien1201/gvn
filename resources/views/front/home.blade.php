@@ -1,124 +1,126 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GVN</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css') }}">
-    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    <link rel="stylesheet"
-        href="{{ asset('plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css') }}">
-    <!-- Select2 -->
-    <link rel="stylesheet" href="{{asset('plugins/select2/css/select2.min.css')}}">
-    <link rel="stylesheet" href="{{asset('plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css')}}">
-    <link rel="stylesheet" href="{{ asset('plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('dist/css/adminlte.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('plugins/daterangepicker/daterangepicker.css') }}">
-    <link rel="stylesheet" href="{{ asset('plugins/summernote/summernote-bs4.css') }}">
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
-    <!-- fullCalendar -->
-    <link rel="stylesheet" href="{{asset('plugins/fullcalendar/main.min.css')}}">
-    <link rel="stylesheet" href="{{asset('plugins/fullcalendar-daygrid/main.min.css')}}">
-    <link rel="stylesheet" href="{{asset('plugins/fullcalendar-timegrid/main.min.css')}}">
-    <link rel="stylesheet" href="{{asset('plugins/fullcalendar-bootstrap/main.min.css')}}">
-    <link rel="stylesheet" href="{{asset('plugins/font-awesome-4.7.0/css/font-awesome.min.css')}}">
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.0/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Roboto', sans-serif;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Landing Page</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+   <!-- DataTables Responsive CSS -->
+   <link href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.dataTables.min.css" rel="stylesheet">
+  <style>
+    .hero {
+      background: url('https://via.placeholder.com/1500x800') no-repeat center center;
+      background-size: cover;
+      color: white;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
 
-        /* Custom navbar color */
+    .cta {
+      background-color: #007bff;
+      color: white;
+      padding: 60px 0;
+    }
+    .footer {
+      padding: 30px 0;
+    }
+    .carousel-item {
+      height: 100vh;
+      min-height: 300px;
+      background: no-repeat center center scroll;
+      background-size: cover;
+    }
+    .carousel-caption {
+      background: rgba(0, 0, 0, 0.6);
+      padding: 20px;
+      border-radius: 10px;
+    }
+    .features {
+      background: #f9f9f9;
+    }
+    .features .card {
+      border: none;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .features .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+    .features .card-body {
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+    .cta {
+      background: linear-gradient(45deg, #007bff, #0056b3);
+      color: white;
+      padding: 60px 0;
+    }
+    .cta .btn {
+      background: white;
+      color: #007bff;
+      border: none;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    .cta .btn:hover {
+      background: #007bff;
+      color: white;
+    }
+    .footer {
+      padding: 30px 0;
+      background: #f1f1f1;
+    }
+    .header {
+  position: relative;
+  width: 100%;
+  z-index: 1000;
+  transition: all 0.5s ease; /* Smooth transition for any changes */
+}
 
-        .navbar-custom .navbar-nav .nav-link {
-            font-weight: 700;
-            color: #000000; /* Adjust for better contrast */
-        }
-        .navbar-custom .navbar-nav .nav-link:hover {
-            color: #cccccc; /* Lighter shade for hover effect */
-        }
-        .navbar-custom .navbar-nav .nav-link:active{
-            color: #3ab54a ;
-        }
-    </style>
-    @yield('styles')
-    <script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
+.fixed-header {
+  position: fixed;
+  top: 0;
+  background-color: rgba(255, 255, 255, 0.9); /* Slightly transparent or any effect */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Optional: adds shadow for better visibility */
+}
+  </style>
+
 </head>
-
 <body>
 
-    <div class="container">
-        <!-- Header -->
-        <header class="row">
-            <div class="col-12">
-                @include('front.common.header')
-            </div>
-        </header>
+  <!-- Navigation Bar -->
+
+@include('front.common.header')
 
 
-        <!-- Main Content -->
-        <main class="row">
-            <div class="col-12">
-                @include('front.common.home-content')
-            </div>
-        </main>
+  <!-- Features Section -->
 
-        <!-- Footer -->
-        <footer class="row">
-            <div class="col-12">
-                @include('front.common.footer')
-            </div>
-        </footer>
-    </div>
+  @include('front.common.home-content')
+  <!-- Call to Action Section -->
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <section class="text-center mt-5">
+  @include('front.common.footer')
+  </section>
+  <!-- Footer -->
 
-    <script src="{{ asset('plugins/jquery-ui/jquery-ui.min.js') }}"></script>
-    <script src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ asset('plugins/chart.js/Chart.min.js') }}"></script>
-    <script src="{{ asset('plugins/sparklines/sparkline.js') }}"></script>
-    <script src="{{ asset('plugins/jquery-knob/jquery.knob.min.js') }}"></script>
-    <script src="{{asset('plugins/moment/moment-with-locales.min.js')}}"></script>
-    <script src="{{ asset('plugins/daterangepicker/daterangepicker.js') }}"></script>
-    <script src="{{ asset('plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js') }}"></script>
-    <script src="{{ asset('plugins/summernote/summernote-bs4.min.js') }}"></script>
-    <script src="{{ asset('plugins/overlayScrollbars/js/jquery.overlafont-awesomeyScrollbars.min.js') }}"></script>
-    <script src="{{ asset('dist/js/adminlte.js') }}"></script>
-    <script src="{{ asset('dist/js/demo.js') }}"></script>
-    <!-- InputMask -->
-    <script src="{{ asset('plugins/moment/moment.min.js') }}"></script>
-    <script src="{{ asset('plugins/inputmask/min/jquery.inputmask.bundle.min.js') }}"></script>
-    <script src="{{ asset('js/main.js') }}"></script>
-    <!-- Select2 -->
-    <script src="{{asset('plugins/select2/js/select2.full.min.js')}}"></script>
 
-    <!-- fullCalendar 2.2.5 -->
-    <script src="{{asset('plugins/fullcalendar/main.min.js')}}"></script>
-    <script src="{{asset('plugins/fullcalendar-daygrid/main.min.js')}}"></script>
-    <script src="{{asset('plugins/fullcalendar-timegrid/main.min.js')}}"></script>
-    <script src="{{asset('plugins/fullcalendar-interaction/main.min.js')}}"></script>
-    <script src="{{asset('plugins/fullcalendar-bootstrap/main.min.js')}}"></script>
-    <script src="{{asset('pusher/pusher.min.js')}}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
-    @yield('scripts')
+  <!-- Bootstrap JS and dependencies -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="{{ asset('plugins/chart.js/Chart.min.js') }}"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
+</body>
+</html>
+@yield('scripts')
     <script>
-        $(document).ready(function () {
-            $(".select2-placeholder-multiple").select2({
-                placeholder: "{{__('promotion.choose_recipient')}}",
-            });
-        })
+
 
         // Chart js config
         var ctx = document.getElementById('myChartBeta').getContext('2d');
@@ -180,8 +182,8 @@
             }
         });
 
-        var ctx = document.getElementById('myChart').getContext('2d');
-        var myChart = new Chart(ctx, {
+        var ctx = document.getElementById('myChartAnpha').getContext('2d');
+        var myChartAnpha = new Chart(ctx, {
             type: 'line',
             data: {
                 labels: ['11/22', '11/25', '11/29', '03/23', '04/25', '06/28'],
@@ -324,6 +326,3 @@
             myChart.update();
         }
     </script>
-</body>
-
-</html>

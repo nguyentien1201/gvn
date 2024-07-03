@@ -50,8 +50,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin'], fu
     Route::resource('stock-green-beta', 'MstStockGreenController')->middleware('admin');
     Route::resource('green-beta', 'GreenBetaController')->middleware('admin');
     Route::resource('freesignal', 'SignalFreeController')->middleware('admin');
+
+
 });
 
-
-
-
+Route::post('admin/import', 'Admin\GreenBetaController@import')->middleware('admin')->name('admin.green-beta.import');
