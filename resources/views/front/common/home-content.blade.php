@@ -614,7 +614,7 @@
         </div>
     </div>
 </section>
-<section class="features text-left  mt-5">
+<section class="features text-left mt-5">
     <div class="container">
         <div class="row">
             <div class="col-12">
@@ -635,7 +635,7 @@
                             alt="{{asset('images/Green-Beta.png')}}">
                         </div>
                         <!-- Chart Section -->
-                        <div class="col-md-4 text-right">
+                        <div class="col-md-4 text-center">
                             <img class="img-fluid" src="{{asset('images/green-stock.png')}}" />
                         </div>
                     </div>
