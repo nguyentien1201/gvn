@@ -4,7 +4,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>{{ __('panel.signal') }}</h1>
+                    <h1>Danh sách mã</h1>
                 </div>
             </div>
         </div>

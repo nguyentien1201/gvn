@@ -614,6 +614,37 @@
         </div>
     </div>
 </section>
+<section class="features text-left  mt-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h2 class="text-left mb-4"><span class="title-trading-first label-color">Giao dịch với</span>
+                    <span class="title-trading-second color-home label-color">Green Stock NAS100</span>
+                </h2>
+            <!-- Data and Chart Section -->
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <!-- Data Section -->
+                        <div class="col-md-8 text-center">
+                            <img class="img-fluid" src="{{asset('images/Capture3.png')}}"
+                            alt="{{asset('images/Green-Beta.png')}}">
+                            <img class="img-fluid" src="{{asset('images/Capture2.png')}}"
+                            alt="{{asset('images/Green-Beta.png')}}">
+                            <img class="img-fluid" src="{{asset('images/Capture4.png')}}"
+                            alt="{{asset('images/Green-Beta.png')}}">
+                        </div>
+                        <!-- Chart Section -->
+                        <div class="col-md-4 text-right">
+                            <img class="img-fluid" src="{{asset('images/green-stock.png')}}" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</section>
 <section class="features text-center  mt-5">
     <div class="container">
       <h2 class="color-home label-color">Dịch vụ của chúng tôi</h2>
