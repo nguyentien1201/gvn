@@ -627,7 +627,7 @@
                         <!-- Data Section -->
                         <!-- Chart Section -->
                         <div class="col-md-12 text-center">
-                            <img class="img-fluid" style="width:100%" src="{{asset('images/ratingbygvn.png')}}" />
+                            <img class="img-fluid" style="width:100%" src="{{asset('images/ratingbygvn.jpg')}}" />
                         </div>
                     </div>
                 </div>
