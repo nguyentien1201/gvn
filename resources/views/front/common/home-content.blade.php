@@ -618,6 +618,28 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
+                <h2 class="text-left mb-4"><span class="title-trading-first label-color color-home">Top StockRating by GVN</span>
+                </h2>
+            <!-- Data and Chart Section -->
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <!-- Data Section -->
+                        <!-- Chart Section -->
+                        <div class="col-md-12 text-center">
+                            <img class="img-fluid" style="width:100%" src="{{asset('images/ratingbygvn.png')}}" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="features text-left mt-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
                 <h2 class="text-left mb-4"><span class="title-trading-first label-color">Giao dịch với</span>
                     <span class="title-trading-second color-home label-color">Green Stock NAS100</span>
                 </h2>
