@@ -129,16 +129,16 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <h2 class="text-center mb-4"><span class="title-trading-first label-color">WinRatio</span>
 
-                </h2>
             <!-- Data and Chart Section -->
             <div class="card">
                 <div class="card-body">
                     <div class="row">
                         <!-- Chart Section -->
                         <div class="col-md-12 text-center">
+
                             <img class="img-fluid" style="width:100%" src="{{asset('images/green-beta-1.png')}}" />
+                            <img class="img-fluid" style="width:100%" src="{{asset('images/green-beta-3.png')}}" />
                         </div>
                     </div>
                 </div>

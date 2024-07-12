@@ -30,4 +30,4 @@
   </nav>
 </div>
 
-  @include('front.common.header-banner')
+

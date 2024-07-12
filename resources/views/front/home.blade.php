@@ -105,7 +105,7 @@
   <!-- Navigation Bar -->
 
 @include('front.common.header')
-
+@include('front.common.header-banner')
 
   <!-- Features Section -->
 

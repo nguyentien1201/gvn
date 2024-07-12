@@ -648,7 +648,18 @@
                 <div class="card-body">
                     <div class="row">
                         <!-- Data Section -->
-                        <div class="col-md-8 text-center">
+                        <div class="col-md-7 text-center">
+
+                        <div class="card mb-4">
+                            <div class="card-body text-left">
+                                <p class="card-text">
+                                    <li>GreenStock-NAS100 là hệ thống phân tích các</li>
+                                    <li>Hệ thống tự động xếp hạng rating theo kỹ thuật</li>
+                                    <li>Đưa ra hành động xu hướng giá cho nhà đầu tư</li>
+                                </p>
+                            </div>
+                        </div>
+
                             <img class="img-fluid" src="{{asset('images/Capture3.png')}}"
                             alt="{{asset('images/Green-Beta.png')}}">
                             <img class="img-fluid" src="{{asset('images/Capture2.png')}}"
@@ -657,8 +668,15 @@
                             alt="{{asset('images/Green-Beta.png')}}">
                         </div>
                         <!-- Chart Section -->
-                        <div class="col-md-4 text-center">
-                            <img class="img-fluid" src="{{asset('images/green-stock.png')}}" />
+                        <div class="col-md-5 text-center">
+                            <div class="mb-4">
+                            <img class="img-fluid" src="{{asset('images/von-hoa.jpg')}}" />
+                            </div>
+
+                            <div class="mb-4">
+                            <img class="img-fluid" style="width:100%" src="{{asset('images/green-stock.png')}}" />
+                                </div>
+
                         </div>
                     </div>
                 </div>
