@@ -648,34 +648,51 @@
                 <div class="card-body">
                     <div class="row">
                         <!-- Data Section -->
-                        <div class="col-md-7 text-center">
-
-                        <div class="card mb-4">
-                            <div class="card-body text-left">
-                                <p class="card-text">
-                                    <li>GreenStock-NAS100 là hệ thống phân tích các</li>
-                                    <li>Cổ phiếu trong rổ cổ phiếu NASDAQ100</li>
-                                    <li>Hệ thống tự động xếp hạng rating theo kỹ thuật</li>
-                                    <li>Đưa ra hành động xu hướng giá cho nhà đầu tư</li>
-                                </p>
+                        <div class="col-md-8">
+                            <div class="card mb-4">
+                                <div class="card-body text-left">
+                                    <p class="card-text">
+                                        GreenStock-NAS100 là hệ thống phân tích các.
+                                        Cổ phiếu trong rổ cổ phiếu NASDAQ100
+                                        Hệ thống tự động xếp hạng rating theo kỹ thuật
+                                        Đưa ra hành động xu hướng giá cho nhà đầu tư
+                                    </p>
+                                </div>
                             </div>
-                        </div>
+                            <div class="container">
+                                <div class="row">
+                                        <div class="col-md-6 text-left">
+                                            <img class="img-fluid" src="{{asset('images/Capture3.png')}}"
+                                            alt="{{asset('images/Green-Beta.png')}}">
+                                        </div>
+                                        <div class="col-md-6 text-left">
+                                        <img class="img-fluid" src="{{asset('images/Capture2.png')}}"
+                                        alt="{{asset('images/Green-Beta.png')}}">
+                                        </div>
 
-                            <img class="img-fluid" src="{{asset('images/Capture3.png')}}"
-                            alt="{{asset('images/Green-Beta.png')}}">
-                            <img class="img-fluid" src="{{asset('images/Capture2.png')}}"
-                            alt="{{asset('images/Green-Beta.png')}}">
-                            <img class="img-fluid" src="{{asset('images/Capture4.png')}}"
-                            alt="{{asset('images/Green-Beta.png')}}">
+                                    </div>
+
+                            </div>
+
+
+                            <div class="container">
+                            <div class="row">
+                                <div class="col-md-6 text-left">
+                                    <img class="img-fluid" src="{{asset('images/Capture4.png')}}"
+                                    alt="{{asset('images/Green-Beta.png')}}">
+                                </div>
+                            </div></div>
+
+
+
                         </div>
                         <!-- Chart Section -->
-                        <div class="col-md-5 text-center">
+                        <div class="col-md-4 text-center">
                             <div class="mb-4">
                             <img class="img-fluid" src="{{asset('images/von-hoa.jpg')}}" />
                             </div>
-
                             <div class="mb-4">
-                            <img class="img-fluid" style="width:100%" src="{{asset('images/green-stock.png')}}" />
+                            <img class="img-fluid" style="width:100%" src="{{asset('images/green-stock.jpg')}}" />
                                 </div>
 
                         </div>
