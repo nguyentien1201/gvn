@@ -654,6 +654,7 @@
                             <div class="card-body text-left">
                                 <p class="card-text">
                                     <li>GreenStock-NAS100 là hệ thống phân tích các</li>
+                                    <li>Cổ phiếu trong rổ cổ phiếu NASDAQ100</li>
                                     <li>Hệ thống tự động xếp hạng rating theo kỹ thuật</li>
                                     <li>Đưa ra hành động xu hướng giá cho nhà đầu tư</li>
                                 </p>
