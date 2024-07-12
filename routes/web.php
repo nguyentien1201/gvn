@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 // Route::redirect('/', '/login');
 Route::group(['prefix' => '', 'as' => 'front.', 'namespace' => 'Front'], function () {
     Route::get('/', 'HomeController@index')->name('home.index');
+    Route::get('/green-beta', 'HomeController@greenBeta')->name('home.green-beta');
 });
 
 Auth::routes(['register' => false]);

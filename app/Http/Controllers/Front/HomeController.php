@@ -29,4 +29,8 @@ class HomeController
         }
         return view('front.home',compact('signals','favorite','last_signal'));
     }
+    public function greenBeta(Request $request)
+    {
+        return view('front.green_beta');
+    }
 }
