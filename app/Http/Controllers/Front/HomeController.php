@@ -33,4 +33,9 @@ class HomeController
     {
         return view('front.green_beta');
     }
+    public function greenAlpha(Request $request)
+    {
+        return view('front.green_alpha');
+    }
+
 }

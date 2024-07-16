@@ -224,7 +224,6 @@
             overflow: hidden;
             position: relative;
             padding-right: 20px;
-
         }
 
         /* Style for Swiper Slides */
@@ -543,30 +542,30 @@
                 <div class="swiper-container">
                     <div class="swiper-wrapper">
                         <!-- Slide 1 -->
-                         @foreach ($last_signal as $signal)
-                            <div class="swiper-slide col-md-3">
-                                <div class="card">
-                                    <div class="card-body">
-                                    <div class="notification">
-                                            <div class="notification-header">
-                                                <img src="{{asset('images/metatrader-icon.png')}}" alt="MetaTrader 4" class="app-icon">
-                                                <div>
-                                                    <div class="app-name color-home">Green-Beta</div>
-                                                    <div class="notification-time">{{ $signal->updated_at ? date('m-d-Y', strtotime($signal->closeupdated_at_time)) : ''}}</div>
+                            @foreach ($last_signal as $signal)
+                                <div class="swiper-slide col-md-3">
+                                    <div class="card">
+                                        <div class="card-body">
+                                        <div class="notification">
+                                                <div class="notification-header">
+                                                    <img src="{{asset('images/metatrader-icon.png')}}" alt="MetaTrader 4" class="app-icon">
+                                                    <div>
+                                                        <div class="app-name color-home">Green-Beta</div>
+                                                        <div class="notification-time">{{ $signal->updated_at ? date('m-d-Y', strtotime($signal->closeupdated_at_time)) : ''}}</div>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="notification-body">
-                                                <div class="bold">GREEN BETA</div>
-                                                <div><b>{{$signal->signal_close ? $signal->signal_close :$signal->signal_open }}:</b> {{$signal->MstStock->code}} {{$signal->price_close ? $signal->price_close :$signal->price_open }}</div>
-                                                <div>{{$signal->close_time ? $signal->close_time :$signal->open_time }}</div>
+                                                <div class="notification-body">
+                                                    <div class="bold">GREEN BETA</div>
+                                                    <div><b>{{$signal->signal_close ? $signal->signal_close :$signal->signal_open }}:</b> {{$signal->MstStock->code}} {{$signal->price_close ? $signal->price_close :$signal->price_open }}</div>
+                                                    <div>{{$signal->close_time ? $signal->close_time :$signal->open_time }}</div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                         @endforeach
-                        </div>
-                        </div>
+                            @endforeach
+                    </div>
+                </div>
                         <!-- Add more slides as needed -->
                     </div>
                     <!-- Add Pagination -->

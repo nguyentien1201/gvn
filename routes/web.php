@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::group(['prefix' => '', 'as' => 'front.', 'namespace' => 'Front'], function () {
     Route::get('/', 'HomeController@index')->name('home.index');
     Route::get('/green-beta', 'HomeController@greenBeta')->name('home.green-beta');
+    Route::get('/green-alpha', 'HomeController@greenAlpha')->name('home.green-alpha');
 });
 
 Auth::routes(['register' => false]);
