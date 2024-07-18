@@ -4,7 +4,7 @@ namespace App\Models;
 
 class ConstantModel
 {
-    public static $PAGINATION = 20;
+    public static $PAGINATION = 40;
 
     public static $TYPE_MESSAGE = [
        'SMS' => 0,

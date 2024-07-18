@@ -45,6 +45,7 @@ class SignalFree extends Model
         $data = $query->orderBy('id', 'desc')->get();
         $result = [];
         foreach ($data as $key => $value) {
+
             $group = Str::slug(strtolower($value->mstStock->group));
             $result[$group][] = [
                 'code' => $value->mstStock->code,
