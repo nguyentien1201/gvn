@@ -159,6 +159,28 @@
         </div>
     </section>
     <section class="features text-left mt-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h2 class="text-center mb-4"><span class="title-trading-first label-color"></span>
+
+                </h2>
+            <!-- Data and Chart Section -->
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <!-- Chart Section -->
+                        <div class="col-md-12 text-center">
+                            <img class="img-fluid" style="width:100%" src="{{asset('images/chart_line.jpg')}}" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</section>
+    <section class="features text-left mt-5">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -308,7 +330,7 @@
 
         var indices = $('#indices-table').DataTable({
             searching: false,
-            scrollCollapse: true,
+
             lengthChange: false, //
             responsive: true,
             paging: false,
@@ -316,7 +338,7 @@
             info: false,
             order: [[3, 'desc']],
             data: @json($signals),
-            scrollY: '500px',
+
             columns: [
                 { data: 'signal_open', title: 'Signal Open' },  // Apply bold formatting to the "PriceTrend" column data},
                 { data: 'price_open', title: 'Price Open' },
