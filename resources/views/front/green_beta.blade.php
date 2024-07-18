@@ -155,24 +155,43 @@
             </div>
         </div>
     </section>
-    <section class="features text-left mt-5">
+    <section id="contentDiv" class="content_item collapse text-left mt-5">
     <div class="container">
         <div class="row">
-            <div class="col-12">
+            <div class="col-6">
                 <h2 class="text-center mb-4"><span class="title-trading-first label-color"></span>
 
                 </h2>
             <!-- Data and Chart Section -->
-            <div class="card">
-                <div class="card-body">
-                    <div class="row">
-                        <!-- Chart Section -->
-                        <div class="col-md-12 text-center">
-                            <img class="img-fluid" style="width:100%" src="{{asset('images/chart_line.jpg')}}" />
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <!-- Chart Section -->
+                            <div class="col-md-12 text-center">
+                            <div class="table-responsive">
+                                <table style="width:100%" class="table table-striped table-bordered" id="popupDataTable"> </table>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <div class="col-6">
+                <h2 class="text-center mb-4"><span class="title-trading-first label-color"></span>
+
+                </h2>
+            <!-- Data and Chart Section -->
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <!-- Chart Section -->
+                            <div class="col-md-12 text-center">
+                            <canvas  id="lineChart" style="width:100%;"  width="400" height="268"></canvas>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -226,20 +245,7 @@
     </section>
     <!-- Call to Action Section -->
     <!-- Modal -->
-    <div class="modal fade" id="dataTableModal" tabindex="-1" aria-labelledby="dataTableModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="dataTableModalLabel">History Signal</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <!-- Table -->
-                    <table style="width:100%" class="table table-striped table-bordered" id="popupDataTable"> </table>
-                </div>
-            </div>
-        </div>
-    </div>
+
     <style>
 
     </style>
@@ -273,17 +279,23 @@
             $.ajax({
                 url: 'api/get-history-signal/' + dataId,
                 type: 'GET',
+                beforeSend: function() {
+                    // Show the loading spinner
+
+
+                },
                 success: function (data) {
-                    console.log(data.data);
+                    data =data.data;
+                    console.log(data);
                     var popupDataTable = $('#popupDataTable').DataTable({
                         destroy: true,
-                        data: data.data,
+                        data: data.list,
                         searching: false,
                         lengthChange: false,
                         responsive: true,
                         paging: false,
                         info: false,
-                        scrollY: '500px',
+                        scrollY: '300px',
                         columns: [
                             { data: 'code', title: 'Symbol' },
                             { data: 'signal_open', title: 'Signal Open' },  // Apply bold formatting to the "PriceTrend" column data},
@@ -294,7 +306,6 @@
                             { data: 'profit', title: 'Profit' },
                         ],
                         columnDefs: [
-
                             {
                                 targets: 6, // Index of the date column
                                 createdCell: function (td, cellData, rowData, row, col) {
@@ -313,10 +324,44 @@
                             },
                         ],
                     });
-                    $('#dataTableModal').on('shown.bs.modal', function () {
-                        popupDataTable.columns.adjust().draw();
+                    popupDataTable.columns.adjust().draw();
+                    $('#contentDiv').on('shown.bs.toggle', function () {
+                        popupDataTable.columns.adjust().responsive.recalc();
+
                     });
-                    $('#dataTableModal').modal('show');
+                    var ctxline = document.getElementById('lineChart').getContext('2d');
+                        var lineChart = new Chart(ctxline, {
+                            type: 'line',
+                            data: {
+                                labels: data.profit.map((value, index) => index),
+                                datasets: [{
+                                    label: 'Profit',
+                                    data: data.profit,
+                                    backgroundColor: '#34a853',
+                                    borderColor: 'green',
+                                    borderWidth: 0.5,
+                                    fill: true,
+
+                                }]
+                            },
+                                                options: {
+                            scales: {
+                                x: {
+                                    beginAtZero: true // Ẩn nhãn và đường biểu đồ của trục x
+                                }
+                            },
+
+                        }
+
+                        });
+                    if ($('#contentDiv').hasClass('show')) {
+
+                    } else {
+                        // The #contentDiv is currently hidden
+
+                        $('#contentDiv').collapse('toggle');
+                    }
+
                 },
                 error: function (error) {
                     console.log(error);

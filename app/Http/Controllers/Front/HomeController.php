@@ -57,10 +57,21 @@ class HomeController
     public function getHistorySignal($id)
     {
         $data = (new GreenBeta())->getSignalsById($id);
-
-       return [
-        'status' => 200,
-        'data' => $data
-       ];
+        $datacollect = collect($data);
+        $profits = $datacollect->pluck('profit')->toArray();
+        $sum = 0;
+        $sumArray = [];
+        foreach ($profits as $value) {
+            $sum += $value; // Add current value to sum
+            $sumArray[] = $sum; // Append sum to sumArray
+        }
+        $result = [
+            'list' => $data,
+            'profit' => $sumArray
+        ];
+        return [
+            'status' => 200,
+            'data' => $result
+        ];
     }
 }
