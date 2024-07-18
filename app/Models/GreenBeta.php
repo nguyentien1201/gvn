@@ -119,7 +119,7 @@ class GreenBeta extends Model
     public function getSignalsById($id){
         $query = self::with('mstStock')
             ->where('code', $id)
-            ->whereNotNull('close_time')
+            ->whereNotNull('close_time')->orderBy('close_time', 'asc')
             ->select();
         $data = $query->get();
         $result = [];
@@ -131,7 +131,6 @@ class GreenBeta extends Model
                 'signal_open' =>$item->signal_open,
                 'price_open' => $item->price_open,
                 'open_time' => $item->open_time,
-                'trend_price' => ConstantModel::TRENDING_PRICE[$item->FreeSignal->trend_price] ?? '',
                 'price_better_buy' =>'',
                 'code' => $item->mstStock->code,
                 'last_sale' => $item->last_sale,

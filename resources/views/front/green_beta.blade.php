@@ -300,14 +300,13 @@
                             { data: 'code', title: 'Symbol' },
                             { data: 'signal_open', title: 'Signal Open' },  // Apply bold formatting to the "PriceTrend" column data},
                             { data: 'price_open', title: 'Price Open' },
-                            { data: 'trend_price', title: 'Trend Price' },
                             { data: 'open_time', title: 'Open Time' },
                             { data: 'close_time', title: 'Close Time' },
                             { data: 'profit', title: 'Profit' },
                         ],
                         columnDefs: [
                             {
-                                targets: 6, // Index of the date column
+                                targets: 5, // Index of the date column
                                 createdCell: function (td, cellData, rowData, row, col) {
                                     if (cellData >= 0) {
                                         color = '#b6d7a8';
