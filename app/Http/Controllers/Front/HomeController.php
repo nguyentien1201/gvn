@@ -33,21 +33,20 @@ class HomeController
     public function greenBeta(Request $request)
     {
         $signals = (new GreenBeta())->getListSignalsByGroup();
+        $data_chart = (new GreenBeta())->getDataChartSignals();
+        $code = $data_chart->pluck('code_name')->toArray();
+        $total = $data_chart->pluck('total')->toArray();
+        $winratio = $data_chart->pluck('win_ratio')->toArray();
+        $startDate = $data_chart->pluck('start_trade')->toArray();
+        $chart_data = [
+            'code' => $code,
+            'total' => $total,
+            'winratio' => $winratio,
+            'startDate' => $startDate
+        ];
 
-        $favarite_code = config('stock.favorite');
-        $stocks = MstStock::whereIn('code',$favarite_code)->pluck('id')->toArray();
-        $favorite = GreenBeta::select('*', DB::raw('MAX(close_time) as close_time'))->whereIn('code',$stocks)->with(['MstStock'])->groupBy('code')->orderBy('close_time', 'desc')->get();
-
-        foreach ($favorite as $key => $value) {
-            $value->code = $value->MstStock->code;
-            $favorite[$key] = $value;
-        }
-        $last_signal = GreenBeta::select('*', DB::raw('MAX(updated_at) as updated_at'))->whereIn('code',$stocks)->with(['MstStock'])->groupBy('code')->orderBy('updated_at', 'desc')->get();
-        foreach ($favorite as $key => $value) {
-            $value->code = $value->MstStock->code;
-            $favorite[$key] = $value;
-        }
-        return view('front.green_beta',compact('signals','favorite','last_signal'));
+        return view('front.green_beta',compact('signals',
+        'chart_data'));
 
     }
     public function greenAlpha(Request $request)

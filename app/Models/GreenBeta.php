@@ -101,4 +101,22 @@ class GreenBeta extends Model
     {
         return $this->belongsTo('App\Models\SignalFree', 'code','code');
     }
+    public function getDataChartSignals(){
+        $query = self::with('mstStock')
+        ->whereNotNull('close_time') // Ensure price_close has a value
+        ->groupBy('code') // Group the results by 'code'
+        ->select('code',
+            DB::raw('count(*) as total'),
+            DB::raw('SUM(CASE WHEN profit > 0 THEN 1 ELSE 0 END) as profit_positive_count'),
+            DB::raw('MIN(open_time) as start_trade'),
+        );
+        $data = $query->get();
+        foreach ($data as $item) {
+            if($item->mstStock){
+                $item->code_name = $item->mstStock->code;
+            }
+            $item->win_ratio = round($item->profit_positive_count/$item->total * 100, 2);
+        }
+        return $data;
+    }
 }
