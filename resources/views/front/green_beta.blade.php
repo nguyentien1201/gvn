@@ -238,7 +238,7 @@
                                 <div class="col-md-12 text-center">
                                     <table class="table table-striped table-bordered" >
                                     <tr>
-                                            <td style="font-weight:600">Total Trade</td>
+                                            <td style="font-weight:600">Symbol</td>
                                             @foreach ($chart_data['code'] as $item)
                                                 <td style="font-weight:600">{{$item}}</td>
                                             @endforeach
