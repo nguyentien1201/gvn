@@ -17,23 +17,15 @@
         body {
             font-size: 0.9rem !important;
         }
-
+        .ml-auto {
+            margin-left: auto !important;
+        }
         #navbarNav .nav-link {
             font-size: 1.1rem;
             color: #000;
             font-weight: 600;
         }
 
-        .hero {
-            background: url('https://via.placeholder.com/1500x800') no-repeat center center;
-            background-size: cover;
-            color: white;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-        }
 
         .cta {
             background-color: #007bff;
@@ -670,9 +662,7 @@
                 {
                     targets: 8, // Index of the date column
                     createdCell: function (td, cellData, rowData, row, col) {
-
                         signal_close = rowData.signal_close.trim().toLowerCase();
-                        console.log(signal_close);
                         if (signal_close =='takeprofitbuy') {
                             color = '#b6d7a8';
                         }else if(signal_close =='cutlossbuy') {
