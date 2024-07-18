@@ -97,10 +97,7 @@
             width: 99% !important;
         }
 
-        #indices-table>thead,
-        #commodities-table>thead,
-        #crypto>thead,
-        #forex-table>thead,
+
         #popupDataTable>thead {
             display: none;
         }
