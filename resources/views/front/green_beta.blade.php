@@ -230,13 +230,19 @@
                         <div class="card-body">
                             <div class="row">
                                 <!-- Chart Section -->
-                                <div class="col-md-12 text-center">
-                                    <canvas id="myChart" width="400" height="230"></canvas>
+                                <div class="col-md-11 text-center m-auto" >
+                                    <canvas style="margin-left: 2em;" id="myChart" width="400" height="230"></canvas>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-12 text-center">
                                     <table class="table table-striped table-bordered" >
+                                    <tr>
+                                            <td style="font-weight:600">Total Trade</td>
+                                            @foreach ($chart_data['code'] as $item)
+                                                <td style="font-weight:600">{{$item}}</td>
+                                            @endforeach
+                                        </tr>
                                         <tr>
                                             <td style="font-weight:600">Total Trade</td>
                                             @foreach ($chart_data['total'] as $item)
@@ -702,7 +708,7 @@
                     data: @json($chart_data['winratio']),
                     label: 'Win Ratio',
                     backgroundColor: '#34a853',
-                    borderWidth: 1
+                    borderWidth: 1,
                 }]
             },
             options: {
@@ -711,11 +717,7 @@
                         beginAtZero: true
                     }
                 },
-                plugins: {
-                    legend: {
-                        display: true
-                    }
-                }
+
 
             },
 
