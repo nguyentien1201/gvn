@@ -18,6 +18,7 @@ Route::group(['prefix' => '', 'as' => 'front.', 'namespace' => 'Front'], functio
     Route::get('/', 'HomeController@index')->name('home.index');
     Route::get('/green-beta', 'HomeController@greenBeta')->name('home.green-beta');
     Route::get('/green-alpha', 'HomeController@greenAlpha')->name('home.green-alpha');
+    Route::get('api/get-history-signal/{id}', 'HomeController@getHistorySignal')->name('api.history-signal');
 });
 
 Auth::routes(['register' => false]);

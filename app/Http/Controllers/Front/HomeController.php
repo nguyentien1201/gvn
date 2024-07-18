@@ -33,6 +33,7 @@ class HomeController
     public function greenBeta(Request $request)
     {
         $signals = (new GreenBeta())->getListSignalsByGroup();
+
         $data_chart = (new GreenBeta())->getDataChartSignals();
         $code = $data_chart->pluck('code_name')->toArray();
         $total = $data_chart->pluck('total')->toArray();
@@ -53,5 +54,13 @@ class HomeController
     {
         return view('front.green_alpha');
     }
+    public function getHistorySignal($id)
+    {
+        $data = (new GreenBeta())->getSignalsById($id);
 
+       return [
+        'status' => 200,
+        'data' => $data
+       ];
+    }
 }

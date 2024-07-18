@@ -71,7 +71,7 @@ class GreenBeta extends Model
 
             $group = Str::slug(strtolower($value->mstStock->group));
 
-            $result[$group][] = [
+            $result[] = [
                 'signal_open' =>$value->signal_open,
                 'price_open' => $value->price_open,
                 'open_time' => $value->open_time,
@@ -83,6 +83,7 @@ class GreenBeta extends Model
                 'signal_close' => $value->signal_close,
                 'price_close' => $value->price_close,
                 'close_time' => $value->close_time,
+                'id_code' => $value->code,
             ];
         }
 
@@ -91,11 +92,7 @@ class GreenBeta extends Model
         $crypto = collect($result['crypto']?? []);
         $forex = collect($result['forex'] ?? []);
 
-        return [
-            'indices' => $limitedIndices,
-            'commodities' => $commodities,
-            'crypto' => $crypto,
-            'forex' => $forex];
+        return $result;
     }
     public function FreeSignal()
     {
@@ -118,5 +115,33 @@ class GreenBeta extends Model
             $item->win_ratio = round($item->profit_positive_count/$item->total * 100, 2);
         }
         return $data;
+    }
+    public function getSignalsById($id){
+        $query = self::with('mstStock')
+            ->where('code', $id)
+            ->whereNotNull('close_time')
+            ->select();
+        $data = $query->get();
+        $result = [];
+        foreach ($data as $item) {
+            if($item->mstStock){
+                $item->code_name = $item->mstStock->code;
+            }
+            $result[] = [
+                'signal_open' =>$item->signal_open,
+                'price_open' => $item->price_open,
+                'open_time' => $item->open_time,
+                'trend_price' => ConstantModel::TRENDING_PRICE[$item->FreeSignal->trend_price] ?? '',
+                'price_better_buy' =>'',
+                'code' => $item->mstStock->code,
+                'last_sale' => $item->last_sale,
+                'profit' => $item->calculateProfit(),
+                'signal_close' => $item->signal_close,
+                'price_close' => $item->price_close,
+                'close_time' => $item->close_time,
+                'id_code' => $item->code,
+            ];
+        }
+        return $result;
     }
 }
