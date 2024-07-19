@@ -200,15 +200,15 @@
                                     <table class="table table-striped table-bordered" style="margin-bottom: 0px;"
                                         id="indices-table">
                                     </table>
-                                    <div class="row mt-2">
+                                    <div class="row mt-4">
                                         <div class="col-md-8 text-left form-group">
                                             <ul style="padding-left:0">
                                                 <li class="list-item">
-                                                    <button class="hold">Buy</button>
+                                                    <button class="hold width-120">Buy</button>
                                                     <span>Tín hiệu xu hướng đang mở.</span>
                                                 </li>
                                                 <li class="list-item">
-                                                    <button class="takeprofitbuy">Buy</button>
+                                                    <button class="takeprofitbuy width-120">Buy</button>
                                                     <span>Tín hiệu xu hướng đã đóng.</span>
                                                 </li>
 
@@ -386,6 +386,15 @@
                         ],
                         columnDefs: [
                             {
+                                targets: 0, // Index of the 'code' column
+                                createdCell: function (td, cellData, rowData, row, col) {
+                                    $(td).css('text-align', 'right');
+                                },
+                                render: function(data, type, row) {
+                                    return data + ' <img src="images/logo/'+data+'.png" alt="Logo" style="width:18px; height:18px; margin-left:4px">'; // Adjust the path and style as needed
+                                }
+                            },
+                            {
                                 targets: 5, // Assuming `close_time` is the 5th column
                                 type: 'date', // Specify the type
                                 // Specify the date format if necessary
@@ -475,6 +484,15 @@
             ],
 
             columnDefs: [
+                {
+                    targets: 0, // Index of the 'code' column
+                    createdCell: function (td, cellData, rowData, row, col) {
+                        $(td).css('text-align', 'right');
+                    },
+                    render: function(data, type, row) {
+                        return data + ' <img src="images/logo/'+data+'.png" alt="Logo" style="width:18px; height:18px; margin-left:4px">'; // Adjust the path and style as needed
+                    }
+                },
                 {
                     targets: 5, // Assuming `close_time` is the 5th column
                     type: 'date', // Specify the type
@@ -634,6 +652,15 @@
                         }
                         $(td).css('background-color', color);
                         $(td).css('box-shadow', 'none');
+                    }
+                },
+                {
+                    targets: 5, // Index of the 'code' column
+                    createdCell: function (td, cellData, rowData, row, col) {
+                        $(td).css('text-align', 'right');
+                    },
+                    render: function(data, type, row) {
+                        return data + ' <img src="images/logo/'+data+'.png" alt="Logo" style="width:18px; height:18px; margin-left:4px">'; // Adjust the path and style as needed
                     }
                 }
             ],
