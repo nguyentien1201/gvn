@@ -24,10 +24,16 @@ class GreenBeta extends Model
     ];
     public function getOpenTimeAttribute($value)
     {
+        if(empty($value)){
+            return null;
+        }
         return Carbon::parse($value)->format('d-m-Y'); // Customize the format as needed
     }
     public function getCloseTimeAttribute($value)
     {
+        if(empty($value)){
+            return null;
+        }
         return Carbon::parse($value)->format('d-m-Y'); // Customize the format as needed
     }
 

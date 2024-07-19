@@ -23,6 +23,7 @@ class GreenBetaController extends AdminController
 
         $query = MstStock::select();
         $signals = $query->orderBy('id', 'desc')->paginate(ConstantModel::$PAGINATION);
+
         return view('admin.green_beta.list_stock',compact('signals'));
     }
     public function getListMstock($id,Request $request)
@@ -46,7 +47,10 @@ class GreenBetaController extends AdminController
     {
 
         $request['open_time'] = Carbon::parse($request['open_time'])->format('Y-m-d H:i:s');
-        $request['close_time'] = Carbon::parse($request['close_time'])->format('Y-m-d H:i:s');
+
+        if(!empty($request['close_time'])){
+            $request['close_time'] = Carbon::parse($request['close_time'])->format('Y-m-d H:i:s');
+        }
         $signal = new GreenBeta();
         $signal->fill($request->all());
 
@@ -69,7 +73,9 @@ class GreenBetaController extends AdminController
     public function update($id, UpdateGreenBetaRequest $request)
     {
         $request['open_time'] = Carbon::parse($request['open_time'])->format('Y-m-d H:i:s');
-        $request['close_time'] = Carbon::parse($request['close_time'])->format('Y-m-d H:i:s');
+        if(!empty($request['close_time'])){
+            $request['close_time'] = Carbon::parse($request['close_time'])->format('Y-m-d H:i:s');
+        }
         $signal = GreenBeta::find($id);
         $signal->fill($request->all());
         try {
