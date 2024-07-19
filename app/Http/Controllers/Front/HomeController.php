@@ -45,9 +45,10 @@ class HomeController
             'winratio' => $winratio,
             'startDate' => $startDate
         ];
-
+        $nas100 = $this->getHistorySignal(1);
+        $default_chart = $nas100['data'];
         return view('front.green_beta',compact('signals',
-        'chart_data'));
+        'chart_data','default_chart'));
 
     }
     public function greenAlpha(Request $request)

@@ -155,7 +155,7 @@
             </div>
         </div>
     </section>
-    <section id="contentDiv" class="content_item collapse text-left mt-5">
+    <section id="contentDiv" class="content_item text-left mt-5">
     <div class="container">
         <div class="row">
             <div class="col-6">
@@ -302,11 +302,12 @@
                             { data: 'price_open', title: 'Price Open' },
                             { data: 'open_time', title: 'Open Time' },
                             { data: 'close_time', title: 'Close Time' },
+                            { data: 'price_close', title: 'Price Close' },
                             { data: 'profit', title: 'Profit' },
                         ],
                         columnDefs: [
                             {
-                                targets: 5, // Index of the date column
+                                targets: 6, // Index of the date column
                                 createdCell: function (td, cellData, rowData, row, col) {
                                     if (cellData >= 0) {
                                         color = '#b6d7a8';
@@ -368,7 +369,73 @@
             });
 
         });
+        var popupDataTable = $('#popupDataTable').DataTable({
+                        destroy: true,
+                        data: @json($default_chart['list']),
+                        searching: false,
+                        lengthChange: false,
+                        responsive: true,
+                        paging: false,
+                        info: false,
+                        scrollY: '300px',
+                        columns: [
+                            { data: 'code', title: 'Symbol' },
+                            { data: 'signal_open', title: 'Signal Open' },  // Apply bold formatting to the "PriceTrend" column data},
+                            { data: 'price_open', title: 'Price Open' },
+                            { data: 'open_time', title: 'Open Time' },
+                            { data: 'close_time', title: 'Close Time' },
+                            { data: 'price_close', title: 'Price Close' },
+                            { data: 'profit', title: 'Profit' },
+                        ],
+                        columnDefs: [
+                            {
+                                targets: 6, // Index of the date column
+                                createdCell: function (td, cellData, rowData, row, col) {
+                                    if (cellData >= 0) {
+                                        color = '#b6d7a8';
 
+                                    } else {
+                                        color = '#e06666';
+                                    }
+                                    $(td).css('background-color', color);
+                                    $(td).css('box-shadow', 'none');
+                                },
+                                render: function (data, type, full, meta) {
+                                    return `${data}%`;
+                                }
+                            },
+                        ],
+                    });
+                    popupDataTable.columns.adjust().draw();
+                    $('#contentDiv').on('shown.bs.toggle', function () {
+                        popupDataTable.columns.adjust().responsive.recalc();
+
+                    });
+                    var ctxline = document.getElementById('lineChart').getContext('2d');
+                        var lineChart = new Chart(ctxline, {
+                            type: 'line',
+                            data: {
+                                labels: @json($default_chart['profit']).map((value, index) => index),
+                                datasets: [{
+                                    label: 'Profit',
+                                    data: @json($default_chart['profit']),
+                                    backgroundColor: '#34a853',
+                                    borderColor: 'green',
+                                    borderWidth: 0.5,
+                                    fill: true,
+
+                                }]
+                            },
+                                                options: {
+                            scales: {
+                                x: {
+                                    beginAtZero: true // Ẩn nhãn và đường biểu đồ của trục x
+                                }
+                            },
+
+                        }
+
+                        });
         var indices = $('#indices-table').DataTable({
             searching: false,
 
