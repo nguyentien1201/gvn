@@ -155,52 +155,42 @@
             </div>
         </div>
     </section>
-    <section id="contentDiv" class="content_item text-left mt-5">
+
+
+    <section id="contentDiv" class="features text-left  mt-5">
     <div class="container">
         <div class="row">
-            <div class="col-6">
-                <h2 class="text-center mb-4"><span class="title-trading-first label-color">HISTORICAL PERFORMANCE</span>
+            <div class="col-12">
+                <h2 class="text-left mb-4"><span class="title-trading-first label-color">HISTORICAL PERFORMANCE</span>
 
                 </h2>
             <!-- Data and Chart Section -->
-                <div class="card">
-                    <div class="card-body">
-                        <div class="row">
-                            <!-- Chart Section -->
-                            <div class="col-md-12 text-center">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <!-- Data Section -->
+                        <div class="col-md-6">
                             <div class="table-responsive">
-                                <table style="width:100%" class="table table-striped table-bordered" id="popupDataTable"> </table>
-                                </div>
+                                    <table style="width:100%" class="table table-striped table-bordered" id="popupDataTable"> </table>
                             </div>
                         </div>
+                         <!-- Chart Section -->
+                         <div class="col-md-6">
+                            <canvas  id="lineChart" style="width:100%;max-height:480px"  width="400" height="380"></canvas>
+                        </div>
+                    </div>
+
                     </div>
                 </div>
             </div>
-            <div class="col-6">
-                <h2 class="text-center mb-4"><span class="title-trading-first label-color"></span>
-
-                </h2>
-            <!-- Data and Chart Section -->
-                <div class="card">
-                    <div class="card-body">
-                        <div class="row">
-                            <!-- Chart Section -->
-                            <div class="col-md-12 text-center">
-                            <canvas  id="lineChart" style="width:100%;"  width="400" height="268"></canvas>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
-    </div>
+
 </section>
     <section class="features text-left mt-5">
         <div class="container">
             <div class="row">
                 <div class="col-12">
-
                     <!-- Data and Chart Section -->
                     <div class="card">
                         <div class="card-body">
@@ -289,13 +279,15 @@
                     console.log(data);
                     var popupDataTable = $('#popupDataTable').DataTable({
                         destroy: true,
+                        order: [[5, 'desc']],
                         data: data.list,
                         searching: false,
                         lengthChange: false,
                         responsive: true,
                         paging: false,
                         info: false,
-                        scrollY: '300px',
+                        scrollX: false,
+                        scrollY: '400px',
                         columns: [
                             { data: 'code', title: 'Symbol' },
                             { data: 'signal_open', title: 'Signal Open' },  // Apply bold formatting to the "PriceTrend" column data},
@@ -323,7 +315,10 @@
                                 }
                             },
                         ],
-                        order: [[5, 'desc']],
+                        createdRow: function(row, data, dataIndex) {
+                            $('td', row).css('font-size', '0.95em');
+                        }
+
                     });
                     popupDataTable.columns.adjust().draw();
                     $('#contentDiv').on('shown.bs.toggle', function () {
@@ -378,7 +373,9 @@
                         responsive: true,
                         paging: false,
                         info: false,
-                        scrollY: '300px',
+                        scrollY: '400px',
+                        scrollX: false,
+                        order: [[5, 'desc']],
                         columns: [
                             { data: 'code', title: 'Symbol' },
                             { data: 'signal_open', title: 'Signal Open' },  // Apply bold formatting to the "PriceTrend" column data},
@@ -388,7 +385,7 @@
                             { data: 'close_time', title: 'Close Time' },
                             { data: 'profit', title: 'Profit' },
                         ],
-                        order: [[5, 'desc']],
+
                         columnDefs: [
                             {
                                 targets: 6, // Index of the date column
@@ -410,6 +407,11 @@
                         headerCallback: function(thead, data, start, end, display) {
                             $(thead).find('th').css('font-size', '0.9em'); // Set the font size here
                         },
+                        createdRow: function(row, data, dataIndex) {
+                            // Apply font size style to each cell in the row
+                            $('td', row).css('font-size', '0.95em'); // Set the font size as needed
+                        }
+
                     });
                     popupDataTable.columns.adjust().draw();
                     $('#contentDiv').on('shown.bs.toggle', function () {

@@ -60,11 +60,11 @@ class HomeController
         $data = (new GreenBeta())->getSignalsById($id);
         $datacollect = collect($data);
         $profits = $datacollect->pluck('profit')->toArray();
-        $sum = 0;
+        $sum = 100;
         $sumArray = [];
         foreach ($profits as $value) {
-            $sum += $value; // Add current value to sum
-            $sumArray[] = $sum; // Append sum to sumArray
+            $sum = $sum + $sum*$value/100;
+            $sumArray[] = round($sum,2);
         }
         $result = [
             'list' => $data,
