@@ -656,8 +656,7 @@
                         $(td).css('font-weight', 'bold');
                     },
                     render: function(data, type, row) {
-                        datalogo = data.trim().toLowerCase();
-                        return data + ' <img src="images/logo/'+datalogo+'.png" alt="Logo" style="width:18px; height:18px; margin-left:4px">'; // Adjust the path and style as needed
+                        return data + ' <img src="images/logo/'+data+'.png" alt="Logo" style="width:18px; height:18px; margin-left:4px">'; // Adjust the path and style as needed
                     }
                 }
             ],
