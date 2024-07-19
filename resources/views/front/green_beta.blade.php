@@ -390,8 +390,10 @@
                                 createdCell: function (td, cellData, rowData, row, col) {
                                     $(td).css('text-align', 'right');
                                 },
+
                                 render: function(data, type, row) {
-                                    return data + ' <img src="images/logo/'+data+'.png" alt="Logo" style="width:18px; height:18px; margin-left:4px">'; // Adjust the path and style as needed
+                                    datalogo = data.trim().toLowerCase();
+                                    return data + ' <img src="images/logo/'+datalogo+'.png" alt="Logo" style="width:18px; height:18px; margin-left:4px">';
                                 }
                             },
                             {
@@ -490,7 +492,8 @@
                         $(td).css('text-align', 'right');
                     },
                     render: function(data, type, row) {
-                        return data + ' <img src="images/logo/'+data+'.png" alt="Logo" style="width:18px; height:18px; margin-left:4px">'; // Adjust the path and style as needed
+                        datalogo = data.trim().toLowerCase();
+                        return data + ' <img src="images/logo/'+datalogo+'.png" alt="Logo" style="width:18px; height:18px; margin-left:4px">';
                     }
                 },
                 {
@@ -660,7 +663,8 @@
                         $(td).css('text-align', 'right');
                     },
                     render: function(data, type, row) {
-                        return data + ' <img src="images/logo/'+data+'.png" alt="Logo" style="width:18px; height:18px; margin-left:4px">'; // Adjust the path and style as needed
+                        datalogo = data.trim().toLowerCase();
+                        return data + ' <img src="images/logo/'+datalogo+'.png" alt="Logo" style="width:18px; height:18px; margin-left:4px">'; // Adjust the path and style as needed
                     }
                 }
             ],
