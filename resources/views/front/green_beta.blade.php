@@ -474,7 +474,6 @@
                 { data: 'close_time', title: 'Close Time' },
                 { data: 'profit', title: 'Profit' },
             ],
-
             columnDefs: [
                 {
                     targets: 0, // Index of the 'code' column
@@ -577,7 +576,7 @@
                 {
                     targets: 0, // Index of the date column
                     createdCell: function (td, cellData, rowData, row, col) {
-                        if (rowData.close_time == '') {
+                        if (rowData.close_time == null) {
                             color = '#b6d7a8';
                         } else {
                             color = '#ffd966';
