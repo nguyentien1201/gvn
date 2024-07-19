@@ -43,7 +43,7 @@
         }
 
         .carousel-item {
-            height: 100vh;
+            height: 50vh;
             min-height: 300px;
             background: no-repeat center center scroll;
             background-size: cover;
@@ -107,7 +107,6 @@
 
         .dataTable {
             margin-bottom: 0 !important;
-            font-weight: 600;
         }
 
         table thead {
@@ -151,6 +150,9 @@
         .width-120{
             width: 120px;
         }
+        .table-responsive{
+            overflow-x: hidden !important;
+        }
     </style>
 
 </head>
@@ -162,14 +164,7 @@
     @include('front.common.header')
 
 <!-- Hero Section -->
-<style>
-    .carousel-item {
-      height: 100vh;
-      min-height: 300px;
-      background: no-repeat center center scroll;
-      background-size: cover;
-    }
-  </style>
+
  <!-- Hero Section with Slider -->
  <div id="heroCarousel" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner">
@@ -535,14 +530,15 @@
                     backgroundColor: '#34a853',
                     borderColor: 'green',
                     borderWidth: 0.5,
-                    fill: true,
+                    fill: false,
 
                 }]
             },
             options: {
                 scales: {
                     x: {
-                        beginAtZero: true // Ẩn nhãn và đường biểu đồ của trục x
+                        beginAtZero: false,
+                        min: @json($default_chart['profit']) // Ẩn nhãn và đường biểu đồ của trục x
                     }
                 },
 
@@ -636,7 +632,10 @@
                 {
                     targets: 8, // Index of the date column
                     createdCell: function (td, cellData, rowData, row, col) {
-                        signal_close = rowData.signal_close.trim().toLowerCase();
+                        signal_close =''
+                        if(rowData.signal_close != null){
+                            signal_close = rowData.signal_close.trim().toLowerCase();
+                        }
                         if (signal_close == 'takeprofitbuy') {
                             color = '#b6d7a8';
                         } else if (signal_close == 'cutlossbuy') {
@@ -652,11 +651,12 @@
                 {
                     targets: 5, // Index of the 'code' column
                     createdCell: function (td, cellData, rowData, row, col) {
-                        $(td).css('text-align', 'right');
+                        $(td).css('text-align', 'left');
                         $(td).css('font-weight', 'bold');
+                        $(td).css('padding', '.5em .8em');
                     },
                     render: function(data, type, row) {
-                        return data + ' <img src="images/logo/'+data+'.png" alt="Logo" style="width:18px; height:18px; margin-left:4px">'; // Adjust the path and style as needed
+                        return  '<img src="images/logo/'+data+'.png" alt="Logo" style=" width:35px; margin-right:0.5em"> '+ data; // Adjust the path and style as needed
                     }
                 }
             ],
