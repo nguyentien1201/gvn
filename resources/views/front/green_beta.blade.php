@@ -131,7 +131,7 @@
 
             <div class="row">
                 <div class="col-12">
-                    <h2 class="text-center mb-4"><span class="title-trading-first label-color">Green Beta Signal</span>
+                    <h2 class="text-center mb-4"><span class="title-trading-first label-color">SIGNAL DASHBOARD</span>
 
                     </h2>
                     <!-- Data and Chart Section -->
@@ -159,7 +159,7 @@
     <div class="container">
         <div class="row">
             <div class="col-6">
-                <h2 class="text-center mb-4"><span class="title-trading-first label-color"></span>
+                <h2 class="text-center mb-4"><span class="title-trading-first label-color">HISTORICAL PERFORMANCE</span>
 
                 </h2>
             <!-- Data and Chart Section -->
@@ -301,8 +301,8 @@
                             { data: 'signal_open', title: 'Signal Open' },  // Apply bold formatting to the "PriceTrend" column data},
                             { data: 'price_open', title: 'Price Open' },
                             { data: 'open_time', title: 'Open Time' },
-                            { data: 'close_time', title: 'Close Time' },
                             { data: 'price_close', title: 'Price Close' },
+                            { data: 'close_time', title: 'Close Time' },
                             { data: 'profit', title: 'Profit' },
                         ],
                         columnDefs: [
@@ -323,6 +323,7 @@
                                 }
                             },
                         ],
+                        order: [[5, 'desc']],
                     });
                     popupDataTable.columns.adjust().draw();
                     $('#contentDiv').on('shown.bs.toggle', function () {
@@ -383,10 +384,11 @@
                             { data: 'signal_open', title: 'Signal Open' },  // Apply bold formatting to the "PriceTrend" column data},
                             { data: 'price_open', title: 'Price Open' },
                             { data: 'open_time', title: 'Open Time' },
-                            { data: 'close_time', title: 'Close Time' },
                             { data: 'price_close', title: 'Price Close' },
+                            { data: 'close_time', title: 'Close Time' },
                             { data: 'profit', title: 'Profit' },
                         ],
+                        order: [[5, 'desc']],
                         columnDefs: [
                             {
                                 targets: 6, // Index of the date column
@@ -405,6 +407,9 @@
                                 }
                             },
                         ],
+                        headerCallback: function(thead, data, start, end, display) {
+                            $(thead).find('th').css('font-size', '0.9em'); // Set the font size here
+                        },
                     });
                     popupDataTable.columns.adjust().draw();
                     $('#contentDiv').on('shown.bs.toggle', function () {
