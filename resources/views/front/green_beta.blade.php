@@ -388,13 +388,8 @@
                             {
                                 targets: 0, // Index of the 'code' column
                                 createdCell: function (td, cellData, rowData, row, col) {
-                                    $(td).css('text-align', 'right');
+                                    $(td).css('font-weight', 'bold');
                                 },
-
-                                render: function(data, type, row) {
-                                    datalogo = data.trim().toLowerCase();
-                                    return data + ' <img src="images/logo/'+datalogo+'.png" alt="Logo" style="width:18px; height:18px; margin-left:4px">';
-                                }
                             },
                             {
                                 targets: 5, // Assuming `close_time` is the 5th column
@@ -490,10 +485,7 @@
                     targets: 0, // Index of the 'code' column
                     createdCell: function (td, cellData, rowData, row, col) {
                         $(td).css('text-align', 'right');
-                    },
-                    render: function(data, type, row) {
-                        datalogo = data.trim().toLowerCase();
-                        return data + ' <img src="images/logo/'+datalogo+'.png" alt="Logo" style="width:18px; height:18px; margin-left:4px">';
+                        $(td).css('font-weight', 'bold');
                     }
                 },
                 {
@@ -661,6 +653,7 @@
                     targets: 5, // Index of the 'code' column
                     createdCell: function (td, cellData, rowData, row, col) {
                         $(td).css('text-align', 'right');
+                        $(td).css('font-weight', 'bold');
                     },
                     render: function(data, type, row) {
                         datalogo = data.trim().toLowerCase();
