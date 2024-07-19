@@ -119,7 +119,7 @@ class GreenBeta extends Model
     public function getSignalsById($id){
         $query = self::with('mstStock')
             ->where('code', $id)
-            ->whereNotNull('close_time')->orderBy('close_time', 'asc')
+            ->whereNotNull('close_time')->orderBy('close_time', 'desc')
             ->select();
         $data = $query->get();
         $result = [];

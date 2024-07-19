@@ -58,7 +58,11 @@ class HomeController
     public function getHistorySignal($id)
     {
         $data = (new GreenBeta())->getSignalsById($id);
-        $datacollect = collect($data);
+        $dataSort =$data ;
+        usort($dataSort, function($a, $b) {
+        return  strtotime($a['close_time'])-strtotime($b['close_time']);
+    });
+        $datacollect = collect($dataSort);
         $profits = $datacollect->pluck('profit')->toArray();
         $sum = 100;
         $sumArray = [];
@@ -70,6 +74,7 @@ class HomeController
             'list' => $data,
             'profit' => $sumArray
         ];
+
         return [
             'status' => 200,
             'data' => $result

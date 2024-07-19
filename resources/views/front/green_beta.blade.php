@@ -279,7 +279,7 @@
                     console.log(data);
                     var popupDataTable = $('#popupDataTable').DataTable({
                         destroy: true,
-                        order: [[5, 'desc']],
+
                         data: data.list,
                         searching: false,
                         lengthChange: false,
@@ -299,11 +299,15 @@
                         ],
                         columnDefs: [
                             {
+                                    targets: 5, // Assuming `close_time` is the 5th column
+                                    type: 'date', // Specify the type
+                                    // Specify the date format if necessary
+                                },
+                            {
                                 targets: 6, // Index of the date column
                                 createdCell: function (td, cellData, rowData, row, col) {
                                     if (cellData >= 0) {
                                         color = '#b6d7a8';
-
                                     } else {
                                         color = '#e06666';
                                     }
@@ -318,7 +322,6 @@
                         createdRow: function(row, data, dataIndex) {
                             $('td', row).css('font-size', '0.95em');
                         }
-
                     });
                     popupDataTable.columns.adjust().draw();
                     $('#contentDiv').on('shown.bs.toggle', function () {
@@ -375,7 +378,7 @@
                         info: false,
                         scrollY: '400px',
                         scrollX: false,
-                        order: [[5, 'desc']],
+
                         columns: [
                             { data: 'code', title: 'Symbol' },
                             { data: 'signal_open', title: 'Signal Open' },  // Apply bold formatting to the "PriceTrend" column data},
@@ -387,6 +390,11 @@
                         ],
 
                         columnDefs: [
+                             {
+                                    targets: 5, // Assuming `close_time` is the 5th column
+                                    type: 'date', // Specify the type
+                                    // Specify the date format if necessary
+                                },
                             {
                                 targets: 6, // Index of the date column
                                 createdCell: function (td, cellData, rowData, row, col) {
