@@ -158,8 +158,25 @@
 <body>
 
     <!-- Navigation Bar -->
-
+    <!-- green-beta-slider.jpg -->
     @include('front.common.header')
+
+<!-- Hero Section -->
+<style>
+    .carousel-item {
+      height: 100vh;
+      min-height: 300px;
+      background: no-repeat center center scroll;
+      background-size: cover;
+    }
+  </style>
+ <!-- Hero Section with Slider -->
+ <div id="heroCarousel" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active" style="background-image: url({{url('images/green-beta-slider.jpg')}})">
+      </div>
+    </div>
+  </div>
 
 
     <!-- Features Section -->
