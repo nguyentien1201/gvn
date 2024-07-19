@@ -204,11 +204,11 @@
                                         <div class="col-md-8 text-left form-group">
                                             <ul style="padding-left:0">
                                                 <li class="list-item">
-                                                    <button class="hold width-120">Buy</button>
+                                                    <button class="takeprofitbuy width-120">Buy</button>
                                                     <span>Tín hiệu xu hướng đang mở.</span>
                                                 </li>
                                                 <li class="list-item">
-                                                    <button class="takeprofitbuy width-120">Buy</button>
+                                                    <button class="hold width-120">Buy</button>
                                                     <span>Tín hiệu xu hướng đã đóng.</span>
                                                 </li>
 
