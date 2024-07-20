@@ -569,10 +569,7 @@
                 { data: 'close_time', title: 'Close Time' }
             ],
             columnDefs: [
-                {
-                    targets: 9,
-                    visible: false
-                },
+
                 {
                     targets: 0, // Index of the date column
                     createdCell: function (td, cellData, rowData, row, col) {
@@ -600,6 +597,9 @@
                 {
                     targets: 9, // Index of the date column
                     render: function (data, type, full, meta) {
+                        if(data <= 0){
+                            return '';
+                        }
                         if (type === 'display') {
                             const numberFormatter = new Intl.NumberFormat('en-US', { maximumFractionDigits: 0 }); // No decimal places
                             const formattedNumber = numberFormatter.format(data); // Format the number with commas
@@ -645,6 +645,12 @@
                         }
                         $(td).css('background-color', color);
                         $(td).css('box-shadow', 'none');
+                    },
+                    render: function (data, type, full, meta) {
+                        if(data == null || data == '' || data == undefined || data == 'Hold'){
+                            return 'Hold';
+                        }
+                        return `${data}`;
                     }
                 },
                 {

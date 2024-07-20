@@ -60,10 +60,10 @@ class GreenBeta extends Model
     public function calculateProfit()
     {
         $profit = NULL;
-        if(!empty($this->price_close)){
+        if(!empty($this->price_close) && $this->price_open > 0){
             $profit = ($this->price_close - $this->price_open)/$this->price_open * 100;
-        }elseif($this->last_sale > 0) {
-            $profit = ($this->last_sale - $this->price_open)/$this->price_open * 100;
+        }elseif($this->FreeSignal->last_sale > 0) {
+            $profit = ($this->FreeSignal->last_sale - $this->price_open)/$this->price_open * 100;
         }
         return round($profit, 2);
     }
@@ -83,9 +83,7 @@ class GreenBeta extends Model
             ->select('green_beta.*') // Adjust 'green_beta.*' if you need specific columns
             ->orderBy('green_beta.code') // Ensure a consistent order by code
             ->orderBy('green_beta.id', 'desc'); // Use ID to break ties, assuming newer records have higher IDs
-
-$data = $query->get();
-
+        $data = $query->get();
         $result = [];
         foreach ($data as $key => $value) {
             $result[] = [
@@ -98,12 +96,11 @@ $data = $query->get();
                 'last_sale' => $value->FreeSignal->last_sale,
                 'profit' => $value->calculateProfit(),
                 'signal_close' => $value->signal_close,
-                'price_close' => $value->price_close,
+                'price_close' => $value->price_close > 0 ? $value->price_close : null,
                 'close_time' => $value->close_time,
                 'id_code' => $value->code,
             ];
         }
-
 
         return $result;
     }
