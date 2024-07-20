@@ -612,7 +612,7 @@
                 {
                     targets: 7, // Index of the date column
                     createdCell: function (td, cellData, rowData, row, col) {
-                        if (rowData.close_time == '') {
+                        if (rowData.close_time == '' || rowData.close_time ==null) {
                             if (cellData >= 0) {
                                 color = '#b6d7a8';
                             } else {
