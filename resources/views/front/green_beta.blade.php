@@ -182,7 +182,7 @@
                         <div class="card-body">
                             <div class="row">
                                 <!-- Data Section -->
-                                <div class="col-md-3">
+                                <div class="col-md-3 mt-2">
                                     <img width="100%" src="{{url('images/robo-green-beta.png')}}" alt="Logo" />
                                 </div>
                                 <!-- Chart Section -->
