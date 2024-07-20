@@ -43,7 +43,7 @@
         }
 
         .carousel-item {
-            height: 50vh;
+
             min-height: 300px;
             background: no-repeat center center scroll;
             background-size: cover;
@@ -529,7 +529,7 @@
                     backgroundColor: '#34a853',
                     borderColor: 'green',
                     borderWidth: 0.5,
-                    fill: false,
+                    fill: true,
 
                 }]
             },
@@ -655,7 +655,7 @@
                         $(td).css('padding', '.5em .8em');
                     },
                     render: function(data, type, row) {
-                        return  '<img src="images/logo/'+data+'.png" alt="Logo" style=" width:35px; margin-right:0.5em"> '+ data; // Adjust the path and style as needed
+                        return  '<img src="images/logo/'+data+'.png" alt="Logo" style=" height:20px; max-width:27px;width:30px;; margin-right:0.8em"> '+ data; // Adjust the path and style as needed
                     }
                 }
             ],

@@ -102,6 +102,8 @@
                                             @if(old('signal_close') != '' && old('signal_close') == 'TakeProfitBUY') selected @endif>TakeProfitBUY</option>
                                             <option value="CutLossBUY"
                                             @if(old('signal_close') != '' && old('signal_close') == 'CutLossBUY') selected @endif>CutLossBUY</option>
+                                            <option value="Hold"
+                                            @if(old('signal_close') != '' && old('signal_close') == 'Hold') selected @endif>Hold</option>
                                     </select>
                                 @if($errors->has('trend'))
                                     <p class="invalid-feedback">

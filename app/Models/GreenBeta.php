@@ -75,20 +75,19 @@ class GreenBeta extends Model
         $latestTimesSubQuery = self::select('code', DB::raw('MAX(open_time) as latest_open_time'))
         ->groupBy('code');
 
-$query = self::joinSub($latestTimesSubQuery, 'latest_times', function ($join) {
-        $join->on('green_beta.code', '=', 'latest_times.code')
-             ->on('green_beta.open_time', '=', 'latest_times.latest_open_time');
-    })
-    ->with(['FreeSignal', 'mstStock'])
-    ->select('green_beta.*'); // Adjust 'green_beta.*' if you need specific columns
+            $query = self::joinSub($latestTimesSubQuery, 'latest_times', function ($join) {
+            $join->on('green_beta.code', '=', 'latest_times.code')
+            ->on('green_beta.open_time', '=', 'latest_times.latest_open_time');
+            })
+            ->with(['FreeSignal', 'mstStock'])
+            ->select('green_beta.*') // Adjust 'green_beta.*' if you need specific columns
+            ->orderBy('green_beta.code') // Ensure a consistent order by code
+            ->orderBy('green_beta.id', 'desc'); // Use ID to break ties, assuming newer records have higher IDs
 
 $data = $query->get();
 
         $result = [];
         foreach ($data as $key => $value) {
-
-            $group = Str::slug(strtolower($value->mstStock->group));
-
             $result[] = [
                 'signal_open' =>$value->signal_open,
                 'price_open' => $value->price_open,
@@ -96,7 +95,7 @@ $data = $query->get();
                 'trend_price' => ConstantModel::TRENDING_PRICE[$value->FreeSignal->trend_price] ?? '',
                 'price_better_buy' =>'',
                 'code' => $value->mstStock->code,
-                'last_sale' => $value->last_sale,
+                'last_sale' => $value->FreeSignal->last_sale,
                 'profit' => $value->calculateProfit(),
                 'signal_close' => $value->signal_close,
                 'price_close' => $value->price_close,
@@ -105,10 +104,6 @@ $data = $query->get();
             ];
         }
 
-        $limitedIndices = collect($result['indices-fut']?? []);
-        $commodities = collect($result['commodities']?? []);
-        $crypto = collect($result['crypto']?? []);
-        $forex = collect($result['forex'] ?? []);
 
         return $result;
     }

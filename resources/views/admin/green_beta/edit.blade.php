@@ -105,6 +105,8 @@
                                             @if($signal->signal_close == 'TakeProfitBUY') selected @endif>TakeProfitBUY</option>
                                             <option value="CutLossBUY"
                                             @if($signal->signal_close == 'CutLossBUY') selected @endif >CutLossBUY</option>
+                                            <option value="Hold"
+                                            @if($signal->signal_close == 'Hold') selected @endif >Hold</option>
                                     </select>
                                 @if($errors->has('trend'))
                                     <p class="invalid-feedback">
