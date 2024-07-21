@@ -186,7 +186,7 @@
                                     <img width="100%" src="{{url('images/robo-green-beta.png')}}" alt="Logo" />
                                 </div>
                                 <!-- Chart Section -->
-                                <div class="col-md-9 mt-5" style="font-size:0.9rem !important">
+                                <div class="col-md-9" style="font-size:0.9rem !important; margin-top:4rem">
                                     <h5 class="text-center" style="font-size:1.5em"><span class="title-trading-first label-color">Xin chào anh chị,</span></h5>
                                     <p>
                                     <span class="comment-div-left" style="font-size:1.4em"> Em tên là <b>Green Beta - 1.3.3</b>, một robot với khả năng phân tích và tìm xu hướng tăng của thị trường tài chính, hiện tại ở bảng phía dưới là 13 chỉ số thị trường em đang phân tích.</span>
@@ -405,7 +405,6 @@
                         scrollY: '400px',
                         columns: [
                             { data: 'code', title: 'Symbol' },
-                            { data: 'signal_open', title: 'Signal Open' },  // Apply bold formatting to the "PriceTrend" column data},
                             { data: 'price_open', title: 'Price Open' },
                             { data: 'open_time', title: 'Open Time' },
                             { data: 'price_close', title: 'Price Close' },
@@ -420,12 +419,12 @@
                                 },
                             },
                             {
-                                targets: 5, // Assuming `close_time` is the 5th column
+                                targets: 4, // Assuming `close_time` is the 5th column
                                 type: 'date', // Specify the type
                                 // Specify the date format if necessary
                             },
                             {
-                                targets: 6, // Index of the date column
+                                targets: 5, // Index of the date column
                                 createdCell: function (td, cellData, rowData, row, col) {
                                     if (cellData >= 0) {
                                         color = '#b6d7a8';
@@ -500,7 +499,6 @@
 
             columns: [
                 { data: 'code', title: 'Symbol' },
-                { data: 'signal_open', title: 'Signal Open' },  // Apply bold formatting to the "PriceTrend" column data},
                 { data: 'price_open', title: 'Price Open' },
                 { data: 'open_time', title: 'Open Time' },
                 { data: 'price_close', title: 'Price Close' },
@@ -516,12 +514,12 @@
                     }
                 },
                 {
-                    targets: 5, // Assuming `close_time` is the 5th column
+                    targets: 4, // Assuming `close_time` is the 5th column
                     type: 'date', // Specify the type
                     // Specify the date format if necessary
                 },
                 {
-                    targets: 6, // Index of the date column
+                    targets: 5, // Index of the date column
                     createdCell: function (td, cellData, rowData, row, col) {
                         if (cellData >= 0) {
                             color = '#b6d7a8';
@@ -593,7 +591,7 @@
                 { data: 'price_open', title: 'Price Open' },
                 { data: 'open_time', title: 'Open Time' },
                 { data: 'trend_price', title: 'Trend Price' },
-                { data: 'price_better_buy', title: 'Price Better Buy' },
+                { data: 'group', title: 'Markets' },
                 { data: 'code', title: 'Symbol' },
                 { data: 'last_sale', title: 'Last Sale' },
                 { data: 'profit', title: 'Profit' },

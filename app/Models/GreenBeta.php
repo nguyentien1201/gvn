@@ -99,6 +99,7 @@ class GreenBeta extends Model
                 'price_close' => $value->price_close > 0 ? $value->price_close : null,
                 'close_time' => $value->close_time,
                 'id_code' => $value->code,
+                'group' => $value->mstStock->group,
             ];
         }
 
