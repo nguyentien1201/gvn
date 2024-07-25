@@ -37,4 +37,12 @@ class MstStock extends Model
         $query->whereNotIn('id', $usedStockIds);
         return $query->orderBy('id', 'desc')->get();
     }
+    public function AlphaSignal()
+    {
+        return $this->belongsTo('App\Models\GreenAlpha', 'id','code');
+    }
+    public function FreeSignal()
+    {
+        return $this->belongsTo('App\Models\SignalFree', 'id','code');
+    }
 }

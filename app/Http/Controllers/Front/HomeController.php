@@ -8,6 +8,7 @@ use App\Models\GreenBeta;
 use Illuminate\Support\Facades\Request;
 use App\Models\SignalFree;
 use App\Models\MstStock;
+use App\Models\GreenAlpha;
 use DB;
 class HomeController
 {
@@ -53,15 +54,31 @@ class HomeController
     }
     public function greenAlpha(Request $request)
     {
-        return view('front.green_alpha');
+        $signals = (new GreenAlpha())->getListSignalsByGroup();
+        $data_chart = (new GreenAlpha())->getDataChartSignals();
+
+        $code = $data_chart->pluck('code_name')->toArray();
+        $total = $data_chart->pluck('total')->toArray();
+        $winratio = $data_chart->pluck('win_ratio')->toArray();
+        $startDate = $data_chart->pluck('start_trade')->toArray();
+        $chart_data = [
+            'code' => $code,
+            'total' => $total,
+            'winratio' => $winratio,
+            'startDate' => $startDate
+        ];
+        $nas100 = $this->getHistoryAlphaSignal(1);
+        $default_chart = $nas100['data'];
+        return view('front.green_alpha',compact('signals',
+        'chart_data','default_chart'));
     }
     public function getHistorySignal($id)
     {
         $data = (new GreenBeta())->getSignalsById($id);
         $dataSort =$data ;
         usort($dataSort, function($a, $b) {
-        return  strtotime($a['close_time'])-strtotime($b['close_time']);
-    });
+            return  strtotime($a['close_time'])-strtotime($b['close_time']);
+        });
         $datacollect = collect($dataSort);
         $profits = $datacollect->pluck('profit')->toArray();
         $sum = 100;
@@ -75,6 +92,32 @@ class HomeController
             'profit' => $sumArray
         ];
 
+        return [
+            'status' => 200,
+            'data' => $result
+        ];
+    }
+    public function getHistoryAlphaSignal($id)
+    {
+        $data = (new GreenAlpha())->getMonthlyProfitSum($id);
+
+        $dataSort =$data ;
+        usort($dataSort, function($a, $b) {
+            return  strtotime($b['label'])-strtotime($a['label']);
+        });
+        $datacollect = collect($dataSort);
+        $profits = $datacollect->pluck('profit')->toArray();
+        $sum = 100;
+        $sumArray = [];
+        foreach ($profits as $value) {
+            $sum = $sum + $sum*$value/100;
+            $sumArray[] = round($sum,2);
+        }
+
+        $result = [
+            'list' => [],
+            'profit' =>[]
+        ];
         return [
             'status' => 200,
             'data' => $result
