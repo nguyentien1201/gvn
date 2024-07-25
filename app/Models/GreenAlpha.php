@@ -76,21 +76,21 @@ class GreenAlpha extends Model
     public function calculateProfit()
     {
         $profit = NULL;
-        $type= strtolower($this->type_signal);
+        $type= strtolower($this->signal_open);
 
         if(!empty($this->price_close) && $this->price_open > 0){
-            if(   $type== 'long'){
+            if(   $type== 'buy'){
                 $profit = ($this->price_close - $this->price_open)/$this->price_open * 100;
             }
-            if( $type== 'short'){
+            if( $type== 'sell'){
                 $profit = ( $this->price_open - $this->price_close)/$this->price_open * 100;
             }
 
         }elseif($this->FreeSignal->last_sale > 0) {
-            if(   $type== 'long'){
+            if(   $type== 'buy'){
                 $profit = ($this->FreeSignal->last_sale - $this->price_open)/$this->price_open * 100;
             }
-            if( $type== 'short'){
+            if( $type== 'sell'){
                 $profit = ( $this->price_open - $this->FreeSignal->last_sale)/$this->price_open * 100;
             }
         }
