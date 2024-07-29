@@ -107,6 +107,7 @@ class GreenAlpha extends Model
         },'FreeSignal'])->get();
 
         foreach ($stocksAndSignals as $key => $value) {
+
             $signal = $value->AlphaSignal;
             if( empty($signal )) {
                 $result[] =[
@@ -120,7 +121,7 @@ class GreenAlpha extends Model
                         'signal_close' => '',
                         'price_close' => null,
                         'close_time' => '',
-                        'id_code' => '',
+                        'id_code' => $value->id,
                         'profit_today'=>'',
                         'no_trading'=>''
                     ];
