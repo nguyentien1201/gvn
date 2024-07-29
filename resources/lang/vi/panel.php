@@ -43,4 +43,5 @@ return [
     'import' => 'Import',
     'mst_stock' => 'Mã Danh Mục',
     'singal' => 'Chỉ Báo',
+    'alpha' => 'Green Alpha',
 ];

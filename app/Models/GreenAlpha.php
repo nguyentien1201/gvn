@@ -27,14 +27,14 @@ class GreenAlpha extends Model
         if(empty($value)){
             return null;
         }
-        return Carbon::parse($value)->format('H:i'); // Customize the format as needed
+        return Carbon::parse($value); // Customize the format as needed
     }
     public function getCloseTimeAttribute($value)
     {
         if(empty($value)){
             return null;
         }
-        return Carbon::parse($value)->format('H:i'); // Customize the format as needed
+        return Carbon::parse($value); // Customize the format as needed
     }
 
     public function getListSignals( Request $request)
@@ -87,7 +87,7 @@ class GreenAlpha extends Model
             }
 
         }elseif($this->FreeSignal->last_sale > 0) {
-            if(   $type== 'buy'){
+            if($type== 'buy'){
                 $profit = ($this->FreeSignal->last_sale - $this->price_open)/$this->price_open * 100;
             }
             if( $type== 'sell'){
@@ -193,6 +193,35 @@ class GreenAlpha extends Model
         }
         return $result;
     }
+    public function getHistorySignal($id){
+        $query = self::with('mstStock')
+            ->where('code', $id)
+            ->whereNotNull('close_time')->orderBy('close_time', 'desc')
+            ->select();
+        $data = $query->get();
+        $result = [];
+        foreach ($data as $item) {
+            if($item->mstStock){
+                $item->code_name = $item->mstStock->code;
+            }
+            $result[] = [
+                'signal_open' =>$item->signal_open,
+                'price_open' => $item->price_open,
+                'open_time' => $item->open_time,
+                'price_better_buy' =>'',
+                'code' => $item->mstStock->code,
+                'last_sale' => $item->last_sale,
+                'profit' => $item->calculateProfit(),
+                'signal_close' => $item->signal_close,
+                'price_close' => $item->price_close,
+                'close_time' => $item->close_time,
+                'id_code' => $item->code,
+            ];
+        }
+
+        return $result;
+    }
+
     public function getMonthlyProfitSum($id){
         $results = DB::table('green_beta') // Assuming 'green_beta' is the table name
             ->select(

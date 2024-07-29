@@ -99,13 +99,14 @@ class HomeController
     }
     public function getHistoryAlphaSignal($id)
     {
-        $data = (new GreenAlpha())->getMonthlyProfitSum($id);
+        $data = (new GreenAlpha())->getHistorySignal($id);
 
         $dataSort =$data ;
         usort($dataSort, function($a, $b) {
-            return  strtotime($b['label'])-strtotime($a['label']);
+            return  strtotime($a['open_time'])-strtotime($b['open_time']);
         });
         $datacollect = collect($dataSort);
+
         $profits = $datacollect->pluck('profit')->toArray();
         $sum = 100;
         $sumArray = [];
@@ -113,10 +114,9 @@ class HomeController
             $sum = $sum + $sum*$value/100;
             $sumArray[] = round($sum,2);
         }
-
         $result = [
-            'list' => [],
-            'profit' =>[]
+            'list' => $data,
+            'profit' => $sumArray
         ];
         return [
             'status' => 200,

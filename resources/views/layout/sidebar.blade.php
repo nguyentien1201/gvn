@@ -60,6 +60,15 @@
                                 </p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="{{route('admin.green-alpha.index')}}"
+                               class="nav-link @if(!empty($path) && $path =='green-alpha') active @endif">
+                                <i class="nav-icon far fa-user"></i>
+                                <p>
+                                    {{__('panel.alpha')}}
+                                </p>
+                            </a>
+                        </li>
                     @endif
                 @if(Auth::user()->role_id == \App\Models\ConstantModel::ROLES['admin'])
                     <li class="nav-item">

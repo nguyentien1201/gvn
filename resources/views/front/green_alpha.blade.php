@@ -14,9 +14,10 @@
 
     <link rel="stylesheet" href="{{asset('plugins/font-awesome-4.7.0/css/font-awesome.min.css')}}">
     <style>
-         .color-home{
-            color:#008000 !important;
+        .color-home {
+            color: #008000 !important;
         }
+
         body {
             font-size: 0.9rem !important;
         }
@@ -115,42 +116,51 @@
             color: white;
             /* Change the text color */
         }
+
         .comment-div-left {
             margin-right: 10px;
             width: 50px;
 
             text-align: center;
         }
+
         .comment-div-right {
             margin-left: 10px;
             width: 100px;
 
             text-align: center;
         }
-        .hold{
-            background-color :#ffd966;
+
+        .hold {
+            background-color: #ffd966;
         }
-        .takeprofitbuy{
-            background-color :#b6d7a8;
+
+        .takeprofitbuy {
+            background-color: #b6d7a8;
         }
-        .cutlossbuy{
-            background-color :#e06666;
+
+        .cutlossbuy {
+            background-color: #e06666;
         }
+
         .list-item {
             display: flex;
             align-items: center;
             margin-bottom: 10px;
         }
+
         .list-item button {
             cursor: none;
             padding: 5px 10px;
             border: none;
             margin-right: 10px;
         }
-        .width-120{
+
+        .width-120 {
             width: 120px;
         }
-        .table-responsive{
+
+        .table-responsive {
             overflow-x: hidden !important;
         }
     </style>
@@ -163,16 +173,16 @@
     <!-- green-beta-slider.jpg -->
     @include('front.common.header')
 
-<!-- Hero Section -->
+    <!-- Hero Section -->
 
- <!-- Hero Section with Slider -->
- <div id="heroCarousel" class="carousel slide" data-ride="carousel">
-    <div class="carousel-inner">
-      <div class="carousel-item active" style="background-image: url({{url('images/green-beta-slider.jpg')}})">
-      </div>
+    <!-- Hero Section with Slider -->
+    <div id="heroCarousel" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active" style="background-image: url({{url('images/green-alpha-banner.jpg')}})">
+            </div>
+        </div>
     </div>
-  </div>
-  <section id="contentDiv" class="text-left">
+    <section id="contentDiv" class="text-left">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -183,16 +193,21 @@
                             <div class="row">
                                 <!-- Data Section -->
                                 <div class="col-md-3 mt-3">
-                                    <img width="100%" src="{{url('images/robo-green-beta.png')}}" alt="Logo" />
+                                    <img width="100%" src="{{url('images/logo-robot-alpha.jpg')}}" alt="Logo" />
                                 </div>
                                 <!-- Chart Section -->
                                 <div class="col-md-9" style="font-size:0.9rem !important; margin-top:4rem">
-                                    <h5 class="text-center" style="font-size:1.5em"><span class="title-trading-first label-color">Xin chào anh chị,</span></h5>
+                                    <h5 class="text-center" style="font-size:1.5em"><span
+                                            class="title-trading-first label-color">Xin chào anh chị,</span></h5>
                                     <p>
-                                    <span class="comment-div-left" style="font-size:1.4em"> Em tên là <b>Green Beta - 1.3.3</b>, một robot với khả năng phân tích và tìm xu hướng tăng của thị trường tài chính, hiện tại ở bảng phía dưới là 13 chỉ số thị trường em đang phân tích.</span>
+                                        <span class="comment-div-left" style="font-size:1.4em"> Em tên là <b>Green Alpha
+                                                - 9.5.8</b>, hãy để em tìm giúp anh chị xem có cơ hội nào để anh chị
+                                            giao dịch kiếm lợi nhuận ngay trong ngày hôm nay không nhé. </span>
                                     </p>
                                     <p style="font-size:1.25em">
-                                    <span><i>Chúc anh chị có một ngày đầu tư thật nhiều thuận lợi và nếu có thêm góp ý, anh chị hãy gửi cho các sếp nhà GVN của em nhé!</i> </span>
+                                        <span><i>Người ta nói "Đồng tiền đi liền khúc ruột", nếu anh chị có đau ruột hôm
+                                                nay thì đừng ngần ngại gửi ý kiến đến các sếp nhà GVN của em!</i>
+                                        </span>
                                     </p>
 
                                 </div>
@@ -214,7 +229,8 @@
 
             <div class="row">
                 <div class="col-md-12">
-                    <h2 class="text-center mb-4"><span class="title-trading-first label-color color-home">SIGNAL DASHBOARD</span>
+                    <h2 class="text-center mb-4"><span class="title-trading-first label-color color-home">SIGNAL
+                            DASHBOARD</span>
 
                     </h2>
                     <!-- Data and Chart Section -->
@@ -382,6 +398,7 @@
     crossorigin="anonymous"></script>
 <script src="{{ asset('plugins/chart.js/Chart.min.js') }}"></script>
 <script src="https://cdn.datatables.net/v/bs5/dt-2.0.8/date-1.5.2/fc-5.0.1/fh-4.0.1/r-3.0.2/datatables.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
 <script>
     $(document).ready(function () {
         console.log(@json($signals));
@@ -424,9 +441,22 @@
                                 },
                             },
                             {
-                                targets: 4, // Assuming `close_time` is the 5th column
-                                type: 'date', // Specify the type
-                                // Specify the date format if necessary
+                                targets: 2, // Index of the open_time column
+                                render: function (data, type, row) {
+                                    if (type === 'display' || type === 'filter') {
+                                        return moment(data).format('Y-m-d HH:mm'); // Format as HH:mm
+                                    }
+                                    return data;
+                                }
+                            },
+                            {
+                                targets: 4, // Index of the open_time column
+                                render: function (data, type, row) {
+                                    if (type === 'display' || type === 'filter') {
+                                        return moment(data).format('Y-m-d HH:mm'); // Format as HH:mm
+                                    }
+                                    return data;
+                                }
                             },
                             {
                                 targets: 5, // Index of the date column
@@ -519,9 +549,22 @@
                     }
                 },
                 {
-                    targets: 4, // Assuming `close_time` is the 5th column
-                    type: 'date', // Specify the type
-                    // Specify the date format if necessary
+                    targets: 2, // Index of the open_time column
+                    render: function (data, type, row) {
+                        if (type === 'display' || type === 'filter') {
+                            return moment(data).format('Y-m-d HH:mm'); // Format as HH:mm
+                        }
+                        return data;
+                    }
+                },
+                {
+                    targets: 4, // Index of the open_time column
+                    render: function (data, type, row) {
+                        if (type === 'display' || type === 'filter') {
+                            return moment(data).format('Y-m-d HH:mm'); // Format as HH:mm
+                        }
+                        return data;
+                    }
                 },
                 {
                     targets: 5, // Index of the date column
@@ -599,8 +642,8 @@
                 { data: 'price_close', title: 'Price Close' },
                 { data: 'close_time', title: 'Close Time' },
                 { data: 'profit', title: 'Profit' },
-                { data: 'no_trading', title: 'No.Trading'},
-                { data: 'profit_today', title: 'Profit Today'}
+                { data: 'no_trading', title: 'No.Trading' },
+                { data: 'profit_today', title: 'Profit Today' }
 
             ],
             columnDefs: [
@@ -621,13 +664,13 @@
                     createdCell: function (td, cellData, rowData, row, col) {
                         signal = cellData.trim().toLowerCase();
                         console.log(signal);
-                        if(cellData == '') return false;
-                        if (rowData.close_time == '' || rowData.close_time ==null) {
+                        if (cellData == '') return false;
+                        if (rowData.close_time == '' || rowData.close_time == null) {
                             color = '#ffd966';
-                            if(signal =='buy'){
+                            if (signal == 'buy') {
                                 color = '#b6d7a8';
                             }
-                            if(signal =='sell'){
+                            if (signal == 'sell') {
                                 color = '#e06666';
 
                             }
@@ -641,11 +684,11 @@
                 {
                     targets: 4, // Index of the date column
                     createdCell: function (td, cellData, rowData, row, col) {
-                        signal_close =''
-                        if(rowData.signal_close != null){
+                        signal_close = ''
+                        if (rowData.signal_close != null) {
                             signal_close = rowData.signal_close.trim().toLowerCase();
                         }
-                        if (signal_close == 'takeprofitbuy' || signal_close == 'takeprofitsell' ) {
+                        if (signal_close == 'takeprofitbuy' || signal_close == 'takeprofitsell') {
                             color = '#b6d7a8';
                         } else if (signal_close == 'cutlossbuy' || signal_close == 'cutlosssell') {
                             color = '#e06666';
@@ -657,6 +700,26 @@
 
                     }
                 },
+            {
+                            targets: 3, // Index of the open_time column
+                            render: function(data, type, row) {
+                                if(data == null || data == '') return '';
+                                if (type === 'display' || type === 'filter') {
+                                    return moment(data).format('HH:mm'); // Format as HH:mm
+                                }
+                                return data;
+                            }
+                        },
+                        {
+                            targets: 6, // Index of the open_time column
+                            render: function(data, type, row) {
+                                if(data == null || data == '') return '';
+                                if (type === 'display' || type === 'filter') {
+                                    return moment(data).format('HH:mm'); // Format as HH:mm
+                                }
+                                return data;
+                            }
+                        },
                 {
                     targets: 0, // Index of the 'code' column
                     createdCell: function (td, cellData, rowData, row, col) {
@@ -664,8 +727,8 @@
                         $(td).css('font-weight', 'bold');
                         $(td).css('padding', '.5em .8em');
                     },
-                    render: function(data, type, row) {
-                        return  '<img src="images/logo/'+data+'.png" alt="Logo" style=" height:20px; max-width:27px;width:30px;; margin-right:0.8em"> '+ data; // Adjust the path and style as needed
+                    render: function (data, type, row) {
+                        return '<img src="images/logo/' + data + '.png" alt="Logo" style=" height:20px; max-width:27px;width:30px;; margin-right:0.8em"> ' + data; // Adjust the path and style as needed
                     }
                 }
             ],

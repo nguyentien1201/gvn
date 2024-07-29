@@ -54,8 +54,11 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin'], fu
     Route::resource('stock-green-beta', 'MstStockGreenController')->middleware('admin');
     Route::resource('green-beta', 'GreenBetaController')->middleware('admin');
     Route::resource('freesignal', 'SignalFreeController')->middleware('admin');
+    Route::resource('green-alpha', 'GreenAlphaController')->middleware('admin');
 
 
 });
+Route::get('admin/greenalpha/{id}', 'Admin\GreenAlphaController@getListMstock')->middleware('admin')->name('admin.green-alpha.list-stock');
+Route::post('admin/green-alpha/import', 'Admin\GreenAlphaController@import')->middleware('admin')->name('admin.green-alpha.import');
 Route::get('admin/greenbeta/{id}', 'Admin\GreenBetaController@getListMstock')->middleware('admin')->name('admin.green-beta.list-stock');
-Route::post('admin/import', 'Admin\GreenBetaController@import')->middleware('admin')->name('admin.green-beta.import');
+Route::post('admin/green-beta/import', 'Admin\GreenBetaController@import')->middleware('admin')->name('admin.green-beta.import');

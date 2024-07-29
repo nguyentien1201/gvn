@@ -4,7 +4,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>{{ __('panel.beta') }}</h1>
+                    <h1>{{ __('panel.alpha') }}</h1>
                 </div>
             </div>
         </div>
@@ -16,7 +16,7 @@
             <div class="card">
                 <div class="card-header">{{__('panel.add')}}</div>
                 <div class="card-body">
-                    <form class="add-edit-frm" action="{{route('admin.green-beta.store')}}" method="POST"
+                    <form class="add-edit-frm" action="{{route('admin.green-alpha.store')}}" method="POST"
                           enctype="multipart/form-data">
                         @csrf
                         <div class="row">
@@ -46,8 +46,6 @@
                                             @if(old('signal_open') != '' && old('signal_open') == 'BUY') selected @endif>Buy</option>
                                             <option value="SELL"
                                             @if(old('signal_open') != '' && old('signal_open') == 'SELL') selected @endif>Sell</option>
-                                            <option value="SIDEWAY"
-                                            @if(old('signal_open') != '' && old('signal_open') == 'SIDEWAY') selected @endif>SideWay</option>
 
                                     </select>
                                 @if($errors->has('signal_open'))
@@ -102,36 +100,11 @@
                                             @if(old('signal_close') != '' && old('signal_close') == 'TakeProfitBUY') selected @endif>TakeProfitBUY</option>
                                             <option value="CutLossBUY"
                                             @if(old('signal_close') != '' && old('signal_close') == 'CutLossBUY') selected @endif>CutLossBUY</option>
-                                            <option value="Hold"
-                                            @if(old('signal_close') != '' && old('signal_close') == 'Hold') selected @endif>Hold</option>
+                                            <option value="TakeProfitSELL"
+                                            @if(old('signal_close') != '' && old('signal_close') == 'TakeProfitSELL') selected @endif>TakeProfitSELL</option>
+                                            <option value="CutLossSELL"
+                                            @if(old('signal_close') != '' && old('signal_close') == 'CutLossSELL') selected @endif>CutLossSELL</option>
                                     </select>
-                                @if($errors->has('trend'))
-                                    <p class="invalid-feedback">
-                                        {{ $errors->first('trend') }}
-                                    </p>
-                                @endif
-                            </div>
-                            <div class="col-md-3 form-group">
-                                <label>{{(__('signal.price_cumulative_from'))}}</label>
-                                <input step="0.01" type="number" name="price_cumulative_from" autocomplete="off"
-                                        class="form-control @if($errors->has('price_cumulative_from')) is-invalid @endif"
-                                        value="{{old('price_cumulative_from')}}">
-                                @if($errors->has('price_cumulative_from'))
-                                    <p class="invalid-feedback">
-                                        {{ $errors->first('price_cumulative_from') }}
-                                    </p>
-                                @endif
-                            </div>
-                            <div class="col-md-3 form-group">
-                                <label>{{(__('signal.price_cumulative_to'))}}</label>
-                                <input  step="0.01" type="number" name="price_cumulative_to" autocomplete="off"
-                                        class="form-control @if($errors->has('price_cumulative_to')) is-invalid @endif"
-                                        value="{{old('price_cumulative_to')}}">
-                                @if($errors->has('price_cumulative_to'))
-                                    <p class="invalid-feedback">
-                                        {{ $errors->first('price_cumulative_to') }}
-                                    </p>
-                                @endif
                             </div>
                             <div class="col-md-3 form-group">
                                 <label>{{(__('signal.price_close'))}} <span class="red"> *</span></label>
@@ -175,7 +148,7 @@
 
                         </div>
 
-                        <a href="{{route('admin.green-beta.index')}}" class="btn btn-secondary">
+                        <a href="{{route('admin.green-alpha.index')}}" class="btn btn-secondary">
                             {{__('panel.back')}}
                         </a>
                         <button type="submit" class="btn btn-primary">{{__('panel.save')}}</button>
@@ -194,6 +167,7 @@ $(document).ready(function () {
         var price_close = $(this).val();
         var price_open = $("input[name='price_open']").val();
         var profit =price_close- price_open;
+        console.log(profit);
         $("input[name='profit']").val(profit);
     });
 });

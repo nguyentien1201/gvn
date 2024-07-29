@@ -45,4 +45,5 @@ return [
     'stock_free' => 'Mã tín hiệu',
     'mst_stock_green' => 'Mã Tín hiệuGreen Beta',
     'singal' => 'Green Beta',
+    'alpha' => 'Green Alpha',
 ];
