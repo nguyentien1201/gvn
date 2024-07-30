@@ -55,7 +55,7 @@ class GreenBeta extends Model
     {
         $id = (int) $id;
         $query = self::where('code',$id)->with('MstStock')->select();
-        return $query->orderBy('updated_at', 'desc')->paginate(ConstantModel::$PAGINATION);
+        return $query->orderBy('open_time', 'desc')->paginate(ConstantModel::$PAGINATION);
     }
     public function calculateProfit()
     {
