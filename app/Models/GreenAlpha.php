@@ -9,6 +9,7 @@ use Carbon\Carbon;
 use App\Models\SignalFree;
 use DB;
 use Illuminate\Support\Str;
+use App\Models\GreenAlphaPortfolio;
 class GreenAlpha extends Model
 {
     use SoftDeletes;
@@ -101,10 +102,11 @@ class GreenAlpha extends Model
         $today = now()->toDateString();
 
 // Query MstStock and load related Signal records with open_time of today
+        $alphaStock = config('stock.green-alpha');
         $stocksAndSignals = MstStock::with(['AlphaSignal' => function($query) use ($today) {
             $query->whereDate('open_time', '=', $today)->orderBy('open_time', 'desc')
             ->select('*', DB::raw('count(*) as no_trading'),)->first();
-        },'FreeSignal'])->get();
+        },'FreeSignal'])->whereIn('code',$alphaStock)->get();
 
         foreach ($stocksAndSignals as $key => $value) {
 
@@ -150,22 +152,16 @@ class GreenAlpha extends Model
         return $this->belongsTo('App\Models\SignalFree', 'code','code');
     }
     public function getDataChartSignals(){
-        $query = self::with('mstStock')
-        ->whereNotNull('close_time') // Ensure price_close has a value
-        ->groupBy('code') // Group the results by 'code'
-        ->select('code',
+        $alphaStock = config('stock.green-alpha');
+        $stocksAndSignals = GreenAlphaPortfolio::whereIn('code',$alphaStock)->groupBy('code')->orderBy('code_id','asc')->select('code',
             DB::raw('count(*) as total'),
             DB::raw('SUM(CASE WHEN profit > 0 THEN 1 ELSE 0 END) as profit_positive_count'),
-            DB::raw('MIN(open_time) as start_trade'),
-        );
-        $data = $query->get();
-        foreach ($data as $item) {
-            if($item->mstStock){
-                $item->code_name = $item->mstStock->code;
-            }
+            DB::raw('MIN(DATE_FORMAT(STR_TO_DATE(month_year, "%m/%Y"), "%Y")) as start_trade')
+        )->get();
+        foreach ($stocksAndSignals as $item) {
             $item->win_ratio = round($item->profit_positive_count/$item->total * 100, 2);
         }
-        return $data;
+        return $stocksAndSignals;
     }
     public function getSignalsById($id){
         $query = self::with('mstStock')

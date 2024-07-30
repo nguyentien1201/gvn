@@ -56,8 +56,8 @@ class HomeController
     {
         $signals = (new GreenAlpha())->getListSignalsByGroup();
         $data_chart = (new GreenAlpha())->getDataChartSignals();
-
-        $code = $data_chart->pluck('code_name')->toArray();
+        // dd($data_chart);
+        $code = $data_chart->pluck('code')->toArray();
         $total = $data_chart->pluck('total')->toArray();
         $winratio = $data_chart->pluck('win_ratio')->toArray();
         $startDate = $data_chart->pluck('start_trade')->toArray();
@@ -67,6 +67,7 @@ class HomeController
             'winratio' => $winratio,
             'startDate' => $startDate
         ];
+
         $nas100 = $this->getHistoryAlphaSignal(1);
         $default_chart = $nas100['data'];
         return view('front.green_alpha',compact('signals',

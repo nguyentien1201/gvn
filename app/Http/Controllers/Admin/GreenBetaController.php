@@ -123,12 +123,13 @@ class GreenBetaController extends AdminController
                         'price_open' => $sheet['priceopen'],
                         'open_time' => Carbon::parse($openTime)->format('Y-m-d H:i:s'),
                         'close_time' => Carbon::parse($closeTime)->format('Y-m-d H:i:s'),
-                        'signal_close' => $sheet['signalclose'],
+                        'signal_close' => $sheet['signalclose'] ?? null,
                         'price_close' => $sheet['priceclose'],
                         'profit' => $sheet['profitloss'],
 
                     ];
                 $existingRecord = GreenBeta::where(['code'=>$greenBeta['code'],'price_open'=>$greenBeta['price_open'],'price_close'=>$greenBeta['price_close']])->first();
+                    \Log::info(json_encode($greenBeta));
                 if ($existingRecord) {
                     $existingRecord->update($greenBeta);
                 } else {
@@ -136,6 +137,7 @@ class GreenBetaController extends AdminController
                     GreenBeta::create($greenBeta);
                 }
                 } catch (\Exception $e) {
+                    dd($e->getMessage());
                     continue;
                 }
 
@@ -146,9 +148,5 @@ class GreenBetaController extends AdminController
 
 
     }
-    // public function getListMstock()
-    // {
-    //     $listCode = MstStock::pluck('code','id')->toArray();
-    //     return view('admin.green_beta.list_stock',compact('listCode'));
-    // }
+
 }

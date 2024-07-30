@@ -358,7 +358,7 @@
                                             <tr>
                                                 <td style="font-weight:600">Time Start</td>
                                                 @foreach ($chart_data['startDate'] as $item)
-                                                    <td>{{ (new DateTime($item))->format('Y') }}</td>
+                                                    <td>{{$item}}</td>
                                                 @endforeach
                                             </tr>
                                         </table>
@@ -743,7 +743,7 @@
     });
 </script>
 <script>
-
+    console.log(@json($chart_data));
     var ctx = document.getElementById('myChart').getContext('2d');
     var myChart = new Chart(ctx, {
         type: 'bar',

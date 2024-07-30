@@ -24,6 +24,7 @@ class GreenBetaImport implements ToCollection, WithBatchInserts, WithChunkReadin
     {
 
         foreach ($collection as $key => $row) {
+            dd($row);
             $c = new GreenBeta();
             $c['price_open'] = $row['price_open'];
             $c['open_time'] = $row['open_time'];

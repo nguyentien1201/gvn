@@ -11,6 +11,7 @@ use App\Models\GreenAlpha;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Maatwebsite\Excel\Facades\Excel;
+use App\Models\GreenAlphaPortfolio;
 class GreenAlphaController extends AdminController
 {
     private $greenBeta;
@@ -139,4 +140,57 @@ class GreenAlphaController extends AdminController
 
 
     }
+    public function portfolio(Request $request)
+    {
+        return view('admin.green_alpha.import_porfolio');
+    }
+    public function importPortfolio(Request $request)
+    {
+        $path = $request->file('select_file');
+        $arrayData = Excel::toArray(null, $path);
+
+        $sheetData = $arrayData[0];
+
+        $headerRow = $sheetData[0];
+        $header =[];
+        $listCode = MstStock::pluck('id','code')->toArray();
+        foreach($headerRow as $key => $value) {
+            if($key==0){
+                $header[$key] = 'code';
+                continue;
+            }
+            $header[$key] = strtolower($value);
+        }
+          // Get the data rows without formatting
+        $dataRows = array_slice($sheetData, 1);
+
+        foreach ($dataRows as $row) {
+            if(empty($row[0])) continue;
+            $code ='';
+            foreach ($row as $key => $value) {
+                if($key == 0) {
+                    $code = $value;
+                    continue;
+                }
+
+                $data =[
+                    'code_id'=> $listCode[$code],
+                    'code'=> $code,
+                    'month_year'=>$header[$key],
+                    'profit'=>$value
+                ];
+
+                $existingRecord = GreenAlphaPortfolio::where(['code_id'=>$data['code_id'],'month_year'=>$data['month_year']])->first();
+                if ($existingRecord) {
+                    $existingRecord->update($data);
+                } else {
+                    // Record does not exist, insert new
+                    GreenAlphaPortfolio::create($data);
+                }
+
+            }
+        }
+        return redirect()->route('admin.green-alpha.index')->with('success', __('panel.success'));
+    }
+
 }
