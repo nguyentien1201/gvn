@@ -137,7 +137,6 @@ class GreenBetaController extends AdminController
                     GreenBeta::create($greenBeta);
                 }
                 } catch (\Exception $e) {
-                    dd($e->getMessage());
                     continue;
                 }
 
