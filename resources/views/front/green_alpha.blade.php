@@ -352,7 +352,7 @@
 
 
     <div class="modal fade" id="dataTableModal" tabindex="-1" aria-labelledby="dataTableModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
+        <div class="modal-dialog modal-xl">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="dataTableModalLabel">History Signal</h5>
