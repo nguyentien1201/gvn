@@ -17,7 +17,8 @@ class GreenAlpha extends Model
     public $table = 'green_alpha';
 
     protected $fillable = [
-        'code', 'price_open', 'open_time', 'signal_close', 'price_close', 'price_cumulative_from', 'price_cumulative_to', 'profit', 'close_time', 'last_sale', 'signal_open'
+        'code', 'price_open', 'open_time', 'signal_close', 'price_close', 'price_cumulative_from', 'price_cumulative_to', 'profit', 'close_time', 'last_sale', 'signal_open',
+        'total_trade','win_ratio'
     ];
         protected $casts = [
         'open_time' => 'date',
@@ -151,17 +152,40 @@ class GreenAlpha extends Model
     {
         return $this->belongsTo('App\Models\SignalFree', 'code','code');
     }
+    public function getListMstStockIds()
+    {
+        $alphaStock = config('stock.green-alpha');
+        $stocksAndSignals = MstStock::with(['AlphaSignal'=> function($query){
+            $query->select('*')->orderBy('total_trade','desc')->first();
+        }])->whereIn('code',$alphaStock)->get();
+        $dataSelect = [];
+        foreach($stocksAndSignals as $key => $value){
+            $dataSelect[$value->id] = [
+                'id' => $value->id,
+                'code' => $value->code,
+                'win_ratio' => $value->AlphaSignal->win_ratio ?? null,
+                'total_trade' => $value->AlphaSignal->total_trade ?? null
+            ];
+        }
+
+        return $dataSelect;
+    }
+
     public function getDataChartSignals(){
         $alphaStock = config('stock.green-alpha');
-        $stocksAndSignals = GreenAlphaPortfolio::whereIn('code',$alphaStock)->groupBy('code')->orderBy('code_id','asc')->select('code',
-            DB::raw('count(*) as total'),
-            DB::raw('SUM(CASE WHEN profit > 0 THEN 1 ELSE 0 END) as profit_positive_count'),
-            DB::raw('MIN(DATE_FORMAT(STR_TO_DATE(month_year, "%m/%Y"), "%Y")) as start_trade')
-        )->get();
-        foreach ($stocksAndSignals as $item) {
-            $item->win_ratio = round($item->profit_positive_count/$item->total * 100, 2);
+        $stocksAndSignals = MstStock::with(['AlphaSignal'=> function($query){
+            $query->select('*')->orderBy('total_trade','desc')->first();
+        }])->whereIn('code',$alphaStock)->orderBy('id','asc')->get();
+        $dataSelect = [];
+        foreach($stocksAndSignals as $key => $value){
+            $dataSelect[$value->id] = [
+                'id' => $value->id,
+                'code' => $value->code,
+                'win_ratio' => $value->AlphaSignal->win_ratio ?? null,
+                'total_trade' => $value->AlphaSignal->total_trade ?? null
+            ];
         }
-        return $stocksAndSignals;
+        return collect( $dataSelect);
     }
     public function getSignalsById($id){
         $query = self::with('mstStock')
@@ -259,18 +283,14 @@ class GreenAlpha extends Model
     }
     public function getCurrentYearProfitSum()
     {
-        // Retrieve profit data by month
-        // $profitByMonth = (new GreenAlpha())->getProfitByMonth($id);
-        $profit = GreenAlphaPortfolio::select('month_year','profit','code')->orderBy('month_year','desc')->get();
+        $profit = GreenAlphaPortfolio::select('code_id','month_year','profit','code')->orderBy('code_id','asc')->orderBy('month_year','desc')->get();
         // Get the current year
         $currentYear = date('Y');
 
-        // Filter data to include only entries from the current year
         $currentYearProfits = $profit->filter(function($item) use ($currentYear) {
             return strpos($item['month_year'], $currentYear) !== false;
         });
         $groupedByCode = $currentYearProfits->groupBy('code');
-
 
         $sumProfitYear = [];
         $sumMonth = [];
@@ -279,7 +299,6 @@ class GreenAlpha extends Model
             $sum = 1;
             $lable[] = $key;
             foreach ($value as $i => $item) {
-
                 if($i==0) {
                     $sumMonth[] =round(($item['profit']*100 ?? 0) ,2) ;
                 }

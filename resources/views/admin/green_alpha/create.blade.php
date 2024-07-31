@@ -26,8 +26,8 @@
                                             class="form-control select2 @if($errors->has('code')) is-invalid @endif">
                                         <option value="">{{__('panel.please_choose')}}</option>
                                         @foreach($mstStocks as $mstStock)
-                                            <option value="{{$mstStock->id}}"
-                                                    @if(old('code') == $mstStock->id) selected @endif>{{$mstStock->code}}</option>
+                                            <option value="{{$mstStock['id']}}"
+                                                    @if(old('code') == $mstStock['id']) selected @endif>{{$mstStock['code']}}</option>
                                         @endforeach
                                     </select>
                                 @if($errors->has('code'))
@@ -117,14 +117,6 @@
                                     </p>
                                 @endif
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-3 form-group">
-                                <label>{{(__('signal.profit'))}}</label>
-                                <input step="0.01" readonly="true" type="number" name="profit" autocomplete="off"
-                                        class="form-control"
-                                        value="{{old('profit')}}">
-                            </div>
                             <div class="col-md-3 form-group">
                                 <label>{{(__('signal.close_time'))}} <span class="red"> *</span></label>
                                 <div class="input-group date-time" id="close_time"
@@ -145,6 +137,48 @@
                                     @endif
                                 </div>
                             </div>
+                            <div class="col-md-3 form-group">
+                                <label>{{(__('signal.profit'))}}</label>
+                                <input step="0.01" readonly="true" type="number" name="profit" autocomplete="off"
+                                        class="form-control"
+                                        value="{{old('profit')}}">
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3 form-group">
+                                    <label>Win Ratio</label>
+                                    <div class="input-group date-time" id="close_time"
+                                        data-target-input="nearest">
+                                        <input type="number"  name="win_ratio"
+                                            value="{{old('win_ratio')}}" autocomplete="off"
+                                            placeholder="Win Ratio"
+                                            step="1"  type="number"
+                                            class="form-control  @if($errors->has('win_ratio')) is-invalid @endif">
+                                        @if($errors->has('win_ratio'))
+                                            <p class="invalid-feedback">
+                                                {{ $errors->first('win_ratio') }}
+                                            </p>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="col-md-3 form-group">
+                                <label>Total Trade</label>
+                                <div class="input-group date-time" id="close_time"
+                                     data-target-input="nearest">
+                                    <input type="number"  name="total_trade"
+                                           value="{{old('total_trade')}}" autocomplete="off"
+                                           placeholder="Total Trade"
+                                           step="1"  type="number"
+                                           class="form-control  @if($errors->has('total_trade')) is-invalid @endif">
+                                    @if($errors->has('total_trade'))
+                                        <p class="invalid-feedback">
+                                            {{ $errors->first('total_trade') }}
+                                        </p>
+                                    @endif
+                                </div>
+                            </div>
+
 
                         </div>
 
@@ -163,12 +197,30 @@
 <script type="text/javascript">
 
 $(document).ready(function () {
+    var mstStocks = @json($mstStocks);
+
+    console.log(mstStocks);
+    if (!Array.isArray(mstStocks)) {
+        mstStocks = Object.values(mstStocks);
+    }
     $("input[name='price_close'],input[name='price_open']").change(function () {
         var price_close = $(this).val();
         var price_open = $("input[name='price_open']").val();
         var profit =price_close- price_open;
         console.log(profit);
         $("input[name='profit']").val(profit);
+    });
+    $("select[name='code']").change(function () {
+        var code = $(this).val();
+        console.log(code);
+        var stock = mstStocks.filter(function(x) {
+            return x.id == code;
+        })[0];
+        console.log(stock);
+        if (stock) {
+            $("input[name='win_ratio']").val(stock.win_ratio);
+            $("input[name='total_trade']").val(stock.total_trade);
+        }
     });
 });
  </script>

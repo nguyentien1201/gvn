@@ -15,7 +15,7 @@ class GreenAlphaPortfolio extends Model
     public $table = 'green_alpha_portfolio';
 
     protected $fillable = [
-        'month_year', 'profit', 'code_id','code'
+        'month_year', 'profit', 'code_id','code','win_ratio','total_trade'
     ];
 
 

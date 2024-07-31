@@ -322,12 +322,7 @@
                                                     <td>{{$item}}</td>
                                                 @endforeach
                                             </tr>
-                                            <tr>
-                                                <td style="font-weight:600">Time Start</td>
-                                                @foreach ($chart_data['startDate'] as $item)
-                                                    <td>{{$item}}</td>
-                                                @endforeach
-                                            </tr>
+
                                         </table>
                                     </div>
 

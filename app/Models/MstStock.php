@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
 class MstStock extends Model
 {
     use SoftDeletes;
@@ -27,9 +27,23 @@ class MstStock extends Model
     }
     public function getListMstStockIds()
     {
-        $query = self::select();
-        return $query->orderBy('id', 'desc')->get();
+        $alphaStock = config('stock.green-alpha');
+        $stocksAndSignals = MstStock::with(['AlphaSignal'=> function($query){
+            $query->select('*')->orderBy('total_trade','desc')->first();
+        }])->whereIn('code',$alphaStock)->get();
+        $dataSelect = [];
+        foreach($stocksAndSignals as $key => $value){
+            $dataSelect[$value->id] = [
+                'id' => $value->id,
+                'code' => $value->code,
+                'win_ratio' => $value->AlphaSignal->win_ratio ?? null,
+                'total_trade' => $value->AlphaSignal->total_trade ?? null
+            ];
+        }
+
+        return $dataSelect;
     }
+
     public function getListMstStockNotIn()
     {
         $usedStockIds = SignalFree::pluck('code')->toArray();

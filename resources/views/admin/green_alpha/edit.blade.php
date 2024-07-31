@@ -21,7 +21,7 @@
                         @method('PUT')
                         <input type="hidden" name="id" value="{{$signal->id}}"/>
                         <div class="row">
-                            <div class="col-md-4 form-group">
+                            <div class="col-md-3 form-group">
                                 <label>{{(__('signal.code'))}} <span class="red"> *</span></label>
                                 <select name="code" value="{{$signal->code}}" disabled="true" aria-disabled="true"
                                             class="form-control custom-select @if($errors->has('code')) is-invalid @endif">
@@ -39,7 +39,7 @@
                                     </p>
                                 @endif
                             </div>
-                            <div class="col-md-4 form-group">
+                            <div class="col-md-3 form-group">
                                 <label>{{(__('signal.signal_open'))}} <span class="red"> *</span></label>
                                 <select
                                     class="form-control select2 @if($errors->has('signal_open')) is-invalid @endif"
@@ -62,7 +62,7 @@
                                     </p>
                                 @endif
                             </div>
-                            <div class="col-md-4 form-group">
+                            <div class="col-md-3 form-group">
                                 <label>{{(__('signal.price_open'))}} <span class="red"> *</span></label>
                                 <input  step="0.01" type="number" name="price_open" autocomplete="off"
                                         class="form-control @if($errors->has('price_open')) is-invalid @endif"
@@ -73,10 +73,7 @@
                                     </p>
                                 @endif
                             </div>
-
-                        </div>
-                        <div class="row">
-                        <div class="col-md-4 form-group">
+                            <div class="col-md-3 form-group">
                                 <label>{{(__('signal.open_time'))}} <span class="red"> *</span></label>
                                 <div class="input-group date-time" id="open_time"
                                      data-target-input="nearest">
@@ -96,7 +93,10 @@
                                     @endif
                                 </div>
                             </div>
-                        <div class="col-md-4 form-group">
+                        </div>
+                        <div class="row">
+
+                            <div class="col-md-3 form-group">
                                 <label>{{(__('signal.signal_close'))}} <span class="red"> *</span></label>
                                 <select
                                     class="form-control select2 @if($errors->has('signal_close')) is-invalid @endif"
@@ -113,7 +113,7 @@
                                     </select>
                             </div>
 
-                            <div class="col-md-4 form-group">
+                            <div class="col-md-3 form-group">
                                 <label>{{(__('signal.price_close'))}} <span class="red"> *</span></label>
                                 <input  step="0.01" type="number" name="price_close" autocomplete="off"
                                         class="form-control @if($errors->has('price_close')) is-invalid @endif"
@@ -124,15 +124,7 @@
                                     </p>
                                 @endif
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-4 form-group">
-                                <label>{{(__('signal.profit'))}}</label>
-                                <input step="0.01" readonly="true" type="number" name="profit" autocomplete="off"
-                                        class="form-control"
-                                        value="{{$signal->profit}}">
-                            </div>
-                            <div class="col-md-4 form-group">
+                            <div class="col-md-3 form-group">
                                 <label>{{(__('signal.close_time'))}} <span class="red"> *</span></label>
                                 <div class="input-group date-time" id="close_time"
                                      data-target-input="nearest">
@@ -152,6 +144,48 @@
                                     @endif
                                 </div>
                             </div>
+
+                            <div class="col-md-3 form-group">
+                                <label>{{(__('signal.profit'))}}</label>
+                                <input step="0.01" readonly="true" type="number" name="profit" autocomplete="off"
+                                        class="form-control"
+                                        value="{{$signal->profit}}">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3 form-group">
+                                    <label>Win Ratio</label>
+                                    <div class="input-group date-time" id="close_time"
+                                        data-target-input="nearest">
+                                        <input type="number"  name="win_ratio"
+                                            value="{{ $signal->win_ratio ?? '' }}" autocomplete="off"
+                                            placeholder="Win Ratio"
+                                            step="1"  type="number"
+                                            class="form-control  @if($errors->has('win_ratio')) is-invalid @endif">
+                                        @if($errors->has('win_ratio'))
+                                            <p class="invalid-feedback">
+                                                {{ $errors->first('win_ratio') }}
+                                            </p>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="col-md-3 form-group">
+                                <label>Total Trade</label>
+                                <div class="input-group date-time" id="close_time"
+                                     data-target-input="nearest">
+                                    <input type="number"  name="total_trade"
+                                           value="{{ $signal->total_trade ?? '' }}" autocomplete="off"
+                                           placeholder="Total Trade"
+                                           step="1"  type="number"
+                                           class="form-control  @if($errors->has('total_trade')) is-invalid @endif">
+                                    @if($errors->has('total_trade'))
+                                        <p class="invalid-feedback">
+                                            {{ $errors->first('total_trade') }}
+                                        </p>
+                                    @endif
+                                </div>
+                            </div>
+
 
                         </div>
 

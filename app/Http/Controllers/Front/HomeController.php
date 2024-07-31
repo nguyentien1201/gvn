@@ -59,17 +59,16 @@ class HomeController
         $dataChartProfit = (new GreenAlpha())->getCurrentYearProfitSum();
 
         $code = $data_chart->pluck('code')->toArray();
-        $total = $data_chart->pluck('total')->toArray();
+        $total = $data_chart->pluck('total_trade')->toArray();
         $winratio = $data_chart->pluck('win_ratio')->toArray();
-        $startDate = $data_chart->pluck('start_trade')->toArray();
+        // $startDate = $data_chart->pluck('start_trade')->toArray();
         $chart_data = [
             'code' => $code,
             'total' => $total,
             'winratio' => $winratio,
-            'startDate' => $startDate
+            // 'startDate' => $startDate
         ];
 
-        // dd($default_chart);
         return view('front.green_alpha',compact('signals',
         'chart_data','dataChartProfit'));
     }
