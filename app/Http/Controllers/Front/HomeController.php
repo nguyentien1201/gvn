@@ -56,7 +56,8 @@ class HomeController
     {
         $signals = (new GreenAlpha())->getListSignalsByGroup();
         $data_chart = (new GreenAlpha())->getDataChartSignals();
-        // dd($data_chart);
+        $dataChartProfit = (new GreenAlpha())->getCurrentYearProfitSum();
+
         $code = $data_chart->pluck('code')->toArray();
         $total = $data_chart->pluck('total')->toArray();
         $winratio = $data_chart->pluck('win_ratio')->toArray();
@@ -68,13 +69,13 @@ class HomeController
             'startDate' => $startDate
         ];
 
-        $nas100 = $this->getHistoryAlphaSignal(1);
-        $default_chart = $nas100['data'];
+        // dd($default_chart);
         return view('front.green_alpha',compact('signals',
-        'chart_data','default_chart'));
+        'chart_data','dataChartProfit'));
     }
     public function getHistorySignal($id)
     {
+
         $data = (new GreenBeta())->getSignalsById($id);
         $dataSort =$data ;
         usort($dataSort, function($a, $b) {
@@ -100,6 +101,15 @@ class HomeController
     }
     public function getHistoryAlphaSignal($id)
     {
+        $profitByMonth = (new GreenAlpha())->getProfitByMonth($id);
+        $labels = $profitByMonth->pluck('month_year')->toArray();
+        $profitMonth = [
+            'profit' => $profitByMonth->pluck('profit')->toArray(),
+        ];
+        $labels = array_map(function($value) {
+            return str_replace('-00', '', $value);
+        }, $labels);
+        $profitMonth['lable'] = $labels;
         $data = (new GreenAlpha())->getHistorySignal($id);
 
         $dataSort =$data ;
@@ -108,7 +118,7 @@ class HomeController
         });
         $datacollect = collect($dataSort);
 
-        $profits = $datacollect->pluck('profit')->toArray();
+        $profits = $profitMonth['profit'];
         $sum = 100;
         $sumArray = [];
         foreach ($profits as $value) {
@@ -117,7 +127,8 @@ class HomeController
         }
         $result = [
             'list' => $data,
-            'profit' => $sumArray
+            'profit' => $sumArray,
+            'profitByMonth' => $profitMonth
         ];
         return [
             'status' => 200,

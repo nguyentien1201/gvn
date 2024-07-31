@@ -69,12 +69,11 @@ class GreenBeta extends Model
     }
     public function getListSignalsByGroup()
     {
-        // # GreenBeta::select('*', DB::raw('MAX(updated_at) as updated_at'))->whereIn('code',$stocks)->with(['MstStock'])->groupBy('code')->orderBy('updated_at', 'desc')->get();
+        // GreenBeta::select('*', DB::raw('MAX(updated_at) as updated_at'))->whereIn('code',$stocks)->with(['MstStock'])->groupBy('code')->orderBy('updated_at', 'desc')->get();
         // $query = self::with(['FreeSignal','mstStock'])->groupBy('code')->select('*', DB::raw('MAX(open_time) as sort_time'));
         // $data = $query->get();
         $latestTimesSubQuery = self::select('code', DB::raw('MAX(open_time) as latest_open_time'))
         ->groupBy('code');
-
             $query = self::joinSub($latestTimesSubQuery, 'latest_times', function ($join) {
             $join->on('green_beta.code', '=', 'latest_times.code')
             ->on('green_beta.open_time', '=', 'latest_times.latest_open_time');

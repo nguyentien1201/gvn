@@ -247,4 +247,52 @@ class GreenAlpha extends Model
         }
         return $formattedResults;
     }
+    public function getProfitByMonth($id){
+
+        $stocksAndSignals = GreenAlphaPortfolio::where('code_id',$id)->orderBy('month_year','asc')->select('profit',
+        DB::raw('STR_TO_DATE(month_year, "%m/%Y") as month_year')
+        )->get();
+        foreach ($stocksAndSignals as $item) {
+            $item->profit = round($item->profit * 100, 2);
+        }
+        return $stocksAndSignals;
+    }
+    public function getCurrentYearProfitSum()
+    {
+        // Retrieve profit data by month
+        // $profitByMonth = (new GreenAlpha())->getProfitByMonth($id);
+        $profit = GreenAlphaPortfolio::select('month_year','profit','code')->orderBy('month_year','desc')->get();
+        // Get the current year
+        $currentYear = date('Y');
+
+        // Filter data to include only entries from the current year
+        $currentYearProfits = $profit->filter(function($item) use ($currentYear) {
+            return strpos($item['month_year'], $currentYear) !== false;
+        });
+        $groupedByCode = $currentYearProfits->groupBy('code');
+
+
+        $sumProfitYear = [];
+        $sumMonth = [];
+        $lable = [];
+        foreach ($groupedByCode as $key => $value) {
+            $sum = 1;
+            $lable[] = $key;
+            foreach ($value as $i => $item) {
+
+                if($i==0) {
+                    $sumMonth[] =round(($item['profit']*100 ?? 0) ,2) ;
+                }
+                $sum = $sum + $sum*($item['profit'] ?? 0);
+
+            }
+            $sumProfitYear[] = round($sum,2);
+        }
+        $result = [
+            'lable'=>$lable,
+            'profitMonth' => $sumMonth,
+            'profitYear' => $sumProfitYear
+        ];
+        return $result;
+    }
 }

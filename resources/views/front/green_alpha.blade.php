@@ -292,39 +292,6 @@
     </section>
 
 
-    <section id="contentDiv" class="features text-left  mt-5">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <h2 class="text-center mb-4"><span class="title-trading-first label-color color-home">HISTORICAL
-                            PERFORMANCE</span>
-
-                    </h2>
-                    <!-- Data and Chart Section -->
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="row">
-                                <!-- Data Section -->
-                                <div class="col-md-6">
-                                    <div class="table-responsive">
-                                        <table style="width:100%" class="table table-striped table-bordered"
-                                            id="popupDataTable"> </table>
-                                    </div>
-                                </div>
-                                <!-- Chart Section -->
-                                <div class="col-md-6">
-                                    <canvas id="lineChart" style="width:100%;max-height:480px" width="400"
-                                        height="380"></canvas>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </section>
     <section class="features text-left mt-5">
         <div class="container">
             <div class="row">
@@ -384,7 +351,53 @@
     <!-- Footer -->
 
 
+    <div class="modal fade" id="dataTableModal" tabindex="-1" aria-labelledby="dataTableModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="dataTableModalLabel">History Signal</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="text-center mb-4"><span class="title-trading-first label-color color-home">HISTORICAL
+                            PERFORMANCE</span>
 
+                    </h2>
+                    <!-- Data and Chart Section -->
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-12 text-center m-auto">
+                                    <canvas id="myChartById" style="width:100%" width="400" height="230"></canvas>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <!-- Data Section -->
+                                <div class="col-md-6">
+                                    <div class="table-responsive">
+                                        <table style="width:100%" class="table table-striped table-bordered"
+                                            id="popupDataTable"> </table>
+                                    </div>
+                                </div>
+                                <!-- Chart Section -->
+                                <div class="col-md-6">
+                                    <canvas id="lineChart" style="width:100%;max-height:480px" width="400"
+                                        height="380"></canvas>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>
@@ -403,6 +416,7 @@
     $(document).ready(function () {
         console.log(@json($signals));
         let lineChart = null;
+        let barChart = null;
         $(document).on('click', '.dataTable tbody tr', function () {
             var dataId = $(this).data('id');
             if (dataId == undefined) {
@@ -513,7 +527,45 @@
                         }
 
                     });
+                    if (barChart) {
+                        // If it exists, destroy it before creating a new one
+                        barChart.destroy();
+                    }
+                    var ctx = document.getElementById('myChartById').getContext('2d');
+                    barChart = new Chart(ctx, {
+                        type: 'bar',
+                        data: {
+                            labels: data.profitByMonth.lable,
+                            datasets: [{
+                                data: data.profitByMonth.profit,
+                                label: 'Profit By Month',
+                                backgroundColor: '#34a853',
+                                borderWidth: 1,
+                                fontweight: 600,
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                x: {
+                                    ticks: {
+                                        font: {
+                                            weight: 'bold' // Makes x-axis labels bold
+                                        }
+                                    }
+                                },
+                                y: {
+                                    ticks: {
+                                        font: {
+                                            weight: 'bold' // Makes y-axis labels bold
+                                        }
+                                    }
+                                }
+                            }
 
+                        },
+
+                    });
+                    $('#dataTableModal').modal('show');
                 },
                 error: function (error) {
                     console.log(error);
@@ -521,108 +573,7 @@
             });
 
         });
-        var popupDataTable = $('#popupDataTable').DataTable({
-            destroy: true,
-            data: @json($default_chart['list']),
-            searching: false,
-            lengthChange: false,
-            responsive: true,
-            paging: false,
-            info: false,
-            scrollY: '400px',
-            scrollX: false,
 
-            columns: [
-                { data: 'code', title: 'Symbol' },
-                { data: 'price_open', title: 'Price Open' },
-                { data: 'open_time', title: 'Open Time' },
-                { data: 'price_close', title: 'Price Close' },
-                { data: 'close_time', title: 'Close Time' },
-                { data: 'profit', title: 'Profit' },
-            ],
-            columnDefs: [
-                {
-                    targets: 0, // Index of the 'code' column
-                    createdCell: function (td, cellData, rowData, row, col) {
-                        $(td).css('text-align', 'right');
-                        $(td).css('font-weight', 'bold');
-                    }
-                },
-                {
-                    targets: 2, // Index of the open_time column
-                    render: function (data, type, row) {
-                        if (type === 'display' || type === 'filter') {
-                            return moment(data).format('Y-m-d HH:mm'); // Format as HH:mm
-                        }
-                        return data;
-                    }
-                },
-                {
-                    targets: 4, // Index of the open_time column
-                    render: function (data, type, row) {
-                        if (type === 'display' || type === 'filter') {
-                            return moment(data).format('Y-m-d HH:mm'); // Format as HH:mm
-                        }
-                        return data;
-                    }
-                },
-                {
-                    targets: 5, // Index of the date column
-                    createdCell: function (td, cellData, rowData, row, col) {
-                        if (cellData >= 0) {
-                            color = '#b6d7a8';
-
-                        } else {
-                            color = '#e06666';
-                        }
-                        $(td).css('background-color', color);
-                        $(td).css('box-shadow', 'none');
-                    },
-                    render: function (data, type, full, meta) {
-                        return `${data}%`;
-                    }
-                },
-            ],
-            headerCallback: function (thead, data, start, end, display) {
-                $(thead).find('th').css('font-size', '0.9em'); // Set the font size here
-            },
-            createdRow: function (row, data, dataIndex) {
-                // Apply font size style to each cell in the row
-                $('td', row).css('font-size', '0.95em'); // Set the font size as needed
-            }
-
-        });
-        popupDataTable.columns.adjust().draw();
-        $('#contentDiv').on('shown.bs.toggle', function () {
-            popupDataTable.columns.adjust().responsive.recalc();
-
-        });
-        var ctxline = document.getElementById('lineChart').getContext('2d');
-        lineChart = new Chart(ctxline, {
-            type: 'line',
-            data: {
-                labels: @json($default_chart['profit']).map((value, index) => index),
-                datasets: [{
-                    label: 'Profit',
-                    data: @json($default_chart['profit']),
-                    backgroundColor: '#34a853',
-                    borderColor: 'green',
-                    borderWidth: 0.5,
-                    fill: true,
-
-                }]
-            },
-            options: {
-                scales: {
-                    x: {
-                        beginAtZero: false,
-                        min: @json($default_chart['profit']) // Ẩn nhãn và đường biểu đồ của trục x
-                    }
-                },
-
-            }
-
-        });
         var indices = $('#indices-table').DataTable({
             searching: false,
 
@@ -700,26 +651,26 @@
 
                     }
                 },
-            {
-                            targets: 3, // Index of the open_time column
-                            render: function(data, type, row) {
-                                if(data == null || data == '') return '';
-                                if (type === 'display' || type === 'filter') {
-                                    return moment(data).format('HH:mm'); // Format as HH:mm
-                                }
-                                return data;
-                            }
-                        },
-                        {
-                            targets: 6, // Index of the open_time column
-                            render: function(data, type, row) {
-                                if(data == null || data == '') return '';
-                                if (type === 'display' || type === 'filter') {
-                                    return moment(data).format('HH:mm'); // Format as HH:mm
-                                }
-                                return data;
-                            }
-                        },
+                {
+                    targets: 3, // Index of the open_time column
+                    render: function (data, type, row) {
+                        if (data == null || data == '') return '';
+                        if (type === 'display' || type === 'filter') {
+                            return moment(data).format('HH:mm'); // Format as HH:mm
+                        }
+                        return data;
+                    }
+                },
+                {
+                    targets: 6, // Index of the open_time column
+                    render: function (data, type, row) {
+                        if (data == null || data == '') return '';
+                        if (type === 'display' || type === 'filter') {
+                            return moment(data).format('HH:mm'); // Format as HH:mm
+                        }
+                        return data;
+                    }
+                },
                 {
                     targets: 0, // Index of the 'code' column
                     createdCell: function (td, cellData, rowData, row, col) {
@@ -743,15 +694,22 @@
     });
 </script>
 <script>
-    console.log(@json($chart_data));
+    console.log(@json($dataChartProfit));
     var ctx = document.getElementById('myChart').getContext('2d');
     var myChart = new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: @json($chart_data['code']),
+            labels: @json($dataChartProfit['lable']),
             datasets: [{
-                data: @json($chart_data['winratio']),
-                label: 'Win Ratio',
+                data: @json($dataChartProfit['profitMonth']),
+                label: 'Profit Month Current',
+                backgroundColor: '#40f35c',
+                borderWidth: 1,
+                fontweight: 600,
+            },
+            {
+                data: @json($dataChartProfit['profitYear']),
+                label: 'Profit Year Current',
                 backgroundColor: '#34a853',
                 borderWidth: 1,
                 fontweight: 600,
@@ -778,4 +736,5 @@
         },
 
     });
+
 </script>
