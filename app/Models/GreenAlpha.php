@@ -59,11 +59,12 @@ class GreenAlpha extends Model
         $query = self::where('code',$id)->with('MstStock')->select();
         return $query->orderBy('id', 'desc')->paginate(ConstantModel::$PAGINATION);
     }
-    public function calculateProfitToday(){
+    public function calculateProfitToday($id){
+
         $todayStart = now()->startOfDay();
         $todayEnd = now()->endOfDay();
         // Retrieve all GreenAlpha instances created today
-        $todaysInstances = $this->whereBetween('open_time', [$todayStart, $todayEnd])->get();
+        $todaysInstances = $this->whereBetween('open_time', [$todayStart, $todayEnd])->where('code',$id)->get();
 
         // Sum the profits for each instance
         $totalProfitToday = 0;
@@ -100,13 +101,13 @@ class GreenAlpha extends Model
     }
     public function getListSignalsByGroup()
     {
-        $today = now()->toDateString();
+        $today = Carbon::today()->toDateString();
 
 // Query MstStock and load related Signal records with open_time of today
         $alphaStock = config('stock.green-alpha');
         $stocksAndSignals = MstStock::with(['AlphaSignal' => function($query) use ($today) {
             $query->whereDate('open_time', '=', $today)->orderBy('open_time', 'desc')
-            ->select('*', DB::raw('count(*) as no_trading'),)->first();
+            ->select('*', DB::raw('count(*) as no_trading'))->groupBy('code')->get();
         },'FreeSignal'])->whereIn('code',$alphaStock)->get();
 
         foreach ($stocksAndSignals as $key => $value) {
@@ -142,7 +143,7 @@ class GreenAlpha extends Model
                 'close_time' => $signal->close_time ?? '',
                 'id_code' => $signal->code ?? '',
                 'group' => $value->group ?? '',
-                'profit_today'=> $signal->calculateProfitToday() ?? '',
+                'profit_today'=> $this->calculateProfitToday($signal->code) ?? '',
                 'no_trading'=> $signal->no_trading ?? '',
             ];
         }
