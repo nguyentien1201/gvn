@@ -27,6 +27,11 @@ class MstStock extends Model
     }
     public function getListMstStockIds()
     {
+        $query = self::select();
+        return $query->orderBy('id', 'desc')->get();
+    }
+    public function getListMstStockIdsAlpha()
+    {
         $alphaStock = config('stock.green-alpha');
         $stocksAndSignals = MstStock::with(['AlphaSignal'=> function($query){
             $query->select('*')->orderBy('total_trade','desc')->first();

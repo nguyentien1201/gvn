@@ -38,7 +38,7 @@ class GreenAlphaController extends AdminController
 
     public function create()
     {
-        $mstStocks = (new MstStock())->getListMstStockIds();
+        $mstStocks = (new MstStock())->getListMstStockIdsAlpha();
         return view('admin.green_alpha.create',compact('mstStocks'));
     }
 
@@ -65,7 +65,7 @@ class GreenAlphaController extends AdminController
     public function edit($id)
     {
         $signal = GreenAlpha::find($id);
-        $mstStocks = (new MstStock())->getListMstStockIds();
+        $mstStocks = (new MstStock())->getListMstStockIdsAlpha();
         return view('admin.green_alpha.edit', compact('signal','mstStocks'));
     }
 

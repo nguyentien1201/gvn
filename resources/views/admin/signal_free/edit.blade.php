@@ -27,9 +27,9 @@
                                             class="form-control select2 @if($errors->has('code')) is-invalid @endif">
                                         <option value="">{{__('panel.please_choose')}}</option>
                                         @foreach($mstStocks as $mstStock)
-                                            <option value="{{$mstStock['id']}}"
-                                            @if($signalsFree->code == $mstStock['id']) selected @endif
-                                                    @if(old('code') == $mstStock['id']) selected @endif>{{$mstStock['code']}}</option>
+                                            <option value="{{$mstStock->id}}"
+                                            @if($signalsFree->code == $mstStock->id) selected @endif
+                                                    @if(old('code') == $mstStock->id) selected @endif>{{$mstStock->code}}</option>
                                         @endforeach
                                     </select>
                                     <input type="hidden" name="code" value="{{$signalsFree->code}}">
