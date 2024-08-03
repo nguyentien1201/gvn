@@ -357,9 +357,10 @@
                                             id="popupDataTable">
                                             <thead>
                                                 <tr id="code_header">
-                                                    <th colspan="5" style="text-align:center" class="code_header"></th>
+                                                    <th colspan="6" style="text-align:center" class="code_header"></th>
                                                 </tr>
                                                 <tr>
+                                                    <th>Signal</th>
                                                     <th>Price Open</th>
                                                     <th>Open Time</th>
                                                     <th>Price Close</th>
@@ -374,7 +375,7 @@
                                     </div>
                                 </div>
                                 <!-- Chart Section -->
-                                <div class="col-md-6">
+                                <div class="col-md-6 mt-3">
                                     <canvas id="lineChart" style="width:100%;max-height:480px" width="400"
                                         height="380"></canvas>
                                 </div>
@@ -441,7 +442,7 @@
                             emptyTable: "No data available"
                         },
                         columns: [
-
+                            { data: 'signal_open' },
                             { data: 'price_open'},
                             { data: 'open_time'},
                             { data: 'price_close'},
@@ -450,25 +451,26 @@
                         ],
                         columnDefs: [
                             {
-                                targets: 1, // Index of the open_time column
+                                targets: 2, // Index of the open_time column
                                 render: function (data, type, row) {
+                                    console.log(data);
                                     if (type === 'display' || type === 'filter') {
-                                        return moment(data).format('Y-m-d HH:mm'); // Format as HH:mm
+                                        return moment(data).format('YYYY-MM-DD HH:mm'); // Format as HH:mm
                                     }
                                     return data;
                                 }
                             },
                             {
-                                targets: 3, // Index of the open_time column
+                                targets:4, // Index of the open_time column
                                 render: function (data, type, row) {
                                     if (type === 'display' || type === 'filter') {
-                                        return moment(data).format('Y-m-d HH:mm'); // Format as HH:mm
+                                        return moment(data).format('YYYY-MM-DD HH:mm'); // Format as HH:mm
                                     }
                                     return data;
                                 }
                             },
                             {
-                                targets: 4, // Index of the date column
+                                targets: 5, // Index of the date column
                                 createdCell: function (td, cellData, rowData, row, col) {
                                     if (cellData >= 0) {
                                         color = '#b6d7a8';
@@ -586,7 +588,7 @@
                         scrollX: false,
                         scrollY: '400px',
                         columns: [
-                            { data: 'code', title: 'Symbol' },
+                            { data: 'signal_open' },
                             { data: 'price_open', title: 'Price Open' },
                             { data: 'open_time', title: 'Open Time' },
                             { data: 'price_close', title: 'Price Close' },
