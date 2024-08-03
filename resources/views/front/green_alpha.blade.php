@@ -234,7 +234,8 @@
 
                     </h2>
                     <!-- Data and Chart Section -->
-                    <h5 class="color-home"><?php echo date('Y-m-d'); ?></h5>
+                    <h5 class="color-home">Current Date: <?php echo date('Y-m-d'); ?></h5>
+                    <p>Timezone: {{ date_default_timezone_get() }}</p>
                     <div class="row">
                         <!-- Chart Section -->
                         <div class="col-md-12 text-center form-group">
