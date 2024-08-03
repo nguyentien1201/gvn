@@ -805,7 +805,7 @@
                     render: function (data, type, row) {
                         if (data == null || data == '') return '';
                         if (type === 'display' || type === 'filter') {
-                            return moment.utc(data).format('YYYY-MM-DD HH:mm'); // Format as HH:mm
+                            return moment.utc(data).format('HH:mm'); // Format as HH:mm
                         }
                         return data;
                     }
@@ -815,7 +815,7 @@
                     render: function (data, type, row) {
                         if (data == null || data == '') return '';
                         if (type === 'display' || type === 'filter') {
-                            return moment.utc(data).format('YYYY-MM-DD HH:mm'); // Format as HH:mm
+                            return moment.utc(data).format('HH:mm'); // Format as HH:mm
                         }
                         return data;
                     }
