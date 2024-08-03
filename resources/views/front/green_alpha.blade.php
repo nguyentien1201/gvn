@@ -606,7 +606,7 @@
                                 targets: 2, // Index of the open_time column
                                 render: function (data, type, row) {
                                     if (type === 'display' || type === 'filter') {
-                                        return moment(data).format('Y-m-d HH:mm'); // Format as HH:mm
+                                        return moment(data).format('YYYY-MM-DD HH:mm'); // Format as HH:mm
                                     }
                                     return data;
                                 }
@@ -615,7 +615,7 @@
                                 targets: 4, // Index of the open_time column
                                 render: function (data, type, row) {
                                     if (type === 'display' || type === 'filter') {
-                                        return moment(data).format('Y-m-d HH:mm'); // Format as HH:mm
+                                        return moment(data).format('YYYY-MM-DD HH:mm'); // Format as HH:mm
                                     }
                                     return data;
                                 }
