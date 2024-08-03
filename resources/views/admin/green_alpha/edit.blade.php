@@ -207,6 +207,18 @@ $(document).ready(function () {
         var price_close = $(this).val();
         var price_open = $("input[name='price_open']").val();
         var profit =price_close- price_open;
+        var signal_open = $("select[name='signal_open']").val();
+        var profit = null;
+        if(signal_open.trim().toLowerCase() =='buy'){
+            profit =price_close- price_open;
+        }
+        if(signal_open.trim().toLowerCase() =='sell'){
+            profit =price_open - price_close;
+        }
+        if(profit){
+            profit =profit/price_open*100;
+            profit = profit.toFixed(2);
+        }
         $("input[name='profit']").val(profit);
     });
 });

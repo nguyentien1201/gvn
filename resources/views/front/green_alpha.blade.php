@@ -230,8 +230,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <h2 class="text-center mb-4"><span class="title-trading-first label-color color-home">SIGNAL
-                            DASHBOARD</span>
-
+                        DASHBOARD</span>
                     </h2>
                     <!-- Data and Chart Section -->
                     <h5 class="color-home">Current Date: <?php echo date('Y-m-d'); ?></h5>
