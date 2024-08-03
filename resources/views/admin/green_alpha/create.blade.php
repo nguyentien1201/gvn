@@ -69,8 +69,8 @@
                                 <label>{{(__('signal.open_time'))}} <span class="red"> *</span></label>
                                 <div class="input-group date-time" id="date_action"
                                      data-target-input="nearest">
-                                    <input type="text" data-target="#date_action" name="date_action"
-                                           value="{{old('date_action')}}" autocomplete="off"
+                                    <input type="text" data-target="#date_action" name="open_time"
+                                           value="{{old('open_time')}}" autocomplete="off"
                                            placeholder="{{__('signal.time_place')}}"
                                            class="form-control datetimepicker-input datetimepicker @if($errors->has('date_action')) is-invalid @endif">
                                     <div class="input-group-append" data-target="#date_action"
@@ -78,9 +78,9 @@
                                         <div class="input-group-text"><i class="fa fa-calendar"></i>
                                         </div>
                                     </div>
-                                    @if($errors->has('date_action'))
+                                    @if($errors->has('open_time'))
                                         <p class="invalid-feedback">
-                                            {{ $errors->first('date_action') }}
+                                            {{ $errors->first('open_time') }}
                                         </p>
                                     @endif
                                 </div>
