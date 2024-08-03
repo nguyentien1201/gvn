@@ -80,21 +80,15 @@ class GreenAlpha extends Model
     {
         $profit = NULL;
         $type= strtolower($this->signal_open);
-
+        if(!empty($this->profit)){
+            return round($this->profit, 2);
+        }
         if(!empty($this->price_close) && $this->price_open > 0){
             if(   $type== 'buy'){
-                $profit = ($this->price_close - $this->price_open)/$this->price_open * 100;
+                $profit = ($this->price_close - $this->price_open)/$this->price_open;
             }
             if( $type== 'sell'){
-                $profit = ( $this->price_open - $this->price_close)/$this->price_open * 100;
-            }
-
-        }elseif($this->FreeSignal->last_sale > 0) {
-            if($type== 'buy'){
-                $profit = ($this->FreeSignal->last_sale - $this->price_open)/$this->price_open * 100;
-            }
-            if( $type== 'sell'){
-                $profit = ( $this->price_open - $this->FreeSignal->last_sale)/$this->price_open * 100;
+                $profit = ( $this->price_open - $this->price_close)/$this->price_open;
             }
         }
         return round($profit, 2);
@@ -105,10 +99,18 @@ class GreenAlpha extends Model
 
 // Query MstStock and load related Signal records with open_time of today
         $alphaStock = config('stock.green-alpha');
-        $stocksAndSignals = MstStock::with(['AlphaSignal' => function($query) use ($today) {
-            $query->whereDate('open_time', '=', $today)->orderBy('open_time', 'desc')
-            ->select('*', DB::raw('count(*) as no_trading'))->groupBy('code')->get();
-        },'FreeSignal'])->whereIn('code',$alphaStock)->get();
+        $subQuery = GreenAlpha::select('code', DB::raw('MAX(open_time) as last_open_time'), DB::raw('count(*) as no_trading'))
+        ->whereDate('open_time', '=', $today)
+        ->groupBy('code');
+
+        $stocksAndSignals = MstStock::with(['AlphaSignal' => function($query) use ($today,$subQuery) {
+            $query->joinSub($subQuery, 'latest_signals', function($join) {
+                $join->on('green_alpha.code', '=', 'latest_signals.code')
+                     ->on('green_alpha.open_time', '=', 'latest_signals.last_open_time');
+            })->select('*')
+            ->groupBy('green_alpha.code');
+
+        }])->whereIn('code',$alphaStock)->get();
 
         foreach ($stocksAndSignals as $key => $value) {
 
@@ -120,7 +122,6 @@ class GreenAlpha extends Model
                         'signal_open' =>'',
                         'price_open' => '',
                         'open_time' => '',
-                        'last_sale' => '',
                         'profit' => '',
                         'signal_close' => '',
                         'price_close' => null,
@@ -136,7 +137,6 @@ class GreenAlpha extends Model
                 'price_open' => $signal->price_open ?? '',
                 'open_time' => $signal->open_time  ?? '',
                 'code' => $value->code  ?? '',
-                'last_sale' => $value->FreeSignal->last_sale  ?? '',
                 'profit' => $signal->calculateProfit() ??'',
                 'signal_close' => $signal->signal_close  ?? '',
                 'price_close' => $signal->price_close > 0 ? $signal->price_close : null,
