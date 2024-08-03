@@ -455,7 +455,7 @@
                                 render: function (data, type, row) {
                                     console.log(data);
                                     if (type === 'display' || type === 'filter') {
-                                        return moment(data).format('YYYY-MM-DD HH:mm'); // Format as HH:mm
+                                        return moment.utc(data).format('YYYY-MM-DD HH:mm'); // Format as HH:mm
                                     }
                                     return data;
                                 }
@@ -464,7 +464,7 @@
                                 targets:4, // Index of the open_time column
                                 render: function (data, type, row) {
                                     if (type === 'display' || type === 'filter') {
-                                        return moment(data).format('YYYY-MM-DD HH:mm'); // Format as HH:mm
+                                        return moment.utc(data).format('YYYY-MM-DD HH:mm'); // Format as HH:mm
                                     }
                                     return data;
                                 }
@@ -606,7 +606,7 @@
                                 targets: 2, // Index of the open_time column
                                 render: function (data, type, row) {
                                     if (type === 'display' || type === 'filter') {
-                                        return moment(data).format('YYYY-MM-DD HH:mm'); // Format as HH:mm
+                                        return moment.utc(data).format('YYYY-MM-DD HH:mm'); // Format as HH:mm
                                     }
                                     return data;
                                 }
@@ -615,7 +615,7 @@
                                 targets: 4, // Index of the open_time column
                                 render: function (data, type, row) {
                                     if (type === 'display' || type === 'filter') {
-                                        return moment(data).format('YYYY-MM-DD HH:mm'); // Format as HH:mm
+                                        return moment.utc(data).format('YYYY-MM-DD HH:mm'); // Format as HH:mm
                                     }
                                     return data;
                                 }
@@ -803,7 +803,7 @@
                     render: function (data, type, row) {
                         if (data == null || data == '') return '';
                         if (type === 'display' || type === 'filter') {
-                            return moment(data).format('HH:mm'); // Format as HH:mm
+                            return moment.utc(data).format('YYYY-MM-DD HH:mm'); // Format as HH:mm
                         }
                         return data;
                     }
@@ -813,7 +813,7 @@
                     render: function (data, type, row) {
                         if (data == null || data == '') return '';
                         if (type === 'display' || type === 'filter') {
-                            return moment(data).format('HH:mm'); // Format as HH:mm
+                            return moment.utc(data).format('YYYY-MM-DD HH:mm'); // Format as HH:mm
                         }
                         return data;
                     }
