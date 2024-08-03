@@ -304,7 +304,7 @@
                                         height="230"></canvas>
                                 </div>
                             </div>
-                            <div class="row">
+                            <!-- <div class="row">
                                 <div class="col-md-12 text-center m-auto">
                                     <div class="table-responsive">
                                         <table class="table table-striped table-bordered" id="chart_table">
@@ -325,7 +325,7 @@
                                     </div>
 
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
@@ -438,6 +438,7 @@
                         scrollX: false,
                         scrollY: '400px',
                         autoWidth: true,
+                        order: [[4, 'desc']],
                         language: {
                             emptyTable: "No data available"
                         },
@@ -595,6 +596,7 @@
                             { data: 'close_time', title: 'Close Time' },
                             { data: 'profit', title: 'Profit' },
                         ],
+                        order: [[4, 'desc']],
                         columnDefs: [
                             {
                                 targets: 0, // Index of the 'code' column

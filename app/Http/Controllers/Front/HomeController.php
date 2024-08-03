@@ -55,10 +55,11 @@ class HomeController
     public function greenAlpha(Request $request)
     {
         $signals = (new GreenAlpha())->getListSignalsByGroup();
+
         $data_chart = (new GreenAlpha())->getDataChartSignals();
         $dataChartProfit = (new GreenAlpha())->getCurrentYearProfitSum();
         $data_chart_default = $this->getHistoryAlphaSignal(1);
-
+        // dd($data_chart_default);
         $code = $data_chart->pluck('code')->toArray();
         $total = $data_chart->pluck('total_trade')->toArray();
         $winratio = $data_chart->pluck('win_ratio')->toArray();
