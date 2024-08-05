@@ -17,6 +17,16 @@ class GreenAlphaPortfolio extends Model
     protected $fillable = [
         'month_year', 'profit', 'code_id','code','win_ratio','total_trade'
     ];
+    public function getPortfolio($id){
+        $data  = self::where('code_id',$id)->select('id','code_id',
+        DB::raw("DATE_FORMAT(STR_TO_DATE(month_year, '%m/%Y'), '%Y-%m') as month_year"),
+        'profit')->orderBy('month_year','desc')->get();
+        return $data;
 
+    }
+    public function getListCode(){
+        $data = $this->orderBy('code_id','asc')->groupBy('code_id')->select('id','code')->paginate(ConstantModel::$PAGINATION);
+        return $data;
+    }
 
 }

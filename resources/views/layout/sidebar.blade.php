@@ -70,7 +70,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{route('admin.green-alpha.portfolio')}}"
+                            <a href="{{route('admin.portfolio.index')}}"
                                class="nav-link @if(!empty($path) && $path =='green-alpha') active @endif">
                                 <i class="nav-icon far fa-user"></i>
                                 <p>

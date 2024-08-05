@@ -55,14 +55,14 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin'], fu
     Route::resource('green-beta', 'GreenBetaController')->middleware('admin');
     Route::resource('freesignal', 'SignalFreeController')->middleware('admin');
     Route::resource('green-alpha', 'GreenAlphaController')->middleware('admin');
-
-
+    Route::resource('portfolio', 'PortfolioController')->middleware('admin');
 
 });
 Route::get('admin/greenalpha/{id}', 'Admin\GreenAlphaController@getListMstock')->middleware('admin')->name('admin.green-alpha.list-stock');
+Route::get('admin/profolio/{id}', 'Admin\PortfolioController@getPortfolio')->middleware('admin')->name('admin.green-alpha.portfolio');
 Route::post('admin/green-alpha/import', 'Admin\GreenAlphaController@import')->middleware('admin')->name('admin.green-alpha.import');
 Route::get('admin/greenbeta/{id}', 'Admin\GreenBetaController@getListMstock')->middleware('admin')->name('admin.green-beta.list-stock');
 Route::post('admin/green-beta/import', 'Admin\GreenBetaController@import')->middleware('admin')->name('admin.green-beta.import');
-Route::get('admin/portfolio', 'Admin\GreenAlphaController@portfolio')->middleware('admin')->name('admin.green-alpha.portfolio');
+Route::get('admin/list-code', 'Admin\GreenAlphaController@portfolio')->middleware('admin')->name('admin.green-alpha.list-code');
 Route::post('admin/green-alpha/import-portfolio', 'Admin\GreenAlphaController@importPortfolio')->middleware('admin')->name('admin.green-alpha.import-portfolio');
 

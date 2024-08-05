@@ -129,7 +129,7 @@
                                 <div class="input-group date-time" id="close_time"
                                      data-target-input="nearest">
                                     <input type="text" data-target="#close_time" name="close_time"
-                                           value="{{old('close_time', $signal->close_time ? date('m-d-Y H:i', strtotime($signal->close_time)) : '')}}" autocomplete="off"
+                                           value="{{old('date_action', $signal->close_time ? date('m-d-Y H:i', strtotime($signal->close_time)) : '')}}" autocomplete="off"
                                            placeholder="{{__('signal.close_time')}}"
                                            class="form-control datetimepicker-input datetimepicker @if($errors->has('close_time')) is-invalid @endif">
                                     <div class="input-group-append" data-target="#close_time"
