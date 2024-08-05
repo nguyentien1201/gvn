@@ -233,8 +233,8 @@
                         DASHBOARD</span>
                     </h2>
                     <!-- Data and Chart Section -->
-                    <h5 class="color-home">Current Date: <?php echo date('Y-m-d'); ?></h5>
-                    <p>Timezone: {{ date_default_timezone_get() }}</p>
+                    <h5 class="color-home"><i>{{ (new DateTime('now', new DateTimeZone('GMT')))->format('Y-m-d H:i:s') }} GMT</i></h5>
+                    <p></p>
                     <div class="row">
                         <!-- Chart Section -->
                         <div class="col-md-12 text-center form-group">
@@ -300,7 +300,7 @@
                             <div class="row">
                                 <!-- Chart Section -->
                                 <div class="col-md-12 text-center m-auto">
-                                    <canvas id="myChart" style="width:100%;padding-left: 5.5em;" width="400"
+                                    <canvas id="myChart" style="width:100%" width="400"
                                         height="230"></canvas>
                                 </div>
                             </div>
@@ -755,10 +755,22 @@
                         } else {
                             color = '#e06666';
                         }
+                        $(td).css('font-weight', 'bold');
                         $(td).css('color', color);
                     }
                 },
-
+                {
+                    targets: 9, // Index of the date column
+                    createdCell: function (td, cellData, rowData, row, col) {
+                        if (cellData >= 0) {
+                            color = '#b6d7a8';
+                        } else {
+                            color = '#e06666';
+                        }
+                        $(td).css('font-weight', 'bold');
+                        $(td).css('color', color);
+                    }
+                },
                 {
                     targets: 1, // Index of the date column
                     createdCell: function (td, cellData, rowData, row, col) {
@@ -832,6 +844,12 @@
                     }
                 }
             ],
+            headerCallback: function(thead, data, start, end, display) {
+                $(thead).find('th').eq(7).css({
+                    'padding-left': '5px',
+                    'padding-right': '5px',
+                });
+            },
             createdRow: function (row, data, dataIndex) {
                 // Assuming 'code' is the property you want to use for data-id
                 $(row).attr('data-id', data.id_code);
