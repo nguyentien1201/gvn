@@ -159,7 +159,9 @@
         .width-120 {
             width: 120px;
         }
-
+        th{
+            text-align:center !important;
+        }
         .table-responsive {
             overflow-x: hidden !important;
         }
@@ -486,6 +488,12 @@
                                 }
                             },
                         ],
+                        headerCallback: function(thead, data, start, end, display) {
+                            $(thead).find('th').css({
+                                'text-align': 'center',
+                                'font-size': 'small'
+                            });
+                        },
                         createdRow: function (row, data, dataIndex) {
                             $('td', row).css('font-size', '0.95em');
                         }
@@ -638,6 +646,12 @@
                                 }
                             },
                         ],
+                        headerCallback: function(thead, data, start, end, display) {
+                            $(thead).find('th').css({
+                                'text-align': 'center',
+                                'font-size': 'small'
+                            });
+                        },
                         createdRow: function (row, data, dataIndex) {
                             $('td', row).css('font-size', '0.95em');
                         }
@@ -846,8 +860,7 @@
             ],
             headerCallback: function(thead, data, start, end, display) {
                 $(thead).find('th').eq(7).css({
-                    'padding-left': '5px',
-                    'padding-right': '5px',
+                   'padding':'.5em .5em'
                 });
             },
             createdRow: function (row, data, dataIndex) {
