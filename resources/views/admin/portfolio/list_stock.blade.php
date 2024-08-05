@@ -17,11 +17,7 @@
                 <div class="card-header">{{__('panel.list')}}</div>
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-md-12 form-group">
-                            <a href="{{ route('admin.green-alpha.create') }}"
-                               class="btn btn-primary">
-                                {{ __('panel.add') }}
-                            </a>
+
                         </div>
 
                     <div class="table-responsive">

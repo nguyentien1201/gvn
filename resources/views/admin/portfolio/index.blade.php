@@ -17,12 +17,7 @@
                 <div class="card-header">Import Portfolio </div>
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-md-12 form-group">
-                            <a href="{{ route('admin.green-alpha.create') }}"
-                               class="btn btn-primary">
-                                {{ __('panel.add') }}
-                            </a>
-                        </div>
+
                         <div class="col-md-12 form-group">
                         <form class="d-flex justify-content-center" action="{{route('admin.green-alpha.import-portfolio')}}" method="post"
                               enctype="multipart/form-data">
