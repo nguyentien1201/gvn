@@ -50,7 +50,7 @@
                                 <tr>
                                     <td width="5%" class="text-center">{{$idx + 1}}</td>
                                     <td width="15%">{{$signal->month_year}}</td>
-                                    <td width="15%">{{$signal->profit}}</td>
+                                    <td width="15%">{{$signal->profit * 100}}</td>
                                 </tr>
                             @empty
                                 <tr>
