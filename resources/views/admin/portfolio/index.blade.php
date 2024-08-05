@@ -41,7 +41,7 @@
                             <tr>
                                 <th width="5%" class="text-center">{{__('panel.no')}}</th>
                                 <th width="15%">Month</th>
-                                <th width="15%">Profit</th>
+                                <th width="15%">Profit(%)</th>
 
                             </tr>
                             </thead>
