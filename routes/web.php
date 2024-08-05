@@ -65,4 +65,4 @@ Route::get('admin/greenbeta/{id}', 'Admin\GreenBetaController@getListMstock')->m
 Route::post('admin/green-beta/import', 'Admin\GreenBetaController@import')->middleware('admin')->name('admin.green-beta.import');
 Route::get('admin/list-code', 'Admin\GreenAlphaController@portfolio')->middleware('admin')->name('admin.green-alpha.list-code');
 Route::post('admin/green-alpha/import-portfolio', 'Admin\GreenAlphaController@importPortfolio')->middleware('admin')->name('admin.green-alpha.import-portfolio');
-
+Route::post('admin/signal-free/import', 'Admin\SignalFreeController@import')->middleware('admin')->name('admin.signalfree.import');

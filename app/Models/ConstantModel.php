@@ -98,7 +98,11 @@ class ConstantModel
         1 => 'UPTREND',
         2 => 'DOWNTREND',
         3 => 'SIDEWAY',
-
+    ];
+    const TRENDING_PRICE_VALUE = [
+        'uptrend' => 1,
+        'downtrend' =>2,
+        'sideway' => 3,
     ];
 
 }
