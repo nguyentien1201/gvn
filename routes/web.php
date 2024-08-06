@@ -20,6 +20,7 @@ Route::group(['prefix' => '', 'as' => 'front.', 'namespace' => 'Front'], functio
     Route::get('/green-alpha', 'HomeController@greenAlpha')->name('home.green-alpha');
     Route::get('api/get-history-signal/{id}', 'HomeController@getHistorySignal')->name('api.history-signal');
     Route::get('api/get-history-alpha/{id}', 'HomeController@getHistoryAlphaSignal')->name('api.history-signal-alpha');
+    Route::get('/greenstock-nas100', 'HomeController@greenStock')->name('home.green-stock');
 });
 
 Auth::routes(['register' => false]);

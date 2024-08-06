@@ -136,4 +136,7 @@ class HomeController
             'data' => $result
         ];
     }
+    public function greenStock(){
+        return view('front.green_stock');
+    }
 }
