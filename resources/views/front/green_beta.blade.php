@@ -512,7 +512,6 @@
                 {
                     targets: 0, // Index of the 'code' column
                     createdCell: function (td, cellData, rowData, row, col) {
-                        $(td).css('text-align', 'right');
                         $(td).css('font-weight', 'bold');
                     }
                 },
