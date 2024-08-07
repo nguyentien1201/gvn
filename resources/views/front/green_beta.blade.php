@@ -156,6 +156,9 @@
         td {
             text-align: center;
         }
+        thead th {
+            text-align: center;
+        }
     </style>
 
 </head>
