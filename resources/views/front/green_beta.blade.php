@@ -153,6 +153,9 @@
         .table-responsive{
             overflow-x: hidden !important;
         }
+        td {
+            text-align: center;
+        }
     </style>
 
 </head>
@@ -218,7 +221,7 @@
 
                     </h2>
                     <!-- Data and Chart Section -->
-
+                    <h5 class="color-home"><i>{{ (new DateTime('now', new DateTimeZone('GMT')))->format('Y-m-d H:i:s') }} GMT</i></h5>
                     <div class="row">
                         <!-- Chart Section -->
                         <div class="col-md-12 text-center form-group">
