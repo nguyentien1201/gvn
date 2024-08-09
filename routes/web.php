@@ -57,6 +57,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin'], fu
     Route::resource('freesignal', 'SignalFreeController')->middleware('admin');
     Route::resource('green-alpha', 'GreenAlphaController')->middleware('admin');
     Route::resource('portfolio', 'PortfolioController')->middleware('admin');
+    Route::resource('nas100', 'GreenStockNas100Controller')->middleware('admin');
 
 });
 Route::get('admin/greenalpha/{id}', 'Admin\GreenAlphaController@getListMstock')->middleware('admin')->name('admin.green-alpha.list-stock');
@@ -67,3 +68,4 @@ Route::post('admin/green-beta/import', 'Admin\GreenBetaController@import')->midd
 Route::get('admin/list-code', 'Admin\GreenAlphaController@portfolio')->middleware('admin')->name('admin.green-alpha.list-code');
 Route::post('admin/green-alpha/import-portfolio', 'Admin\GreenAlphaController@importPortfolio')->middleware('admin')->name('admin.green-alpha.import-portfolio');
 Route::post('admin/signal-free/import', 'Admin\SignalFreeController@import')->middleware('admin')->name('admin.signalfree.import');
+Route::post('admin/green-stock-nas100/import', 'Admin\GreenStockNas100Controller@import')->middleware('admin')->name('admin.nas100.import');
