@@ -83,7 +83,7 @@
                                class="nav-link @if(!empty($path) && $path =='green-alpha') active @endif">
                                 <i class="nav-icon far fa-user"></i>
                                 <p>
-                                     Nas100
+                                     Nas100 Rating
                                 </p>
                             </a>
                         </li>
