@@ -318,7 +318,6 @@
                         } else if (trending == 'build up') {
                             color = '#fde69c';
                         } else if (trending == 'go up') {
-                            console.log(rowData.trending);
                             color = '#badfcd';
                         }else if (trending == 'bottom fishing') {
                             color ='#03feff'
@@ -332,8 +331,76 @@
                         $(td).css('background-color', color);
                         $(td).css('box-shadow', 'none');
                     }
-                }
+                },
+           {
+                targets: 4, // Index of the date column
+                    createdCell: function (td, cellData, rowData, row, col) {
+                        signal ='';
+                        color  = '';
+                        if(cellData != null){
+                            signal = cellData.trim().toLowerCase();
+                        }
+                        if (signal == 'buy') {
+                            color = '#66a74c';
+                        } else if (signal == 'hold') {
+                            color = '#93c480';
+                        } else if (signal == 'cash') {
+                            color = '#fee49d';
+                        }else if (signal == 'sell') {
+                            color ='#ffffff'
+                        }
+                        $(td).css('background-color', color);
+                        $(td).css('box-shadow', 'none');
+                    }
+                },
+                {
+                targets: 5, // Index of the date column
+                    createdCell: function (td, cellData, rowData, row, col) {
+                        color  = '';
+                        if (cellData > 0) {
+                            color = '#b8dfcd';
+                        } else if (cellData < 0) {
+                            color = '#e37b71';
+                        }
+                        $(td).css('background-color', color);
+                        $(td).css('box-shadow', 'none');
+                    },
+                    render: function (data, type, full, meta) {
+                        return `${data}%`;
+                    }
+                },
+                {
+                    targets: 6, // Index of the date column
+                    createdCell: function (td, cellData, rowData, row, col) {
+                        color  = '';
+                        if (cellData > 0) {
+                            color = '#b8dfcd';
+                        } else if (cellData < 0) {
+                            color = '#e37b71';
+                        }
+                        $(td).css('color', color);
+                        $(td).css('box-shadow', 'none');
+                    },
+                    render: function (data, type, full, meta) {
+                        if(data != null){
+                            return `${data}%`;
+                        }
+                        return '';
+                    },
+
+                },
+                {
+                    targets:8, // Index of the open_time column
+                    render: function (data, type, row) {
+                        if (type === 'display' || type === 'filter') {
+                            return moment.utc(data).format('DD/MM/YYYY'); // Format as HH:mm
+                        }
+                        return data;
+                    }
+                },
             ],
+
+            //
             createdRow: function (row, data, dataIndex) {
                 // Assuming 'code' is the property you want to use for data-id
                 $(row).attr('data-id', data.id_code);
