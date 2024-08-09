@@ -25,8 +25,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-//        $schedule->command('sync:order')->everyMinute()->withoutOverlapping(10);
-        $schedule->command('send:promotion')->everyMinute()->withoutOverlapping(10);
+        $schedule->command('sync:nas100')->dailyAt('23:30')->withoutOverlapping(10);
+        // $schedule->command('send:promotion')->everyMinute()->withoutOverlapping(10);
 //        $schedule->command('send:birthday')->dailyAt('09:30')->withoutOverlapping(10);
     }
 
