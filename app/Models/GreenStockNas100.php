@@ -50,4 +50,8 @@ class GreenStockNas100 extends Model
         }
         return redirect()->route('admin.nas100.index')->with('success', __('panel.success'));
     }
+    public function getListNas100Api(){
+        $data = $this->orderBy('rating','asc')->get();
+        return $data;
+    }
 }

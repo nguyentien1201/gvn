@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Request;
 use App\Models\SignalFree;
 use App\Models\MstStock;
 use App\Models\GreenAlpha;
+use App\Models\GreenStockNas100;
 use DB;
 class HomeController
 {
@@ -137,6 +138,8 @@ class HomeController
         ];
     }
     public function greenStock(){
-        return view('front.green_stock');
+        $signals = (new GreenStockNas100())->getListNas100Api();
+
+        return view('front.green_stock',compact('signals'));
     }
 }

@@ -165,6 +165,9 @@
         .table-responsive {
             overflow-  x: hidden !important;
         }
+        td{
+            text-align:center !important;
+        }
     </style>
 
 </head>
@@ -237,7 +240,9 @@
                 <!-- Tab panes -->
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="rating" role="tabpanel" aria-labelledby="rating-tab">
-                     <img src="{{url('images/stockrating.jpg')}}" alt="Stock Rating" style="width:100%">
+                        <table class="table table-striped table-bordered" style="margin-bottom: 0px;" id="indices-table">
+
+                        </table>
                     </div>
                     <div class="tab-pane fade" id="overview" role="tabpanel" aria-labelledby="profile-tab">
                     <img src="{{url('images/marketoverview.jpg')}}" alt="Stock Rating" style="width:100%">
@@ -275,3 +280,66 @@
 <script src="{{ asset('plugins/chart.js/Chart.min.js') }}"></script>
 <script src="https://cdn.datatables.net/v/bs5/dt-2.0.8/date-1.5.2/fc-5.0.1/fh-4.0.1/r-3.0.2/datatables.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+<script>
+    $(document).ready(function () {
+        var indices = $('#indices-table').DataTable({
+            searching: false,
+
+            lengthChange: false, //
+            responsive: true,
+            paging: false,
+            autoWidth: true,
+            info: false,
+            order: [[0, 'asc']],
+            data: @json($signals),
+            columns: [
+                { data: 'rating', title: 'Rating' },  // Apply bold formatting to the "PriceTrend" column data},
+                { data: 'code', title: 'Chứng khoán' },
+                { data: 'point', title: 'Rating Point' },
+                { data: 'trending', title: 'Xu hướng' },
+                { data: 'signal', title: 'Hành động' },
+                { data: 'profit', title: 'profit' },
+                { data: 'post_sale_discount', title: 'Giảm sau bán' },
+                { data: 'price', title: 'price' },
+                { data: 'time', title: 'Thời gian' },
+            ],
+            columnDefs: [
+
+                {
+                    targets: 3, // Index of the date column
+                    createdCell: function (td, cellData, rowData, row, col) {
+                        trending ='';
+                        color  = '';
+                        if(rowData.trending != null){
+                            trending = rowData.trending.trim().toLowerCase();
+                        }
+                        if (trending == 'breaking high price') {
+                            color = '#917dc4';
+                        } else if (trending == 'build up') {
+                            color = '#fde69c';
+                        } else if (trending == 'go up') {
+                            console.log(rowData.trending);
+                            color = '#badfcd';
+                        }else if (trending == 'bottom fishing') {
+                            color ='#03feff'
+                        } else if(trending == 'go down'){
+                            color = '#e99a97';
+                        } else if(trending == 'recovery'){
+                            color = '#fe9a3c';
+                        } else if(trending == 'breaking low price'){
+                            color ='#cc0611';
+                        }
+                        $(td).css('background-color', color);
+                        $(td).css('box-shadow', 'none');
+                    }
+                }
+            ],
+            createdRow: function (row, data, dataIndex) {
+                // Assuming 'code' is the property you want to use for data-id
+                $(row).attr('data-id', data.id_code);
+            }
+        });
+        indices.columns.adjust().responsive.recalc();
+    });
+
+</script>
