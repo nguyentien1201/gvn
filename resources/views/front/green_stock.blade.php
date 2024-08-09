@@ -304,7 +304,19 @@
                 { data: 'time', title: 'Thời gian' },
             ],
             columnDefs: [
-
+                {
+                targets: 0, // Index of the date column
+                    createdCell: function (td, cellData, rowData, row, col) {
+                        color  = '';
+                        bold='';
+                        if (cellData <= 30) {
+                            color = '#7eb18f';
+                            bold ='bold';
+                        }
+                        $(td).css('color', color);
+                        $(td).css('font-weight',bold);
+                    },
+                },
                 {
                     targets: 3, // Index of the date column
                     createdCell: function (td, cellData, rowData, row, col) {
