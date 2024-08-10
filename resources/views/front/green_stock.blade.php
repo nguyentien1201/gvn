@@ -174,6 +174,17 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             transform: scale(1.01);
         }
+        .custom-tooltip {
+            position: absolute;
+            background-color: #fff;
+            color: #333;
+            padding: 5px;
+            border-radius: 5px;
+            font-size: 12px;
+            display: none;
+            z-index: 1000;
+        }
+
     </style>
 
 </head>
@@ -326,8 +337,26 @@
                 {
                 targets: 1, // Index of the date column
                     createdCell: function (td, cellData, rowData, row, col) {
-
                         $(td).css('font-weight','bold');
+                        company = rowData.company_name;
+                        $(td).hover(
+                            function() {
+                                $(this).addClass('row-hover');
+                                // Show custom tooltip
+                                $('<div class="custom-tooltip">' + company + '</div>').appendTo('body').fadeIn('slow');
+                            },
+                            function() {
+                                $(this).removeClass('row-hover');
+                                // Hide custom tooltip
+                                $('.custom-tooltip').remove();
+                            }
+                        ).mousemove(function(e) {
+                            // Move tooltip with mouse
+                            $('.custom-tooltip').css({
+                                top: e.pageY + 10 + 'px',
+                                left: e.pageX + 10 + 'px'
+                            });
+                        });
                     },
                 },
                 {
@@ -425,11 +454,7 @@
                 },
             ],
 
-            //
-            createdRow: function (row, data, dataIndex) {
-                company = data.company_name;
-                $(row).attr('title', company);
-            }
+
         });
         indices.columns.adjust().responsive.recalc();
     });
