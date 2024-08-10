@@ -178,11 +178,12 @@
             position: absolute;
             background-color: #fff;
             color: #333;
-            padding: 0.9em;
+            padding: 0.5em;
             border-radius: 5px;
-            font-size: 16px;
+            font-size: 1.3em;
             display: none;
             z-index: 1000;
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
         }
 
     </style>
@@ -244,29 +245,30 @@
     <section id="contentDiv" class="text-left">
         <div class="container">
             <div class="row">
+            <h5 class="color-home" style="text-align:right"><i>{{ (new DateTime('now', new DateTimeZone('GMT')))->format('Y-m-d H:i:s') }} GMT</i></h5>
                 <div class="col-12">
-                <ul class="nav nav-tabs" id="myTab" role="tablist">
-                    <li class="nav-item">
-                        <a style="font-weight:bold; font-size:1.2em" class="nav-link active" id="rating-tab" data-toggle="tab" href="#rating" role="tab" aria-controls="rating" aria-selected="true">StockRating</a>
-                    </li>
-                    <li class="nav-item">
-                        <a style="font-weight:bold; font-size:1.2em" class="nav-link" id="overview-tab" data-toggle="tab" href="#overview" role="tab" aria-controls="overview" aria-selected="false">Market Overview</a>
-                    </li>
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item">
+                            <a style="font-weight:bold; font-size:1.2em" class="nav-link active" id="rating-tab" data-toggle="tab" href="#rating" role="tab" aria-controls="rating" aria-selected="true">StockRating</a>
+                        </li>
+                        <li class="nav-item">
+                            <a style="font-weight:bold; font-size:1.2em" class="nav-link" id="overview-tab" data-toggle="tab" href="#overview" role="tab" aria-controls="overview" aria-selected="false">Market Overview</a>
+                        </li>
 
-                </ul>
+                    </ul>
                 <!-- Tab panes -->
-                <div class="tab-content" id="myTabContent">
-                    <div class="tab-pane fade show active" id="rating" role="tabpanel" aria-labelledby="rating-tab">
-                        <table class="table table-striped table-bordered" style="margin-bottom: 0px;" id="indices-table">
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="rating" role="tabpanel" aria-labelledby="rating-tab">
+                            <table class="table table-striped table-bordered" style="margin-bottom: 0px;" id="indices-table">
 
-                        </table>
+                            </table>
+                        </div>
+                        <div class="tab-pane fade" id="overview" role="tabpanel" aria-labelledby="profile-tab">
+                        <img src="{{url('images/marketoverview.jpg')}}" alt="Stock Rating" style="width:100%">
+                                </div>
+
+
                     </div>
-                    <div class="tab-pane fade" id="overview" role="tabpanel" aria-labelledby="profile-tab">
-                    <img src="{{url('images/marketoverview.jpg')}}" alt="Stock Rating" style="width:100%">
-                            </div>
-
-
-                </div>
                 </div>
             </div>
             </div>
