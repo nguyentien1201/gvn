@@ -24,10 +24,9 @@ class GreenStockNas100 extends Model
     public function import($isCompany = false){
         $this->googleDriveService = new GoogleDriveService();
         $fileUrl = config('drivefile.drivefile.nas100');
-        $url  ='1qyCaSPSiIbnFMDYWqwU4m681gfzGd9ge_erso-0axkA';
         $isCompany =true;
         if($isCompany ==true){
-            $company = $this->googleDriveService->getSheetData($url,'Tên doanh nghiệp!A1:B');
+            $company = $this->googleDriveService->getSheetData($fileUrl,'Tên doanh nghiệp!A1:B');
             array_shift($company);
             foreach($company as $item){
                 $company = [
@@ -42,7 +41,7 @@ class GreenStockNas100 extends Model
                 }
             }
         }
-        $fileContent = $this->googleDriveService->getFile($url);
+        $fileContent = $this->googleDriveService->getFile($fileUrl);
 
         $listData = explode("\r\n", $fileContent);
         array_shift($listData);
