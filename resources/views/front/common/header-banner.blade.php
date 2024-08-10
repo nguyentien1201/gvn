@@ -32,7 +32,7 @@
           </div>
         </div>
       </div>
-      <div class="carousel-item" style="background-image: url({{url('images/AdobeStock_613751515-min-scaled-1-e1705998465303.jpeg')}})">
+      <div class="carousel-item" style="background-image: url({{url('images/artificial-intelligence-ai-robot-big-data-bull-market-stock-chart-getty.jpg')}})">
         <div class="container">
         <div class="carousel-caption text-left">
             <h1> Chúng tôi tạo ra các hệ thống để phục vụ nhu cầu của nhà đầu tư</h1>
