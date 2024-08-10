@@ -9,15 +9,17 @@ class GoogleDriveService
 {
     protected $client;
     protected $service;
+    protected $spreadsheets;
 
     public function __construct()
     {
 
         $this->client = new Google_Client();
         $this->client->setAuthConfig(config('google-drive.service_account_json'));
-        $this->client->addScope([Google_Service_Drive::DRIVE]);
+        $this->client->addScope([Google_Service_Drive::DRIVE,Google_Service_Sheets::SPREADSHEETS_READONLY]);
 
         $this->service = new Google_Service_Drive($this->client);
+        $this->spreadsheets = new Google_Service_Sheets($this->client);
     }
 
     public function uploadFile($filePath, $fileName)
@@ -55,5 +57,10 @@ class GoogleDriveService
         ]);
 
         return $response->files;
+    }
+    public function getSheetData($spreadsheetId, $range)
+    {
+        $response =$this->spreadsheets->spreadsheets_values->get($spreadsheetId, $range);
+        return $response->getValues();
     }
 }

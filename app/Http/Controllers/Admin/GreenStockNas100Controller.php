@@ -34,8 +34,12 @@ class GreenStockNas100Controller extends AdminController
         return view('admin.nas100.index',compact('signals'));
     }
 
-    public function import() {
-        $this->nas100->import();
+    public function import(Request $request) {
+        $isCompany = false;
+        if($request->isCompany == 'on'){
+            $isCompany=true;
+        }
+        $this->nas100->import($isCompany);
         return redirect()->route('admin.nas100.index')->with('success', __('panel.success'));
     }
 }

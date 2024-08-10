@@ -1,3 +1,47 @@
+<style>
+  /* Ẩn checkbox mặc định */
+  input[type="checkbox"] {
+            display: none;
+        }
+
+        /* Tạo giao diện toggle switch */
+        .toggle-switch {
+            position: relative;
+            width: 60px;
+            height: 30px;
+            background-color: #ccc;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        /* Tạo vòng tròn di chuyển bên trong toggle switch */
+        .toggle-switch:before {
+            content: "";
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            background-color: white;
+            transition: transform 0.3s ease;
+        }
+
+        /* Hiệu ứng khi toggle được bật */
+        input[type="checkbox"]:checked + .toggle-switch {
+            background-color: #4CAF50;
+        }
+
+        input[type="checkbox"]:checked + .toggle-switch:before {
+            transform: translateX(30px);
+        }
+
+        /* Hiệu ứng khi hover */
+        .toggle-switch:hover {
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+</style>
 @extends('layout.admin')
 @section('content')
     <section class="content-header">
@@ -23,7 +67,10 @@
                               enctype="multipart/form-data">
                             {{csrf_field()}}
                             <div class="input-group">
-
+                                <input type="checkbox" id="toggle" name="isCompany">
+                                <label for="toggle" class="toggle-switch"></label>
+                            </div>
+                            <div class="input-group">
                                 <span class="input-group-append">
                                 <button type="submit" class="btn btn-primary">Sync Data</button>
                                 </span>

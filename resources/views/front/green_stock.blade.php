@@ -168,6 +168,12 @@
         td{
             text-align:center !important;
         }
+        tbody >tr:hover {
+            cursor: pointer;
+            background-color: #f5f5f5;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transform: scale(1.01);
+        }
     </style>
 
 </head>
@@ -183,7 +189,7 @@
     <!-- Hero Section with Slider -->
     <div id="heroCarousel" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
-            <div class="carousel-item active" style="background-image: url({{url('images/green-alpha-banner.jpg')}})">
+            <div class="carousel-item active" style="background-image: url({{url('images/banner_greenstock.jpg')}})">
             </div>
         </div>
     </div>
@@ -293,15 +299,15 @@
             order: [[0, 'asc']],
             data: @json($signals),
             columns: [
-                { data: 'rating', title: 'Rating' },  // Apply bold formatting to the "PriceTrend" column data},
-                { data: 'code', title: 'Chứng khoán' },
-                { data: 'point', title: 'Rating Point' },
-                { data: 'trending', title: 'Xu hướng' },
-                { data: 'signal', title: 'Hành động' },
-                { data: 'profit', title: 'profit' },
-                { data: 'post_sale_discount', title: 'Giảm sau bán' },
-                { data: 'price', title: 'price' },
-                { data: 'time', title: 'Thời gian' },
+                { data: 'rating', title: 'RATING' },  // Apply bold formatting to the "PriceTrend" column data},
+                { data: 'code', title: 'CHỨNG KHOÁN' },
+                { data: 'point', title: 'RATING POINT' },
+                { data: 'trending', title: 'XU HƯỚNG' },
+                { data: 'signal', title: 'HÀNH ĐỘNG' },
+                { data: 'profit', title: 'PROFIT' },
+                { data: 'post_sale_discount', title: 'GIẢM SAU BÁN' },
+                { data: 'price', title: 'PRICE' },
+                { data: 'time', title: 'THỜI GIAN' },
             ],
             columnDefs: [
                 {
@@ -314,6 +320,13 @@
                             bold ='bold';
                         }
                         $(td).css('color', color);
+                        $(td).css('font-weight',bold);
+                    },
+                },
+                {
+                targets: 1, // Index of the date column
+                    createdCell: function (td, cellData, rowData, row, col) {
+
                         $(td).css('font-weight',bold);
                     },
                 },
@@ -414,8 +427,8 @@
 
             //
             createdRow: function (row, data, dataIndex) {
-                // Assuming 'code' is the property you want to use for data-id
-                $(row).attr('data-id', data.id_code);
+                company = data.company_name;
+                $(row).attr('title', company);
             }
         });
         indices.columns.adjust().responsive.recalc();

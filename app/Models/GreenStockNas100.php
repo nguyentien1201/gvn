@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Service\GoogleDriveService;
 use Carbon\Carbon;
+use App\Models\CompanyInfo;
 class GreenStockNas100 extends Model
 {
     use SoftDeletes;
@@ -20,10 +21,29 @@ class GreenStockNas100 extends Model
         $data = $this->orderBy('rating','asc')->paginate(ConstantModel::$PAGINATION);
         return $data;
     }
-    public function import() {
+    public function import($isCompany = false){
         $this->googleDriveService = new GoogleDriveService();
         $fileUrl = config('drivefile.drivefile.nas100');
-        $fileContent = $this->googleDriveService->getFile($fileUrl);
+        $url  ='1qyCaSPSiIbnFMDYWqwU4m681gfzGd9ge_erso-0axkA';
+        $isCompany =true;
+        if($isCompany ==true){
+            $company = $this->googleDriveService->getSheetData($url,'Tên doanh nghiệp!A1:B');
+            array_shift($company);
+            foreach($company as $item){
+                $company = [
+                    'code' => $item[0],
+                    'company_name' => $item[1],
+                ];
+                $companyInfo = CompanyInfo::where('code',$company['code'])->first();
+                if($companyInfo){
+                    $companyInfo->update($company);
+                }else{
+                    CompanyInfo::create($company);
+                }
+            }
+        }
+        $fileContent = $this->googleDriveService->getFile($url);
+
         $listData = explode("\r\n", $fileContent);
         array_shift($listData);
         array_shift($listData);
@@ -51,7 +71,18 @@ class GreenStockNas100 extends Model
         return redirect()->route('admin.nas100.index')->with('success', __('panel.success'));
     }
     public function getListNas100Api(){
-        $data = $this->orderBy('rating','asc')->get();
+        $data = $this->with('companyInfo')->orderBy('rating','asc')->get();
+        $data = $data->map(function($item){
+            if($item->companyInfo){
+                $item['company_name'] = $item->companyInfo->company_name;
+            }
+            return $item;
+        });
+
         return $data;
+    }
+    public function companyInfo()
+    {
+        return $this->belongsTo(CompanyInfo::class, 'code', 'code');
     }
 }
