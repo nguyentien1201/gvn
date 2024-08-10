@@ -178,9 +178,9 @@
             position: absolute;
             background-color: #fff;
             color: #333;
-            padding: 5px;
+            padding: 0.9em;
             border-radius: 5px;
-            font-size: 12px;
+            font-size: 16px;
             display: none;
             z-index: 1000;
         }
@@ -247,10 +247,10 @@
                 <div class="col-12">
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item">
-                        <a class="nav-link active" id="rating-tab" data-toggle="tab" href="#rating" role="tab" aria-controls="rating" aria-selected="true">StockRating</a>
+                        <a style="font-weight:bold; font-size:1.2em" class="nav-link active" id="rating-tab" data-toggle="tab" href="#rating" role="tab" aria-controls="rating" aria-selected="true">StockRating</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="overview-tab" data-toggle="tab" href="#overview" role="tab" aria-controls="overview" aria-selected="false">Market Overview</a>
+                        <a style="font-weight:bold; font-size:1.2em" class="nav-link" id="overview-tab" data-toggle="tab" href="#overview" role="tab" aria-controls="overview" aria-selected="false">Market Overview</a>
                     </li>
 
                 </ul>
@@ -354,8 +354,8 @@
                         ).mousemove(function(e) {
                             // Move tooltip with mouse
                             $('.custom-tooltip').css({
-                                top: e.pageY + 10 + 'px',
-                                left: e.pageX + 10 + 'px'
+                                top: e.pageY + 15 + 'px',
+                                left: e.pageX + 20 + 'px'
                             });
                         });
                     },
