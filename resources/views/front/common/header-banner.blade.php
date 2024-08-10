@@ -7,11 +7,21 @@
       background: no-repeat center center scroll;
       background-size: cover;
     }
+    .carousel-caption {
+        position: absolute;
+        right: 15%;
+        top: 1.25rem;
+        left: 15%;
+        padding-top: 1.25rem;
+        bottom: inherit !important;
+        color: #fff;
+        text-align: center;
+    }
   </style>
  <!-- Hero Section with Slider -->
  <div id="heroCarousel" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner">
-      <div class="carousel-item active" style="background-image: url({{url('images/artificial-intelligence-ai-robot-big-data-bull-market-stock-chart-getty.jpg')}})">
+      <div class="carousel-item active" style="background-image: url({{url('images/banner-1.jpg')}})">
         <div class="container">
           <div class="carousel-caption text-left">
             <h1> Chúng tôi tạo ra các hệ thống để phục vụ nhu cầu của nhà đầu tư</h1>
