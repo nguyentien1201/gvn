@@ -338,7 +338,8 @@
                 targets: 1, // Index of the date column
                     createdCell: function (td, cellData, rowData, row, col) {
                         $(td).css('font-weight','bold');
-                        company = rowData.company_name;
+                        var company = rowData.company_name;
+
                         $(td).hover(
                             function() {
                                 $(this).addClass('row-hover');
