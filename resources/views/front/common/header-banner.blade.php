@@ -8,14 +8,7 @@
       background-size: cover;
     }
     .carousel-caption {
-        position: absolute;
-        right: 15%;
-        top: 1.25rem;
-        left: 15%;
-        padding-top: 1.25rem;
-        bottom: inherit !important;
-        color: #fff;
-        text-align: center;
+        bottom: 6rem !important;
     }
   </style>
  <!-- Hero Section with Slider -->
