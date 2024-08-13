@@ -15,7 +15,6 @@ class HomeController
 {
     public function index(Request $request)
     {
-
         $signals = (new SignalFree())->getListSignalsFree();
         $favarite_code = config('stock.favorite');
         $stocks = MstStock::whereIn('code',$favarite_code)->pluck('id')->toArray();

@@ -46,7 +46,7 @@ class LoginController extends Controller
     {
         $user = auth()->user();
         if ($user) {
-            $this->redirectTo = route('admin.customers.index');
+            $this->redirectTo = route('front.home.index');
         }
     }
 

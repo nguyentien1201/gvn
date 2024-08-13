@@ -66,7 +66,8 @@ class ConstantModel
 
     const ROLES = [
         'admin' => 1,
-        'staff' => 2
+        'staff' => 2,
+        'customer' => 3,
     ];
 
     const PROMOTION_STATUS = [

@@ -1,14 +1,18 @@
-@extends('layouts.app')
-
+@extends('layout.master-no-header')
 @section('content')
-<div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
-
-                <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
+        <div class="login-box" style="width:500px">
+        <div class="login-logo">
+            <a href="../../index2.html">
+                <img src="{{asset('images/logo.png')}}" width="100%">
+            </a>
+        </div>
+        <!-- /.login-logo -->
+        <div class="card">
+            <div class="card-body login-card-body">
+                <p class="login-box-msg">{{__('Register')}}</p>
+                <form method="POST" action="{{ route('register') }}">
                         @csrf
 
                         <div class="form-group row">
@@ -69,9 +73,12 @@
                             </div>
                         </div>
                     </form>
-                </div>
             </div>
+            <!-- /.login-card-body -->
         </div>
     </div>
-</div>
+        </div>
+    </div>
+
+
 @endsection
