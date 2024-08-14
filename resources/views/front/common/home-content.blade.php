@@ -8,7 +8,120 @@
 <script src="https://cdn.datatables.net/v/bs5/dt-2.0.8/date-1.5.2/fc-5.0.1/fh-4.0.1/r-3.0.2/datatables.min.js"></script>
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 <style>
-      .hold{
+       .color-home{
+            color:#008000 !important;
+        }
+        body {
+            font-size: 0.9rem !important;
+        }
+
+        .ml-auto {
+            margin-left: auto !important;
+        }
+
+        #navbarNav .nav-link {
+            font-size: 1.1rem;
+            color: #000;
+            font-weight: 600;
+        }
+
+
+        .cta {
+            background-color: #007bff;
+            color: white;
+            padding: 60px 0;
+        }
+
+        .footer {
+            padding: 30px 0;
+        }
+
+        .carousel-item {
+
+            min-height: 300px;
+            background: no-repeat center center scroll;
+            background-size: cover;
+        }
+
+        .carousel-caption {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .features {
+            background: #f9f9f9;
+        }
+
+        .features .card {
+            border: none;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .features .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .features .card-body {
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .cta {
+            background: linear-gradient(45deg, #007bff, #0056b3);
+            color: white;
+            padding: 60px 0;
+        }
+
+        .cta .btn {
+            background: white;
+            color: #007bff;
+            border: none;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .cta .btn:hover {
+            background: #007bff;
+            color: white;
+        }
+
+        .footer {
+            padding: 30px 0;
+            background: #f1f1f1;
+        }
+
+        .dt-scroll-head {
+            width: 99% !important;
+        }
+
+
+        #popupDataTable>thead {
+            display: none;
+        }
+
+        .dataTable {
+            margin-bottom: 0 !important;
+        }
+
+        table thead {
+            background-color: #008000;
+            /* Change the background color */
+            color: white;
+            /* Change the text color */
+        }
+        .comment-div-left {
+            margin-right: 10px;
+            width: 50px;
+
+            text-align: center;
+        }
+        .comment-div-right {
+            margin-left: 10px;
+            width: 100px;
+
+            text-align: center;
+        }
+        .hold{
             background-color :#ffd966;
         }
         .takeprofitbuy{
@@ -30,6 +143,15 @@
         }
         .width-120{
             width: 120px;
+        }
+        .table-responsive{
+            overflow-x: hidden !important;
+        }
+        td {
+            text-align: center;
+        }
+        thead th {
+            text-align: center;
         }
 </style>
 <script>
@@ -440,15 +562,15 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <h2 class="text-left mb-4"><span class="title-trading-first label-color color-home">Giao dịch với</span>
-                    <span class="title-trading-second bold">Green Beta 1.2.3</span>
+                <h2 class="text-left mb-4"><span class="title-trading-first label-color bold">Giao dịch với</span>
+                    <span class="title-trading-second  color-home">GRERN BETA 1.2.3</span>
                 </h2>
                 <div class="card mb-4">
                     <div class="card-body">
-                        <h5 class="card-title color-home">Green Beta</h5>
-                        <p class="card-text"> <li>Phương pháp giao dịch: Position Trading</li>
-                                            <li>Thời gian đầu tư: Nắm giữ trung hạn và dài hạn</li>
-                                            <li>Chỉ số giao dịch: Stock Index, Commondity, Cryto…</li>
+                        <p class="card-text">
+                            <li>Phương pháp giao dịch: Position Trading</li>
+                            <li>Thời gian đầu tư: Nắm giữ trung hạn và dài hạn</li>
+                            <li>Chỉ số giao dịch: Stock Index, Commondity, Cryto…</li>
                         </p>
                     </div>
                 </div>
@@ -459,7 +581,7 @@
                     <div class="row">
                         <!-- Data Section -->
                         <div class="col-md-4">
-                            <img class="img-fluid" src="{{asset('images/Green-Beta.png')}}"
+                            <img class="img-fluid" src="{{asset('images/robo-green-beta.png')}}"
                             alt="{{asset('images/Green-Beta.png')}}">
                         </div>
                         <!-- Chart Section -->

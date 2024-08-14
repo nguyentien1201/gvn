@@ -22,7 +22,6 @@ class HomeController
             foreach ($signals as $key => $value) {
                 $value['open_time'] = 'fas fa-lock';
                 $value['price_open'] = 'fas fa-lock';
-                $value['last_sale'] = 'fas fa-lock';
                 $value['profit'] = 'fas fa-lock';
                 $signals[$key] = $value;
             }
