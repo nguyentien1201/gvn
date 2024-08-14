@@ -15,7 +15,19 @@ class HomeController
 {
     public function index(Request $request)
     {
-        $signals = (new SignalFree())->getListSignalsFree();
+
+        $signals = (new GreenBeta())->getListSignalsByGroup();
+
+        if(!\Auth::check()){
+            foreach ($signals as $key => $value) {
+                $value['open_time'] = 'fas fa-lock';
+                $value['price_open'] = 'fas fa-lock';
+                $value['last_sale'] = 'fas fa-lock';
+                $value['profit'] = 'fas fa-lock';
+                $signals[$key] = $value;
+            }
+        }
+
         $favarite_code = config('stock.favorite');
         $stocks = MstStock::whereIn('code',$favarite_code)->pluck('id')->toArray();
         $favorite = GreenBeta::select('*', DB::raw('MAX(close_time) as close_time'))->whereIn('code',$stocks)->with(['MstStock'])->groupBy('code')->orderBy('close_time', 'desc')->get();

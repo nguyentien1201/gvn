@@ -7,193 +7,185 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdn.datatables.net/v/bs5/dt-2.0.8/date-1.5.2/fc-5.0.1/fh-4.0.1/r-3.0.2/datatables.min.js"></script>
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-
+<style>
+      .hold{
+            background-color :#ffd966;
+        }
+        .takeprofitbuy{
+            background-color :#b6d7a8;
+        }
+        .cutlossbuy{
+            background-color :#e06666;
+        }
+        .list-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .list-item button {
+            cursor: none;
+            padding: 5px 10px;
+            border: none;
+            margin-right: 10px;
+        }
+        .width-120{
+            width: 120px;
+        }
+</style>
 <script>
 
 
     $(document).ready(function () {
+        var indices = $('#indices-table').DataTable({
+            searching: false,
 
-
-    var forex = $('#forex-table').DataTable({
-        searching: false,
-            lengthChange: false, //
-
-            responsive: true,
-            paging: false,
-            info: false,
-                data: @json($signals['forex']),
-                scrollY: '300px',
-
-                columns: [
-                    { data: 'code' },  // Apply bold formatting to the "PriceTrend" column data},
-                    { data: 'trend_price' },
-                    { data: 'last_sale' },
-                    { data: 'date_action' }
-                ],
-                columnDefs: [
-                {
-                    targets: 1, // Index of the date column
-                    createdCell: function(td, cellData, rowData, row, col) {
-                        // Or apply inline styles
-                        color ='yellow';
-                        if(cellData =='UPTREND') {
-                            color='green';
-                        };
-                        if(cellData =='DOWNTREND') {
-                            color='red';
-                        };
-                        $(td).css('background-color', color);
-                    }
-                }],
-                    order: [[3, 'desc']]
-            });
-            forex.columns.adjust().draw();
-            var crypto = $('#crypto').DataTable({
-
-                searching: false,
             lengthChange: false, //
             responsive: true,
             paging: false,
+            autoWidth: true,
             info: false,
-            scrollY: '300px',
-
             order: [[3, 'desc']],
-            data: @json($signals['crypto']),
+            data: @json($signals),
 
             columns: [
-                { data: 'code' },  // Apply bold formatting to the "PriceTrend" column data},
-                    { data: 'trend_price' },
-                    { data: 'last_sale' },
-                    { data: 'date_action' }
+                { data: 'signal_open', title: 'Signal Open' },  // Apply bold formatting to the "PriceTrend" column data},
+                { data: 'price_open', title: 'Price Open' },
+                { data: 'open_time', title: 'Open Time' },
+                { data: 'trend_price', title: 'Trend Price' },
+                { data: 'group', title: 'Markets' },
+                { data: 'code', title: 'Symbol' },
+                { data: 'last_sale', title: 'Last Sale' },
+                { data: 'profit', title: 'Profit' },
+                { data: 'signal_close', title: 'Signal Close' },
+                { data: 'price_close', title: 'Price Close' },
+                { data: 'close_time', title: 'Close Time' }
             ],
             columnDefs: [
+
+                {
+                    targets: 0, // Index of the date column
+                    createdCell: function (td, cellData, rowData, row, col) {
+                        if (rowData.close_time == null) {
+                            color = '#b6d7a8';
+                        } else {
+                            color = '#ffd966';
+                        }
+                        $(td).css('background-color', color);
+                        $(td).css('box-shadow', 'none');
+                    }
+                },
                 {
                     targets: 1, // Index of the date column
-                    createdCell: function(td, cellData, rowData, row, col) {
 
+                    render: function (data, type, full, meta) {
+                        if(data=='fas fa-lock'){
+                            return '<i class="fas fa-lock"></i>';
+                        }
+                        if (type === 'display') {
+                            const numberFormatter = new Intl.NumberFormat('en-US', { maximumFractionDigits: 0 }); // No decimal places
+                            const formattedNumber = numberFormatter.format(data); // Format the number with commas
+                            return formattedNumber;
+                        }
+                        return data; //
 
-
-                        // Or apply inline styles
-                        color ='yellow';
-                        if(cellData =='UPTREND') {
-                            color='green';
-                        };
-                        if(cellData =='DOWNTREND') {
-                            color='red';
-                        };
-                        $(td).css('background-color', color);
                     }
-                }],
-        });
-        forex.columns.adjust().draw();
-        var commodities = $('#commodities-table').DataTable({
-            searching: false,
-            lengthChange: false, //
-            responsive: true,
-            paging: false,
-            info: false,
-            scrollY: '300px',
-
-            data: @json($signals['commodities']),
-            order: [[3, 'desc']],
-
-            columns: [
-                { data: 'code' },  // Apply bold formatting to the "PriceTrend" column data},
-                    { data: 'trend_price' },
-                    { data: 'last_sale' },
-                    { data: 'date_action' }
-                ],
-            columnDefs: [
+                },
                 {
-                    targets: 1, // Index of the date column
-                    createdCell: function(td, cellData, rowData, row, col) {
-
-
-
-                        // Or apply inline styles
-                        color ='yellow';
-                        if(cellData =='UPTREND') {
-                            color='green';
-                        };
-                        if(cellData =='DOWNTREND') {
-                            color='red';
-                        };
-                        $(td).css('background-color', color);
+                    targets: 2, // Index of the date column
+                    render: function (data, type, full, meta) {
+                        if(data=='fas fa-lock'){
+                            return '<i class="fas fa-lock"></i>';
+                        }
                     }
-                }],
-        });
-        commodities.columns.adjust().draw();
-        var indices=  $('#indices-table').DataTable({
-            searching: false,
+                },
+                {
+                    targets: 6, // Index of the date column
+                    render: function (data, type, full, meta) {
+                        if(data=='fas fa-lock'){
+                            return '<i class="fas fa-lock"></i>';
+                        }
+                    }
+                },
+                {
+                    targets: 9, // Index of the date column
+                    render: function (data, type, full, meta) {
+                        if(data <= 0){
+                            return '';
+                        }
+                        if (type === 'display') {
+                            const numberFormatter = new Intl.NumberFormat('en-US', { maximumFractionDigits: 0 }); // No decimal places
+                            const formattedNumber = numberFormatter.format(data); // Format the number with commas
+                            return formattedNumber;
+                        }
+                        return data; //
 
-            lengthChange: false, //
-            responsive: true,
-            paging: false,
-            info: false,
-            order: [[3, 'desc']],
-            data: @json($signals['indices']),
-            scrollY: '300px',
-
-            columnDefs: [{
-                targets: 'code', // Assuming 'code' is a class applied to the <th> of the column you want to make bold
-                render: function (data, type, full, meta) {
-                    return `<strong>${data}</strong>`;
+                    }
+                },
+                {
+                    targets: 7, // Index of the date column
+                    createdCell: function (td, cellData, rowData, row, col) {
+                        if (rowData.close_time == '' || rowData.close_time ==null) {
+                            if (cellData >= 0) {
+                                color = '#b6d7a8';
+                            } else {
+                                color = '#e06666';
+                            }
+                        } else {
+                            color = '#ffd966';
+                        }
+                        $(td).css('background-color', color);
+                        $(td).css('box-shadow', 'none');
+                    },
+                    render: function (data, type, full, meta) {
+                        if(data=='fas fa-lock'){
+                            return '<i class="fas fa-lock"></i>';
+                        }
+                        return `${data}%`;
+                    }
+                },
+                {
+                    targets: 8, // Index of the date column
+                    createdCell: function (td, cellData, rowData, row, col) {
+                        signal_close =''
+                        if(rowData.signal_close != null){
+                            signal_close = rowData.signal_close.trim().toLowerCase();
+                        }
+                        if (signal_close == 'takeprofitbuy') {
+                            color = '#b6d7a8';
+                        } else if (signal_close == 'cutlossbuy') {
+                            color = '#e06666';
+                        } else {
+                            console.log(rowData.signal_close);
+                            color = '#ffd966';
+                        }
+                        $(td).css('background-color', color);
+                        $(td).css('box-shadow', 'none');
+                    },
+                    render: function (data, type, full, meta) {
+                        if(data == null || data == '' || data == undefined || data == 'Hold'){
+                            return 'Hold';
+                        }
+                        return `${data}`;
+                    }
+                },
+                {
+                    targets: 5, // Index of the 'code' column
+                    createdCell: function (td, cellData, rowData, row, col) {
+                        $(td).css('text-align', 'left');
+                        $(td).css('font-weight', 'bold');
+                        $(td).css('padding', '.5em .8em');
+                    },
+                    render: function(data, type, row) {
+                        return  '<img src="images/logo/'+data+'.png" alt="Logo" style=" height:20px; max-width:27px;width:30px;; margin-right:0.8em"> '+ data; // Adjust the path and style as needed
+                    }
                 }
-            }],
-            columns: [
-                { data: 'code' },  // Apply bold formatting to the "PriceTrend" column data},
-                    { data: 'trend_price' },
-                    { data: 'last_sale' },
-                    { data: 'date_action' }
             ],
-            columnDefs: [
-                {
-                    targets: 1, // Index of the date column
-                    createdCell: function(td, cellData, rowData, row, col) {
-
-
-                        // Or apply inline styles
-                        color ='yellow';
-                        if(cellData =='UPTREND') {
-                            color='green';
-                        };
-                        if(cellData =='DOWNTREND') {
-                            color='red';
-                        };
-                        $(td).css('background-color', color);
-                    }
-                }],
+            createdRow: function (row, data, dataIndex) {
+                // Assuming 'code' is the property you want to use for data-id
+                $(row).attr('data-id', data.id_code);
+            }
         });
-        indices.columns.adjust().draw();
-        $('#favourite').DataTable({
-            searching: false,
-            lengthChange: false, //
-            paging: false,
-            info: false,
-            order: [[3, 'desc']],
-            data: @json($favorite),
-            responsive: true,
-            scrollY: '338px',
-
-            columns: [
-                { data: 'code' },
-                { data: 'signal_open' },
-                { data: 'last_sale' },
-                { data: 'price_open' },
-                { data: 'open_time' }
-
-            ]
-        });
-        $('a[data-bs-toggle="tab"]').on('shown.bs.tab', function (e) {
-            target = e.target.getAttribute("href") // activated tab
-            console.log(target);
-    // Trigger DataTable redraw when tab becomes active
-    commodities.columns.adjust().responsive.recalc();
-    indices.columns.adjust().responsive.recalc();
-    forex.columns.adjust().responsive.recalc();
-    crypto.columns.adjust().responsive.recalc();
-
-});
+        indices.columns.adjust().responsive.recalc();
 
     });
 
@@ -371,128 +363,51 @@
     <div class="container">
         <h2 class="text-left mb-4 label-color color-home" >Quan tâm nhiều nhất</h2>
         <div class="row">
-            <div class="col-md-6 form-group">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title label-color color-home">Ưa thích</h5>
-                            <table class="table table-striped table-bordered" id="favourite">
-                                <thead>
+        <!-- Chart Section -->
+        <div class="col-md-12 text-center form-group">
 
+            <div class="card">
+                <div class="card-body">
+                    <table class="table table-striped table-bordered" style="margin-bottom: 0px;"
+                        id="indices-table">
+                    </table>
+                    <div class="row mt-4">
+                        <div class="col-md-8 text-left form-group">
+                            <ul style="padding-left:0">
+                                <li class="list-item">
+                                    <button class="takeprofitbuy width-120">Buy</button>
+                                    <span>Tín hiệu xu hướng đang mở.</span>
+                                </li>
+                                <li class="list-item">
+                                    <button class="hold width-120">Buy</button>
+                                    <span>Tín hiệu xu hướng đã đóng.</span>
+                                </li>
 
-                                    <th class="">Name</th>
-                                    <th class="">Action</th>
-                                    <th class="">Last Sale</th>
-                                    <th class="">Price Open</th>
-                                    <th class="">Time</th>
-                                </thead>
-                            </table>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 form-group">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title label-color color-home">Tín hiệu miễn phí</h5>
-                        <ul class="nav nav-tabs">
-                        <li class="nav-item">
-                            <a class="nav-link active" id="indices-tab" data-bs-toggle="tab" href="#indices" >indices</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="commodities-tab" data-bs-toggle="tab" href="#commodities" >Commodities</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="cryptocurrencies-tab" data-bs-toggle="tab" href="#cryptocurrencies" >Cryptocurrencies</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="forex-tab" data-bs-toggle="tab" href="#forex">Forex</a>
-                        </li>
-                    </ul>
+                            </ul>
+                        </div>
+                        <div class="col-md-4 text-right form-group">
+                            <ul style="padding-left:0">
+                                <li class="list-item">
+                                    <button class="hold width-120">Hold</button>
+                                    <span>Tín hiệu đang ở trạng thái giữ.</span>
+                                </li>
+                                <li class="list-item">
+                                    <button class="takeprofitbuy width-120">TakeProfitBuy</button>
+                                    <span>Tín hiệu đã ở trạng thái chốt lời.</span>
+                                </li>
+                                <li class="list-item">
+                                    <button class="cutlossbuy width-120">CutLossBuy</button>
+                                    <span>Tín hiệu đã ở trạng thái cắt lỗ.</span>
+                                </li>
+                            </ul>
 
-                        <div class="tab-content">
-                            <div class="tab-pane fade show active in" id="indices">
-                                    <table class="table table-striped table-bordered"  id="indices-table">
-                                        <thead>
-
-                                                <th class="sortable" class="name">
-                                                    Name
-                                                </th>
-                                                <th class="" class="trend">
-                                                    Trend
-                                                </th>
-                                                <th class="sortable-header" class="trendprice">
-                                                    PriceTrend
-                                                </th>
-                                                <th class="sortable-header" class="trendprice">
-                                                    TimeStart
-                                                </th>
-
-                                        </thead>
-                                    </table>
-                            </div>
-                            <div class="tab-pane fade" id="commodities">
-                                <!-- Content for Profile tab -->
-                                <table class="table table-striped table-bordered" id="commodities-table" >
-                                    <thead>
-                                        <th class="sortable">
-                                            Name
-                                        </th>
-                                        <th class="">
-                                            Trend
-                                        </th>
-                                        <th class="sortable-header">
-                                            PriceTrend
-                                        </th>
-                                        <th class="sortable-header">
-                                            TimeStart
-                                        </th>
-                                    </thead>
-                                </table>
-                            </div>
-                            <div class="tab-pane fade" id="cryptocurrencies">
-                                <table class="table table-striped table-bordered"  id="crypto">
-                                    <thead>
-
-                                        <th class="sortable" width="20%">
-                                            Name
-                                        </th>
-                                        <th class="" width="25%">
-                                            Trend
-                                        </th>
-                                        <th class="sortable-header"  width="25%">
-                                            PriceTrend
-                                        </th>
-                                        <th class="sortable-header"  width="30%">
-                                            TimeStart
-                                        </th>
-
-                                    </thead>
-                                </table>
-
-                            </div>
-                            <div class="tab-pane fade" id="forex">
-                                <table class="table table-striped table-bordered" id="forex-table">
-                                    <thead >
-
-                                            <th class="sortable">
-                                                Name
-                                            </th>
-                                            <th class="">
-                                                Trend
-                                            </th>
-                                            <th class="sortable-header">
-                                                PriceTrend
-                                            </th>
-                                            <th class="sortable-header">
-                                                TimeStart
-                                            </th>
-
-                                    </thead>
-                                </table>
-                            </div>
                         </div>
                     </div>
+
                 </div>
             </div>
+
+        </div>
     </div>
     </div>
 </section>

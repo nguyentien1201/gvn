@@ -76,12 +76,8 @@ class RegisterController extends Controller
     public function register(Request $request)
     {
         $this->validator($request->all())->validate();
-
         $user = $this->create($request->all());
-
-        // Optionally, log the user in after registration
         Auth::login($user);
-
         return redirect()->route('front.home.index'); // Redirect to a desired route after registration
     }
     public function showRegistrationForm()
