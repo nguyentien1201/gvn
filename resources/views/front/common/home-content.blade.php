@@ -38,7 +38,6 @@
     $(document).ready(function () {
         var indices = $('#indices-table').DataTable({
             searching: false,
-
             lengthChange: false, //
             responsive: true,
             paging: false,
@@ -78,7 +77,7 @@
                     targets: 1, // Index of the date column
 
                     render: function (data, type, full, meta) {
-                        if(data=='fas fa-lock'){
+                        if(data =='fas fa-lock'){
                             return '<i class="fas fa-lock"></i>';
                         }
                         if (type === 'display') {
@@ -96,6 +95,7 @@
                         if(data=='fas fa-lock'){
                             return '<i class="fas fa-lock"></i>';
                         }
+                        return data; //
                     }
                 },
                 {
@@ -104,6 +104,7 @@
                         if(data=='fas fa-lock'){
                             return '<i class="fas fa-lock"></i>';
                         }
+                        return data; //
                     }
                 },
                 {
