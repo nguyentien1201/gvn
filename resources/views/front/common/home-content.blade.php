@@ -563,7 +563,7 @@
         <div class="row">
             <div class="col-12">
                 <h2 class="text-left mb-4"><span class="title-trading-first label-color bold">Giao dịch với</span>
-                    <span class="title-trading-second  color-home">GRERN BETA 1.2.3</span>
+                    <span class="title-trading-second  color-home">GRERN BETA 1.3.3</span>
                 </h2>
                 <div class="card mb-4">
                     <div class="card-body">
