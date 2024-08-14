@@ -27,7 +27,8 @@ class HomeController
                 $signals[$key] = $value;
             }
         }
-
+        $nas100 = $this->getHistorySignal(1);
+        $default_chart = $nas100['data'];
         $favarite_code = config('stock.favorite');
         $stocks = MstStock::whereIn('code',$favarite_code)->pluck('id')->toArray();
         $favorite = GreenBeta::select('*', DB::raw('MAX(close_time) as close_time'))->whereIn('code',$stocks)->with(['MstStock'])->groupBy('code')->orderBy('close_time', 'desc')->get();
@@ -41,7 +42,7 @@ class HomeController
             $value->code = $value->MstStock->code;
             $favorite[$key] = $value;
         }
-        return view('front.home',compact('signals','favorite','last_signal'));
+        return view('front.home',compact('signals','favorite','last_signal','default_chart'));
     }
     public function greenBeta(Request $request)
     {

@@ -156,7 +156,6 @@
                         } else if (signal_close == 'cutlossbuy') {
                             color = '#e06666';
                         } else {
-                            console.log(rowData.signal_close);
                             color = '#ffd966';
                         }
                         $(td).css('background-color', color);
@@ -187,7 +186,32 @@
             }
         });
         indices.columns.adjust().responsive.recalc();
+        var ctxline = document.getElementById('lineChart').getContext('2d');
+        lineChart = new Chart(ctxline, {
+            type: 'line',
+            data: {
+                labels: @json($default_chart['profit']).map((value, index) => index),
+                datasets: [{
+                    label: 'Profit Nas100',
+                    data: @json($default_chart['profit']),
+                    backgroundColor: '#34a853',
+                    borderColor: 'green',
+                    borderWidth: 0.5,
+                    fill: true,
 
+                }]
+            },
+            options: {
+                scales: {
+                    x: {
+                        beginAtZero: false,
+                        min: @json($default_chart['profit']) // Ẩn nhãn và đường biểu đồ của trục x
+                    }
+                },
+
+            }
+
+        });
     });
 
     var swiper = new Swiper('.swiper-container', {
@@ -440,7 +464,7 @@
                         </div>
                         <!-- Chart Section -->
                         <div class="col-md-8">
-                            <canvas id="myChartBeta" width="400" height="230"></canvas>
+                            <canvas id="lineChart" width="400" height="230"></canvas>
                         </div>
                     </div>
                 </div>

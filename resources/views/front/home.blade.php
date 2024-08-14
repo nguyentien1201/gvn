@@ -132,65 +132,6 @@
     <script>
 
 
-        // Chart js config
-        var ctx = document.getElementById('myChartBeta').getContext('2d');
-        var myChart = new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: ['11/22', '11/25', '11/29', '03/23', '04/25', '06/28'],
-                datasets: [{
-                    fill: false,
-                    label: 'Green Alpha 10.0.1',
-                    data: [12, 19, 3, 5, 2, 3],
-                    backgroundColor: [
-                        '#3ab54a',
-                        '#3ab54a',
-                        '#3ab54a',
-                        '#3ab54a',
-                        '#3ab54a',
-                        '#3ab54a'
-                    ],
-                    borderColor: [
-                        '#3ab54a'
-                    ],
-                    borderWidth: 2
-                },
-                {
-                    fill: false,
-                    label: 'NASDAQ',
-                    data: [5, 14, -3, -5, 6, -3],
-                    backgroundColor: [
-                        '#7a7a7a',
-                        '#7a7a7a',
-                        '#7a7a7a',
-                        '#7a7a7a',
-                        '#7a7a7a',
-                        '#7a7a7a'
-                    ],
-                    borderColor: [
-                        '#7a7a7a'
-                    ],
-                    borderWidth: 2
-                }]
-            },
-            options: {
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
-                },
-                plugins: {
-                    legend: {
-                        display: true,
-                        labels: {
-                            color: 'rgb(255, 99, 132)'
-                        }
-                    }
-                }
-            }
-        });
 
         var ctx = document.getElementById('myChartAnpha').getContext('2d');
         var myChartAnpha = new Chart(ctx, {
