@@ -8,6 +8,12 @@
 <script src="https://cdn.datatables.net/v/bs5/dt-2.0.8/date-1.5.2/fc-5.0.1/fh-4.0.1/r-3.0.2/datatables.min.js"></script>
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 <style>
+     tbody >tr:hover {
+            cursor: pointer;
+            background-color: #f5f5f5;
+            box-shadow: 0 0px 0px rgba(0, 0, 0, 0.1);
+            transform: scale(1.008);
+        }
        .color-home{
             color:#008000 !important;
         }
@@ -193,6 +199,7 @@
                         }
                         $(td).css('background-color', color);
                         $(td).css('box-shadow', 'none');
+                        $(td).css('border-color', '#fff');
                     }
                 },
                 {
@@ -416,7 +423,7 @@
         }
 
         .hold {
-            background-color: #ffc107; /* Yellow background for Hold */
+            background-color: rgb(255, 217, 102); /* Yellow background for Hold */
             color: #000; /* Text color black for better contrast on yellow */
         }
 
