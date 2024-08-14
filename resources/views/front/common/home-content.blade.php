@@ -207,7 +207,7 @@
 
                     render: function (data, type, full, meta) {
                         if(data =='fas fa-lock'){
-                            return '<i class="fas fa-lock"></i>';
+                            return '<i style="color:green" class="fas fa-lock"></i>';
                         }
                         if (type === 'display') {
                             const numberFormatter = new Intl.NumberFormat('en-US', { maximumFractionDigits: 0 }); // No decimal places
@@ -222,20 +222,12 @@
                     targets: 2, // Index of the date column
                     render: function (data, type, full, meta) {
                         if(data=='fas fa-lock'){
-                            return '<i class="fas fa-lock"></i>';
+                            return '<i style="color:green" class="fas fa-lock"></i>';
                         }
                         return data; //
                     }
                 },
-                {
-                    targets: 6, // Index of the date column
-                    render: function (data, type, full, meta) {
-                        if(data=='fas fa-lock'){
-                            return '<i class="fas fa-lock"></i>';
-                        }
-                        return data; //
-                    }
-                },
+
                 {
                     targets: 9, // Index of the date column
                     render: function (data, type, full, meta) {
@@ -319,10 +311,10 @@
         lineChart = new Chart(ctxline, {
             type: 'line',
             data: {
-                labels: @json($default_chart['profit']).map((value, index) => index),
+                labels: @json($default_chart['nas100']['profit']).map((value, index) => index),
                 datasets: [{
                     label: 'Profit Nas100',
-                    data: @json($default_chart['profit']),
+                    data: @json($default_chart['nas100']['profit']),
                     backgroundColor: '#34a853',
                     borderColor: 'green',
                     borderWidth: 0.5,
@@ -334,7 +326,7 @@
                 scales: {
                     x: {
                         beginAtZero: false,
-                        min: @json($default_chart['profit']) // Ẩn nhãn và đường biểu đồ của trục x
+                        min: @json($default_chart['nas100']['profit']) // Ẩn nhãn và đường biểu đồ của trục x
                     }
                 },
 

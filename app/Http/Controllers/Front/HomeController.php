@@ -22,12 +22,17 @@ class HomeController
             foreach ($signals as $key => $value) {
                 $value['open_time'] = 'fas fa-lock';
                 $value['price_open'] = 'fas fa-lock';
-                $value['profit'] = 'fas fa-lock';
                 $signals[$key] = $value;
             }
         }
         $nas100 = $this->getHistorySignal(1);
-        $default_chart = $nas100['data'];
+        $eth = $this->getHistorySignal(23);
+        $usOil = $this->getHistorySignal(15);
+        $xausud = $this->getHistorySignal(13);
+        $default_chart['nas100'] = $nas100['data'];
+        $default_chart['eth'] = $eth['data'];
+        $default_chart['usOil'] = $usOil['data'];
+        $default_chart['xausud'] = $xausud['data'];
         $favarite_code = config('stock.favorite');
         $stocks = MstStock::whereIn('code',$favarite_code)->pluck('id')->toArray();
         $favorite = GreenBeta::select('*', DB::raw('MAX(close_time) as close_time'))->whereIn('code',$stocks)->with(['MstStock'])->groupBy('code')->orderBy('close_time', 'desc')->get();
