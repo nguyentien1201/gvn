@@ -476,26 +476,7 @@
                         return `${data}%`;
                     }
                 },
-                {
-                    targets: 6, // Index of the date column
-                    createdCell: function (td, cellData, rowData, row, col) {
-                        color  = '';
-                        if (cellData > 0) {
-                            color = '#b8dfcd';
-                        } else if (cellData < 0) {
-                            color = '#e37b71';
-                        }
-                        $(td).css('color', color);
-                        $(td).css('box-shadow', 'none');
-                    },
-                    render: function (data, type, full, meta) {
-                        if(data != null){
-                            return `${data}%`;
-                        }
-                        return '';
-                    },
 
-                },
                 {
                     targets:7, // Index of the open_time column
                     render: function (data, type, row) {
@@ -778,7 +759,7 @@
         <div class="row">
             <div class="col-12">
                 <h2 class="text-left mb-4"><span class="title-trading-first label-color bold">Giao dịch với</span>
-                    <span class="title-trading-second  color-home">GRERN BETA 1.3.3</span>
+                    <span class="title-trading-second  color-home">GREEN BETA 1.3.3</span>
                 </h2>
                 <div class="card mb-4">
                     <div class="card-body">
@@ -833,9 +814,7 @@
                                                     <div>{{$signal->close_time ? $signal->close_time :$signal->open_time }}</div>
                                                     </div>
                                                 </div>
-                                                <div class="notification-body">
 
-                                                </div>
                                             </div>
 
                                         </div>
@@ -888,12 +867,9 @@
                 <div class="card-body">
                     <div class="row">
                         <!-- Data Section -->
-                        <div class="col-md-4">
-                            <img class="img-fluid" src="{{asset('images/logo-robot-alpha.jpg')}}"
-                            alt="{{asset('images/logo-robot-alpha.jpg')}}">
-                        </div>
+
                         <!-- Chart Section -->
-                        <div class="col-md-8">
+                        <div class="col-md-12">
                             <canvas id="myChartById" style="width:100%" width="400" height="230"></canvas>
                         </div>
                     </div>
