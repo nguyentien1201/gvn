@@ -201,7 +201,6 @@
                         $(td).css('border-color', '#fff');
                     },
                     render: function (data, type, full, meta) {
-                        console.log(full.close_time);
                         if(full.close_time != null){
                             return '';
                         }

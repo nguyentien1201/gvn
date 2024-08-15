@@ -616,6 +616,14 @@
                         }
                         $(td).css('background-color', color);
                         $(td).css('box-shadow', 'none');
+                    },
+                    render: function (data, type, full, meta) {
+                        if(full.close_time != null){
+                            return '';
+                        }
+
+                        return data; //
+
                     }
                 },
                 {
