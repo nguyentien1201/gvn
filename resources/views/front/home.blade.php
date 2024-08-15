@@ -6,7 +6,7 @@
   <title>GVN</title>
   <!-- Bootstrap CSS -->
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css" rel="stylesheet">
+
   <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
    <!-- DataTables Responsive CSS -->
    <link href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.dataTables.min.css" rel="stylesheet">
@@ -120,160 +120,12 @@
 
   <!-- Bootstrap JS and dependencies -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <script src="{{ asset('plugins/chart.js/Chart.min.js') }}"></script>
-  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+<script src="{{ asset('plugins/chart.js/Chart.min.js') }}"></script>
+<script src="https://cdn.datatables.net/v/bs5/dt-2.0.8/date-1.5.2/fc-5.0.1/fh-4.0.1/r-3.0.2/datatables.min.js"></script>
 </body>
 </html>
-@yield('scripts')
-    <script>
 
-
-
-        var ctx = document.getElementById('myChartAnpha').getContext('2d');
-        var myChartAnpha = new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: ['11/22', '11/25', '11/29', '03/23', '04/25', '06/28'],
-                datasets: [{
-                    fill: 'origin',
-                    label: 'Green Alpha 10.0.1',
-                    data: [12, 19, 3, 5, 2, 3],
-                    backgroundColor: '#4ac12c94',
-                    borderColor: '#3ab54a',
-                    borderWidth: 2
-                },
-                {
-                    fill: 'origin',
-                    label: 'NASDAQ',
-                    data: [-12, -19, -3, -5, -2, -3],
-                    backgroundColor: '#00000066',
-                    borderColor: '#7a7a7a',
-                    borderWidth: 2
-                }]
-            },
-            options: {
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
-                },
-                plugins: {
-                    legend: {
-                        display: true,
-                        labels: {
-                            color: 'rgb(255, 99, 132)'
-                        }
-                    }
-                }
-            }
-        });
-
-        $('#chartType').on('select2:select', function (e) {
-            var typeChart = e.params.data.id;
-            changeChartType(typeChart)
-        });
-        function changeChartType(typeChart) {
-            switch (typeChart) {
-                case 'bar':
-                    myChart.config.type = 'bar';
-                    myChart.data.datasets = [{
-                        fill: false,
-                        label: 'Green Alpha 10.0.1',
-                        data: [12, 19, 3, 5, 2, 3],
-                        backgroundColor: [
-                            '#3ab54a',
-                            '#3ab54a',
-                            '#3ab54a',
-                            '#3ab54a',
-                            '#3ab54a',
-                            '#3ab54a'
-                        ],
-                        borderColor: [
-                            '#3ab54a'
-                        ],
-                        borderWidth: 2
-                    },
-                    {
-                        fill: false,
-                        label: 'NASDAQ',
-                        data: [-12, -19, -3, -5, -2, -3],
-                        backgroundColor: [
-                            '#7a7a7a',
-                            '#7a7a7a',
-                            '#7a7a7a',
-                            '#7a7a7a',
-                            '#7a7a7a',
-                            '#7a7a7a'
-                        ],
-                        borderColor: [
-                            '#7a7a7a'
-                        ],
-                        borderWidth: 2
-                    }]
-                    break;
-                case 'area':
-                    myChart.config.type = 'line';
-                    myChart.data.datasets = [{
-                        fill: true,
-                        label: 'Green Alpha 10.0.1',
-                        data: [12, 19, 3, 5, 2, 3],
-                        backgroundColor: '#4ac12c94',
-                        borderColor: '#3ab54a',
-                        borderWidth: 2
-                    },
-                    {
-                        fill: true,
-                        label: 'NASDAQ',
-                        data: [-12, -19, -3, -5, -2, -3],
-                        backgroundColor: '#00000066',
-                        borderColor: '#7a7a7a',
-                        borderWidth: 2
-                    }]
-                    break;
-                default:
-                    myChart.config.type = 'line';
-                    myChart.data.datasets = [{
-                        fill: false,
-                        label: 'Green Alpha 10.0.1',
-                        data: [12, 19, 3, 5, 2, 3],
-                        backgroundColor: [
-                            '#3ab54a',
-                            '#3ab54a',
-                            '#3ab54a',
-                            '#3ab54a',
-                            '#3ab54a',
-                            '#3ab54a'
-                        ],
-                        borderColor: [
-                            '#3ab54a'
-                        ],
-                        borderWidth: 2
-                    },
-                    {
-                        fill: false,
-                        label: 'NASDAQ',
-                        data: [-12, -19, -3, -5, -2, -3],
-                        backgroundColor: [
-                            '#7a7a7a',
-                            '#7a7a7a',
-                            '#7a7a7a',
-                            '#7a7a7a',
-                            '#7a7a7a',
-                            '#7a7a7a'
-                        ],
-                        borderColor: [
-                            '#7a7a7a'
-                        ],
-                        borderWidth: 2
-                    }]
-                    break;
-            }
-            myChart.update();
-        }
-    </script>

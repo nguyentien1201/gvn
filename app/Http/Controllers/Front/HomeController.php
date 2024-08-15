@@ -33,20 +33,24 @@ class HomeController
         $default_chart['eth'] = $eth['data'];
         $default_chart['usOil'] = $usOil['data'];
         $default_chart['xausud'] = $xausud['data'];
-        $favarite_code = config('stock.favorite');
-        $stocks = MstStock::whereIn('code',$favarite_code)->pluck('id')->toArray();
-        $favorite = GreenBeta::select('*', DB::raw('MAX(close_time) as close_time'))->whereIn('code',$stocks)->with(['MstStock'])->groupBy('code')->orderBy('close_time', 'desc')->get();
+        $green_stock = (new GreenStockNas100())->getListNas100Api(20);
+        $green_data =[];
 
-        foreach ($favorite as $key => $value) {
-            $value->code = $value->MstStock->code;
-            $favorite[$key] = $value;
+        foreach ($green_stock as $key => $value) {
+            $green_data[$key] =[
+                'rating' => $value['rating'],
+                'code' =>'fas fa-lock',
+                'point' => $value['point'],
+                'trending' => $value['trending'],
+                'signal' => $value['signal'],
+                'profit' => $value['profit'],
+                'price' => $value['price'],
+                'time' => $value['time'],
+            ];
         }
-        $last_signal = GreenBeta::select('*', DB::raw('MAX(updated_at) as updated_at'))->whereIn('code',$stocks)->with(['MstStock'])->groupBy('code')->orderBy('updated_at', 'desc')->get();
-        foreach ($favorite as $key => $value) {
-            $value->code = $value->MstStock->code;
-            $favorite[$key] = $value;
-        }
-        return view('front.home',compact('signals','favorite','last_signal','default_chart'));
+        $last_signal = GreenAlpha::select('*' )->where('close_time', '<=', now())->whereNotNull('close_time')->whereNotNull('signal_close')->with(['MstStock'])->groupBy('code')->orderBy('close_time', 'desc')->limit(5)->get();
+        $data_chart_default = $this->getHistoryAlphaSignal(1);
+        return view('front.home',compact('signals','green_data','default_chart','last_signal','data_chart_default'));
     }
     public function greenBeta(Request $request)
     {

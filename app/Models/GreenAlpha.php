@@ -93,6 +93,28 @@ class GreenAlpha extends Model
         }
         return round($profit, 2);
     }
+    public function getProfitAttribute()
+    {
+
+        $profit = NULL;
+        $type= strtolower($this->signal_open);
+        // if(!empty($this->profit)){
+        //     return round($this->profit, 2);
+        // }
+        if(!empty($this->price_close) && $this->price_open > 0){
+
+            if(   $type== 'buy'){
+                $profit = ($this->price_close - $this->price_open)/$this->price_open *100;
+ 
+            }
+            if( $type== 'sell'){
+                $profit = ( $this->price_open - $this->price_close)/$this->price_open *100;
+            }
+        }
+
+        return round($profit, 2);
+    }
+
     public function getListSignalsByGroup()
     {
         $today = Carbon::today()->toDateString();

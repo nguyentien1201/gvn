@@ -3,7 +3,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
 
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdn.datatables.net/v/bs5/dt-2.0.8/date-1.5.2/fc-5.0.1/fh-4.0.1/r-3.0.2/datatables.min.js"></script>
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
@@ -171,7 +171,6 @@
             paging: false,
             autoWidth: true,
             info: false,
-            order: [[3, 'desc']],
             data: @json($signals),
 
             columns: [
@@ -200,6 +199,15 @@
                         $(td).css('background-color', color);
                         $(td).css('box-shadow', 'none');
                         $(td).css('border-color', '#fff');
+                    },
+                    render: function (data, type, full, meta) {
+                        console.log(full.close_time);
+                        if(full.close_time != null){
+                            return '';
+                        }
+
+                        return data; //
+
                     }
                 },
                 {
@@ -333,6 +341,212 @@
             }
 
         });
+        var green_stock = $('#green-stock-table').DataTable({
+
+            searching: false,
+
+            lengthChange: false, //
+            responsive: true,
+            paging: false,
+            autoWidth: true,
+            info: false,
+            order: [[0, 'asc']],
+            data: @json($green_data),
+            columns: [
+                { data: 'rating', title: 'RATING' },  // Apply bold formatting to the "PriceTrend" column data},
+                { data: 'code', title: 'CHỨNG KHOÁN' },
+                { data: 'point', title: 'RATING POINT' },
+                { data: 'trending', title: 'XU HƯỚNG' },
+                { data: 'signal', title: 'HÀNH ĐỘNG' },
+                { data: 'profit', title: 'PROFIT' },
+                { data: 'price', title: 'PRICE' },
+                { data: 'time', title: 'THỜI GIAN' },
+            ],
+            columnDefs: [
+                {
+                targets: 0, // Index of the date column
+                    createdCell: function (td, cellData, rowData, row, col) {
+                        color  = '';
+                        bold='';
+                        if (cellData <= 30) {
+                            color = '#7eb18f';
+                            bold ='bold';
+                        }
+                        $(td).css('color', color);
+                        $(td).css('font-weight',bold);
+                    },
+                },
+                {
+                targets: 1, // Index of the date column
+                    createdCell: function (td, cellData, rowData, row, col) {
+                        $(td).css('font-weight','bold');
+                        var company = rowData.company_name;
+
+                        $(td).hover(
+                            function() {
+                                $(this).addClass('row-hover');
+                                // Show custom tooltip
+                                $('<div class="custom-tooltip">' + company + '</div>').appendTo('body').fadeIn('slow');
+                            },
+                            function() {
+                                $(this).removeClass('row-hover');
+                                $('.custom-tooltip').remove();
+                            }
+                        ).mousemove(function(e) {
+                            $('.custom-tooltip').css({
+                                top: e.pageY + 15 + 'px',
+                                left: e.pageX + 20 + 'px'
+                            });
+                        });
+                    },
+                    render: function (data, type, full, meta) {
+                        if(data =='fas fa-lock'){
+                            return '<i style="color:green" class="fas fa-lock"></i>';
+                        }
+                        if (type === 'display') {
+                            const numberFormatter = new Intl.NumberFormat('en-US', { maximumFractionDigits: 0 }); // No decimal places
+                            const formattedNumber = numberFormatter.format(data); // Format the number with commas
+                            return formattedNumber;
+                        }
+                        return data; //
+
+                    }
+                },
+                {
+                    targets: 3, // Index of the date column
+                    createdCell: function (td, cellData, rowData, row, col) {
+                        trending ='';
+                        color  = '';
+                        if(rowData.trending != null){
+                            trending = rowData.trending.trim().toLowerCase();
+                        }
+                        if (trending == 'breaking high price') {
+                            color = '#917dc4';
+                        } else if (trending == 'build up') {
+                            color = '#fde69c';
+                        } else if (trending == 'go up') {
+                            color = '#badfcd';
+                        }else if (trending == 'bottom fishing') {
+                            color ='#03feff'
+                        } else if(trending == 'go down'){
+                            color = '#e99a97';
+                        } else if(trending == 'recovery'){
+                            color = '#fe9a3c';
+                        } else if(trending == 'breaking low price'){
+                            color ='#cc0611';
+                        }
+                        $(td).css('background-color', color);
+                        $(td).css('box-shadow', 'none');
+                    }
+                },
+           {
+                targets: 4, // Index of the date column
+                    createdCell: function (td, cellData, rowData, row, col) {
+                        signal ='';
+                        color  = '';
+                        if(cellData != null){
+                            signal = cellData.trim().toLowerCase();
+                        }
+                        if (signal == 'buy') {
+                            color = '#66a74c';
+                        } else if (signal == 'hold') {
+                            color = '#93c480';
+                        } else if (signal == 'cash') {
+                            color = '#fee49d';
+                        }else if (signal == 'sell') {
+                            color ='#ffffff'
+                        }
+                        $(td).css('background-color', color);
+                        $(td).css('box-shadow', 'none');
+                    }
+                },
+                {
+                targets: 5, // Index of the date column
+                    createdCell: function (td, cellData, rowData, row, col) {
+                        color  = '';
+                        if (cellData > 0) {
+                            color = '#b8dfcd';
+                        } else if (cellData < 0) {
+                            color = '#e37b71';
+                        }
+                        $(td).css('background-color', color);
+                        $(td).css('box-shadow', 'none');
+                    },
+                    render: function (data, type, full, meta) {
+                        return `${data}%`;
+                    }
+                },
+                {
+                    targets: 6, // Index of the date column
+                    createdCell: function (td, cellData, rowData, row, col) {
+                        color  = '';
+                        if (cellData > 0) {
+                            color = '#b8dfcd';
+                        } else if (cellData < 0) {
+                            color = '#e37b71';
+                        }
+                        $(td).css('color', color);
+                        $(td).css('box-shadow', 'none');
+                    },
+                    render: function (data, type, full, meta) {
+                        if(data != null){
+                            return `${data}%`;
+                        }
+                        return '';
+                    },
+
+                },
+                {
+                    targets:7, // Index of the open_time column
+                    render: function (data, type, row) {
+                        if (type === 'display' || type === 'filter') {
+                            return moment.utc(data).format('DD/MM/YYYY'); // Format as HH:mm
+                        }
+                        return data;
+                    }
+                },
+            ],
+
+
+        });
+        green_stock.columns.adjust().responsive.recalc();
+
+        var ctxbar = document.getElementById('myChartById').getContext('2d');
+    var data = @json($data_chart_default);
+    data = data.data;
+    barChart = new Chart(ctxbar, {
+        type: 'bar',
+        data: {
+            labels: data.profitByMonth.lable,
+            datasets: [{
+                data: data.profitByMonth.profit,
+                label: 'Profit By Month',
+                backgroundColor: '#34a853',
+                borderWidth: 1,
+                fontweight: 600,
+            }]
+        },
+        options: {
+            scales: {
+                x: {
+                    ticks: {
+                        font: {
+                            weight: 'bold' // Makes x-axis labels bold
+                        }
+                    }
+                },
+                y: {
+                    ticks: {
+                        font: {
+                            weight: 'bold' // Makes y-axis labels bold
+                        }
+                    }
+                }
+            }
+
+        },
+
+    });
     });
 
     var swiper = new Swiper('.swiper-container', {
@@ -348,6 +562,7 @@
             clickable: true,
         },
     });
+
 </script>
 
 <style>
@@ -504,6 +719,7 @@
  .color-home{
     color:#008000 !important;
  }
+
 </style>
 <section class="features text-left mt-5">
     <div class="container">
@@ -610,17 +826,18 @@
                                         <div class="notification">
                                                 <div class="notification-header">
                                                     <img src="{{asset('images/metatrader-icon.png')}}" alt="MetaTrader 4" class="app-icon">
-                                                    <div>
-                                                        <div class="app-name color-home">Green-Beta</div>
-                                                        <div class="notification-time">{{ $signal->updated_at ? date('m-d-Y', strtotime($signal->closeupdated_at_time)) : ''}}</div>
+                                                    <div style="text-align:right">
+                                                        <div class="app-name color-home" style="text-align:right">Green Alpha</div>
+                                                        <div class="bold color-home" ><b>{{$signal->MstStock->code}}</b></div>
+                                                    <div> <b>{{$signal->signal_close }}:</b> <span style="color: {{ $signal->profit < 0 ? 'red' : 'green' }}"> {{!empty($signal->profit) ? $signal->profit .'%'  : ''}}</span></div>
+                                                    <div>{{$signal->close_time ? $signal->close_time :$signal->open_time }}</div>
                                                     </div>
                                                 </div>
                                                 <div class="notification-body">
-                                                    <div class="bold">GREEN BETA</div>
-                                                    <div><b>{{$signal->signal_close ? $signal->signal_close :$signal->signal_open }}:</b> {{$signal->MstStock->code}} {{$signal->price_close ? $signal->price_close :$signal->price_open }}</div>
-                                                    <div>{{$signal->close_time ? $signal->close_time :$signal->open_time }}</div>
+
                                                 </div>
                                             </div>
+
                                         </div>
                                     </div>
                                 </div>
@@ -644,13 +861,25 @@
                 <h2 class="text-left mb-4"><span class="title-trading-first label-color">Giao dịch với</span>
                     <span class="title-trading-second color-home label-color">Green Alpha 10.0.1</span>
                 </h2>
+
                 <div class="card mb-4">
                     <div class="card-body">
-                        <h5 class="card-title color-home">Green Alpha</h5>
+                        <div class="row">
+                        <!-- Data Section -->
+                            <div class="col-md-9">
+                            <h5 class="card-title color-home">Green Alpha</h5>
                         <p class="card-text"> <li>Phương pháp giao dịch: Day Trading</li>
                                             <li>Thời gian đầu tư: Trong ngày, không giữ lệnh qua đêm</li>
                                             <li>Chỉ số giao dịch: Nasdaq, SPX500, US30 ...</li>
                         </p>
+                            </div>
+                            <!-- Chart Section -->
+                            <div class="col-md-3">
+                                <img class="img-fluid" src="{{asset('images/logo-robot-alpha.jpg')}}"
+                                alt="{{asset('images/logo-robot-alpha.jpg')}}">
+                            </div>
+                        </div>
+
                     </div>
                 </div>
 
@@ -660,12 +889,12 @@
                     <div class="row">
                         <!-- Data Section -->
                         <div class="col-md-4">
-                            <img class="img-fluid" src="{{asset('images/Green-Beta.png')}}"
-                            alt="{{asset('images/Green-Beta.png')}}">
+                            <img class="img-fluid" src="{{asset('images/logo-robot-alpha.jpg')}}"
+                            alt="{{asset('images/logo-robot-alpha.jpg')}}">
                         </div>
                         <!-- Chart Section -->
                         <div class="col-md-8">
-                            <canvas id="myChartAnpha" width="400" height="230"></canvas>
+                            <canvas id="myChartById" style="width:100%" width="400" height="230"></canvas>
                         </div>
                     </div>
                 </div>
@@ -687,7 +916,9 @@
                         <!-- Data Section -->
                         <!-- Chart Section -->
                         <div class="col-md-12 text-center">
-                            <img class="img-fluid" style="width:100%" src="{{asset('images/ratingbygvn.jpg')}}" />
+                        <table class="table table-striped table-bordered" style="margin-bottom: 0px;" id="green-stock-table">
+
+                        </table>
                         </div>
                     </div>
                 </div>

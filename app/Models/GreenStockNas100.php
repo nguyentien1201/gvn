@@ -69,8 +69,8 @@ class GreenStockNas100 extends Model
         }
         return redirect()->route('admin.nas100.index')->with('success', __('panel.success'));
     }
-    public function getListNas100Api(){
-        $data = $this->with('companyInfo')->orderBy('rating','asc')->get();
+    public function getListNas100Api($limit=200){
+        $data = $this->with('companyInfo')->orderBy('rating','asc')->limit($limit)->get();
         $data = $data->map(function($item){
             if($item->companyInfo){
                 $item['company_name'] = $item->companyInfo->company_name;
