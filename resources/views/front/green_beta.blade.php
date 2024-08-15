@@ -625,7 +625,7 @@
                     },
                     render: function (data, type, full, meta) {
                         if(full.close_time != null){
-                            return '';
+                            return 'Close';
                         }
 
                         return data; //
