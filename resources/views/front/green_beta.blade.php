@@ -242,7 +242,7 @@
                                                     <span>Tín hiệu xu hướng đang mở.</span>
                                                 </li>
                                                 <li class="list-item">
-                                                    <button class="hold width-120"></button>
+                                                    <button class="hold width-120" style="color:#ffd966">Buy</button>
                                                     <span>Tín hiệu xu hướng đã đóng.</span>
                                                 </li>
 
