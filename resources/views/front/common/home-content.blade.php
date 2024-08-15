@@ -172,7 +172,7 @@
             autoWidth: true,
             info: false,
             data: @json($signals),
-
+            order: [[4, 'desc']],
             columns: [
                 { data: 'signal_open', title: 'Signal Open' },  // Apply bold formatting to the "PriceTrend" column data},
                 { data: 'price_open', title: 'Price Open' },
@@ -202,7 +202,7 @@
                     },
                     render: function (data, type, full, meta) {
                         if(full.close_time != null){
-                            return '';
+                            return 'Closed';
                         }
 
                         return data; //
@@ -714,20 +714,20 @@
                         id="indices-table">
                     </table>
                     <div class="row mt-4">
-                        <div class="col-md-8 text-left form-group">
+                        <div class="col-md-4 text-left form-group">
                             <ul style="padding-left:0">
                                 <li class="list-item">
                                     <button class="takeprofitbuy width-120" >Buy</button>
                                     <span>Tín hiệu xu hướng đang mở.</span>
                                 </li>
                                 <li class="list-item">
-                                    <button class="hold width-120" style="color:#ffd966">Buy</button>
+                                    <button class="hold width-120">Closed</button>
                                     <span>Tín hiệu xu hướng đã đóng.</span>
                                 </li>
 
                             </ul>
                         </div>
-                        <div class="col-md-4 text-right form-group">
+                        <div class="col-md-4 text-left form-group">
                             <ul style="padding-left:0">
                                 <li class="list-item">
                                     <button class="hold width-120">Hold</button>
@@ -737,6 +737,12 @@
                                     <button class="takeprofitbuy width-120">TakeProfitBuy</button>
                                     <span>Tín hiệu đã ở trạng thái chốt lời.</span>
                                 </li>
+
+                            </ul>
+                        </div>
+                        <div class="col-md-4 text-right form-group">
+                            <ul style="padding-left:0">
+
                                 <li class="list-item">
                                     <button class="cutlossbuy width-120">CutLossBuy</button>
                                     <span>Tín hiệu đã ở trạng thái cắt lỗ.</span>

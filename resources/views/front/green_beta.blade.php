@@ -235,22 +235,22 @@
                                         id="indices-table">
                                     </table>
                                     <div class="row mt-4">
-                                        <div class="col-md-8 text-left form-group">
+                                        <div class="col-md-4 text-left form-group">
                                             <ul style="padding-left:0">
                                                 <li class="list-item">
                                                     <button class="takeprofitbuy width-120">Buy</button>
                                                     <span>Tín hiệu xu hướng đang mở.</span>
                                                 </li>
                                                 <li class="list-item">
-                                                    <button class="hold width-120" style="color:#ffd966">Buy</button>
+                                                    <button class="hold width-120">Close</button>
                                                     <span>Tín hiệu xu hướng đã đóng.</span>
                                                 </li>
 
                                             </ul>
                                         </div>
-                                        <div class="col-md-4 text-right form-group">
+                                        <div class="col-md-4 text-left form-group">
                                             <ul style="padding-left:0">
-                                                <li class="list-item">
+                                            <li class="list-item">
                                                     <button class="hold width-120">Hold</button>
                                                     <span>Tín hiệu đang ở trạng thái giữ.</span>
                                                 </li>
@@ -258,6 +258,11 @@
                                                     <button class="takeprofitbuy width-120">TakeProfitBuy</button>
                                                     <span>Tín hiệu đã ở trạng thái chốt lời.</span>
                                                 </li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-4 text-right form-group">
+                                            <ul style="padding-left:0">
+
                                                 <li class="list-item">
                                                     <button class="cutlossbuy width-120">CutLossBuy</button>
                                                     <span>Tín hiệu đã ở trạng thái cắt lỗ.</span>
@@ -588,7 +593,7 @@
             paging: false,
             autoWidth: true,
             info: false,
-            order: [[3, 'desc']],
+            order: [[4, 'desc']],
             data: @json($signals),
 
             columns: [
