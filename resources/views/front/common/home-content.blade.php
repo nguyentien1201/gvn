@@ -589,7 +589,7 @@
 
         /* Style for Card Text */
         .card-text {
-            color: #555;
+            color: #000;
         }
 
         /* Default style for Stock Signal Background */
