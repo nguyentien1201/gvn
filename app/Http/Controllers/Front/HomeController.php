@@ -18,13 +18,7 @@ class HomeController
 
         $signals = (new GreenBeta())->getListSignalsByGroup();
 
-        if(!\Auth::check()){
-            foreach ($signals as $key => $value) {
-                $value['open_time'] = 'fas fa-lock';
-                $value['price_open'] = 'fas fa-lock';
-                $signals[$key] = $value;
-            }
-        }
+
         $nas100 = $this->getHistorySignal(1);
         $eth = $this->getHistorySignal(23);
         $usOil = $this->getHistorySignal(15);
@@ -35,11 +29,19 @@ class HomeController
         $default_chart['xausud'] = $xausud['data'];
         $green_stock = (new GreenStockNas100())->getListNas100Api(20);
         $green_data =[];
-
+        if(!\Auth::check()){
+            foreach ($signals as $key => $value) {
+                $value['open_time'] = 'fas fa-lock';
+                $value['price_open'] = 'fas fa-lock';
+                $signals[$key] = $value;
+            }
+        }
         foreach ($green_stock as $key => $value) {
+
             $green_data[$key] =[
                 'rating' => $value['rating'],
-                'code' =>'fas fa-lock',
+                'code' => \Auth::check() ? $value['code'] : 'fas fa-lock',
+                'company_name' => \Auth::check() ? $value['company_name'] : 'fas fa-lock',
                 'point' => $value['point'],
                 'trending' => $value['trending'],
                 'signal' => $value['signal'],
@@ -48,7 +50,9 @@ class HomeController
                 'time' => $value['time'],
             ];
         }
-        $last_signal = GreenAlpha::select('*' )->where('close_time', '<=', now())->whereNotNull('close_time')->whereNotNull('signal_close')->with(['MstStock'])->groupBy('code')->orderBy('close_time', 'desc')->limit(5)->get();
+
+        $last_signal = GreenAlpha::select('*' )->where('close_time', '<=', now())->whereNotNull('close_time')->whereNotNull('signal_close')->with(['MstStock'])->groupBy('code')->orderBy('close_time', 'desc')->limit(10)->get();
+
         $data_chart_default = $this->getHistoryAlphaSignal(1);
         return view('front.home',compact('signals','green_data','default_chart','last_signal','data_chart_default'));
     }

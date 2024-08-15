@@ -1,12 +1,4 @@
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
-<script src="https://cdn.datatables.net/v/bs5/dt-2.0.8/date-1.5.2/fc-5.0.1/fh-4.0.1/r-3.0.2/datatables.min.js"></script>
-<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 <style>
      tbody >tr:hover {
             cursor: pointer;
@@ -159,11 +151,37 @@
         thead th {
             text-align: center;
         }
+            /* Custom styles */
+
+            .custom-tooltip {
+            position: absolute;
+            background-color: #fff;
+            color: #333;
+            padding: 0.5em;
+            border-radius: 5px;
+            font-size: 1.3em;
+            display: none;
+            z-index: 1000;
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+        }
+
+
 </style>
 <script>
-
-
     $(document).ready(function () {
+        var swiper = new Swiper('.swiper-container', {
+        slidesPerView: 4,
+        spaceBetween: 10,
+        loop: true,
+        autoplay: {
+            delay: 5000, // Delay between transitions in milliseconds
+            disableOnInteraction: false, // Enable/disable autoplay on swiper interaction
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+    });
         var indices = $('#indices-table').DataTable({
             searching: false,
             lengthChange: false, //
@@ -341,9 +359,7 @@
 
         });
         var green_stock = $('#green-stock-table').DataTable({
-
             searching: false,
-
             lengthChange: false, //
             responsive: true,
             paging: false,
@@ -402,11 +418,7 @@
                         if(data =='fas fa-lock'){
                             return '<i style="color:green" class="fas fa-lock"></i>';
                         }
-                        if (type === 'display') {
-                            const numberFormatter = new Intl.NumberFormat('en-US', { maximumFractionDigits: 0 }); // No decimal places
-                            const formattedNumber = numberFormatter.format(data); // Format the number with commas
-                            return formattedNumber;
-                        }
+
                         return data; //
 
                     }
@@ -529,19 +541,7 @@
     });
     });
 
-    var swiper = new Swiper('.swiper-container', {
-        slidesPerView: 4,
-        spaceBetween: 10,
-        loop: true,
-        autoplay: {
-            delay: 5000, // Delay between transitions in milliseconds
-            disableOnInteraction: false, // Enable/disable autoplay on swiper interaction
-        },
-        pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-        },
-    });
+
 
 </script>
 
@@ -769,11 +769,10 @@
                 </h2>
                 <div class="card mb-4">
                     <div class="card-body">
-                        <p class="card-text">
-                            <li>Phương pháp giao dịch: Position Trading</li>
-                            <li>Thời gian đầu tư: Nắm giữ trung hạn và dài hạn</li>
-                            <li>Chỉ số giao dịch: Stock Index, Commondity, Cryto…</li>
-                        </p>
+                        <h6 class="card-text">
+                        Phương pháp giao dịch của Green Beta là Position Trading, tìm những điểm có xác suất chiến thắng cao nhất và nắm giữ trung và dài hạn vị thế đó cho đến khi xuất hiện các tín hiệu chốt lời và cắt lỗ từ thị trường. Green Beta được phát triển có thể thích nghi hầu hết các chỉ số tài chính trên toàn thị trường như Index Future,Crypto, Commodity...
+                        Tìm kiếm sự dịch chuyển dòng tiền, tìm kiếm lợi thế lợi thế gia tăng tài sản của bạn!
+                        </h6>
                     </div>
                 </div>
 
@@ -802,7 +801,6 @@
         <div class="row">
             <div class="col-12">
                 <h2 class="text-left mb-4 color-home label-color">Top tín hiệu phiên trước đó</h2>
-
                 <div class="swiper-container">
                     <div class="swiper-wrapper">
                         <!-- Slide 1 -->
@@ -828,23 +826,23 @@
                                 </div>
                             @endforeach
                     </div>
+                       <!-- Add Pagination -->
+
                 </div>
                         <!-- Add more slides as needed -->
-                    </div>
-                    <!-- Add Pagination -->
-                    <div class="swiper-pagination"></div>
-                </div>
-
             </div>
+
         </div>
+
     </div>
+
 </section>
 <section class="features text-left  mt-5">
     <div class="container">
         <div class="row">
             <div class="col-12">
                 <h2 class="text-left mb-4"><span class="title-trading-first label-color">Giao dịch với</span>
-                    <span class="title-trading-second color-home label-color">Green Alpha 10.0.1</span>
+                    <span class="title-trading-second color-home label-color">GREEN ALPHA 10.0.1</span>
                 </h2>
 
                 <div class="card mb-4">
@@ -853,10 +851,9 @@
                         <!-- Data Section -->
                             <div class="col-md-9">
                             <h5 class="card-title color-home">Green Alpha</h5>
-                        <p class="card-text"> <li>Phương pháp giao dịch: Day Trading</li>
-                                            <li>Thời gian đầu tư: Trong ngày, không giữ lệnh qua đêm</li>
-                                            <li>Chỉ số giao dịch: Nasdaq, SPX500, US30 ...</li>
-                        </p>
+                        <h6 class="card-text">
+                        Green Alpha là một robot với sự tích hợp đa tầng của các Indicator ngắn hạn, giao dịch với phương pháp Day Trading, là một robot giao dịch ngắn hạn trong phiên giao dịch,  tìm kiếm những điểm vào có xác suất chiến thắng cao và được lặp lại trong nhiều phiên. Green Alpha thích hợp cho các nhà đầu tư tìm kiếm các cơ hội nhanh, các nhà đầu tư dành phần lớn thời gian cho việc giao dịch và yêu thích sự phấn khích của nhịp độ thị trường hằng ngày.
+                        </h6>
                             </div>
                             <!-- Chart Section -->
                             <div class="col-md-3">
@@ -1010,5 +1007,5 @@
         </div>
       </div>
     </div>
-  </section>
+</section>
 
