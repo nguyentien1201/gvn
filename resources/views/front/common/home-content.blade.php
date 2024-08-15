@@ -729,14 +729,15 @@
                         </div>
                         <div class="col-md-4 text-left form-group">
                             <ul style="padding-left:0">
+                            <li class="list-item">
+                                    <button class="takeprofitbuy width-120">TakeProfitBuy</button>
+                                    <span>Tín hiệu đã ở trạng thái chốt lời.</span>
+                                </li>
                                 <li class="list-item">
                                     <button class="hold width-120">Hold</button>
                                     <span>Tín hiệu đang ở trạng thái giữ.</span>
                                 </li>
-                                <li class="list-item">
-                                    <button class="takeprofitbuy width-120">TakeProfitBuy</button>
-                                    <span>Tín hiệu đã ở trạng thái chốt lời.</span>
-                                </li>
+
 
                             </ul>
                         </div>
