@@ -1,6 +1,17 @@
 
 <style>
-     tbody >tr:hover {
+
+    @font-face {
+        font-family: 'UVN Gia Dinh';
+        src: url('/fonts/unicode.publish.UVNGiaDinh_R.ttf') format('truetype');
+        font-weight: normal;
+        font-style: normal;
+    }
+    .font-face{
+        font-size: 1.1rem !important;
+        font-family: 'UVN Gia Dinh', sans-serif;
+    }
+    tbody >tr:hover {
             cursor: pointer;
             background-color: #f5f5f5;
             box-shadow: 0 0px 0px rgba(0, 0, 0, 0.1);
@@ -539,7 +550,52 @@
         },
 
     });
+    var barGroupctx = document.getElementById('groupStock').getContext('2d');
+    var labelCount = @json($chart_group_data['labels']).length;
+
+    console.log(barGroupctx);
+    barGroup = new Chart(barGroupctx, {
+        type: 'bar',
+        data: {
+                labels: @json($chart_group_data['labels']),
+                datasets: [{
+                    label:'',
+                    data: @json($chart_group_data['rate']),
+                    backgroundColor: '#34a853',
+
+                    fontweight: 600,
+                }]
+            },
+            options: {
+            indexAxis: 'y', // Chuyển sang biểu đồ cột ngang
+            maintainAspectRatio: false, // Cho phép tùy chỉnh tỷ lệ
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: {
+                        autoSkip: false, // Không tự động bỏ qua nhãn
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    display: true
+                },
+                tooltip: {
+                    enabled: true
+                }
+            },
+            layout: {
+                padding: {
+                    left: 10,
+                    right: 10,
+                    top: 20,
+                    bottom: 20
+                }
+            }
+        }
     });
+});
 
 
 
@@ -769,10 +825,14 @@
                 </h2>
                 <div class="card mb-4">
                     <div class="card-body">
-                        <h6 class="card-text">
+                        <h6 class="card-text font-face">
                         Phương pháp giao dịch của Green Beta là Position Trading, tìm những điểm có xác suất chiến thắng cao nhất và nắm giữ trung và dài hạn vị thế đó cho đến khi xuất hiện các tín hiệu chốt lời và cắt lỗ từ thị trường. Green Beta được phát triển có thể thích nghi hầu hết các chỉ số tài chính trên toàn thị trường như Index Future,Crypto, Commodity...
+
+                        </h6>
+                        <h6 class="card-text font-face bold" style="font-weight:600">
                         Tìm kiếm sự dịch chuyển dòng tiền, tìm kiếm lợi thế lợi thế gia tăng tài sản của bạn!
                         </h6>
+
                     </div>
                 </div>
 
@@ -851,7 +911,7 @@
                         <!-- Data Section -->
                             <div class="col-md-9">
                             <h5 class="card-title color-home">Green Alpha</h5>
-                        <h6 class="card-text">
+                        <h6 class="card-text font-face">
                         Green Alpha là một robot với sự tích hợp đa tầng của các Indicator ngắn hạn, giao dịch với phương pháp Day Trading, là một robot giao dịch ngắn hạn trong phiên giao dịch,  tìm kiếm những điểm vào có xác suất chiến thắng cao và được lặp lại trong nhiều phiên. Green Alpha thích hợp cho các nhà đầu tư tìm kiếm các cơ hội nhanh, các nhà đầu tư dành phần lớn thời gian cho việc giao dịch và yêu thích sự phấn khích của nhịp độ thị trường hằng ngày.
                         </h6>
                             </div>
@@ -910,6 +970,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
+
                 <h2 class="text-left mb-4"><span class="title-trading-first label-color">Giao dịch với</span>
                     <span class="title-trading-second color-home label-color">Green Stock NAS100</span>
                 </h2>
@@ -917,11 +978,10 @@
             <div class="card">
                 <div class="card-body">
                     <div class="row">
-                        <!-- Data Section -->
-                        <div class="col-md-8">
-                            <div class="card mb-4">
-                                <div class="card-body text-left">
-                                    <p class="card-text">
+                    <div class="col-md-8">
+                    <div class="card mb-4">
+                                <div class=" text-left">
+                                    <p class="">
                                         GreenStock-NAS100 là hệ thống phân tích các.
                                         Cổ phiếu trong rổ cổ phiếu NASDAQ100
                                         Hệ thống tự động xếp hạng rating theo kỹ thuật
@@ -929,6 +989,14 @@
                                     </p>
                                 </div>
                             </div>
+                    </div>
+                    <div class="col-md-4">
+                    <img class="img-fluid" src="{{asset('images/bull_bear.jpg')}}" />
+                    </div>
+                    </div>
+                    <div class="row">
+                        <!-- Data Section -->
+                        <div class="col-md-6">
                             <div class="container">
                                 <div class="row">
                                         <div class="col-md-6 text-left">
@@ -957,13 +1025,11 @@
 
                         </div>
                         <!-- Chart Section -->
-                        <div class="col-md-4 text-center">
+                        <div class="col-md-6 text-center">
+
                             <div class="mb-4">
-                            <img class="img-fluid" src="{{asset('images/von-hoa.jpg')}}" />
+                                <canvas id="groupStock" height="800"></canvas>
                             </div>
-                            <div class="mb-4">
-                            <img class="img-fluid" style="width:100%" src="{{asset('images/green-stock.jpg')}}" />
-                                </div>
 
                         </div>
                     </div>

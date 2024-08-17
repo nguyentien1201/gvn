@@ -11,6 +11,7 @@ use App\Models\MstStock;
 use App\Models\GreenAlpha;
 use App\Models\GreenStockNas100;
 use DB;
+use App\Models\SubGroup;
 class HomeController
 {
     public function index(Request $request)
@@ -54,7 +55,10 @@ class HomeController
         $last_signal = GreenAlpha::select('*' )->where('close_time', '<=', now())->whereNotNull('close_time')->whereNotNull('signal_close')->with(['MstStock'])->groupBy('code')->orderBy('close_time', 'desc')->limit(10)->get();
 
         $data_chart_default = $this->getHistoryAlphaSignal(1);
-        return view('front.home',compact('signals','green_data','default_chart','last_signal','data_chart_default'));
+
+        $chart_group_data = (new SubGroup())->getDataSubGroup();
+
+        return view('front.home',compact('signals','green_data','default_chart','last_signal','data_chart_default','chart_group_data'));
     }
     public function greenBeta(Request $request)
     {

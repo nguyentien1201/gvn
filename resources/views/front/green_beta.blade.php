@@ -14,6 +14,16 @@
 
     <link rel="stylesheet" href="{{asset('plugins/font-awesome-4.7.0/css/font-awesome.min.css')}}">
     <style>
+        @font-face {
+            font-family: 'UVN Gia Dinh';
+            src: url('/fonts/unicode.publish.UVNGiaDinh_R.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+        .font-face{
+            font-size: 1.1rem !important;
+            font-family: 'UVN Gia Dinh', sans-serif;
+        }
          .color-home{
             color:#008000 !important;
         }
