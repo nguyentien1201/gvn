@@ -10,7 +10,7 @@ use App\Service\GoogleDriveService;
 use Carbon\Carbon;
 use App\Models\CompanyInfo;
 use App\Models\Ma;
-use App\Models\Subgroup;
+use App\Models\SubGroup;
 class GreenStockNas100 extends Model
 {
     use SoftDeletes;
@@ -75,11 +75,11 @@ class GreenStockNas100 extends Model
                     'previous_session' =>(float) $item[12],
 
                 ];
-                $subgroup = Subgroup::where('group_name',$subgroups['group_name'])->first();
+                $subgroup = SubGroup::where('group_name',$subgroups['group_name'])->first();
                 if($subgroup){
                     $subgroup->update($subgroups);
                 }else{
-                    Subgroup::create($subgroups);
+                    SubGroup::create($subgroups);
                 }
             }
             if(!empty($item[19])) {
@@ -87,11 +87,11 @@ class GreenStockNas100 extends Model
                     'group_name' => $item[19] ?? '',
                     'current_year' => (float) $item[20],
                 ];
-                $subgroup = Subgroup::where('group_name',$subgroups_year['group_name'])->first();
+                $subgroup = SubGroup::where('group_name',$subgroups_year['group_name'])->first();
                 if($subgroup){
                     $subgroup->update($subgroups_year);
                 }else{
-                    Subgroup::create($subgroups_year);
+                    SubGroup::create($subgroups_year);
                 }
             }
 
