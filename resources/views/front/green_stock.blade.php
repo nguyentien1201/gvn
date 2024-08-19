@@ -224,6 +224,11 @@
         .top-stock-table td:nth-child(5) {
             background-color: #bce8cb;
         }
+        .center_flex {
+            display: inline-grid;
+            justify-content: center;
+            align-items: center;
+        }
         .chart_column {
             display: flex;
             justify-content:center;
@@ -254,43 +259,7 @@
         </div>
     </div>
 
-    <section id="contentDiv" class="text-left">
-        <div>
-            <div class="row">
-                <div class="col-12">
-                    <!-- Data and Chart Section -->
-                    <div class="card" style="border:none">
-                        <div class="card-body">
-                            <div class="row">
-                                <!-- Data Section -->
-                                <div class="col-md-3 mt-3">
-                                    <img width="100%" src="{{url('images/logo-robot-alpha.jpg')}}" alt="Logo" />
-                                </div>
-                                <!-- Chart Section -->
-                                <div class="col-md-9" style="font-size:0.9rem !important; margin-top:4rem">
-                                    <h5 class="text-center" style="font-size:1.5em"><span
-                                            class="title-trading-first label-color">Xin chào anh chị,</span></h5>
-                                    <p>
-                                        <span class="comment-div-left" style="font-size:1.4em"> Em tên là <b>Green Stock
-                                                - 9.5.8</b>, hãy để em tìm giúp anh chị xem có cơ hội nào để anh chị
-                                            giao dịch kiếm lợi nhuận ngay trong ngày hôm nay không nhé. </span>
-                                    </p>
-                                    <p style="font-size:1.25em">
-                                        <span><i>Người ta nói "Đồng tiền đi liền khúc ruột", nếu anh chị có đau ruột hôm
-                                                nay thì đừng ngần ngại gửi ý kiến đến các sếp nhà GVN của em!</i>
-                                        </span>
-                                    </p>
 
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </section>
     <section id="contentDiv" class="text-left">
         <div class="full-width-container">
             <h5 class="color-home" style="text-align:right">
@@ -314,10 +283,10 @@
                     <div class="tab-pane fade show active" id="rating" role="tabpanel" aria-labelledby="rating-tab">
                         <section id="contentDiv" class="text-left">
                             <div class="row">
-                                <div class="col-md-3">
+                                <div class="col-md-4 center_flex">
                                     <img src="{{url('images/bull_bear.jpg')}}" alt="Stock Rating" style="width:100%">
-                                    <div class="mb-4">
-                                        <canvas id="pieChart" width="400"></canvas>
+                                    <div class="mb-4 center_flex">
+                                        <canvas id="pieChart" width="300"></canvas>
                                         <div class="row mt-5">
                                             <div class="col-md-6 mt-4  justify-content-center align-items-center" style="height: 210px; max-height:200px;display:inline-grid">
                                                 <div class="ma50 chart_column" style="background-color:green;min-height:{{$ma['upMA50'] * 2}}px">Up MA50</div>
@@ -331,7 +300,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-9">
+                                <div class="col-md-8">
                                     <h5 style="text-align:center;padding:10px" class="color-home">My watch List</h5>
                                     <table class="table table-striped table-bordered" style="margin-bottom: 0px;">
                                         <thead>
@@ -458,7 +427,7 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
     data: {
         labels: @json($labels),
         datasets: [{
-            label: 'My Dataset',
+
             data: @json($chart_signal), // Dữ liệu cho từng phần của biểu đồ
             backgroundColor: [
                 gradientRed,
@@ -475,8 +444,7 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
         }]
     },
     options: {
-
-        responsive: true,
+        responsive: false,
         plugins: {
             legend: {
                 position: 'top',
