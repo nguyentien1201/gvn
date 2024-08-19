@@ -224,83 +224,38 @@
         .top-stock-table td:nth-child(5) {
             background-color: #bce8cb;
         }
-
         .center_flex {
             display: inline-grid;
             justify-content: center;
             align-items: center;
         }
-
         .chart_column {
             display: flex;
-            justify-content: center;
+            justify-content:center;
             text-align: center;
-            width: 100px;
+            width:100px;
             align-items: center;
-            color: white;
+            color:white;
             font-weight: bold;
             padding: 5px 0 5px 0;
         }
-
         .container_layout {
-            display: flex;
-            flex-wrap: wrap;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px; /* Khoảng cách giữa các block */
         }
 
-        .sidebar {
-            flex: 1;
-            /* Chiếm một phần nhỏ */
-            min-width: 300px;
-            /* Chiều rộng tối thiểu của sidebar */
+        .block {
+            background-color: #f2f2f2;
             padding: 20px;
             text-align: center;
-
+            border: 1px solid #ccc;
         }
-
-        .main {
-
-            /* Chiếm phần lớn ở giữa */
-            min-width: 300px;
-            /* Chiều rộng tối thiểu của main */
-            padding: 20px;
-            text-align: center;
-
-
-        }
-
-
 
         /* Đảm bảo các block xếp dọc khi màn hình nhỏ hơn 768px */
         @media (max-width: 768px) {
             .container_layout {
-                flex-direction: column;
-                /* Xếp dọc các phần tử */
-            }
-            .sidebar {
-                order: 1;
-                /* Sidebar 1 ở vị trí đầu */
-            }
-            .container_layout .main {
-                order: 3;
-                /* Đặt cột chính ở vị trí cuối cùng */
-            }
-        }
-        @media (min-width: 768px) and (max-width: 1280px) {
-            .container_layout {
-                flex-direction: row;
-                /* Xếp ngang các phần tử */
-            }
-
-            .sidebar {
-                width: 50%;
-                /* Cả hai sidebar sẽ chiếm 50% chiều rộng */
-            }
-
-
-            .container_layout .main {
-                flex-basis: 100%; /* Main cũng chiếm 100% chiều rộng */
-                order: 3; /* Đặt main ở vị trí cuối cùng */
-                /* Đặt cột chính ở vị trí cuối cùng */
+                grid-template-columns: 1fr; /* Chuyển thành 1 cột */
             }
         }
     </style>
@@ -327,8 +282,7 @@
     <section id="contentDiv" class="text-left">
         <div class="full-width-container">
             <h5 class="color-home" style="text-align:right">
-                <i>{{ (new DateTime('now', new DateTimeZone('GMT')))->format('Y-m-d H:i:s') }} GMT</i>
-            </h5>
+                <i>{{ (new DateTime('now', new DateTimeZone('GMT')))->format('Y-m-d H:i:s') }} GMT</i></h5>
             <div class="col-md-12">
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item">
@@ -345,94 +299,92 @@
                 </ul>
                 <!-- Tab panes -->
                 <div class="tab-content" id="myTabContent">
-                    <div class="tab-pane fade show active" id="rating" role="tabpanel" aria-labelledby="rating-tab">
-                        <div class="container_layout">
-                            <div class="sidebar">
-                                <img src="{{url('images/bull_bear.jpg')}}" alt="Stock Rating" style="width:100%">
-                                <div class="mb-4 center_flex">
-                                    <canvas id="pieChart" width="300"></canvas>
-                                    <div class="row mt-5">
-                                        <div class="col-md-6 mt-4  justify-content-center align-items-center"
-                                            style="height: 210px; max-height:200px;display:inline-grid">
-                                            <div class="ma50 chart_column"
-                                                style="background-color:green;min-height:{{$ma['upMA50'] * 2}}px">Up
-                                                MA50<br> {{$ma['upMA50']}}%</div>
-                                            <div class="ma50 chart_column"
-                                                style="background-color:red;min-height:{{$ma['downMA50'] * 2}}px">Down
-                                                MA50 <br> {{$ma['downMA50']}}%</div>
-                                        </div>
+                    <div class=" tab-pane fade show active" id="rating" role="tabpanel" aria-labelledby="rating-tab">
+                        <section id="contentDiv container_layout" class="text-left">
+                            <div class="row">
+                                <div class="col-md-4 center_flex">
+                                    <img src="{{url('images/bull_bear.jpg')}}" alt="Stock Rating" style="width:100%">
+                                    <div class="mb-4 center_flex">
+                                        <canvas id="pieChart" width="300"></canvas>
+                                        <div class="row mt-5">
+                                            <div class="col-md-6 mt-4  justify-content-center align-items-center" style="height: 210px; max-height:200px;display:inline-grid">
+                                                <div class="ma50 chart_column" style="background-color:green;min-height:{{$ma['upMA50'] * 2}}px">Up MA50<br> {{$ma['upMA50']}}%</div>
+                                                <div class="ma50 chart_column" style="background-color:red;min-height:{{$ma['downMA50'] * 2}}px">Down MA50 <br> {{$ma['downMA50']}}%</div>
+                                            </div>
 
-                                        <div class="col-md-5 mt-4 justify-content-center align-items-center"
-                                            style="height: 210px;max-height:200px;display:inline-grid">
-                                            <div class="ma50 chart_column"
-                                                style="text-align: center;width:100px;background-color:green;min-height:{{$ma['upMA200'] * 2 - 15.5}}px">
-                                                Up MA200 <br> {{$ma['upMA200']}}%</div>
-                                            <div class="ma50 chart_column"
-                                                style="text-align: center;width:100px;background-color:red;min-height:{{$ma['downMA200'] * 2}}px">
-                                                Down MA200<br> {{$ma['downMA200']}}%</div>
+                                            <div class="col-md-5 mt-4 justify-content-center align-items-center" style="height: 210px;max-height:200px;display:inline-grid">
+                                            <div class="ma50 chart_column" style="text-align: center;width:100px;background-color:green;min-height:{{$ma['upMA200'] * 2 -15.5}}px">Up MA200 <br> {{$ma['upMA200']}}%</div>
+                                            <div class="ma50 chart_column" style="text-align: center;width:100px;background-color:red;min-height:{{$ma['downMA200'] * 2}}px">Down MA200<br> {{$ma['downMA200']}}%</div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                                <div class="col-md-8 ">
+                                    <h5 style="text-align:center;padding:10px" class="color-home">My watch List</h5>
+                                    <table class="table table-striped table-bordered" style="margin-bottom: 0px;">
+                                        <thead>
+                                            <th>No</th>
+                                            <th>Chứng Khoán</th>
+                                            <th>Gvn-Rating</th>
+                                            <th>Ngành</th>
+                                            <th>Giá mua/bán</th>
+                                            <th>Giá hiện tại</th>
+                                        </thead>
+                                        <tbody>
+                                            @foreach($top_stock as $key => $stock)
+                                                <tr>
+                                                    <td>{{ $key + 1 }}</td>
+                                                    <td>{{ $stock->code }}</td>
+                                                    <td>{{ $stock->rating }}</td>
+                                                    <td>{{ $stock->group ?? '' }}</td>
+                                                    <td>{{ $stock->price }}</td>
+                                                    <td>{{ $stock->current_price }}</td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                    <h5 style="text-align:center;padding:10px" class="color-home">Top 5 Stock</h5>
+                                    <table class="table table-striped table-bordered top-stock-table"
+                                        style="margin-bottom: 0px;">
+                                        <tr>
+                                            <td>1</td>
+                                            <td>2</td>
+                                            <td>3</td>
+                                            <td>4</td>
+                                            <td>5</td>
+                                        </tr>
+                                        <tr>
+                                            @foreach($top_stock as $key => $stock)
+                                                <td style="font-weight:bold">{{ $stock->code }}</td>
+                                            @endforeach
+                                        </tr>
+                                        <tr>
+                                            @foreach($top_stock as $key => $stock)
+                                                <td style="color:white;font-weight:bold">{{ $stock->profit }}%</td>
+                                            @endforeach
+                                        </tr>
+                                    </table>
+                                    <div class="col-md-12 text-center">
+                                        <div class="mb-4">
+                                            <canvas id="groupStock" height="650"></canvas>
+                                        </div>
 
-                            <div class="main">
-                                <table class="table table-striped table-bordered" style="margin-bottom: 0px;"
-                                    id="indices-table">
-                                </table>
-                            </div>
-                            <div class="sidebar">
-                                <h5 style="text-align:center;padding:10px" class="color-home">My watch List</h5>
-                                <table class="table table-striped table-bordered" style="margin-bottom: 0px;">
-                                    <thead>
-                                        <th>No</th>
-                                        <th>Chứng Khoán</th>
-                                        <th>Gvn-Rating</th>
-                                        <th>Ngành</th>
-                                        <th>Giá mua/bán</th>
-                                        <th>Giá hiện tại</th>
-                                    </thead>
-                                    <tbody>
-                                        @foreach($top_stock as $key => $stock)
-                                            <tr>
-                                                <td>{{ $key + 1 }}</td>
-                                                <td>{{ $stock->code }}</td>
-                                                <td>{{ $stock->rating }}</td>
-                                                <td>{{ $stock->group ?? '' }}</td>
-                                                <td>{{ $stock->price }}</td>
-                                                <td>{{ $stock->current_price }}</td>
-                                            </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                                <h5 style="text-align:center;padding:10px" class="color-home">Top 5 Stock</h5>
-                                <table class="table table-striped table-bordered top-stock-table"
-                                    style="margin-bottom: 0px;">
-                                    <tr>
-                                        <td>1</td>
-                                        <td>2</td>
-                                        <td>3</td>
-                                        <td>4</td>
-                                        <td>5</td>
-                                    </tr>
-                                    <tr>
-                                        @foreach($top_stock as $key => $stock)
-                                            <td style="font-weight:bold">{{ $stock->code }}</td>
-                                        @endforeach
-                                    </tr>
-                                    <tr>
-                                        @foreach($top_stock as $key => $stock)
-                                            <td style="color:white;font-weight:bold">{{ $stock->profit }}%</td>
-                                        @endforeach
-                                    </tr>
-                                </table>
-                                <div class="col-md-12 text-center">
-                                    <div class="mb-4">
-                                        <canvas id="groupStock" height="650"></canvas>
                                     </div>
 
                                 </div>
                             </div>
-                        </div>
+                        </section>
+                        <section>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <table class="table table-striped table-bordered" style="margin-bottom: 0px;"
+                                        id="indices-table">
+                                    </table>
+                                </div>
+
+                            </div>
+                        </section>
+
 
                     </div>
                     <div class="tab-pane fade" id="overview" role="tabpanel" aria-labelledby="profile-tab">
@@ -470,11 +422,10 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
     crossorigin="anonymous"></script>
-<script src="
+    <script src="
 https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
 "></script>
-<script
-    src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0-rc/dist/chartjs-plugin-datalabels.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0-rc/dist/chartjs-plugin-datalabels.min.js"></script>
 <script src="https://cdn.datatables.net/v/bs5/dt-2.0.8/date-1.5.2/fc-5.0.1/fh-4.0.1/r-3.0.2/datatables.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
 <script>
@@ -492,45 +443,45 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
         gradientYellow.addColorStop(0, 'rgba(255, 206, 86, 1)');
         gradientYellow.addColorStop(1, 'rgba(255, 206, 86, 0.5)');
         var myPieChart = new Chart(ctx, {
-            type: 'pie', // Kiểu biểu đồ là 'pie' (tròn)
-            data: {
-                labels: @json($labels),
-                datasets: [{
+    type: 'pie', // Kiểu biểu đồ là 'pie' (tròn)
+    data: {
+        labels: @json($labels),
+        datasets: [{
 
-                    data: @json($chart_signal), // Dữ liệu cho từng phần của biểu đồ
-                    backgroundColor: [
-                        gradientRed,
-                        gradientBlue,
-                        gradientYellow
+            data: @json($chart_signal), // Dữ liệu cho từng phần của biểu đồ
+            backgroundColor: [
+                gradientRed,
+                gradientBlue,
+                gradientYellow
 
-                    ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)'
-                    ],
-                    borderWidth: 5
-                }]
-            },
-            options: {
-                responsive: false,
-                plugins: {
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)'
+            ],
+            borderWidth: 5
+        }]
+    },
+    options: {
+        responsive: false,
+        plugins: {
                     datalabels: {
                         display: true, // Hiển thị giá trị
 
-                        formatter: function (value, context) {
-                            return value + '%';
-                        },
-                        labels: {
+                            formatter: function(value, context) {
+                                return value + '%';
+                            },
+                            labels: {
                             value: {
-                                color: 'blue'
+                            color: 'blue'
                             }
                         }
-                    }
+                        }
                 }
 
-            }, plugins: [ChartDataLabels]
-        });
+    },plugins: [ChartDataLabels]
+});
         var indices = $('#indices-table').DataTable({
             searching: false,
 
@@ -687,10 +638,10 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                 },
             ],
             createdRow: function (row, data, dataIndex) {
-                if (data.code == 'NAS100') {
-                    $(row).css('background-color', 'palegreen');
-                }
+            if (data.code == 'NAS100') {
+                $(row).css('background-color', 'palegreen');
             }
+        }
 
 
         });
@@ -698,11 +649,11 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
         var barGroupctx = document.getElementById('groupStock').getContext('2d');
         var labelCount = @json($chart_group_data['labels']).length;
         barGroup = new Chart(barGroupctx, {
-            type: 'bar',
-            data: {
+        type: 'bar',
+        data: {
                 labels: @json($chart_group_data['labels']),
                 datasets: [{
-                    label: 'Profit',
+                    label:'Profit',
                     data: @json($chart_group_data['rate']),
                     backgroundColor: '#34a853',
                     fontweight: 600,
@@ -715,20 +666,20 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                     datalabels: {
                         display: true, // Hiển thị giá trị
 
-                        align: 'end',
-                        formatter: function (value, context) {
-                            return value + '%';
-                        },
-                        labels: {
+                            align: 'end',
+                            formatter: function(value, context) {
+                                return value + '%';
+                            },
+                            labels: {
                             value: {
-                                color: 'blue'
+                            color: 'blue'
                             }
                         }
-                    }
+                        }
                 }
             },
             plugins: [ChartDataLabels]
-        });
+    });
     });
 
 </script>
