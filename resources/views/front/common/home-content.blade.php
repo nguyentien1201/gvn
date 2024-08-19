@@ -552,8 +552,6 @@
     });
     var barGroupctx = document.getElementById('groupStock').getContext('2d');
     var labelCount = @json($chart_group_data['labels']).length;
-
-    console.log(barGroupctx);
     barGroup = new Chart(barGroupctx, {
         type: 'bar',
         data: {

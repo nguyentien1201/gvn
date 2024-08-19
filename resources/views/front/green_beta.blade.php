@@ -760,9 +760,12 @@
                     }
                 },
                 y: {
+                    beginAtZero: true,
+
                     ticks: {
-                        font: {
-                            weight: 'bold' // Makes y-axis labels bold
+                        callback: function(value) {
+                            console.log(value);
+                            return value + '%'; // Thêm ký hiệu % vào các giá trị trên trục y
                         }
                     }
                 }

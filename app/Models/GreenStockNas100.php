@@ -17,7 +17,7 @@ class GreenStockNas100 extends Model
     protected $googleDriveService;
     public $table = 'greenstock_nas100';
     protected $fillable = [
-        'rating','code', 'point','price','trending','signal','profit','post_sale_discount','time','created_at'
+        'rating','code', 'point','price','current_price','trending','signal','profit','post_sale_discount','time','created_at'
     ];
     public function getListNas100(){
         $data = $this->orderBy('rating','asc')->paginate(ConstantModel::$PAGINATION);
@@ -51,7 +51,7 @@ class GreenStockNas100 extends Model
         array_shift($listData);
         foreach($listData as $item){
             try {
-                dump($item);
+
             $greenstock_nas100 = [];
             $item = explode(",", $item);
 
@@ -99,12 +99,12 @@ class GreenStockNas100 extends Model
                 'rating' => (int)$item[0],
                 'code' => $item[1],
                 'point' => (int)$item[2],
-                'current_price' => (float)$item[8],
+                'current_price' => (float)$item[5],
                 'trending'=>$item[3],
                 'signal' => $item[4],
-                'profit'=> (float)$item[5],
-                'post_sale_discount'=>!empty($item[6]) ? (float)$item[6] : null,
-                'price'=> round((float)$item[7], 2),
+                'profit'=> (float)$item[6],
+                'post_sale_discount'=>!empty($item[7]) ? (float)$item[7] : null,
+                'price'=> round((float)$item[8], 2),
                 'time'=> Carbon::createFromFormat('d/m/y', $item[9])->format('Y-m-d') ?? null,
             ];
             $nas100 = self::where('code',$greenstock_nas100['code'])->first();
@@ -114,8 +114,6 @@ class GreenStockNas100 extends Model
                 self::create($greenstock_nas100);
             }
             }catch (\Exception $e){
-                dump($item);
-                dd($e->getMessage());
                 continue;
             }
         }
@@ -135,5 +133,13 @@ class GreenStockNas100 extends Model
     public function companyInfo()
     {
         return $this->belongsTo(CompanyInfo::class, 'code', 'code');
+    }
+    public function getTopStock(){
+       return $this->orderBy('profit','desc')->limit(5)->get();
+    }
+    public function getGroupSignal(){
+        return $this->select('signal', \DB::raw('count(*) as total'))
+        ->groupBy('signal')
+        ->get()->toArray();
     }
 }

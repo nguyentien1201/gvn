@@ -15,6 +15,9 @@ class Ma extends Model
     protected $fillable = [
         'upMA50', 'downMA50', 'upMA200', 'downMA200'
     ];
-
+    public function getMa(){
+        $data = $this->select('upMA50','downMA50','upMA200','downMA200')->first()->toArray();
+        return $data;
+    }
 
 }

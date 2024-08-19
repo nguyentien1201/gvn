@@ -12,6 +12,7 @@ use App\Models\GreenAlpha;
 use App\Models\GreenStockNas100;
 use DB;
 use App\Models\SubGroup;
+use App\Models\Ma;
 class HomeController
 {
     public function index(Request $request)
@@ -88,11 +89,9 @@ class HomeController
         $data_chart = (new GreenAlpha())->getDataChartSignals();
         $dataChartProfit = (new GreenAlpha())->getCurrentYearProfitSum();
         $data_chart_default = $this->getHistoryAlphaSignal(1);
-        // dd($data_chart_default);
         $code = $data_chart->pluck('code')->toArray();
         $total = $data_chart->pluck('total_trade')->toArray();
         $winratio = $data_chart->pluck('win_ratio')->toArray();
-        // $startDate = $data_chart->pluck('start_trade')->toArray();
         $chart_data = [
             'code' => $code,
             'total' => $total,
@@ -167,7 +166,25 @@ class HomeController
     }
     public function greenStock(){
         $signals = (new GreenStockNas100())->getListNas100Api();
+        $top_stock = (new GreenStockNas100())->getTopStock();
+        $chart_signal = (new GreenStockNas100())->getGroupSignal();
+        usort($chart_signal, function($a, $b) {
+            return strcmp($a['signal'], $b['signal']);
+        });
+        $totalCount = array_reduce($chart_signal, function ($carry, $item) {
+            return $carry + $item['total'];
+        }, 0);
+        $labels = array_map(function($item) {
+            return $item['signal'];
+        }, $chart_signal);
 
-        return view('front.green_stock',compact('signals'));
+        $chart_signal = array_map(function($item) use ($totalCount) {
+            return  round($item['total']/$totalCount*100,2);
+        }, $chart_signal);
+        $ma = (new Ma())->getMa();
+        $chart_group_data = (new SubGroup())->getDataSubGroup(10);
+        $chart_group_data = array_slice($chart_group_data, 0, 10);
+
+        return view('front.green_stock',compact('signals','top_stock','chart_signal','labels','ma','chart_group_data'));
     }
 }
