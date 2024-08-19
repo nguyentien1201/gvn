@@ -289,13 +289,13 @@
                                         <canvas id="pieChart" width="300"></canvas>
                                         <div class="row mt-5">
                                             <div class="col-md-6 mt-4  justify-content-center align-items-center" style="height: 210px; max-height:200px;display:inline-grid">
-                                                <div class="ma50 chart_column" style="background-color:green;min-height:{{$ma['upMA50'] * 2}}px">Up MA50 </div>
-                                                <div class="ma50 chart_column" style="background-color:red;min-height:{{$ma['downMA50'] * 2}}px">Down MA50</div>
+                                                <div class="ma50 chart_column" style="background-color:green;min-height:{{$ma['upMA50'] * 2}}px">Up MA50<br> {{$ma['upMA50']}}%</div>
+                                                <div class="ma50 chart_column" style="background-color:red;min-height:{{$ma['downMA50'] * 2}}px">Down MA50 <br> {{$ma['downMA50']}}%</div>
                                             </div>
 
                                             <div class="col-md-5 mt-4 justify-content-center align-items-center" style="height: 210px;max-height:200px;display:inline-grid">
-                                            <div class="ma50 chart_column" style="text-align: center;width:100px;background-color:green;min-height:{{$ma['upMA200'] * 2 -15.5}}px">Up MA200</div>
-                                            <div class="ma50 chart_column" style="text-align: center;width:100px;background-color:red;min-height:{{$ma['downMA200'] * 2}}px">Down MA200</div>
+                                            <div class="ma50 chart_column" style="text-align: center;width:100px;background-color:green;min-height:{{$ma['upMA200'] * 2 -15.5}}px">Up MA200 <br> {{$ma['upMA200']}}%</div>
+                                            <div class="ma50 chart_column" style="text-align: center;width:100px;background-color:red;min-height:{{$ma['downMA200'] * 2}}px">Down MA200<br> {{$ma['downMA200']}}%</div>
                                             </div>
                                         </div>
                                     </div>
