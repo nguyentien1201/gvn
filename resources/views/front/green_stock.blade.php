@@ -289,7 +289,7 @@
                                         <canvas id="pieChart" width="300"></canvas>
                                         <div class="row mt-5">
                                             <div class="col-md-6 mt-4  justify-content-center align-items-center" style="height: 210px; max-height:200px;display:inline-grid">
-                                                <div class="ma50 chart_column" style="background-color:green;min-height:{{$ma['upMA50'] * 2}}px">Up MA50</div>
+                                                <div class="ma50 chart_column" style="background-color:green;min-height:{{$ma['upMA50'] * 2}}px">Up MA50 </div>
                                                 <div class="ma50 chart_column" style="background-color:red;min-height:{{$ma['downMA50'] * 2}}px">Down MA50</div>
                                             </div>
 
@@ -406,6 +406,7 @@
     <script src="
 https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
 "></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0-rc/dist/chartjs-plugin-datalabels.min.js"></script>
 <script src="https://cdn.datatables.net/v/bs5/dt-2.0.8/date-1.5.2/fc-5.0.1/fh-4.0.1/r-3.0.2/datatables.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
 <script>
@@ -446,11 +447,21 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
     options: {
         responsive: false,
         plugins: {
-            legend: {
-                position: 'top',
-            },
-        }
-    }
+                    datalabels: {
+                        display: true, // Hiển thị giá trị
+
+                            formatter: function(value, context) {
+                                return value + '%';
+                            },
+                            labels: {
+                            value: {
+                            color: 'blue'
+                            }
+                        }
+                        }
+                }
+
+    },plugins: [ChartDataLabels]
 });
         var indices = $('#indices-table').DataTable({
             searching: false,
@@ -623,41 +634,32 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
         data: {
                 labels: @json($chart_group_data['labels']),
                 datasets: [{
-                    label:'',
+                    label:'Profit',
                     data: @json($chart_group_data['rate']),
                     backgroundColor: '#34a853',
-
                     fontweight: 600,
                 }]
             },
             options: {
-            indexAxis: 'y', // Chuyển sang biểu đồ cột ngang
-            maintainAspectRatio: false, // Cho phép tùy chỉnh tỷ lệ
-            scales: {
-                y: {
-                    beginAtZero: true,
-                    ticks: {
-                        autoSkip: false, // Không tự động bỏ qua nhãn
-                    }
+                indexAxis: 'y', // Chuyển sang biểu đồ cột ngang
+                maintainAspectRatio: false, // Cho phép tùy chỉnh tỷ lệ
+                plugins: {
+                    datalabels: {
+                        display: true, // Hiển thị giá trị
+
+                            align: 'end',
+                            formatter: function(value, context) {
+                                return value + '%';
+                            },
+                            labels: {
+                            value: {
+                            color: 'blue'
+                            }
+                        }
+                        }
                 }
             },
-            plugins: {
-                legend: {
-                    display: true
-                },
-                tooltip: {
-                    enabled: true
-                }
-            },
-            layout: {
-                padding: {
-                    left: 10,
-                    right: 10,
-                    top: 20,
-                    bottom: 20
-                }
-            }
-        }
+            plugins: [ChartDataLabels]
     });
     });
 

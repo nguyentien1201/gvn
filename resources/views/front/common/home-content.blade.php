@@ -530,6 +530,21 @@
             }]
         },
         options: {
+            plugins: {
+                    datalabels: {
+                        display: true, // Hiển thị giá trị
+                        anchor: 'end',
+                            align: 'end',
+                            formatter: function(value, context) {
+                                return value + '%';
+                            },
+                            labels: {
+                            value: {
+                            color: 'blue'
+                            }
+                        }
+                        }
+                },
             scales: {
                 x: {
                     ticks: {
@@ -548,6 +563,7 @@
             }
 
         },
+        plugins: [ChartDataLabels]
 
     });
     var barGroupctx = document.getElementById('groupStock').getContext('2d');
