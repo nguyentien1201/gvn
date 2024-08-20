@@ -356,9 +356,9 @@
                     <div class="tab-pane fade show active" id="rating" role="tabpanel" aria-labelledby="rating-tab">
                         <div class="container_layout">
                             <div class="sidebar sidebar_1">
-                                <img src="{{url('images/bull_bear.jpg')}}" alt="Stock Rating" style="width:100%">
+                                <img src="{{url('images/bull_bear.jpg')}}" alt="Stock Rating" style="width:80%">
                                 <div class="mb-4 center_flex">
-                                    <canvas id="pieChart" width="300"></canvas>
+                                    <canvas id="pieChart" width="400"></canvas>
                                     <canvas class="mt-5" id="maChart" width="400" height="350"></canvas>
 
                                 </div>
@@ -370,7 +370,7 @@
                                 </table>
                             </div>
                             <div class="sidebar">
-                                <h5 style="text-align:center;padding:10px" class="color-home">My Watchlist</h5>
+                                <h5 style="text-align:center;padding:10px" class="color-home mt-4">My Watchlist</h5>
                                 <table class="table table-striped table-bordered" style="margin-bottom: 0px;">
                                     <thead>
                                         <th>No</th>
@@ -393,7 +393,7 @@
                                         @endforeach
                                     </tbody>
                                 </table>
-                                <h5 style="text-align:center;padding:10px" class="color-home">Top 5 Stock</h5>
+                                <h5 class="mt-4" style="text-align:center;padding:10px" class="color-home">Top 5 Stock</h5>
                                 <table class="table table-striped table-bordered top-stock-table"
                                     style="margin-bottom: 0px;">
                                     <tr>
@@ -414,11 +414,11 @@
                                         @endforeach
                                     </tr>
                                 </table>
-                                <div class="col-md-12 text-center">
-                                <h5 style="text-align:center;padding:10px" class="color-home">Best Top 10</h5>
-                                    <div class="mb-4">
-                                        <canvas id="groupStock" height="450"></canvas>
-                                    </div>
+                                <div class="col-md-12 text-center mt-4">
+                                    <h5 style="text-align:center;padding:10px" class="color-home">Best Top 10</h5>
+                                        <div class="mb-4">
+                                            <canvas id="groupStock" height="450"></canvas>
+                                        </div>
 
                                 </div>
                             </div>
@@ -733,7 +733,7 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
         const maChart = new Chart(ctxMaChart, {
             type: 'bar',
             data: {
-                labels: ['Ma50', 'Ma200'],
+                labels: ['MA50', 'MA200'],
                 datasets: [{
                     label: 'DOWN',
                     data: @json($ma['down']),

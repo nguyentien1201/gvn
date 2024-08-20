@@ -685,7 +685,7 @@
         const maChart = new Chart(ctxMaChart, {
             type: 'bar',
             data: {
-                labels: ['Ma50', 'Ma200'],
+                labels: ['MA50', 'MA200'],
                 datasets: [{
                     label: 'DOWN',
                     data: @json($ma['down']),
@@ -1146,7 +1146,7 @@
                                 <div class="mb-4 center_flex">
 
                                     <canvas id="maChart" width="400" height="350"></canvas>
-                                    <canvas id="pieChart" width="300"></canvas>
+                                    <canvas class="mt-3" id="pieChart" width="400"></canvas>
                                 </div>
                             </div>
 
