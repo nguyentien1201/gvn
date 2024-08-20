@@ -704,7 +704,7 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
             data: {
                 labels: @json($chart_group_data['labels']),
                 datasets: [{
-                    label: 'Best top 10',
+                    label: 'Profit Rate',
                     data: @json($chart_group_data['rate']),
                     backgroundColor: '#34a853',
                     fontweight: 600,
