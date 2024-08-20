@@ -554,7 +554,10 @@
                             },
                             labels: {
                             value: {
-                            color: 'white'
+                            color: 'green',
+                            font: {
+                                    weight: 'bold'
+                                }
                             }
                         }
                         }

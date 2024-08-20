@@ -246,7 +246,8 @@
                                         id="indices-table">
                                     </table>
                                     <div class="row mt-4">
-                                        <div class="col-md-8 text-left form-group">
+
+                                        <div class="col-md-4 text-left form-group">
                                             <ul style="padding-left:0">
                                                 <li class="list-item">
                                                     <button class="takeprofitbuy width-120">Buy</button>
@@ -256,19 +257,13 @@
                                                     <button class="cutlossbuy width-120">Sell</button>
                                                     <span>Tín hiệu vị thế Sell đang mở.</span>
                                                 </li>
-                                                <li class="list-item">
-                                                    <button class="hold width-120">Sell/Buy</button>
-                                                    <span>Tín hiệu xu hướng đã đóng.</span>
-                                                </li>
+
 
                                             </ul>
                                         </div>
                                         <div class="col-md-4 text-right form-group">
                                             <ul style="padding-left:0">
-                                                <li class="list-item">
-                                                    <button class="width-120">Hold</button>
-                                                    <span>Tín hiệu đang ở trạng thái giữ.</span>
-                                                </li>
+
                                                 <li class="list-item">
                                                     <button class="takeprofitbuy width-120">TakeProfitBuy</button>
                                                     <span>Tín hiệu đã ở trạng thái chốt lời.</span>
@@ -279,6 +274,20 @@
                                                 </li>
                                             </ul>
 
+                                        </div>
+                                        <div class="col-md-4 text-left form-group">
+                                            <ul style="padding-left:0">
+                                            <li class="list-item">
+                                                    <button class="width-120">Hold</button>
+                                                    <span>Tín hiệu đang ở trạng thái giữ.</span>
+                                                </li>
+
+                                                <li class="list-item">
+                                                    <button class="hold width-120">Sell/Buy</button>
+                                                    <span>Tín hiệu xu hướng đã đóng.</span>
+                                                </li>
+
+                                            </ul>
                                         </div>
                                     </div>
 
