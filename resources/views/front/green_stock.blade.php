@@ -248,8 +248,8 @@
         }
 
         .sidebar {
-            max-width: 450px;
-            flex: 1.5;
+            max-width: 500px;
+            flex: 1;
             /* Chiếm một phần nhỏ */
 
             /* Chiều rộng tối thiểu của sidebar */
@@ -259,7 +259,7 @@
         }
 
         .main {
-            flex: 4;
+            flex: 2;
             /* Chiếm phần lớn ở giữa */
             min-width: 300px;
             /* Chiều rộng tối thiểu của main */
