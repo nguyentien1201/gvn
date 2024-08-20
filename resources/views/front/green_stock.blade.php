@@ -278,6 +278,7 @@
                 /* Xếp dọc các phần tử */
             }
             .sidebar {
+                max-width:inherit;
                 order: 1;
                 /* Sidebar 1 ở vị trí đầu */
             }
@@ -286,13 +287,14 @@
                 /* Đặt cột chính ở vị trí cuối cùng */
             }
         }
-        @media (min-width: 768px) and (max-width: 1680px) {
+        @media (min-width: 768px){
             .container_layout {
                 flex-direction: row;
                 /* Xếp ngang các phần tử */
             }
 
             .sidebar {
+                max-width:inherit;
                 width: 50%;
                 /* Cả hai sidebar sẽ chiếm 50% chiều rộng */
             }
