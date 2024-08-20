@@ -755,22 +755,22 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
         },
         options: {
             plugins: {
-                    datalabels: {
-                        display: true, // Hiển thị giá trị
-                        anchor: 'end',
-                            align: 'end',
-                            formatter: function(value, context) {
-                                return value + '%';
-                            },
-                            labels: {
-                            value: {
-                             color: 'white',
-                                font: {
+                datalabels: {
+                    display: true, // Hiển thị giá trị
+                    anchor: 'end',
+                    align: 'end',
+                    formatter: function(value, context) {
+                        return value + '%';
+                    },
+                    labels: {
+                    value: {
+                        color: 'green',
+                        font: {
                                     weight: 'bold'
                                 }
-                            }
-                        }
-                        }
+                    }
+                    }
+                    }
                 },
             scales: {
                 x: {
