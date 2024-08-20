@@ -67,7 +67,7 @@ class HomeController
         $labels = array_map(function($item) {
             return $item['signal'];
         }, $chart_signal);
-
+        $labels[] ='SELL';
         $chart_signal = array_map(function($item) use ($totalCount) {
             return  round($item['total']/$totalCount*100,2);
         }, $chart_signal);

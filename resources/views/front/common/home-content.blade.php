@@ -629,38 +629,21 @@
     });
 
     var ctx = document.getElementById('pieChart').getContext('2d');
-    var gradientBuy = ctx.createLinearGradient(0, 0, 0, 400);
-    gradientBuy.addColorStop(0, 'rgba(102, 167, 76, 1)');
-    gradientBuy.addColorStop(1, 'rgba(102, 167, 76, 0.5)');
-
-        var gradientCash = ctx.createLinearGradient(0, 0, 0, 400);
-        gradientCash.addColorStop(0, 'rgba(254, 228, 157, 1)');
-        gradientCash.addColorStop(1, 'rgba(254, 228, 157, 0.5)');
-
-        var gradientHold = ctx.createLinearGradient(0, 0, 0, 400);
-        gradientHold.addColorStop(0, 'rgba(147, 196, 128, 1)');
-        gradientHold.addColorStop(1, 'rgba(147, 196, 128, 0.5)');
-
-        var gradientSell = ctx.createLinearGradient(0, 0, 0, 400);
-        gradientSell.addColorStop(0, 'rgba(255,255,255, 1)');
-        gradientSell.addColorStop(1, 'rgba(255,255,255, 0.5)');
-
-
+    console.log(@json($chart_signal));
         var myPieChart = new Chart(ctx, {
             type: 'pie', // Kiểu biểu đồ là 'pie' (tròn)
             data: {
                 labels: @json($labels),
                 datasets: [{
-
                     data: @json($chart_signal), // Dữ liệu cho từng phần của biểu đồ
                     backgroundColor: [
-                        gradientBuy,
-                        gradientCash,
-                        gradientHold,
-                        gradientSell
+                        'rgb(102, 167, 76)',
+                        'rgb(254, 228, 157)',
+                        'rgb(147, 196, 128)',
+                        '#000'
                     ],
 
-                    borderWidth: 5
+                    borderWidth: 1
                 }]
             },
             options: {

@@ -470,36 +470,36 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
 <script>
     $(document).ready(function () {
         var ctx = document.getElementById('pieChart').getContext('2d');
-        var gradientRed = ctx.createLinearGradient(0, 0, 0, 400);
-        gradientRed.addColorStop(0, 'rgba(255, 99, 132, 1)');
-        gradientRed.addColorStop(1, 'rgba(255, 99, 132, 0.5)');
+        var gradientSell = ctx.createLinearGradient(0, 0, 0, 400);
+        gradientSell.addColorStop(0, 'rgba(255, 99, 132, 1)');
+        gradientSell.addColorStop(1, 'rgba(255, 99, 132, 0.5)');
 
-        var gradientBlue = ctx.createLinearGradient(0, 0, 0, 400);
-        gradientBlue.addColorStop(0, 'rgba(54, 162, 235, 1)');
-        gradientBlue.addColorStop(1, 'rgba(54, 162, 235, 0.5)');
+        var gradientBuy = ctx.createLinearGradient(0, 0, 0, 400);
+        gradientBuy.addColorStop(0, 'rgba(102, 167, 76, 1)');
+        gradientBuy.addColorStop(1, 'rgba(102, 167, 76, 0.5)');
 
-        var gradientYellow = ctx.createLinearGradient(0, 0, 0, 400);
-        gradientYellow.addColorStop(0, 'rgba(255, 206, 86, 1)');
-        gradientYellow.addColorStop(1, 'rgba(255, 206, 86, 0.5)');
+        var gradientCash = ctx.createLinearGradient(0, 0, 0, 400);
+        gradientCash.addColorStop(0, 'rgba(254, 228, 157, 1)');
+        gradientCash.addColorStop(1, 'rgba(254, 228, 157, 0.5)');
+
+        var gradientHold = ctx.createLinearGradient(0, 0, 0, 400);
+        gradientHold.addColorStop(0, 'rgba(147, 196, 128, 1)');
+        gradientHold.addColorStop(1, 'rgba(147, 196, 128, 0.5)');
+
         var myPieChart = new Chart(ctx, {
             type: 'pie', // Kiểu biểu đồ là 'pie' (tròn)
             data: {
                 labels: @json($labels),
                 datasets: [{
-
                     data: @json($chart_signal), // Dữ liệu cho từng phần của biểu đồ
                     backgroundColor: [
-                        gradientRed,
-                        gradientBlue,
-                        gradientYellow
+                        'rgb(102, 167, 76)',
+                        'rgb(254, 228, 157)',
+                        'rgb(147, 196, 128)',
+                        '#000'
+                    ],
 
-                    ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)'
-                    ],
-                    borderWidth: 5
+                    borderWidth: 1
                 }]
             },
             options: {
@@ -516,7 +516,8 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                                 color: 'white'
                             }
                         }
-                    }
+                    },
+
                 }
 
             }, plugins: [ChartDataLabels]
