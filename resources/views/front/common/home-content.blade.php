@@ -687,14 +687,14 @@
             data: {
                 labels: ['Ma50', 'Ma200'],
                 datasets: [{
-                    label: 'UP',
+                    label: 'DOWN',
                     data: @json($ma['down']),
                     backgroundColor: 'Red',
                     borderColor: 'rgba(255, 99, 132, 0)', // Ẩn border bằng cách đặt alpha = 0
                     borderWidth: 0 // Đặt borderWidth thành 0 để ẩn hoàn toàn đường viền
                 },
                 {
-                    label: 'DOWN',
+                    label: 'Up',
                     data: @json($ma['up']),
                     backgroundColor: 'Green',
                     borderColor: 'rgba(255, 99, 132, 0)', // Ẩn border bằng cách đặt alpha = 0

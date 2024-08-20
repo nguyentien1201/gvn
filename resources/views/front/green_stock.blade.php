@@ -359,43 +359,8 @@
                                 <img src="{{url('images/bull_bear.jpg')}}" alt="Stock Rating" style="width:100%">
                                 <div class="mb-4 center_flex">
                                     <canvas id="pieChart" width="300"></canvas>
-                                    <div class="row mt-5">
-                                        <div class="col-md-6 mt-4  justify-content-center align-items-center"
-                                            style="height: 200px; max-height:200px;display:inline-grid">
-                                            <div class="ma50 chart_column"
-                                                style="background-color:green;height:{{$ma['upMA50'] * 2}}px">{{$ma['upMA50']}}%</div>
-                                            <div class="ma50 chart_column"
-                                                style="background-color:red;min-height:{{$ma['downMA50'] * 2}}px">{{$ma['downMA50']}}%</div>
-                                                <div class="ma50 chart_column color-home"
-                                                style="text-align: center;width:100px;">
-                                                MA50</div>
-                                        </div>
-                                        <div class="col-md-5 mt-4 justify-content-center align-items-center"
-                                            style="height: 200px;max-height:200px;display:inline-grid">
-                                            <div class="ma50 chart_column"
-                                                style="text-align:center;width:100px;background-color:green;height:{{$ma['upMA200'] * 2}}px">
-                                                {{$ma['upMA200']}}%</div>
-                                            <div class="ma50 chart_column"
-                                                style="text-align: center;width:100px;background-color:red;height:{{$ma['downMA200'] * 2}}px">
-                                                {{$ma['downMA200']}}%</div>
-                                                <div class="ma50 chart_column color-home"
-                                                style="text-align: center;width:100px;">
-                                                MA200</div>
-                                        </div>
-                                        <div class="col-md-12 mt-5  justify-content-left align-items-center text-left form-group">
-                                            <ul style="padding-left: 1.2rem; ">
-                                                <li class="list-item">
-                                                    <button style="width:50px;color: green;background-color: green;">Up</button>
-                                                    <span>Up</span>
-                                                </li>
-                                                <li class="list-item" >
-                                                    <button style="width:50px;color: red;background-color: red;">Down</button>
-                                                    <span>Down</span>
-                                                </li>
+                                    <canvas class="mt-5" id="maChart" width="400" height="350"></canvas>
 
-                                            </ul>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
 
@@ -759,6 +724,64 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                                 return []; // Return an empty array to hide all labels
                             }
                         }
+                    }
+                }
+            },
+            plugins: [ChartDataLabels]
+        });
+        const ctxMaChart = document.getElementById('maChart').getContext('2d');
+        const maChart = new Chart(ctxMaChart, {
+            type: 'bar',
+            data: {
+                labels: ['Ma50', 'Ma200'],
+                datasets: [{
+                    label: 'DOWN',
+                    data: @json($ma['down']),
+                    backgroundColor: 'Red',
+                    borderColor: 'rgba(255, 99, 132, 0)', // Ẩn border bằng cách đặt alpha = 0
+                    borderWidth: 0 // Đặt borderWidth thành 0 để ẩn hoàn toàn đường viền
+                },
+                {
+                    label: 'Up',
+                    data: @json($ma['up']),
+                    backgroundColor: 'Green',
+                    borderColor: 'rgba(255, 99, 132, 0)', // Ẩn border bằng cách đặt alpha = 0
+                    borderWidth: 0 // Đặt borderWidth thành 0 để ẩn hoàn toàn đường viền
+                }]
+            },
+
+            options: {
+                plugins: {
+                    legend: {
+                        display: true
+                    },
+                    datalabels: {
+                        display: true, // Hiển thị giá trị
+                        formatter: function (value, context) {
+                            return value + '%';
+                        },
+                        labels: {
+                            value: {
+                                color: 'white'
+                            }
+                        }
+                    },
+                },
+                scales: {
+                    x: {
+                        stacked: true, // Enable stacking for X axis
+                        ticks: {
+                            color: 'green', // Màu sắc của nhãn trục X
+                            font: {
+                                size: 14, // Kích thước phông chữ của nhãn trục X
+                                style: 'italic'
+                            }
+                        }
+                    },
+                    y: {
+                        display: false, // Ẩn trục Y
+                        beginAtZero: true,
+                        stacked: true // Enable stacking for Y axis
                     }
                 }
             },
