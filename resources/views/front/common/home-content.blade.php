@@ -176,7 +176,21 @@
             box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
         }
 
-
+        .chart_column {
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            width: 100px;
+            align-items: center;
+            color: white;
+            font-weight: bold;
+            padding: 5px 0 5px 0;
+        }
+        .center_flex {
+            display: inline-grid;
+            justify-content: center;
+            align-items: center;
+        }
 </style>
 <script>
     $(document).ready(function () {
@@ -581,34 +595,147 @@
                 }]
             },
             options: {
-            indexAxis: 'y', // Chuyển sang biểu đồ cột ngang
-            maintainAspectRatio: false, // Cho phép tùy chỉnh tỷ lệ
-            scales: {
-                y: {
-                    beginAtZero: true,
-                    ticks: {
-                        autoSkip: false, // Không tự động bỏ qua nhãn
+                indexAxis: 'y', // Chuyển sang biểu đồ cột ngang
+                maintainAspectRatio: false, // Cho phép tùy chỉnh tỷ lệ
+                lenged: {
+                    display: true,
+
+                },
+                plugins: {
+                    datalabels: {
+                        display: true, // Hiển thị giá trị
+
+                        formatter: function (value, context) {
+                            return value + '%';
+                        },
+                        labels: {
+                            value: {
+                                color: 'white'
+                            }
+                        }
+                    },
+                    legend: {
+                        labels: {
+                            generateLabels: function(chart) {
+                                return []; // Return an empty array to hide all labels
+                            }
+                        }
                     }
                 }
             },
-            plugins: {
-                legend: {
-                    display: true
+            plugins: [ChartDataLabels]
+    });
+    var ctx = document.getElementById('pieChart').getContext('2d');
+        var gradientRed = ctx.createLinearGradient(0, 0, 0, 400);
+        gradientRed.addColorStop(0, 'rgba(255, 99, 132, 1)');
+        gradientRed.addColorStop(1, 'rgba(255, 99, 132, 0.5)');
+
+        var gradientBlue = ctx.createLinearGradient(0, 0, 0, 400);
+        gradientBlue.addColorStop(0, 'rgba(54, 162, 235, 1)');
+        gradientBlue.addColorStop(1, 'rgba(54, 162, 235, 0.5)');
+
+        var gradientYellow = ctx.createLinearGradient(0, 0, 0, 400);
+        gradientYellow.addColorStop(0, 'rgba(255, 206, 86, 1)');
+        gradientYellow.addColorStop(1, 'rgba(255, 206, 86, 0.5)');
+        var myPieChart = new Chart(ctx, {
+            type: 'pie', // Kiểu biểu đồ là 'pie' (tròn)
+            data: {
+                labels: @json($labels),
+                datasets: [{
+
+                    data: @json($chart_signal), // Dữ liệu cho từng phần của biểu đồ
+                    backgroundColor: [
+                        gradientRed,
+                        gradientBlue,
+                        gradientYellow
+
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)'
+                    ],
+                    borderWidth: 5
+                }]
+            },
+            options: {
+                responsive: false,
+                plugins: {
+                    datalabels: {
+                        display: true, // Hiển thị giá trị
+
+                        formatter: function (value, context) {
+                            return value + '%';
+                        },
+                        labels: {
+                            value: {
+                                color: 'white'
+                            }
+                        }
+                    },
+
+                }
+
+            }, plugins: [ChartDataLabels]
+        });
+        const ctxMaChart = document.getElementById('maChart').getContext('2d');
+        const maChart = new Chart(ctxMaChart, {
+            type: 'bar',
+            data: {
+                labels: ['Ma50', 'Ma200'],
+                datasets: [{
+                    label: 'UP',
+                    data: @json($ma['down']),
+                    backgroundColor: 'Red',
+                    borderColor: 'rgba(255, 99, 132, 0)', // Ẩn border bằng cách đặt alpha = 0
+                    borderWidth: 0 // Đặt borderWidth thành 0 để ẩn hoàn toàn đường viền
                 },
-                tooltip: {
-                    enabled: true
+                {
+                    label: 'DOWN',
+                    data: @json($ma['up']),
+                    backgroundColor: 'Green',
+                    borderColor: 'rgba(255, 99, 132, 0)', // Ẩn border bằng cách đặt alpha = 0
+                    borderWidth: 0 // Đặt borderWidth thành 0 để ẩn hoàn toàn đường viền
+                }]
+            },
+
+            options: {
+                plugins: {
+                    legend: {
+                        display: true
+                    },
+                    datalabels: {
+                        display: true, // Hiển thị giá trị
+                        formatter: function (value, context) {
+                            return value + '%';
+                        },
+                        labels: {
+                            value: {
+                                color: 'white'
+                            }
+                        }
+                    },
+                },
+                scales: {
+                    x: {
+                        stacked: true, // Enable stacking for X axis
+                        ticks: {
+                            color: 'green', // Màu sắc của nhãn trục X
+                            font: {
+                                size: 14, // Kích thước phông chữ của nhãn trục X
+                                style: 'italic'
+                            }
+                        }
+                    },
+                    y: {
+                        display: false, // Ẩn trục Y
+                        beginAtZero: true,
+                        stacked: true // Enable stacking for Y axis
+                    }
                 }
             },
-            layout: {
-                padding: {
-                    left: 10,
-                    right: 10,
-                    top: 20,
-                    bottom: 20
-                }
-            }
-        }
-    });
+            plugins: [ChartDataLabels]
+        });
 });
 
 
@@ -1011,29 +1138,13 @@
                     <div class="row">
                         <!-- Data Section -->
                         <div class="col-md-6">
-                            <div class="container">
-                                <div class="row">
-                                        <div class="col-md-6 text-left">
-                                            <img class="img-fluid" src="{{asset('images/Capture3.png')}}"
-                                            alt="{{asset('images/Green-Beta.png')}}">
-                                        </div>
-                                        <div class="col-md-6 text-left">
-                                        <img class="img-fluid" src="{{asset('images/Capture2.png')}}"
-                                        alt="{{asset('images/Green-Beta.png')}}">
-                                        </div>
+                        <div class="sidebar sidebar_1" style="text-align:center">
+                                <div class="mb-4 center_flex">
 
-                                    </div>
-
-                            </div>
-
-
-                            <div class="container">
-                            <div class="row">
-                                <div class="col-md-6 text-left">
-                                    <img class="img-fluid" src="{{asset('images/Capture4.png')}}"
-                                    alt="{{asset('images/Green-Beta.png')}}">
+                                    <canvas id="maChart" width="400" height="350"></canvas>
+                                    <canvas id="pieChart" width="300"></canvas>
                                 </div>
-                            </div></div>
+                            </div>
 
 
 
@@ -1042,7 +1153,7 @@
                         <div class="col-md-6 text-center">
 
                             <div class="mb-4">
-                                <canvas id="groupStock" height="800"></canvas>
+                                <canvas id="groupStock" height="400"></canvas>
                             </div>
 
                         </div>

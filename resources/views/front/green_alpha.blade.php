@@ -553,24 +553,43 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                             }]
                         },
                         options: {
-                            scales: {
-                                x: {
-                                    ticks: {
-                                        font: {
-                                            weight: 'bold' // Makes x-axis labels bold
-                                        }
-                                    }
-                                },
-                                y: {
-                                    ticks: {
-                                        font: {
-                                            weight: 'bold' // Makes y-axis labels bold
-                                        }
-                                    }
+            plugins: {
+                datalabels: {
+                    display: true, // Hiển thị giá trị
+                    anchor: 'end',
+                    align: 'end',
+                    formatter: function(value, context) {
+                        return value + '%';
+                    },
+                    labels: {
+                    value: {
+                        color: 'green',
+                        font: {
+                                    weight: 'bold'
                                 }
-                            }
+                    }
+                    }
+                    }
+            },
+            scales: {
+                x: {
+                    ticks: {
+                        font: {
+                            weight: 'bold' // Makes x-axis labels bold
+                        }
+                    }
+                },
+                y: {
+                    ticks: {
+                        font: {
+                            weight: 'bold' // Makes y-axis labels bold
+                        }
+                    }
+                }
+            }
 
-                        },
+        },
+        plugins: [ChartDataLabels]
 
                     });
         $(document).on('click', '.dataTable tbody tr', function () {
@@ -902,14 +921,14 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                 datalabels: {
                     display: true, // Hiển thị giá trị
                     anchor: 'end',
-                        align: 'end',
-                        formatter: function(value, context) {
-                            return value + '%';
-                        },
-                        labels: {
-                        value: {
-                        color: 'white'
-                        }
+                    align: 'end',
+                    formatter: function(value, context) {
+                        return value + '%';
+                    },
+                    labels: {
+                    value: {
+                        color: 'green'
+                    }
                     }
                     }
             },

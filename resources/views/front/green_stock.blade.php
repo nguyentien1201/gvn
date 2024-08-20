@@ -274,7 +274,7 @@
         /* Đảm bảo các block xếp dọc khi màn hình nhỏ hơn 768px */
         @media (max-width: 768px) {
             .container_layout {
-                flex-direction: column;
+                flex-direction: row;
                 /* Xếp dọc các phần tử */
             }
             .sidebar {
@@ -405,7 +405,7 @@
                                 </table>
                             </div>
                             <div class="sidebar">
-                                <h5 style="text-align:center;padding:10px" class="color-home">My watch List</h5>
+                                <h5 style="text-align:center;padding:10px" class="color-home">My Watchlist</h5>
                                 <table class="table table-striped table-bordered" style="margin-bottom: 0px;">
                                     <thead>
                                         <th>No</th>
@@ -727,6 +727,7 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
             data: {
                 labels: @json($chart_group_data['labels']),
                 datasets: [{
+                    label: '',
                     data: @json($chart_group_data['rate']),
                     backgroundColor: '#34a853',
                     fontweight: 600,
@@ -736,7 +737,9 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
             options: {
                 indexAxis: 'y', // Chuyển sang biểu đồ cột ngang
                 maintainAspectRatio: false, // Cho phép tùy chỉnh tỷ lệ
-
+                lenged: {
+                    display: true
+                },
                 plugins: {
                     datalabels: {
                         display: true, // Hiển thị giá trị
@@ -746,8 +749,14 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                         },
                         labels: {
                             value: {
-
                                 color: 'white'
+                            }
+                        }
+                    },
+                    legend: {
+                        labels: {
+                            generateLabels: function(chart) {
+                                return []; // Return an empty array to hide all labels
                             }
                         }
                     }

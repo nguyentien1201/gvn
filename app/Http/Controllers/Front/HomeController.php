@@ -57,9 +57,27 @@ class HomeController
 
         $data_chart_default = $this->getHistoryAlphaSignal(1);
 
-        $chart_group_data = (new SubGroup())->getDataSubGroup();
+        $chart_signal = (new GreenStockNas100())->getGroupSignal();
+        usort($chart_signal, function($a, $b) {
+            return strcmp($a['signal'], $b['signal']);
+        });
+        $totalCount = array_reduce($chart_signal, function ($carry, $item) {
+            return $carry + $item['total'];
+        }, 0);
+        $labels = array_map(function($item) {
+            return $item['signal'];
+        }, $chart_signal);
 
-        return view('front.home',compact('signals','green_data','default_chart','last_signal','data_chart_default','chart_group_data'));
+        $chart_signal = array_map(function($item) use ($totalCount) {
+            return  round($item['total']/$totalCount*100,2);
+        }, $chart_signal);
+        $ma = (new Ma())->getMa();
+
+        $ma['up'] = [$ma['upMA50'],$ma['upMA200']];
+        $ma['down'] = [$ma['downMA50'],$ma['downMA200']];
+        $chart_group_data = (new SubGroup())->getDataSubGroup(10);
+        $chart_group_data = array_slice($chart_group_data, 0, 10);
+        return view('front.home',compact('signals','green_data','default_chart','last_signal','data_chart_default','chart_group_data','ma','chart_signal','labels'));
     }
     public function greenBeta(Request $request)
     {
