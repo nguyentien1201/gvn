@@ -568,7 +568,7 @@
                         font: {
                             weight: 'bold' // Makes x-axis labels bold
                         }
-                    }
+                    },
                 },
                 y: {
                     ticks: {
@@ -729,7 +729,9 @@
                                 style: 'italic',
                                 weight: 'bold'
                             }
-                        }
+                        },
+                        barPercentage: 0.5, // Giảm giá trị này để tăng khoảng cách giữa các cột
+                        categoryPercentage: 0.5 // Giảm giá trị này để tăng khoảng
                     },
                     y: {
                         display: false, // Ẩn trục Y
