@@ -278,7 +278,8 @@
                 /* Xếp dọc các phần tử */
             }
             .sidebar {
-                max-width:inherit;
+                padding-bottom: 2rem;
+                max-width: inherit;
                 order: 1;
                 /* Sidebar 1 ở vị trí đầu */
             }
@@ -286,15 +287,19 @@
                 order: 3;
                 /* Đặt cột chính ở vị trí cuối cùng */
             }
+            .center_flex{
+                padding-bottom: 5rem;
+            }
+
         }
-        @media (min-width: 768px){
+        @media (min-width: 768px) and (max-width: 1680px) {
             .container_layout {
                 flex-direction: row;
                 /* Xếp ngang các phần tử */
             }
 
             .sidebar {
-                max-width:inherit;
+                max-width: inherit;
                 width: 50%;
                 /* Cả hai sidebar sẽ chiếm 50% chiều rộng */
             }
@@ -356,23 +361,39 @@
                                     <canvas id="pieChart" width="300"></canvas>
                                     <div class="row mt-5">
                                         <div class="col-md-6 mt-4  justify-content-center align-items-center"
-                                            style="height: 210px; max-height:210px;display:inline-grid">
+                                            style="height: 200px; max-height:200px;display:inline-grid">
                                             <div class="ma50 chart_column"
-                                                style="background-color:green;min-height:105px">Up
-                                                MA50<br> {{$ma['upMA50']}}%</div>
+                                                style="background-color:green;height:{{$ma['upMA50'] * 2}}px">{{$ma['upMA50']}}%</div>
                                             <div class="ma50 chart_column"
-                                                style="background-color:red;min-height:105px">Down
-                                                MA50 <br> {{$ma['downMA50']}}%</div>
+                                                style="background-color:red;min-height:{{$ma['downMA50'] * 2}}px">{{$ma['downMA50']}}%</div>
+                                                <div class="ma50 chart_column color-home"
+                                                style="text-align: center;width:100px;">
+                                                MA50</div>
                                         </div>
-
                                         <div class="col-md-5 mt-4 justify-content-center align-items-center"
-                                            style="height: 210px;max-height:210px;display:inline-grid">
+                                            style="height: 200px;max-height:200px;display:inline-grid">
                                             <div class="ma50 chart_column"
-                                                style="text-align: center;width:100px;background-color:green;min-height:105px">
-                                                Up MA200 <br> {{$ma['upMA200']}}%</div>
+                                                style="text-align:center;width:100px;background-color:green;height:{{$ma['upMA200'] * 2}}px">
+                                                {{$ma['upMA200']}}%</div>
                                             <div class="ma50 chart_column"
-                                                style="text-align: center;width:100px;background-color:red;min-height:105px">
-                                                Down MA200<br> {{$ma['downMA200']}}%</div>
+                                                style="text-align: center;width:100px;background-color:red;height:{{$ma['downMA200'] * 2}}px">
+                                                {{$ma['downMA200']}}%</div>
+                                                <div class="ma50 chart_column color-home"
+                                                style="text-align: center;width:100px;">
+                                                MA200</div>
+                                        </div>
+                                        <div class="col-md-12 mt-5  justify-content-left align-items-center text-left form-group">
+                                            <ul style="padding-left: 1.2rem; ">
+                                                <li class="list-item">
+                                                    <button style="width:50px;color: green;background-color: green;">Up</button>
+                                                    <span>Up</span>
+                                                </li>
+                                                <li class="list-item" >
+                                                    <button style="width:50px;color: red;background-color: red;">Down</button>
+                                                    <span>Down</span>
+                                                </li>
+
+                                            </ul>
                                         </div>
                                     </div>
                                 </div>
@@ -706,7 +727,6 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
             data: {
                 labels: @json($chart_group_data['labels']),
                 datasets: [{
-                    label: 'Profit Rate',
                     data: @json($chart_group_data['rate']),
                     backgroundColor: '#34a853',
                     fontweight: 600,
