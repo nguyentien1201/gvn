@@ -285,7 +285,7 @@
                 /* Đặt cột chính ở vị trí cuối cùng */
             }
         }
-        @media (min-width: 768px) {
+        @media (min-width: 768px) and (max-width: 1680px) {
             .container_layout {
                 flex-direction: row;
                 /* Xếp ngang các phần tử */
