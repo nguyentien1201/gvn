@@ -540,7 +540,7 @@
                             },
                             labels: {
                             value: {
-                            color: 'blue'
+                            color: 'white'
                             }
                         }
                         }

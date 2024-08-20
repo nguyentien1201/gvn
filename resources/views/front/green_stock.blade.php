@@ -248,21 +248,22 @@
         }
 
         .sidebar {
+            max-width: 450px;
             flex: 1;
             /* Chiếm một phần nhỏ */
-            min-width: 300px;
+
             /* Chiều rộng tối thiểu của sidebar */
-            padding: 20px;
+            padding: 10px;
             text-align: center;
 
         }
 
         .main {
-
+            flex: 4;
             /* Chiếm phần lớn ở giữa */
             min-width: 300px;
             /* Chiều rộng tối thiểu của main */
-            padding: 20px;
+            padding: 10px;
             text-align: center;
 
 
@@ -347,28 +348,28 @@
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="rating" role="tabpanel" aria-labelledby="rating-tab">
                         <div class="container_layout">
-                            <div class="sidebar">
+                            <div class="sidebar sidebar_1">
                                 <img src="{{url('images/bull_bear.jpg')}}" alt="Stock Rating" style="width:100%">
                                 <div class="mb-4 center_flex">
                                     <canvas id="pieChart" width="300"></canvas>
                                     <div class="row mt-5">
                                         <div class="col-md-6 mt-4  justify-content-center align-items-center"
-                                            style="height: 210px; max-height:200px;display:inline-grid">
+                                            style="height: 210px; max-height:210px;display:inline-grid">
                                             <div class="ma50 chart_column"
-                                                style="background-color:green;min-height:{{$ma['upMA50'] * 2}}px">Up
+                                                style="background-color:green;min-height:105px">Up
                                                 MA50<br> {{$ma['upMA50']}}%</div>
                                             <div class="ma50 chart_column"
-                                                style="background-color:red;min-height:{{$ma['downMA50'] * 2}}px">Down
+                                                style="background-color:red;min-height:105px">Down
                                                 MA50 <br> {{$ma['downMA50']}}%</div>
                                         </div>
 
                                         <div class="col-md-5 mt-4 justify-content-center align-items-center"
-                                            style="height: 210px;max-height:200px;display:inline-grid">
+                                            style="height: 210px;max-height:210px;display:inline-grid">
                                             <div class="ma50 chart_column"
-                                                style="text-align: center;width:100px;background-color:green;min-height:{{$ma['upMA200'] * 2 - 15.5}}px">
+                                                style="text-align: center;width:100px;background-color:green;min-height:105px">
                                                 Up MA200 <br> {{$ma['upMA200']}}%</div>
                                             <div class="ma50 chart_column"
-                                                style="text-align: center;width:100px;background-color:red;min-height:{{$ma['downMA200'] * 2}}px">
+                                                style="text-align: center;width:100px;background-color:red;min-height:105px">
                                                 Down MA200<br> {{$ma['downMA200']}}%</div>
                                         </div>
                                     </div>
@@ -387,7 +388,7 @@
                                         <th>No</th>
                                         <th>Chứng Khoán</th>
                                         <th>Gvn-Rating</th>
-                                        <th>Ngành</th>
+
                                         <th>Giá mua/bán</th>
                                         <th>Giá hiện tại</th>
                                     </thead>
@@ -397,7 +398,7 @@
                                                 <td>{{ $key + 1 }}</td>
                                                 <td>{{ $stock->code }}</td>
                                                 <td>{{ $stock->rating }}</td>
-                                                <td>{{ $stock->group ?? '' }}</td>
+
                                                 <td>{{ $stock->price }}</td>
                                                 <td>{{ $stock->current_price }}</td>
                                             </tr>
@@ -426,8 +427,9 @@
                                     </tr>
                                 </table>
                                 <div class="col-md-12 text-center">
+                                <h5 style="text-align:center;padding:10px" class="color-home">Best Top 10</h5>
                                     <div class="mb-4">
-                                        <canvas id="groupStock" height="650"></canvas>
+                                        <canvas id="groupStock" height="450"></canvas>
                                     </div>
 
                                 </div>
@@ -523,7 +525,7 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                         },
                         labels: {
                             value: {
-                                color: 'blue'
+                                color: 'white'
                             }
                         }
                     }
@@ -702,26 +704,28 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
             data: {
                 labels: @json($chart_group_data['labels']),
                 datasets: [{
-                    label: 'Profit',
+                    label: 'Best top 10',
                     data: @json($chart_group_data['rate']),
                     backgroundColor: '#34a853',
                     fontweight: 600,
+                    barThickness: 20,
                 }]
             },
             options: {
                 indexAxis: 'y', // Chuyển sang biểu đồ cột ngang
                 maintainAspectRatio: false, // Cho phép tùy chỉnh tỷ lệ
+
                 plugins: {
                     datalabels: {
                         display: true, // Hiển thị giá trị
 
-                        align: 'end',
                         formatter: function (value, context) {
                             return value + '%';
                         },
                         labels: {
                             value: {
-                                color: 'blue'
+
+                                color: 'white'
                             }
                         }
                     }
