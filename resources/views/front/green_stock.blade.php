@@ -342,12 +342,12 @@
                     <li class="nav-item">
                         <a style="font-weight:bold; font-size:1.2em" class="nav-link active" id="rating-tab"
                             data-toggle="tab" href="#rating" role="tab" aria-controls="rating"
-                            aria-selected="true">StockRating</a>
+                            aria-selected="true">STOCK RATING</a>
                     </li>
                     <li class="nav-item">
                         <a style="font-weight:bold; font-size:1.2em" class="nav-link" id="overview-tab"
                             data-toggle="tab" href="#overview" role="tab" aria-controls="overview"
-                            aria-selected="false">Market Overview</a>
+                            aria-selected="false">MARKET OVERVIEW</a>
                     </li>
 
                 </ul>
