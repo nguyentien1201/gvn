@@ -259,7 +259,7 @@
         }
 
         .main {
-            flex: 3;
+            flex: 4;
             /* Chiếm phần lớn ở giữa */
             min-width: 300px;
             /* Chiều rộng tối thiểu của main */
