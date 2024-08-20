@@ -369,8 +369,8 @@
                                     id="indices-table">
                                 </table>
                             </div>
-                            <div class="sidebar">
-                                <h5 style="text-align:center;padding:10px" class="color-home mt-4">My Watchlist</h5>
+                            <div class="sidebar mt-4">
+                                <h5 style="text-align:center;padding:10px" class="color-home mt-5">My Watchlist</h5>
                                 <table class="table table-striped table-bordered" style="margin-bottom: 0px;">
                                     <thead>
                                         <th>No</th>
@@ -393,8 +393,8 @@
                                         @endforeach
                                     </tbody>
                                 </table>
-                                <h5 class="mt-4" style="text-align:center;padding:10px" class="color-home">Top 5 Stock</h5>
-                                <table class="table table-striped table-bordered top-stock-table"
+                                <h5 class="mt-5 color-home" style="text-align:center;padding:10px">Top 5 Stock</h5>
+                                <table class="table table-striped table-bordered top-stock-table mb-3"
                                     style="margin-bottom: 0px;">
                                     <tr>
                                         <td>1</td>
@@ -414,9 +414,9 @@
                                         @endforeach
                                     </tr>
                                 </table>
-                                <div class="col-md-12 text-center mt-4">
+                                <div class="col-md-12 text-center mt-5">
                                     <h5 style="text-align:center;padding:10px" class="color-home">Best Top 10</h5>
-                                        <div class="mb-4">
+                                        <div class="mb-3">
                                             <canvas id="groupStock" height="450"></canvas>
                                         </div>
 
