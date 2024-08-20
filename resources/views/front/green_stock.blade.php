@@ -773,8 +773,9 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                         ticks: {
                             color: 'green', // Màu sắc của nhãn trục X
                             font: {
-                                size: 14, // Kích thước phông chữ của nhãn trục X
-                                style: 'italic'
+                                size: 16, // Kích thước phông chữ của nhãn trục X
+                                style: 'bold',
+                                weight: 'bold'
                             }
                         }
                     },
