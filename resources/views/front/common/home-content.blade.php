@@ -25,7 +25,7 @@
             color:#008000 !important;
         }
         body {
-            font-size: 0.9rem !important;
+            font-size: 0.9rem;
         }
 
         .ml-auto {
@@ -548,7 +548,7 @@
             labels: data.profitByMonth.lable,
             datasets: [{
                 data: data.profitByMonth.profit,
-                label: 'Profit By Month',
+                label: 'Monthly Profit NAS100',
                 backgroundColor: '#34a853',
                 borderWidth: 1,
                 fontweight: 600,
@@ -1052,7 +1052,7 @@
                         <div class="row">
                         <!-- Data Section -->
                             <div class="col-md-9">
-                            <h5 class="card-title color-home">Green Alpha</h5>
+
                         <h6 class="card-text font-face">
                         Green Alpha là một robot với sự tích hợp đa tầng của các Indicator ngắn hạn, giao dịch với phương pháp Day Trading, là một robot giao dịch ngắn hạn trong phiên giao dịch,  tìm kiếm những điểm vào có xác suất chiến thắng cao và được lặp lại trong nhiều phiên. Green Alpha thích hợp cho các nhà đầu tư tìm kiếm các cơ hội nhanh, các nhà đầu tư dành phần lớn thời gian cho việc giao dịch và yêu thích sự phấn khích của nhịp độ thị trường hằng ngày.
                         </h6>
