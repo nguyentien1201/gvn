@@ -369,8 +369,8 @@
                                     id="indices-table">
                                 </table>
                             </div>
-                            <div class="sidebar mt-4">
-                                <h5 style="text-align:center;padding:10px" class="color-home mt-5">My Watchlist</h5>
+                            <div class="sidebar mt-2">
+                                <h5 style="text-align:center;padding:10px" class="color-home">My Watchlist</h5>
                                 <table class="table table-striped table-bordered" style="margin-bottom: 0px;">
                                     <thead>
                                         <th>No</th>

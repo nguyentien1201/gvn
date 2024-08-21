@@ -17,6 +17,10 @@
             box-shadow: 0 0px 0px rgba(0, 0, 0, 0.1);
             transform: scale(1.008);
         }
+        tbody >tr>td {
+            padding: 0.5em 0.5em;
+            font-size: 0.9em;
+        }
        .color-home{
             color:#008000 !important;
         }
@@ -191,6 +195,12 @@
             justify-content: center;
             align-items: center;
         }
+        @media (max-width: 768px) {
+                tbody >tr>td {
+                        font-size: 0.9em;
+                 }
+            }
+
 </style>
 <script>
     $(document).ready(function () {
@@ -343,10 +353,12 @@
                     createdCell: function (td, cellData, rowData, row, col) {
                         $(td).css('text-align', 'left');
                         $(td).css('font-weight', 'bold');
-                        $(td).css('padding', '.5em .8em');
+                        $(td).css('padding-left', '0.5em');
+                        $(td).css('font-size', '0.9em');
+
                     },
                     render: function(data, type, row) {
-                        return  '<img src="images/logo/'+data+'.png" alt="Logo" style=" height:20px; max-width:27px;width:30px;; margin-right:0.8em"> '+ data; // Adjust the path and style as needed
+                        return  '<img src="images/logo/'+data+'.png" alt="Logo" style=" height:20px; max-width:2em;width:30px; margin-right:0.5em"> '+ data; // Adjust the path and style as needed
                     }
                 }
             ],
@@ -629,7 +641,6 @@
     });
 
     var ctx = document.getElementById('pieChart').getContext('2d');
-    console.log(@json($chart_signal));
         var myPieChart = new Chart(ctx, {
             type: 'pie', // Kiểu biểu đồ là 'pie' (tròn)
             data: {
@@ -640,9 +651,8 @@
                         'rgb(102, 167, 76)',
                         'rgb(254, 228, 157)',
                         'rgb(147, 196, 128)',
-                        '#000'
+                        'rgb(255, 0, 0)'
                     ],
-
                     borderWidth: 1
                 }]
             },
@@ -1104,7 +1114,7 @@
             <div class="col-12">
 
                 <h2 class="text-left mb-4"><span class="title-trading-first label-color">Giao dịch với</span>
-                    <span class="title-trading-second color-home label-color">Green Stock NAS100</span>
+                    <span class="title-trading-second color-home label-color">GREENSTOCK-NAS100</span>
                 </h2>
             <!-- Data and Chart Section -->
             <div class="card">
@@ -1113,11 +1123,8 @@
                     <div class="col-md-8">
                     <div class="card mb-4">
                                 <div class=" text-left">
-                                    <p class="">
-                                        GreenStock-NAS100 là hệ thống phân tích các.
-                                        Cổ phiếu trong rổ cổ phiếu NASDAQ100
-                                        Hệ thống tự động xếp hạng rating theo kỹ thuật
-                                        Đưa ra hành động xu hướng giá cho nhà đầu tư
+                                    <p class="font-face">
+                                    GreenStock-NAS100 là hệ thống phân tích các cổ phiếu trong rổ cổ phiếu NASDAQ100 của thị trường chứng khoán Mỹ. Hệ thống sẽ tự động phân tích xu hướng ngắn hạn và dài hạn của các cổ phiếu, xếp hạng xu hướng và xung lực dòng tiền trên từng cổ phiếu, từ đó tạo ra bảng điểm Rating theo kỹ thuật để đưa ra nhận định hành động cho người dùng. Một vòng tròn hành động trong việc đầu tư của người dùng: BUY-HOLD-SELL-CASH
                                     </p>
                                 </div>
                             </div>
