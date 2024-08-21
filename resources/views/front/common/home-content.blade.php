@@ -721,7 +721,7 @@
                             color: 'green', // Màu sắc của nhãn trục X
                             font: {
                                 size: 14, // Kích thước phông chữ của nhãn trục X
-                                style: 'italic',
+
                                 weight: 'bold'
                             }
                         },
