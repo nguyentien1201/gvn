@@ -197,9 +197,10 @@
         }
         @media (max-width: 1268px) {
             body {
-                /* font-size: xx-small; */
+                font-size: x-small !important   ;
             }
-            tbody >tr>td {
+            thead th{
+                min-width:80px !important ;
                 /* font-size: xx-small; */
                 }
             }
