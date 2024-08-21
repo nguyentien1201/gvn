@@ -195,10 +195,13 @@
             justify-content: center;
             align-items: center;
         }
-        @media (max-width: 768px) {
-                tbody >tr>td {
-                        font-size: 0.9em;
-                 }
+        @media (max-width: 1268px) {
+            body {
+                /* font-size: xx-small; */
+            }
+            tbody >tr>td {
+                /* font-size: xx-small; */
+                }
             }
 
 </style>
@@ -354,11 +357,13 @@
                         $(td).css('text-align', 'left');
                         $(td).css('font-weight', 'bold');
                         $(td).css('padding-left', '0.5em');
-                        $(td).css('font-size', '0.9em');
+                        $(td).css('min-width', '100px');
+                        $(td).css('padding-right', '0');
+
 
                     },
                     render: function(data, type, row) {
-                        return  '<img src="images/logo/'+data+'.png" alt="Logo" style=" height:20px; max-width:2em;width:30px; margin-right:0.5em"> '+ data; // Adjust the path and style as needed
+                        return  '<img src="images/logo/'+data+'.png" alt="Logo" style="max-width:2em;width:30px; margin-right:0.5em"> '+ data; // Adjust the path and style as needed
                     }
                 }
             ],
