@@ -730,7 +730,9 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                     createdCell: function (td, cellData, rowData, row, col) {
                         $(td).css('text-align', 'left');
                         $(td).css('font-weight', 'bold');
-                        $(td).css('padding', '.5em .8em');
+                        $(td).css('padding-left', '0.5em');
+                        $(td).css('min-width', '100px');
+                        $(td).css('padding-right', '0');
                     },
                     render: function(data, type, row) {
                         return  '<img src="images/logo/'+data+'.png" alt="Logo" style=" height:20px; max-width:27px;width:30px;; margin-right:0.8em"> '+ data; // Adjust the path and style as needed
