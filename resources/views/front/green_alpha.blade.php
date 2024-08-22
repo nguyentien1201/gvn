@@ -165,6 +165,15 @@
         .table-responsive {
             overflow-x: hidden !important;
         }
+        @media (max-width: 1268px) {
+            body {
+                font-size: x-small !important   ;
+            }
+            thead th{
+                min-width:80px !important ;
+                /* font-size: xx-small; */
+                }
+            }
     </style>
 
 </head>
