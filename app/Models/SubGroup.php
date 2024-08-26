@@ -13,21 +13,61 @@ class SubGroup extends Model
     public $table = 'rate_subgroup';
 
     protected $fillable = [
-        'group_name', 'previous_session', 'current_year'
+        'group_name', 'previous_session', 'current_year','quarter','avg_cap','current_month'
     ];
 
     public function getDataSubGroup($limit = '')
     {
         if($limit != ''){
-            $data = $this->orderBy('current_year', 'desc')->select('group_name', 'current_year')->limit($limit)->get();
+            $data = $this->orderBy('group_name', 'desc')->select('group_name','previous_session' ,'current_year','current_month','quarter','avg_cap')->limit($limit)->get();
         }else{
-            $data = $this->orderBy('current_year', 'desc')->select('group_name', 'current_year')->get();
+            $data = $this->orderBy('group_name', 'desc')->select('group_name','previous_session', 'current_year','current_month','quarter','avg_cap')->get();
         }
+
+
         $labels = $data->pluck('group_name')->toArray();
-        $rate =$data->pluck('current_year')->toArray();
+        $rate = $data->pluck('previous_session')->toArray();
+
         return [
             'labels' => $labels,
             'rate' => $rate,
+        ];
+
+    }
+    public function getDataSubGroupApi()
+    {
+        $data = $this->orderBy('group_name', 'asc')->select('group_name', 'current_year','current_month','quarter','avg_cap')->get()->toArray();
+        $current_month = $data;
+
+        usort($current_month, function($a, $b) {
+            return $b['current_month'] <=> $a['current_month'];
+        });
+        $current_month_labels = [];
+        $current_month_values = [];
+        foreach ($current_month as $item) {
+            $current_month_labels[] = $item['group_name'];
+            $current_month_values[] = $item['current_month'];
+        }
+        $avg_cap = $data;
+        usort($avg_cap, function($a, $b) {
+            return $b['avg_cap'] <=> $a['avg_cap'];
+        });
+        $avg_cap_labels = [];
+        $avg_cap_values = [];
+        foreach ($avg_cap as $item) {
+            $avg_cap_labels[] = $item['group_name'];
+            $avg_cap_values[] = $item['avg_cap'];
+        }
+        return [
+            'current_month' => [
+                'labels' => $current_month_labels,
+                'values' => $current_month_values
+
+            ],
+            'avg_cap' => [
+                'labels' => $avg_cap_labels,
+                'values' => $avg_cap_values
+            ]
         ];
 
     }

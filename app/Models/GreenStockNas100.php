@@ -11,34 +11,51 @@ use Carbon\Carbon;
 use App\Models\CompanyInfo;
 use App\Models\Ma;
 use App\Models\SubGroup;
+use App\Models\GroupCap;
 class GreenStockNas100 extends Model
 {
     use SoftDeletes;
     protected $googleDriveService;
     public $table = 'greenstock_nas100';
     protected $fillable = [
-        'rating','code', 'point','price','current_price','trending','signal','profit','post_sale_discount','time','created_at'
+        'rating',
+        'code',
+        'point',
+        'price',
+        'current_price',
+        'trending',
+        'signal',
+        'profit',
+        'post_sale_discount',
+        'time',
+        'created_at'
     ];
-    public function getListNas100(){
-        $data = $this->orderBy('rating','asc')->paginate(ConstantModel::$PAGINATION);
+    public function getListNas100()
+    {
+        $data = $this->orderBy('rating', 'asc')->paginate(ConstantModel::$PAGINATION);
         return $data;
     }
-    public function import($isCompany = false){
+    public function import($isCompany = false)
+    {
         $this->googleDriveService = new GoogleDriveService();
         $fileUrl = config('drivefile.drivefile.nas100');
-        $isCompany =true;
-        if($isCompany ==true){
-            $company = $this->googleDriveService->getSheetData($fileUrl,'Tên doanh nghiệp!A1:B');
+        $isCompany = true;
+        if ($isCompany == true) {
+            $company = $this->googleDriveService->getSheetData($fileUrl, 'Tên doanh nghiệp!A1:C');
             array_shift($company);
-            foreach($company as $item){
+            foreach ($company as $item) {
+
                 $company = [
                     'code' => $item[0],
                     'company_name' => $item[1],
+                    'industry' => $item[2] ?? null,
                 ];
-                $companyInfo = CompanyInfo::where('code',$company['code'])->first();
-                if($companyInfo){
+                $companyInfo = CompanyInfo::where('code', $company['code'])->first();
+
+                if ($companyInfo) {
                     $companyInfo->update($company);
-                }else{
+
+                } else {
                     CompanyInfo::create($company);
                 }
             }
@@ -49,80 +66,134 @@ class GreenStockNas100 extends Model
 
         array_shift($listData);
         array_shift($listData);
-        foreach($listData as $item){
+        foreach ($listData as $item) {
             try {
 
-            $greenstock_nas100 = [];
-            $item = explode(",", $item);
+                $greenstock_nas100 = [];
+                $item = explode(",", $item);
 
-            if(!empty($item[17]) && !empty($item[14]) && !empty($item[15]) && !empty($item[16])){
-                $ma = [
-                    'upMA50'=> (float)$item[14],
-                    'downMA50'=> (float)$item[15],
-                    'upMA200'=> (float)$item[16],
-                    'downMA200'=> (float)$item[17],
-                ];
-                $maData = Ma::first();
-                if($maData){
-                    $maData->update($ma);
-                }else{
-                    Ma::create($ma);
+                if (!empty($item[17]) && !empty($item[14]) && !empty($item[15]) && !empty($item[16]) && !empty($item[18]) && !empty($item[19])) {
+                    $ma = [
+                        'time' => Carbon::createFromFormat('d/m/y', $item[14])->format('Y-m-d') ?? null,
+                        'nas100' => (float) $item[15],
+                        'upMA50' => (float) $item[16],
+                        'downMA50' => (float) $item[17],
+                        'upMA200' => (float) $item[18],
+                        'downMA200' => (float) $item[19],
+                    ];
+                    $maData = Ma::where('time', $ma['time'])->first();
+                    if ($maData) {
+                        dump(1);
+                        $maData->update($ma);
+                    } else {
+                        Ma::create($ma);
+                    }
                 }
-            }
-            if(!empty($item[11])) {
-                $subgroups = [
-                    'group_name' => $item[11] ?? '',
-                    'previous_session' =>(float) $item[12],
+                if (!empty($item[11])) {
+                    $subgroups = [
+                        'group_name' => $item[11] ?? '',
+                        'previous_session' => (float) $item[12],
 
-                ];
-                $subgroup = SubGroup::where('group_name',$subgroups['group_name'])->first();
-                if($subgroup){
-                    $subgroup->update($subgroups);
-                }else{
-                    SubGroup::create($subgroups);
-                }
-            }
-            if(!empty($item[19])) {
-                $subgroups_year = [
-                    'group_name' => $item[19] ?? '',
-                    'current_year' => (float) $item[20],
-                ];
-                $subgroup = SubGroup::where('group_name',$subgroups_year['group_name'])->first();
-                if($subgroup){
-                    $subgroup->update($subgroups_year);
-                }else{
-                    SubGroup::create($subgroups_year);
-                }
-            }
+                    ];
 
-            $greenstock_nas100= [
-                'rating' => (int)$item[0],
-                'code' => $item[1],
-                'point' => (int)$item[2],
-                'current_price' => (float)$item[5],
-                'trending'=>$item[3],
-                'signal' => $item[4],
-                'profit'=> (float)$item[6],
-                'post_sale_discount'=>!empty($item[7]) ? (float)$item[7] : null,
-                'price'=> round((float)$item[8], 2),
-                'time'=> Carbon::createFromFormat('d/m/y', $item[9])->format('Y-m-d') ?? null,
-            ];
-            $nas100 = self::where('code',$greenstock_nas100['code'])->first();
-            if($nas100){
-                $nas100->update($greenstock_nas100);
-            }else{
-                self::create($greenstock_nas100);
-            }
-            }catch (\Exception $e){
+                    $subgroup = SubGroup::where('group_name', $subgroups['group_name'])->first();
+                    if ($subgroup) {
+                        $subgroup->update($subgroups);
+                    } else {
+                        SubGroup::create($subgroups);
+                    }
+                }
+                if (!empty($item[21])) {
+                    $subgroups_year = [
+                        'group_name' => $item[21] ?? '',
+                        'current_year' => (float) $item[22],
+                    ];
+                    $subgroup = SubGroup::where('group_name', $subgroups_year['group_name'])->first();
+                    if ($subgroup) {
+                        $subgroup->update($subgroups_year);
+                    } else {
+                        SubGroup::create($subgroups_year);
+                    }
+                }
+                if (!empty($item[24])) {
+                    $subgroups_year = [
+                        'group_name' => $item[24] ?? '',
+                        'quarter' => (float) $item[25],
+                    ];
+                    $subgroup = SubGroup::where('group_name', $subgroups_year['group_name'])->first();
+                    if ($subgroup) {
+                        $subgroup->update($subgroups_year);
+                    } else {
+                        SubGroup::create($subgroups_year);
+                    }
+                }
+                if (!empty($item[27])) {
+                    $subgroups_year = [
+                        'group_name' => $item[27] ?? '',
+                        'current_month' => (float)$item[28],
+                    ];
+                    $subgroup = SubGroup::where('group_name', $subgroups_year['group_name'])->first();
+                    if ($subgroup) {
+                        $subgroup->update($subgroups_year);
+                    } else {
+                        SubGroup::create($subgroups_year);
+                    }
+                }
+                if (!empty($item[36])) {
+                    $subgroups_year = [
+                        'group_name' => $item[36] ?? '',
+                        'avg_cap' => (float) $item[37],
+                    ];
+                    $subgroup = SubGroup::where('group_name', $subgroups_year['group_name'])->first();
+                    if ($subgroup) {
+                        $subgroup->update($subgroups_year);
+                    } else {
+                        SubGroup::create($subgroups_year);
+                    }
+                }
+                if (!empty($item[30])) {
+                    $group_cap = [
+                        'group' => $item[30] ?? '',
+                        'avg_day' => (float) $item[31],
+                    ];
+                    $cap = GroupCap::where('group', $group_cap['group'])->first();
+                    if ($cap) {
+                        $cap->update($group_cap);
+                    } else {
+                        GroupCap::create($group_cap);
+                    }
+                }
+                $greenstock_nas100 = [
+                    'rating' => (int) $item[0],
+                    'code' => $item[1],
+                    'point' => (int) $item[2],
+                    'current_price' => (float) $item[5],
+                    'trending' => $item[3],
+                    'signal' => $item[4],
+                    'profit' => (float) $item[6],
+                    'post_sale_discount' => !empty($item[7]) ? (float) $item[7] : null,
+                    'price' => round((float) $item[8], 2),
+                    'time' => Carbon::createFromFormat('d/m/y', $item[9])->format('Y-m-d') ?? null,
+                ];
+                $nas100 = self::where('code', $greenstock_nas100['code'])->first();
+                if ($nas100) {
+                    $nas100->update($greenstock_nas100);
+                } else {
+                    self::create($greenstock_nas100);
+                }
+            } catch (\Exception $e) {
+                dump($e->getLine());
+                dd($e->getMessage());
                 continue;
             }
         }
         return redirect()->route('admin.nas100.index')->with('success', __('panel.success'));
     }
-    public function getListNas100Api($limit=200){
-        $data = $this->with('companyInfo')->orderBy('rating','asc')->limit($limit)->get();
-        $data = $data->map(function($item){
-            if($item->companyInfo){
+    public function getListNas100Api($limit = 200)
+    {
+        $data = $this->with('companyInfo')->orderBy('rating', 'asc')->limit($limit)->get();
+        $data = $data->map(function ($item) {
+            if ($item->companyInfo) {
                 $item['company_name'] = $item->companyInfo->company_name;
             }
             return $item;
@@ -134,12 +205,14 @@ class GreenStockNas100 extends Model
     {
         return $this->belongsTo(CompanyInfo::class, 'code', 'code');
     }
-    public function getTopStock(){
-       return $this->orderBy('profit','desc')->limit(5)->get();
+    public function getTopStock()
+    {
+        return $this->orderBy('rating', 'asc')->limit(5)->get();
     }
-    public function getGroupSignal(){
+    public function getGroupSignal()
+    {
         return $this->select('signal', \DB::raw('count(*) as total'))
-        ->groupBy('signal')
-        ->get()->toArray();
+            ->groupBy('signal')
+            ->get()->toArray();
     }
 }

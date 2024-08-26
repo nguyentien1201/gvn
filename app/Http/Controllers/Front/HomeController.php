@@ -13,6 +13,9 @@ use App\Models\GreenStockNas100;
 use DB;
 use App\Models\SubGroup;
 use App\Models\Ma;
+use Illuminate\Support\Facades\Cache;
+use App\Models\GroupCap;
+
 class HomeController
 {
     public function index(Request $request)
@@ -205,5 +208,32 @@ class HomeController
         $ma['up'] = [$ma['upMA50'],$ma['upMA200']];
         $ma['down'] = [$ma['downMA50'],$ma['downMA200']];
         return view('front.green_stock',compact('signals','top_stock','chart_signal','labels','ma','chart_group_data'));
+    }
+    public function getMarketGreenStock(){
+
+        $marketOverview = Cache::get('market_overview');
+        if($marketOverview){
+           return [
+               'status' => 200,
+               'data' => $marketOverview
+           ];
+        }
+        $market_cap = (new GroupCap())->getMarketCap();
+        $chart_group_data = (new SubGroup())->getDataSubGroupApi();
+        $top_stock = (new GreenStockNas100())->getTopStock();
+        $cap = [61153987935,-334930984165];
+        $ma = (new Ma())->getMaApi();
+
+        $marketOverview = [
+            'market_cap' => $market_cap,
+            'chart_group_data' => $chart_group_data,
+            'top_stock' => $top_stock,
+            'cap' => $cap,
+            'ma' => $ma
+        ];
+        return [
+            'status' => 200,
+            'data' => $marketOverview,
+        ];
     }
 }

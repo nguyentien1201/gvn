@@ -159,13 +159,14 @@
         .width-120 {
             width: 120px;
         }
-        th{
-            text-align:center !important;
+
+        th {
+            text-align: center !important;
         }
+
         .table-responsive {
             overflow-x: hidden !important;
         }
-
     </style>
 
 </head>
@@ -233,10 +234,11 @@
             <div class="row">
                 <div class="col-md-12">
                     <h2 class="text-center mb-4"><span class="title-trading-first label-color color-home">SIGNAL
-                        DASHBOARD</span>
+                            DASHBOARD</span>
                     </h2>
                     <!-- Data and Chart Section -->
-                    <h5 class="color-home"><i>{{ (new DateTime('now', new DateTimeZone('GMT')))->format('Y-m-d H:i:s') }} GMT</i></h5>
+                    <h5 class="color-home">
+                        <i>{{ (new DateTime('now', new DateTimeZone('GMT')))->format('Y-m-d H:i:s') }} GMT</i></h5>
                     <div class="row">
                         <!-- Chart Section -->
                         <div class="col-md-12 text-center form-group">
@@ -278,7 +280,7 @@
                                         </div>
                                         <div class="col-md-4 text-left form-group">
                                             <ul style="padding-left:0">
-                                            <li class="list-item">
+                                                <li class="list-item">
                                                     <button class="width-120">Hold</button>
                                                     <span>Tín hiệu đang ở trạng thái giữ.</span>
                                                 </li>
@@ -311,8 +313,7 @@
                             <div class="row">
                                 <!-- Chart Section -->
                                 <div class="col-md-12 text-center m-auto">
-                                    <canvas id="myChart" style="width:100%" width="400"
-                                        height="230"></canvas>
+                                    <canvas id="myChart" style="width:100%" width="400" height="230"></canvas>
                                 </div>
                             </div>
                             <!-- <div class="row">
@@ -343,7 +344,7 @@
             </div>
         </div>
     </section>
-        <section class="features text-left mt-5">
+    <section class="features text-left mt-5">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -423,10 +424,11 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
     crossorigin="anonymous"></script>
-    <script src="
+<script src="
 https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
 "></script>
-<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0-rc/dist/chartjs-plugin-datalabels.min.js"></script>
+<script
+    src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0-rc/dist/chartjs-plugin-datalabels.min.js"></script>
 <script src="https://cdn.datatables.net/v/bs5/dt-2.0.8/date-1.5.2/fc-5.0.1/fh-4.0.1/r-3.0.2/datatables.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
 <script>
@@ -441,167 +443,167 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
             var code = data.list[0].code;
             $('.code_header').text(code);
         }
-                    var popupDataTable = $('#popupDataTable').DataTable({
-                        destroy: true,
-                        data: data.list,
-                        searching: false,
-                        lengthChange: false,
-                        responsive: true,
-                        paging: false,
-                        info: false,
-                        scrollX: false,
-                        scrollY: '400px',
-                        autoWidth: true,
-                        order: [[4, 'desc']],
-                        language: {
-                            emptyTable: "No data available"
-                        },
-                        columns: [
-                            { data: 'signal_open' },
-                            { data: 'price_open'},
-                            { data: 'open_time'},
-                            { data: 'price_close'},
-                            { data: 'close_time'},
-                            { data: 'profit'},
-                        ],
-                        columnDefs: [
-                            {
-                                targets: 2, // Index of the open_time column
-                                render: function (data, type, row) {
-                                    console.log(data);
-                                    if (type === 'display' || type === 'filter') {
-                                        return moment.utc(data).format('YYYY-MM-DD HH:mm'); // Format as HH:mm
-                                    }
-                                    return data;
-                                }
-                            },
-                            {
-                                targets:4, // Index of the open_time column
-                                render: function (data, type, row) {
-                                    if (type === 'display' || type === 'filter') {
-                                        return moment.utc(data).format('YYYY-MM-DD HH:mm'); // Format as HH:mm
-                                    }
-                                    return data;
-                                }
-                            },
-                            {
-                                targets: 5, // Index of the date column
-                                createdCell: function (td, cellData, rowData, row, col) {
-                                    if (cellData >= 0) {
-                                        color = '#b6d7a8';
-                                    } else {
-                                        color = '#e06666';
-                                    }
-                                    $(td).css('background-color', color);
-                                    $(td).css('box-shadow', 'none');
-                                },
-                                render: function (data, type, full, meta) {
-                                    return `${data}%`;
-                                }
-                            },
-                        ],
-                        headerCallback: function(thead, data, start, end, display) {
-                            $(thead).find('th').css({
-                                'text-align': 'center',
-                                'font-size': 'small'
-                            });
-                        },
-                        createdRow: function (row, data, dataIndex) {
-                            $('td', row).css('font-size', '0.95em');
+        var popupDataTable = $('#popupDataTable').DataTable({
+            destroy: true,
+            data: data.list,
+            searching: false,
+            lengthChange: false,
+            responsive: true,
+            paging: false,
+            info: false,
+            scrollX: false,
+            scrollY: '400px',
+            autoWidth: true,
+            order: [[4, 'desc']],
+            language: {
+                emptyTable: "No data available"
+            },
+            columns: [
+                { data: 'signal_open' },
+                { data: 'price_open' },
+                { data: 'open_time' },
+                { data: 'price_close' },
+                { data: 'close_time' },
+                { data: 'profit' },
+            ],
+            columnDefs: [
+                {
+                    targets: 2, // Index of the open_time column
+                    render: function (data, type, row) {
+                        console.log(data);
+                        if (type === 'display' || type === 'filter') {
+                            return moment.utc(data).format('YYYY-MM-DD HH:mm'); // Format as HH:mm
                         }
-                    });
-                    popupDataTable.columns.adjust().draw();
-                    $('#contentDiv').on('shown.bs.toggle', function () {
-                        popupDataTable.columns.adjust().responsive.recalc();
-
-                    });
-                    if (lineChart) {
-                        // If it exists, destroy it before creating a new one
-                        lineChart.destroy();
+                        return data;
                     }
-                    var ctxlineAjax = document.getElementById('lineChart').getContext('2d');
-                    lineChart = new Chart(ctxlineAjax, {
-                        type: 'line',
-                        destroy: true,
-                        data: {
-                            labels: data.profit.map((value, index) => index),
-                            datasets: [{
-                                label: 'Profit',
-                                data: data.profit,
-                                backgroundColor: '#34a853',
-                                borderColor: 'green',
-                                borderWidth: 0.5,
-                                fill: true,
-
-                            }]
-                        },
-                        options: {
-                            scales: {
-                                x: {
-                                    beginAtZero: true // Ẩn nhãn và đường biểu đồ của trục x
-                                }
-                            },
-
+                },
+                {
+                    targets: 4, // Index of the open_time column
+                    render: function (data, type, row) {
+                        if (type === 'display' || type === 'filter') {
+                            return moment.utc(data).format('YYYY-MM-DD HH:mm'); // Format as HH:mm
                         }
-
-                    });
-                    if (barChart) {
-                        // If it exists, destroy it before creating a new one
-                        barChart.destroy();
+                        return data;
                     }
-                    var ctx = document.getElementById('myChartById').getContext('2d');
-                    barChart = new Chart(ctx, {
-                        type: 'bar',
-                        data: {
-                            labels: data.profitByMonth.lable,
-                            datasets: [{
-                                data: data.profitByMonth.profit,
-                                label: 'Profit By Month',
-                                backgroundColor: '#34a853',
-                                borderWidth: 1,
-                                fontweight: 600,
-                            }]
-                        },
-                        options: {
-            plugins: {
-                datalabels: {
-                    display: true, // Hiển thị giá trị
-                    anchor: 'end',
-                    align: 'end',
-                    formatter: function(value, context) {
-                        return value + '%';
+                },
+                {
+                    targets: 5, // Index of the date column
+                    createdCell: function (td, cellData, rowData, row, col) {
+                        if (cellData >= 0) {
+                            color = '#b6d7a8';
+                        } else {
+                            color = '#e06666';
+                        }
+                        $(td).css('background-color', color);
+                        $(td).css('box-shadow', 'none');
                     },
-                    labels: {
-                    value: {
-                        color: 'green',
-                        font: {
+                    render: function (data, type, full, meta) {
+                        return `${data}%`;
+                    }
+                },
+            ],
+            headerCallback: function (thead, data, start, end, display) {
+                $(thead).find('th').css({
+                    'text-align': 'center',
+                    'font-size': 'small'
+                });
+            },
+            createdRow: function (row, data, dataIndex) {
+                $('td', row).css('font-size', '0.95em');
+            }
+        });
+        popupDataTable.columns.adjust().draw();
+        $('#contentDiv').on('shown.bs.toggle', function () {
+            popupDataTable.columns.adjust().responsive.recalc();
+
+        });
+        if (lineChart) {
+            // If it exists, destroy it before creating a new one
+            lineChart.destroy();
+        }
+        var ctxlineAjax = document.getElementById('lineChart').getContext('2d');
+        lineChart = new Chart(ctxlineAjax, {
+            type: 'line',
+            destroy: true,
+            data: {
+                labels: data.profit.map((value, index) => index),
+                datasets: [{
+                    label: 'Profit',
+                    data: data.profit,
+                    backgroundColor: '#34a853',
+                    borderColor: 'green',
+                    borderWidth: 0.5,
+                    fill: true,
+
+                }]
+            },
+            options: {
+                scales: {
+                    x: {
+                        beginAtZero: true // Ẩn nhãn và đường biểu đồ của trục x
+                    }
+                },
+
+            }
+
+        });
+        if (barChart) {
+            // If it exists, destroy it before creating a new one
+            barChart.destroy();
+        }
+        var ctx = document.getElementById('myChartById').getContext('2d');
+        barChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: data.profitByMonth.lable,
+                datasets: [{
+                    data: data.profitByMonth.profit,
+                    label: 'Profit By Month',
+                    backgroundColor: '#34a853',
+                    borderWidth: 1,
+                    fontweight: 600,
+                }]
+            },
+            options: {
+                plugins: {
+                    datalabels: {
+                        display: true, // Hiển thị giá trị
+                        anchor: 'end',
+                        align: 'end',
+                        formatter: function (value, context) {
+                            return value + '%';
+                        },
+                        labels: {
+                            value: {
+                                color: 'green',
+                                font: {
                                     weight: 'bold'
                                 }
-                    }
-                    }
-                    }
-            },
-            scales: {
-                x: {
-                    ticks: {
-                        font: {
-                            weight: 'bold' // Makes x-axis labels bold
+                            }
                         }
                     }
                 },
-                y: {
-                    ticks: {
-                        font: {
-                            weight: 'bold' // Makes y-axis labels bold
+                scales: {
+                    x: {
+                        ticks: {
+                            font: {
+                                weight: 'bold' // Makes x-axis labels bold
+                            }
+                        }
+                    },
+                    y: {
+                        ticks: {
+                            font: {
+                                weight: 'bold' // Makes y-axis labels bold
+                            }
                         }
                     }
                 }
-            }
 
-        },
-        plugins: [ChartDataLabels]
+            },
+            plugins: [ChartDataLabels]
 
-                    });
+        });
         $(document).on('click', '.dataTable tbody tr', function () {
             var dataId = $(this).data('id');
             if (dataId == undefined) {
@@ -678,7 +680,7 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                                 }
                             },
                         ],
-                        headerCallback: function(thead, data, start, end, display) {
+                        headerCallback: function (thead, data, start, end, display) {
                             $(thead).find('th').css({
                                 'text-align': 'center',
                                 'font-size': 'small'
@@ -893,9 +895,9 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                     }
                 }
             ],
-            headerCallback: function(thead, data, start, end, display) {
+            headerCallback: function (thead, data, start, end, display) {
                 $(thead).find('th').eq(7).css({
-                   'padding':'.5em .5em'
+                    'padding': '.5em .5em'
                 });
             },
             createdRow: function (row, data, dataIndex) {
@@ -935,15 +937,15 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                     display: true, // Hiển thị giá trị
                     anchor: 'end',
                     align: 'end',
-                    formatter: function(value, context) {
+                    formatter: function (value, context) {
                         return value + '%';
                     },
                     labels: {
-                    value: {
-                        color: 'green'
+                        value: {
+                            color: 'green'
+                        }
                     }
-                    }
-                    }
+                }
             },
             scales: {
                 x: {
