@@ -257,11 +257,13 @@
             text-align: center;
 
         }
-        .sidebar_overview >.cap {
-                padding: 1rem;
-                width: 100%;
-            }
-        .sidebar_overview{
+
+        .sidebar_overview>.cap {
+            padding: 1rem;
+            width: 100%;
+        }
+
+        .sidebar_overview {
             max-width: 1000px;
             flex: 1.5;
             /* Chiếm một phần nhỏ */
@@ -269,7 +271,8 @@
             /* Chiều rộng tối thiểu của sidebar */
             padding: 10px;
             text-align: center;
-            }
+        }
+
         .main {
             flex: 4;
             /* Chiếm phần lớn ở giữa */
@@ -296,34 +299,41 @@
                 order: 1;
                 /* Sidebar 1 ở vị trí đầu */
             }
+
             .container_layout .main {
                 order: 3;
                 /* Đặt cột chính ở vị trí cuối cùng */
             }
-            .center_flex{
+
+            .center_flex {
                 padding-bottom: 5rem;
             }
 
         }
+
         @media (min-width: 768px) and (max-width: 1680px) {
             .container_layout {
                 flex-direction: row;
                 /* Xếp ngang các phần tử */
             }
+
             .sidebar_overview_chart {
                 max-width: inherit;
                 width: 70%;
                 /* Cả hai sidebar sẽ chiếm 50% chiều rộng */
             }
+
             .sidebar_overview_cap {
                 max-width: inherit;
                 width: 30%;
                 /* Cả hai sidebar sẽ chiếm 50% chiều rộng */
             }
-            .sidebar_overview_cap >.cap {
+
+            .sidebar_overview_cap>.cap {
                 padding: 1rem;
                 width: 100%;
             }
+
             .sidebar {
                 max-width: inherit;
                 width: 50%;
@@ -332,8 +342,10 @@
 
 
             .container_layout .main {
-                flex-basis: 100%; /* Main cũng chiếm 100% chiều rộng */
-                order: 3; /* Đặt main ở vị trí cuối cùng */
+                flex-basis: 100%;
+                /* Main cũng chiếm 100% chiều rộng */
+                order: 3;
+                /* Đặt main ở vị trí cuối cùng */
                 /* Đặt cột chính ở vị trí cuối cùng */
             }
         }
@@ -442,9 +454,9 @@
                                 </table>
                                 <div class="col-md-12 text-center mt-5">
                                     <h5 style="text-align:center;padding:10px" class="color-home">Best Top 10</h5>
-                                        <div class="mb-3">
-                                            <canvas id="groupStock" height="450"></canvas>
-                                        </div>
+                                    <div class="mb-3">
+                                        <canvas id="groupStock" height="450"></canvas>
+                                    </div>
 
                                 </div>
                             </div>
@@ -456,20 +468,21 @@
                             <div class="sidebar_overview_cap sidebar_overview">
                                 <div class="mb-4 center_flex cap">
                                     <table style="width:100%" class="table table-striped table-bordered"
-                                            id="market_cap">
-                                            <thead>
-                                                <tr id="code_header">
-                                                    <th colspan="2" style="text-align:center" class="code_header">Tăng/Giảm theo nhóm vốn hóa</th>
-                                                </tr>
-                                                <tr>
-                                                    <th>Nhóm</th>
-                                                    <th>Trung bình ngày</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
+                                        id="market_cap">
+                                        <thead>
+                                            <tr id="code_header">
+                                                <th colspan="2" style="text-align:center" class="code_header">Tăng/Giảm
+                                                    theo nhóm vốn hóa</th>
+                                            </tr>
+                                            <tr>
+                                                <th>Nhóm</th>
+                                                <th>Trung bình ngày</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
 
-                                            </tbody>
-                                        </table>
+                                        </tbody>
+                                    </table>
                                     <canvas class="mt-5" id="capChart" height="300"></canvas>
 
                                 </div>
@@ -487,9 +500,9 @@
                             <div class="sidebar_overview sidebar_overview_chart mt-2">
                                 <div class="col-md-12 text-center mt-5">
                                     <h5 style="text-align:center;padding:10px" class="color-home">Phân Nhóm</h5>
-                                        <div class="mb-3">
-                                            <canvas id="current_month" height="500"></canvas>
-                                        </div>
+                                    <div class="mb-3">
+                                        <canvas id="current_month" height="500"></canvas>
+                                    </div>
 
                                 </div>
                             </div>
@@ -788,7 +801,7 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                     },
                     legend: {
                         labels: {
-                            generateLabels: function(chart) {
+                            generateLabels: function (chart) {
                                 return []; // Return an empty array to hide all labels
                             }
                         }
@@ -861,34 +874,36 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
     });
     $(document).on('click', '#overview-tab', function () {
         console.log('click');
+        var url = '/api/get-market-greenstock';
+        console.log(url);
         $.ajax({
-            url: 'api/get-market-greenstock',
+            url: url,
             type: 'GET',
             success: function (data) {
                 var result = data.data;
                 console.log(result);
                 var market_cap = $('#market_cap').DataTable({
-                searching: false,
-                lengthChange: false, //
-                responsive: true,
-                paging: false,
-                autoWidth: true,
-                info: false,
-                order: [[0, 'asc']],
-                data: result.market_cap,
-                columns: [
-                    { data: 'group', title: 'NHÓM' },  // Apply bold formatting to the "PriceTrend" column data},
-                    { data: 'avg_day', title: 'TRUNG BÌNH NGÀY' },
-                ],
-                columnDefs: [
-                    {
-                        targets: 1, // Index of the date column
-                        render: function (data, type, full, meta) {
-                            return `${data}%`;
-                        }
-                    },
-                ],
-            });
+                    searching: false,
+                    lengthChange: false, //
+                    responsive: true,
+                    paging: false,
+                    autoWidth: true,
+                    info: false,
+                    order: [[0, 'asc']],
+                    data: result.market_cap,
+                    columns: [
+                        { data: 'group', title: 'NHÓM' },  // Apply bold formatting to the "PriceTrend" column data},
+                        { data: 'avg_day', title: 'TRUNG BÌNH NGÀY' },
+                    ],
+                    columnDefs: [
+                        {
+                            targets: 1, // Index of the date column
+                            render: function (data, type, full, meta) {
+                                return `${data}%`;
+                            }
+                        },
+                    ],
+                });
                 const ctxcapChart = document.getElementById('capChart').getContext('2d');
                 const capChart = new Chart(ctxcapChart, {
                     type: 'bar',
@@ -897,7 +912,7 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                         datasets: [{
                             data: result.cap,
                             label: 'Tổng dòng tiền',
-                            backgroundColor: function(context) {
+                            backgroundColor: function (context) {
                                 const value = context.dataset.data[context.dataIndex];
                                 return value < 0 ? 'red' : 'green'; // Nếu giá trị < 0 thì màu đỏ, ngược lại màu xanh lá
                             },
@@ -912,7 +927,7 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                                 anchor: 'end',
                                 align: 'end',
                                 formatter: function (value, context) {
-                                    return value ;
+                                    return value;
                                 },
                                 labels: {
                                     value: {
@@ -966,11 +981,11 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                         plugins: {
                             datalabels: {
                                 display: true, // Hiển thị giá trị
-                                anchor: function(context) {
+                                anchor: function (context) {
                                     const value = context.dataset.data[context.dataIndex];
                                     return value > 0 ? 'end' : 'start'; // Nếu giá trị > 0, đặt ở cuối cột, ngược lại đặt ở đầu cột
                                 },
-                                align: function(context) {
+                                align: function (context) {
                                     const value = context.dataset.data[context.dataIndex];
                                     return value > 0 ? 'end' : 'start'; // Nếu giá trị > 0, căn chỉnh với cuối cột, ngược lại căn chỉnh với đầu cột
                                 },
@@ -985,7 +1000,7 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                             },
                             legend: {
                                 labels: {
-                                    generateLabels: function(chart) {
+                                    generateLabels: function (chart) {
                                         return []; // Return an empty array to hide all labels
                                     }
                                 }
@@ -1002,257 +1017,257 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                 });
 
                 var top_stock = $('#top_stock').DataTable({
-            searching: false,
-            lengthChange: false, //
-            responsive: true,
-            paging: false,
-            autoWidth: true,
-            info: false,
-            order: [[0, 'asc']],
-            data: result.top_stock,
-            columns: [
-                { data: 'rating', title: 'RATING' },  // Apply bold formatting to the "PriceTrend" column data},
-                { data: 'code', title: 'CHỨNG KHOÁN' },
-                { data: 'point', title: 'RATING POINT' },
-                { data: 'trending', title: 'XU HƯỚNG' },
-                { data: 'signal', title: 'HÀNH ĐỘNG' },
-                { data: 'profit', title: 'PROFIT' },
-                { data: 'price', title: 'PRICE' },
-                { data: 'time', title: 'THỜI GIAN' },
-            ],
-            columnDefs: [
-                {
-                targets: 0, // Index of the date column
-                    createdCell: function (td, cellData, rowData, row, col) {
-                        color  = '';
-                        bold='';
-                        if (cellData <= 30) {
-                            color = '#7eb18f';
-                            bold ='bold';
-                        }
-                        $(td).css('color', color);
-                        $(td).css('font-weight',bold);
-                    },
-                },
-                {
-                targets: 1, // Index of the date column
-                    createdCell: function (td, cellData, rowData, row, col) {
-                        $(td).css('font-weight','bold');
-                        var company = rowData.company_name;
-
-                        $(td).hover(
-                            function() {
-                                $(this).addClass('row-hover');
-                                // Show custom tooltip
-                                $('<div class="custom-tooltip">' + company + '</div>').appendTo('body').fadeIn('slow');
+                    searching: false,
+                    lengthChange: false, //
+                    responsive: true,
+                    paging: false,
+                    autoWidth: true,
+                    info: false,
+                    order: [[0, 'asc']],
+                    data: result.top_stock,
+                    columns: [
+                        { data: 'rating', title: 'RATING' },  // Apply bold formatting to the "PriceTrend" column data},
+                        { data: 'code', title: 'CHỨNG KHOÁN' },
+                        { data: 'point', title: 'RATING POINT' },
+                        { data: 'trending', title: 'XU HƯỚNG' },
+                        { data: 'signal', title: 'HÀNH ĐỘNG' },
+                        { data: 'profit', title: 'PROFIT' },
+                        { data: 'price', title: 'PRICE' },
+                        { data: 'time', title: 'THỜI GIAN' },
+                    ],
+                    columnDefs: [
+                        {
+                            targets: 0, // Index of the date column
+                            createdCell: function (td, cellData, rowData, row, col) {
+                                color = '';
+                                bold = '';
+                                if (cellData <= 30) {
+                                    color = '#7eb18f';
+                                    bold = 'bold';
+                                }
+                                $(td).css('color', color);
+                                $(td).css('font-weight', bold);
                             },
-                            function() {
-                                $(this).removeClass('row-hover');
-                                $('.custom-tooltip').remove();
+                        },
+                        {
+                            targets: 1, // Index of the date column
+                            createdCell: function (td, cellData, rowData, row, col) {
+                                $(td).css('font-weight', 'bold');
+                                var company = rowData.company_name;
+
+                                $(td).hover(
+                                    function () {
+                                        $(this).addClass('row-hover');
+                                        // Show custom tooltip
+                                        $('<div class="custom-tooltip">' + company + '</div>').appendTo('body').fadeIn('slow');
+                                    },
+                                    function () {
+                                        $(this).removeClass('row-hover');
+                                        $('.custom-tooltip').remove();
+                                    }
+                                ).mousemove(function (e) {
+                                    $('.custom-tooltip').css({
+                                        top: e.pageY + 15 + 'px',
+                                        left: e.pageX + 20 + 'px'
+                                    });
+                                });
+                            },
+                            render: function (data, type, full, meta) {
+                                if (data == 'fas fa-lock') {
+                                    return '<i style="color:green" class="fas fa-lock"></i>';
+                                }
+
+                                return data; //
+
                             }
-                        ).mousemove(function(e) {
-                            $('.custom-tooltip').css({
-                                top: e.pageY + 15 + 'px',
-                                left: e.pageX + 20 + 'px'
-                            });
-                        });
-                    },
-                    render: function (data, type, full, meta) {
-                        if(data =='fas fa-lock'){
-                            return '<i style="color:green" class="fas fa-lock"></i>';
-                        }
+                        },
+                        {
+                            targets: 3, // Index of the date column
+                            createdCell: function (td, cellData, rowData, row, col) {
+                                trending = '';
+                                color = '';
+                                if (rowData.trending != null) {
+                                    trending = rowData.trending.trim().toLowerCase();
+                                }
+                                if (trending == 'breaking high price') {
+                                    color = '#917dc4';
+                                } else if (trending == 'build up') {
+                                    color = '#fde69c';
+                                } else if (trending == 'go up') {
+                                    color = '#badfcd';
+                                } else if (trending == 'bottom fishing') {
+                                    color = '#03feff'
+                                } else if (trending == 'go down') {
+                                    color = '#e99a97';
+                                } else if (trending == 'recovery') {
+                                    color = '#fe9a3c';
+                                } else if (trending == 'breaking low price') {
+                                    color = '#cc0611';
+                                }
+                                $(td).css('background-color', color);
+                                $(td).css('box-shadow', 'none');
+                            }
+                        },
+                        {
+                            targets: 4, // Index of the date column
+                            createdCell: function (td, cellData, rowData, row, col) {
+                                signal = '';
+                                color = '';
+                                if (cellData != null) {
+                                    signal = cellData.trim().toLowerCase();
+                                }
+                                if (signal == 'buy') {
+                                    color = '#66a74c';
+                                } else if (signal == 'hold') {
+                                    color = '#93c480';
+                                } else if (signal == 'cash') {
+                                    color = '#fee49d';
+                                } else if (signal == 'sell') {
+                                    color = '#ffffff'
+                                }
+                                $(td).css('background-color', color);
+                                $(td).css('box-shadow', 'none');
+                            }
+                        },
+                        {
+                            targets: 5, // Index of the date column
+                            createdCell: function (td, cellData, rowData, row, col) {
+                                color = '';
+                                if (cellData > 0) {
+                                    color = '#b8dfcd';
+                                } else if (cellData < 0) {
+                                    color = '#e37b71';
+                                }
+                                $(td).css('background-color', color);
+                                $(td).css('box-shadow', 'none');
+                            },
+                            render: function (data, type, full, meta) {
+                                return `${data}%`;
+                            }
+                        },
 
-                        return data; //
-
-                    }
-                },
-                {
-                    targets: 3, // Index of the date column
-                    createdCell: function (td, cellData, rowData, row, col) {
-                        trending ='';
-                        color  = '';
-                        if(rowData.trending != null){
-                            trending = rowData.trending.trim().toLowerCase();
-                        }
-                        if (trending == 'breaking high price') {
-                            color = '#917dc4';
-                        } else if (trending == 'build up') {
-                            color = '#fde69c';
-                        } else if (trending == 'go up') {
-                            color = '#badfcd';
-                        }else if (trending == 'bottom fishing') {
-                            color ='#03feff'
-                        } else if(trending == 'go down'){
-                            color = '#e99a97';
-                        } else if(trending == 'recovery'){
-                            color = '#fe9a3c';
-                        } else if(trending == 'breaking low price'){
-                            color ='#cc0611';
-                        }
-                        $(td).css('background-color', color);
-                        $(td).css('box-shadow', 'none');
-                    }
-                },
-           {
-                targets: 4, // Index of the date column
-                    createdCell: function (td, cellData, rowData, row, col) {
-                        signal ='';
-                        color  = '';
-                        if(cellData != null){
-                            signal = cellData.trim().toLowerCase();
-                        }
-                        if (signal == 'buy') {
-                            color = '#66a74c';
-                        } else if (signal == 'hold') {
-                            color = '#93c480';
-                        } else if (signal == 'cash') {
-                            color = '#fee49d';
-                        }else if (signal == 'sell') {
-                            color ='#ffffff'
-                        }
-                        $(td).css('background-color', color);
-                        $(td).css('box-shadow', 'none');
-                    }
-                },
-                {
-                targets: 5, // Index of the date column
-                    createdCell: function (td, cellData, rowData, row, col) {
-                        color  = '';
-                        if (cellData > 0) {
-                            color = '#b8dfcd';
-                        } else if (cellData < 0) {
-                            color = '#e37b71';
-                        }
-                        $(td).css('background-color', color);
-                        $(td).css('box-shadow', 'none');
-                    },
-                    render: function (data, type, full, meta) {
-                        return `${data}%`;
-                    }
-                },
-
-                {
-                    targets:7, // Index of the open_time column
-                    render: function (data, type, row) {
-                        if (type === 'display' || type === 'filter') {
-                            return moment.utc(data).format('DD/MM/YYYY'); // Format as HH:mm
-                        }
-                        return data;
-                    }
-                },
-            ],
+                        {
+                            targets: 7, // Index of the open_time column
+                            render: function (data, type, row) {
+                                if (type === 'display' || type === 'filter') {
+                                    return moment.utc(data).format('DD/MM/YYYY'); // Format as HH:mm
+                                }
+                                return data;
+                            }
+                        },
+                    ],
 
 
-        });
-        top_stock.columns.adjust().responsive.recalc();
+                });
+                top_stock.columns.adjust().responsive.recalc();
                 // top_stock
-        var ctxavg_cap = document.getElementById('avg_cap').getContext('2d');
-        avg_capBar = new Chart(ctxavg_cap, {
-            type: 'bar',
-            data: {
-                labels: result.chart_group_data.avg_cap.labels,
-                datasets: [{
-                    data: result.chart_group_data.avg_cap.values,
-                    label: '',
-                    backgroundColor: '#34a853',
-                    borderWidth: 1,
-                    fontweight: 600,
-                }]
-            },
-            options: {
-                plugins: {
-                        datalabels: {
-                            display: false, // Hiển thị giá trị
-                            anchor: 'end',
+                var ctxavg_cap = document.getElementById('avg_cap').getContext('2d');
+                avg_capBar = new Chart(ctxavg_cap, {
+                    type: 'bar',
+                    data: {
+                        labels: result.chart_group_data.avg_cap.labels,
+                        datasets: [{
+                            data: result.chart_group_data.avg_cap.values,
+                            label: '',
+                            backgroundColor: '#34a853',
+                            borderWidth: 1,
+                            fontweight: 600,
+                        }]
+                    },
+                    options: {
+                        plugins: {
+                            datalabels: {
+                                display: false, // Hiển thị giá trị
+                                anchor: 'end',
                                 align: 'end',
-                                formatter: function(value, context) {
+                                formatter: function (value, context) {
                                     return value + '%';
                                 },
                                 labels: {
-                                value: {
-                                color: 'green',
-                                font: {
-                                        weight: 'bold'
+                                    value: {
+                                        color: 'green',
+                                        font: {
+                                            weight: 'bold'
+                                        }
                                     }
                                 }
                             }
-                            }
-                    },
-                scales: {
-                    x: {
-                        ticks: {
-                            font: {
-                                weight: 'bold' // Makes x-axis labels bold
-                            }
                         },
+                        scales: {
+                            x: {
+                                ticks: {
+                                    font: {
+                                        weight: 'bold' // Makes x-axis labels bold
+                                    }
+                                },
+                            },
+                            y: {
+                                ticks: {
+                                    font: {
+                                        weight: 'bold' // Makes y-axis labels bold
+                                    }
+                                }
+                            }
+                        }
+
                     },
-                    y: {
-                        ticks: {
-                            font: {
-                                weight: 'bold' // Makes y-axis labels bold
+                    plugins: [ChartDataLabels]
+
+                });
+                var ctx_ma = document.getElementById('group_ma').getContext('2d');
+                const chart = new Chart(ctx_ma, {
+                    type: 'line',
+                    data: {
+                        labels: result.ma.labels,
+                        datasets: [
+                            {
+                                label: 'Index',
+                                data: result.ma.nas100_values,
+                                borderColor: 'purple',
+                                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                                yAxisID: 'y',  // Gắn với trục y đầu tiên
+                                color: 'white'
+                            },
+                            {
+                                label: 'MA200',
+                                data: result.ma.ma200_values,
+                                borderColor: 'orange',
+                                backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                                yAxisID: 'y1',  // Gắn với trục y thứ hai
+                                color: 'white'
+                            },
+                            {
+                                label: 'MA50',
+                                data: result.ma.ma50_values,
+                                borderColor: 'Green',
+                                backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                                yAxisID: 'y1',  // Gắn với trục y thứ hai
+                                color: 'white'
+                            }
+                        ]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                type: 'linear',
+                                position: 'left',  // Trục y đầu tiên ở bên trái
+                                ticks: {
+                                    beginAtZero: true
+                                }
+                            },
+                            y1: {
+                                type: 'linear',
+                                position: 'right',  // Trục y thứ hai ở bên phải
+                                ticks: {
+                                    beginAtZero: true
+                                },
+                                grid: {
+                                    drawOnChartArea: false, // Loại bỏ các đường kẻ ngang từ trục y1 để tránh lẫn với y
+                                }
                             }
                         }
                     }
-                }
-
-            },
-            plugins: [ChartDataLabels]
-
-        });
-        var ctx_ma = document.getElementById('group_ma').getContext('2d');
-        const chart = new Chart(ctx_ma, {
-    type: 'line',
-    data: {
-        labels: result.ma.labels,
-        datasets: [
-            {
-                label: 'Index',
-                data:  result.ma.nas100_values,
-                borderColor: 'purple',
-                backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                yAxisID: 'y',  // Gắn với trục y đầu tiên
-                color: 'white'
-            },
-            {
-                label: 'MA200',
-                data: result.ma.ma200_values,
-                borderColor: 'orange',
-                backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                yAxisID: 'y1',  // Gắn với trục y thứ hai
-                color: 'white'
-            },
-            {
-                label: 'MA50',
-                data: result.ma.ma50_values,
-                borderColor: 'Green',
-                backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                yAxisID: 'y1',  // Gắn với trục y thứ hai
-                color: 'white'
-            }
-        ]
-    },
-    options: {
-        scales: {
-            y: {
-                type: 'linear',
-                position: 'left',  // Trục y đầu tiên ở bên trái
-                ticks: {
-                    beginAtZero: true
-                }
-            },
-            y1: {
-                type: 'linear',
-                position: 'right',  // Trục y thứ hai ở bên phải
-                ticks: {
-                    beginAtZero: true
-                },
-                grid: {
-                    drawOnChartArea: false, // Loại bỏ các đường kẻ ngang từ trục y1 để tránh lẫn với y
-                }
-            }
-        }
-    }
-});
+                });
             }
         });
     });
