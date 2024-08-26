@@ -549,6 +549,7 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
 <script src="https://cdn.datatables.net/v/bs5/dt-2.0.8/date-1.5.2/fc-5.0.1/fh-4.0.1/r-3.0.2/datatables.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
 <script>
+    var isCall = false;
     $(document).ready(function () {
         var ctx = document.getElementById('pieChart').getContext('2d');
         var gradientSell = ctx.createLinearGradient(0, 0, 0, 400);
@@ -873,6 +874,8 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
         });
     });
     $(document).on('click', '#overview-tab', function () {
+        if(isCall == true) return;
+
         console.log('click');
         var url = '/api/get-market-greenstock';
         console.log(url);
@@ -880,6 +883,7 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
             url: url,
             type: 'GET',
             success: function (data) {
+                isCall =true;
                 var result = data.data;
                 console.log(result);
                 var market_cap = $('#market_cap').DataTable({
