@@ -85,7 +85,7 @@ class GreenStockNas100 extends Model
                     $maData = Ma::where('time', $ma['time'])->first();
 
                     if ($maData) {
-                        \log::info($ma);
+                        \Log::info(json_encode($ma));
                         $maData->update($ma);
                     } else {
                         Ma::create($ma);
