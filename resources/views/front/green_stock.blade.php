@@ -262,12 +262,12 @@
             padding: 1rem;
             width: 100%;
         }
-    .sidebar_overview_cap {
-        flex: 2;
-    }
-    .sidebar_overview_chart {
-        flex: 2;
-    }
+        .sidebar_overview_cap {
+            flex: 1.5;
+        }
+        .sidebar_overview_chart {
+            flex: 2.5;
+        }
         .sidebar_overview {
             max-width: 1000px;
             flex: 1;
@@ -292,7 +292,10 @@
 
 
         /* Đảm bảo các block xếp dọc khi màn hình nhỏ hơn 768px */
-        @media (max-width: 768px) {
+        @media (max-width: 800px) {
+            .flex-container {
+                flex-direction: column !important;
+            }
             .container_layout {
                 flex-direction: column;
                 /* Xếp dọc các phần tử */
@@ -315,18 +318,45 @@
             }
 
         }
+        @media (min-width: 800px) and (max-width: 1279px) {
+            canvas#current_month {
+                width: 700px !important;
+            }
+            #capChart{
+                width: 300px !important;
+            }
+        }
+        @media (min-width: 1401px) {
+            #current_month {
+                width: 1200px !important;
+            }
+            #capChart{
+                width: 600px !important;
+            }
 
-        @media (min-width: 768px) and (max-width: 1680px) {
+            .container_layout {
+                flex-direction: row;
+                /* Xếp ngang các phần tử */
+            }
+        }
+        @media (min-width: 1280px) and (max-width: 1400px){
+            #current_month {
+                width: 900px !important;
+            }
+            #capChart{
+                width: 500px !important;
+            }
+
             .container_layout {
                 flex-direction: row;
                 /* Xếp ngang các phần tử */
             }
 
-
+/*
             .sidebar_overview_cap>.cap {
                 padding: 1rem;
                 width: 100%;
-            }
+            } */
 
             .sidebar {
                 max-width: inherit;
@@ -343,6 +373,16 @@
                 /* Đặt cột chính ở vị trí cuối cùng */
             }
         }
+        .flex-container {
+        display: flex;
+        padding: 10px;
+        flex-direction: row;
+        }
+
+        /* Responsive layout - makes a one column layout instead of a two-column layout */
+
+/* Responsive layout - makes a one column-layout instead of a two-column layout */
+
     </style>
 
 </head>
@@ -457,10 +497,10 @@
 
                     </div>
                     <div class="tab-pane fade" id="overview" role="tabpanel" aria-labelledby="profile-tab">
-                        <div class="container_layout">
-                            <div class="sidebar_overview_cap">
-                                <div class="mb-4 center_flex cap">
-                                    <table style="width:100%" class="table table-striped table-bordered"
+
+                    <div class="flex-container">
+                        <div class="flex-item-left">
+                            <table style="width:100%" class="table table-striped table-bordered"
                                         id="market_cap">
                                         <thead>
                                             <tr id="code_header">
@@ -476,20 +516,13 @@
 
                                         </tbody>
                                     </table>
-                                    <canvas class="mt-5" id="capChart" height="300"></canvas>
-
-                                </div>
-                            </div>
-                            <div class="sidebar_overview_chart mt-2">
-                                <div class="col-md-12 text-center mt-2">
-                                    <h5 style="text-align:center;padding:10px" class="color-home">Phân Nhóm</h5>
-                                    <div class="mb-3">
-                                        <canvas id="current_month" height="500"></canvas>
-                                    </div>
-
-                                </div>
-                            </div>
+                                    <canvas class="mt-5" id="capChart" width="600"></canvas>
                         </div>
+                        <div class="flex-item-right">
+                            <h5 style="text-align:center;padding:10px" class="color-home">Phân Nhóm</h5>
+                            <canvas id="current_month" ></canvas>
+                        </div>
+                    </div>
                         <div class="main">
                                 <table class="table table-striped table-bordered" style="margin-bottom: 0px; width:100%"
                                     id="top_stock">
@@ -917,6 +950,8 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                         }]
                     },
                     options: {
+                        maintainAspectRatio: false,
+                        responsive: false, //
                         plugins: {
                             datalabels: {
                                 display: true, // Hiển thị giá trị
@@ -958,6 +993,9 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
 
                 barCurentMonthGroup = new Chart(current_monthctx, {
                     type: 'bar',
+                    barPercentage: 0.5,
+                    barThickness:20,
+                    categoryPercentage: 0.2,
                     data: {
                         labels: result.chart_group_data.current_month.labels,
                         datasets: [{
@@ -965,11 +1003,12 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                             data: result.chart_group_data.current_month.values,
                             backgroundColor: '#34a853',
                             fontweight: 600,
-                            barThickness: 15,
+                            barThickness: 10,
                         }]
                     },
                     options: {
                         indexAxis: 'y', // Chuyển sang biểu đồ cột ngang
+                        responsive: true, // Cho phép tùy chỉnh tỷ lệ
                         maintainAspectRatio: true, // Cho phép tùy chỉnh tỷ lệ
                         lenged: {
                             display: true
@@ -1004,8 +1043,10 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                         },
                         scales: {
                             y: {
-                                barPercentage: 0.2,  // Điều chỉnh tỷ lệ chiều rộng của cột
-                                categoryPercentage: 0.2  // Điều chỉnh tỷ lệ khoảng cách giữa các cột
+                                stacked: true,
+                                grid: {
+                                    offset: true
+                                },
                             }
                         }
                     },
