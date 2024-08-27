@@ -26,7 +26,7 @@ class SubGroup extends Model
 
 
         $labels = $data->pluck('group_name')->toArray();
-        $rate = $data->pluck('previous_session')->toArray();
+        $rate = $data->pluck('current_year')->toArray();
 
         return [
             'labels' => $labels,
