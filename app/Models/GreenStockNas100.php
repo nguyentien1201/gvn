@@ -81,8 +81,11 @@ class GreenStockNas100 extends Model
                         'upMA200' => (float) $item[18],
                         'downMA200' => (float) $item[19],
                     ];
+
                     $maData = Ma::where('time', $ma['time'])->first();
+
                     if ($maData) {
+                        \log::info($ma);
                         $maData->update($ma);
                     } else {
                         Ma::create($ma);
