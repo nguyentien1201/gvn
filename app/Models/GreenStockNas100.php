@@ -83,7 +83,6 @@ class GreenStockNas100 extends Model
                     ];
                     $maData = Ma::where('time', $ma['time'])->first();
                     if ($maData) {
-                        dump(1);
                         $maData->update($ma);
                     } else {
                         Ma::create($ma);
@@ -163,27 +162,29 @@ class GreenStockNas100 extends Model
                         GroupCap::create($group_cap);
                     }
                 }
-                $greenstock_nas100 = [
-                    'rating' => (int) $item[0],
-                    'code' => $item[1],
-                    'point' => (int) $item[2],
-                    'current_price' => (float) $item[5],
-                    'trending' => $item[3],
-                    'signal' => $item[4],
-                    'profit' => (float) $item[6],
-                    'post_sale_discount' => !empty($item[7]) ? (float) $item[7] : null,
-                    'price' => round((float) $item[8], 2),
-                    'time' => Carbon::createFromFormat('d/m/y', $item[9])->format('Y-m-d') ?? null,
-                ];
-                $nas100 = self::where('code', $greenstock_nas100['code'])->first();
-                if ($nas100) {
-                    $nas100->update($greenstock_nas100);
-                } else {
-                    self::create($greenstock_nas100);
+                if(!empty($item[0])){
+                    $greenstock_nas100 = [
+                        'rating' => (int) $item[0],
+                        'code' => $item[1],
+                        'point' => (int) $item[2],
+                        'current_price' => (float) $item[5],
+                        'trending' => $item[3],
+                        'signal' => $item[4],
+                        'profit' => (float) $item[6],
+                        'post_sale_discount' => !empty($item[7]) ? (float) $item[7] : null,
+                        'price' => round((float) $item[8], 2),
+                        'time' => Carbon::createFromFormat('d/m/y', $item[9])->format('Y-m-d') ?? null,
+                    ];
+                    $nas100 = self::where('code', $greenstock_nas100['code'])->first();
+                    if ($nas100) {
+                        $nas100->update($greenstock_nas100);
+                    } else {
+                        self::create($greenstock_nas100);
+                    }
                 }
+
             } catch (\Exception $e) {
-                dump($e->getLine());
-                dd($e->getMessage());
+                \Log::error($e->getMessage());
                 continue;
             }
         }
