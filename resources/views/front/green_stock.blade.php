@@ -265,7 +265,7 @@
 
         .sidebar_overview {
             max-width: 1000px;
-            flex: 1.5;
+            flex: 1;
             /* Chiếm một phần nhỏ */
 
             /* Chiều rộng tối thiểu của sidebar */
@@ -317,17 +317,6 @@
                 /* Xếp ngang các phần tử */
             }
 
-            .sidebar_overview_chart {
-                max-width: inherit;
-                width: 70%;
-                /* Cả hai sidebar sẽ chiếm 50% chiều rộng */
-            }
-
-            .sidebar_overview_cap {
-                max-width: inherit;
-                width: 30%;
-                /* Cả hai sidebar sẽ chiếm 50% chiều rộng */
-            }
 
             .sidebar_overview_cap>.cap {
                 padding: 1rem;
@@ -398,7 +387,6 @@
                                 <div class="mb-4 center_flex">
                                     <canvas id="pieChart" width="400"></canvas>
                                     <canvas class="mt-5" id="maChart" width="400" height="350"></canvas>
-
                                 </div>
                             </div>
 
@@ -487,16 +475,6 @@
 
                                 </div>
                             </div>
-                            <div class="main">
-                                <table class="table table-striped table-bordered" style="margin-bottom: 0px; width:100%"
-                                    id="top_stock">
-                                </table>
-                                <canvas class="mt-5" id="avg_cap" height="400"></canvas>
-                                <div style="background-color:#000; pading:1rem">
-                                    <canvas class="mt-5" id="group_ma" height="400"></canvas>
-                                </div>
-
-                            </div>
                             <div class="sidebar_overview sidebar_overview_chart mt-2">
                                 <div class="col-md-12 text-center mt-5">
                                     <h5 style="text-align:center;padding:10px" class="color-home">Phân Nhóm</h5>
@@ -507,7 +485,16 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="main">
+                                <table class="table table-striped table-bordered" style="margin-bottom: 0px; width:100%"
+                                    id="top_stock">
+                                </table>
+                                <canvas class="mt-5" id="avg_cap" height="400"></canvas>
+                                <div style=" pading:1rem">
+                                    <canvas class="mt-5" id="group_ma" height="400"></canvas>
+                                </div>
 
+                            </div>
                     </div>
 
 
