@@ -491,7 +491,7 @@
                                 </table>
                                 <canvas class="mt-5" id="avg_cap" height="400"></canvas>
                                 <div style=" pading:1rem">
-                                    <canvas class="mt-5" id="group_ma" height="400"></canvas>
+                                    <canvas class="mt-5" id="group_ma" height="300"></canvas>
                                 </div>
 
                             </div>
@@ -1243,14 +1243,14 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                                 type: 'linear',
                                 position: 'left',  // Trục y đầu tiên ở bên trái
                                 ticks: {
-                                    beginAtZero: true
+                                    stepSize: 100,
                                 }
                             },
                             y1: {
                                 type: 'linear',
                                 position: 'right',  // Trục y thứ hai ở bên phải
                                 ticks: {
-                                    beginAtZero: true
+                                    beginAtZero: false
                                 },
                                 grid: {
                                     drawOnChartArea: false, // Loại bỏ các đường kẻ ngang từ trục y1 để tránh lẫn với y
