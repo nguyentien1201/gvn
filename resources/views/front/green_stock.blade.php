@@ -258,11 +258,16 @@
 
         }
 
-        .sidebar_overview>.cap {
+        .sidebar_overview_cap>.cap {
             padding: 1rem;
             width: 100%;
         }
-
+    .sidebar_overview_cap {
+        flex: 1;
+    }
+    .sidebar_overview_chart {
+        flex: 3;
+    }
         .sidebar_overview {
             max-width: 1000px;
             flex: 1;
@@ -453,7 +458,7 @@
                     </div>
                     <div class="tab-pane fade" id="overview" role="tabpanel" aria-labelledby="profile-tab">
                         <div class="container_layout">
-                            <div class="sidebar_overview_cap sidebar_overview">
+                            <div class="sidebar_overview_cap">
                                 <div class="mb-4 center_flex cap">
                                     <table style="width:100%" class="table table-striped table-bordered"
                                         id="market_cap">
@@ -475,8 +480,8 @@
 
                                 </div>
                             </div>
-                            <div class="sidebar_overview sidebar_overview_chart mt-2">
-                                <div class="col-md-12 text-center mt-5">
+                            <div class="sidebar_overview_chart mt-2">
+                                <div class="col-md-12 text-center mt-2">
                                     <h5 style="text-align:center;padding:10px" class="color-home">Phân Nhóm</h5>
                                     <div class="mb-3">
                                         <canvas id="current_month" height="500"></canvas>
@@ -960,7 +965,7 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                             data: result.chart_group_data.current_month.values,
                             backgroundColor: '#34a853',
                             fontweight: 600,
-                            barThickness: 10,
+                            barThickness: 30,
                         }]
                     },
                     options: {
