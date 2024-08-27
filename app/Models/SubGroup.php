@@ -19,9 +19,9 @@ class SubGroup extends Model
     public function getDataSubGroup($limit = '')
     {
         if($limit != ''){
-            $data = $this->orderBy('group_name', 'desc')->select('group_name','previous_session' ,'current_year','current_month','quarter','avg_cap')->limit($limit)->get();
+            $data = $this->orderBy('current_year', 'desc')->select('group_name','previous_session' ,'current_year','current_month','quarter','avg_cap')->limit($limit)->get();
         }else{
-            $data = $this->orderBy('group_name', 'desc')->select('group_name','previous_session', 'current_year','current_month','quarter','avg_cap')->get();
+            $data = $this->orderBy('current_year', 'desc')->select('group_name','previous_session', 'current_year','current_month','quarter','avg_cap')->get();
         }
 
 
