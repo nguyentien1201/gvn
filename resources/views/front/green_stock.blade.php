@@ -263,10 +263,10 @@
             width: 100%;
         }
     .sidebar_overview_cap {
-        flex: 1;
+        flex: 2;
     }
     .sidebar_overview_chart {
-        flex: 3;
+        flex: 2;
     }
         .sidebar_overview {
             max-width: 1000px;
@@ -294,7 +294,7 @@
         /* Đảm bảo các block xếp dọc khi màn hình nhỏ hơn 768px */
         @media (max-width: 768px) {
             .container_layout {
-                flex-direction: row;
+                flex-direction: column;
                 /* Xếp dọc các phần tử */
             }
 
