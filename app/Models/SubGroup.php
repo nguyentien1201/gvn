@@ -36,7 +36,7 @@ class SubGroup extends Model
     }
     public function getDataSubGroupApi()
     {
-        $data = $this->orderBy('group_name', 'asc')->select('group_name', 'current_year','current_month','quarter','avg_cap')->get()->toArray();
+        $data = $this->whereNotNull('avg_cap')->orderBy('group_name', 'asc')->select('group_name', 'current_year','current_month','quarter','avg_cap')->get()->toArray();
         $current_month = $data;
 
         usort($current_month, function($a, $b) {
