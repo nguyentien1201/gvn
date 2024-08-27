@@ -1037,16 +1037,20 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                                 labels: {
                                     generateLabels: function (chart) {
                                         return []; // Return an empty array to hide all labels
+                                    },
+                                    font: {
+                                        size: 6  // Kích thước font của legend (chú giải)
                                     }
                                 }
                             }
                         },
                         scales: {
                             y: {
-                                stacked: true,
-                                grid: {
-                                    offset: true
-                                },
+                                ticks: {
+                                font: {
+                                    size: calculateFontSize()  // Kích thước font của nhãn trục y
+                                }
+                            }
                             }
                         }
                     },
@@ -1308,4 +1312,12 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
             }
         });
     });
+    function calculateFontSize() {
+        const screenWidth = window.innerWidth;
+
+        if (screenWidth < 1200) {
+            return 8;
+        }
+        return 12;
+    }
 </script>
