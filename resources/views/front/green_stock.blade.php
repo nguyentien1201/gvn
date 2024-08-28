@@ -14,7 +14,7 @@
 
     <link rel="stylesheet" href="{{asset('plugins/font-awesome-4.7.0/css/font-awesome.min.css')}}">
     <style>
-        .color-home {
+           .color-home {
             color: #008000 !important;
         }
 
@@ -262,12 +262,12 @@
             padding: 1rem;
             width: 100%;
         }
-        .sidebar_overview_cap {
-            flex: 1.5;
-        }
-        .sidebar_overview_chart {
-            flex: 2.5;
-        }
+    .sidebar_overview_cap {
+        flex: 2;
+    }
+    .sidebar_overview_chart {
+        flex: 2;
+    }
         .sidebar_overview {
             max-width: 1000px;
             flex: 1;
@@ -292,10 +292,7 @@
 
 
         /* Đảm bảo các block xếp dọc khi màn hình nhỏ hơn 768px */
-        @media (max-width: 800px) {
-            .flex-container {
-                flex-direction: column !important;
-            }
+        @media (max-width: 768px) {
             .container_layout {
                 flex-direction: column;
                 /* Xếp dọc các phần tử */
@@ -318,45 +315,18 @@
             }
 
         }
-        @media (min-width: 800px) and (max-width: 1279px) {
-            canvas#current_month {
-                width: 700px !important;
-            }
-            #capChart{
-                width: 300px !important;
-            }
-        }
-        @media (min-width: 1401px) {
-            #current_month {
-                width: 1200px !important;
-            }
-            #capChart{
-                width: 600px !important;
-            }
 
-            .container_layout {
-                flex-direction: row;
-                /* Xếp ngang các phần tử */
-            }
-        }
-        @media (min-width: 1280px) and (max-width: 1400px){
-            #current_month {
-                width: 900px !important;
-            }
-            #capChart{
-                width: 500px !important;
-            }
-
+        @media (min-width: 768px) and (max-width: 1680px) {
             .container_layout {
                 flex-direction: row;
                 /* Xếp ngang các phần tử */
             }
 
-/*
+
             .sidebar_overview_cap>.cap {
                 padding: 1rem;
                 width: 100%;
-            } */
+            }
 
             .sidebar {
                 max-width: inherit;
@@ -373,16 +343,22 @@
                 /* Đặt cột chính ở vị trí cuối cùng */
             }
         }
-        .flex-container {
-        display: flex;
-        padding: 10px;
-        flex-direction: row;
-        }
+        .container_flex {
+    display: flex;
+    flex-wrap: wrap; /* Cho phép các cột xuống dòng nếu không đủ chỗ */
+    justify-content: space-between; /* Khoảng cách giữa các cột */
+    padding: 20px;
+}
 
-        /* Responsive layout - makes a one column layout instead of a two-column layout */
-
-/* Responsive layout - makes a one column-layout instead of a two-column layout */
-
+.column {
+    flex: 1; /* Mỗi cột chiếm cùng một phần không gian */
+    margin: 10px;
+    padding: 20px;
+    background-color: #f4f4f4;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    min-width: 300px; /* Chiều rộng tối thiểu của mỗi cột */
+}
     </style>
 
 </head>
@@ -498,8 +474,8 @@
                     </div>
                     <div class="tab-pane fade" id="overview" role="tabpanel" aria-labelledby="profile-tab">
 
-                    <div class="flex-container">
-                        <div class="flex-item-left">
+                    <div class="container_layout">
+                        <div class="sidebar sidebar_1">
                             <table style="width:100%" class="table table-striped table-bordered"
                                         id="market_cap">
                                         <thead>
@@ -516,25 +492,32 @@
 
                                         </tbody>
                                     </table>
-                                    <canvas class="mt-5" id="capChart" width="600"></canvas>
+
                         </div>
-                        <div class="flex-item-right">
-                            <h5 style="text-align:center;padding:10px" class="color-home">Phân Nhóm</h5>
-                            <canvas id="current_month" ></canvas>
-                        </div>
-                    </div>
                         <div class="main">
-                                <table class="table table-striped table-bordered" style="margin-bottom: 0px; width:100%"
-                                    id="top_stock">
-                                </table>
-                                <canvas class="mt-5" id="avg_cap" height="400"></canvas>
-                                <div style=" pading:1rem">
-                                    <canvas class="mt-5" id="group_ma" height="300"></canvas>
-                                </div>
-
+                                <h5 style="text-align:center;padding:10px" class="color-home">Phân Nhóm</h5>
+                                <canvas id="current_month" ></canvas>
                             </div>
+                        <div class="sidebar">
+                            <canvas class="mt-5" id="capChart" height="300"></canvas>
+                        </div>
                     </div>
+                    <div class="">
+                        <table class="table table-striped table-bordered" style="margin-bottom: 0px; width:100%"
+                            id="top_stock">
+                        </table>
+                        <div class="container_flex">
+                            <div class="column column-left">
+                            <canvas class="mt-5" id="avg_cap" height="400"></canvas>
+                            </div>
+                            <div class="column column-right">
+                            <canvas class="mt-5" id="group_ma" height="300"></canvas>
+                            </div>
+                        </div>
 
+
+                    </div>
+                    </div>
 
                 </div>
             </div>
@@ -577,21 +560,6 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
     var isCall = false;
     $(document).ready(function () {
         var ctx = document.getElementById('pieChart').getContext('2d');
-        var gradientSell = ctx.createLinearGradient(0, 0, 0, 400);
-        gradientSell.addColorStop(0, 'rgba(255, 99, 132, 1)');
-        gradientSell.addColorStop(1, 'rgba(255, 99, 132, 0.5)');
-
-        var gradientBuy = ctx.createLinearGradient(0, 0, 0, 400);
-        gradientBuy.addColorStop(0, 'rgba(102, 167, 76, 1)');
-        gradientBuy.addColorStop(1, 'rgba(102, 167, 76, 0.5)');
-
-        var gradientCash = ctx.createLinearGradient(0, 0, 0, 400);
-        gradientCash.addColorStop(0, 'rgba(254, 228, 157, 1)');
-        gradientCash.addColorStop(1, 'rgba(254, 228, 157, 0.5)');
-
-        var gradientHold = ctx.createLinearGradient(0, 0, 0, 400);
-        gradientHold.addColorStop(0, 'rgba(147, 196, 128, 1)');
-        gradientHold.addColorStop(1, 'rgba(147, 196, 128, 0.5)');
 
         var myPieChart = new Chart(ctx, {
             type: 'pie', // Kiểu biểu đồ là 'pie' (tròn)
@@ -603,7 +571,7 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                         'rgb(102, 167, 76)',
                         'rgb(254, 228, 157)',
                         'rgb(147, 196, 128)',
-                        '#000'
+                        'rgb(255, 0, 0)'
                     ],
 
                     borderWidth: 1
