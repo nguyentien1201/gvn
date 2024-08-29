@@ -359,7 +359,7 @@
     padding: 20px;
 }
 #current_month{
-    height: 500px !important;
+    height: 750px !important;
 }
 .column {
     flex: 1; /* Mỗi cột chiếm cùng một phần không gian */
