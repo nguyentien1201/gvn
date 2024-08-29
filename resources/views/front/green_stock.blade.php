@@ -1291,7 +1291,10 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                             return {
                                 label: result.current_cap.groupNames[index],
                                 data: item,
-                                fill: true
+                                fill: true,
+                                borderWidth:0,
+                                pointRadius: 0,        // Loại bỏ các điểm trên đường
+                                pointHoverRadius: 0,   // Loại bỏ các điểm khi hover
                             };
                         })
                     },
