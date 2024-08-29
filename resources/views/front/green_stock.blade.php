@@ -505,7 +505,7 @@
                                 <canvas id="current_month" ></canvas>
                             </div>
                         <div class="sidebar center_box">
-                            <canvas class="mt-5" id="capChart" width="500"></canvas>
+                            <canvas class="mt-1" id="capChart" width="490" height="300"></canvas>
                         </div>
                     </div>
                     <div class="">
@@ -1007,25 +1007,15 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                                         color: 'green'
                                     }
                                 }
-                            },
-                            legend: {
-                                labels: {
-                                    generateLabels: function (chart) {
-                                        return []; // Return an empty array to hide all labels
-                                    },
-                                    font: {
-                                        size: 6  // Kích thước font của legend (chú giải)
-                                    }
-                                }
                             }
                         },
                         scales: {
                             y: {
                                 ticks: {
-                                font: {
-                                    size: calculateFontSize()  // Kích thước font của nhãn trục y
+                                    font: {
+                                        size: calculateFontSize()  // Kích thước font của nhãn trục y
+                                    }
                                 }
-                            }
                             }
                         }
                     },

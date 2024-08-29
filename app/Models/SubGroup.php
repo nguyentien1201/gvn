@@ -36,7 +36,7 @@ class SubGroup extends Model
     }
     public function getDataSubGroupApi()
     {
-        $data = $this->whereNotNull('avg_cap')->orderBy('group_name', 'asc')->select('group_name', 'current_year','current_month','quarter','avg_cap')->limit(20)->get()->toArray();
+        $data = $this->whereNotNull('avg_cap')->orderBy('group_name', 'asc')->select('group_name', 'current_year','current_month','quarter','avg_cap')->get()->toArray();
         $current_month = $data;
 
         usort($current_month, function($a, $b) {
@@ -52,6 +52,7 @@ class SubGroup extends Model
         usort($avg_cap, function($a, $b) {
             return $b['avg_cap'] <=> $a['avg_cap'];
         });
+        $avg_cap = array_slice($avg_cap, 0, 20);
         $avg_cap_labels = [];
         $avg_cap_values = [];
         foreach ($avg_cap as $item) {
