@@ -978,7 +978,7 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                             data: result.chart_group_data.current_month.values,
                             backgroundColor: '#34a853',
                             fontweight: 600,
-                            barThickness: 10,
+                            barThickness: 5,
                         }]
                     },
                     options: {
