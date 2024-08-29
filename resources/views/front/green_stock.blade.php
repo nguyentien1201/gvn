@@ -1286,20 +1286,65 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                     data: {
                         labels: result.current_cap.labels,
                         datasets: result.current_cap.data.map((item, index) => {
+                            if(index <= 21) {
+                                yAxisID = 'y1';
+                            }else {
+                                yAxisID = 'y2';
+                            }
                             return {
                                 label: result.current_cap.groupNames[index],
                                 data: item,
                                 fill: true,
+                                yAxisID: yAxisID,
                             };
                         })
                     },
                     options: {
-                        plugins: {
-                            legend: {
-                                display: true,
-                                position: 'right',  // Đặt vị trí của chú thích ở bên phải
-                            },
+                        responsive: true,
+            scales: {
+                y1: {
+                    type: 'linear',
+                    position: 'left',
+                    title: {
+                        display: true,
+                        text: 'y1 Axis'
+                    },
+                    min: 0,  // Giá trị tối thiểu cho trục y1
+                    max: 100, // Giá trị tối đa cho trục y1
+                    beginAtZero: true
+                },
+                y2: {
+                    type: 'linear',
+                    position: 'right',
+                    title: {
+                        display: true,
+                        text: 'y2 Axis'
+                    },
+                    min: 0,  // Giá trị tối thiểu cho trục y1
+                    max: 100, // Giá trị tối đa cho trục y1
+                    beginAtZero: true,
+                    reverse: true  // Đảo ngược trục y2
+                },
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Months'
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    display: true,
+                    position: 'right',
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(tooltipItem) {
+                            return `${tooltipItem.dataset.label}: ${tooltipItem.raw}`;
                         }
+                    }
+                }
+            }
                     }
                 });
             }

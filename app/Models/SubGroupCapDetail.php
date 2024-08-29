@@ -37,6 +37,7 @@ class SubGroupCapDetail extends Model
 
         $rs = [];
         foreach ($data as $item) {
+
             $slug_name = Str::slug($item['group_name']);
             if(isset($rs[$slug_name])){
                 $rs[$slug_name][] = $item['avg_cap'];
@@ -50,6 +51,16 @@ class SubGroupCapDetail extends Model
             $labels[] = $item['date'];
         }
         $rs = array_values($rs);
+
+        foreach ($rs as $keyValue => $value) {
+            $total = array_sum($value);
+            $percent = [];
+            foreach ($value as $key => $item) {
+                $percent[$key] = round($item/$total*100, 2);
+            }
+            $rs[$keyValue] = $percent;
+        }
+
         $groupNames = array_values(array_unique($groupNames));
         $labels = array_values(array_unique($labels));
 

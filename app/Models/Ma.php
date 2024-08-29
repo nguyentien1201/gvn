@@ -20,7 +20,7 @@ class Ma extends Model
         return $data;
     }
     public function getMaApi(){
-        $data = $this->orderBy('time','desc')->select('*')->get()->toArray();
+        $data = $this->orderBy('time','asc')->select('*')->get()->toArray();
         $labels = [];
         $ma200_values = [];
         $ma50_values = [];

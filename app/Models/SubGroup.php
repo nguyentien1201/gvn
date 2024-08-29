@@ -52,7 +52,7 @@ class SubGroup extends Model
         usort($avg_cap, function($a, $b) {
             return $b['avg_cap'] <=> $a['avg_cap'];
         });
-        $avg_cap = array_slice($avg_cap, 0, 20);
+        $avg_cap = array_slice($avg_cap, 0, 10);
         $avg_cap_labels = [];
         $avg_cap_values = [];
         foreach ($avg_cap as $item) {
