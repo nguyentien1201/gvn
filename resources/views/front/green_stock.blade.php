@@ -1017,7 +1017,7 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                         scales: {
                             y: {
                                 ticks: {
-                                    display: false,
+                                    display: true,
 
                                     font: {
                                         size: calculateFontSize()  // Kích thước font của nhãn trục y
