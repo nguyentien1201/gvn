@@ -359,7 +359,7 @@
     padding: 20px;
 }
 #current_month{
-    height: 600px !important;
+    height: 500px !important;
 }
 .column {
     flex: 1; /* Mỗi cột chiếm cùng một phần không gian */
@@ -484,50 +484,50 @@
 
                     </div>
                     <div class="tab-pane fade" id="overview" role="tabpanel" aria-labelledby="profile-tab">
+                        <div class="container_layout">
+                            <div class="sidebar sidebar_1">
+                                <table style="width:100%" class="table table-striped table-bordered"
+                                            id="market_cap">
+                                            <thead>
+                                                <tr id="code_header">
+                                                    <th colspan="2" style="text-align:center" class="code_header">Tăng/Giảm
+                                                        theo nhóm vốn hóa</th>
+                                                </tr>
+                                                <tr>
+                                                    <th>Nhóm</th>
+                                                    <th>Trung bình ngày</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
 
-                    <div class="container_layout">
-                        <div class="sidebar sidebar_1">
-                            <table style="width:100%" class="table table-striped table-bordered"
-                                        id="market_cap">
-                                        <thead>
-                                            <tr id="code_header">
-                                                <th colspan="2" style="text-align:center" class="code_header">Tăng/Giảm
-                                                    theo nhóm vốn hóa</th>
-                                            </tr>
-                                            <tr>
-                                                <th>Nhóm</th>
-                                                <th>Trung bình ngày</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
+                                            </tbody>
+                                        </table>
 
-                                        </tbody>
-                                    </table>
-
-                        </div>
-                        <div class="main">
-                                <h5 style="text-align:center;padding:10px" class="color-home">Phân Nhóm</h5>
-                                <canvas id="current_month" ></canvas>
                             </div>
-                        <div class="sidebar center_box">
-                            <canvas class="mt-1" id="capChart" width="490" height="300"></canvas>
-                        </div>
-                    </div>
-                    <div class="">
-                        <table class="table table-striped table-bordered" style="margin-bottom: 0px; width:100%"
-                            id="top_stock">
-                        </table>
-                        <div class="container_flex">
-                            <div class="column column-left">
-                            <canvas class="mt-5" id="avg_cap" height="400"></canvas>
-                            </div>
-                            <div class="column column-right">
-                            <canvas class="mt-5" id="group_ma" height="300"></canvas>
+                            <div class="main">
+                                    <h5 style="text-align:center;padding:10px" class="color-home">Phân Nhóm</h5>
+                                    <canvas id="current_month" ></canvas>
+                                </div>
+                            <div class="sidebar center_box">
+                                <canvas class="mt-1" id="capChart" width="490" height="300"></canvas>
                             </div>
                         </div>
-
-
-                    </div>
+                        <div class="">
+                            <table class="table table-striped table-bordered" style="margin-bottom: 0px; width:100%"
+                                id="top_stock">
+                            </table>
+                            <div class="container_flex">
+                                <div class="column column-left">
+                                <canvas class="mt-5" id="avg_cap" height="400"></canvas>
+                                </div>
+                                <div class="column column-right">
+                                <canvas class="mt-5" id="group_ma" height="300"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="">
+                            <canvas class="mt-5" id="current_cap" ></canvas>
+                        </div>
                     </div>
 
                 </div>
@@ -1279,9 +1279,33 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                         }
                     }
                 });
+
+                var ctx_current_cap = document.getElementById('current_cap').getContext('2d');
+                const current_cap = new Chart(ctx_current_cap, {
+                    type: 'line',
+                    data: {
+                        labels: result.current_cap.labels,
+                        datasets: result.current_cap.data.map((item, index) => {
+                            return {
+                                label: result.current_cap.groupNames[index],
+                                data: item,
+                                fill: true,
+                            };
+                        })
+                    },
+                    options: {
+                        plugins: {
+                            legend: {
+                                display: true,
+                                position: 'right',  // Đặt vị trí của chú thích ở bên phải
+                            },
+                        }
+                    }
+                });
             }
         });
     });
+    // current_cap
     function calculateFontSize() {
         const screenWidth = window.innerWidth;
 

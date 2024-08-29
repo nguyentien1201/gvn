@@ -12,6 +12,8 @@ use App\Models\CompanyInfo;
 use App\Models\Ma;
 use App\Models\SubGroup;
 use App\Models\GroupCap;
+use App\Models\SubGroupCapDetail;
+
 class GreenStockNas100 extends Model
 {
     use SoftDeletes;
@@ -39,6 +41,7 @@ class GreenStockNas100 extends Model
     {
         $this->googleDriveService = new GoogleDriveService();
         $fileUrl = config('drivefile.drivefile.nas100');
+        $subGroupCapDetail = new SubGroupCapDetail();
         $isCompany = true;
         if ($isCompany == true) {
             $company = $this->googleDriveService->getSheetData($fileUrl, 'Tên doanh nghiệp!A1:C');
@@ -65,13 +68,30 @@ class GreenStockNas100 extends Model
         $listData = explode("\r\n", $fileContent);
 
         array_shift($listData);
+        $header = $listData[0] ?? [];
+        $header = explode(",", $header);
         array_shift($listData);
         foreach ($listData as $item) {
             try {
-
                 $greenstock_nas100 = [];
                 $item = explode(",", $item);
-
+                foreach ($item as $key => $value) {
+                    if ($key < 40) continue;
+                    if(empty($header[$key])) continue;
+                    $date =Carbon::createFromFormat('d/m/y', $header[$key])->format('Y-m-d') ?? null;
+                    if(empty($date)) continue;
+                    $subgroupcap = [
+                        'group_name' => $item[39] ?? '',
+                        'avg_cap' => (float) $value,
+                        'date' => $date,
+                    ];
+                    $subgroup = SubGroupCapDetail::where('group_name', $subgroupcap['group_name'])->where('date', $subgroupcap['date'])->first();
+                    if($subgroup){
+                        $subgroup->update($subgroupcap);
+                    }else{
+                        SubGroupCapDetail::create($subgroupcap);
+                    }
+                }
                 if (!empty($item[17]) && !empty($item[14]) && !empty($item[15]) && !empty($item[16]) && !empty($item[18]) && !empty($item[19])) {
                     $ma = [
                         'time' => Carbon::createFromFormat('d/m/y', $item[14])->format('Y-m-d') ?? null,
@@ -85,7 +105,7 @@ class GreenStockNas100 extends Model
                     $maData = Ma::where('time', $ma['time'])->first();
 
                     if ($maData) {
-                        \Log::info(json_encode($ma));
+
                         $maData->update($ma);
                     } else {
                         Ma::create($ma);
@@ -188,6 +208,7 @@ class GreenStockNas100 extends Model
 
             } catch (\Exception $e) {
                 \Log::error($e->getMessage());
+                \Log::error($e->getLine());
                 continue;
             }
         }
