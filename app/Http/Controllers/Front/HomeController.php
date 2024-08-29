@@ -232,6 +232,7 @@ class HomeController
             'ma' => $ma,
             'current_cap' => $current_cap
         ];
+        Cache::put('market_overview', $marketOverview, 60*60);
         return [
             'status' => 200,
             'data' => $marketOverview,
