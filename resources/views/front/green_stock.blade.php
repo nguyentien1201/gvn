@@ -14,6 +14,9 @@
 
     <link rel="stylesheet" href="{{asset('plugins/font-awesome-4.7.0/css/font-awesome.min.css')}}">
     <style>
+        .contentDiv{
+            overflow: hidden;
+        }
            .color-home {
             color: #008000 !important;
         }
