@@ -317,6 +317,11 @@
         }
 
         @media (min-width: 768px) and (max-width: 1680px) {
+            .center_box {
+            align-items: center;
+            justify-content: center;
+            display: flex;
+        }
             .container_layout {
                 flex-direction: row;
                 /* Xếp ngang các phần tử */
@@ -329,6 +334,7 @@
             }
 
             .sidebar {
+
                 max-width: inherit;
                 width: 50%;
                 /* Cả hai sidebar sẽ chiếm 50% chiều rộng */
@@ -498,8 +504,8 @@
                                 <h5 style="text-align:center;padding:10px" class="color-home">Phân Nhóm</h5>
                                 <canvas id="current_month" ></canvas>
                             </div>
-                        <div class="sidebar">
-                            <canvas class="mt-5" id="capChart" height="300"></canvas>
+                        <div class="sidebar center_box">
+                            <canvas class="mt-5" id="capChart" width="500"></canvas>
                         </div>
                     </div>
                     <div class="">
@@ -936,18 +942,19 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                                         }
                                     }
                                 }
-                            }
+                            },
+
                         },
                         scales: {
                             x: {
                                 ticks: {
-                                    font: {
-                                        weight: 'bold' // Makes x-axis labels bold
-                                    }
+                                    display: false,
+
                                 }
                             },
                             y: {
                                 ticks: {
+
                                     font: {
                                         weight: 'bold' // Makes y-axis labels bold
                                     }
