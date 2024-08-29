@@ -36,13 +36,24 @@ class SubGroupCapDetail extends Model
         });
 
         $rs = [];
-        foreach ($data as $item) {
+        $rs_by_date = [];
 
+        $rs_by_date = [];
+        foreach ($data as $item) {
+            $date = $item['date'];
+            if (!isset($rs_by_date[$date])) {
+                $rs_by_date[$date] = 0;
+            }
+            $rs_by_date[$date] += $item['avg_cap'];
+        }
+
+        foreach ($data as $item) {
             $slug_name = Str::slug($item['group_name']);
+            $percen_value =  round($item['avg_cap']/$rs_by_date[$item['date']]*100, 2);
             if(isset($rs[$slug_name])){
-                $rs[$slug_name][] = $item['avg_cap'];
+                $rs[$slug_name][] = $percen_value;
             }else{
-                $rs[$slug_name] = [$item['avg_cap']];
+                $rs[$slug_name] = [$percen_value];
             }
 
             if(!in_array($item['group_name'], $groupNames)){
@@ -51,16 +62,6 @@ class SubGroupCapDetail extends Model
             $labels[] = $item['date'];
         }
         $rs = array_values($rs);
-
-        foreach ($rs as $keyValue => $value) {
-            $total = array_sum($value);
-            $percent = [];
-            foreach ($value as $key => $item) {
-                $percent[$key] = round($item/$total*100, 2);
-            }
-            $rs[$keyValue] = $percent;
-        }
-
         $groupNames = array_values(array_unique($groupNames));
         $labels = array_values(array_unique($labels));
 

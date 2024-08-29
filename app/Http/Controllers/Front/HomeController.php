@@ -211,13 +211,13 @@ class HomeController
     }
     public function getMarketGreenStock(){
 
-        $marketOverview = Cache::get('market_overview');
-        if($marketOverview){
-           return [
-               'status' => 200,
-               'data' => $marketOverview
-           ];
-        }
+        // $marketOverview = Cache::get('market_overview');
+        // if($marketOverview){
+        //    return [
+        //        'status' => 200,
+        //        'data' => $marketOverview
+        //    ];
+        // }
         $market_cap = (new GroupCap())->getMarketCap();
         $chart_group_data = (new SubGroup())->getDataSubGroupApi();
         $top_stock = (new GreenStockNas100())->getTopStock();

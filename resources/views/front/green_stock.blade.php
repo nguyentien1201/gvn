@@ -251,7 +251,7 @@
         }
 
         .sidebar {
-            max-width: 500px;
+            max-width: 450px;
             flex: 1.5;
             /* Chiếm một phần nhỏ */
 
@@ -418,7 +418,7 @@
                                 <img src="{{url('images/bull_bear.jpg')}}" alt="Stock Rating" style="width:80%">
                                 <div class="mb-4 center_flex">
                                     <canvas id="pieChart" width="400"></canvas>
-                                    <canvas class="mt-5" id="maChart" width="400" height="350"></canvas>
+                                    <canvas class="mt-5" id="maChart" width="450" height="350"></canvas>
                                 </div>
                             </div>
 
@@ -973,9 +973,9 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
 
                 barCurentMonthGroup = new Chart(current_monthctx, {
                     type: 'bar',
-                    barPercentage: 0.5,
-                    barThickness:20,
-                    categoryPercentage: 0.2,
+                    barPercentage: 1,
+                    barThickness:30,
+                    categoryPercentage: 1,
                     data: {
                         labels: result.chart_group_data.current_month.labels,
                         datasets: [{
@@ -983,7 +983,7 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                             data: result.chart_group_data.current_month.values,
                             backgroundColor: '#34a853',
                             fontweight: 600,
-                            barThickness: 5,
+                            barThickness: 10,
                         }]
                     },
                     options: {
@@ -1017,6 +1017,8 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                         scales: {
                             y: {
                                 ticks: {
+                                    display: false,
+
                                     font: {
                                         size: calculateFontSize()  // Kích thước font của nhãn trục y
                                     }
@@ -1286,51 +1288,25 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                     data: {
                         labels: result.current_cap.labels,
                         datasets: result.current_cap.data.map((item, index) => {
-                            if(index <= 21) {
-                                yAxisID = 'y1';
-                            }else {
-                                yAxisID = 'y2';
-                            }
                             return {
                                 label: result.current_cap.groupNames[index],
                                 data: item,
-                                fill: true,
-                                yAxisID: yAxisID,
+                                fill: true
                             };
                         })
                     },
                     options: {
                         responsive: true,
             scales: {
-                y1: {
+                y: {
                     type: 'linear',
                     position: 'left',
-                    title: {
-                        display: true,
-                        text: 'y1 Axis'
-                    },
-                    min: 0,  // Giá trị tối thiểu cho trục y1
-                    max: 100, // Giá trị tối đa cho trục y1
+                    stacked: true,
+                    min: 0,
+                    max:100,
                     beginAtZero: true
-                },
-                y2: {
-                    type: 'linear',
-                    position: 'right',
-                    title: {
-                        display: true,
-                        text: 'y2 Axis'
-                    },
-                    min: 0,  // Giá trị tối thiểu cho trục y1
-                    max: 100, // Giá trị tối đa cho trục y1
-                    beginAtZero: true,
-                    reverse: true  // Đảo ngược trục y2
-                },
-                x: {
-                    title: {
-                        display: true,
-                        text: 'Months'
-                    }
                 }
+
             },
             plugins: {
                 legend: {
