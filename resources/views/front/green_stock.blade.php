@@ -358,7 +358,9 @@
     justify-content: space-between; /* Khoảng cách giữa các cột */
     padding: 20px;
 }
-
+#current_month{
+    height: 600px !important;
+}
 .column {
     flex: 1; /* Mỗi cột chiếm cùng một phần không gian */
     margin: 10px;
