@@ -501,12 +501,12 @@
                                     id="market_cap">
                                     <thead>
                                         <tr id="code_header">
-                                            <th colspan="2" style="text-align:center" class="code_header">Tăng/Giảm
-                                                theo nhóm vốn hóa</th>
+                                            <th colspan="2" style="text-align:center" class="code_header">TĂNG/GIẢM
+                                                THEO NHÓM VỐN HÓA</th>
                                         </tr>
                                         <tr>
-                                            <th>Nhóm</th>
-                                            <th>Trung bình ngày</th>
+                                            <th>NHÓM</th>
+                                            <th>TRUNG BÌNH NGÀY</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -515,7 +515,6 @@
 
                             </div>
                             <div class="main">
-                                    <h5 style="text-align:center;padding:10px" class="color-home">Phân Nhóm</h5>
                                     <div class="chart-container">
                                         <canvas id="current_month"></canvas>
                                     </div>
