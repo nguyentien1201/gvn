@@ -19,7 +19,7 @@ class GroupCap extends Model
     {
         $data = $this->orderBy('avg_day', 'asc')->select('group', 'avg_day')->get()->toArray();
         usort($data, function($a, $b) {
-            return $a['avg_day'] <=> $b['avg_day'];
+            return $b['avg_day'] <=> $a['avg_day'];
         });
         return $data;
     }

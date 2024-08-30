@@ -895,8 +895,8 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
         if(isCall == true) return;
         var index_up =0;
         var index_down = 0;
-        const startColorDown = "rgb(255, 0, 0)"; // Red
-        const endColorDown = "rgb(255, 255, 0)"; // Yellow
+        const endColorDown = "rgb(255, 0, 0)"; // Red
+        const startColorDown = "rgb(255, 255, 0)"; // Yellow
         const steps = 5;
         const rangeDown = generateGradient(startColorDown, endColorDown, steps);
         const startColorUp = "rgb(5, 100, 40)"; // Red
