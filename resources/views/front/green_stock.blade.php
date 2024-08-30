@@ -975,7 +975,7 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                                 anchor: 'end',
                                 align: 'end',
                                 formatter: function (value, context) {
-                                    return value;
+                                    return value.toLocaleString();
                                 },
                                 labels: {
                                     value: {
