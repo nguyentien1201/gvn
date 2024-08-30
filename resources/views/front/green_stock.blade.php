@@ -359,7 +359,7 @@
     padding: 20px;
 }
 #current_month{
-    height: 750px !important;
+    height: 700px !important;
 }
 .column {
     flex: 1; /* Mỗi cột chiếm cùng một phần không gian */
@@ -370,6 +370,17 @@
     border-radius: 5px;
     min-width: 300px; /* Chiều rộng tối thiểu của mỗi cột */
 }
+.chart-container {
+        position: relative;
+        height: 700px !important;
+        width: 100%;
+    }
+
+    @media (max-width: 768px) {
+        .chart-container {
+            height: 80vh;
+        }
+    }
     </style>
 
 </head>
@@ -487,26 +498,28 @@
                         <div class="container_layout">
                             <div class="sidebar sidebar_1">
                                 <table style="width:100%" class="table table-striped table-bordered"
-                                            id="market_cap">
-                                            <thead>
-                                                <tr id="code_header">
-                                                    <th colspan="2" style="text-align:center" class="code_header">Tăng/Giảm
-                                                        theo nhóm vốn hóa</th>
-                                                </tr>
-                                                <tr>
-                                                    <th>Nhóm</th>
-                                                    <th>Trung bình ngày</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-
-                                            </tbody>
-                                        </table>
+                                    id="market_cap">
+                                    <thead>
+                                        <tr id="code_header">
+                                            <th colspan="2" style="text-align:center" class="code_header">Tăng/Giảm
+                                                theo nhóm vốn hóa</th>
+                                        </tr>
+                                        <tr>
+                                            <th>Nhóm</th>
+                                            <th>Trung bình ngày</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
 
                             </div>
                             <div class="main">
                                     <h5 style="text-align:center;padding:10px" class="color-home">Phân Nhóm</h5>
-                                    <canvas id="current_month" ></canvas>
+                                    <div class="chart-container">
+                                        <canvas id="current_month"></canvas>
+                                    </div>
+
                                 </div>
                             <div class="sidebar center_box">
                                 <canvas class="mt-1" id="capChart" width="490" height="300"></canvas>
@@ -710,7 +723,7 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                         } else if (signal == 'cash') {
                             color = '#fee49d';
                         } else if (signal == 'sell') {
-                            color = '#ffffff'
+                            color = 'rgb(227, 123, 113)'
                         }
                         $(td).css('background-color', color);
                         $(td).css('box-shadow', 'none');
@@ -820,6 +833,7 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
             type: 'bar',
             data: {
                 labels: ['MA50', 'MA200'],
+
                 datasets: [{
                     label: 'DOWN',
                     data: @json($ma['down']),
@@ -843,8 +857,6 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                     },
                     datalabels: {
                         display: true, // Hiển thị giá trị
-                        anchor: 'end',
-                        align: 'end',
                         formatter: function (value, context) {
                             return value + '%';
                         },
@@ -861,11 +873,13 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                         ticks: {
                             color: 'green', // Màu sắc của nhãn trục X
                             font: {
-                                size: 16, // Kích thước phông chữ của nhãn trục X
-                                style: 'bold',
+                                size: 14, // Kích thước phông chữ của nhãn trục X
+
                                 weight: 'bold'
                             }
-                        }
+                        },
+                        barPercentage: 0.5, // Giảm giá trị này để tăng khoảng cách giữa các cột
+                        categoryPercentage: 0.5 // Giảm giá trị này để tăng khoảng
                     },
                     y: {
                         display: false, // Ẩn trục Y
@@ -879,17 +893,23 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
     });
     $(document).on('click', '#overview-tab', function () {
         if(isCall == true) return;
+        var index_up =0;
+        var index_down = 0;
+        const startColorDown = "rgb(255, 0, 0)"; // Red
+        const endColorDown = "rgb(255, 255, 0)"; // Yellow
+        const steps = 5;
+        const rangeDown = generateGradient(startColorDown, endColorDown, steps);
+        const startColorUp = "rgb(5, 100, 40)"; // Red
+        const endColorUp = "rgb(8, 190, 75)"; // Yellow
 
-        console.log('click');
+        const rangeUp = generateGradient(startColorUp, endColorUp, steps);
         var url = '/api/get-market-greenstock';
-        console.log(url);
         $.ajax({
             url: url,
             type: 'GET',
             success: function (data) {
                 isCall =true;
                 var result = data.data;
-                console.log(result);
                 var market_cap = $('#market_cap').DataTable({
                     searching: false,
                     lengthChange: false, //
@@ -897,17 +917,36 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                     paging: false,
                     autoWidth: true,
                     info: false,
-                    order: [[0, 'asc']],
+                    order: false,
                     data: result.market_cap,
                     columns: [
                         { data: 'group', title: 'NHÓM' },  // Apply bold formatting to the "PriceTrend" column data},
                         { data: 'avg_day', title: 'TRUNG BÌNH NGÀY' },
                     ],
+                    //
                     columnDefs: [
+                        {
+                            targets: 0, // Index of the date column
+
+                            createdCell: function (td, cellData, rowData, row, col) {
+                                var color = 'aliceblue';
+                                $(td).css('background-color', color);
+                                $(td).css('font-weight', 'bold');
+                            }
+                        },
                         {
                             targets: 1, // Index of the date column
                             render: function (data, type, full, meta) {
                                 return `${data}%`;
+                            },
+                            createdCell: function (td, cellData, rowData, row, col) {
+                                var color = '';
+                                if (cellData < 0) {
+                                    color = rangeDown[row];
+                                } else {
+                                    color = rangeUp[row] // Green color for positive values
+                                }
+                                $(td).css('background-color', color);
                             }
                         },
                     ],
@@ -973,9 +1012,9 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
 
                 barCurentMonthGroup = new Chart(current_monthctx, {
                     type: 'bar',
-                    barPercentage: 1,
-                    barThickness:30,
-                    categoryPercentage: 1,
+                    barPercentage: 0.5,
+                    barThickness:20,
+                    categoryPercentage: 0.5,
                     data: {
                         labels: result.chart_group_data.current_month.labels,
                         datasets: [{
@@ -983,7 +1022,7 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                             data: result.chart_group_data.current_month.values,
                             backgroundColor: '#34a853',
                             fontweight: 600,
-                            barThickness: 10,
+                            barThickness: 5,
                         }]
                     },
                     options: {
@@ -1329,7 +1368,7 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
             }
         });
     });
-    // current_cap
+//     // current_cap
     function calculateFontSize() {
         const screenWidth = window.innerWidth;
 
@@ -1338,4 +1377,20 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
         }
         return 12;
     }
+    function generateGradient(startColor, endColor, steps) {
+    // Parse the RGB values from the start and end colors
+        const startRGB = startColor.match(/\d+/g).map(Number);
+        const endRGB = endColor.match(/\d+/g).map(Number);
+
+        const gradient = [];
+        for (let i = 0; i <= steps; i++) {
+            const r = Math.round(startRGB[0] + (i * (endRGB[0] - startRGB[0]) / steps));
+            const g = Math.round(startRGB[1] + (i * (endRGB[1] - startRGB[1]) / steps));
+            const b = Math.round(startRGB[2] + (i * (endRGB[2] - startRGB[2]) / steps));
+            gradient.push(`rgb(${r}, ${g}, ${b})`);
+        }
+
+        return gradient;
+    }
+
 </script>

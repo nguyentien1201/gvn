@@ -18,6 +18,9 @@ class GroupCap extends Model
     public function getMarketCap()
     {
         $data = $this->orderBy('avg_day', 'asc')->select('group', 'avg_day')->get()->toArray();
+        usort($data, function($a, $b) {
+            return $a['avg_day'] <=> $b['avg_day'];
+        });
         return $data;
     }
 
