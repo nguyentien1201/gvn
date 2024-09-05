@@ -368,7 +368,7 @@
         }
 
         #current_month {
-            height: 700px !important;
+            /* height: 600px !important; */
         }
 
         .column {
@@ -385,7 +385,7 @@
 
         .chart-container {
             position: relative;
-            height: 700px !important;
+            /* height: 650px !important; */
             width: 100%;
         }
 
@@ -528,7 +528,7 @@
                             </div>
                             <div class="main">
                                 <div class="chart-container">
-                                    <canvas id="current_month"></canvas>
+                                    <canvas id="current_month" ></canvas>
                                 </div>
 
                             </div>
@@ -550,7 +550,7 @@
                             </div>
                         </div>
                         <div class="">
-                            <canvas class="mt-5" id="current_cap"></canvas>
+                            <canvas class="mt-2" id="current_cap"></canvas>
                         </div>
                     </div>
 
@@ -1050,7 +1050,7 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                             data: result.chart_group_data.current_month.values,
                             backgroundColor: '#34a853',
                             fontweight: 600,
-                            barThickness: 8,
+                            minBarLength: 5,
                             hidden: false // Hiển thị mặc định
                         },
                         {
@@ -1058,7 +1058,7 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                             data: result.chart_group_data.current_year.values,
                             backgroundColor: '#34a853',
                             fontweight: 600,
-                            barThickness: 8,
+                            minBarLength: 5,
                             hidden: true // Hiển thị mặc định
                         },
                         {
@@ -1066,7 +1066,7 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                             data: result.chart_group_data.quarter.values,
                             backgroundColor: '#34a853',
                             fontweight: 600,
-                            barThickness: 8,
+                            minBarLength: 5,
                             hidden: true // Hiển thị mặc định
                         }]
                     },
@@ -1079,6 +1079,17 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
 
                         },
                         plugins: {
+                            tooltip: {
+                                    enabled: true,  // Bật tooltip
+                                    position: 'nearest', // Vị trí mặc định là gần nhất
+                                    yAlign: 'bottom',  // Vị trí tooltip phía dưới
+                                    xAlign: 'center',  // Vị trí trung tâm theo trục x
+                                    callbacks: {
+                                        label: function(tooltipItem) {
+                                            return `Giá trị: ${tooltipItem.raw}`;
+                                        }
+                                    }
+                                },
                             datalabels: {
                                 display: true, // Hiển thị giá trị
                                 anchor: function (context) {
@@ -1111,8 +1122,11 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                             y: {
                                 ticks: {
                                     display: false,
-                                }
-                            }
+                                },
+                                        // Điều chỉnh khoảng cách giữa các cột
+                                barPercentage: 1.5, // Chiều rộng cột so với đơn vị category (1 là đầy đủ, 0 là nhỏ nhất)
+                                categoryPercentage: 1.5, // Chiều rộng category so với tổng chiều rộng trục x
+                                    }
                         },
                         onHover: (event, chartElement) => {
                             const targetCanvas = event.native.target;
@@ -1438,11 +1452,20 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                             legend: {
                                 display: true,
                                 position: 'right',
+                                labels: {
+                                    boxWidth: 20, // Điều chỉnh kích thước hộp màu
+                                    padding: 8,  // Điều chỉnh khoảng cách giữa các mục
+                                }
                             },
                             tooltip: {
+                                enabled: true,  // Tooltip được bật mặc định
+                                mode: 'nearest', // Hiển thị tooltip cho điểm gần nhất khi di chuột
+                                intersect: false, // Hiển thị tooltip khi di chuột qua bất cứ điểm nào trên trục x (không cần phải chạm vào điểm cụ thể)
                                 callbacks: {
-                                    label: function (tooltipItem) {
-                                        return `${tooltipItem.dataset.label}: ${tooltipItem.raw}`;
+                                    label: function(tooltipItem) {
+                                        const label = tooltipItem.dataset.label || '';
+                                        const value = tooltipItem.raw;
+                                        return `${label}: ${value}%`;
                                     }
                                 }
                             }
