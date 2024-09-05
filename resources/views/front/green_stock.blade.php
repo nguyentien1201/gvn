@@ -1050,7 +1050,7 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                             data: result.chart_group_data.current_month.values,
                             backgroundColor: '#34a853',
                             fontweight: 600,
-                            barThickness: 5,
+                            barThickness: 8,
                             hidden: false // Hiển thị mặc định
                         },
                         {
@@ -1058,7 +1058,7 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                             data: result.chart_group_data.current_year.values,
                             backgroundColor: '#34a853',
                             fontweight: 600,
-                            barThickness: 5,
+                            barThickness: 8,
                             hidden: true // Hiển thị mặc định
                         },
                         {
@@ -1066,7 +1066,7 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                             data: result.chart_group_data.quarter.values,
                             backgroundColor: '#34a853',
                             fontweight: 600,
-                            barThickness: 5,
+                            barThickness: 8,
                             hidden: true // Hiển thị mặc định
                         }]
                     },
@@ -1079,7 +1079,6 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
 
                         },
                         plugins: {
-
                             datalabels: {
                                 display: true, // Hiển thị giá trị
                                 anchor: function (context) {
@@ -1111,12 +1110,18 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                         scales: {
                             y: {
                                 ticks: {
-                                    display: true,
-
-                                    font: {
-                                        size: calculateFontSize()  // Kích thước font của nhãn trục y
-                                    }
+                                    display: false,
                                 }
+                            }
+                        },
+                        onHover: (event, chartElement) => {
+                            const targetCanvas = event.native.target;
+                            // Nếu có phần tử dưới con trỏ chuột, thay đổi con trỏ thành pointer
+                            if (chartElement.length) {
+                                targetCanvas.style.cursor = 'pointer';
+                            } else {
+                                // Nếu không có phần tử nào, đặt lại con trỏ mặc định
+                                targetCanvas.style.cursor = 'default';
                             }
                         },
                         onClick: function (evt) {
