@@ -26,6 +26,9 @@ Route::group(['prefix' => '', 'as' => 'front.', 'namespace' => 'Front'], functio
     Route::get('/greenstock-nas100', 'HomeController@greenStock')->name('home.green-stock');
     Route::get('api/get-market-greenstock', 'HomeController@getMarketGreenStock')->name('api.market-greenstock');
     Route::get('api/get-top-stock', 'HomeController@getTopStock')->name('api.top-stock');
+    Route::get('trading-system', 'HomeController@tradingSystem')->name('home.trading-system');
+    Route::get('contact', 'HomeController@contact')->name('home.contact');
+    Route::get('mission', 'HomeController@mission')->name('home.mission');
 });
 
 Auth::routes(['register' => true]);

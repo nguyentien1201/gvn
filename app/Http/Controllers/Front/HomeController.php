@@ -253,4 +253,13 @@ class HomeController
             'data' => $top_stock
         ];
     }
+    public function tradingSystem(){
+        return view('front.trading_system');
+    }
+    public function contact(){
+        return view('front.contact');
+    }
+    public function mission(){
+        return view('front.mission');
+    }
 }

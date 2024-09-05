@@ -14,13 +14,13 @@
                         class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#trading_system">{{ __('home.trading_system') }}</a>
+                <a class="nav-link" href="{{route('front.home.trading-system')}}">{{ __('home.trading_system') }}</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#mission">{{ __('home.mission') }}</a>
+                <a class="nav-link" href="{{route('front.home.mission')}}">{{ __('home.mission') }}</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#contact">{{ __('home.contact') }}</a>
+                <a class="nav-link" href="{{route('front.home.contact')}}">{{ __('home.contact') }}</a>
             </li>
             @guest
                 <li class="nav-item">
