@@ -47,7 +47,6 @@ class GreenStockNas100 extends Model
             $company = $this->googleDriveService->getSheetData($fileUrl, 'Tên doanh nghiệp!A1:C');
             array_shift($company);
             foreach ($company as $item) {
-
                 $company = [
                     'code' => $item[0],
                     'company_name' => $item[1],
@@ -240,4 +239,11 @@ class GreenStockNas100 extends Model
             ->groupBy('signal')
             ->get()->toArray();
     }
+    public function getTopStockByGroup($group)
+    {
+        $listStock =  CompanyInfo::where('industry', $group)->get()->pluck('code')->toArray();
+        return $this->whereIn('code', $listStock)->orderBy('point', 'desc')->limit(5)->get();
+    }
+
+
 }

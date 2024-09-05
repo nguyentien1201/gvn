@@ -14,10 +14,11 @@
 
     <link rel="stylesheet" href="{{asset('plugins/font-awesome-4.7.0/css/font-awesome.min.css')}}">
     <style>
-        #contentDiv{
+        #contentDiv {
             overflow: hidden;
         }
-           .color-home {
+
+        .color-home {
             color: #008000 !important;
         }
 
@@ -265,12 +266,15 @@
             padding: 1rem;
             width: 100%;
         }
-    .sidebar_overview_cap {
-        flex: 2;
-    }
-    .sidebar_overview_chart {
-        flex: 2;
-    }
+
+        .sidebar_overview_cap {
+            flex: 2;
+        }
+
+        .sidebar_overview_chart {
+            flex: 2;
+        }
+
         .sidebar_overview {
             max-width: 1000px;
             flex: 1;
@@ -321,10 +325,11 @@
 
         @media (min-width: 768px) and (max-width: 1680px) {
             .center_box {
-            align-items: center;
-            justify-content: center;
-            display: flex;
-        }
+                align-items: center;
+                justify-content: center;
+                display: flex;
+            }
+
             .container_layout {
                 flex-direction: row;
                 /* Xếp ngang các phần tử */
@@ -352,35 +357,43 @@
                 /* Đặt cột chính ở vị trí cuối cùng */
             }
         }
-        .container_flex {
-    display: flex;
-    flex-wrap: wrap; /* Cho phép các cột xuống dòng nếu không đủ chỗ */
-    justify-content: space-between; /* Khoảng cách giữa các cột */
-    padding: 20px;
-}
-#current_month{
-    height: 700px !important;
-}
-.column {
-    flex: 1; /* Mỗi cột chiếm cùng một phần không gian */
-    margin: 10px;
-    padding: 20px;
-    background-color: #f4f4f4;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    min-width: 300px; /* Chiều rộng tối thiểu của mỗi cột */
-}
-.chart-container {
-        position: relative;
-        height: 700px !important;
-        width: 100%;
-    }
 
-    @media (max-width: 768px) {
-        .chart-container {
-            height: 80vh;
+        .container_flex {
+            display: flex;
+            flex-wrap: wrap;
+            /* Cho phép các cột xuống dòng nếu không đủ chỗ */
+            justify-content: space-between;
+            /* Khoảng cách giữa các cột */
+            padding: 20px;
         }
-    }
+
+        #current_month {
+            height: 700px !important;
+        }
+
+        .column {
+            flex: 1;
+            /* Mỗi cột chiếm cùng một phần không gian */
+            margin: 10px;
+            padding: 20px;
+            background-color: #f4f4f4;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            min-width: 300px;
+            /* Chiều rộng tối thiểu của mỗi cột */
+        }
+
+        .chart-container {
+            position: relative;
+            height: 700px !important;
+            width: 100%;
+        }
+
+        @media (max-width: 768px) {
+            .chart-container {
+                height: 80vh;
+            }
+        }
     </style>
 
 </head>
@@ -497,8 +510,7 @@
                     <div class="tab-pane fade" id="overview" role="tabpanel" aria-labelledby="profile-tab">
                         <div class="container_layout">
                             <div class="sidebar sidebar_1">
-                                <table style="width:100%" class="table table-striped table-bordered"
-                                    id="market_cap">
+                                <table style="width:100%" class="table table-striped table-bordered" id="market_cap">
                                     <thead>
                                         <tr id="code_header">
                                             <th colspan="2" style="text-align:center" class="code_header">TĂNG/GIẢM
@@ -515,11 +527,11 @@
 
                             </div>
                             <div class="main">
-                                    <div class="chart-container">
-                                        <canvas id="current_month"></canvas>
-                                    </div>
-
+                                <div class="chart-container">
+                                    <canvas id="current_month"></canvas>
                                 </div>
+
+                            </div>
                             <div class="sidebar center_box">
                                 <canvas class="mt-1" id="capChart" width="490" height="300"></canvas>
                             </div>
@@ -530,15 +542,15 @@
                             </table>
                             <div class="container_flex">
                                 <div class="column column-left">
-                                <canvas class="mt-5" id="avg_cap" height="400"></canvas>
+                                    <canvas class="mt-5" id="avg_cap" height="400"></canvas>
                                 </div>
                                 <div class="column column-right">
-                                <canvas class="mt-5" id="group_ma" height="300"></canvas>
+                                    <canvas class="mt-5" id="group_ma" height="300"></canvas>
                                 </div>
                             </div>
                         </div>
                         <div class="">
-                            <canvas class="mt-5" id="current_cap" ></canvas>
+                            <canvas class="mt-5" id="current_cap"></canvas>
                         </div>
                     </div>
 
@@ -582,8 +594,9 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
 <script>
     var isCall = false;
     $(document).ready(function () {
-        var ctx = document.getElementById('pieChart').getContext('2d');
 
+
+        var ctx = document.getElementById('pieChart').getContext('2d');
         var myPieChart = new Chart(ctx, {
             type: 'pie', // Kiểu biểu đồ là 'pie' (tròn)
             data: {
@@ -889,10 +902,11 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
             },
             plugins: [ChartDataLabels]
         });
+
     });
     $(document).on('click', '#overview-tab', function () {
-        if(isCall == true) return;
-        var index_up =0;
+        if (isCall == true) return;
+        var index_up = 0;
         var index_down = 0;
         const endColorDown = "rgb(255, 0, 0)"; // Red
         const startColorDown = "rgb(255, 255, 0)"; // Yellow
@@ -900,14 +914,29 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
         const rangeDown = generateGradient(startColorDown, endColorDown, steps);
         const startColorUp = "rgb(5, 100, 40)"; // Red
         const endColorUp = "rgb(8, 190, 75)"; // Yellow
-
+        var barCurentMonthGroup = null;
         const rangeUp = generateGradient(startColorUp, endColorUp, steps);
+        function showChart(index) {
+            // Ẩn tất cả các datasets
+            barCurentMonthGroup.data.datasets.forEach((dataset, i) => {
+                dataset.hidden = true;
+            });
+
+            // Hiển thị dataset theo index
+            barCurentMonthGroup.data.datasets[index].hidden = false;
+
+            // Cập nhật biểu đồ
+            barCurentMonthGroup.update();
+        }
+
+        // Mặc định hiển thị biểu đồ đầu tiên
+
         var url = '/api/get-market-greenstock';
         $.ajax({
             url: url,
             type: 'GET',
             success: function (data) {
-                isCall =true;
+                isCall = true;
                 var result = data.data;
                 var market_cap = $('#market_cap').DataTable({
                     searching: false,
@@ -1012,16 +1041,33 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                 barCurentMonthGroup = new Chart(current_monthctx, {
                     type: 'bar',
                     barPercentage: 0.5,
-                    barThickness:20,
+                    barThickness: 20,
                     categoryPercentage: 0.5,
                     data: {
                         labels: result.chart_group_data.current_month.labels,
                         datasets: [{
-                            label: '',
+                            label: 'Curent Month',
                             data: result.chart_group_data.current_month.values,
                             backgroundColor: '#34a853',
                             fontweight: 600,
                             barThickness: 5,
+                            hidden: false // Hiển thị mặc định
+                        },
+                        {
+                            label: 'Curent Year',
+                            data: result.chart_group_data.current_year.values,
+                            backgroundColor: '#34a853',
+                            fontweight: 600,
+                            barThickness: 5,
+                            hidden: true // Hiển thị mặc định
+                        },
+                        {
+                            label: 'Curent Quarter',
+                            data: result.chart_group_data.quarter.values,
+                            backgroundColor: '#34a853',
+                            fontweight: 600,
+                            barThickness: 5,
+                            hidden: true // Hiển thị mặc định
                         }]
                     },
                     options: {
@@ -1029,9 +1075,11 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                         responsive: true, // Cho phép tùy chỉnh tỷ lệ
                         maintainAspectRatio: true, // Cho phép tùy chỉnh tỷ lệ
                         lenged: {
-                            display: true
+                            display: true,
+
                         },
                         plugins: {
+
                             datalabels: {
                                 display: true, // Hiển thị giá trị
                                 anchor: function (context) {
@@ -1050,7 +1098,15 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                                         color: 'green'
                                     }
                                 }
+                            },
+                            legend: {
+                            onClick: (e, legendItem, legend) => {
+                                // Xử lý sự kiện khi nhấp vào nhãn trong legend
+                                const datasetIndex = legendItem.datasetIndex;
+                                showChart(datasetIndex);
+
                             }
+                            },
                         },
                         scales: {
                             y: {
@@ -1062,11 +1118,35 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                                     }
                                 }
                             }
+                        },
+                        onClick: function (evt) {
+                            let activePoints = barCurentMonthGroup.getElementsAtEventForMode(evt, 'nearest', { intersect: true }, true);
+                            if (activePoints.length > 0) {
+                                let clickedDatasetIndex = activePoints[0].datasetIndex;
+                                let clickedElementIndex = activePoints[0].index;
+                                let label = barCurentMonthGroup.data.labels[clickedElementIndex];
+                                let value = barCurentMonthGroup.data.datasets[clickedDatasetIndex].data[clickedElementIndex];
+
+                                // Gọi AJAX khi click vào phần tử
+                                $.ajax({
+                                    url: '/api/get-top-stock',
+                                    method: 'GET',
+                                    type: 'GET',
+                                    data: {
+                                        label: label
+                                    },
+                                    success: function (response) {
+                                        data = response.data;
+                                        top_stock.clear().rows.add(data).draw();
+                                    }
+                                })
+
+                            }
                         }
                     },
                     plugins: [ChartDataLabels]
                 });
-
+                showChart(0);
                 var top_stock = $('#top_stock').DataTable({
                     searching: false,
                     lengthChange: false, //
@@ -1330,7 +1410,7 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                                 label: result.current_cap.groupNames[index],
                                 data: item,
                                 fill: true,
-                                borderWidth:0,
+                                borderWidth: 0,
                                 pointRadius: 0,        // Loại bỏ các điểm trên đường
                                 pointHoverRadius: 0,   // Loại bỏ các điểm khi hover
                             };
@@ -1338,36 +1418,37 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                     },
                     options: {
                         responsive: true,
-            scales: {
-                y: {
-                    type: 'linear',
-                    position: 'left',
-                    stacked: true,
-                    min: 0,
-                    max:100,
-                    beginAtZero: true
-                }
+                        scales: {
+                            y: {
+                                type: 'linear',
+                                position: 'left',
+                                stacked: true,
+                                min: 0,
+                                max: 100,
+                                beginAtZero: true
+                            }
 
-            },
-            plugins: {
-                legend: {
-                    display: true,
-                    position: 'right',
-                },
-                tooltip: {
-                    callbacks: {
-                        label: function(tooltipItem) {
-                            return `${tooltipItem.dataset.label}: ${tooltipItem.raw}`;
+                        },
+                        plugins: {
+                            legend: {
+                                display: true,
+                                position: 'right',
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    label: function (tooltipItem) {
+                                        return `${tooltipItem.dataset.label}: ${tooltipItem.raw}`;
+                                    }
+                                }
+                            }
                         }
-                    }
-                }
-            }
                     }
                 });
             }
         });
     });
-//     // current_cap
+
+    //     // current_cap
     function calculateFontSize() {
         const screenWidth = window.innerWidth;
 
@@ -1377,7 +1458,7 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
         return 12;
     }
     function generateGradient(startColor, endColor, steps) {
-    // Parse the RGB values from the start and end colors
+        // Parse the RGB values from the start and end colors
         const startRGB = startColor.match(/\d+/g).map(Number);
         const endRGB = endColor.match(/\d+/g).map(Number);
 

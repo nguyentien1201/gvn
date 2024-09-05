@@ -238,4 +238,19 @@ class HomeController
             'data' => $marketOverview,
         ];
     }
+    public function getTopStock(){
+        $request = Request::all();
+        $labels = $request['label'] ?? '';
+        if(empty($labels)){
+            return [
+                'status' => 200,
+                'data' => []
+            ];
+        }
+        $top_stock = (new GreenStockNas100())->getTopStockByGroup($labels);
+        return [
+            'status' => 200,
+            'data' => $top_stock
+        ];
+    }
 }

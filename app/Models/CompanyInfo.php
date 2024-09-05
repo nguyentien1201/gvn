@@ -11,7 +11,7 @@ class CompanyInfo extends Model
     protected $googleDriveService;
     public $table = 'company_info';
     protected $fillable = [
-        'code','company_name', 'created_at','updated_at','deleted_at'
+        'code','company_name','industry', 'created_at','updated_at','deleted_at'
     ];
 
 }

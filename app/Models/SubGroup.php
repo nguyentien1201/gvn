@@ -38,7 +38,6 @@ class SubGroup extends Model
     {
         $data = $this->whereNotNull('avg_cap')->orderBy('group_name', 'asc')->select('group_name', 'current_year','current_month','quarter','avg_cap')->get()->toArray();
         $current_month = $data;
-
         usort($current_month, function($a, $b) {
             return $b['current_month'] <=> $a['current_month'];
         });
@@ -48,6 +47,29 @@ class SubGroup extends Model
             $current_month_labels[] = $item['group_name'];
             $current_month_values[] = $item['current_month'];
         }
+
+        $current_year = $data;
+        usort($current_year, function($a, $b) {
+            return $b['current_year'] <=> $a['current_year'];
+        });
+        $current_year_labels = [];
+        $current_year_values = [];
+        foreach ($current_year as $item) {
+            $current_year_labels[] = $item['group_name'];
+            $current_year_values[] = $item['current_year'];
+        }
+
+        $quarter = $data;
+        usort($quarter, function($a, $b) {
+            return $b['quarter'] <=> $a['quarter'];
+        });
+        $quarter_labels = [];
+        $quarter_values = [];
+        foreach ($quarter as $item) {
+            $quarter_labels[] = $item['group_name'];
+            $quarter_values[] = $item['quarter'];
+        }
+
         $avg_cap = $data;
         usort($avg_cap, function($a, $b) {
             return $b['avg_cap'] <=> $a['avg_cap'];
@@ -63,6 +85,16 @@ class SubGroup extends Model
             'current_month' => [
                 'labels' => $current_month_labels,
                 'values' => $current_month_values
+
+            ],
+            'current_year' => [
+                'labels' => $current_year_labels,
+                'values' => $current_year_values
+
+            ],
+            'quarter' => [
+                'labels' => $quarter_labels,
+                'values' => $quarter_values
 
             ],
             'avg_cap' => [

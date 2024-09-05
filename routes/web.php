@@ -25,6 +25,7 @@ Route::group(['prefix' => '', 'as' => 'front.', 'namespace' => 'Front'], functio
     Route::get('api/get-history-alpha/{id}', 'HomeController@getHistoryAlphaSignal')->name('api.history-signal-alpha');
     Route::get('/greenstock-nas100', 'HomeController@greenStock')->name('home.green-stock');
     Route::get('api/get-market-greenstock', 'HomeController@getMarketGreenStock')->name('api.market-greenstock');
+    Route::get('api/get-top-stock', 'HomeController@getTopStock')->name('api.top-stock');
 });
 
 Auth::routes(['register' => true]);
