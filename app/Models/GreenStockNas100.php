@@ -231,7 +231,7 @@ class GreenStockNas100 extends Model
     }
     public function getTopStock()
     {
-        return $this->orderBy('rating', 'asc')->limit(5)->get();
+        return $this->orderBy('profit', 'desc')->limit(5)->get();
     }
     public function getGroupSignal()
     {

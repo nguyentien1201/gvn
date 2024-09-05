@@ -1053,14 +1053,7 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                             minBarLength: 5,
                             hidden: false // Hiển thị mặc định
                         },
-                        {
-                            label: 'Curent Year',
-                            data: result.chart_group_data.current_year.values,
-                            backgroundColor: '#34a853',
-                            fontweight: 600,
-                            minBarLength: 5,
-                            hidden: true // Hiển thị mặc định
-                        },
+
                         {
                             label: 'Curent Quarter',
                             data: result.chart_group_data.quarter.values,
@@ -1068,7 +1061,15 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                             fontweight: 600,
                             minBarLength: 5,
                             hidden: true // Hiển thị mặc định
-                        }]
+                        },
+                        {
+                            label: 'Curent Year',
+                            data: result.chart_group_data.current_year.values,
+                            backgroundColor: '#34a853',
+                            fontweight: 600,
+                            minBarLength: 5,
+                            hidden: true // Hiển thị mặc định
+                        },]
                     },
                     options: {
                         indexAxis: 'y', // Chuyển sang biểu đồ cột ngang
@@ -1123,9 +1124,9 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                                 ticks: {
                                     display: false,
                                 },
-                                        // Điều chỉnh khoảng cách giữa các cột
-                                barPercentage: 1.5, // Chiều rộng cột so với đơn vị category (1 là đầy đủ, 0 là nhỏ nhất)
-                                categoryPercentage: 1.5, // Chiều rộng category so với tổng chiều rộng trục x
+                                grid: {
+                                        display: false // Ẩn lưới dọc
+                                    }
                                     }
                         },
                         onHover: (event, chartElement) => {
