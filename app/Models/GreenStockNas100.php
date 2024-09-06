@@ -231,7 +231,14 @@ class GreenStockNas100 extends Model
     }
     public function getTopStock()
     {
-        return $this->orderBy('profit', 'desc')->limit(5)->get();
+        $data =  $this->orderBy('profit', 'desc')->limit(5)->get();
+        $data = $data->map(function ($item) {
+            if ($item->companyInfo) {
+                $item['company_name'] = $item->companyInfo->company_name;
+            }
+            return $item;
+        });
+        return $data;
     }
     public function getGroupSignal()
     {
@@ -242,7 +249,14 @@ class GreenStockNas100 extends Model
     public function getTopStockByGroup($group)
     {
         $listStock =  CompanyInfo::where('industry', $group)->get()->pluck('code')->toArray();
-        return $this->whereIn('code', $listStock)->orderBy('point', 'desc')->limit(5)->get();
+        $data =  $this->whereIn('code', $listStock)->orderBy('point', 'desc')->limit(5)->get();
+        $data = $data->map(function ($item) {
+            if ($item->companyInfo) {
+                $item['company_name'] = $item->companyInfo->company_name;
+            }
+            return $item;
+        });
+        return $data;
     }
 
 

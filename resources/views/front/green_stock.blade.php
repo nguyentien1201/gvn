@@ -528,7 +528,7 @@
                             </div>
                             <div class="main">
                                 <div class="chart-container">
-                                    <canvas id="current_month" ></canvas>
+                                    <canvas id="current_month"></canvas>
                                 </div>
 
                             </div>
@@ -1081,16 +1081,16 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                         },
                         plugins: {
                             tooltip: {
-                                    enabled: true,  // Bật tooltip
-                                    position: 'nearest', // Vị trí mặc định là gần nhất
-                                    yAlign: 'bottom',  // Vị trí tooltip phía dưới
-                                    xAlign: 'center',  // Vị trí trung tâm theo trục x
-                                    callbacks: {
-                                        label: function(tooltipItem) {
-                                            return `Giá trị: ${tooltipItem.raw}`;
-                                        }
+                                enabled: true,  // Bật tooltip
+                                position: 'nearest', // Vị trí mặc định là gần nhất
+                                yAlign: 'bottom',  // Vị trí tooltip phía dưới
+                                xAlign: 'center',  // Vị trí trung tâm theo trục x
+                                callbacks: {
+                                    label: function (tooltipItem) {
+                                        return `Giá trị: ${tooltipItem.raw}`;
                                     }
-                                },
+                                }
+                            },
                             datalabels: {
                                 display: true, // Hiển thị giá trị
                                 anchor: function (context) {
@@ -1111,12 +1111,12 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                                 }
                             },
                             legend: {
-                            onClick: (e, legendItem, legend) => {
-                                // Xử lý sự kiện khi nhấp vào nhãn trong legend
-                                const datasetIndex = legendItem.datasetIndex;
-                                showChart(datasetIndex);
+                                onClick: (e, legendItem, legend) => {
+                                    // Xử lý sự kiện khi nhấp vào nhãn trong legend
+                                    const datasetIndex = legendItem.datasetIndex;
+                                    showChart(datasetIndex);
 
-                            }
+                                }
                             },
                         },
                         scales: {
@@ -1125,9 +1125,9 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                                     display: false,
                                 },
                                 grid: {
-                                        display: false // Ẩn lưới dọc
-                                    }
-                                    }
+                                    display: false // Ẩn lưới dọc
+                                }
+                            }
                         },
                         onHover: (event, chartElement) => {
                             const targetCanvas = event.native.target;
@@ -1157,7 +1157,154 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                                     },
                                     success: function (response) {
                                         data = response.data;
-                                        top_stock.clear().rows.add(data).draw();
+                                        if ($.fn.dataTable.isDataTable('#top_stock')) {
+                                            $('#top_stock').DataTable().destroy();
+                                        }
+                                        top_stock = $('#top_stock').DataTable({
+                                            searching: false,
+                                            lengthChange: false, //
+                                            responsive: true,
+                                            paging: false,
+                                            autoWidth: true,
+                                            info: false,
+                                            order: [[0, 'asc']],
+                                            data: data,
+                                            columns: [
+                                                { data: 'rating', title: 'RATING' },  // Apply bold formatting to the "PriceTrend" column data},
+                                                { data: 'code', title: 'CHỨNG KHOÁN' },
+                                                { data: 'point', title: 'RATING POINT' },
+                                                { data: 'trending', title: 'XU HƯỚNG' },
+                                                { data: 'signal', title: 'HÀNH ĐỘNG' },
+                                                { data: 'profit', title: 'PROFIT' },
+                                                { data: 'price', title: 'PRICE' },
+                                                { data: 'time', title: 'THỜI GIAN' },
+                                            ],
+                                            columnDefs: [
+                                                {
+                                                    targets: 0, // Index of the date column
+                                                    createdCell: function (td, cellData, rowData, row, col) {
+                                                        color = '';
+                                                        bold = '';
+                                                        if (cellData <= 30) {
+                                                            color = '#7eb18f';
+                                                            bold = 'bold';
+                                                        }
+                                                        $(td).css('color', color);
+                                                        $(td).css('font-weight', bold);
+                                                    },
+                                                },
+                                                {
+                                                    targets: 1, // Index of the date column
+                                                    createdCell: function (td, cellData, rowData, row, col) {
+                                                        $(td).css('font-weight', 'bold');
+                                                        console.log(rowData);
+                                                        var company = rowData.company_name;
+
+                                                        $(td).hover(
+                                                            function () {
+                                                                $(this).addClass('row-hover');
+                                                                // Show custom tooltip
+                                                                $('<div class="custom-tooltip">' + company + '</div>').appendTo('body').fadeIn('slow');
+                                                            },
+                                                            function () {
+                                                                $(this).removeClass('row-hover');
+                                                                $('.custom-tooltip').remove();
+                                                            }
+                                                        ).mousemove(function (e) {
+                                                            $('.custom-tooltip').css({
+                                                                top: e.pageY + 15 + 'px',
+                                                                left: e.pageX + 20 + 'px'
+                                                            });
+                                                        });
+                                                    },
+                                                    render: function (data, type, full, meta) {
+                                                        if (data == 'fas fa-lock') {
+                                                            return '<i style="color:green" class="fas fa-lock"></i>';
+                                                        }
+
+                                                        return data; //
+
+                                                    }
+                                                },
+                                                {
+                                                    targets: 3, // Index of the date column
+                                                    createdCell: function (td, cellData, rowData, row, col) {
+                                                        trending = '';
+                                                        color = '';
+                                                        if (rowData.trending != null) {
+                                                            trending = rowData.trending.trim().toLowerCase();
+                                                        }
+                                                        if (trending == 'breaking high price') {
+                                                            color = '#917dc4';
+                                                        } else if (trending == 'build up') {
+                                                            color = '#fde69c';
+                                                        } else if (trending == 'go up') {
+                                                            color = '#badfcd';
+                                                        } else if (trending == 'bottom fishing') {
+                                                            color = '#03feff'
+                                                        } else if (trending == 'go down') {
+                                                            color = '#e99a97';
+                                                        } else if (trending == 'recovery') {
+                                                            color = '#fe9a3c';
+                                                        } else if (trending == 'breaking low price') {
+                                                            color = '#cc0611';
+                                                        }
+                                                        $(td).css('background-color', color);
+                                                        $(td).css('box-shadow', 'none');
+                                                    }
+                                                },
+                                                {
+                                                    targets: 4, // Index of the date column
+                                                    createdCell: function (td, cellData, rowData, row, col) {
+                                                        signal = '';
+                                                        color = '';
+                                                        if (cellData != null) {
+                                                            signal = cellData.trim().toLowerCase();
+                                                        }
+                                                        if (signal == 'buy') {
+                                                            color = '#66a74c';
+                                                        } else if (signal == 'hold') {
+                                                            color = '#93c480';
+                                                        } else if (signal == 'cash') {
+                                                            color = '#fee49d';
+                                                        } else if (signal == 'sell') {
+                                                            color = '#ffffff'
+                                                        }
+                                                        $(td).css('background-color', color);
+                                                        $(td).css('box-shadow', 'none');
+                                                    }
+                                                },
+                                                {
+                                                    targets: 5, // Index of the date column
+                                                    createdCell: function (td, cellData, rowData, row, col) {
+                                                        color = '';
+                                                        if (cellData > 0) {
+                                                            color = '#b8dfcd';
+                                                        } else if (cellData < 0) {
+                                                            color = '#e37b71';
+                                                        }
+                                                        $(td).css('background-color', color);
+                                                        $(td).css('box-shadow', 'none');
+                                                    },
+                                                    render: function (data, type, full, meta) {
+                                                        return `${data}%`;
+                                                    }
+                                                },
+
+                                                {
+                                                    targets: 7, // Index of the open_time column
+                                                    render: function (data, type, row) {
+                                                        if (type === 'display' || type === 'filter') {
+                                                            return moment.utc(data).format('DD/MM/YYYY'); // Format as HH:mm
+                                                        }
+                                                        return data;
+                                                    }
+                                                },
+                                            ],
+
+
+                                        });
+                                        top_stock.columns.adjust().responsive.recalc();
                                     }
                                 })
 
@@ -1463,7 +1610,7 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                                 mode: 'nearest', // Hiển thị tooltip cho điểm gần nhất khi di chuột
                                 intersect: false, // Hiển thị tooltip khi di chuột qua bất cứ điểm nào trên trục x (không cần phải chạm vào điểm cụ thể)
                                 callbacks: {
-                                    label: function(tooltipItem) {
+                                    label: function (tooltipItem) {
                                         const label = tooltipItem.dataset.label || '';
                                         const value = tooltipItem.raw;
                                         return `${label}: ${value}%`;

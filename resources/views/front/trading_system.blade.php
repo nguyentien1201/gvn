@@ -259,7 +259,12 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
     <!-- Navigation Bar -->
 
     @include('front.common.header')
-    @include('front.common.header-banner')
+    <div id="heroCarousel" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active" style="background-image: url({{url('images/banner_tranding_view.jpg')}})">
+      </div>
+    </div>
+  </div>
     <!-- Features Section -->
     <section>
         <div class="container">
@@ -349,10 +354,14 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
             </div>
             <div class="row">
             <div class="col-md-6">
-            <img src="{{ asset('images/alpha_history.jpg') }}" alt="history_alpha" class="img-fluid">
-                </div>
+
+                <img src="{{ asset('images/alpha_history.jpg') }}" alt="history_alpha" class="img-fluid">
+                <h4 class="text-center mt-5">TÍCH LŨY HIỆU QUẢ DÀI HẠNG </h4>
+            </div>
                 <div class="col-md-6">
+                <h4 class="text-center mt-5"3>THEO DÕI HIỆU QUẢ TÍN HIÊU MỖI THÁNG</h4>
                     <img src="{{ asset('images/chart_profit.jpg') }}" alt="Trading System" class="img-fluid">
+
                 </div>
 
 

@@ -146,7 +146,12 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
     <!-- Navigation Bar -->
 
     @include('front.common.header')
-    @include('front.common.header-banner')
+    <div id="heroCarousel" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active" style="background-image: url({{url('images/banner_contact.jpg')}})">
+            </div>
+        </div>
+    </div>
     <!-- Features Section -->
     <section>
         <h2>Trading view</h2>
