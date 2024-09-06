@@ -1197,7 +1197,7 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                                                     targets: 1, // Index of the date column
                                                     createdCell: function (td, cellData, rowData, row, col) {
                                                         $(td).css('font-weight', 'bold');
-                                                        console.log(rowData);
+
                                                         var company = rowData.company_name;
 
                                                         $(td).hover(
