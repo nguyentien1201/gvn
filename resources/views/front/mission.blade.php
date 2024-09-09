@@ -241,6 +241,7 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
 
 .main-timeline .description {
   font-size: 16px;
+  color:#000;
   margin: 0;
 }
 
