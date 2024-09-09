@@ -17,10 +17,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
-        <script src="
-https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
-"></script>
-<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0-rc/dist/chartjs-plugin-datalabels.min.js"></script>
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
@@ -29,13 +25,12 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
+ <!-- Thêm jQuery vào -->
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Thêm Google Maps API vào -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
 
-    <script
-        src="https://cdn.datatables.net/v/bs5/dt-2.0.8/date-1.5.2/fc-5.0.1/fh-4.0.1/r-3.0.2/datatables.min.js"></script>
-            <link href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.dataTables.min.css" rel="stylesheet">
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
     <style>
         body {
             font-size: 0.9rem !important;
@@ -71,7 +66,6 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
         }
 
         .carousel-item {
-            height: 100vh;
             min-height: 300px;
             background: no-repeat center center scroll;
             background-size: cover;
@@ -139,6 +133,10 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
             /* Optional: adds shadow for better visibility */
         }
+        #map {
+            height: 500px;
+            width: 100%;
+        }
     </style>
 
 </head>
@@ -155,8 +153,28 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
         </div>
     </div>
     <!-- Features Section -->
-    <section>
-        <h2>Trading view</h2>
+    <section class="text-left mt-5">
+    <div class="container">
+        <div class="row  mt-5">
+            <h2>Liên Hệ:</h2>
+            <div class="col-md-12">
+                <p style="font-size:larger"> <i><b>Gửi nhà đầu tư</b></i></p>
+                <p> <i><b>GVN Fin Trade luôn mong muốn được kết nối với Quý Nhà đầu tư và cung cấp cho Quý vị những công cụ hỗ trợ đầu tư giúp kiểm soát cảm xúc và nâng cao giá trị đầu tư nhằm mang đến những giải pháp tối ưu tiết kiệm thời gian và trí tuệ. Nếu Quý vị có bất gì thắc mắc nào, vui lòng liên hệ với chúng tôi: investment@gvn.com</b></i></p>
+            </div>
+        </div>
+        <div class="row  mt-5">
+            <div class="col-md-6">
+                    <div id="map"></div>
+            </div>
+            <div class="col-md-6" style="font-weight:bold">
+                <p style="font-size:larger"> <i>Thông tin liên hệ</i></p>
+                <p>Thành phố Hồ Chí Minh
+                Lô CD, Chung cư Bình Khánh, P. An Khánh, Quận 2</p>
+                <p>Điện thoại:  0909 889 889(Mr.Danh)</p>
+            </div>
+
+        </div>
+    </div>
     </section>
     <!-- Call to Action Section -->
 
@@ -172,3 +190,20 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
 </body>
 
 </html>
+<script>
+$(document).ready(function() {
+
+            var map = L.map('map').setView([10.7875262, 106.7387953], 15); // Tọa độ Hà Nội, Việt Nam
+
+            // Tải các lớp bản đồ từ OpenStreetMap
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+
+            // Thêm một marker
+            L.marker([10.7875262, 106.7387953]).addTo(map)
+                .bindPopup('Lô CD, Chung cư Bình Khánh')
+                .openPopup();
+        });
+
+    </script>
