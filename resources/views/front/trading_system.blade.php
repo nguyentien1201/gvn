@@ -10,7 +10,7 @@
 
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
     <!-- DataTables Responsive CSS -->
-
+    <link rel="shortcut icon" href="{{ asset('images/favicon.jpg') }}">
     <link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css') }}">
     <link rel="stylesheet" href="{{asset('plugins/font-awesome-4.7.0/css/font-awesome.min.css')}}">
 
@@ -297,40 +297,29 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                     <h2 class="text-center mt-5">PRICE TABLE TEMPLATE</h2>
                     <div class=" pricing-table mt-3">
                     <div class="pricing-card">
-                        <h3>Basic</h3>
-                        <p class="price basic">$39</p>
-                        <ul>
-                            <li><i class="fas fa-check tick"></i> Your Text Here</li>
-                            <li><i class="fas fa-check tick"></i> Sample Text Here</li>
-                            <li><i class="fas fa-times not-tick"></i> Text Here</li>
-                            <li><i class="fas fa-check tick"></i> Your Sample Text</li>
-                            <li><i class="fas fa-times not-tick"></i> Your Text Input</li>
+                        <h3>1 Tháng</h3>
+                        <p class="price basic">$0</p>
+                        <ul style="min-height:120px">
+                            <li><i class="fas fa-check tick"></i>Phiên bản dùng thử</li>
+
                         </ul>
                         <a href="#" class="btn basic">Buy Now</a>
                     </div>
 
                     <div class="pricing-card">
-                        <h3>Standard</h3>
-                        <p class="price standard">$69</p>
-                        <ul>
-                            <li><i class="fas fa-check tick"></i> Your Text Here</li>
-                            <li><i class="fas fa-check tick"></i> Sample Text Here</li>
-                            <li><i class="fas fa-check tick"></i> Text Here</li>
-                            <li><i class="fas fa-check tick"></i> Your Sample Text</li>
-                            <li><i class="fas fa-times not-tick"></i> Your Text Input</li>
+                        <h3>3 Tháng</h3>
+                        <p class="price standard">$0</p>
+                        <ul style="min-height:120px">
+                            <li><i class="fas fa-check tick"></i>Phiên bản dùng thử</li>
                         </ul>
                         <a href="#" class="btn standard">Buy Now</a>
                     </div>
 
                     <div class="pricing-card">
-                        <h3>Premium</h3>
-                        <p class="price premium">$99</p>
-                        <ul>
-                            <li><i class="fas fa-check tick"></i> Your Text Here</li>
-                            <li><i class="fas fa-check tick"></i> Sample Text Here</li>
-                            <li><i class="fas fa-check tick"></i> Text Here</li>
-                            <li><i class="fas fa-check tick"></i> Your Sample Text</li>
-                            <li><i class="fas fa-check tick"></i> Your Text Input</li>
+                        <h3>3 Tháng</h3>
+                        <p class="price premium">$0</p>
+                        <ul style="min-height:120px">
+                            <li><i class="fas fa-check tick"></i>Phiên bản dùng thử</li>
                         </ul>
                         <a href="#" class="btn premium">Buy Now</a>
                     </div>
@@ -373,40 +362,29 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                     <h2 class="text-center mt-5">PRICE TABLE TEMPLATE</h2>
                     <div class=" pricing-table mt-3">
                     <div class="pricing-card">
-                        <h3>Basic</h3>
-                        <p class="price basic">$39</p>
-                        <ul>
-                            <li><i class="fas fa-check tick"></i> Your Text Here</li>
-                            <li><i class="fas fa-check tick"></i> Sample Text Here</li>
-                            <li><i class="fas fa-times not-tick"></i> Text Here</li>
-                            <li><i class="fas fa-check tick"></i> Your Sample Text</li>
-                            <li><i class="fas fa-times not-tick"></i> Your Text Input</li>
+                        <h3>1 Tháng</h3>
+                        <p class="price basic">$0</p>
+                        <ul style="min-height:120px">
+                            <li><i class="fas fa-check tick"></i>Phiên bản dùng thử</li>
+
                         </ul>
                         <a href="#" class="btn basic">Buy Now</a>
                     </div>
 
                     <div class="pricing-card">
-                        <h3>Standard</h3>
-                        <p class="price standard">$69</p>
-                        <ul>
-                            <li><i class="fas fa-check tick"></i> Your Text Here</li>
-                            <li><i class="fas fa-check tick"></i> Sample Text Here</li>
-                            <li><i class="fas fa-check tick"></i> Text Here</li>
-                            <li><i class="fas fa-check tick"></i> Your Sample Text</li>
-                            <li><i class="fas fa-times not-tick"></i> Your Text Input</li>
+                        <h3>3 Tháng</h3>
+                        <p class="price standard">$0</p>
+                        <ul style="min-height:120px">
+                            <li><i class="fas fa-check tick"></i>Phiên bản dùng thử</li>
                         </ul>
                         <a href="#" class="btn standard">Buy Now</a>
                     </div>
 
                     <div class="pricing-card">
-                        <h3>Premium</h3>
-                        <p class="price premium">$99</p>
-                        <ul>
-                            <li><i class="fas fa-check tick"></i> Your Text Here</li>
-                            <li><i class="fas fa-check tick"></i> Sample Text Here</li>
-                            <li><i class="fas fa-check tick"></i> Text Here</li>
-                            <li><i class="fas fa-check tick"></i> Your Sample Text</li>
-                            <li><i class="fas fa-check tick"></i> Your Text Input</li>
+                        <h3>3 Tháng</h3>
+                        <p class="price premium">$0</p>
+                        <ul style="min-height:120px">
+                            <li><i class="fas fa-check tick"></i>Phiên bản dùng thử</li>
                         </ul>
                         <a href="#" class="btn premium">Buy Now</a>
                     </div>
@@ -417,7 +395,70 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
         </div>
     </section>
     <!-- Call to Action Section -->
+    <section>
+    <div class="container">
+            <div class="row">
+                <h3 class="text-center mt-5">"Thay vì cố gắng dự đoán thị trường, hãy tập trung vào việc tìm kiếm cơ hội đầu tư." - John Templeton</h3>
 
+                <div class="col-md-8 ">
+                    <img src="{{ asset('images/system_greenstock.jpg') }}" alt="Trading System" class="img-fluid">
+                </div>
+                <div class="col-md-4" style="justify-content: center;align-items: center;display: flex;">
+                    <p class="text-center mt-3">Hệ thống GreenStock-NAS100 tự động sắp xếp các cổ phiếu theo độ mạnh xung lực dòng tiền và xu hướng cổ phiếu trong rổ NAS100 hằng ngày, đưa ra hành động để nhà đầu tư theo dõi </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8">
+                    <img src="{{ asset('images/system_profit_greenstock.jpg') }}" alt="history_alpha" class="img-fluid">
+                </div>
+                <div class="col-md-4"  style="justify-content: center;align-items: center;display: flex;">
+                        <p class="text-center mt-3">
+                        Hệ thống sắp xếp các nhóm cổ phiếu có hiệu suất sinh lời trong khoảng thời gian năm, quý, tháng tốt hơn thị trườn chung
+                        </p>
+
+                </div>
+
+
+            </div>
+        </div>
+        <div class="container pb-3" style="background: #f9f9f9;">
+            <div class="row">
+                <div class="col-md-12 text-center price_block">
+                    <h2 class="text-center mt-5">PRICE TABLE TEMPLATE</h2>
+                    <div class=" pricing-table mt-3">
+                    <div class="pricing-card">
+                        <h3>1 Tháng</h3>
+                        <p class="price basic">$0</p>
+                        <ul style="min-height:120px">
+                            <li><i class="fas fa-check tick"></i>Phiên bản dùng thử</li>
+
+                        </ul>
+                        <a href="#" class="btn basic">Buy Now</a>
+                    </div>
+
+                    <div class="pricing-card">
+                        <h3>3 Tháng</h3>
+                        <p class="price standard">$0</p>
+                        <ul style="min-height:120px">
+                            <li><i class="fas fa-check tick"></i>Phiên bản dùng thử</li>
+                        </ul>
+                        <a href="#" class="btn standard">Buy Now</a>
+                    </div>
+
+                    <div class="pricing-card">
+                        <h3>3 Tháng</h3>
+                        <p class="price premium">$0</p>
+                        <ul style="min-height:120px">
+                            <li><i class="fas fa-check tick"></i>Phiên bản dùng thử</li>
+                        </ul>
+                        <a href="#" class="btn premium">Buy Now</a>
+                    </div>
+                </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
     <section class="text-center mt-5">
         @include('front.common.footer')
     </section>
