@@ -72,12 +72,7 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
             padding: 30px 0;
         }
 
-        .carousel-item {
-            height: 100vh;
-            min-height: 300px;
-            background: no-repeat center center scroll;
-            background-size: cover;
-        }
+
 
         .carousel-caption {
             background: rgba(0, 0, 0, 0.6);
@@ -120,7 +115,11 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
             background: #007bff;
             color: white;
         }
-
+        .carousel-item {
+min-height: 300px;
+background: no-repeat center center scroll;
+background-size: cover;
+}
         .footer {
             padding: 30px 0;
             background: #f1f1f1;
