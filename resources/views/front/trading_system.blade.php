@@ -42,6 +42,9 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
             font-size: 0.9rem !important;
         }
 
+        .ml-auto {
+            margin-left: auto !important;
+        }
         #navbarNav .nav-link {
             font-size: 1.1rem;
             color: #000;

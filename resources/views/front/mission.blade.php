@@ -121,7 +121,9 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
             padding: 30px 0;
             background: #f1f1f1;
         }
-
+        .ml-auto {
+            margin-left: auto !important;
+        }
         .header {
             position: relative;
             width: 100%;
