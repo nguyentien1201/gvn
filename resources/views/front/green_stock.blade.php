@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Landing Page</title>
     <!-- Bootstrap CSS -->
-
+    <link rel="shortcut icon" href="{{ asset('images/favicon.jpg') }}">
 
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
     <!-- DataTables Responsive CSS -->

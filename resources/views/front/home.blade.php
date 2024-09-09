@@ -7,7 +7,7 @@
     <title>GVN</title>
     <!-- Bootstrap CSS -->
 
-
+    <link rel="shortcut icon" href="{{ asset('images/favicon.jpg') }}">
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
     <!-- DataTables Responsive CSS -->
 
