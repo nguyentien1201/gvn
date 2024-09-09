@@ -134,10 +134,7 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
             /* Optional: adds shadow for better visibility */
         }
-        body {
-  font-family: tahoma;
-  padding: 40px 0;
-}
+
 
 .main-timeline {
   font-family: tahoma;

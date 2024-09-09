@@ -361,7 +361,7 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
         <div class="container pb-3" style="background: #f9f9f9;">
             <div class="row">
                 <div class="col-md-12 text-center price_block">
-                    <h2 class="text-center mt-5">PRICE TABLE TEMPLATE</h2>
+
                     <div class=" pricing-table mt-3">
                     <div class="pricing-card">
                         <h3>1 Tháng</h3>
@@ -374,7 +374,7 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                     </div>
 
                     <div class="pricing-card">
-                        <h3>3 Tháng</h3>
+                        <h3>6 Tháng</h3>
                         <p class="price standard">$0</p>
                         <ul style="min-height:120px">
                             <li><i class="fas fa-check tick"></i>Phiên bản dùng thử</li>
@@ -383,7 +383,7 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                     </div>
 
                     <div class="pricing-card">
-                        <h3>3 Tháng</h3>
+                        <h3>1 Năm</h3>
                         <p class="price premium">$0</p>
                         <ul style="min-height:120px">
                             <li><i class="fas fa-check tick"></i>Phiên bản dùng thử</li>
