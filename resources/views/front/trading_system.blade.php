@@ -116,10 +116,10 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
             color: white;
         }
         .carousel-item {
-min-height: 300px;
-background: no-repeat center center scroll;
-background-size: cover;
-}
+            min-height: 300px;
+            background: no-repeat center center scroll;
+            background-size: cover;
+        }
         .footer {
             padding: 30px 0;
             background: #f1f1f1;
@@ -273,7 +273,7 @@ background-size: cover;
             <div class="row">
                 <h3 class="text-center mt-5">The trend is your friend” (Xu hướng chính là bạn) - Benjamin Graham</h3>
                 <div class="col-md-6">
-                    <p class="text-center mt-3">Xác định xu hướng là kim chỉ nam trước mỗi hành động đầu tư và chiếm tới
+                    <p class="text-center mt-3 " style="font-size: larger;">Xác định xu hướng là kim chỉ nam trước mỗi hành động đầu tư và chiếm tới
                         70% khả năng chiến thắng của nhà đầu tư trên thị trường tài chính.
                         Robot Green Beta của GVN là sự kết hợp giữa việc tìm kiếm xu hướng tăng giá bằng thuật toán và
                         tự thích ứng khi xu hướng có dấu hiệu thay đổi.
@@ -288,7 +288,7 @@ background-size: cover;
             <div class="row">
 
                 <img src="{{ asset('images/history_beta.jpg') }}" alt="history_beta" class="img-fluid">
-                <h4 class="text-center mt-5">Green Beta có thể làm việc trên 20 chỉ số ở các thị trường Chứng khoán,
+                <h4 class="text-center mt-5" style="font-size: larger;">Green Beta có thể làm việc trên 20 chỉ số ở các thị trường Chứng khoán,
                     Hàng hóa và Tiền điện tử, cho nhà đầu tư một cái nhìn rõ nét hơn về xu hướng thay đổi dòng tiền của
                     cá mập trên thị trường toàn cầu.</h4>
             </div>
@@ -336,7 +336,7 @@ background-size: cover;
             <div class="row">
                 <h3 class="text-center mt-5">Bạn đúng hay sai, điều đó không quan trọng, cái chính là bạn kiếm được bao nhiêu khi đúng và mất bao nhiêu khi bạn sai." – George Soros</h3>
                 <div class="col-md-9">
-                    <p class="text-center mt-3">Bạn không thể kiểm soát thị trường, nhưng bạn có thể kiểm soát cách bạn phản ứng với nó, kiểm soát cảm xúc, kỷ luật trong đầu tư là cách tốt nhất để chiến thắng trong Trading. Một sản phẩm của GVN với các nhà đầu tư dành phần lớn thời gian hằng ngày giao dịch trên các thị trường, Robot Green Alpha phân tích xung lực của thị trường trong phiên, xác định điểm xu hướng  và cho ra các hành động giao dịch cụ thể</p>
+                    <p class="text-center mt-3 " style="font-size: larger;">Bạn không thể kiểm soát thị trường, nhưng bạn có thể kiểm soát cách bạn phản ứng với nó, kiểm soát cảm xúc, kỷ luật trong đầu tư là cách tốt nhất để chiến thắng trong Trading. Một sản phẩm của GVN với các nhà đầu tư dành phần lớn thời gian hằng ngày giao dịch trên các thị trường, Robot Green Alpha phân tích xung lực của thị trường trong phiên, xác định điểm xu hướng  và cho ra các hành động giao dịch cụ thể</p>
                 </div>
                 <div class="col-md-3">
                     <img src="{{ asset('images/signal_stock.jpg') }}" alt="Trading System" class="img-fluid">
@@ -406,7 +406,7 @@ background-size: cover;
                     <img src="{{ asset('images/system_greenstock.jpg') }}" alt="Trading System" class="img-fluid">
                 </div>
                 <div class="col-md-4" style="justify-content: center;align-items: center;display: flex;">
-                    <p class="text-center mt-3">Hệ thống GreenStock-NAS100 tự động sắp xếp các cổ phiếu theo độ mạnh xung lực dòng tiền và xu hướng cổ phiếu trong rổ NAS100 hằng ngày, đưa ra hành động để nhà đầu tư theo dõi </p>
+                    <p class="text-center mt-3 " style="font-size: larger;">Hệ thống GreenStock-NAS100 tự động sắp xếp các cổ phiếu theo độ mạnh xung lực dòng tiền và xu hướng cổ phiếu trong rổ NAS100 hằng ngày, đưa ra hành động để nhà đầu tư theo dõi </p>
                 </div>
             </div>
             <div class="row">
@@ -414,8 +414,8 @@ background-size: cover;
                     <img src="{{ asset('images/system_profit_greenstock.jpg') }}" alt="history_alpha" class="img-fluid">
                 </div>
                 <div class="col-md-4"  style="justify-content: center;align-items: center;display: flex;">
-                        <p class="text-center mt-3">
-                        Hệ thống sắp xếp các nhóm cổ phiếu có hiệu suất sinh lời trong khoảng thời gian năm, quý, tháng tốt hơn thị trườn chung
+                        <p class="text-center mt-3" style="font-size: larger;">
+                        Hệ thống sắp xếp các nhóm cổ phiếu có hiệu suất sinh lời trong khoảng thời gian năm, quý, tháng tốt hơn thị trường chung
                         </p>
 
                 </div>
