@@ -54,7 +54,9 @@
 $(document).ready(function() {
     // Hero Carousel
     $('#heroCarousel').carousel({
-        interval: 8000
+        interval: 8000,
+        ride: 'carousel', // Ensure it auto-plays
+        pause: 'false'    // Prevent pausing on hover
     });
 });
 </script>
