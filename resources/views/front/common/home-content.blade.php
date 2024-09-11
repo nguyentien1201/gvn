@@ -211,7 +211,7 @@
     $(document).ready(function () {
 
         var swiper = new Swiper('.swiper-container', {
-        slidesPerView: 4,
+        slidesPerView: 1,
         spaceBetween: 10,
         loop: true,
         autoplay: {
@@ -222,6 +222,20 @@
             el: '.swiper-pagination',
             clickable: true,
         },
+        breakpoints: {
+            640: {   // When the width is >= 640px
+            slidesPerView: 2,
+            spaceBetween: 20
+            },
+            768: {   // When the width is >= 768px
+            slidesPerView: 3,
+            spaceBetween: 30
+            },
+            1024: {  // When the width is >= 1024px
+            slidesPerView: 4,
+            spaceBetween: 40
+            }
+        }
     });
         var indices = $('#indices-table').DataTable({
             searching: false,

@@ -245,6 +245,7 @@
 
                             <div class="card">
                                 <div class="card-body">
+
                                     <table class="table table-striped table-bordered" style="margin-bottom: 0px;"
                                         id="indices-table">
                                     </table>
@@ -416,7 +417,7 @@
 </body>
 
 </html>
-
+<link href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.dataTables.min.css" rel="stylesheet">
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -538,6 +539,7 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                 }]
             },
             options: {
+                responsive: true, // Make chart responsive
                 scales: {
                     x: {
                         beginAtZero: true // Ẩn nhãn và đường biểu đồ của trục x
@@ -887,7 +889,7 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                         $(td).css('text-align', 'left');
                         $(td).css('font-weight', 'bold');
                         $(td).css('padding-left', '0.5em');
-                        $(td).css('min-width', '100px');
+                        $(td).css('width', 'auto');
                         $(td).css('padding-right', '0');
                     },
                     render: function (data, type, row) {

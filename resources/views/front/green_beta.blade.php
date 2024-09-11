@@ -13,6 +13,7 @@
     <link rel="shortcut icon" href="{{ asset('images/favicon.jpg') }}">
 
     <link rel="stylesheet" href="{{asset('plugins/font-awesome-4.7.0/css/font-awesome.min.css')}}">
+    <link href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.dataTables.min.css" rel="stylesheet">
     <style>
         @font-face {
             font-family: 'UVN Gia Dinh';
@@ -495,6 +496,7 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                             }]
                         },
                         options: {
+                            responsive: true, // Make chart responsive
                             scales: {
                                 x: {
                                     beginAtZero: true // Ẩn nhãn và đường biểu đồ của trục x
