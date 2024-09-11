@@ -54,7 +54,7 @@
 $(document).ready(function() {
     // Hero Carousel
     $('#heroCarousel').carousel({
-        interval: 2000
+        interval: 8000
     });
 });
 </script>
