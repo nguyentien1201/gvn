@@ -983,7 +983,7 @@
 <section class="features text-left  mt-5">
     <div class="container">
         <div class="row">
-            <div class="col-12">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12">
                 <h2 class="text-left mb-4"><span class="title-trading-first label-color bold">Giao dịch với</span>
                     <span class="title-trading-second  color-home">GREEN BETA 1.3.3</span>
                 </h2>
@@ -1023,7 +1023,7 @@
 <section class="features text-left  mt-5">
     <div class="container">
         <div class="row">
-            <div class="col-12">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12">
                 <h2 class="text-left mb-4 color-home label-color">Top tín hiệu phiên trước đó</h2>
                 <div class="swiper-container">
                     <div class="swiper-wrapper">
@@ -1064,7 +1064,7 @@
 <section class="features text-left  mt-5">
     <div class="container">
         <div class="row">
-            <div class="col-12">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12">
                 <h2 class="text-left mb-4"><span class="title-trading-first label-color">Giao dịch với</span>
                     <span class="title-trading-second color-home label-color">GREEN ALPHA 10.0.1</span>
                 </h2>
@@ -1109,7 +1109,7 @@
 <section class="features text-left mt-5">
     <div class="container">
         <div class="row">
-            <div class="col-12">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12">
                 <h2 class="text-left mb-4"><span class="title-trading-first label-color color-home">Top StockRating by GVN</span>
                 </h2>
             <!-- Data and Chart Section -->
@@ -1133,7 +1133,7 @@
 <section class="features text-left mt-5">
     <div class="container">
         <div class="row">
-            <div class="col-12">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12">
 
                 <h2 class="text-left mb-4"><span class="title-trading-first label-color">Giao dịch với</span>
                     <span class="title-trading-second color-home label-color">GREENSTOCK-NAS100</span>
@@ -1142,7 +1142,7 @@
             <div class="card">
                 <div class="card-body">
                     <div class="row">
-                    <div class="col-md-8">
+                    <div class="col-12 col-sm-10 col-md-8 col-lg-6">
                     <div class="card mb-4">
                                 <div class=" text-left">
                                     <p class="font-face">
@@ -1151,7 +1151,7 @@
                                 </div>
                             </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-4 col-12 col-sm-10 col-lg-6">
                     <img class="img-fluid" src="{{asset('images/bull_bear.jpg')}}" />
                     </div>
                     </div>
@@ -1160,9 +1160,8 @@
                         <div class="col-md-6">
                         <div class="sidebar sidebar_1" style="text-align:center">
                                 <div class="mb-4 center_flex">
-
-                                    <canvas id="maChart" width="400" height="350"></canvas>
-                                    <canvas class="mt-3" id="pieChart" width="400"></canvas>
+                                    <canvas id="maChart"  height="300"></canvas>
+                                    <canvas class="mt-3" id="pieChart" height="300"></canvas>
                                 </div>
                             </div>
 
