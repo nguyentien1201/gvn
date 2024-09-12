@@ -206,9 +206,7 @@ class GreenStockNas100 extends Model
                 }
 
             } catch (\Exception $e) {
-                \Log::error($e->getMessage());
-                \Log::error($e->getLine());
-                continue;
+                return redirect()->route('admin.nas100.index')->with('error', __('panel.error'));
             }
         }
         return redirect()->route('admin.nas100.index')->with('success', __('panel.success'));
