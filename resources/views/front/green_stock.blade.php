@@ -306,6 +306,7 @@
             }
 
             .sidebar {
+                width: 100%;
                 padding-bottom: 2rem;
                 max-width: inherit;
                 order: 1;
@@ -420,7 +421,7 @@
             <h5 class="color-home" style="text-align:right">
                 <i>{{ (new DateTime('now', new DateTimeZone('GMT')))->format('Y-m-d H:i:s') }} GMT</i>
             </h5>
-            <div class="col-md-12">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12">
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item">
                         <a style="font-weight:bold; font-size:1.2em" class="nav-link active" id="rating-tab"
@@ -441,12 +442,12 @@
                             <div class="sidebar sidebar_1">
                                 <img src="{{url('images/bull_bear.jpg')}}" alt="Stock Rating" style="width:80%">
                                 <div class="mb-4 center_flex">
-                                    <canvas id="pieChart" width="400"></canvas>
-                                    <canvas class="mt-5" id="maChart" width="450" height="350"></canvas>
+                                    <canvas id="pieChart" width="350"></canvas>
+                                    <canvas class="mt-5" id="maChart" width="350" height="350"></canvas>
                                 </div>
                             </div>
 
-                            <div class="main">
+                            <div class="main col-12 col-sm-12 col-md-12 col-lg-12">
                                 <table class="table table-striped table-bordered" style="margin-bottom: 0px;"
                                     id="indices-table">
                                 </table>
@@ -496,7 +497,7 @@
                                         @endforeach
                                     </tr>
                                 </table>
-                                <div class="col-md-12 text-center mt-5">
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center mt-5">
                                     <h5 style="text-align:center;padding:10px" class="color-home">Best Top 10</h5>
                                     <div class="mb-3">
                                         <canvas id="groupStock" height="450"></canvas>

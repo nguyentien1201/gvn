@@ -776,7 +776,6 @@
             border-radius: 8px;
             overflow: hidden;
             position: relative;
-            padding-right: 20px;
         }
 
         /* Style for Swiper Slides */
@@ -1005,12 +1004,12 @@
                 <div class="card-body">
                     <div class="row">
                         <!-- Data Section -->
-                        <div class="col-md-4">
+                        <div class="col-md-4 col-12 col-sm-12 col-lg-12">
                             <img class="img-fluid" src="{{asset('images/robo-green-beta.png')}}"
                             alt="{{asset('images/Green-Beta.png')}}">
                         </div>
                         <!-- Chart Section -->
-                        <div class="col-md-8">
+                        <div class="col-md-8 col-12 col-sm-12 col-lg-12">
                             <canvas id="lineChart" width="400" height="230"></canvas>
                         </div>
                     </div>
@@ -1097,7 +1096,7 @@
 
                         <!-- Chart Section -->
                         <div class="col-md-12">
-                            <canvas id="myChartById" style="width:100%" width="400" height="230"></canvas>
+                            <canvas id="myChartById" style="width:100%" height="400"></canvas>
                         </div>
                     </div>
                 </div>

@@ -232,7 +232,7 @@
         <div class="container">
 
             <div class="row">
-                <div class="col-md-12">
+                <div class="ol-12 col-sm-12 col-md-12 col-lg-12">
                     <h2 class="text-center mb-4"><span class="title-trading-first label-color color-home">SIGNAL
                             DASHBOARD</span>
                     </h2>
@@ -241,7 +241,7 @@
                         <i>{{ (new DateTime('now', new DateTimeZone('GMT')))->format('Y-m-d H:i:s') }} GMT</i></h5>
                     <div class="row">
                         <!-- Chart Section -->
-                        <div class="col-md-12 text-center form-group">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center form-group">
 
                             <div class="card">
                                 <div class="card-body">
@@ -313,12 +313,12 @@
                         <div class="card-body">
                             <div class="row">
                                 <!-- Chart Section -->
-                                <div class="col-md-12 text-center m-auto">
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center m-auto">
                                     <canvas id="myChart" style="width:100%" width="400" height="230"></canvas>
                                 </div>
                             </div>
                             <!-- <div class="row">
-                                <div class="col-md-12 text-center m-auto">
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center m-auto">
                                     <div class="table-responsive">
                                         <table class="table table-striped table-bordered" id="chart_table">
                                             <tr>
@@ -357,7 +357,7 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-md-12 text-center m-auto">
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center m-auto">
                                     <canvas id="myChartById" style="width:100%" width="400" height="230"></canvas>
                                 </div>
                             </div>

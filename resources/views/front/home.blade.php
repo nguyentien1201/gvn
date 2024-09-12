@@ -33,10 +33,25 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
     <style>
-        body {
-            font-size: 0.9rem !important;
-        }
+        html {
+  font-size: 100%; /* 16px by default (100% of the browser default size) */
+}
 
+body {
+  font-size: 1rem !important; /* 1rem equals the root font size (16px) */
+}
+
+@media (max-width: 768px) {
+  html {
+    font-size: 90%; /* Font size reduces to 90% of the default (14.4px) */
+  }
+}
+
+@media (max-width: 576px) {
+  html {
+    font-size: 80%; /* Font size reduces further to 80% (12.8px) */
+  }
+}
         #navbarNav .nav-link {
             font-size: 1.1rem;
             color: #000;
