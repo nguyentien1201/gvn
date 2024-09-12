@@ -1004,12 +1004,12 @@
                 <div class="card-body">
                     <div class="row">
                         <!-- Data Section -->
-                        <div class="col-md-4 col-12 col-sm-12 col-lg-12">
+                        <div class="col-md-4">
                             <img class="img-fluid" src="{{asset('images/robo-green-beta.png')}}"
                             alt="{{asset('images/Green-Beta.png')}}">
                         </div>
                         <!-- Chart Section -->
-                        <div class="col-md-8 col-12 col-sm-12 col-lg-12">
+                        <div class="col-md-8">
                             <canvas id="lineChart" width="400" height="230"></canvas>
                         </div>
                     </div>
