@@ -705,6 +705,22 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                     }
                 },
                 {
+                    targets: 3, // Index of the date column
+                    createdCell: function (td, cellData, rowData, row, col) {
+                        trending_price = cellData.trim().toLowerCase();;
+                        // b6d7a8
+                            if (trending_price == 'uptrend') {
+                                color = '#b6d7a8';
+                            } else if (trending_price == 'downtrend') {
+                                color = '#e06666';
+                            } else {
+                            color = '#ffd966';
+                        }
+                        $(td).css('background-color', color);
+                        $(td).css('box-shadow', 'none');
+                    }
+                },
+                {
                     targets: 8, // Index of the date column
                     createdCell: function (td, cellData, rowData, row, col) {
                         signal_close =''
