@@ -162,7 +162,7 @@
             width: 120px;
         }
         .table-responsive{
-            overflow-x: hidden !important;
+            overflow-x: scroll;
         }
         td {
             text-align: center;
@@ -326,7 +326,7 @@
                                 <!-- Chart Section -->
                                 <div class="col-md-6">
                                     <canvas id="lineChart" style="width:100%;max-height:480px" width="400"
-                                        height="380"></canvas>
+                                        height="440"></canvas>
                                 </div>
                             </div>
 
