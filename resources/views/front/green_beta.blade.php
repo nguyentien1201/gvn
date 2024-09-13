@@ -347,7 +347,7 @@
                             <div class="row">
                                 <!-- Chart Section -->
                                 <div class="col-md-12 text-center m-auto">
-                                    <canvas id="myChart" style="width:100%;padding-left: 5.5em;" width="400"
+                                    <canvas id="myChart" style="width:100%"
                                         height="230"></canvas>
                                 </div>
                             </div>
@@ -769,13 +769,15 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
             }]
         },
         options: {
+            responsive: true,
+            maintainAspectRatio: false, // Allows the chart to stretch vertically
             plugins: {
                 datalabels: {
                     display: true, // Hiển thị giá trị
                     anchor: 'end',
                     align: 'end',
                     formatter: function(value, context) {
-                        return value + '%';
+                        return !window.innerWidth < 768 ? "" : value + '%';
                     },
                     labels: {
                     value: {
@@ -787,28 +789,25 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                     }
                     }
                 },
-            scales: {
-                x: {
-                    ticks: {
-                        font: {
-                            weight: 'bold' // Makes x-axis labels bold
-                        }
-                    }
-                },
-                y: {
-                    beginAtZero: true,
-
-                    ticks: {
-                        callback: function(value) {
-                            console.log(value);
-                            return value + '%'; // Thêm ký hiệu % vào các giá trị trên trục y
-                        }
-                    }
-                }
-            }
+            scales: getChartOptions(),
 
         },
         plugins: [ChartDataLabels]
 
     });
+    function getChartOptions() {
+    const isMobile = window.innerWidth < 768; // Check if the screen width is below 768px
+
+    return {
+            x: {
+                ticks: {
+                    display: !isMobile, // Hide x-axis labels on mobile
+                    font: {
+                            weight: 'bold' // Makes x-axis labels bold
+                        }
+                }
+            },
+
+    };
+}
 </script>

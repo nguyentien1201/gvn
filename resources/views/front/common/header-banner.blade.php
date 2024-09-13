@@ -20,8 +20,8 @@
             <h1> Chúng tôi tạo ra các hệ thống để phục vụ nhu cầu của nhà đầu tư</h1>
             <p> Giảm thời gian theo dõi thị trường và tăng hiệu quả đầu tư của khách hàng.</p>
             <p>
-            <button class="btn btn-lg btn-dark text-white mx-2"> Tìm hiểu thêm</button>
-            <button class="btn btn-lg btn-success mx-2"> Liên hệ</button></p>
+            <a class="btn btn-lg btn-dark text-white mx-2" href="/trading-system"> Tìm hiểu thêm</a>
+            <a class="btn btn-lg btn-success mx-2" href="/contact"> Liên hệ</a></p>
           </div>
         </div>
       </div>
@@ -31,8 +31,8 @@
             <h1> Chúng tôi tạo ra các hệ thống để phục vụ nhu cầu của nhà đầu tư</h1>
             <p> Giảm thời gian theo dõi thị trường và tăng hiệu quả đầu tư của khách hàng.</p>
             <p>
-            <button class="btn btn-lg btn-dark text-white mx-2"> Tìm hiểu thêm</button>
-            <button class="btn btn-lg btn-success mx-2"> Liên hệ</button></p>
+            <a class="btn btn-lg btn-dark text-white mx-2" href="/trading-system"> Tìm hiểu thêm</a>
+            <a class="btn btn-lg btn-success mx-2" href="/contact"> Liên hệ</a></p>
           </div>
         </div>
       </div>
@@ -42,8 +42,8 @@
             <h1> Chúng tôi tạo ra các hệ thống để phục vụ nhu cầu của nhà đầu tư</h1>
             <p> Giảm thời gian theo dõi thị trường và tăng hiệu quả đầu tư của khách hàng.</p>
             <p>
-            <button class="btn btn-lg btn-dark text-white mx-2"> Tìm hiểu thêm</button>
-            <button class="btn btn-lg btn-success mx-2"> Liên hệ</button></p>
+            <a class="btn btn-lg btn-dark text-white mx-2" href="/trading-system"> Tìm hiểu thêm</a>
+            <a class="btn btn-lg btn-success mx-2" href="/contact"> Liên hệ</a></p>
           </div>
         </div>
       </div>

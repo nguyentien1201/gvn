@@ -1141,7 +1141,7 @@
             <div class="card">
                 <div class="card-body">
                     <div class="row">
-                    <div class="col-12 col-sm-10 col-md-8 col-lg-6">
+                    <div class="col-12 col-sm-12 col-md-8 col-lg-8">
                     <div class="card mb-4">
                                 <div class=" text-left">
                                     <p class="font-face">
@@ -1150,26 +1150,22 @@
                                 </div>
                             </div>
                     </div>
-                    <div class="col-md-4 col-12 col-sm-10 col-lg-6">
-                    <img class="img-fluid" src="{{asset('images/bull_bear.jpg')}}" />
+                    <div class="col-md-4 col-12 col-lg-4">
+                        <img class="img-fluid" src="{{asset('images/bull_bear.jpg')}}" />
                     </div>
                     </div>
                     <div class="row">
                         <!-- Data Section -->
-                        <div class="col-md-6">
+                        <div class="col-md-6 col-12 col-lg-6">
                         <div class="sidebar sidebar_1" style="text-align:center">
                                 <div class="mb-4 center_flex">
                                     <canvas id="maChart"  height="300"></canvas>
                                     <canvas class="mt-3" id="pieChart" height="300"></canvas>
                                 </div>
                             </div>
-
-
-
                         </div>
                         <!-- Chart Section -->
-                        <div class="col-md-6 text-center">
-
+                        <div class="col-md-6 col-12 col-lg-6 text-center">
                             <div class="mb-4">
                                 <canvas id="groupStock" height="780"></canvas>
                             </div>
@@ -1189,21 +1185,19 @@
         <div class="col-md-4">
           <div class="card">
             <div class="card-body">
-
               <h5 class="card-title color-home">  <i class="fas fa-laptop icon-Computer" style="margin-right:10px"> </i>Giải pháp tự động hóa phân tích thị trường</h5>
               <p class="card-text">Dịch vụ tự động hóa phân tích cung cấp một cái nhìn khách quan nhất về xu hướng thị trường.</p>
             </div>
           </div>
         </div>
         <div class="col-md-4">
-          <div class="card">
-            <div class="card-body">
-
-              <h5 class="card-title color-home"><i class="fas fa-chart-line" style="margin-right:10px"></i> Cung cấp các phân tích, xu hướng thị trường đến nhà đầu tư</h5>
-              <p class="card-text">Các tín hiệu Buy-Sell sẽ được hệ thống tự động gửi đến điện thoại khách hàng trong khoản thời
-              gian giao dịch thật</p>
+            <div class="card">
+                <div class="card-body">
+                <h5 class="card-title color-home"><i class="fas fa-chart-line" style="margin-right:10px"></i> Cung cấp các phân tích, xu hướng thị trường đến nhà đầu tư</h5>
+                <p class="card-text">Các tín hiệu Buy-Sell sẽ được hệ thống tự động gửi đến điện thoại khách hàng trong khoản thời
+                gian giao dịch thật</p>
+                </div>
             </div>
-          </div>
         </div>
         <div class="col-md-4">
           <div class="card">
