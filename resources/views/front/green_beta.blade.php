@@ -10,7 +10,7 @@
 
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
     <!-- DataTables Responsive CSS -->
-    <link rel="shortcut icon" href="{{ asset('images/favicon.jpg') }}">
+    <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}">
 
     <link rel="stylesheet" href="{{asset('plugins/font-awesome-4.7.0/css/font-awesome.min.css')}}">
     <link href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.dataTables.min.css" rel="stylesheet">
@@ -108,7 +108,7 @@
         }
 
         .dt-scroll-head {
-            width: 99% !important;
+            width: 100% !important;
         }
 
 
@@ -159,10 +159,10 @@
             margin-right: 10px;
         }
         .width-120{
-            width: 120px;
+            /* width: 120px; */
         }
         .table-responsive{
-            overflow-x: scroll;
+            overflow-x: scroll !important;
         }
         td {
             text-align: center;
@@ -173,11 +173,12 @@
         @media (max-width: 1268px) {
             body {
                 font-size: x-small !important   ;
-            }
-            thead th{
+            },
+            thead th , td {
                 min-width:80px !important ;
                 /* font-size: xx-small; */
                 }
+
         }
     </style>
 
@@ -318,8 +319,8 @@
                             <div class="row">
                                 <!-- Data Section -->
                                 <div class="col-md-6">
-                                    <div class="table-responsive">
-                                        <table style="width:100%" class="table table-striped table-bordered"
+                                    <div class="">
+                                        <table style="width:100%"  class="table table-striped table-bordered"
                                             id="popupDataTable"> </table>
                                     </div>
                                 </div>
@@ -438,7 +439,7 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                         responsive: true,
                         paging: false,
                         info: false,
-                        scrollX: false,
+
                         scrollY: '400px',
                         columns: [
                             { data: 'code', title: 'Symbol' },
@@ -477,7 +478,7 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                             },
                         ],
                         createdRow: function (row, data, dataIndex) {
-                            $('td', row).css('font-size', '0.95em');
+                            $('td', row).css('font-size', 'xx-small');
                         }
                     });
                     popupDataTable.columns.adjust().draw();
@@ -533,7 +534,7 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
             paging: false,
             info: false,
             scrollY: '400px',
-            scrollX: false,
+
 
             columns: [
                 { data: 'code', title: 'Symbol' },
@@ -716,7 +717,7 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                             } else {
                             color = '#ffd966';
                         }
-                        $(td).css('background-color', color);
+                        $(td).css('color', color);
                         $(td).css('box-shadow', 'none');
                     }
                 },
@@ -793,7 +794,7 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                     anchor: 'end',
                     align: 'end',
                     formatter: function(value, context) {
-                        return !window.innerWidth < 768 ? "" : value + '%';
+                        return window.innerWidth < 768 ? "" : value + '%';
                     },
                     labels: {
                     value: {
@@ -823,6 +824,16 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                         }
                 }
             },
+            y: {
+                    beginAtZero: true,
+
+                    ticks: {
+                        callback: function(value) {
+                            console.log(value);
+                            return value + '%'; // Thêm ký hiệu % vào các giá trị trên trục y
+                        }
+                    }
+                }
 
     };
 }
