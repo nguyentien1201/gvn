@@ -159,7 +159,7 @@
             margin-right: 10px;
         }
         .width-120{
-            /* width: 120px; */
+            width: 120px;
         }
         .table-responsive{
             overflow-x: scroll !important;
