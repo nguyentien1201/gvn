@@ -326,28 +326,7 @@
                                     <canvas id="myChart" style="width:100%" width="400" height="230"></canvas>
                                 </div>
                             </div>
-                            <!-- <div class="row">
-                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center m-auto">
-                                    <div class="table-responsive">
-                                        <table class="table table-striped table-bordered" id="chart_table">
-                                            <tr>
-                                                <td style="font-weight:600">Total Trade</td>
-                                                @foreach ($chart_data['total'] as $item)
-                                                    <td>{{$item}}</td>
-                                                @endforeach
-                                            </tr>
-                                            <tr>
-                                                <td style="font-weight:600">Win Ratio</td>
-                                                @foreach ($chart_data['winratio'] as $item)
-                                                    <td>{{$item}}</td>
-                                                @endforeach
-                                            </tr>
 
-                                        </table>
-                                    </div>
-
-                                </div>
-                            </div> -->
                         </div>
                     </div>
                 </div>
@@ -398,8 +377,8 @@
                                 </div>
                                 <!-- Chart Section -->
                                 <div class="col-md-6 mt-3">
-                                    <canvas id="lineChart" style="width:100%;max-height:480px" width="400"
-                                        height="440"></canvas>
+                                    <canvas id="lineChart" style="width:100%;max-height:490px" width="400"
+                                        height="450"></canvas>
                                 </div>
                             </div>
 
