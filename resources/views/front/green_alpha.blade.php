@@ -165,7 +165,16 @@
         }
 
         .table-responsive {
-            overflow-x: hidden !important;
+            overflow-x: scroll !important;
+        }
+        @media (max-width: 1268px) {
+            body {
+                font-size: x-small !important   ;
+            },
+            thead th , td {
+                /* min-width:80px !important ; */
+                /* font-size: xx-small; */
+                }
         }
     </style>
 
@@ -390,7 +399,7 @@
                                 <!-- Chart Section -->
                                 <div class="col-md-6 mt-3">
                                     <canvas id="lineChart" style="width:100%;max-height:480px" width="400"
-                                        height="380"></canvas>
+                                        height="440"></canvas>
                                 </div>
                             </div>
 
@@ -434,6 +443,7 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
 <script>
     $(document).ready(function () {
+
         let lineChart = null;
         let barChart = null;
         var data = @json($data_chart_default);
@@ -471,7 +481,7 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                 {
                     targets: 2, // Index of the open_time column
                     render: function (data, type, row) {
-                        console.log(data);
+
                         if (type === 'display' || type === 'filter') {
                             return moment.utc(data).format('YYYY-MM-DD HH:mm'); // Format as HH:mm
                         }
@@ -573,7 +583,7 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                         anchor: 'end',
                         align: 'end',
                         formatter: function (value, context) {
-                            return value + '%';
+                            return window.innerWidth < 768 ? "" : value + '%';
                         },
                         labels: {
                             value: {
@@ -769,7 +779,8 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                     $('#dataTableModal').modal('show');
                 },
                 error: function (error) {
-                    console.log(error);
+
+
                 }
             });
 
@@ -826,7 +837,7 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                     targets: 1, // Index of the date column
                     createdCell: function (td, cellData, rowData, row, col) {
                         signal = cellData.trim().toLowerCase();
-                        console.log(signal);
+
                         if (cellData == '') return false;
                         if (rowData.close_time == '' || rowData.close_time == null) {
                             color = '#ffd966';
@@ -856,7 +867,7 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                         } else if (signal_close == 'cutlossbuy' || signal_close == 'cutlosssell') {
                             color = '#e06666';
                         } else {
-                            console.log(rowData.signal_close);
+
                             color = '';
                         }
                         $(td).css('background-color', color);
@@ -911,8 +922,7 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
 
 
     });
-</script>
-<script>
+
     var ctx = document.getElementById('myChart').getContext('2d');
     var myChart = new Chart(ctx, {
         type: 'bar',
@@ -940,7 +950,7 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                     anchor: 'end',
                     align: 'end',
                     formatter: function (value, context) {
-                        return value + '%';
+                        return window.innerWidth < 768 ? "" : value + '%';
                     },
                     labels: {
                         value: {
@@ -949,25 +959,34 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                     }
                 }
             },
-            scales: {
-                x: {
-                    ticks: {
-                        font: {
-                            weight: 'bold' // Makes x-axis labels bold
-                        }
-                    }
-                },
-                y: {
-                    ticks: {
-                        font: {
-                            weight: 'bold' // Makes y-axis labels bold
-                        }
-                    }
-                }
-            }
+            scales: getChartOptions(),
 
         },
         plugins: [ChartDataLabels]
     });
+    function getChartOptions() {
+            const isMobile = window.innerWidth < 768; // Check if the screen width is below 768px
 
+            return {
+                    x: {
+                        ticks: {
+                            display: !isMobile, // Hide x-axis labels on mobile
+                            font: {
+                                    weight: 'bold' // Makes x-axis labels bold
+                                }
+                        }
+                    },
+                    y: {
+                            beginAtZero: true,
+
+                            ticks: {
+                                callback: function(value) {
+
+                                    return value + '%'; // Thêm ký hiệu % vào các giá trị trên trục y
+                                }
+                            }
+                        }
+
+            };
+        }
 </script>
