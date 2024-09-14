@@ -382,7 +382,23 @@
                     render: function(data, type, row) {
                         return  '<img src="images/logo/'+data+'.png" alt="Logo" style="max-width:2em;width:30px; margin-right:0.5em"> '+ data; // Adjust the path and style as needed
                     }
-                }
+                },
+                {
+                    targets: 3, // Index of the date column
+                    createdCell: function (td, cellData, rowData, row, col) {
+                        trending_price = cellData.trim().toLowerCase();;
+
+                            if (trending_price == 'uptrend') {
+                                color = '#b6d7a8';
+                            } else if (trending_price == 'downtrend') {
+                                color = '#e06666';
+                            } else {
+                            color = '#ffd966';
+                        }
+                        $(td).css('color', color);
+                        $(td).css('box-shadow', 'none');
+                    }
+                },
             ],
             createdRow: function (row, data, dataIndex) {
                 // Assuming 'code' is the property you want to use for data-id
@@ -1159,8 +1175,8 @@
                         <div class="col-md-6 col-12 col-lg-6">
                         <div class="sidebar sidebar_1" style="text-align:center">
                                 <div class="mb-4 center_flex">
-                                    <canvas id="maChart"  height="300"></canvas>
-                                    <canvas class="mt-3" id="pieChart" height="300"></canvas>
+                                    <canvas id="maChart"  height="350"></canvas>
+                                    <canvas class="mt-5" id="pieChart" height="300"></canvas>
                                 </div>
                             </div>
                         </div>
