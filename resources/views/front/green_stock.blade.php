@@ -296,7 +296,15 @@
 
         }
 
-
+        @media (max-width: 1268px) {
+            body {
+                font-size: x-small !important   ;
+            },
+            thead th , td {
+                /* min-width:80px !important ; */
+                /* font-size: xx-small; */
+                }
+        }
 
         /* Đảm bảo các block xếp dọc khi màn hình nhỏ hơn 768px */
         @media (max-width: 768px) {
@@ -319,7 +327,7 @@
             }
 
             .center_flex {
-                padding-bottom: 5rem;
+                /* padding-bottom: 5rem; */
             }
 
         }
@@ -392,7 +400,7 @@
 
         @media (max-width: 768px) {
             .chart-container {
-                height: 80vh;
+                /* height: 80vh; */
             }
         }
     </style>
@@ -441,7 +449,7 @@
                         <div class="container_layout">
                             <div class="sidebar sidebar_1">
                                 <img src="{{url('images/bull_bear.jpg')}}" alt="Stock Rating" style="width:80%">
-                                <div class="mb-4 center_flex">
+                                <div class=" center_flex">
                                     <canvas id="pieChart" width="350"></canvas>
                                     <canvas class="mt-5" id="maChart" width="350" height="350"></canvas>
                                 </div>
@@ -1103,7 +1111,7 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                                     return value > 0 ? 'end' : 'start'; // Nếu giá trị > 0, căn chỉnh với cuối cột, ngược lại căn chỉnh với đầu cột
                                 },
                                 formatter: function (value, context) {
-                                    return value + '%';
+                                    return window.innerWidth < 768 ? "" : value + '%';
                                 },
                                 labels: {
                                     value: {
@@ -1649,5 +1657,29 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
 
         return gradient;
     }
+    function getChartOptions() {
+            const isMobile = window.innerWidth < 768; // Check if the screen width is below 768px
 
+            return {
+                    x: {
+                        ticks: {
+                            display: !isMobile, // Hide x-axis labels on mobile
+                            font: {
+                                    weight: 'bold' // Makes x-axis labels bold
+                                }
+                        }
+                    },
+                    y: {
+                            beginAtZero: true,
+
+                            ticks: {
+                                callback: function(value) {
+
+                                    return value + '%'; // Thêm ký hiệu % vào các giá trị trên trục y
+                                }
+                            }
+                        }
+
+            };
+        }
 </script>
