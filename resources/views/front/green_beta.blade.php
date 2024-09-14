@@ -107,9 +107,9 @@
             background: #f1f1f1;
         }
 
-        .dt-scroll-head {
+        /* .dt-scroll-head {
             width: 100% !important;
-        }
+        } */
 
 
         #popupDataTable>thead {
@@ -175,10 +175,9 @@
                 font-size: x-small !important   ;
             },
             thead th , td {
-                min-width:80px !important ;
+                /* min-width:80px !important ; */
                 /* font-size: xx-small; */
                 }
-
         }
     </style>
 
@@ -252,9 +251,12 @@
 
                             <div class="card">
                                 <div class="card-body">
-                                    <table class="table table-striped table-bordered" style="margin-bottom: 0px;"
+                                    <div class="table-responsive">
+                                    <table style="width:100%" class="table table-striped table-bordered" style="margin-bottom: 0px;"
                                         id="indices-table">
                                     </table>
+                                    </div>
+
                                     <div class="row mt-4">
                                         <div class="col-md-4 text-left form-group">
                                             <ul style="padding-left:0">
