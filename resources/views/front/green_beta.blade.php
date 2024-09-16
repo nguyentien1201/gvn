@@ -263,7 +263,7 @@ updateClock(); // Chạy ngay khi load trang
 
                     </h2>
                     <!-- Data and Chart Section -->
-                    <h3 class="color-home"> <i><span id="date"></span>  <span id="time"> GMT</span> </i></h3>
+                    <h5 class="color-home"> <i><span id="date"></span>  <span id="time"> GMT</span> </i></h5>
 
                     <div class="row">
                         <!-- Chart Section -->
