@@ -246,8 +246,7 @@
                             DASHBOARD</span>
                     </h2>
                     <!-- Data and Chart Section -->
-                    <h5 class="color-home">
-                        <i>{{ (new DateTime('now', new DateTimeZone('GMT')))->format('Y-m-d H:i:s') }} GMT</i></h5>
+                    <h3 class="color-home"> <i><span id="date"></span>  <span id="time"> GMT</span> </i></h3>
                     <div class="row">
                         <!-- Chart Section -->
                         <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center form-group">
@@ -967,7 +966,26 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
 
             };
         }
+
+  function updateClock() {
+    const now = new Date();
+
+    // Lấy thời gian và ngày tháng theo múi giờ
+    const dateOptions = { timeZone: 'GMT', year: 'numeric', month: '2-digit', day: '2-digit' };
+    const timeOptions = { timeZone: 'GMT', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false };
+
+    const dateString = now.toLocaleDateString('en-GB', dateOptions);
+    const timeString = now.toLocaleTimeString('en-GB', timeOptions);
+
+    document.getElementById('date').textContent = dateString;
+    document.getElementById('time').textContent = timeString;
+}
+
+setInterval(updateClock, 1000); // Cập nhật mỗi giây
+document.getElementById('timezone').addEventListener('change', updateClock); // Cập nhật khi đổi múi giờ
+updateClock(); // Chạy ngay khi load trang
 </script>
+
 
 
  < tien> #000</tien>
