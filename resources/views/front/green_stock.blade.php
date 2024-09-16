@@ -542,7 +542,7 @@
 
                             </div>
                             <div class="sidebar center_box">
-                                <canvas class="mt-1" id="capChart" width="490" height="300"></canvas>
+                                <canvas class="mt-1" id="capChart" height="300"></canvas>
                             </div>
                         </div>
                         <div class="">

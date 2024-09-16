@@ -170,12 +170,12 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
         }
 
         .pricing-card h3 {
-            font-size: 24px;
+            font-size: large;
             color: #333;
         }
 
         .pricing-card .price {
-            font-size: 48px;
+            font-size: x-large;
             margin: 20px 0;
             padding: 10px;
             border: none;

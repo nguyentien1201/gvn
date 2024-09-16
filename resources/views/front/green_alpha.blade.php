@@ -881,6 +881,7 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                         $(td).css('padding-left', '0.5em');
                         $(td).css('width', 'auto');
                         $(td).css('padding-right', '0');
+                        $(td).css('min-width', '95px');
                     },
                     render: function (data, type, row) {
                         return '<img src="images/logo/' + data + '.png" alt="Logo" style=" height:20px; max-width:27px;width:30px;; margin-right:0.8em"> ' + data; // Adjust the path and style as needed
@@ -957,10 +958,8 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                     },
                     y: {
                             beginAtZero: true,
-
                             ticks: {
                                 callback: function(value) {
-
                                     return value + '%'; // Thêm ký hiệu % vào các giá trị trên trục y
                                 }
                             }
@@ -969,3 +968,6 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
             };
         }
 </script>
+
+
+ < tien> #000</tien>
