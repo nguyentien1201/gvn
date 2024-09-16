@@ -446,8 +446,8 @@
                 <!-- Tab panes -->
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="rating" role="tabpanel" aria-labelledby="rating-tab">
-                        <div class="container_layout">
-                            <div class="sidebar sidebar_1">
+                        <div class="container_layout col-12 col-sm-12 col-md-12 col-lg-12">
+                            <div class="sidebar sidebar_1 col-12 col-sm-12 col-md-6 col-lg-6">
                                 <img src="{{url('images/bull_bear.jpg')}}" alt="Stock Rating" style="width:80%">
                                 <div class=" center_flex">
                                     <canvas id="pieChart" width="350"></canvas>
@@ -455,12 +455,12 @@
                                 </div>
                             </div>
 
-                            <div class="main col-12 col-sm-12 col-md-12 col-lg-12">
+                            <div class="main col-12 col-sm-12 col-md-12 col-lg-6">
                                 <table class="table table-striped table-bordered" style="margin-bottom: 0px;"
                                     id="indices-table">
                                 </table>
                             </div>
-                            <div class="sidebar mt-2">
+                            <div class="sidebar mt-2 col-12 col-sm-12 col-md-6 col-lg-6">
                                 <h5 style="text-align:center;padding:10px" class="color-home">My Watchlist</h5>
                                 <table class="table table-striped table-bordered" style="margin-bottom: 0px;">
                                     <thead>
@@ -518,7 +518,7 @@
                     </div>
                     <div class="tab-pane fade" id="overview" role="tabpanel" aria-labelledby="profile-tab">
                         <div class="container_layout">
-                            <div class="sidebar sidebar_1">
+                            <div class="sidebar sidebar_1 col-12 col-sm-12 col-md-12 col-lg-6">
                                 <table style="width:100%" class="table table-striped table-bordered" id="market_cap">
                                     <thead>
                                         <tr id="code_header">
@@ -535,7 +535,7 @@
                                 </table>
 
                             </div>
-                            <div class="main">
+                            <div class="main ">
                                 <div class="chart-container">
                                     <canvas id="current_month"></canvas>
                                 </div>
