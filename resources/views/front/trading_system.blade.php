@@ -601,11 +601,11 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
     <div class="container">
             <div class="row">
                 <h3 class="text-center mt-5">Bạn đúng hay sai, điều đó không quan trọng, cái chính là bạn kiếm được bao nhiêu khi đúng và mất bao nhiêu khi bạn sai." – George Soros</h3>
-                <div class="col-md-9">
+                <div class="col-12 col-sm-12 col-md-8 col-lg-9">
                     <p class="text-center mt-3 " style="font-size: larger;">Bạn không thể kiểm soát thị trường, nhưng bạn có thể kiểm soát cách bạn phản ứng với nó, kiểm soát cảm xúc, kỷ luật trong đầu tư là cách tốt nhất để chiến thắng trong Trading. Một sản phẩm của GVN với các nhà đầu tư dành phần lớn thời gian hằng ngày giao dịch trên các thị trường, Robot Green Alpha phân tích xung lực của thị trường trong phiên, xác định điểm xu hướng  và cho ra các hành động giao dịch cụ thể</p>
                 </div>
-                <div class="col-md-3">
-                    <img src="{{ asset('images/signal_stock.jpg') }}" alt="Trading System" class="img-fluid">
+                <div class=" col-12 col-sm-12 col-md-4 col-lg-3">
+                    <img src="{{ asset('images/signal_stock.jpg') }}" width="100%" alt="Trading System" class="img-fluid">
                 </div>
 
             </div>
