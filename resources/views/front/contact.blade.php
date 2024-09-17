@@ -137,6 +137,78 @@
             height: 500px;
             width: 100%;
         }
+        .contact-info i {
+            color: #28a745; /* Đổi màu icon sang xanh lá */
+            font-size: 16px; /* Tăng kích thước icon */
+        }
+         .contact-form {
+            background-color: #ffffff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+
+            width: 100%;
+        }
+
+        .contact-form h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .contact-form label {
+            font-size: medium;
+            color: #666;
+            font-weight: bold
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .form-group {
+            display: flex;
+            margin-bottom: 15px;
+            align-items: center;
+        }
+
+        .form-group label {
+
+            font-size: medium;
+            color: #666;
+            margin-right: 1rem; /* Khoảng cách giữa label và input */
+            text-align: left;
+            font-weight: bold
+        }
+
+        .contact-form .form-group select {
+            flex: 1; /* Chiếm phần còn lại của dòng */
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .contact-form button {
+            background-color: #28a745;
+            color: white;
+            padding: 12px;
+            width: 100%;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .contact-form button:hover {
+            background-color: #218838;
+        }
+
+        .contact-form .required {
+            color: red;
+        }
     </style>
 
 </head>
@@ -162,17 +234,48 @@
                 <p> <i><b>GVN Fin Trade luôn mong muốn được kết nối với Quý Nhà đầu tư và cung cấp cho Quý vị những công cụ hỗ trợ đầu tư giúp kiểm soát cảm xúc và nâng cao giá trị đầu tư nhằm mang đến những giải pháp tối ưu tiết kiệm thời gian và trí tuệ. Nếu Quý vị có bất gì thắc mắc nào, vui lòng liên hệ với chúng tôi: investment@gvn.com</b></i></p>
             </div>
         </div>
-        <div class="row  mt-5">
-            <div class="col-md-6">
-                    <div id="map"></div>
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-7 col-lg-7">
+            <div class="contact-form">
+    <h2>Liên Hệ</h2>
+            <form action="submit_contact.php" method="POST">
+                <label for="name">Tên của bạn <span class="required">*</span></label>
+                <input type="text" id="name" name="name" placeholder="Nhập tên của bạn" required>
+
+                <label for="email">Email <span class="required">*</span></label>
+                <input type="email" id="email" name="email" placeholder="Nhập email của bạn" required>
+
+                <div class="form-group">
+                    <label for="product">Sản Phẩm</label>
+                    <select id="product" name="product">
+                        <option value="1">Chọn sản phẩm</option>
+                        <option value="2">Green Alpha</option>
+                        <option value="2">Green Beta</option>
+                        <option value="3">Green Stock</option>
+
+                    </select>
+                </div>
+
+                <label for="message">Lời nhắn <span class="required">*</span></label>
+                <textarea id="message" name="message" placeholder="Bạn cần hỗ trợ vấn đề gì ?" rows="5" required></textarea>
+
+                <button type="submit">Gửi</button>
+            </form>
+        </div>
             </div>
-            <div class="col-md-6" style="font-weight:bold">
-                <p style="font-size:larger"> <i>Thông tin liên hệ</i></p>
-                <p>Thành phố Hồ Chí Minh
+            <div class="col-12 col-sm-12 col-md-5 col-lg-5 contact-info" style="font-weight:bold">
+                <p style="font-size:larger"> <i> Thông tin liên hệ</i></p>
+                <p><i class="fas fa-map-marker-alt"></i> Thành phố Hồ Chí Minh
                 Lô CD, Chung cư Bình Khánh, P. An Khánh, Quận 2</p>
-                <p>Điện thoại:  0909 889 889(Mr.Danh)</p>
+                <p><i class="fas fa-phone"></i> Điện thoại: 0909 889 889(Mr.Danh)</p>
+                <p><i class="fas fa-envelope"></i> Email: support@gvn-fintrade.com</p>
             </div>
 
+        </div>
+        <div class="row  mt-5">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                    <div id="map"></div>
+            </div>
         </div>
     </div>
     </section>
