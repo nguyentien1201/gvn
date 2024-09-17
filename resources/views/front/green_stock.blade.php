@@ -23,7 +23,7 @@
         }
 
         body {
-            font-size: 0.9rem !important;
+            font-size: smaller !important;
         }
 
         .ml-auto {
@@ -427,7 +427,7 @@
 
     <section id="contentDiv" class="text-left">
         <div class="full-width-container">
-        <h5 class="color-home"> <i><span id="date"></span>  <span id="time"> GMT</span> </i></h5>
+        <h5 class="color-home" style="padding:15px; text-align: right;"> <i><span id="date"></span>  <span id="time"> GMT</span> </i></h5>
             <div class="col-12 col-sm-12 col-md-12 col-lg-12">
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item">
