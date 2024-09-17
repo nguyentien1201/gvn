@@ -295,6 +295,11 @@
 
 
         }
+        .center_box {
+                align-items: center;
+                justify-content: center;
+                display: flex;
+            }
 
         @media (max-width: 1268px) {
             body {
@@ -308,6 +313,9 @@
 
         /* Đảm bảo các block xếp dọc khi màn hình nhỏ hơn 768px */
         @media (max-width: 768px) {
+            #current_month {
+                height: 400px; /* 80% chiều cao của màn hình */
+            }
             .container_layout {
                 flex-direction: column;
                 /* Xếp dọc các phần tử */
@@ -333,11 +341,6 @@
         }
 
         @media (min-width: 768px) and (max-width: 1680px) {
-            .center_box {
-                align-items: center;
-                justify-content: center;
-                display: flex;
-            }
 
             .container_layout {
                 flex-direction: row;
@@ -376,9 +379,7 @@
             padding: 20px;
         }
 
-        #current_month {
-            /* height: 600px !important; */
-        }
+
 
         .column {
             flex: 1;
@@ -400,7 +401,7 @@
 
         @media (max-width: 768px) {
             .chart-container {
-                /* height: 80vh; */
+                height: 400px;
             }
         }
     </style>
@@ -535,7 +536,7 @@
                             </div>
                             <div class="main ">
                                 <div class="chart-container">
-                                    <canvas id="current_month"></canvas>
+                                    <canvas id="current_month" height="350" ></canvas>
                                 </div>
 
                             </div>
@@ -1081,7 +1082,7 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                     options: {
                         indexAxis: 'y', // Chuyển sang biểu đồ cột ngang
                         responsive: true, // Cho phép tùy chỉnh tỷ lệ
-                        maintainAspectRatio: true, // Cho phép tùy chỉnh tỷ lệ
+                        maintainAspectRatio: false, // Cho phép tùy chỉnh tỷ lệ
                         lenged: {
                             display: true,
 
