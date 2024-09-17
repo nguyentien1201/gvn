@@ -228,7 +228,6 @@
     <section class="text-left mt-5">
     <div class="container">
         <div class="row  mt-5">
-            <h2>Liên Hệ:</h2>
             <div class="col-12 col-sm-12 col-md-12 col-lg-12">
                 <p style="font-size:larger"> <i><b>Gửi nhà đầu tư</b></i></p>
                 <p> <i><b>GVN Fin Trade luôn mong muốn được kết nối với Quý Nhà đầu tư và cung cấp cho Quý vị những công cụ hỗ trợ đầu tư giúp kiểm soát cảm xúc và nâng cao giá trị đầu tư nhằm mang đến những giải pháp tối ưu tiết kiệm thời gian và trí tuệ. Nếu Quý vị có bất gì thắc mắc nào, vui lòng liên hệ với chúng tôi: investment@gvn.com</b></i></p>
@@ -237,8 +236,7 @@
         <div class="row">
             <div class="col-12 col-sm-12 col-md-7 col-lg-7">
             <div class="contact-form">
-    <h2>Liên Hệ</h2>
-            <form action="submit_contact.php" method="POST">
+            <form action="#" method="POST">
                 <label for="name">Tên của bạn <span class="required">*</span></label>
                 <input type="text" id="name" name="name" placeholder="Nhập tên của bạn" required>
 
