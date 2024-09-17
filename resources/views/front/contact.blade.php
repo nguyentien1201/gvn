@@ -230,7 +230,7 @@
         <div class="row  mt-5">
             <div class="col-12 col-sm-12 col-md-12 col-lg-12">
                 <p style="font-size:larger"> <i><b>Gửi nhà đầu tư</b></i></p>
-                <p> <i><b>GVN Fin Trade luôn mong muốn được kết nối với Quý Nhà đầu tư và cung cấp cho Quý vị những công cụ hỗ trợ đầu tư giúp kiểm soát cảm xúc và nâng cao giá trị đầu tư nhằm mang đến những giải pháp tối ưu tiết kiệm thời gian và trí tuệ. Nếu Quý vị có bất gì thắc mắc nào, vui lòng liên hệ với chúng tôi: investment@gvn.com</b></i></p>
+                <p> <i><b>GVN Fin Trade luôn mong muốn được kết nối với quý khách hàng và cung cấp cho khách hàng những công cụ hỗ trợ đầu tư tốt nhất và những giải pháp tối ưu hơn cho quý vị. Nếu quý vị có bất gì thắc mắc nào, vui lòng liên hệ với chúng tôi:</b></i></p>
             </div>
         </div>
         <div class="row">
