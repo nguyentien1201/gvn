@@ -651,7 +651,7 @@
         <div class="row">
             <div class="col-12 col-sm-12 col-md-12 col-lg-12">
                 <h2 class="text-left mb-4"><span class="title-trading-first label-color bold">Giao dịch với <span class="title-trading-second color-home">GREEN BETA 1.3.3</span></span>
-                    <a class="color-home" style="text-align:right" href="/green-beta"><i class="fas fa-chevron-right"></i><i>  Xem Thêm</i> </a>
+                    <a class="color-home" style="text-align:right" href="/trading-system"><i class="fas fa-chevron-right"></i><i>  Xem Thêm</i> </a>
                 </h2>
                 <div class="card mb-4">
                     <div class="card-body">
