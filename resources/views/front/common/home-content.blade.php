@@ -1,213 +1,7 @@
 
-<style>
-
-    @font-face {
-        font-family: 'UVN Gia Dinh';
-        src: url('/fonts/unicode.publish.UVNGiaDinh_R.ttf') format('truetype');
-        font-weight: normal;
-        font-style: normal;
-    }
-    .font-face{
-        font-size: 1.1rem !important;
-        font-family: 'UVN Gia Dinh', sans-serif;
-    }
-    .dt-scroll-head {
-       overflow: scroll !important;
-    }
-    tbody >tr:hover {
-            cursor: pointer;
-            background-color: #f5f5f5;
-            box-shadow: 0 0px 0px rgba(0, 0, 0, 0.1);
-            transform: scale(1.008);
-        }
-        tbody >tr>td {
-            padding: 0.5em 0.5em;
-            font-size: 0.9em;
-        }
-       .color-home{
-            color:#008000 !important;
-        }
-        body {
-            font-size: 0.9rem;
-        }
-
-        .ml-auto {
-            margin-left: auto !important;
-        }
-
-        #navbarNav .nav-link {
-            font-size: 1.1rem;
-            color: #000;
-            font-weight: 600;
-        }
-
-
-        .cta {
-            background-color: #007bff;
-            color: white;
-            padding: 60px 0;
-        }
-
-        .footer {
-            padding: 30px 0;
-        }
-
-        .carousel-item {
-
-            min-height: 300px;
-            background: no-repeat center center scroll;
-            background-size: cover;
-        }
-
-        .carousel-caption {
-            background: rgba(0, 0, 0, 0.6);
-            padding: 20px;
-            border-radius: 10px;
-        }
-
-        .features {
-            background: #f9f9f9;
-        }
-
-        .features .card {
-            border: none;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .features .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .features .card-body {
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .cta {
-            background: linear-gradient(45deg, #007bff, #0056b3);
-            color: white;
-            padding: 60px 0;
-        }
-
-        .cta .btn {
-            background: white;
-            color: #007bff;
-            border: none;
-            transition: background-color 0.3s, color 0.3s;
-        }
-
-        .cta .btn:hover {
-            background: #007bff;
-            color: white;
-        }
-
-        .footer {
-            padding: 30px 0;
-            background: #f1f1f1;
-        }
-
-        #popupDataTable>thead {
-            display: none;
-        }
-
-        .dataTable {
-            margin-bottom: 0 !important;
-        }
-
-        table thead {
-            background-color: #008000;
-            /* Change the background color */
-            color: white;
-            /* Change the text color */
-        }
-        .comment-div-left {
-            margin-right: 10px;
-            width: 50px;
-
-            text-align: center;
-        }
-        .comment-div-right {
-            margin-left: 10px;
-            width: 100px;
-
-            text-align: center;
-        }
-        .hold{
-            background-color :#ffd966;
-        }
-        .takeprofitbuy{
-            background-color :#b6d7a8;
-        }
-        .cutlossbuy{
-            background-color :#e06666;
-        }
-        .list-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-        .list-item button {
-            cursor: none;
-            padding: 5px 10px;
-            border: none;
-            margin-right: 10px;
-        }
-        .width-120{
-            width: 120px;
-        }
-        .table-responsive{
-            overflow-x: hidden !important;
-        }
-        td {
-            text-align: center;
-        }
-        thead th {
-            text-align: center;
-        }
-            /* Custom styles */
-
-            .custom-tooltip {
-            position: absolute;
-            background-color: #fff;
-            color: #333;
-            padding: 0.5em;
-            border-radius: 5px;
-            font-size: 1.3em;
-            display: none;
-            z-index: 1000;
-            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
-        }
-
-        .chart_column {
-            display: flex;
-            justify-content: center;
-            text-align: center;
-            width: 100px;
-            align-items: center;
-            color: white;
-            font-weight: bold;
-            padding: 5px 0 5px 0;
-        }
-        .center_flex {
-            display: inline-grid;
-            justify-content: center;
-            align-items: center;
-        }
-        @media (max-width: 1268px) {
-            body {
-                font-size: x-small !important   ;
-            }
-            thead th{
-                min-width:80px !important ;
-                /* font-size: xx-small; */
-                }
-            }
-
-</style>
 
 <script>
     $(document).ready(function () {
-
         var swiper = new Swiper('.swiper-container', {
         slidesPerView: 1,
         spaceBetween: 10,
@@ -239,13 +33,13 @@
             searching: false,
             // lengthChange: false, //
             scrollX: true, // Kích hoạt cuộn ngang
-            fixedColumns: true,
             fixedColumns: {
-                leftColumns: 1 // Cố định cột đầu tiên (Tên sản phẩm)
+                leftColumns: 3 // Cố định cột đầu tiên (Tên sản phẩm)
             },
+            autoWidth: false,
             paging: false,
             // scrollX:true,
-            autoWidth: false,
+
 
             info: false,
             data: @json($signals),
@@ -410,7 +204,7 @@
                 $(row).attr('data-id', data.id_code);
             }
         });
-        indices.columns.adjust().responsive.recalc();
+        // indices.columns.adjust().responsive.recalc();
         var ctxline = document.getElementById('lineChart').getContext('2d');
         lineChart = new Chart(ctxline, {
             type: 'line',
@@ -441,8 +235,13 @@
             searching: false,
             lengthChange: false, //
             responsive: true,
+            scrollX: true, // Kích hoạt cuộn ngang
+            fixedColumns: {
+                leftColumns: 2 // Cố định cột đầu tiên (Tên sản phẩm)
+            },
+            autoWidth: false,
             paging: false,
-            autoWidth: true,
+
             info: false,
             order: [[0, 'asc']],
             data: @json($green_data),
@@ -580,7 +379,7 @@
 
 
         });
-        green_stock.columns.adjust().responsive.recalc();
+        // green_stock.columns.adjust().responsive.recalc();
 
         var ctxbar = document.getElementById('myChartById').getContext('2d');
     var data = @json($data_chart_default);
@@ -786,220 +585,20 @@
 
 </script>
 
-<style>
-      /* Style for Swiper Container */
-      table thead {
-        width: 100% !important;
-      }
-      .swiper-container {
-            margin-bottom: 20px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            overflow: hidden;
-            position: relative;
-        }
-
-        /* Style for Swiper Slides */
-        .swiper-slide {
-            background-color: rgba(255, 255, 255, 0.9);
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            margin-right: 15px;
-            transition: transform 0.3s ease, opacity 0.3s ease;
-            opacity: 0.8;
-        }
-
-        /* Hover effect on Swiper Slides */
-        .swiper-slide:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-            opacity: 1;
-        }
-
-        /* Style for Card Title */
-        .card-title {
-            color: #007bff;
-            font-size: medium;
-        }
-        .swiper-slide .card {
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Style for Card Text */
-        .card-text {
-            color: #000;
-        }
-
-        /* Default style for Stock Signal Background */
-        .stock-signal {
-            padding: 10px;
-            border-radius: 4px;
-            margin-bottom: 10px;
-            color: #fff; /* Text color white for better contrast */
-        }
-
-        /* Background color based on stock signal */
-        .buy {
-            background-color: #28a745; /* Green background for Buy */
-        }
-
-        .sell {
-            background-color: #dc3545; /* Red background for Sell */
-        }
-
-        .hold {
-            background-color: rgb(255, 217, 102); /* Yellow background for Hold */
-            color: #000; /* Text color black for better contrast on yellow */
-        }
-
-        /* Pagination Styles */
-        .swiper-pagination {
-            bottom: 10px;
-        }
-        .swiper-pagination-bullet {
-            background-color: #007bff;
-            opacity: 0.5;
-        }
-        .swiper-pagination-bullet-active {
-            opacity: 1;
-        }
-
-        /* Navigation Buttons */
-        .swiper-button-next, .swiper-button-prev {
-            color: #007bff;
-            background-color: rgba(255, 255, 255, 0.8);
-            border-radius: 50%;
-            padding: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
-
-        .swiper-button-next:hover, .swiper-button-prev:hover {
-            color: #fff;
-            background-color: #007bff;
-        }
-
-        /* Animation for Swiper Slide Entering */
-        .swiper-slide-active {
-            animation: fadeIn 0.8s ease;
-            opacity: 1 !important;
-        }
-
-        @keyframes fadeIn {
-            0% {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        .notification {
-            background: rgba(255, 255, 255, 0.8);
-            border-radius: 12px;
-
-
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-        }
-        .notification-header {
-            display: flex;
-            justify-content: space-between;
-            width: 100%;
-            margin-bottom: 8px;
-        }
-        .app-icon {
-            width: 40px;
-            height: 40px;
-            margin-right: 8px;
-        }
-        .app-name {
-            font-weight: bold;
-            font-size: 16px;
-        }
-        .notification-time {
-            font-size: 12px;
-            color: #888;
-        }
-        .notification-body {
-            font-size: 14px;
-        }
-        .notification-body b {
-            font-weight: bold;
-        }
-
- .label-color:{
-    color:#008000 !important;
-    font-weight: bold;
- }
- .color-home{
-    color:#008000 !important;
- }
- h2 {
-            font-size: 24px;
-            color: #333;
-            position: relative;
-            padding-bottom: 10px;
-            margin-bottom: 20px;
-            border-bottom: 2px solid #ddd;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        h2 a {
-            font-size: 16px;
-            text-decoration: none;
-            color: #007bff;
-            font-weight: normal;
-            padding: 8px 15px;
-            border: 1px solid #008000;
-            border-radius: 4px;
-            transition: all 0.3s ease;
-        }
-
-        h2 a:hover {
-            color: white  !important;
-            background-color: #008000;
-        }
-
-        /* Optional: Responsive design */
-        @media (max-width: 600px) {
-            h2 {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            h2 a {
-                margin-top: 10px;
-            }
-        }
-        table.dataTable td {
-            white-space: nowrap;
-        }
-
-        /* Chỉnh sửa để phần cột cố định nhìn đẹp */
-        div.dataTables_wrapper {
-            width: 100%;
-            margin: 0 auto;
-        }
-</style>
 <section class="features text-left mt-5">
     <div class="container">
         <h2 class="text-left mb-4 label-color color-home" >Quan tâm nhiều nhất  <a class="color-home" style="text-align:right" href="/green-beta"><i class="fas fa-chevron-right"></i><i>  Xem Thêm</i> </a></h2>
         <div class="row">
         <!-- Chart Section -->
         <div class="col-md-12 text-center form-group">
-
             <div class="card">
-                <div class="card-body" style="overflow-x: auto;">
+                <div class="card-body">
+                    <div class="table-responsive">
                     <table class="table table-striped table-bordered display responsive nowrap" style="width:100%;margin-bottom: 0px;"
                         id="indices-table">
                     </table>
+                    </div>
+
                     <div class="row mt-4">
                         <div class="col-md-4 text-left form-group">
                             <ul style="padding-left:0">
@@ -1187,7 +786,7 @@
                         <!-- Data Section -->
                         <!-- Chart Section -->
                         <div class="col-md-12 text-center">
-                        <table class="table table-striped table-bordered" style="margin-bottom: 0px;" id="green-stock-table">
+                        <table class="table table-striped table-bordered display responsive nowrap" style="margin-bottom: 0px; width:100%" id="green-stock-table">
 
                         </table>
                         </div>
