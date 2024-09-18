@@ -935,11 +935,49 @@
  .color-home{
     color:#008000 !important;
  }
+ h2 {
+            font-size: 24px;
+            color: #333;
+            position: relative;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #ddd;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
+        h2 a {
+            font-size: 16px;
+            text-decoration: none;
+            color: #007bff;
+            font-weight: normal;
+            padding: 8px 15px;
+            border: 1px solid #008000;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        h2 a:hover {
+            color: white  !important;
+            background-color: #008000;
+        }
+
+        /* Optional: Responsive design */
+        @media (max-width: 600px) {
+            h2 {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            h2 a {
+                margin-top: 10px;
+            }
+        }
 </style>
 <section class="features text-left mt-5">
     <div class="container">
-        <h2 class="text-left mb-4 label-color color-home" >Quan tâm nhiều nhất</h2>
+        <h2 class="text-left mb-4 label-color color-home" >Quan tâm nhiều nhất  <a class="color-home" style="text-align:right" href="/green-beta"><i class="fas fa-chevron-right"></i><i>  Xem Thêm</i> </a></h2>
         <div class="row">
         <!-- Chart Section -->
         <div class="col-md-12 text-center form-group">
@@ -1000,8 +1038,8 @@
     <div class="container">
         <div class="row">
             <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-                <h2 class="text-left mb-4"><span class="title-trading-first label-color bold">Giao dịch với</span>
-                    <span class="title-trading-second  color-home">GREEN BETA 1.3.3</span>
+                <h2 class="text-left mb-4"><span class="title-trading-first label-color bold">Giao dịch với <span class="title-trading-second color-home">GREEN BETA 1.3.3</span></span>
+                    <a class="color-home" style="text-align:right" href="/green-beta"><i class="fas fa-chevron-right"></i><i>  Xem Thêm</i> </a>
                 </h2>
                 <div class="card mb-4">
                     <div class="card-body">
@@ -1081,8 +1119,8 @@
     <div class="container">
         <div class="row">
             <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-                <h2 class="text-left mb-4"><span class="title-trading-first label-color">Giao dịch với</span>
-                    <span class="title-trading-second color-home label-color">GREEN ALPHA 10.0.1</span>
+                <h2 class="text-left mb-4"><span class="title-trading-first label-color">Giao dịch với  <span class="title-trading-second color-home label-color">GREEN ALPHA 10.0.1</span></span>
+                    <a class="color-home" style="text-align:right" href="/green-alpha"><i class="fas fa-chevron-right"></i><i>  Xem Thêm</i> </a>
                 </h2>
 
                 <div class="card mb-4">
@@ -1127,7 +1165,8 @@
         <div class="row">
             <div class="col-12 col-sm-12 col-md-12 col-lg-12">
                 <h2 class="text-left mb-4"><span class="title-trading-first label-color color-home">Top StockRating by GVN</span>
-                </h2>
+                <a class="color-home" style="text-align:right" href="/greenstock-nas100"><i class="fas fa-chevron-right"></i><i>  Xem Thêm</i> </a>
+            </h2>
             <!-- Data and Chart Section -->
             <div class="card">
                 <div class="card-body">
