@@ -11,6 +11,9 @@
         font-size: 1.1rem !important;
         font-family: 'UVN Gia Dinh', sans-serif;
     }
+    .dt-scroll-head {
+       overflow: scroll !important;
+    }
     tbody >tr:hover {
             cursor: pointer;
             background-color: #f5f5f5;
@@ -102,11 +105,6 @@
             padding: 30px 0;
             background: #f1f1f1;
         }
-
-        .dt-scroll-head {
-            width: 99% !important;
-        }
-
 
         #popupDataTable>thead {
             display: none;
@@ -239,10 +237,16 @@
     });
         var indices = $('#indices-table').DataTable({
             searching: false,
-            lengthChange: false, //
-            responsive: true,
+            // lengthChange: false, //
+            scrollX: true, // Kích hoạt cuộn ngang
+            fixedColumns: true,
+            fixedColumns: {
+                leftColumns: 1 // Cố định cột đầu tiên (Tên sản phẩm)
+            },
             paging: false,
-            autoWidth: true,
+            // scrollX:true,
+            autoWidth: false,
+
             info: false,
             data: @json($signals),
             order: [[4, 'desc']],
@@ -974,6 +978,15 @@
                 margin-top: 10px;
             }
         }
+        table.dataTable td {
+            white-space: nowrap;
+        }
+
+        /* Chỉnh sửa để phần cột cố định nhìn đẹp */
+        div.dataTables_wrapper {
+            width: 100%;
+            margin: 0 auto;
+        }
 </style>
 <section class="features text-left mt-5">
     <div class="container">
@@ -983,8 +996,8 @@
         <div class="col-md-12 text-center form-group">
 
             <div class="card">
-                <div class="card-body">
-                    <table class="table table-striped table-bordered" style="margin-bottom: 0px;"
+                <div class="card-body" style="overflow-x: auto;">
+                    <table class="table table-striped table-bordered display responsive nowrap" style="width:100%;margin-bottom: 0px;"
                         id="indices-table">
                     </table>
                     <div class="row mt-4">
