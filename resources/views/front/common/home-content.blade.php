@@ -1200,7 +1200,7 @@
       <h2 class="color-home label-color">Dịch vụ của chúng tôi</h2>
       <div class="row">
         <div class="col-md-4">
-          <div class="card" style="width:100%">
+          <div class="card" style="height:100%">
             <div class="card-body">
               <h5 class="card-title color-home">  <i class="fas fa-laptop icon-Computer" style="margin-right:10px"> </i>Giải pháp tự động hóa phân tích thị trường</h5>
               <p class="card-text">Dịch vụ tự động hóa phân tích cung cấp một cái nhìn khách quan nhất về xu hướng thị trường.</p>
@@ -1208,7 +1208,7 @@
           </div>
         </div>
         <div class="col-md-4">
-            <div class="card" style="width:100%">
+            <div class="card" style="height:100%">
                 <div class="card-body">
                 <h5 class="card-title color-home"><i class="fas fa-chart-line" style="margin-right:10px"></i> Cung cấp các phân tích, xu hướng thị trường đến nhà đầu tư</h5>
                 <p class="card-text">Các tín hiệu Buy-Sell sẽ được hệ thống tự động gửi đến điện thoại khách hàng trong khoản thời
@@ -1217,7 +1217,7 @@
             </div>
         </div>
         <div class="col-md-4">
-          <div class="card" style="width:100%">
+          <div class="card" style="height:100%">
             <div class="card-body">
               <h5 class="card-title color-home"><i class="fas fa-briefcase" style="margin-right:10px"> </i>Tư vấn giải pháp cho nhà đầu tư hiệu quả thời gian</h5>
               <p class="card-text">Dịch vụ Giải pháp đầu tư cung cấp các giải pháp và công cụ hỗ trợ cho nhà đầu tư đạt hiệu quả
