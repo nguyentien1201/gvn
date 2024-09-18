@@ -339,7 +339,16 @@
             }
 
         }
+        @media (min-width: 1680px) {
+            .container_layout {
+                flex-direction: row;
+                /* Xếp ngang các phần tử */
+            }
+            #current_month {
+                height: 650px !important; /* 80% chiều cao của màn hình */
+            }
 
+        }
         @media (min-width: 768px) and (max-width: 1680px) {
 
             .container_layout {
@@ -347,7 +356,7 @@
                 /* Xếp ngang các phần tử */
             }
             #current_month {
-                height: 650px !important; /* 80% chiều cao của màn hình */
+                height: 700px !important; /* 80% chiều cao của màn hình */
             }
 
             .sidebar_overview_cap>.cap {
