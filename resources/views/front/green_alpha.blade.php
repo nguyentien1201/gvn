@@ -154,6 +154,7 @@
             padding: 5px 10px;
             border: none;
             margin-right: 10px;
+            color: #000;
         }
 
         .width-120 {

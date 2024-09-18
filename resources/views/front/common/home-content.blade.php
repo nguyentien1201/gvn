@@ -395,6 +395,7 @@
                             } else {
                             color = '#ffd966';
                         }
+                        $(td).css('font-weight', 'bold');
                         $(td).css('color', color);
                         $(td).css('box-shadow', 'none');
                     }
@@ -815,7 +816,7 @@
         /* Style for Card Title */
         .card-title {
             color: #007bff;
-            font-size: 1.25rem;
+            font-size: medium;
         }
         .swiper-slide .card {
             border-radius: 8px;

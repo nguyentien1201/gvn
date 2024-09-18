@@ -157,6 +157,7 @@
             padding: 5px 10px;
             border: none;
             margin-right: 10px;
+            color: #000;
         }
         .width-120{
             width: 120px;
@@ -738,6 +739,7 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                             } else {
                             color = '#ffd966';
                         }
+                        $(td).css('font-weight', 'bold');
                         $(td).css('color', color);
                         $(td).css('box-shadow', 'none');
                     }

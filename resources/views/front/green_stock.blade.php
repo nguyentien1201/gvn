@@ -346,7 +346,9 @@
                 flex-direction: row;
                 /* Xếp ngang các phần tử */
             }
-
+            #current_month {
+                height: 650px !important; /* 80% chiều cao của màn hình */
+            }
 
             .sidebar_overview_cap>.cap {
                 padding: 1rem;
