@@ -34,7 +34,7 @@
             // lengthChange: false, //
             scrollX: true, // Kích hoạt cuộn ngang
             fixedColumns: {
-                leftColumns: 3 // Cố định cột đầu tiên (Tên sản phẩm)
+                leftColumns: 2 // Cố định cột đầu tiên (Tên sản phẩm)
             },
             autoWidth: false,
             paging: false,

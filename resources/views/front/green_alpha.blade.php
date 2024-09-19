@@ -13,9 +13,7 @@
     <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}">
 
     <link rel="stylesheet" href="{{asset('plugins/font-awesome-4.7.0/css/font-awesome.min.css')}}">
-    <style>
 
-    </style>
 
 </head>
 
@@ -260,6 +258,15 @@
 
 <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0-rc/dist/chartjs-plugin-datalabels.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+<style>
+.carousel-item {
+    min-height: 300px;
+    height: 300px;
+    background: no-repeat center center scroll;
+    background-size: cover;
+}
+
+    </style>
 <script>
     $(document).ready(function () {
 
@@ -841,6 +848,3 @@ updateClock(); // Chạy ngay khi load trang
 
 </script>
 
-
-
- < tien> #000</tien>

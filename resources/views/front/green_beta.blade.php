@@ -31,7 +31,12 @@
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0-rc/dist/chartjs-plugin-datalabels.min.js"></script>
 
     <style>
-
+.carousel-item {
+    min-height: 300px;
+    height: 300px;
+    background: no-repeat center center scroll;
+    background-size: cover;
+}
 
     </style>
 
