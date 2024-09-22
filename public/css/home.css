@@ -157,7 +157,7 @@ h2 {
         padding-bottom: 10px;
         margin-bottom: 20px;
         border-bottom: 2px solid #ddd;
-        display: flex;
+        /* display: flex; */
         justify-content: space-between;
         align-items: center;
     }
@@ -814,7 +814,12 @@ h2 {
                     .width-120 {
                         width: 120px;
                     }
-
+                    table.dataTable tbody th, table.dataTable tbody td{
+                        padding: 4px 9px !important;
+                    }
+                    table.dataTable thead th, table.dataTable thead td{
+                         padding: 5px;
+                    }
                     th {
                         text-align: center !important;
                     }
@@ -824,7 +829,7 @@ h2 {
                     }
 
                     ::-webkit-scrollbar {
-                        width: 5px; /* Width of the scrollbar */
+                        width: 2px; /* Width of the scrollbar */
                     }
 
                     ::-webkit-scrollbar-track {
