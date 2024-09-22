@@ -47,7 +47,7 @@ class HomeController
                 'rating' => $value['rating'],
                 'code' => \Auth::check() ? $value['code'] : 'fas fa-lock',
                 'company_name' => \Auth::check() ? $value['company_name'] : 'fas fa-lock',
-                'point' => $value['point'],
+                'current_price' => $value['current_price'],
                 'trending' => $value['trending'],
                 'signal' => $value['signal'],
                 'profit' => $value['profit'],

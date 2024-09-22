@@ -664,7 +664,7 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
             columns: [
                 { data: 'rating', title: 'RATING' },  // Apply bold formatting to the "PriceTrend" column data},
                 { data: 'code', title: 'CHỨNG KHOÁN' },
-                { data: 'point', title: 'RATING POINT' },
+                { data: 'current_price', title: 'LastSale' },
                 { data: 'trending', title: 'XU HƯỚNG' },
                 { data: 'signal', title: 'HÀNH ĐỘNG' },
                 { data: 'profit', title: 'PROFIT' },
@@ -1191,7 +1191,7 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                                             columns: [
                                                 { data: 'rating', title: 'RATING' },  // Apply bold formatting to the "PriceTrend" column data},
                                                 { data: 'code', title: 'CHỨNG KHOÁN' },
-                                                { data: 'point', title: 'RATING POINT' },
+                                                { data: 'current_price', title: 'LastSale' },
                                                 { data: 'trending', title: 'XU HƯỚNG' },
                                                 { data: 'signal', title: 'HÀNH ĐỘNG' },
                                                 { data: 'profit', title: 'PROFIT' },
@@ -1345,7 +1345,7 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                     columns: [
                         { data: 'rating', title: 'RATING' },  // Apply bold formatting to the "PriceTrend" column data},
                         { data: 'code', title: 'CHỨNG KHOÁN' },
-                        { data: 'point', title: 'RATING POINT' },
+                        { data: 'current_price', title: 'LastSale' },
                         { data: 'trending', title: 'XU HƯỚNG' },
                         { data: 'signal', title: 'HÀNH ĐỘNG' },
                         { data: 'profit', title: 'PROFIT' },
