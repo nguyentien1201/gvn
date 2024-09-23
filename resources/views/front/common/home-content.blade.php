@@ -583,8 +583,8 @@
 
 <section class="features text-left mt-5">
     <div class="container">
-        <h2 class="text-left mb-4 label-color color-home" >Quan tâm nhiều nhất  <a class="color-home" style="text-align:right;right: 0;
-    position: absolute" href="/green-beta"><i class="fas fa-chevron-right"></i><i>  Xem Thêm</i> </a></h2>
+        <h2 class="text-left mb-4 label-color color-home pb-3" >Quan tâm nhiều nhất  <a class="color-home" style="text-align:right;right: 0;
+    " href="/green-beta"><i class="fas fa-chevron-right"></i><i>  Xem Thêm</i> </a></h2>
         <div class="row">
         <!-- Chart Section -->
         <div class="col-md-12 text-center form-group">
@@ -647,8 +647,8 @@
     <div class="container">
         <div class="row">
             <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-                <h2 class="text-left mb-4"><span class="title-trading-first label-color bold">Giao dịch với <span class="title-trading-second color-home">GREEN BETA 1.3.3</span></span>
-                    <a class="color-home" style="text-align:right ;right: 0;position: absolute" href="/trading-system"><i class="fas fa-chevron-right"></i><i>  Xem Thêm</i> </a>
+                <h2 class="text-left mb-4 pb-3"><span class="title-trading-first label-color bold">Giao dịch với <span class="title-trading-second color-home">GREEN BETA 1.3.3</span></span>
+                    <a class="color-home" style="text-align:right ;right: 0;" href="/trading-system"><i class="fas fa-chevron-right"></i><i>  Xem Thêm</i> </a>
                 </h2>
                 <div class="card mb-4">
                     <div class="card-body">
@@ -687,7 +687,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-                <h2 class="text-left mb-4 color-home label-color">Top tín hiệu phiên trước đó</h2>
+                <h2 class="text-left mb-4 color-home label-color pb-3">Top tín hiệu phiên trước đó</h2>
                 <div class="swiper-container">
                     <div class="swiper-wrapper">
                         <!-- Slide 1 -->
@@ -728,8 +728,8 @@
     <div class="container">
         <div class="row">
             <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-                <h2 class="text-left mb-4"><span class="title-trading-first label-color">Giao dịch với  <span class="title-trading-second color-home label-color">GREEN ALPHA 10.0.1</span></span>
-                    <a class="color-home" style="text-align:right;right: 0;position: absolute" href="/green-alpha"><i class="fas fa-chevron-right"></i><i>  Xem Thêm</i> </a>
+                <h2 class="text-left mb-4 pb-3"><span class="title-trading-first label-color">Giao dịch với  <span class="title-trading-second color-home label-color">GREEN ALPHA 10.0.1</span></span>
+                    <a class="color-home" style="text-align:right;right: 0" href="/green-alpha"><i class="fas fa-chevron-right"></i><i>  Xem Thêm</i> </a>
                 </h2>
 
                 <div class="card mb-4">
@@ -773,8 +773,8 @@
     <div class="container">
         <div class="row">
             <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-                <h2 class="text-left mb-4"><span class="title-trading-first label-color color-home">Top StockRating by GVN</span>
-                <a class="color-home" style="text-align:right;right: 0;position: absolute" href="/greenstock-nas100"><i class="fas fa-chevron-right"></i><i>  Xem Thêm</i> </a>
+                <h2 class="text-left mb-4 pb-3"><span class="title-trading-first label-color color-home">Top StockRating by GVN</span>
+                <a class="color-home" style="text-align:right;right: 0" href="/greenstock-nas100"><i class="fas fa-chevron-right"></i><i>  Xem Thêm</i> </a>
             </h2>
             <!-- Data and Chart Section -->
             <div class="card">
@@ -784,7 +784,6 @@
                         <!-- Chart Section -->
                         <div class="col-md-12 text-center">
                         <table class="table table-striped table-bordered display responsive nowrap" style="margin-bottom: 0px; width:100%" id="green-stock-table">
-
                         </table>
                         </div>
                     </div>
@@ -799,8 +798,8 @@
         <div class="row">
             <div class="col-12 col-sm-12 col-md-12 col-lg-12">
 
-                <h2 class="text-left mb-4"><span class="title-trading-first label-color">Giao dịch với</span>
-                    <span class="title-trading-second color-home label-color">GREENSTOCK-NAS100</span>
+                <h2 class="text-left mb-4 pb-3"><span class="title-trading-first label-color">Giao dịch với GREENSTOCK-NAS100</span>
+
                 </h2>
             <!-- Data and Chart Section -->
             <div class="card">

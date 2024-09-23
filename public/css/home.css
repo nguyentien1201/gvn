@@ -151,19 +151,18 @@
     color:#008000 !important;
     }
 h2 {
-        font-size: 24px;
+
         color: #333;
         position: relative;
-        padding-bottom: 10px;
-        margin-bottom: 20px;
+
         border-bottom: 2px solid #ddd;
-        /* display: flex; */
+        display: flex;
         justify-content: space-between;
         align-items: center;
     }
 
     h2 a {
-        font-size: 16px;
+
         text-decoration: none;
         color: #007bff;
         font-weight: normal;
