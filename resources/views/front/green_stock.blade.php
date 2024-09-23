@@ -296,7 +296,7 @@
 
         }
         .center_box {
-                align-items: center;
+
                 justify-content: center;
                 display: flex;
             }

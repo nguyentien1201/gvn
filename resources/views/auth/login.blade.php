@@ -2,8 +2,8 @@
 @section('content')
     <div class="login-box">
         <div class="login-logo">
-            <a href="../../index2.html">
-                <img src="{{asset('images/logo.png')}}" width="100%">
+            <a href="/">
+                <img src="{{asset('images/Logo-GVN-FinTrade-copy.png')}}" width="100%">
             </a>
         </div>
         <!-- /.login-logo -->
