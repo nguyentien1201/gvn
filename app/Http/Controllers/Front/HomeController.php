@@ -20,10 +20,7 @@ class HomeController
 {
     public function index(Request $request)
     {
-
         $signals = (new GreenBeta())->getListSignalsByGroup();
-
-
         $nas100 = $this->getHistorySignal(1);
         $eth = $this->getHistorySignal(23);
         $usOil = $this->getHistorySignal(15);
