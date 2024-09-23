@@ -10,6 +10,7 @@ use App\Models\SignalFree;
 use DB;
 use Illuminate\Support\Str;
 use App\Models\GreenAlphaPortfolio;
+use App\Service\GoogleDriveService;
 class GreenAlpha extends Model
 {
     use SoftDeletes;
@@ -105,7 +106,7 @@ class GreenAlpha extends Model
 
             if(   $type== 'buy'){
                 $profit = ($this->price_close - $this->price_open)/$this->price_open *100;
- 
+
             }
             if( $type== 'sell'){
                 $profit = ( $this->price_open - $this->price_close)/$this->price_open *100;
@@ -337,4 +338,38 @@ class GreenAlpha extends Model
         ];
         return $result;
     }
+    public function importByDrive(){
+        $codes = MstStock::pluck('id','code')->toArray();
+        $this->googleDriveService = new GoogleDriveService();
+        $fileUrl = config('drivefile.drivefile.nas100');
+        $alphas = $this->googleDriveService->getSheetData($fileUrl, 'Alpha!A1:H');
+        array_shift($alphas);
+
+        foreach($alphas as $item){
+            if(empty($item[0])) continue;
+            try {
+                $greenAlpha = [
+                    'code' => $codes[$item[0]],
+                    'signal_open' => $item[2],
+                    'price_open' => (float)$item[3],
+                    'open_time' => Carbon::createFromFormat('d/m/Y H:i', $item[1])->format('Y-m-d H:i:s'),
+                    'close_time' => Carbon::createFromFormat('d/m/Y H:i', $item[7])->format('Y-m-d H:i:s'),
+                    'signal_close' => $item[4],
+                    'price_close' => (float)$item[5],
+                    'profit' => (float)$item[6],
+
+                ];
+                $existingRecord = GreenAlpha::where(['code'=>$greenAlpha['code'],'price_open'=>$greenAlpha['price_open'],'price_close'=>$greenAlpha['price_close']])->first();
+                if ($existingRecord) {
+                    $existingRecord->update($greenAlpha);
+                } else {
+                    // Record does not exist, insert new
+                    GreenAlpha::create($greenAlpha);
+                }
+                } catch (\Exception $e) {
+                    continue;
+                }
+    }
+}
+
 }

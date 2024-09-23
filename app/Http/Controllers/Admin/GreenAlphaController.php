@@ -14,10 +14,10 @@ use Maatwebsite\Excel\Facades\Excel;
 use App\Models\GreenAlphaPortfolio;
 class GreenAlphaController extends AdminController
 {
-    private $greenBeta;
+    private $greenAlpha;
     public function __construct()
     {
-        $this->greenBeta = new GreenAlpha();
+        $this->greenAlpha = new GreenAlpha();
     }
     public function index()
     {
@@ -189,6 +189,10 @@ class GreenAlphaController extends AdminController
             }
         }
         return redirect()->route('admin.green-alpha.index')->with('success', __('panel.success'));
+    }
+    public function importByDrive(Request $request) {
+        $this->greenAlpha->importByDrive();
+        return back()->with('success', __('panel.success'));
     }
 
 }
