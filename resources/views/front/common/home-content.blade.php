@@ -87,9 +87,7 @@
                             return '<i style="color:green" class="fas fa-lock"></i>';
                         }
                         if (type === 'display') {
-                            const numberFormatter = new Intl.NumberFormat('en-US', { maximumFractionDigits: 0 }); // No decimal places
-                            const formattedNumber = numberFormatter.format(data); // Format the number with commas
-                            return formattedNumber;
+                            return parseFloat(data).toFixed(2);
                         }
                         return data; //
 
@@ -112,9 +110,7 @@
                             return '';
                         }
                         if (type === 'display') {
-                            const numberFormatter = new Intl.NumberFormat('en-US', { maximumFractionDigits: 0 }); // No decimal places
-                            const formattedNumber = numberFormatter.format(data); // Format the number with commas
-                            return formattedNumber;
+                            return parseFloat(data).toFixed(2);
                         }
                         return data; //
 
