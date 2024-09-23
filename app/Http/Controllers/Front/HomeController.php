@@ -55,9 +55,13 @@ class HomeController
                 'time' => $value['time'],
             ];
         }
-
-        $last_signal = GreenAlpha::select('*' )->where('close_time', '<=', now())->whereNotNull('close_time')->whereNotNull('signal_close')->with(['MstStock'])->groupBy('code')->orderBy('close_time', 'desc')->limit(10)->get();
-
+        $last_signal =  GreenAlpha::whereIn('close_time', function ($query) {
+            $query->select(DB::raw('MAX(close_time)'))
+                  ->from('green_alpha')
+                  ->groupBy('code');
+        })
+        ->orderBy('close_time', 'desc')
+        ->limit(10)->get();
         $data_chart_default = $this->getHistoryAlphaSignal(1);
 
         $chart_signal = (new GreenStockNas100())->getGroupSignal();
