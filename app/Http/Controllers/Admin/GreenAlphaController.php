@@ -45,14 +45,12 @@ class GreenAlphaController extends AdminController
     public function store(Request $request)
     {
 
-        $request['open_time'] = Carbon::parse($request['open_time'])->format('d/m/Y H:i:s');
-
+        $request['open_time'] = Carbon::parse($request['open_time'])->format('Y-m-d H:i:s');
         if(!empty($request['close_time'])){
-            $request['close_time'] = Carbon::parse($request['close_time'])->format('d/m/Y H:i:s');
+            $request['close_time'] = Carbon::parse($request['close_time'])->format('Y-m-d H:i:s');
         }
         $signal = new GreenAlpha();
         $signal->fill($request->all());
-
         try {
             $signal->save();
         } catch (\Exception $e) {
@@ -71,9 +69,9 @@ class GreenAlphaController extends AdminController
 
     public function update($id, UpdateGreenBetaRequest $request)
     {
-        $request['open_time'] = Carbon::parse($request['open_time'])->format('d/m/Y H:i:s');
+        $request['open_time'] = Carbon::parse($request['open_time'])->format('Y-m-d H:i:s');
         if(!empty($request['close_time'])){
-            $request['close_time'] = Carbon::parse($request['close_time'])->format('d/m/Y H:i:s');
+            $request['close_time'] = Carbon::parse($request['close_time'])->format('Y-m-d H:i:s');
         }
         $signal = GreenAlpha::find($id);
         $signal->fill($request->all());
