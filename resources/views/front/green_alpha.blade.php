@@ -189,7 +189,7 @@
                             <div class="row mt-3">
                                 <!-- Data Section -->
                                 <div class="col-md-6">
-                                    <div class="table-responsive">
+
                                         <table style="width:100%" class="table table-striped table-bordered display responsive nowrap"
                                             id="popupDataTable">
                                             <thead>
@@ -209,7 +209,7 @@
 
                                             </tbody>
                                         </table>
-                                    </div>
+
                                 </div>
                                 <!-- Chart Section -->
                                 <div class="col-md-6 mt-3">
@@ -350,9 +350,9 @@
                     'font-size': 'small'
                 });
             },
-            createdRow: function (row, data, dataIndex) {
-                $('td', row).css('font-size', '0.95em');
-            }
+            // createdRow: function (row, data, dataIndex) {
+            //     $('td', row).css('font-size', '0.95em');
+            // }
         });
         popupDataTable.columns.adjust().draw();
         // $('#contentDiv').on('shown.bs.toggle', function () {
@@ -533,9 +533,9 @@
                                 'font-size': 'small'
                             });
                         },
-                        createdRow: function (row, data, dataIndex) {
-                            $('td', row).css('font-size', '0.95em');
-                        }
+                        // createdRow: function (row, data, dataIndex) {
+                        //     $('td', row).css('font-size', '0.95em');
+                        // }
                     });
                     popupDataTable.columns.adjust().draw();
                     // $('#contentDiv').on('shown.bs.toggle', function () {

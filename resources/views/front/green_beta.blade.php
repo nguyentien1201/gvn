@@ -11,22 +11,34 @@
 
 
     <!-- DataTables Responsive CSS -->
+
     <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}">
-
-    <link rel="stylesheet" href="{{asset('plugins/font-awesome-4.7.0/css/font-awesome.min.css')}}">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.dataTables.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/fixedcolumns/4.0.1/css/fixedColumns.dataTables.min.css">
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+    <link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css') }}">
+    <link rel="stylesheet" href="{{asset('plugins/font-awesome-4.7.0/css/font-awesome.min.css')}}">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/home.css') }}">
+    <!-- DataTables Responsive CSS -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="
+https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
+"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0-rc/dist/chartjs-plugin-datalabels.min.js"></script>
+
+
+
+
     <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/fixedcolumns/4.0.1/js/dataTables.fixedColumns.min.js"></script>
+
+    <link href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.dataTables.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0-rc/dist/chartjs-plugin-datalabels.min.js"></script>
 
@@ -130,10 +142,10 @@
 
                             <div class="card">
                                 <div class="card-body">
-                                    <div class="table-responsive">
-                                    <table class="table table-striped table-bordered display responsive nowrap" style="margin-bottom: 0px; width:100%"
-                                        id="indices-table">
-                                    </table>
+                                    <div class="col-md-12 text-center">
+                                        <table class="table table-striped table-bordered display responsive nowrap" style="margin-bottom: 0px; width:100%"
+                                            id="indices-table">
+                                        </table>
                                     </div>
 
                                     <div class="row mt-4">
@@ -199,11 +211,25 @@
                         <div class="card-body">
                             <div class="row">
                                 <!-- Data Section -->
-                                <div class="col-md-6">
-                                    <div class="table-responsive">
-                                        <table style="width:100%"  class="table table-striped table-bordered display responsive nowrap"
-                                            id="popupDataTable"> </table>
-                                    </div>
+                                <div class="col-md-6  text-center">
+                                        <table style="width:100%;"  class="table table-striped table-bordered display responsive nowrap"
+                                            id="popupDataTable">
+                                            <thead>
+
+                                                <tr>
+                                                    <th>Symbol</th>
+                                                    <th>Price Open</th>
+                                                    <th>Open Time</th>
+                                                    <th>Price Close</th>
+                                                    <th>Close Time</th>
+                                                    <th>Profit</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+
+                                            </tbody>
+                                        </table>
+
                                 </div>
                                 <!-- Chart Section -->
                                 <div class="col-md-6">
@@ -308,7 +334,7 @@
                             leftColumns: 2 // Cố định cột đầu tiên (Tên sản phẩm)
                         },
                         scrollCollapse: true,
-                        autoWidth: false,
+                        autoWidth: true,
                         paging: false,
                         info: false,
                         scrollY: '400px',
