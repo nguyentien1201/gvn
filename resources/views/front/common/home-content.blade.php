@@ -72,7 +72,7 @@
                     },
                     render: function (data, type, full, meta) {
                         if(full.close_time != null){
-                            return 'Closed';
+                            return 'CLOSED';
                         }
 
                         return data; //
@@ -157,7 +157,7 @@
                     },
                     render: function (data, type, full, meta) {
                         if(data == null || data == '' || data == undefined || data == 'Hold'){
-                            return 'Hold';
+                            return 'HOLD';
                         }
                         return `${data}`;
                     }
