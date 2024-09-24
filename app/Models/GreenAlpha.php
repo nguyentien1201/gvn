@@ -350,13 +350,13 @@ class GreenAlpha extends Model
             try {
                 $greenAlpha = [
                     'code' => $codes[$item[0]],
-                    'signal_open' => $item[2],
-                    'price_open' => (float)$item[3],
-                    'open_time' => Carbon::createFromFormat('d/m/Y H:i', $item[1])->format('Y-m-d H:i:s'),
-                    'close_time' => Carbon::createFromFormat('d/m/Y H:i', $item[7])->format('Y-m-d H:i:s'),
-                    'signal_close' => $item[4],
-                    'price_close' => (float)$item[5],
-                    'profit' => (float)$item[6],
+                    'signal_open' => $item[1],
+                    'price_open' => (float)$item[2],
+                    'open_time' =>!empty($item[3]) ? Carbon::createFromFormat('d/m/Y H:i', $item[3])->format('Y-m-d H:i:s') : null,
+                    'close_time' => !empty($item[6])  ? Carbon::createFromFormat('d/m/Y H:i', $item[6])->format('Y-m-d H:i:s') : null,
+                    'signal_close' => $item[4] ?? null,
+                    'price_close' =>!empty($item[5]) ? (float)$item[5] : null,
+                    'profit' =>!empty($item[7]) ? (float)$item[7] : null,
 
                 ];
                 $existingRecord = GreenAlpha::where(['code'=>$greenAlpha['code'],'price_open'=>$greenAlpha['price_open'],'price_close'=>$greenAlpha['price_close']])->first();
