@@ -770,9 +770,9 @@ h2 {
                     }
 
 
-                    #popupDataTable>thead {
+                    /* #popupDataTable>thead {
                         display: none;
-                    }
+                    } */
 
                     .dataTable {
                         margin-bottom: 0 !important;
@@ -865,6 +865,6 @@ h2 {
 
                     th,  td {
                         /* padding: 8px 10px !important; */
-                        min-width: 60px;
+                        /* min-width: 60px; */
                         text-align: center;
                     }
