@@ -583,7 +583,7 @@
 
 <section class="features text-left mt-5">
     <div class="container">
-        <h2 class="text-left mb-4 label-color color-home pb-3" >Quan tâm nhiều nhất  <a class="color-home" style="text-align:right;right: 0;
+        <h2 class="text-left mb-4 label-color color-home pb-3 d-flex" >Quan tâm nhiều nhất  <a class="color-home" style="text-align:right;right: 0;
     " href="/green-beta"><i class="fas fa-chevron-right"></i></a></h2>
         <div class="row">
         <!-- Chart Section -->
@@ -647,7 +647,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-                <h2 class="text-left mb-4 pb-3"><span class="title-trading-first label-color bold">Giao dịch với <span class="title-trading-second color-home">GREEN BETA 1.3.3</span></span>
+                <h2 class="text-left mb-4 pb-3"><span class="title-trading-first label-color bold d-flex">Giao dịch với <span class="title-trading-second color-home">GREEN BETA 1.3.3</span></span>
                     <a class="color-home" style="text-align:right ;right: 0;" href="/trading-system"><i class="fas fa-chevron-right"></i></a>
                 </h2>
                 <div class="card mb-4">
@@ -728,7 +728,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-                <h2 class="text-left mb-4 pb-3"><span class="title-trading-first label-color">Giao dịch với  <span class="title-trading-second color-home label-color">GREEN ALPHA 10.0.1</span></span>
+                <h2 class="text-left mb-4 pb-3"><span class="title-trading-first label-color d-flex">Giao dịch với  <span class="title-trading-second color-home label-color">GREEN ALPHA 10.0.1</span></span>
                     <a class="color-home" style="text-align:right;right: 0" href="/green-alpha"><i class="fas fa-chevron-right"></i></a>
                 </h2>
 
@@ -773,7 +773,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-                <h2 class="text-left mb-4 pb-3"><span class="title-trading-first label-color color-home">Top StockRating by GVN</span>
+                <h2 class="text-left mb-4 pb-3"><span class="title-trading-first label-color color-home d-flex">Top StockRating by GVN</span>
                 <a class="color-home" style="text-align:right;right: 0" href="/greenstock-nas100"><i class="fas fa-chevron-right"></i></a>
             </h2>
             <!-- Data and Chart Section -->

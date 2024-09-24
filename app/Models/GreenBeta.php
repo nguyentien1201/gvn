@@ -27,14 +27,14 @@ class GreenBeta extends Model
         if(empty($value)){
             return null;
         }
-        return Carbon::parse($value)->format('d-m-Y'); // Customize the format as needed
+        return Carbon::parse($value)->format('m-d-Y'); // Customize the format as needed
     }
     public function getCloseTimeAttribute($value)
     {
         if(empty($value)){
             return null;
         }
-        return Carbon::parse($value)->format('d-m-Y'); // Customize the format as needed
+        return Carbon::parse($value)->format('m-y-Y'); // Customize the format as needed
     }
 
     public function getListSignals( Request $request)
@@ -109,6 +109,7 @@ class GreenBeta extends Model
         return $this->belongsTo('App\Models\SignalFree', 'code','code');
     }
     public function getDataChartSignals(){
+
         $query = self::with('mstStock')
         ->whereNotNull('close_time') // Ensure price_close has a value
         ->groupBy('code') // Group the results by 'code'
@@ -127,6 +128,7 @@ class GreenBeta extends Model
         return $data;
     }
     public function getSignalsById($id){
+
         $query = self::with('mstStock')
             ->where('code', $id)
             ->whereNotNull('close_time')->orderBy('close_time', 'desc')

@@ -83,7 +83,7 @@
                             DASHBOARD</span>
                     </h2>
                     <!-- Data and Chart Section -->
-                    <h5 class="color-home" style="padding:15px; text-align: right;"> <i><span id="date"></span>  <span id="time"> GMT</span> </i></h5>
+                    <h5 class="color-home" style="padding:15px; text-align: right;"> <i><span id="date"></span>  <span id="time"> UTC+3</span> </i></h5>
                     <div class="row">
                         <!-- Chart Section -->
                         <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center form-group">
@@ -315,7 +315,7 @@
                     render: function (data, type, row) {
 
                         if (type === 'display' || type === 'filter') {
-                            return moment.utc(data).format('YYYY-MM-DD HH:mm'); // Format as HH:mm
+                            return moment.utc(data).format('MM-DD-YYYY HH:mm'); // Format as HH:mm
                         }
                         return data;
                     }
@@ -324,7 +324,7 @@
                     targets: 4, // Index of the open_time column
                     render: function (data, type, row) {
                         if (type === 'display' || type === 'filter') {
-                            return moment.utc(data).format('YYYY-MM-DD HH:mm'); // Format as HH:mm
+                            return moment.utc(data).format('MM-DD-YYYY HH:mm'); // Format as HH:mm
                         }
                         return data;
                     }
@@ -449,12 +449,14 @@
 
         });
         $(document).on('click', '.dataTable tbody tr', function () {
+
             var dataId = $(this).data('id');
             if (dataId == undefined) {
                 return;
             }
+
             $.ajax({
-                url: 'api/get-history-alpha/' + dataId,
+                url:  '/api/get-history-alpha/' + dataId,
                 type: 'GET',
                 success: function (data) {
                     data = data.data;
@@ -498,7 +500,7 @@
                                 targets: 2, // Index of the open_time column
                                 render: function (data, type, row) {
                                     if (type === 'display' || type === 'filter') {
-                                        return moment.utc(data).format('YYYY-MM-DD HH:mm'); // Format as HH:mm
+                                        return moment.utc(data).format('MM-DD-YYYY HH:mm'); // Format as HH:mm
                                     }
                                     return data;
                                 }
@@ -507,7 +509,7 @@
                                 targets: 4, // Index of the open_time column
                                 render: function (data, type, row) {
                                     if (type === 'display' || type === 'filter') {
-                                        return moment.utc(data).format('YYYY-MM-DD HH:mm'); // Format as HH:mm
+                                        return moment.utc(data).format('MM-DD-YYYY HH:mm'); // Format as HH:mm
                                     }
                                     return data;
                                 }
@@ -705,6 +707,12 @@
                         }
                         $(td).css('background-color', color);
                         $(td).css('box-shadow', 'none');
+                    },
+                    render: function (data, type, full, meta) {
+                        if(full.close_time != null){
+                            return 'Close';
+                        }
+                        return data; //
                     }
                 },
                 {
@@ -842,18 +850,18 @@
         }
         $(document).ready(function(){
             function updateClock() {
-    const now = new Date();
+                const now = new Date();
+                // Lấy thời gian và ngày tháng theo múi giờ
+                const dateOptions = { timeZone: 'Europe/Moscow', year: 'numeric', month: '2-digit', day: '2-digit' };
+                const timeOptions = { timeZone: 'Europe/Moscow', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false };
 
-    // Lấy thời gian và ngày tháng theo múi giờ
-    const dateOptions = { timeZone: 'GMT', year: 'numeric', month: '2-digit', day: '2-digit' };
-    const timeOptions = { timeZone: 'GMT', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false };
+                let dateString = now.toLocaleDateString('en-US', dateOptions).replace(/\//g, '-');
+                let timeString = now.toLocaleTimeString('en-US', timeOptions);
+                document.getElementById('date').textContent = dateString;
+                document.getElementById('time').textContent = timeString;
 
-    const dateString = now.toLocaleDateString('en-GB', dateOptions);
-    const timeString = now.toLocaleTimeString('en-GB', timeOptions);
 
-    document.getElementById('date').textContent = dateString;
-    document.getElementById('time').textContent = timeString;
-}
+            }
 
 setInterval(updateClock, 1000); // Cập nhật mỗi giây
 updateClock(); // Chạy ngay khi load trang

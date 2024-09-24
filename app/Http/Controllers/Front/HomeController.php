@@ -99,6 +99,7 @@ class HomeController
             'startDate' => $startDate
         ];
         $nas100 = $this->getHistorySignal(1);
+
         $default_chart = $nas100['data'];
         return view('front.green_beta',compact('signals',
         'chart_data','default_chart'));
@@ -128,12 +129,14 @@ class HomeController
     {
 
         $data = (new GreenBeta())->getSignalsById($id);
+
         $dataSort =$data ;
         usort($dataSort, function($a, $b) {
             return  strtotime($a['close_time'])-strtotime($b['close_time']);
         });
         $datacollect = collect($dataSort);
         $profits = $datacollect->pluck('profit')->toArray();
+
         $sum = 100;
         $sumArray = [];
         foreach ($profits as $value) {

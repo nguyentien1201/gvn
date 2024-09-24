@@ -1693,19 +1693,18 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
             };
         }
         function updateClock() {
-    const now = new Date();
+            const now = new Date();
+            // Lấy thời gian và ngày tháng theo múi giờ
+            const dateOptions = { timeZone: 'Europe/Moscow', year: 'numeric', month: '2-digit', day: '2-digit' };
+            const timeOptions = { timeZone: 'Europe/Moscow', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false };
 
-    // Lấy thời gian và ngày tháng theo múi giờ
-    const dateOptions = { timeZone: 'GMT', year: 'numeric', month: '2-digit', day: '2-digit' };
-    const timeOptions = { timeZone: 'GMT', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false };
+            let dateString = now.toLocaleDateString('en-US', dateOptions).replace(/\//g, '-');
+            let timeString = now.toLocaleTimeString('en-US', timeOptions);
+            document.getElementById('date').textContent = dateString;
+            document.getElementById('time').textContent = timeString;
 
-    const dateString = now.toLocaleDateString('en-GB', dateOptions);
-    const timeString = now.toLocaleTimeString('en-GB', timeOptions);
 
-    document.getElementById('date').textContent = dateString;
-    document.getElementById('time').textContent = timeString;
-}
-
+        }
 setInterval(updateClock, 1000); // Cập nhật mỗi giây
 document.getElementById('timezone').addEventListener('change', updateClock); // Cập nhật khi đổi múi giờ
 updateClock(); // Chạy ngay khi load trang

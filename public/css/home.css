@@ -150,18 +150,13 @@
     .color-home{
     color:#008000 !important;
     }
-h2 {
-
-        color: #333;
-        position: relative;
-
-        border-bottom: 2px solid #ddd;
+    .d-flex{
         display: flex;
         justify-content: space-between;
         align-items: center;
     }
 
-    h2 a {
+    .d-flex a {
 
         text-decoration: none;
         color: #007bff;

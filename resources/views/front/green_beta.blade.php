@@ -108,17 +108,16 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
         function updateClock() {
             const now = new Date();
             // Lấy thời gian và ngày tháng theo múi giờ
-            const dateOptions = { timeZone: 'GMT', year: 'numeric', month: '2-digit', day: '2-digit' };
-            const timeOptions = { timeZone: 'GMT', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false };
+            const dateOptions = { timeZone: 'Europe/Moscow', year: 'numeric', month: '2-digit', day: '2-digit' };
+            const timeOptions = { timeZone: 'Europe/Moscow', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false };
 
-            let dateString = now.toLocaleDateString('en-GB', dateOptions);
-            let timeString = now.toLocaleTimeString('en-GB', timeOptions);
+            let dateString = now.toLocaleDateString('en-US', dateOptions).replace(/\//g, '-');
+            let timeString = now.toLocaleTimeString('en-US', timeOptions);
             document.getElementById('date').textContent = dateString;
             document.getElementById('time').textContent = timeString;
 
 
         }
-
         setInterval(updateClock, 1000); // Cập nhật mỗi giây
         updateClock(); // Chạy ngay khi load trang
     });
@@ -319,9 +318,8 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                 return;
             }
             $.ajax({
-                url: 'api/get-history-signal/' + dataId,
+                url: '/api/get-history-signal/' + dataId,
                 type: 'GET',
-
                 success: function (data) {
                     data = data.data;
 
@@ -541,9 +539,7 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                         if(full.close_time != null){
                             return 'Close';
                         }
-
                         return data; //
-
                     }
                 },
                 {
