@@ -345,7 +345,12 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                             { data: 'profit', title: 'Profit' },
                         ],
                         columnDefs: [
-
+                            {
+                                targets: 0, // Index of the 'code' column
+                                createdCell: function (td, cellData, rowData, row, col) {
+                                    $(td).css('font-weight', 'bold');
+                                }
+                            },
                             {
                                 targets: 4, // Assuming `close_time` is the 5th column
                                 type: 'date', // Specify the type

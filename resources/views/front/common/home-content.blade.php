@@ -773,7 +773,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-                <h2 class="text-left mb-4 pb-3"><span class="title-trading-first label-color color-home d-flex">Top StockRating by GVN</span>
+                <h2 class="text-left mb-4 pb-3 d-flex"><span class="title-trading-first label-color color-home">Top StockRating by GVN</span>
                 <a class="color-home" style="text-align:right;right: 0" href="/greenstock-nas100"><i class="fas fa-chevron-right"></i></a>
             </h2>
             <!-- Data and Chart Section -->
