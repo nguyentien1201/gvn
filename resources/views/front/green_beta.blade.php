@@ -367,9 +367,7 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                                 }
                             },
                         ],
-                        createdRow: function (row, data, dataIndex) {
-                            $('td', row).css('font-size', 'xx-small');
-                        }
+
                     });
 
                     // popupDataTable.columns.adjust().draw();
