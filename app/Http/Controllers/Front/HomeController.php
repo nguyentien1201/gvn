@@ -16,6 +16,7 @@ use App\Models\Ma;
 use Illuminate\Support\Facades\Cache;
 use App\Models\GroupCap;
 use App\Models\SubGroupCapDetail;
+use DateTime;
 class HomeController
 {
     public function index(Request $request)
@@ -132,13 +133,23 @@ class HomeController
 
         $dataSort =$data ;
         usort($dataSort, function($a, $b) {
-            return  strtotime($a['close_time'])-strtotime($b['close_time']);
+
+            $dateA = DateTime::createFromFormat('m-d-Y', $a['close_time']);
+            $dateB = DateTime::createFromFormat('m-d-Y', $b['close_time']);
+
+            if ($dateA && $dateB) {
+                return $dateA <=> $dateB;
+            } else {
+                // Handle invalid date formats
+                return 0;
+            }
         });
         $datacollect = collect($dataSort);
         $profits = $datacollect->pluck('profit')->toArray();
 
         $sum = 100;
         $sumArray = [];
+
         foreach ($profits as $value) {
             $sum = $sum + $sum*$value/100;
             $sumArray[] = round($sum,2);

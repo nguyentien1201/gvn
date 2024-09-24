@@ -63,12 +63,12 @@
                                     <td width="15%">{{ $signal->signal_open }}</td>
                                     <td width="10%">{{$signal->price_open}}</td>
                                     <td width="10%">{{$signal->price_close}}</td>
-                                    <td width="15%">{{ $signal->open_time ? date('m-d-Y H:i', strtotime($signal->open_time)) : ''}}</td>
-                                    <td width="15%">{{ $signal->close_time ? date('m-d-Y H:i', strtotime($signal->close_time)) : ''}}</td>
+                                    <td width="15%">{{ $signal->open_time ?? ''}}</td>
+                                    <td width="15%">{{ $signal->close_time ?? ''}}</td>
                                     <td width="20%"style="background-color:@if($signal->profit >0) green @endif
                                         @if($signal->profit < 0) red @endif
                                          @if($signal->profit == 0) yellow @endif
-                                    ">{{ $signal->profit}}</td>
+                                    ">{{ $signal->calculateProfit()}}</td>
                                     <td width="10%" class="text-center text-nowrap">
                                         <a href="{{ route('admin.green-beta.edit', [$signal->id]) }}"
                                            class="btn btn-primary btn-circle btn-sm">
