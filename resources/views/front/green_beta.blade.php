@@ -155,7 +155,7 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                                                     <span>Tín hiệu xu hướng đang mở.</span>
                                                 </li>
                                                 <li class="list-item">
-                                                    <button class="hold width-120">Close</button>
+                                                    <button class="hold width-120">Closed</button>
                                                     <span>Tín hiệu xu hướng đã đóng.</span>
                                                 </li>
 

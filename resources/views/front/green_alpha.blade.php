@@ -134,7 +134,7 @@
                                                 </li>
 
                                                 <li class="list-item">
-                                                    <button class="hold width-120">Sell/Buy</button>
+                                                    <button class="hold width-120">Closed</button>
                                                     <span>Tín hiệu xu hướng đã đóng.</span>
                                                 </li>
 
@@ -710,7 +710,7 @@
                     },
                     render: function (data, type, full, meta) {
                         if(full.close_time != null){
-                            return 'Close';
+                            return 'Closed';
                         }
                         return data; //
                     }
