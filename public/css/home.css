@@ -383,7 +383,7 @@ h2 {
             position: absolute;
             background-color: #fff;
             color: #333;
-            padding: 0.5em;
+            /* padding: 0.5em; */
             border-radius: 5px;
             font-size: 1.3em;
             display: none;
@@ -405,6 +405,9 @@ h2 {
             display: inline-grid;
             justify-content: center;
             align-items: center;
+        }
+        table.dataTable thead th{
+            padding: 8px 10px;
         }
         @media (min-width: 1269px) {
             table.dataTable tbody th, table.dataTable tbody td{

@@ -90,10 +90,12 @@
 
                             <div class="card">
                                 <div class="card-body">
-
-                                    <table class="table table-striped table-bordered display responsive nowrap" style="margin-bottom: 0px;"
+                                <div class="col-md-12 text-center">
+                                <table class="table table-striped table-bordered display responsive nowrap" style="margin-bottom: 0px; width:100%"
                                         id="indices-table">
                                     </table>
+                                </div>
+
                                     <div class="row mt-4">
 
                                         <div class="col-md-4 text-left form-group">
@@ -188,8 +190,7 @@
 
                             <div class="row mt-3">
                                 <!-- Data Section -->
-                                <div class="col-md-6">
-
+                                <div class="col-md-6 text-center">
                                         <table style="width:100%" class="table table-striped table-bordered display responsive nowrap"
                                             id="popupDataTable">
                                             <thead>

@@ -590,7 +590,7 @@
         <div class="col-md-12 text-center form-group">
             <div class="card">
                 <div class="card-body">
-                    <div class="table-responsive">
+                    <div class="col-md-12 text-center">
                     <table class="table table-striped table-bordered display responsive nowrap" style="width:100%;margin-bottom: 0px;"
                         id="indices-table">
                     </table>
