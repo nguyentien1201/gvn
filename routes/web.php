@@ -36,6 +36,8 @@ Auth::routes(['register' => true]);
 
 Route::group([ 'namespace' => 'Front'], function () {
     Route::post('api/buy-product', 'SubscriptionController@store')->name('api.buy-product')->middleware('customer');
+    Route::get('account', 'SubscriptionController@store')->name('account')->middleware('customer');
+
 });
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin'], function () {

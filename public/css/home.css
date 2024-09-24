@@ -220,7 +220,7 @@
         font-style: normal;
     }
     body {
-        font-family: 'UVN Gia Dinh';
+        font-family: 'UVN Gia Dinh' !important;
     }
 
     .font-face{
