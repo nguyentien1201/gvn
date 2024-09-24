@@ -359,7 +359,8 @@ class GreenAlpha extends Model
                     'profit' =>!empty($item[7]) ? (float)$item[7] : null,
 
                 ];
-                $existingRecord = GreenAlpha::where(['code'=>$greenAlpha['code'],'price_open'=>$greenAlpha['price_open'],'price_close'=>$greenAlpha['price_close']])->first();
+                $existingRecord = GreenAlpha::where(['code'=>$greenAlpha['code'],'price_open'=>$greenAlpha['price_open'],'open_time'=> $greenAlpha['open_time']] )->first();
+
                 if ($existingRecord) {
                     $existingRecord->update($greenAlpha);
                 } else {
