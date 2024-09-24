@@ -213,19 +213,19 @@
     table.dataTable thead .sorting,table.dataTable thead .sorting_asc, table.dataTable thead .sorting_desc {
         background-image: none !important;
     }
-    @font-face {
+    /* @font-face {
         font-family: 'UVN Gia Dinh';
         src: url('./fonts/unicode.publish.UVNGiaDinh_R.ttf') format('truetype');
         font-weight: normal;
         font-style: normal;
-    }
+    } */
     body {
-        font-family: 'UVN Gia Dinh' !important;
+        /* font-family: 'UVN Gia Dinh' !important; */
     }
 
     .font-face{
         font-size: 1.1rem !important;
-        font-family: 'UVN Gia Dinh', sans-serif;
+        /* font-family: 'UVN Gia Dinh', sans-serif; */
     }
     .dt-scroll-head {
        overflow: scroll !important;
@@ -547,16 +547,16 @@
                           transition: all 0.5s ease;
                           /* Smooth transition for any changes */
                       }
-                      @font-face {
+                      /* @font-face {
                         font-family: 'UVN Gia Dinh';
                         src: url('/fonts/unicode.publish.UVNGiaDinh_R.ttf') format('truetype');
                         font-weight: normal;
                         font-style: normal;
-                    }
-                    .font-face{
+                    } */
+                    /* .font-face{
                         font-size: 1.1rem !important;
                         font-family: 'UVN Gia Dinh', sans-serif;
-                    }
+                    } */
                      .color-home{
                         color:#008000 !important;
                     }
