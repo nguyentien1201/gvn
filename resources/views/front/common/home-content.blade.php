@@ -600,11 +600,11 @@
                         <div class="col-md-4 text-left form-group">
                             <ul style="padding-left:0">
                                 <li class="list-item">
-                                    <button class="takeprofitbuy width-120" >Buy</button>
+                                    <button class="takeprofitbuy width-120" >BUY</button>
                                     <span>Tín hiệu xu hướng đang mở.</span>
                                 </li>
                                 <li class="list-item">
-                                    <button class="hold width-120">Closed</button>
+                                    <button class="hold width-120">CLOSED</button>
                                     <span>Tín hiệu xu hướng đã đóng.</span>
                                 </li>
 
@@ -613,11 +613,11 @@
                         <div class="col-md-4 text-left form-group">
                             <ul style="padding-left:0">
                             <li class="list-item">
-                                    <button class="takeprofitbuy width-120">TakeProfitBuy</button>
+                                    <button class="takeprofitbuy width-120">TakeProfitBUY</button>
                                     <span>Tín hiệu đã ở trạng thái chốt lời.</span>
                                 </li>
                                 <li class="list-item">
-                                    <button class="hold width-120">Hold</button>
+                                    <button class="hold width-120">HOLD</button>
                                     <span>Tín hiệu đang ở trạng thái giữ.</span>
                                 </li>
 
@@ -628,7 +628,7 @@
                             <ul style="padding-left:0">
 
                                 <li class="list-item">
-                                    <button class="cutlossbuy width-120">CutLossBuy</button>
+                                    <button class="cutlossbuy width-120">CutLossBUY</button>
                                     <span>Tín hiệu đã ở trạng thái cắt lỗ.</span>
                                 </li>
                             </ul>
@@ -647,7 +647,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-                <h2 class="text-left mb-4 pb-3"><span class="title-trading-first label-color bold d-flex">Giao dịch với <span class="title-trading-second color-home">GREEN BETA 1.3.3</span></span>
+                <h2 class="text-left mb-4 pb-3  d-flex"><span class="title-trading-first label-color bold">Giao dịch với GREEN BETA 1.3.3</span>
                     <a class="color-home" style="text-align:right ;right: 0;" href="/trading-system"><i class="fas fa-chevron-right"></i></a>
                 </h2>
                 <div class="card mb-4">
@@ -728,7 +728,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-                <h2 class="text-left mb-4 pb-3"><span class="title-trading-first label-color d-flex">Giao dịch với  <span class="title-trading-second color-home label-color">GREEN ALPHA 10.0.1</span></span>
+                <h2 class="text-left mb-4 pb-3 d-flex"><span class="title-trading-first label-color ">Giao dịch với GREEN ALPHA 10.0.1</span>
                     <a class="color-home" style="text-align:right;right: 0" href="/green-alpha"><i class="fas fa-chevron-right"></i></a>
                 </h2>
 

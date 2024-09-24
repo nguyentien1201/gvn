@@ -101,11 +101,11 @@
                                         <div class="col-md-4 text-left form-group">
                                             <ul style="padding-left:0">
                                                 <li class="list-item">
-                                                    <button class="takeprofitbuy width-120">Buy</button>
+                                                    <button class="takeprofitbuy width-120">BUY</button>
                                                     <span>Tín hiệu vị thế Buy đang mở.</span>
                                                 </li>
                                                 <li class="list-item">
-                                                    <button class="cutlossbuy width-120">Sell</button>
+                                                    <button class="cutlossbuy width-120">SELL</button>
                                                     <span>Tín hiệu vị thế Sell đang mở.</span>
                                                 </li>
 
@@ -116,11 +116,11 @@
                                             <ul style="padding-left:0">
 
                                                 <li class="list-item">
-                                                    <button class="takeprofitbuy width-120">TakeProfitBuy</button>
+                                                    <button class="takeprofitbuy width-120">TakeProfitBUY/SELL</button>
                                                     <span>Tín hiệu đã ở trạng thái chốt lời.</span>
                                                 </li>
                                                 <li class="list-item">
-                                                    <button class="cutlossbuy width-120">CutLossBuy</button>
+                                                    <button class="cutlossbuy width-120">CutLossBUY/SELL</button>
                                                     <span>Tín hiệu đã ở trạng thái cắt lỗ.</span>
                                                 </li>
                                             </ul>
@@ -129,12 +129,12 @@
                                         <div class="col-md-4 text-left form-group">
                                             <ul style="padding-left:0">
                                                 <li class="list-item">
-                                                    <button class="width-120">Hold</button>
+                                                    <button class="width-120">HOLD</button>
                                                     <span>Tín hiệu đang ở trạng thái giữ.</span>
                                                 </li>
 
                                                 <li class="list-item">
-                                                    <button class="hold width-120">Closed</button>
+                                                    <button class="hold width-120">CLOSED</button>
                                                     <span>Tín hiệu xu hướng đã đóng.</span>
                                                 </li>
 
@@ -710,7 +710,7 @@
                     },
                     render: function (data, type, full, meta) {
                         if(full.close_time != null){
-                            return 'Closed';
+                            return 'CLOSED';
                         }
                         return data; //
                     }

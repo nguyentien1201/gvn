@@ -215,10 +215,14 @@
     }
     @font-face {
         font-family: 'UVN Gia Dinh';
-        src: url('/fonts/unicode.publish.UVNGiaDinh_R.ttf') format('truetype');
+        src: url('./fonts/unicode.publish.UVNGiaDinh_R.ttf') format('truetype');
         font-weight: normal;
         font-style: normal;
     }
+    body {
+        font-family: 'UVN Gia Dinh';
+    }
+
     .font-face{
         font-size: 1.1rem !important;
         font-family: 'UVN Gia Dinh', sans-serif;
