@@ -134,7 +134,7 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
 
                     </h2>
                     <!-- Data and Chart Section -->
-                    <h5 class="color-home" style="padding:15px; text-align: right;"> <i><span id="date"></span>  <span id="time"> GMT</span> </i></h5>
+                    <h5 class="color-home" style="padding:15px; text-align: right;"> <i><span id="date"></span>  <span id="time"></span> (UTC+3) </i></h5>
                     <div class="row">
                         <!-- Chart Section -->
                         <div class="col-md-12 text-center form-group">

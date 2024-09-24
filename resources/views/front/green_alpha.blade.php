@@ -83,7 +83,7 @@
                             DASHBOARD</span>
                     </h2>
                     <!-- Data and Chart Section -->
-                    <h5 class="color-home" style="padding:15px; text-align: right;"> <i><span id="date"></span>  <span id="time"> UTC+3</span> </i></h5>
+                    <h5 class="color-home" style="padding:15px; text-align: right;"> <i><span id="date"></span>  <span id="time"> </span> (UTC+3)</i></h5>
                     <div class="row">
                         <!-- Chart Section -->
                         <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center form-group">
