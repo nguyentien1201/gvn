@@ -534,8 +534,8 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                 <div class="ptable-footer">
                     <div class="ptable-action">
                     @if (Auth::check())
-                            <a data-id={{$price_product['beta']->id}} data-type="buy" data-month="1">Buy</a>
-                            <a data-id={{$price_product['beta']->id}} data-type="trial" data-month="1">Trial</a>
+                            <a class="subscription" data-id={{$price_product['beta']->id}} data-type="buy" data-month="1">Buy</a>
+                            <a class="subscription" data-id={{$price_product['beta']->id}} data-type="trial" data-month="1">Trial</a>
                         @else
                             <a href="{{ route('login') }}">Login</a>
                         @endif
@@ -567,7 +567,7 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                 <div class="ptable-footer">
                     <div class="ptable-action">
                         @if (Auth::check())
-                            <a data-id={{$price_product['beta']->id}} data-type="buy" data-month="2">Buy</a>
+                            <a class="subscription" data-id={{$price_product['beta']->id}} data-type="buy" data-month="2">Buy</a>
                         @else
                             <a href="{{ route('login') }}">Login</a>
                         @endif
@@ -597,7 +597,7 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                 <div class="ptable-footer">
                     <div class="ptable-action">
                     @if (Auth::check())
-                            <a data-id={{$price_product['beta']->id}} data-type="buy" data-month="3">Buy</a>
+                            <a class="subscription" data-id={{$price_product['beta']->id}} data-type="buy" data-month="3">Buy</a>
                         @else
                             <a href="{{ route('login') }}">Login</a>
                         @endif
@@ -661,8 +661,8 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                 <div class="ptable-footer">
                     <div class="ptable-action">
                         @if (Auth::check())
-                            <a data-id={{$price_product['alpha']->id}} data-type="buy" data-month="1">Buy</a>
-                            <a data-id={{$price_product['alpha']->id}} data-type="trial" data-month="1">Trial</a>
+                            <a class="subscription" data-id={{$price_product['alpha']->id}} data-type="buy" data-month="1">Buy</a>
+                            <a class="subscription" data-id={{$price_product['alpha']->id}} data-type="trial" data-month="1">Trial</a>
                         @else
                             <a href="{{ route('login') }}">Login</a>
                         @endif
@@ -695,7 +695,7 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                 <div class="ptable-footer">
                     <div class="ptable-action">
                     @if (Auth::check())
-                            <a data-id={{$price_product['alpha']->id}} data-type="buy" data-month="2">Buy</a>
+                            <a class="subscription" data-id={{$price_product['alpha']->id}} data-type="buy" data-month="2">Buy</a>
                         @else
                             <a href="{{ route('login') }}">Login</a>
                         @endif
@@ -725,7 +725,7 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                 <div class="ptable-footer">
                     <div class="ptable-action">
                         @if (Auth::check())
-                            <a data-id={{$price_product['alpha']->id}} data-type="buy" data-month="3">Buy</a>
+                            <a class="subscription" data-id={{$price_product['alpha']->id}} data-type="buy" data-month="3">Buy</a>
                         @else
                             <a href="{{ route('login') }}">Login</a>
                         @endif
@@ -789,8 +789,8 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                 <div class="ptable-footer">
                     <div class="ptable-action">
                         @if (Auth::check())
-                            <a data-id={{$price_product['greenstock']->id}} data-type="buy" data-month="1">Buy</a>
-                            <a data-id={{$price_product['greenstock']->id}} data-type="trial" data-month="1">Trial</a>
+                            <a class="subscription" data-id={{$price_product['greenstock']->id}} data-type="buy" data-month="1">Buy</a>
+                            <a  class="subscription" data-id={{$price_product['greenstock']->id}} data-type="trial" data-month="1">Trial</a>
                         @else
                             <a href="{{ route('login') }}">Login</a>
                         @endif
@@ -823,7 +823,7 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                 <div class="ptable-footer">
                     <div class="ptable-action">
                         @if (Auth::check())
-                            <a data-id={{$price_product['greenstock']->id}} data-type="buy" data-month="2">Buy</a>
+                            <a class="subscription" data-id={{$price_product['greenstock']->id}} data-type="buy" data-month="2">Buy</a>
                         @else
                             <a href="{{ route('login') }}">Login</a>
                         @endif
@@ -853,7 +853,7 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                 <div class="ptable-footer">
                     <div class="ptable-action">
                         @if (Auth::check())
-                            <a data-id={{$price_product['greenstock']->id}} data-type="buy" data-month="3">Buy</a>
+                            <a class="subscription" data-id={{$price_product['greenstock']->id}} data-type="buy" data-month="3">Buy</a>
                         @else
                             <a href="{{ route('login') }}">Login</a>
                         @endif
@@ -880,7 +880,7 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
-        $('.ptable-action a').click(function(e) {
+        $('.ptable-action .subscription').click(function(e) {
             e.preventDefault();
             let id = $(this).data('id');
             let type = $(this).data('type');
