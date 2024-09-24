@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>GVN</title>
     <!-- Bootstrap CSS -->
 
@@ -519,7 +520,7 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                     <h2>1 Tháng</h2>
                     </div>
                     <div class="ptable-price basic">
-                    <h2><small>$</small>0<span>/ M</span></h2>
+                    <h2><small>$</small>{{$price_product['beta']->monthly_price}}<span></span></h2>
                     </div>
                 </div>
                 <div class="ptable-body">
@@ -532,7 +533,12 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                 </div>
                 <div class="ptable-footer">
                     <div class="ptable-action">
-                    <a href="">Buy Now</a>
+                    @if (Auth::check())
+                            <a data-id={{$price_product['beta']->id}} data-type="buy" data-month="1">Buy</a>
+                            <a data-id={{$price_product['beta']->id}} data-type="trial" data-month="1">Trial</a>
+                        @else
+                            <a href="{{ route('login') }}">Login</a>
+                        @endif
                     </div>
                 </div>
                 </div>
@@ -548,20 +554,23 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                     <h2>6 Tháng</h2>
                     </div>
                     <div class="ptable-price">
-                    <h2><small>$</small>0<span>/ M</span></h2>
+                    <h2><small>$</small>{{$price_product['beta']->six_month_price}}<span></span></h2>
                     </div>
                 </div>
                 <div class="ptable-body">
                     <div class="ptable-description">
                     <ul>
                         <li>Phiên Bản Dùng Thử</li>
-                        <li>Thời hạn 1 tháng</li>
                     </ul>
                     </div>
                 </div>
                 <div class="ptable-footer">
                     <div class="ptable-action">
-                    <a href="">Buy Now</a>
+                        @if (Auth::check())
+                            <a data-id={{$price_product['beta']->id}} data-type="buy" data-month="2">Buy</a>
+                        @else
+                            <a href="{{ route('login') }}">Login</a>
+                        @endif
                     </div>
                 </div>
                 </div>
@@ -574,7 +583,7 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                     <h2>1 năm</h2>
                     </div>
                     <div class="ptable-price">
-                    <h2><small>$</small>0<span>/ M</span></h2>
+                    <h2><small>$</small>{{$price_product['beta']->yearly_price}}<span></span></h2>
                     </div>
                 </div>
                 <div class="ptable-body">
@@ -587,7 +596,11 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                 </div>
                 <div class="ptable-footer">
                     <div class="ptable-action">
-                    <a href="">Buy Now</a>
+                    @if (Auth::check())
+                            <a data-id={{$price_product['beta']->id}} data-type="buy" data-month="3">Buy</a>
+                        @else
+                            <a href="{{ route('login') }}">Login</a>
+                        @endif
                     </div>
                 </div>
                 </div>
@@ -634,20 +647,25 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                     <h2>1 Tháng</h2>
                     </div>
                     <div class="ptable-price basic">
-                    <h2><small>$</small>0<span>/ M</span></h2>
+                    <h2><small>$</small>{{$price_product['alpha']->monthly_price}}<span></span></h2>
                     </div>
                 </div>
                 <div class="ptable-body">
                     <div class="ptable-description">
                     <ul>
-                    <li>Phiên Bản Dùng Thử</li>
+                    <li>{{$price_product['alpha']->description}}</li>
                     <li>Thời hạn 1 tháng</li>
                     </ul>
                     </div>
                 </div>
                 <div class="ptable-footer">
                     <div class="ptable-action">
-                    <a href="">Buy Now</a>
+                        @if (Auth::check())
+                            <a data-id={{$price_product['alpha']->id}} data-type="buy" data-month="1">Buy</a>
+                            <a data-id={{$price_product['alpha']->id}} data-type="trial" data-month="1">Trial</a>
+                        @else
+                            <a href="{{ route('login') }}">Login</a>
+                        @endif
                     </div>
                 </div>
                 </div>
@@ -663,20 +681,24 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                     <h2>6 Tháng</h2>
                     </div>
                     <div class="ptable-price">
-                    <h2><small>$</small>0<span>/ M</span></h2>
+                    <h2><small>$</small>{{$price_product['alpha']->six_month_price}}<span></span></h2>
                     </div>
                 </div>
                 <div class="ptable-body">
                     <div class="ptable-description">
                     <ul>
-                        <li>Phiên Bản Dùng Thử</li>
+                        <li>{{$price_product['alpha']->description}}</li>
                         <li>Thời hạn 1 tháng</li>
                     </ul>
                     </div>
                 </div>
                 <div class="ptable-footer">
                     <div class="ptable-action">
-                    <a href="">Buy Now</a>
+                    @if (Auth::check())
+                            <a data-id={{$price_product['alpha']->id}} data-type="buy" data-month="2">Buy</a>
+                        @else
+                            <a href="{{ route('login') }}">Login</a>
+                        @endif
                     </div>
                 </div>
                 </div>
@@ -689,20 +711,24 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                     <h2>1 năm</h2>
                     </div>
                     <div class="ptable-price">
-                    <h2><small>$</small>0<span>/ M</span></h2>
+                    <h2><small>$</small>{{$price_product['alpha']->yearly_price}}<span></span></h2>
                     </div>
                 </div>
                 <div class="ptable-body">
                     <div class="ptable-description">
                     <ul>
-                        <li>Phiên Bản Dùng Thử</li>
+                        <li>{{$price_product['alpha']->description}}</li>
                         <li>Thời hạn 1 tháng</li>
                     </ul>
                     </div>
                 </div>
                 <div class="ptable-footer">
                     <div class="ptable-action">
-                    <a href="">Buy Now</a>
+                        @if (Auth::check())
+                            <a data-id={{$price_product['alpha']->id}} data-type="buy" data-month="3">Buy</a>
+                        @else
+                            <a href="{{ route('login') }}">Login</a>
+                        @endif
                     </div>
                 </div>
                 </div>
@@ -749,7 +775,7 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                     <h2>1 Tháng</h2>
                     </div>
                     <div class="ptable-price basic">
-                    <h2><small>$</small>0<span>/ M</span></h2>
+                    <h2><small>$</small>{{$price_product['greenstock']->monthly_price}}<span>/ M</span></h2>
                     </div>
                 </div>
                 <div class="ptable-body">
@@ -762,7 +788,12 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                 </div>
                 <div class="ptable-footer">
                     <div class="ptable-action">
-                    <a href="">Buy Now</a>
+                        @if (Auth::check())
+                            <a data-id={{$price_product['greenstock']->id}} data-type="buy" data-month="1">Buy</a>
+                            <a data-id={{$price_product['greenstock']->id}} data-type="trial" data-month="1">Trial</a>
+                        @else
+                            <a href="{{ route('login') }}">Login</a>
+                        @endif
                     </div>
                 </div>
                 </div>
@@ -778,7 +809,7 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                     <h2>6 Tháng</h2>
                     </div>
                     <div class="ptable-price">
-                    <h2><small>$</small>0<span>/ M</span></h2>
+                    <h2><small>$</small>{{$price_product['greenstock']->six_month_price}}<span></span></h2>
                     </div>
                 </div>
                 <div class="ptable-body">
@@ -791,7 +822,11 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                 </div>
                 <div class="ptable-footer">
                     <div class="ptable-action">
-                    <a href="">Buy Now</a>
+                        @if (Auth::check())
+                            <a data-id={{$price_product['greenstock']->id}} data-type="buy" data-month="2">Buy</a>
+                        @else
+                            <a href="{{ route('login') }}">Login</a>
+                        @endif
                     </div>
                 </div>
                 </div>
@@ -804,7 +839,7 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                     <h2>1 năm</h2>
                     </div>
                     <div class="ptable-price">
-                    <h2><small>$</small>0<span>/ M</span></h2>
+                    <h2><small>$</small>{{$price_product['greenstock']->yearly_price}}<span></span></h2>
                     </div>
                 </div>
                 <div class="ptable-body">
@@ -817,7 +852,11 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                 </div>
                 <div class="ptable-footer">
                     <div class="ptable-action">
-                    <a href="">Buy Now</a>
+                        @if (Auth::check())
+                            <a data-id={{$price_product['greenstock']->id}} data-type="buy" data-month="3">Buy</a>
+                        @else
+                            <a href="{{ route('login') }}">Login</a>
+                        @endif
                     </div>
                 </div>
                 </div>
@@ -834,7 +873,37 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
 
 
     <!-- Bootstrap JS and dependencies -->
-
+<script>
+    $(document).ready(function() {
+        $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+        $('.ptable-action a').click(function(e) {
+            e.preventDefault();
+            let id = $(this).data('id');
+            let type = $(this).data('type');
+            let month = $(this).data('month');
+            $.ajax({
+                url: "{{ route('api.buy-product') }}",
+                type: 'POST',
+                data: {
+                    id: id,
+                    type: type,
+                    month: month
+                },
+                success: function(data) {
+                    if (data.status == 'success') {
+                        alert('Buy product success');
+                    } else {
+                        alert('Buy product fail');
+                    }
+                }
+            });
+        });
+    });
+</script>
 
 </body>
 

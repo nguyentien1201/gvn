@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Cache;
 use App\Models\GroupCap;
 use App\Models\SubGroupCapDetail;
 use DateTime;
+use App\Models\Product;
 class HomeController
 {
     public function index(Request $request)
@@ -269,7 +270,14 @@ class HomeController
         ];
     }
     public function tradingSystem(){
-        return view('front.trading_system');
+        $product = Product::all();
+        $price_product = [];
+        foreach ($product as $key => $value) {
+            $system = $value->system;
+            $price_product[$system] = $value;
+        }
+        // dd($price_product);
+        return view('front.trading_system',compact('price_product'));
     }
     public function contact(){
         return view('front.contact');

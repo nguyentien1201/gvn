@@ -69,6 +69,11 @@ class ConstantModel
         'staff' => 2,
         'customer' => 3,
     ];
+    const MONTH_PRICE = [
+        '1' => 'monthly_price',
+        '2' => 'six_month_price',
+        '3' => 'yearly_price',
+    ];
 
     const PROMOTION_STATUS = [
         'reserve' => 0,

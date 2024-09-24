@@ -87,6 +87,24 @@
                                 </p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="{{route('admin.product.index')}}"
+                               class="nav-link @if(!empty($path) && $path =='product') active @endif">
+                                <i class="nav-icon far fa-user"></i>
+                                <p>
+                                     Product
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('admin.subscription.index')}}"
+                               class="nav-link @if(!empty($path) && $path =='subscription') active @endif">
+                                <i class="nav-icon far fa-user"></i>
+                                <p>
+                                Subscription
+                                </p>
+                            </a>
+                        </li>
                     @endif
                 @if(Auth::user()->role_id == \App\Models\ConstantModel::ROLES['admin'])
                     <li class="nav-item">

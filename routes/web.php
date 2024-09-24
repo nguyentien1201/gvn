@@ -34,6 +34,9 @@ Route::group(['prefix' => '', 'as' => 'front.', 'namespace' => 'Front'], functio
 Auth::routes(['register' => true]);
 
 
+Route::group([ 'namespace' => 'Front'], function () {
+    Route::post('api/buy-product', 'SubscriptionController@store')->name('api.buy-product')->middleware('customer');
+});
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin'], function () {
     //test send message
@@ -66,6 +69,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin'], fu
     Route::resource('green-alpha', 'GreenAlphaController')->middleware('admin');
     Route::resource('portfolio', 'PortfolioController')->middleware('admin');
     Route::resource('nas100', 'GreenStockNas100Controller')->middleware('admin');
+    Route::resource('product', 'ProductController')->middleware('admin');
+    Route::resource('subscription', 'SubscriptionController')->middleware('admin');
 
 });
 Route::get('admin/greenalpha/{id}', 'Admin\GreenAlphaController@getListMstock')->middleware('admin')->name('admin.green-alpha.list-stock');
