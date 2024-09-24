@@ -3,7 +3,7 @@
     <div class="login-box">
         <div class="login-logo">
             <a href="/">
-                <img src="{{asset('images/Logo-GVN-FinTrade-copy.png')}}" width="100%">
+                <img src="{{asset('images/Logo-GVN-FinTrade-nobg.png')}}" width="100%">
             </a>
         </div>
         <!-- /.login-logo -->

@@ -658,6 +658,12 @@
                         }
                         $(td).css('font-weight', 'bold');
                         $(td).css('color', color);
+                    },
+                    render: function (data, type, full, meta) {
+                        if (data != '') {
+                            return `${parseFloat(data).toFixed(2)}%`;
+                        }
+                        return '';
                     }
                 },
                 {
@@ -670,6 +676,12 @@
                         }
                         $(td).css('font-weight', 'bold');
                         $(td).css('color', color);
+                    },
+                    render: function (data, type, full, meta) {
+                        if (data != '') {
+                            return `${parseFloat(data).toFixed(2)}%`;
+                        }
+                        return '';
                     }
                 },
                 {

@@ -205,7 +205,8 @@ h2 {
         border-width: 0 1px;
     }
     table.dataTable thead th, table.dataTable thead td{
-        padding: 8px 8px;
+
+        /* padding: inherit !important; */
         /* min-width: 70px; */
         border-bottom: inherit !important;
 
@@ -411,7 +412,7 @@ h2 {
                 /* min-width: 80px; */
             }
             table.dataTable thead th, table.dataTable thead td{
-                padding: 8px 8px !important;
+
                 /* min-width: 80x; */
                 border-bottom: inherit !important;
 
@@ -421,7 +422,13 @@ h2 {
             body {
                 font-size: x-small !important   ;
             }
-
+            table.dataTable thead th, table.dataTable thead td{
+                padding: 8px;
+            }
+            table.dataTable tbody th, table.dataTable tbody td{
+                padding: 8px;
+                /* min-width: 80px; */
+            }
             }
             th.dtfc-fixed-left{
                 background-color: #008000 !important;
