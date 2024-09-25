@@ -414,9 +414,7 @@
             }
         }
         @media (max-width: 1268px) {
-            body {
-                font-size: x-small !important   ;
-            }
+
             table.dataTable thead th, table.dataTable thead td{
                 padding: 8px;
             }
