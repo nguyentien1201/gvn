@@ -1,7 +1,5 @@
 <?php
 
-namespace App;
-
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
@@ -23,6 +21,11 @@ class Subscription extends Model
     public function getListSubscription()
     {
         $query = self::select();
+        return $query->with(['user','product'])->orderBy('id', 'desc')->paginate(ConstantModel::$PAGINATION);
+    }
+    public function getMySubscription()
+    {
+        $query = self::where('user_id', auth()->id())->select();
         return $query->with(['user','product'])->orderBy('id', 'desc')->paginate(ConstantModel::$PAGINATION);
     }
 }

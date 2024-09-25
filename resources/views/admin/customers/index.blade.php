@@ -15,7 +15,7 @@
             <form class="search-frm search-frm-customer" method="GET" action="{{ route("admin.customers.index") }}"
                   enctype="multipart/form-data">
                 <div class="card card-primary collapsed-card">
-                    <div class="card-header">
+                    <div class="card-header">`
                         <h3 class="card-title">{{__('panel.search')}}</h3>
                         <div class="card-tools">
                             <button type="button" class="btn btn-tool" data-card-widget="collapse"><i
