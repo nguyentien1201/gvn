@@ -277,7 +277,7 @@
         });
     });
 </script>
-@include('front.common.header')\
+@include('front.common.header')
 <div class="content-wrapper">
         @if(session('success'))
             <div class="mb-2">
