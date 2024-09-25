@@ -738,7 +738,7 @@
                     render: function (data, type, row) {
                         if (data == null || data == '') return '';
                         if (type === 'display' || type === 'filter') {
-                            return moment(data).format('HH:mm'); // Format as HH:mm
+                            return  moment.tz(data, 'Europe/Moscow').format('HH:mm'); // Format as HH:mm
                         }
                         return data;
                     }
@@ -748,7 +748,7 @@
                     render: function (data, type, row) {
                         if (data == null || data == '') return '';
                         if (type === 'display' || type === 'filter') {
-                            return moment(data).format('HH:mm'); // Format as HH:mm
+                            return  moment.tz(data, 'Europe/Moscow').format('HH:mm'); // Format as HH:mm
                         }
                         return data;
                     }
