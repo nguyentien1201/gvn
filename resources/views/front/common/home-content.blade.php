@@ -207,7 +207,7 @@
             data: {
                 labels: @json($default_chart['nas100']['profit']).map((value, index) => index),
                 datasets: [{
-                    label: 'Profit Nas100',
+                    label: 'Cummulative Profit NAS100 From 2013',
                     data: @json($default_chart['nas100']['profit']),
                     backgroundColor: '#34a853',
                     borderColor: 'green',

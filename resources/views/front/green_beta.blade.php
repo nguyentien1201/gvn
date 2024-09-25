@@ -391,7 +391,7 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                         data: {
                             labels: data.profit.map((value, index) => index),
                             datasets: [{
-                                label: 'Profit',
+                                label: 'Cummulative Profit',
                                 data: data.profit,
                                 backgroundColor: '#34a853',
                                 borderColor: 'green',
@@ -479,7 +479,7 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
             data: {
                 labels: @json($default_chart['profit']).map((value, index) => index),
                 datasets: [{
-                    label: 'Profit',
+                    label: 'Cummulative Profit',
                     data: @json($default_chart['profit']),
                     backgroundColor: '#34a853',
                     borderColor: 'green',

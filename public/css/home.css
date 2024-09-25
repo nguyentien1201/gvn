@@ -366,9 +366,7 @@
             border: none;
             margin-right: 10px;
         }
-        .width-120{
-            width: 120px;
-        }
+
         /* Removed empty .table-responsive ruleset */
         td {
             text-align: center;
@@ -675,9 +673,7 @@
                         margin-right: 10px;
                         color: #000;
                     }
-                    .width-120{
-                        width: 120px;
-                    }
+
 
                     td {
                         text-align: center;
@@ -828,7 +824,7 @@
                     }
 
                     .width-120 {
-                        width: 120px;
+                        width: 150px;
                     }
 
                      /*
