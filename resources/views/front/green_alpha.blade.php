@@ -623,7 +623,6 @@
             });
 
         });
-
         var indices = $('#indices-table').DataTable({
             searching: false,
             lengthChange: false, //
@@ -709,7 +708,7 @@
                         $(td).css('box-shadow', 'none');
                     },
                     render: function (data, type, full, meta) {
-                        if(full.close_time != null){
+                        if(full.close_time != "" ){
                             return 'CLOSED';
                         }
                         return data; //
