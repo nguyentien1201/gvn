@@ -37,6 +37,12 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
         body {
             font-size: 0.9rem !important;
         }
+        .carousel-item {
+
+min-height: 300px;
+background: no-repeat center center scroll;
+background-size: cover;
+}
 
         #navbarNav .nav-link {
             font-size: 1.1rem;

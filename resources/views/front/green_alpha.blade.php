@@ -322,6 +322,17 @@
                     }
                 },
                 {
+                    targets: 1, // Index of the date column
+                    render: function (data, type, full, meta) {
+
+                        if (type === 'display') {
+                            return parseFloat(data).toFixed(2);
+                        }
+                        return data; //
+
+                    }
+                },
+                {
                     targets: 4, // Index of the open_time column
                     render: function (data, type, row) {
                         if (type === 'display' || type === 'filter') {

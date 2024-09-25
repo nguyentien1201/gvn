@@ -547,11 +547,10 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                 },
                 {
                     targets: 1, // Index of the date column
+
                     render: function (data, type, full, meta) {
                         if (type === 'display') {
-                            const numberFormatter = new Intl.NumberFormat('en-US', { maximumFractionDigits: 0 }); // No decimal places
-                            const formattedNumber = numberFormatter.format(data); // Format the number with commas
-                            return formattedNumber;
+                            return parseFloat(data).toFixed(2);
                         }
                         return data; //
 
@@ -564,9 +563,7 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                             return '';
                         }
                         if (type === 'display') {
-                            const numberFormatter = new Intl.NumberFormat('en-US', { maximumFractionDigits: 0 }); // No decimal places
-                            const formattedNumber = numberFormatter.format(data); // Format the number with commas
-                            return formattedNumber;
+                            return parseFloat(data).toFixed(2);
                         }
                         return data; //
 

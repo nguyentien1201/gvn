@@ -35,6 +35,13 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
     <style>
+           .carousel-item {
+
+min-height: 300px;
+background: no-repeat center center scroll;
+background-size: cover;
+}
+
         body {
             font-size: 0.9rem !important;
         }
@@ -557,6 +564,7 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                     <div class="ptable-description">
                     <ul>
                         <li>Phiên Bản Dùng Thử</li>
+                        <li>Thời hạn 1 tháng</li>
                     </ul>
                     </div>
                 </div>
