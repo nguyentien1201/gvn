@@ -10,7 +10,7 @@
 
 
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
-    <!-- <link rel="stylesheet" href="{{ asset('css/home.css') }}"> -->
+    <link rel="stylesheet" href="{{ asset('css/home.css') }}">
     <!-- DataTables Responsive CSS -->
     <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}">
     <link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css') }}">
@@ -50,7 +50,7 @@ background-size: cover;
             margin-left: auto !important;
         }
         #navbarNav .nav-link {
-            font-size: 1.1rem;
+            /* font-size: 1.1rem; */
             color: #000;
             font-weight: 600;
         }

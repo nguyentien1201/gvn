@@ -45,7 +45,7 @@ background-size: cover;
 }
 
         #navbarNav .nav-link {
-            font-size: 1.1rem;
+            /* font-size: 1.1rem; */
             color: #000;
             font-weight: 600;
         }

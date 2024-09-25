@@ -37,14 +37,12 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
     <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
 
     <style>
-        body {
-            font-size: 0.9rem !important;
-        }
+
         .ml-auto {
             margin-left: auto !important;
         }
         #navbarNav .nav-link {
-            font-size: 1.1rem;
+            /* font-size: 1.1rem; */
             color: #000;
             font-weight: 600;
         }
