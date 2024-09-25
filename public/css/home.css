@@ -244,7 +244,7 @@
             color:#008000 !important;
         }
         body {
-            font-size: 0.9rem;
+            font-size: 0.9rem !important;
         }
 
         .ml-auto {
