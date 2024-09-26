@@ -161,7 +161,7 @@
         }
 
         .width-120 {
-            width: 150px;
+            width: 160px;
         }
 
         th {
