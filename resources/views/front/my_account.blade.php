@@ -278,7 +278,7 @@
     });
 </script>
 @include('front.common.header')
-<div class="content-wrapper">
+        <div class="content-wrapper">
         @if(session('success'))
             <div class="mb-2">
                 <div class="col-lg-12">
