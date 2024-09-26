@@ -522,23 +522,22 @@ background-size: cover;
                     <div class="ptable-title">
                     <h2>1 Tháng</h2>
                     </div>
-                    <div class="ptable-price basic">
+                    <div class="ptable-price">
                     <h2><small>$</small>{{$price_product['beta']->monthly_price}}<span></span></h2>
                     </div>
                 </div>
                 <div class="ptable-body">
                     <div class="ptable-description">
                     <ul>
-                    <li>Phiên Bản Dùng Thử</li>
-                    <li>Thời hạn 1 tháng</li>
+                        <li>{{$price_product['beta']->description}}</li>
+                        <li>Thời hạn 1 tháng</li>
                     </ul>
                     </div>
                 </div>
                 <div class="ptable-footer">
                     <div class="ptable-action">
-                    @if (Auth::check())
+                        @if (Auth::check())
                             <a class="subscription" data-id={{$price_product['beta']->id}} data-type="buy" data-month="1">Buy</a>
-                            <a class="subscription" data-id={{$price_product['beta']->id}} data-type="trial" data-month="1">Trial</a>
                         @else
                             <a href="{{ route('login') }}">Login</a>
                         @endif
@@ -650,15 +649,15 @@ background-size: cover;
                     <div class="ptable-title">
                     <h2>1 Tháng</h2>
                     </div>
-                    <div class="ptable-price basic">
+                    <div class="ptable-price">
                     <h2><small>$</small>{{$price_product['alpha']->monthly_price}}<span></span></h2>
                     </div>
                 </div>
                 <div class="ptable-body">
                     <div class="ptable-description">
                     <ul>
-                    <li>{{$price_product['alpha']->description}}</li>
-                    <li>Thời hạn 1 tháng</li>
+                        <li>{{$price_product['alpha']->description}}</li>
+                        <li>Thời hạn 1 tháng</li>
                     </ul>
                     </div>
                 </div>
@@ -666,7 +665,6 @@ background-size: cover;
                     <div class="ptable-action">
                         @if (Auth::check())
                             <a class="subscription" data-id={{$price_product['alpha']->id}} data-type="buy" data-month="1">Buy</a>
-                            <a class="subscription" data-id={{$price_product['alpha']->id}} data-type="trial" data-month="1">Trial</a>
                         @else
                             <a href="{{ route('login') }}">Login</a>
                         @endif
@@ -778,15 +776,15 @@ background-size: cover;
                     <div class="ptable-title">
                     <h2>1 Tháng</h2>
                     </div>
-                    <div class="ptable-price basic">
-                    <h2><small>$</small>{{$price_product['greenstock']->monthly_price}}<span>/ M</span></h2>
+                    <div class="ptable-price">
+                    <h2><small>$</small>{{$price_product['greenstock']->monthly_price}}<span></span></h2>
                     </div>
                 </div>
                 <div class="ptable-body">
                     <div class="ptable-description">
                     <ul>
-                    <li>Phiên Bản Dùng Thử</li>
-                    <li>Thời hạn 1 tháng</li>
+                        <li>{{$price_product['greenstock']->description}}</li>
+                        <li>Thời hạn 1 tháng</li>
                     </ul>
                     </div>
                 </div>
@@ -794,7 +792,6 @@ background-size: cover;
                     <div class="ptable-action">
                         @if (Auth::check())
                             <a class="subscription" data-id={{$price_product['greenstock']->id}} data-type="buy" data-month="1">Buy</a>
-                            <a  class="subscription" data-id={{$price_product['greenstock']->id}} data-type="trial" data-month="1">Trial</a>
                         @else
                             <a href="{{ route('login') }}">Login</a>
                         @endif
