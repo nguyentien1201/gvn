@@ -78,7 +78,7 @@
                                 <div class="input-group date-time" id="open_time"
                                      data-target-input="nearest">
                                     <input type="text" data-target="#open_time" name="open_time"
-                                           value="{{old('open_time', $signal->open_time ? date('m-d-Y H:i', strtotime($signal->open_time)) : '')}}" autocomplete="off"
+                                           value="{{old('open_time', $signal->open_time  ?? '')}}" autocomplete="off"
                                            placeholder="{{__('signal.open_time')}}"
                                            class="form-control datetimepicker-input datetimepicker @if($errors->has('open_time')) is-invalid @endif">
                                     <div class="input-group-append" data-target="#open_time"
@@ -160,7 +160,7 @@
                                 <div class="input-group date-time" id="close_time"
                                      data-target-input="nearest">
                                     <input type="text" data-target="#close_time" name="close_time"
-                                           value="{{old('date_action', $signal->close_time ? date('m-d-Y H:i', strtotime($signal->close_time)) : '')}}" autocomplete="off"
+                                           value="{{old('date_action', $signal->close_time ?? '')}}" autocomplete="off"
                                            placeholder="{{__('signal.close_time')}}"
                                            class="form-control datetimepicker-input datetimepicker @if($errors->has('close_time')) is-invalid @endif">
                                     <div class="input-group-append" data-target="#close_time"
