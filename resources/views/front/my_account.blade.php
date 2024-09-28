@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GVN</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
-
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link href="https://cdn.datatables.net/1.11.1/css/dataTables.bootstrap4.min.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.bootstrap4.min.css" rel="stylesheet">
     <link href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/home.css') }}">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.datatables.net/1.11.1/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
@@ -423,9 +423,9 @@
                                     <td width="15%">{{$subscription->product->name}}</td>
                                     <td width="10%">{{$subscription->start_date}}</td>
                                     <td width="15%">{{$subscription->end_date}}</td>
-                                    <td>{{$subscription->is_trial ? 'Thương mại' : 'Dùng Thử'}}</td>
+                                    <td>{{$subscription->is_trial == 0 ? 'Thương mại' : 'Dùng Thử'}}</td>
                                     <td width="10%" class="text-center text-nowrap">
-                                        <a href="#"
+                                        <a href="#confirmExtend" data-toggle="modal"  data-id="{{$subscription->id}}" data-product_id="{{$subscription->product_id}}"
                                            class="btn btn-primary btn-circle btn-sm">
                                             <i class="fas fa-edit" aria-hidden="true"></i>
                                         </a>
@@ -460,7 +460,7 @@
 
                                                     <div class="form-group col-md-6">
                                                         <label for="phone">Phone</label>
-                                                        <input name="phone"  value="{{$info->profile->address ?? ''}}" type="text" class="form-control" id="phone"
+                                                        <input name="phone"  value="{{$info->profile->phone ?? ''}}" type="text" class="form-control" id="phone"
                                                             placeholder="Number Phone">
                                                     </div>
 
@@ -471,7 +471,7 @@
                                                     </div>
                                                     <div class="form-group col-md-6">
                                                         <label for="birthday">Birthdate</label>
-                                                        <input name="birthday" value="{{$info->birthdate ?? ''}}" type="text" class="form-control" id="birthday"
+                                                        <input name="birthday" value="{{$info->profile->birthday ?? ''}}" type="text" class="form-control" id="birthday"
                                                             placeholder="MM/DD/YYYY">
                                                     </div>
                                                 </div>
@@ -480,7 +480,7 @@
                                         </div>
                                     </div>
                                 </div>
-
+                                @include('partials.dialog-confirm-extend')
                             </div>
                         </div>
                     </div>
@@ -490,5 +490,32 @@
     </div>
 </section>
 </body>
+<script>
+    $(document).ready(function(){
+        $('#confirmExtend').on('show.bs.modal', function (e) {
+            // Perform AJAX request to get data
+            $.ajax({
+            url: '/api/get-product', // Replace with your data source URL
+            method: 'GET',
+            data: {
+                id: $(e.relatedTarget).data('id'),
+                product_id: $(e.relatedTarget).data('product_id')
+            },
+            success: function(data) {
+                // Load the data into the modal body
 
+                let product = data.product;
+                $('#product_id').val(product.id);
+                $('#sub_price_id').val($(e.relatedTarget).data('id'));
+                $('#yearly_price').text(product.yearly_price);
+                $('#six_month_price').text(product.six_month_price);
+                $('#monthly_price').text(product.monthly_price);
+            },
+            error: function() {
+                $('#modal-data').html('<p>Error loading data</p>');
+            }
+            });
+        });
+    });
+</script>
 </html>

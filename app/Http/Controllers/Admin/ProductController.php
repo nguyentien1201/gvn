@@ -83,4 +83,5 @@ class ProductController extends AdminController
             return back()->with('fail', __('panel.fail'));
         }
     }
+
 }

@@ -13,6 +13,7 @@ class CustomerController
 {
     public function myAccount(){
         $subscriptions = (new Subscription())->getMySubscription();
+
         $info = User::with(['profile'])->where('id', Auth::id())->select('id', 'email',  'name')->first();
         return view('front.my_account', compact('subscriptions','info'));
     }
@@ -20,6 +21,7 @@ class CustomerController
     {
 
         try {
+            $request['birthday'] = Carbon::parse($request['birthday'])->format('Y-m-d');
             $user_id = Auth::id();
             $profile = Profile::where('user_id', $user_id)->first();
             if($profile){
