@@ -26,7 +26,7 @@
     }
 
     .tg-account .account-banner {
-        background: var(--bg-primary);
+        background: #008000 ;
         width: 100%;
         float: left;
         padding: 100px 0 0;
