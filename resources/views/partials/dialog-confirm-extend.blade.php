@@ -189,6 +189,7 @@
   letter-spacing: 2px;
   text-decoration: none;
   background: #0d6efd;
+  cursor: pointer;
 }
 
 .pricing-table .ptable-action a:hover {
@@ -313,10 +314,7 @@
             </div>
         </div>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" id="saveChanges">Save changes</button>
-      </div>
+
     </div>
   </div>
 </div>

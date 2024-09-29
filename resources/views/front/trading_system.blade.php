@@ -447,6 +447,7 @@ background-size: cover;
   letter-spacing: 2px;
   text-decoration: none;
   background: #0d6efd;
+  cursor: pointer;
 }
 
 .pricing-table .ptable-action a:hover {
