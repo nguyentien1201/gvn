@@ -5,21 +5,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GVN</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link href="https://cdn.datatables.net/1.11.1/css/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
     <link href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.bootstrap4.min.css" rel="stylesheet">
     <link href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/home.css') }}">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.datatables.net/1.11.1/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 
 </head>
 
 
 <style>
+        .dataTables_wrapper .dataTables_length,
+    .dataTables_wrapper .dataTables_filter,
+    .dataTables_wrapper .dataTables_info,
+    .dataTables_wrapper .dataTables_paginate {
+        display: none;
+    }
     .tg {
         --bg-primary: #207ba1;
         --text-primary: #207ba1;
@@ -277,7 +282,7 @@
         });
     });
 </script>
-@include('front.common.header')
+    @include('front.common.header')
         <div class="content-wrapper">
         @if(session('success'))
             <div class="mb-2">
@@ -293,7 +298,7 @@
                 </div>
             </div>
         @endif
-        @yield('content')
+
     </div>
 <section class="tg-may-account-wrapp tg">
     <div class="inner">
@@ -328,17 +333,17 @@
                         <div class="nav-area">
                             <ul class="nav nav-tabs" id="myTab" role="tablist">
                                 <li class="nav-item">
-                                    <a class="nav-link active" id="dashboard-link" data-toggle="tab" href="#dashboard"
+                                    <a class="nav-link active" id="dashboard-link" data-bs-toggle="tab" href="#dashboard"
                                         role="tab" aria-controls="dashboard" aria-selected="true"><i
                                             class="fas fa-tachometer-alt"></i> <span>Dashboard</span></a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" id="my-order" data-toggle="tab" href="#my-orders" role="tab"
+                                    <a class="nav-link" id="my-order" data-bs-toggle="tab" href="#my-orders" role="tab"
                                         aria-controls="my-orders" aria-selected="false"><i
                                             class="fas fa-file-invoice"></i> <span>Orders</span></a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" id="account-detail" data-toggle="tab" href="#account-details"
+                                    <a class="nav-link" id="account-detail" data-bs-toggle="tab" href="#account-details"
                                         role="tab" aria-controls="account-details" aria-selected="false"><i
                                             class="fas fa-user-alt"></i> <span>Profile</span></a>
                                 </li>
@@ -346,7 +351,7 @@
 
                                     <a href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
-                                                    document.getElementById('logout-form').submit();" class="nav-link" id="logout" data-toggle="tab" href="#logout" role="tab"
+                                                    document.getElementById('logout-form').submit();" class="nav-link" id="logout" data-bs-toggle="tab" href="#logout" role="tab"
                                         aria-controls="logout" aria-selected="false"><i class="fas fa-sign-out-alt"></i>
                                         <span>Logout</span></a>
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
@@ -404,7 +409,7 @@
                                 </div>
                                 <div class="tab-pane fade" id="my-orders" role="tabpanel" aria-labelledby="my-order">
                                     <table id="my-orders-table"
-                                        class="table table-striped table-bordered dt-responsive nowrap"
+                                        class="table table-striped table-bordered display responsive nowrap"
                                         style="width:100%">
                                         <thead>
                             <tr>
@@ -425,7 +430,7 @@
                                     <td width="15%">{{$subscription->end_date}}</td>
                                     <td>{{$subscription->is_trial == 0 ? 'Thương mại' : 'Dùng Thử'}}</td>
                                     <td width="10%" class="text-center text-nowrap">
-                                        <a href="#confirmExtend" data-toggle="modal"  data-id="{{$subscription->id}}" data-product_id="{{$subscription->product_id}}"
+                                        <a href="#confirmExtend" data-bs-toggle="modal"  data-id="{{$subscription->id}}" data-product_id="{{$subscription->product_id}}"
                                            class="btn btn-primary btn-circle btn-sm">
                                             <i class="fas fa-edit" aria-hidden="true"></i>
                                         </a>
@@ -492,6 +497,7 @@
 </body>
 <script>
     $(document).ready(function(){
+
         $('#confirmExtend').on('show.bs.modal', function (e) {
             // Perform AJAX request to get data
             $.ajax({
@@ -510,6 +516,7 @@
                 $('#yearly_price').text(product.yearly_price);
                 $('#six_month_price').text(product.six_month_price);
                 $('#monthly_price').text(product.monthly_price);
+                $('#product_name').text(product.name);
             },
             error: function() {
                 $('#modal-data').html('<p>Error loading data</p>');
