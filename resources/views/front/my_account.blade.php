@@ -29,7 +29,7 @@
         background: #008000 ;
         width: 100%;
         float: left;
-        padding: 100px 0 0;
+        padding: 70px 0 0;
     }
 
     .tg-account .account-banner .inner-banner .detail * {
