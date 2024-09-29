@@ -215,8 +215,17 @@
   background: #f44336;
 }
 </style>
-<div id="confirmExtend" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="confirmExtendModalLabel" aria-hidden="true">
-    <input type="hidden" id="sub_price_id" value="">
+<div class="modal fade" id="confirmExtend" tabindex="-1" role="dialog" aria-labelledby="confirmExtendModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm modal-lg modal-xl" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="confirmExtendModalLabel">Gia hạn dịch vụ</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+   <input type="hidden" id="sub_price_id" value="">
     <input type="hidden" id="product_id" value="">
 <div class="container pb-3 mt-5 pt-3" style="background: #f9f9f9;">
             <div class="row">
@@ -303,7 +312,17 @@
 
             </div>
         </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="saveChanges">Save changes</button>
+      </div>
+    </div>
+  </div>
 </div>
+<!-- <div id="confirmExtend" class="modal fade" tabindex="-1" role="modal" aria-labelledby="confirmExtendModalLabel" aria-hidden="true">
+
+</div> -->
 
 
 <script>
@@ -330,6 +349,7 @@
                 },
                 success: function(data) {
                     alert(data.message);
+                    $('#confirmExtend').modal('hide'); // Đóng modal
 
                 }
             });
