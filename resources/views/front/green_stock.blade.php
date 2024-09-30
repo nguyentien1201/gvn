@@ -800,7 +800,7 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                     targets: 8, // Index of the open_time column
                     render: function (data, type, row) {
                         if (type === 'display' || type === 'filter') {
-                            return moment.utc(data).format('DD/MM/YYYY'); // Format as HH:mm
+                            return moment.tz(data, 'Europe/Moscow').format('DD/MM/YYYY'); // Format as HH:mm
                         }
                         return data;
                     }
@@ -1314,7 +1314,7 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                                                     targets: 7, // Index of the open_time column
                                                     render: function (data, type, row) {
                                                         if (type === 'display' || type === 'filter') {
-                                                            return moment.utc(data).format('DD/MM/YYYY'); // Format as HH:mm
+                                                            return moment.tz(data, 'Europe/Moscow').format('DD/MM/YYYY'); // Format as HH:mm
                                                         }
                                                         return data;
                                                     }
@@ -1467,7 +1467,7 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                             targets: 7, // Index of the open_time column
                             render: function (data, type, row) {
                                 if (type === 'display' || type === 'filter') {
-                                    return moment.utc(data).format('DD/MM/YYYY'); // Format as HH:mm
+                                    return moment.tz(data, 'Europe/Moscow').format('DD/MM/YYYY'); // Format as HH:mm
                                 }
                                 return data;
                             }

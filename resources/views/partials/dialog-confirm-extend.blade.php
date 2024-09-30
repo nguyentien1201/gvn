@@ -354,6 +354,7 @@
                     success: function (data) {
                         alert(data.message);
                         $('#confirmExtend').modal('hide'); // Đóng modal
+                        $('#my-orders-table').reload();
 
                     }
                 });

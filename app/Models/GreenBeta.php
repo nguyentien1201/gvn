@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use App\Models\SignalFree;
+use App\Service\GoogleDriveService;
 use DB;
 use Illuminate\Support\Str;
 class GreenBeta extends Model
@@ -155,4 +156,68 @@ class GreenBeta extends Model
         }
         return $result;
     }
+    public function importByDrive(){
+        $codes = MstStock::pluck('id','code')->toArray();
+        $this->googleDriveService = new GoogleDriveService();
+        $fileUrl = config('drivefile.drivefile.nas100');
+        $betas = $this->googleDriveService->getSheetData($fileUrl, 'Beta!A1:I');
+        array_shift($betas);
+
+        foreach($betas as $item){
+            if(empty($item[0])) continue;
+            $openTime = null;
+            $closeTime = null;
+
+            if (!empty($item[2])) {
+                $formats = ['d-M-Y', 'Y-m-d', 'm/d/Y']; // Add more formats as needed
+                foreach ($formats as $format) {
+                    try {
+                        $openTime =  Carbon::parse($item[2])->format('Y-m-d H:i:s');
+                        break;
+                    } catch (\Exception $e) {
+                        dd($e->getMessage());
+                        // Continue to the next format
+                    }
+                }
+            }
+
+            // Try multiple date formats for close_time
+            if (!empty($item[8])) {
+                $formats = ['d-M-Y', 'Y-m-d', 'm/d/Y']; // Add more formats as needed
+                foreach ($formats as $format) {
+                    try {
+                        $closeTime =  Carbon::parse($item[8])->format('Y-m-d H:i:s');
+                        break;
+                    } catch (\Exception $e) {
+                        // Continue to the next format
+                    }
+                }
+            }
+
+            try {
+                $greenBeta = [
+                    'code' => $codes[$item[4]],
+                    'signal_open' => $item[0],
+                    'price_open' => (float)$item[1],
+                    'open_time' => $openTime,
+                    'close_time' => $closeTime,
+                    'signal_close' => $item[6] ?? null,
+                    'price_close' =>!empty($item[7]) ? (float)$item[7] : null,
+
+                ];
+                $existingRecord = GreenBeta::where(['code'=>$greenBeta['code'],'price_open'=>$greenBeta['price_open'],'open_time'=> $greenBeta['open_time']] )->first();
+
+                if ($existingRecord) {
+                    $existingRecord->update($greenBeta);
+                } else {
+                    // Record does not exist, insert new
+                    GreenBeta::create($greenBeta);
+                }
+                } catch (\Exception $e) {
+
+
+                    continue;
+                }
+    }
+}
 }

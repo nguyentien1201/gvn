@@ -90,3 +90,4 @@ Route::post('admin/signal-free/import', 'Admin\SignalFreeController@import')->mi
 Route::post('admin/green-stock-nas100/import', 'Admin\GreenStockNas100Controller@import')->middleware('admin')->name('admin.nas100.import');
 
 Route::post('admin/green-alpha/import-by-drive', 'Admin\GreenAlphaController@importByDrive')->middleware('admin')->name('admin.green-alpha.import-by-drive');
+Route::post('admin/green-beta/import-by-drive', 'Admin\GreenBetaController@importByDrive')->middleware('admin')->name('admin.green-beta.import-by-drive');

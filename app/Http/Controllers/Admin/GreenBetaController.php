@@ -30,7 +30,6 @@ class GreenBetaController extends AdminController
     {
         $searchGreenBetas = GreenBeta::all();
         $signals = (new GreenBeta())->getListSignalsById($id,$request);
-
         $mstStocks = (new MstStock())->getListMstStock($request);
 
         return view('admin.green_beta.index', compact('signals', 'searchGreenBetas','mstStocks'));
@@ -144,8 +143,10 @@ class GreenBetaController extends AdminController
             if ($request->type_upload == 0) {
                 return back()->with('success', __('panel.success'));
             }
-
-
+    }
+    public function importByDrive(Request $request) {
+        $this->greenBeta->importByDrive();
+        return back()->with('success', __('panel.success'));
     }
 
 }

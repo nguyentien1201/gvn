@@ -23,15 +23,15 @@
                                 {{ __('panel.add') }}
                             </a>
                             <div style="display:inline-block">
-                            <form class="d-flex justify-content-center" action="{{route('admin.green-alpha.import-by-drive')}}" method="post"
-                              enctype="multipart/form-data">
-                            {{csrf_field()}}
-                            <div class="input-group">
-                                <span class="input-group-append">
-                                <button type="submit" class="btn btn-primary">Sync Data</button>
-                                </span>
-                            </div>
-                        </form>
+                                <form class="d-flex justify-content-center" action="{{route('admin.green-alpha.import-by-drive')}}" method="post"
+                                    enctype="multipart/form-data">
+                                    {{csrf_field()}}
+                                    <div class="input-group">
+                                        <span class="input-group-append">
+                                        <button type="submit" class="btn btn-primary">Sync Data</button>
+                                        </span>
+                                    </div>
+                                </form>
                             </div>
 
                         </div>
