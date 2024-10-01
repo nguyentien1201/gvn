@@ -17,7 +17,7 @@ class GreenBeta extends Model
     public $table = 'green_beta';
 
     protected $fillable = [
-        'code', 'price_open', 'open_time', 'signal_close', 'price_close', 'price_cumulative_from', 'price_cumulative_to', 'profit', 'close_time', 'last_sale', 'signal_open'
+        'code', 'price_open', 'open_time', 'signal_close', 'price_close', 'trending_price','price_cumulative_from', 'price_cumulative_to', 'profit', 'close_time', 'last_sale', 'signal_open'
     ];
         protected $casts = [
         'open_time' => 'date',
@@ -63,8 +63,8 @@ class GreenBeta extends Model
         $profit = NULL;
         if(!empty($this->price_close) && $this->price_open > 0){
             $profit = ($this->price_close - $this->price_open)/$this->price_open * 100;
-        }elseif($this->FreeSignal->last_sale > 0) {
-            $profit = ($this->FreeSignal->last_sale - $this->price_open)/$this->price_open * 100;
+        }elseif($this->last_sale > 0) {
+            $profit = ($this->last_sale - $this->price_open)/$this->price_open * 100;
         }
         return round($profit, 2);
     }
@@ -79,7 +79,7 @@ class GreenBeta extends Model
             $join->on('green_beta.code', '=', 'latest_times.code')
             ->on('green_beta.open_time', '=', 'latest_times.latest_open_time');
             })
-            ->with(['FreeSignal', 'mstStock'])
+            ->with(['mstStock'])
             ->select('green_beta.*') // Adjust 'green_beta.*' if you need specific columns
             ->orderBy('green_beta.code') // Ensure a consistent order by code
             ->orderBy('green_beta.id', 'desc'); // Use ID to break ties, assuming newer records have higher IDs
@@ -90,10 +90,10 @@ class GreenBeta extends Model
                 'signal_open' =>$value->signal_open,
                 'price_open' => $value->price_open,
                 'open_time' => $value->open_time,
-                'trend_price' => ConstantModel::TRENDING_PRICE[$value->FreeSignal->trend_price] ?? '',
+                'trend_price' => $value->trend_price ??'',
                 'price_better_buy' =>'',
                 'code' => $value->mstStock->code,
-                'last_sale' => $value->FreeSignal->last_sale,
+                'last_sale' => $value->last_sale,
                 'profit' => $value->calculateProfit(),
                 'signal_close' => $value->signal_close,
                 'price_close' => $value->price_close > 0 ? $value->price_close : null,
@@ -175,7 +175,7 @@ class GreenBeta extends Model
                         $openTime =  Carbon::parse($item[2])->format('Y-m-d H:i:s');
                         break;
                     } catch (\Exception $e) {
-                        dd($e->getMessage());
+
                         // Continue to the next format
                     }
                 }
@@ -187,6 +187,7 @@ class GreenBeta extends Model
                 foreach ($formats as $format) {
                     try {
                         $closeTime =  Carbon::parse($item[8])->format('Y-m-d H:i:s');
+
                         break;
                     } catch (\Exception $e) {
                         // Continue to the next format
@@ -202,9 +203,12 @@ class GreenBeta extends Model
                     'open_time' => $openTime,
                     'close_time' => $closeTime,
                     'signal_close' => $item[6] ?? null,
+                    'last_sale' =>!empty($item[5]) ? (float)$item[5] : null,
                     'price_close' =>!empty($item[7]) ? (float)$item[7] : null,
+                    'trending_price' => $item[3] ?? null,
 
                 ];
+
                 $existingRecord = GreenBeta::where(['code'=>$greenBeta['code'],'price_open'=>$greenBeta['price_open'],'open_time'=> $greenBeta['open_time']] )->first();
 
                 if ($existingRecord) {
