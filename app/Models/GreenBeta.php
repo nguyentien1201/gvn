@@ -86,6 +86,7 @@ class GreenBeta extends Model
         $data = $query->get();
         $result = [];
         foreach ($data as $key => $value) {
+
             $result[] = [
                 'signal_open' =>$value->signal_open,
                 'price_open' => $value->price_open,
