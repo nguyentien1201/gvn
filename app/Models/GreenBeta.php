@@ -35,7 +35,7 @@ class GreenBeta extends Model
         if(empty($value)){
             return null;
         }
-        return Carbon::parse($value)->format('m-y-Y'); // Customize the format as needed
+        return Carbon::parse($value)->format('m-d-Y'); // Customize the format as needed
     }
 
     public function getListSignals( Request $request)
@@ -86,7 +86,6 @@ class GreenBeta extends Model
         $data = $query->get();
         $result = [];
         foreach ($data as $key => $value) {
-
             $result[] = [
                 'signal_open' =>$value->signal_open,
                 'price_open' => $value->price_open,

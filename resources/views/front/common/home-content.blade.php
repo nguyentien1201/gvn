@@ -2,6 +2,7 @@
 
 <script>
     $(document).ready(function () {
+        console.log(@json($signals));
         var swiper = new Swiper('.swiper-container', {
         slidesPerView: 1,
         spaceBetween: 10,
