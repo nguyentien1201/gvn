@@ -69,6 +69,7 @@ class GreenStockNas100 extends Model
         array_shift($listData);
         $header = $listData[0] ?? [];
         $header = explode(",", $header);
+
         array_shift($listData);
         foreach ($listData as $item) {
             try {
