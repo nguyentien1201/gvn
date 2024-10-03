@@ -29,6 +29,7 @@ Route::group(['prefix' => '', 'as' => 'front.', 'namespace' => 'Front'], functio
     Route::get('trading-system', 'HomeController@tradingSystem')->name('home.trading-system');
     Route::get('contact', 'HomeController@contact')->name('home.contact');
     Route::get('mission', 'HomeController@mission')->name('home.mission');
+
 });
 
 Auth::routes(['register' => true]);
@@ -41,7 +42,7 @@ Route::group([ 'namespace' => 'Front'], function () {
     Route::get('/account', 'CustomerController@myAccount')->name('account')->middleware('customer');
     Route::post('/account/update', 'CustomerController@update')->name('account.update')->middleware('customer');
     Route::get('api/get-product', 'SubscriptionController@getProduct')->name('api.get-product')->middleware('customer');
-
+    Route::post('/change-language','HomeController@changeLanguage')->name('changeLanguage');
 });
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin'], function () {
@@ -91,3 +92,4 @@ Route::post('admin/green-stock-nas100/import', 'Admin\GreenStockNas100Controller
 
 Route::post('admin/green-alpha/import-by-drive', 'Admin\GreenAlphaController@importByDrive')->middleware('admin')->name('admin.green-alpha.import-by-drive');
 Route::post('admin/green-beta/import-by-drive', 'Admin\GreenBetaController@importByDrive')->middleware('admin')->name('admin.green-beta.import-by-drive');
+

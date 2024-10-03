@@ -17,33 +17,33 @@
       <div class="carousel-item active" style="background-image: url({{url('images/banner-1.jpg')}})">
         <div class="container">
           <div class="carousel-caption text-left">
-            <h1> Chúng tôi tạo ra các hệ thống để phục vụ nhu cầu của nhà đầu tư</h1>
-            <p> Giảm thời gian theo dõi thị trường và tăng hiệu quả đầu tư của khách hàng.</p>
+            <h1> {{__('front_end.header_banner')}}</h1>
+            <p> {{__('front_end.header_note_banner')}}</p>
             <p>
-            <a class="btn btn-lg btn-dark text-white mx-2" href="/trading-system"> Tìm hiểu thêm</a>
-            <a class="btn btn-lg btn-success mx-2" href="/contact"> Liên hệ</a></p>
+            <a class="btn btn-lg btn-dark text-white mx-2" href="/trading-system">{{__('front_end.see_more')}}</a>
+            <a class="btn btn-lg btn-success mx-2" href="/contact">{{__('front_end.Contact')}}</a></p>
           </div>
         </div>
       </div>
       <div class="carousel-item" style="background-image: url({{url('images/artificial-intelligence-ai-robot-big-data-bull-market-stock-chart-getty.jpg')}})">
         <div class="container">
         <div class="carousel-caption text-left">
-            <h1> Chúng tôi tạo ra các hệ thống để phục vụ nhu cầu của nhà đầu tư</h1>
-            <p> Giảm thời gian theo dõi thị trường và tăng hiệu quả đầu tư của khách hàng.</p>
+            <h1>{{__('front_end.header_banner')}}</h1>
+            <p>{{__('front_end.header_note_banner')}}</p>
             <p>
-            <a class="btn btn-lg btn-dark text-white mx-2" href="/trading-system"> Tìm hiểu thêm</a>
-            <a class="btn btn-lg btn-success mx-2" href="/contact"> Liên hệ</a></p>
+            <a class="btn btn-lg btn-dark text-white mx-2" href="/trading-system">{{__('front_end.see_more')}}</a>
+            <a class="btn btn-lg btn-success mx-2" href="/contact">{{__('front_end.Contact')}}</a></p>
           </div>
         </div>
       </div>
       <div class="carousel-item" style="background-image: url({{url('images/stock-trading-bot.webp')}})">
         <div class="container">
         <div class="carousel-caption text-left">
-            <h1> Chúng tôi tạo ra các hệ thống để phục vụ nhu cầu của nhà đầu tư</h1>
-            <p> Giảm thời gian theo dõi thị trường và tăng hiệu quả đầu tư của khách hàng.</p>
+            <h1>  {{__('front_end.header_banner')}}</h1>
+            <p>{{__('front_end.header_note_banner')}}</p>
             <p>
-            <a class="btn btn-lg btn-dark text-white mx-2" href="/trading-system"> Tìm hiểu thêm</a>
-            <a class="btn btn-lg btn-success mx-2" href="/contact"> Liên hệ</a></p>
+            <a class="btn btn-lg btn-dark text-white mx-2" href="/trading-system">{{__('front_end.see_more')}}</a>
+            <a class="btn btn-lg btn-success mx-2" href="/contact">{{__('front_end.Contact')}}</a></p>
           </div>
         </div>
       </div>

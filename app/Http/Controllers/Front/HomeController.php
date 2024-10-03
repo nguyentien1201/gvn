@@ -6,8 +6,7 @@ namespace App\Http\Controllers\Front;
 
 use App\Models\GreenBeta;
 use Illuminate\Support\Facades\Request;
-use App\Models\SignalFree;
-use App\Models\MstStock;
+// use Illuminate\Http\Request;
 use App\Models\GreenAlpha;
 use App\Models\GreenStockNas100;
 use DB;
@@ -18,6 +17,7 @@ use App\Models\GroupCap;
 use App\Models\SubGroupCapDetail;
 use DateTime;
 use App\Models\Product;
+use Illuminate\Support\Facades\Session;
 class HomeController
 {
     public function index(Request $request)
@@ -285,5 +285,13 @@ class HomeController
     }
     public function mission(){
         return view('front.mission');
+    }
+    public function changeLanguage(Request $request)
+    {
+
+        $request = Request::all();
+        Session::put('locale', $request['language']);
+
+        return redirect()->back();
     }
 }

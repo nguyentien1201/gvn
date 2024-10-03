@@ -46,17 +46,17 @@
             data: @json($signals),
             order: [[4, 'desc']],
             columns: [
-                { data: 'signal_open', title: 'Signal Open' },  // Apply bold formatting to the "PriceTrend" column data},
-                { data: 'price_open', title: 'Price Open' },
-                { data: 'open_time', title: 'Open Time' },
-                { data: 'trend_price', title: 'Trend Price' },
-                { data: 'group', title: 'Markets' },
-                { data: 'code', title: 'Symbol' },
-                { data: 'last_sale', title: 'Last Sale' },
-                { data: 'profit', title: 'Profit' },
-                { data: 'signal_close', title: 'Signal Close' },
-                { data: 'price_close', title: 'Price Close' },
-                { data: 'close_time', title: 'Close Time' }
+                { data: 'signal_open'},  // Apply bold formatting to the "PriceTrend" column data},
+                { data: 'price_open' },
+                { data: 'open_time'},
+                { data: 'trend_price'},
+                { data: 'group'},
+                { data: 'code'},
+                { data: 'last_sale'},
+                { data: 'profit'},
+                { data: 'signal_close' },
+                { data: 'price_close' },
+                { data: 'close_time'}
             ],
             columnDefs: [
                 {
@@ -584,7 +584,7 @@
 
 <section class="features text-left mt-5">
     <div class="container">
-        <h2 class="text-left mb-4 label-color color-home pb-3 d-flex" >Quan tâm nhiều nhất  <a class="color-home" style="text-align:right;right: 0;
+        <h2 class="text-left mb-4 label-color color-home pb-3 d-flex" >{{__('front_end.most_interested')}} <a class="color-home" style="text-align:right;right: 0;
     " href="/green-beta"><i class="fas fa-chevron-right"></i></a></h2>
         <div class="row">
         <!-- Chart Section -->
@@ -594,6 +594,21 @@
                     <div class="col-md-12 text-center">
                     <table class="table table-striped table-bordered display responsive nowrap" style="width:100%;margin-bottom: 0px;"
                         id="indices-table">
+                        <thead>
+
+                            <tr>
+                                <th>{{__('front_end.signal_open')}}</th>
+                                <th>{{__('front_end.price_open')}}</th>
+                                <th>{{__('front_end.open_time')}}</th>
+                                <th>{{__('front_end.trend_price')}}</th>
+                                <th>{{__('front_end.markets')}}</th>
+                                <th>{{__('front_end.symbol')}}</th>
+                                <th>{{__('front_end.last_sale')}}</th>
+                                <th>{{__('front_end.profit')}}</th>
+                                <th>{{__('front_end.signal_close')}}</th>
+                                <th>{{__('front_end.price_close')}}</th>
+                                <th>{{__('front_end.close_time')}}</th>
+                            </tr>
                     </table>
                     </div>
 
@@ -601,12 +616,12 @@
                         <div class="col-md-4 text-left form-group">
                             <ul style="padding-left:0">
                                 <li class="list-item">
-                                    <button class="takeprofitbuy width-120" >BUY</button>
-                                    <span>Tín hiệu xu hướng đang mở.</span>
+                                    <button class="takeprofitbuy width-120" >{{__('front_end.BUY')}}</button>
+                                    <span>{{__('front_end.trend_signal_open')}}</span>
                                 </li>
                                 <li class="list-item">
-                                    <button class="hold width-120">CLOSED</button>
-                                    <span>Tín hiệu xu hướng đã đóng.</span>
+                                    <button class="hold width-120">{{__('front_end.CLOSED')}}</button>
+                                    <span>{{__('front_end.trend_signal_closed')}}</span>
                                 </li>
 
                             </ul>
@@ -614,12 +629,12 @@
                         <div class="col-md-4 text-left form-group">
                             <ul style="padding-left:0">
                             <li class="list-item">
-                                    <button class="takeprofitbuy width-120">TakeProfitBUY</button>
-                                    <span>Tín hiệu đã ở trạng thái chốt lời.</span>
+                                    <button class="takeprofitbuy width-120">{{__('front_end.take_profit_buy')}}</button>
+                                    <span>{{__('front_end.trend_signal_take_profit')}}</span>
                                 </li>
                                 <li class="list-item">
-                                    <button class="hold width-120">HOLD</button>
-                                    <span>Tín hiệu đang ở trạng thái giữ.</span>
+                                    <button class="hold width-120">{{__('front_end.HOLD')}}</button>
+                                    <span>{{__('front_end.trend_signal_hold')}}</span>
                                 </li>
 
 
@@ -629,8 +644,8 @@
                             <ul style="padding-left:0">
 
                                 <li class="list-item">
-                                    <button class="cutlossbuy width-120">CutLossBUY</button>
-                                    <span>Tín hiệu đã ở trạng thái cắt lỗ.</span>
+                                    <button class="cutlossbuy width-120">{{__('front_end.cut_loss_buy')}}</button>
+                                    <span>{{__('front_end.trend_signal_cutloss')}}</span>
                                 </li>
                             </ul>
 
@@ -648,17 +663,17 @@
     <div class="container">
         <div class="row">
             <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-                <h2 class="text-left mb-4 pb-3  d-flex"><span class="title-trading-first label-color bold">Giao dịch với GREEN BETA 1.3.3</span>
+                <h2 class="text-left mb-4 pb-3  d-flex"><span class="title-trading-first label-color bold">{{__('front_end.title_green_beta')}} 1.3.3</span>
                     <a class="color-home" style="text-align:right ;right: 0;" href="/trading-system"><i class="fas fa-chevron-right"></i></a>
                 </h2>
                 <div class="card mb-4">
                     <div class="card-body">
                         <p class="font-face">
-                        Phương pháp giao dịch của Green Beta là Position Trading, tìm những điểm có xác suất chiến thắng cao nhất và nắm giữ trung và dài hạn vị thế đó cho đến khi xuất hiện các tín hiệu chốt lời và cắt lỗ từ thị trường. Green Beta được phát triển có thể thích nghi hầu hết các chỉ số tài chính trên toàn thị trường như Index Future,Crypto, Commodity...
-
+                      {{__('front_end.description_title_green_beta')}}
                     </p>
                         <h6 class="card-text font-face bold" style="font-weight:600">
-                        Tìm kiếm sự dịch chuyển dòng tiền, tìm kiếm lợi thế lợi thế gia tăng tài sản của bạn!
+                        {{__('front_end.description_title_end_green_beta')}}
+
                         </h6>
 
                     </div>
@@ -688,7 +703,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-                <h2 class="text-left mb-4 color-home label-color pb-3">Top tín hiệu phiên trước đó</h2>
+                <h2 class="text-left mb-4 color-home label-color pb-3">{{__('front_end.top_signal')}}</h2>
                 <div class="swiper-container">
                     <div class="swiper-wrapper">
                         <!-- Slide 1 -->
@@ -740,7 +755,8 @@
                             <div class="col-md-9">
 
                             <p class="font-face">
-                                Green Alpha là một robot với sự tích hợp đa tầng của các Indicator ngắn hạn, giao dịch với phương pháp Day Trading, là một robot giao dịch ngắn hạn trong phiên giao dịch,  tìm kiếm những điểm vào có xác suất chiến thắng cao và được lặp lại trong nhiều phiên. Green Alpha thích hợp cho các nhà đầu tư tìm kiếm các cơ hội nhanh, các nhà đầu tư dành phần lớn thời gian cho việc giao dịch và yêu thích sự phấn khích của nhịp độ thị trường hằng ngày.
+                                {{__('front_end.description_title_green_alpha')}}
+
                             </p>
                             </div>
                             <!-- Chart Section -->
@@ -785,6 +801,18 @@
                         <!-- Chart Section -->
                         <div class="col-md-12 text-center">
                         <table class="table table-striped table-bordered display responsive nowrap" style="margin-bottom: 0px; width:100%" id="green-stock-table">
+                            <thead>
+
+                                <tr>
+                                    <th>{{__('front_end.RATING')}}</th>
+                                    <th>{{__('front_end.STOCK')}}</th>
+                                    <th>{{__('front_end.LAST_SALE')}}</th>
+                                    <th>{{__('front_end.TREND')}}</th>
+                                    <th>{{__('front_end.ACTION')}}</th>
+                                    <th>{{__('front_end.PROFIT')}}</th>
+                                    <th>{{__('front_end.PRICE')}}</th>
+                                    <th>{{__('front_end.TIME')}}</th>
+                                </tr>
                         </table>
                         </div>
                     </div>
@@ -799,7 +827,7 @@
         <div class="row">
             <div class="col-12 col-sm-12 col-md-12 col-lg-12">
 
-                <h2 class="text-left mb-4 pb-3"><span class="title-trading-first label-color">Giao dịch với GREENSTOCK-NAS100</span>
+                <h2 class="text-left mb-4 pb-3"><span class="title-trading-first label-color">{{__('front_end.green_stock_100')}}</span>
 
                 </h2>
             <!-- Data and Chart Section -->
@@ -810,7 +838,8 @@
                     <div class="card mb-4">
                                 <div class=" text-left">
                                     <p class="font-face">
-                                    GreenStock-NAS100 là hệ thống phân tích các cổ phiếu trong rổ cổ phiếu NASDAQ100 của thị trường chứng khoán Mỹ. Hệ thống sẽ tự động phân tích xu hướng ngắn hạn và dài hạn của các cổ phiếu, xếp hạng xu hướng và xung lực dòng tiền trên từng cổ phiếu, từ đó tạo ra bảng điểm Rating theo kỹ thuật để đưa ra nhận định hành động cho người dùng. Một vòng tròn hành động trong việc đầu tư của người dùng: BUY-HOLD-SELL-CASH
+                                        {{__('front_end.description_title_green_stock')}}
+
                                     </p>
                                 </div>
                             </div>
@@ -845,21 +874,21 @@
 </section>
 <section class="features text-center  mt-5">
     <div class="container">
-      <h2 class="color-home label-color">Dịch vụ của chúng tôi</h2>
+      <h2 class="color-home label-color">{{__('front_end.service_us')}}</h2>
       <div class="row">
         <div class="col-md-4">
           <div class="card" style="height:100%">
             <div class="card-body">
-              <h5 class="card-title color-home">  <i class="fas fa-laptop icon-Computer" style="margin-right:10px"> </i>Giải pháp tự động hóa phân tích thị trường</h5>
-              <p class="card-text">Dịch vụ tự động hóa phân tích cung cấp một cái nhìn khách quan nhất về xu hướng thị trường.</p>
+              <h5 class="card-title color-home">  <i class="fas fa-laptop icon-Computer" style="margin-right:10px"> </i>{{__('front_end.service_1')}}</h5>
+              <p class="card-text">{{__('front_end.description_service_1')}}</p>
             </div>
           </div>
         </div>
         <div class="col-md-4">
             <div class="card" style="height:100%">
                 <div class="card-body">
-                <h5 class="card-title color-home"><i class="fas fa-chart-line" style="margin-right:10px"></i> Cung cấp các phân tích, xu hướng thị trường đến nhà đầu tư</h5>
-                <p class="card-text">Các tín hiệu Buy-Sell sẽ được hệ thống tự động gửi đến điện thoại khách hàng trong khoản thời
+                <h5 class="card-title color-home"><i class="fas fa-chart-line" style="margin-right:10px"></i> {{__('front_end.service_2')}}Cung cấp các phân tích, xu hướng thị trường đến nhà đầu tư</h5>
+                <p class="card-text">{{__('front_end.description_service_2')}}Các tín hiệu Buy-Sell sẽ được hệ thống tự động gửi đến điện thoại khách hàng trong khoản thời
                 gian giao dịch thật</p>
                 </div>
             </div>
@@ -867,9 +896,8 @@
         <div class="col-md-4">
           <div class="card" style="height:100%">
             <div class="card-body">
-              <h5 class="card-title color-home"><i class="fas fa-briefcase" style="margin-right:10px"> </i>Tư vấn giải pháp cho nhà đầu tư hiệu quả thời gian</h5>
-              <p class="card-text">Dịch vụ Giải pháp đầu tư cung cấp các giải pháp và công cụ hỗ trợ cho nhà đầu tư đạt hiệu quả
-              đầu tư tốt nhất</p>
+              <h5 class="card-title color-home"><i class="fas fa-briefcase" style="margin-right:10px"> </i>{{__('front_end.service_3')}}Tư vấn giải pháp cho nhà đầu tư hiệu quả thời gian</h5>
+              <p class="card-text">{{__('front_end.description_service_3')}}</p>
             </div>
           </div>
         </div>
