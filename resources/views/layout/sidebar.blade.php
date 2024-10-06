@@ -97,6 +97,15 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a href="{{route('admin.product-version.index')}}"
+                               class="nav-link @if(!empty($path) && $path =='product-version') active @endif">
+                                <i class="nav-icon far fa-user"></i>
+                                <p>
+                                     Product Version
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="{{route('admin.subscription.index')}}"
                                class="nav-link @if(!empty($path) && $path =='subscription') active @endif">
                                 <i class="nav-icon far fa-user"></i>

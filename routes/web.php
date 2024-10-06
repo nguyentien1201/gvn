@@ -78,6 +78,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin'], fu
     Route::resource('nas100', 'GreenStockNas100Controller')->middleware('admin');
     Route::resource('product', 'ProductController')->middleware('admin');
     Route::resource('subscription', 'SubscriptionController')->middleware('admin');
+    Route::resource('product-version', 'ProductVersionController')->middleware('admin');
 
 });
 Route::get('admin/greenalpha/{id}', 'Admin\GreenAlphaController@getListMstock')->middleware('admin')->name('admin.green-alpha.list-stock');

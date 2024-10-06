@@ -1,3 +1,11 @@
+<style>
+  @media (max-width: 576px) {
+    .login-box, .register-box {
+        width: 360px !important;
+
+    }
+}
+</style>
 @extends('layout.master-no-header')
 @section('content')
     <div class="login-box">

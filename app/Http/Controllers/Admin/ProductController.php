@@ -40,8 +40,9 @@ class ProductController extends AdminController
         return redirect()->route('admin.product.index')->with('success', __('panel.success'));
     }
 
-    public function edit(Product $product)
+    public function edit($id)
     {
+        $product = Product::find($id);
         return view('admin.product.edit', compact('product'));
     }
 
