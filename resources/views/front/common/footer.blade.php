@@ -26,19 +26,19 @@
                     <h5 class="text-white text-bold text-26px mb-4"> Chúng tôi</h5>
                     <ul class="custom-ul-li">
                         <li class="custom-ul-li">
-                            <a href="#" class="text-white">
+                            <a href="{{route('front.home.mission')}}" class="text-white">
                                 <i class="fa fa-angle-right custom-icon" aria-hidden="true"></i>
                                 <span>Về chúng tối</span>
                             </a>
                         </li>
                         <li class="custom-ul-li">
-                            <a href="#" class="text-white">
+                            <a href="{{route('front.home.trading-system')}}" class="text-white">
                                 <i class="fa fa-angle-right custom-icon" aria-hidden="true"></i>
                                 <span>Hệ thống của chúng tôi</span>
                             </a>
                         </li>
                         <li class="custom-ul-li">
-                            <a href="#" class="text-white">
+                            <a href="{{route('front.home.trading-system')}}" class="text-white">
                                 <i class="fa fa-angle-right custom-icon" aria-hidden="true"></i>
                                 <span>Dịch vụ</span>
                             </a>
@@ -49,19 +49,19 @@
                     <h5 class="text-white text-bold text-26px mb-4"> Liên kết hữu ích</h5>
                     <ul class="custom-ul-li">
                         <li class="custom-ul-li">
-                            <a href="#" class="text-white">
+                            <a href="{{route('front.home.trading-system')}}" class="text-white">
                                 <i class="fa fa-angle-right custom-icon" aria-hidden="true"></i>
                                 <span>Hiệu quả gia dịch</span>
                             </a>
                         </li>
                         <li class="custom-ul-li">
-                            <a href="#" class="text-white">
+                            <a href="{{route('front.home.trading-system')}}" class="text-white">
                                 <i class="fa fa-angle-right custom-icon" aria-hidden="true"></i>
                                 <span>Cách hệ thống vận hành</span>
                             </a>
                         </li>
                         <li class="custom-ul-li">
-                            <a href="#" class="text-white">
+                            <a href="{{route('front.home.contact')}}" class="text-white">
                                 <i class="fa fa-angle-right custom-icon" aria-hidden="true"></i>
                                 <span>Nghiên cứu đầu tư</span>
                             </a>
@@ -72,7 +72,7 @@
                     <h5 class="text-white text-bold text-26px mb-4"> Thông tin liên lạc</h5>
                     <ul class="custom-ul-li">
                         <li class="custom-ul-li">
-                            <a href="#" class="text-white">
+                            <a href="{{route('front.home.contact')}}" class="text-white">
                                 <i class="fa fa-angle-right custom-icon" aria-hidden="true"></i>
                                 <span>Phường An Khánh, Tp.Thủ Đức, HCM</span>
                             </a>

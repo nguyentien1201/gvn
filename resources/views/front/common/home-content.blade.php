@@ -887,16 +887,15 @@
         <div class="col-md-4">
             <div class="card" style="height:100%">
                 <div class="card-body">
-                <h5 class="card-title color-home"><i class="fas fa-chart-line" style="margin-right:10px"></i> {{__('front_end.service_2')}}Cung cấp các phân tích, xu hướng thị trường đến nhà đầu tư</h5>
-                <p class="card-text">{{__('front_end.description_service_2')}}Các tín hiệu Buy-Sell sẽ được hệ thống tự động gửi đến điện thoại khách hàng trong khoản thời
-                gian giao dịch thật</p>
+                <h5 class="card-title color-home"><i class="fas fa-chart-line" style="margin-right:10px"></i> {{__('front_end.service_2')}}</h5>
+                <p class="card-text">{{__('front_end.description_service_2')}}</p>
                 </div>
             </div>
         </div>
         <div class="col-md-4">
           <div class="card" style="height:100%">
             <div class="card-body">
-              <h5 class="card-title color-home"><i class="fas fa-briefcase" style="margin-right:10px"> </i>{{__('front_end.service_3')}}Tư vấn giải pháp cho nhà đầu tư hiệu quả thời gian</h5>
+              <h5 class="card-title color-home"><i class="fas fa-briefcase" style="margin-right:10px"> </i>{{__('front_end.service_3')}}</h5>
               <p class="card-text">{{__('front_end.description_service_3')}}</p>
             </div>
           </div>

@@ -17,7 +17,7 @@
         <!-- /.login-logo -->
         <div class="card">
             <div class="card-body login-card-body">
-                <p class="login-box-msg">{{__('panel.login_title')}}</p>
+                <h3 class="login-box-msg">{{__('panel.login_title')}}</h3>
 
                 <form action="{{route('login')}}" method="post">
                     @csrf

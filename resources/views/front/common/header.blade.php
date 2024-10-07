@@ -41,28 +41,7 @@
                         <a class="nav-link" href="{{ route('register') }}">{{ __('front_end.register') }}</a>
                     </li>
                 @endif
-                <li class="nav-item">
-                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                @php
-                    $locale = session('locale', config('app.locale'));
-                    $flagClass = $locale == 'en' ? 'flag-icon-gb' : ($locale == 'vi' ? 'flag-icon-vn' : 'flag-icon-gb');
-                    $languageName = $locale == 'en' ? 'English' : ($locale == 'vi' ? 'Vietnam' : 'English');
-                @endphp
-                <span class="flag-icon {{ $flagClass }}"></span>
-                </a>
-                <div class="dropdown-menu dropdown-menu-right" style="right:0; left:inherit" aria-labelledby="navbarDropdown">
-                <form action="{{ route('changeLanguage') }}" method="POST" id="language-form">
-                    @csrf
-                    <button type="submit" name="language" value="en" class="dropdown-item">
-                        <span class="flag-icon flag-icon-gb"></span> English
-                    </button>
-                    <button type="submit" name="language" value="vi" class="dropdown-item">
-                        <span class="flag-icon flag-icon-vn"></span> Vietnam
-                    </button>
-                    <!-- Add more languages as needed -->
-                </form>
-            </div>
-                </li>
+
 
 
             @else
@@ -85,7 +64,28 @@
                     </div>
                 </li>
             @endguest
-
+            <li class="nav-item">
+                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                @php
+                    $locale = session('locale', config('app.locale'));
+                    $flagClass = $locale == 'en' ? 'flag-icon-gb' : ($locale == 'vi' ? 'flag-icon-vn' : 'flag-icon-gb');
+                    $languageName = $locale == 'en' ? 'English' : ($locale == 'vi' ? 'Vietnam' : 'English');
+                @endphp
+                <span class="flag-icon {{ $flagClass }}"></span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right" style="right:0; left:inherit" aria-labelledby="navbarDropdown">
+                <form action="{{ route('changeLanguage') }}" method="POST" id="language-form">
+                    @csrf
+                    <button type="submit" name="language" value="en" class="dropdown-item">
+                        <span class="flag-icon flag-icon-gb"></span> English
+                    </button>
+                    <button type="submit" name="language" value="vi" class="dropdown-item">
+                        <span class="flag-icon flag-icon-vn"></span> Vietnam
+                    </button>
+                    <!-- Add more languages as needed -->
+                </form>
+            </div>
+                </li>
       </ul>
     </div>
   </nav>
