@@ -663,7 +663,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-                <h2 class="text-left mb-4 pb-3  d-flex"><span class="title-trading-first label-color bold">{{__('front_end.title_green_beta')}} 1.3.3</span>
+                <h2 class="text-left mb-4 pb-3  d-flex"><span class="title-trading-first label-color bold">{{__('front_end.title_green_beta')}}</span>
                     <a class="color-home" style="text-align:right ;right: 0;" href="/trading-system"><i class="fas fa-chevron-right"></i></a>
                 </h2>
                 <div class="card mb-4">

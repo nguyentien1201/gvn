@@ -40,12 +40,12 @@ return [
     'HISTORICAL_PERFORMANCE'=>'HISTORICAL PERFORMANCE',
     'description_title_green_beta'=>'Phương pháp giao dịch của Green Beta là Position Trading, tìm những điểm có xác suất chiến thắng cao nhất và nắm giữ trung và dài hạn vị thế đó cho đến khi xuất hiện các tín hiệu chốt lời và cắt lỗ từ thị trường. Green Beta được phát triển có thể thích nghi hầu hết các chỉ số tài chính trên toàn thị trường như Index Future,Crypto, Commodity...',
     'description_title_end_green_beta'=>'Tìm kiếm sự dịch chuyển dòng tiền, tìm kiếm lợi thế lợi thế gia tăng tài sản của bạn!',
-    'title_green_beta'=>'Giao dịch với GREEN BETA 1.3.3',
+    'title_green_beta'=>'Trading on GREEN BETA 1.3.3',
     'description_green_beta'=>'Xin chào anh chị,<br>
                 Em tên là Green Beta - 1.3.3, một robot với khả năng phân tích và tìm xu hướng tăng của thị trường tài chính, hiện tại ở bảng phía dưới là 13 chỉ số thị trường em đang phân tích.
                 Chúc anh chị có một ngày đầu tư thật nhiều thuận lợi và nếu có thêm góp ý, anh chị hãy gửi cho các sếp nhà GVN của em nhé!',
     'top_signal'=>'Top tín hiệu phiên trước đó',
-    'green_allpha'=>'Giao dịch với GREEN ALPHA',
+    'green_allpha'=>'Trading on GREEN ALPHA',
     'description_green_alpha'=>'Xin chào anh chị,
             Em tên là Green Alpha - 9.5.8, hãy để em tìm giúp anh chị xem có cơ hội nào để anh chị giao dịch kiếm lợi nhuận ngay trong ngày hôm nay không nhé.
             Người ta nói "Đồng tiền đi liền khúc ruột", nếu anh chị có đau ruột hôm nay thì đừng ngần ngại gửi ý kiến đến các sếp nhà GVN của em!',
@@ -73,7 +73,7 @@ return [
     'SELL'=>'SELL',
     'HOLD'=>'HOLD',
     'CASH'=>'CASH',
-    'green_stock_100'=>"Giao dịch với GREENSTOCK-NAS100",
+    'green_stock_100'=>"Trading on GREENSTOCK-NAS100",
     'description_title_green_stock'=>' GreenStock-NAS100 là hệ thống phân tích các cổ phiếu trong rổ cổ phiếu NASDAQ100 của thị trường chứng khoán Mỹ. Hệ thống sẽ tự động phân tích xu hướng ngắn hạn và dài hạn của các cổ phiếu, xếp hạng xu hướng và xung lực dòng tiền trên từng cổ phiếu, từ đó tạo ra bảng điểm Rating theo kỹ thuật để đưa ra nhận định hành động cho người dùng. Một vòng tròn hành động trong việc đầu tư của người dùng: BUY-HOLD-SELL-CASH',
     'service_us'=>'Dịch vụ của chúng tôi',
     'service_1'=>'Giải pháp tự động hóa phân tích thị trường',
