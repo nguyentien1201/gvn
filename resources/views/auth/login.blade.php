@@ -55,6 +55,7 @@
                         <button type="submit" class="btn btn-primary">{{__('panel.login')}}</button>
                     </div>
                 </form>
+                <a href="{{ route('password.request') }}">Forgot Your Password?</a>
             </div>
             <!-- /.login-card-body -->
         </div>

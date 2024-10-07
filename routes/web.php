@@ -15,7 +15,14 @@ use Illuminate\Support\Facades\Route;
 
 // Route::redirect('/', '/login');
 Route::get('/register', 'Auth/RegisterController@showRegistrationForm')->name('register');
-Route::post('/register', [RegisterController::class, 'register']);
+Route::post('/register', 'Auth/RegisterController@register');
+Route::get('password/reset', 'Auth/RegisterController@showLinkRequestForm')->name('password.request');
+
+Route::post('password/email','Auth/ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+
+Route::get('password/reset/{token}', 'ResetPasswordController@showResetForm')->name('password.reset');
+
+Route::post('password/reset','ResetPasswordController@reset')->name('password.update');
 
 Route::group(['prefix' => '', 'as' => 'front.', 'namespace' => 'Front'], function () {
     Route::get('/', 'HomeController@index')->name('home.index');
