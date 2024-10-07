@@ -576,20 +576,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             </table>
                             <div class="container_flex">
                                 <div class="column column-left">
-                                <h2 class="text-center mb-4"><span class="title-trading-first label-color color-home">Top 10 trading value</span>
-                                </h2>
+                                <h3 class="text-center mb-4"><span class="title-trading-first label-color color-home">TOP 10 TRADING VALUE</span>
+                                </h3>
                                     <canvas class="mt-5" id="avg_cap" height="400"></canvas>
                                 </div>
                                 <div class="column column-right">
-                                <h2 class="text-center mb-4"><span class="title-trading-first label-color color-home">Market Allocation with MA</span>
-                                </h2>
+                                <h3 class="text-center mb-4"><span class="title-trading-first label-color color-home">MARKET ALLOCATION WITH MA</span>
+                                </h3>
                                     <canvas class="mt-5" id="group_ma" height="300"></canvas>
                                 </div>
                             </div>
                         </div>
                         <div class="">
-                        <h2 class="text-center mb-4"><span class="title-trading-first label-color color-home">Trading Value Ratio</span>
-                        </h2>
+                        <h3 class="text-center mb-4"><span class="title-trading-first label-color color-home">TRADING VALUE RATIO</span>
+                        </h3>
                             <canvas class="mt-2" id="current_cap"></canvas>
                         </div>
                     </div>
