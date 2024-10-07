@@ -28,7 +28,7 @@
                         <li class="custom-ul-li">
                             <a href="{{route('front.home.mission')}}" class="text-white">
                                 <i class="fa fa-angle-right custom-icon" aria-hidden="true"></i>
-                                <span>Về chúng tối</span>
+                                <span>Về chúng tôi</span>
                             </a>
                         </li>
                         <li class="custom-ul-li">
@@ -51,7 +51,7 @@
                         <li class="custom-ul-li">
                             <a href="{{route('front.home.trading-system')}}" class="text-white">
                                 <i class="fa fa-angle-right custom-icon" aria-hidden="true"></i>
-                                <span>Hiệu quả gia dịch</span>
+                                <span>Hiệu quả giao dịch</span>
                             </a>
                         </li>
                         <li class="custom-ul-li">
