@@ -16,7 +16,7 @@
 <!-- End Google Tag Manager -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Landing Page</title>
+    <title>Green Stock Nas100</title>
     <!-- Bootstrap CSS -->
     <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}">
 
