@@ -35,7 +35,14 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
     <!-- Thêm Google Maps API vào -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-09NXCQGTBV"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
+  gtag('config', 'G-09NXCQGTBV');
+</script>
     <style>
 
         .ml-auto {

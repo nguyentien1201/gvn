@@ -7,7 +7,14 @@
     <title>Mission GVN</title>
     <!-- Bootstrap CSS -->
 
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-09NXCQGTBV"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
+  gtag('config', 'G-09NXCQGTBV');
+</script>
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
     <link rel="stylesheet" href="{{ asset('css/home.css') }}">
     <!-- DataTables Responsive CSS -->
