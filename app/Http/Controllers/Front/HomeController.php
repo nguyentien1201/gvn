@@ -314,7 +314,11 @@ class HomeController
             $messageValue->to('admin@gvn-fintrade.com')  // Email của admin
                     ->subject('Contact to Gvn');
         });
-
+   // Gửi phản hồi lại cho người gửi
+        Mail::send('front.common.contact-reply', $data, function ($message) use ($data) {
+            $message->to($data['email'])
+                    ->subject('Thank you for contacting us!');
+        });
         // Redirect lại form với thông báo thành công
         return back()->with('success', 'Your message has been sent successfully!');
     }
