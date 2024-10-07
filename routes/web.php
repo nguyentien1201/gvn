@@ -43,6 +43,7 @@ Route::group([ 'namespace' => 'Front'], function () {
     Route::post('/account/update', 'CustomerController@update')->name('account.update')->middleware('customer');
     Route::get('api/get-product', 'SubscriptionController@getProduct')->name('api.get-product')->middleware('customer');
     Route::post('/change-language','HomeController@changeLanguage')->name('changeLanguage');
+    Route::post('/contact','HomeController@postContact')->name('contact');
 });
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin'], function () {

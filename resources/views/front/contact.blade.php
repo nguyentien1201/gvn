@@ -239,7 +239,8 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
         <div class="row">
             <div class="col-12 col-sm-12 col-md-7 col-lg-7">
             <div class="contact-form">
-            <form action="#" method="POST">
+            <form action="{{route('contact')}}" method="POST">
+            @csrf
                 <label for="name">Tên của bạn <span class="required">*</span></label>
                 <input type="text" id="name" name="name" placeholder="Nhập tên của bạn" required>
 
@@ -249,8 +250,8 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                 <div class="form-group">
                     <label for="product">Sản Phẩm</label>
                     <select id="product" name="product">
-                        <option value="1">Chọn sản phẩm</option>
-                        <option value="2">Green Alpha</option>
+                        <option value="">Chọn sản phẩm</option>
+                        <option value="1">Green Alpha</option>
                         <option value="2">Green Beta</option>
                         <option value="3">Green Stock</option>
 
@@ -259,7 +260,6 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
 
                 <label for="message">Lời nhắn <span class="required">*</span></label>
                 <textarea id="message" name="message" placeholder="Bạn cần hỗ trợ vấn đề gì ?" rows="5" required></textarea>
-
                 <button type="submit">Gửi</button>
             </form>
         </div>

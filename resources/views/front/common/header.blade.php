@@ -65,7 +65,7 @@
                 </li>
             @endguest
             <li class="nav-item">
-                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a id="navbarDropdown" class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 @php
                     $locale = session('locale', config('app.locale'));
                     $flagClass = $locale == 'en' ? 'flag-icon-gb' : ($locale == 'vi' ? 'flag-icon-vn' : 'flag-icon-gb');

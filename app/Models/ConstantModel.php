@@ -110,5 +110,10 @@ class ConstantModel
         'downtrend' =>2,
         'sideway' => 3,
     ];
+    const PRODUCT = [
+        '1' => 'Green Alpha',
+        '2' =>'Green Beta',
+        '3' => 'Green Stock',
+    ];
 
 }

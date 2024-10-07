@@ -3,7 +3,7 @@
 
 namespace App\Http\Controllers\Front;
 
-
+use Illuminate\Support\Facades\Mail;
 use App\Models\GreenBeta;
 use Illuminate\Support\Facades\Request;
 // use Illuminate\Http\Request;
@@ -18,6 +18,7 @@ use App\Models\SubGroupCapDetail;
 use DateTime;
 use App\Models\Product;
 use Illuminate\Support\Facades\Session;
+use App\Models\ConstantModel;
 class HomeController
 {
     public function index(Request $request)
@@ -293,5 +294,28 @@ class HomeController
         Session::put('locale', $request['language']);
 
         return redirect()->back();
+    }
+    public function postContact(Request $request)
+    {
+        $request = Request::all();
+        // Validate form data
+
+
+        // Lấy dữ liệu từ form
+        $data = [
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'note' => $request['message'],
+            'product' => ConstantModel::PRODUCT[$request['product']],
+        ];
+
+        // Gửi email đến admin
+        Mail::send('front.common.mail-contact', $data, function($messageValue) use ($data) {
+            $messageValue->to('admin@gvn-fintrade.com')  // Email của admin
+                    ->subject('Contact to Gvn');
+        });
+
+        // Redirect lại form với thông báo thành công
+        return back()->with('success', 'Your message has been sent successfully!');
     }
 }
