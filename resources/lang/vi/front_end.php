@@ -109,7 +109,7 @@ Người ta nói "Đồng tiền đi liền khúc ruột", nếu anh chị có �
     'login'=>'Login',
     'register'=>'Register',
     'logout'=>'Logout',
-    'my_page'=>'Account',
+    'my_page'=>'My Account',
     'trend_signal_open'=>'Tín hiệu xu hướng đang mở.',
     'trend_signal_closed'=>'Tín hiệu xu hướng đã đóng.',
     'trend_signal_take_profit'=>'Tín hiệu đã ở trạng thái chốt lời.',
