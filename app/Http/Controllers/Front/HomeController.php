@@ -91,8 +91,9 @@ class HomeController
     public function greenBeta(Request $request)
     {
         $user = \Auth::user();
+        $role_id = $user->role_id ?? null;
         $subscription = Subscription::where('user_id', $user->id)->where('product_id',2)->where('end_date' ,'>=', now())->get();
-        if($subscription->isEmpty()){
+        if($subscription->isEmpty() && $role_id != 1){
             return redirect()->route('front.home.trading-system');
         }
         $signals = (new GreenBeta())->getListSignalsByGroup();
@@ -118,8 +119,9 @@ class HomeController
     public function greenAlpha(Request $request)
     {
         $user = \Auth::user();
+        $role_id = $user->role_id ?? null;
         $subscription = Subscription::where('user_id', $user->id)->where('product_id',1)->where('end_date' ,'>=', now())->get();
-        if($subscription->isEmpty()){
+        if($subscription->isEmpty() && $role_id != 1){
             return redirect()->route('front.home.trading-system');
         }
         $signals = (new GreenAlpha())->getListSignalsByGroup();
@@ -216,8 +218,9 @@ class HomeController
     }
     public function greenStock(){
         $user = \Auth::user();
+        $role_id = $user->role_id ?? null;
         $subscription = Subscription::where('user_id', $user->id)->where('product_id',3)->where('end_date' ,'>=', now())->get();
-        if($subscription->isEmpty()){
+        if($subscription->isEmpty() && $role_id != 1){
             return redirect()->route('front.home.trading-system');
         }
         $signals = (new GreenStockNas100())->getListNas100Api();
