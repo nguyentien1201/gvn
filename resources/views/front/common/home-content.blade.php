@@ -62,7 +62,7 @@
                 {
                     targets: 0, // Index of the date column
                     createdCell: function (td, cellData, rowData, row, col) {
-                        if (rowData.close_time == null) {
+                        if (rowData.signal_close == null) {
                             color = '#b6d7a8';
                         } else {
                             color = '#ffd966';
@@ -75,7 +75,6 @@
                         if(full.close_time != null){
                             return 'CLOSED';
                         }
-
                         return data; //
 
                     }
@@ -137,7 +136,7 @@
                 {
                     targets: 7, // Index of the date column
                     createdCell: function (td, cellData, rowData, row, col) {
-                        if (rowData.close_time == '' || rowData.close_time ==null) {
+                        if (rowData.signal_close == '' || rowData.signal_close ==null) {
                             if (cellData >= 0) {
                                 color = '#b6d7a8';
                             } else {
