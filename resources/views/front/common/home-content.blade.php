@@ -62,7 +62,10 @@
                 {
                     targets: 0, // Index of the date column
                     createdCell: function (td, cellData, rowData, row, col) {
-                        signal_close = rowData.signal_close.trim().toLowerCase();
+                        signal_close ='';
+                        if(rowData.signal_close != null){
+                            signal_close = rowData.signal_close.trim().toLowerCase();
+                        }
                         if (signal_close == 'hold') {
                             color = '#b6d7a8';
                         } else {
@@ -73,11 +76,16 @@
                         $(td).css('border-color', '#fff');
                     },
                     render: function (data, type, full, meta) {
-                        signal_close = full.signal_close.trim().toLowerCase();
-                        if(signal_close != 'hold'){
-                            return 'CLOSED';
+                        signal_close ='';
+                        if(full.signal_close != null){
+                            signal_close = full.signal_close.trim().toLowerCase();
+
                         }
-                        return data; //
+                        if(signal_close != 'hold'){
+                                return 'CLOSED';
+                            }
+                            return data; //
+
 
                     }
                 },
@@ -137,7 +145,11 @@
                 {
                     targets: 7, // Index of the date column
                     createdCell: function (td, cellData, rowData, row, col) {
-                        signal_close = rowData.signal_close.trim().toLowerCase();
+                        signal_close ='';
+                        if(rowData.signal_close != null){
+                            signal_close = rowData.signal_close.trim().toLowerCase();
+                        }
+
                         if (signal_close == '' || signal_close ==null || signal_close == 'hold') {
                             if (cellData >= 0) {
                                 color = '#b6d7a8';
