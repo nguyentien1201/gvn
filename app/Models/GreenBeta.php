@@ -205,7 +205,7 @@ class GreenBeta extends Model
                     'signal_close' => $item[6] ?? null,
                     'last_sale' =>!empty($item[5]) ? (float)$item[5] : null,
                     'price_close' =>!empty($item[7]) ? (float)$item[7] : null,
-                    'trending_price' => $item[3] ?? null,
+                    'trend_price' => $item[3] ?? null,
 
                 ];
 
@@ -219,7 +219,7 @@ class GreenBeta extends Model
                 }
                 } catch (\Exception $e) {
 
-
+                  \Log::error($e->getMessage());
                     continue;
                 }
     }
