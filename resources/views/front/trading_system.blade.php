@@ -546,6 +546,7 @@ background-size: cover;
                     <div class="ptable-action">
                         @if (Auth::check())
                             <a class="subscription" data-id={{$price_product['beta']->id}} data-type="buy" data-month="1">Buy</a>
+                            <a class="subscription" data-id={{$price_product['beta']->id}} data-type="trial" data-month="1">Trial</a>
                         @else
                             <a href="{{ route('login') }}">Login</a>
                         @endif
@@ -673,6 +674,7 @@ background-size: cover;
                     <div class="ptable-action">
                         @if (Auth::check())
                             <a class="subscription" data-id={{$price_product['alpha']->id}} data-type="buy" data-month="1">Buy</a>
+                            <a class="subscription" data-id={{$price_product['alpha']->id}} data-type="trial" data-month="1">Trial</a>
                         @else
                             <a href="{{ route('login') }}">Login</a>
                         @endif
@@ -800,6 +802,7 @@ background-size: cover;
                     <div class="ptable-action">
                         @if (Auth::check())
                             <a class="subscription" data-id={{$price_product['greenstock']->id}} data-type="buy" data-month="1">Buy</a>
+                            <a class="subscription" data-id={{$price_product['greenstock']->id}} data-type="trial" data-month="1">Trial</a>
                         @else
                             <a href="{{ route('login') }}">Login</a>
                         @endif
