@@ -165,7 +165,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                         <div class="col-md-4 text-left form-group">
                                             <ul style="padding-left:0">
                                                 <li class="list-item">
-                                                    <button class="width-120">HOLD</button>
+                                                    <button class="width-120" style="background-color:#ffd966">HOLD</button>
                                                     <span>Tín hiệu đang ở trạng thái giữ.</span>
                                                 </li>
 
@@ -842,7 +842,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     // Extract text content from each cell in the column
             var columnValues = columnNodes.map(function() {
-                console.log($(this).text());
                 let value = $(this).text();
                 if(value =="HOLD"){
                     $(this).addClass('blink-box blink-effect');
