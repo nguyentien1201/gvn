@@ -92,6 +92,13 @@ class HomeController
 
                 }
             }
+            if(!empty($subscriptionGreenStock) && $subscriptionGreenStock['is_trial'] == 1 && $role_id != 1){
+                foreach ($signals as $key => $value) {
+                    $value['price'] = 'fas fa-lock';
+                    $value['time'] = 'fas fa-lock';
+                    $green_data[$key] = $value;
+                }
+            }
         }
 
 
