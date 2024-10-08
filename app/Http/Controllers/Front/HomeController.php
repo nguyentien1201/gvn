@@ -37,8 +37,8 @@ class HomeController
         $default_chart['eth'] = $eth['data'];
         $default_chart['usOil'] = $usOil['data'];
         $default_chart['xausud'] = $xausud['data'];
-        $green_stock = (new GreenStockNas100())->getListNas100Api(20);
-        $green_data =[];
+        $green_data = (new GreenStockNas100())->getListNas100Api(20);
+
         // if($subscription->isEmpty() && $role_id != 1){
         //     return redirect()->route('front.home.trading-system');
         // }
@@ -51,14 +51,14 @@ class HomeController
                 $value['close_time'] = 'fas fa-lock';
                 $signals[$key] = $value;
             }
-            dd($green_stock);
-            foreach ($green_stock as $key => $value) {
+            dd($green_data);
+            foreach ($green_data as $key => $value) {
                 $value['code'] = 'fas fa-lock';
                 $value['company_name'] = 'fas fa-lock';
                 $value['current_price'] = 'fas fa-lock';
                 $value['price'] = 'fas fa-lock';
                 $value['time'] = 'fas fa-lock';
-                $green_stock[$key] = $value;
+                $green_data[$key] = $value;
 
             }
         }else {
@@ -85,21 +85,21 @@ class HomeController
             }
 
             if(empty($subscriptionGreenStock) && $role_id != 1){
-                foreach ($green_stock as $key => $value) {
+                foreach ($green_data as $key => $value) {
                     $value['code'] = 'fas fa-lock';
                     $value['company_name'] = 'fas fa-lock';
                     $value['price'] = 'fas fa-lock';
                     $value['time'] = 'fas fa-lock';
-                    $green_stock[$key] = $value;
+                    $green_data[$key] = $value;
 
                 }
             }
 
             if(!empty($subscriptionGreenStock) && $subscriptionGreenStock['is_trial'] == 1 && $role_id != 1){
-                foreach ($green_stock as $key => $value) {
+                foreach ($green_data as $key => $value) {
                     $value['price'] = 'fas fa-lock';
                     $value['time'] = 'fas fa-lock';
-                    $green_stock[$key] = $value;
+                    $green_data[$key] = $value;
                 }
             }
         }
