@@ -100,7 +100,6 @@
                         if(data =='fas fa-lock'){
                             return '<i style="color:green" class="fas fa-lock"></i>';
                         }
-
                         return data; //
 
                     }
@@ -136,7 +135,7 @@
                 {
                     targets: 7, // Index of the date column
                     createdCell: function (td, cellData, rowData, row, col) {
-                        if (rowData.signal_close == '' || rowData.signal_close ==null) {
+                        if (rowData.signal_close == '' || rowData.signal_close ==null || rowData.signal_close == 'Hold') {
                             if (cellData >= 0) {
                                 color = '#b6d7a8';
                             } else {
