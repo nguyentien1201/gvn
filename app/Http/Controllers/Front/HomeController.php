@@ -57,7 +57,7 @@ class HomeController
                 $value['current_price'] = 'fas fa-lock';
                 $value['price'] = 'fas fa-lock';
                 $value['time'] = 'fas fa-lock';
-                $green_data[$key] = $value;
+                $green_stock[$key] = $value;
 
             }
         }else {
@@ -88,7 +88,7 @@ class HomeController
                     $value['company_name'] = 'fas fa-lock';
                     $value['price'] = 'fas fa-lock';
                     $value['time'] = 'fas fa-lock';
-                    $green_data[$key] = $value;
+                    $green_stock[$key] = $value;
 
                 }
             }
@@ -96,7 +96,7 @@ class HomeController
                 foreach ($signals as $key => $value) {
                     $value['price'] = 'fas fa-lock';
                     $value['time'] = 'fas fa-lock';
-                    $green_data[$key] = $value;
+                    $green_stock[$key] = $value;
                 }
             }
         }
