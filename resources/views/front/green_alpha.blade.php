@@ -746,7 +746,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         $(td).css('color', color);
                     },
                     render: function (data, type, full, meta) {
-                        if (data != '') {
+
+                        if (data !== '' && full.signal_close !='') {
+                            console.log(data);
                             return `${parseFloat(data).toFixed(2)}%`;
                         }
                         return '';

@@ -125,6 +125,7 @@ class HomeController
             return redirect()->route('front.home.trading-system');
         }
         $signals = (new GreenAlpha())->getListSignalsByGroup();
+
         $data_chart = (new GreenAlpha())->getDataChartSignals();
         $dataChartProfit = (new GreenAlpha())->getCurrentMonthProfitSum();
 

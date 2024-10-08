@@ -65,7 +65,7 @@ class GreenAlpha extends Model
         $todayStart = now()->startOfDay();
         $todayEnd = now()->endOfDay();
         // Retrieve all GreenAlpha instances created today
-        $todaysInstances = $this->whereBetween('open_time', [$todayStart, $todayEnd])->where('code',$id)->get();
+        $todaysInstances = $this->whereBetween('close_time', [$todayStart, $todayEnd])->where('code',$id)->get();
 
         // Sum the profits for each instance
         $totalProfitToday = 0;
@@ -75,6 +75,7 @@ class GreenAlpha extends Model
                 $totalProfitToday += $profit;
             }
         }
+
         return $totalProfitToday;
     }
     public function calculateProfit()

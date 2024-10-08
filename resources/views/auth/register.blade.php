@@ -88,7 +88,7 @@
                     </form>
             </div>
             <!-- /.login-card-body -->
-        </div>/div>
+        </div>
                </div>
     </div>
 
