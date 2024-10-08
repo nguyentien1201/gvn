@@ -24,7 +24,30 @@
 
     <link rel="stylesheet" href="{{asset('plugins/font-awesome-4.7.0/css/font-awesome.min.css')}}">
 
+<style>
 
+    /* Định nghĩa animation chớp nháy */
+@keyframes blink {
+    0%, 90% {
+        opacity: 1; /* Phần tử hiển thị trong phần lớn thời gian */
+        color: black;
+        background: #ffd966;
+    }
+    95%, 100% {
+        opacity: 0; /* Chớp nháy nhanh trong khoảng thời gian ngắn */
+        background-color: #ffd966;
+    }
+}
+
+/* Tạo lớp với animation */
+.blink-effect {
+    animation: blink 5s infinite; /* Hiệu ứng chớp nháy, lặp lại mãi mãi */
+}
+.blink-box {
+    color: black;
+
+        }
+</style>
 </head>
 
 <body>
@@ -741,6 +764,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 },
                 {
                     targets: 4, // Index of the date column
+                    render: function (data, type, full, meta) {
+                        if(full.signal_close == "" &&  full.signal_open != ""){
+                            return 'HOLD';
+                        }
+                        return data; //
+                    },
                     createdCell: function (td, cellData, rowData, row, col) {
                         signal_close = ''
                         if (rowData.signal_close != null) {
@@ -751,8 +780,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         } else if (signal_close == 'cutlossbuy' || signal_close == 'cutlosssell') {
                             color = '#e06666';
                         } else {
-
                             color = '';
+                        }
+                        if(signal_close == "" &&  rowData.signal_open != ""){
+                            color = '#ffd966';
                         }
                         $(td).css('background-color', color);
 
@@ -804,9 +835,29 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             }
         });
         // indices.columns.adjust().responsive.recalc();
+        function highlightColumn(columnIndex) {
+        // Add a class to all cells in the specified column
 
+                var columnNodes = indices.column(4).nodes().to$();
 
-    });
+    // Extract text content from each cell in the column
+            var columnValues = columnNodes.map(function() {
+                console.log($(this).text());
+                let value = $(this).text();
+                if(value =="HOLD"){
+                    $(this).addClass('blink-box blink-effect');
+                }
+                 // or .html() if you want to get the HTML content
+            }).get();  //
+        }
+
+            // Delay for 5 seconds, then highlight the 3rd column (index starts from 0)
+            setTimeout(function() {
+                console.log('Highlighting column 4');
+                highlightColumn(4);  // Highlight the third column (index 2)
+            }, 5000); // 5000 milliseconds = 5 seconds
+
+            });
 
     var ctx = document.getElementById('myChart').getContext('2d');
     var myChart = new Chart(ctx, {
