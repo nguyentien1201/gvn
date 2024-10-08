@@ -25,7 +25,7 @@ class HomeController
     public function index(Request $request)
     {
         $signals = (new GreenBeta())->getListSignalsByGroup();
-        $signals  = array_slice($signals, 0, 5);
+        // $signals  = array_slice($signals, 0, 5);
         $nas100 = $this->getHistorySignal(1);
         $eth = $this->getHistorySignal(23);
         $usOil = $this->getHistorySignal(15);
@@ -34,7 +34,7 @@ class HomeController
         $default_chart['eth'] = $eth['data'];
         $default_chart['usOil'] = $usOil['data'];
         $default_chart['xausud'] = $xausud['data'];
-        $green_stock = (new GreenStockNas100())->getListNas100Api(5);
+        $green_stock = (new GreenStockNas100())->getListNas100Api(20);
         $green_data =[];
         if(!\Auth::check()){
             foreach ($signals as $key => $value) {
