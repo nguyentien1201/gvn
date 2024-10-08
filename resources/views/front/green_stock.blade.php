@@ -174,6 +174,7 @@
 
         .width-120 {
             width: 160px;
+            min-width: 160px;
         }
 
         th {

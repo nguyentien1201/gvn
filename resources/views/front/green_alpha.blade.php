@@ -115,11 +115,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                             <ul style="padding-left:0">
                                                 <li class="list-item">
                                                     <button class="takeprofitbuy width-120">BUY</button>
-                                                    <span>Tín hiệu vị thế Buy đang mở.</span>
+                                                    <span>Tín hiệu vị thế Mua đang mở.</span>
                                                 </li>
                                                 <li class="list-item">
                                                     <button class="cutlossbuy width-120">SELL</button>
-                                                    <span>Tín hiệu vị thế Sell đang mở.</span>
+                                                    <span>Tín hiệu vị thế Bán đang mở.</span>
                                                 </li>
 
 
@@ -130,11 +130,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
                                                 <li class="list-item">
                                                     <button class="takeprofitbuy width-120">TakeProfitBUY/SELL</button>
-                                                    <span>Tín hiệu đã ở trạng thái chốt lời.</span>
+                                                    <span>Chốt lời MUA/BÁN.</span>
                                                 </li>
                                                 <li class="list-item">
                                                     <button class="cutlossbuy width-120">CutLossBUY/SELL</button>
-                                                    <span>Tín hiệu đã ở trạng thái cắt lỗ.</span>
+                                                    <span>Cắt lỗ MUA/BÁN.</span>
                                                 </li>
                                             </ul>
 
