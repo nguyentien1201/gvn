@@ -311,6 +311,16 @@ class HomeController
         $market_cap = (new GroupCap())->getMarketCap();
         $chart_group_data = (new SubGroup())->getDataSubGroupApi();
         $top_stock = (new GreenStockNas100())->getTopStock();
+        $user = \Auth::user();
+        $role_id = $user->role_id ?? null;
+        $subscription = Subscription::where('user_id', $user->id)->where('product_id',3)->where('end_date' ,'>=', now())->first();
+        if($subscription['is_trial'] == 1 && $role_id != 1){
+            foreach ($top_stock as $key => $value) {
+                $value['price'] = 'fas fa-lock';
+                $value['time'] = 'fas fa-lock';
+                $top_stock[$key] = $value;
+            }
+        }
         $cap = [61153987935,-334930984165];
         $ma = (new Ma())->getMaApi();
         $current_cap =  (new SubGroupCapDetail())->getCurrentCap();
@@ -338,6 +348,16 @@ class HomeController
             ];
         }
         $top_stock = (new GreenStockNas100())->getTopStockByGroup($labels);
+        $user = \Auth::user();
+        $role_id = $user->role_id ?? null;
+        $subscription = Subscription::where('user_id', $user->id)->where('product_id',3)->where('end_date' ,'>=', now())->first();
+        if($subscription['is_trial'] == 1 && $role_id != 1){
+            foreach ($top_stock as $key => $value) {
+                $value['price'] = 'fas fa-lock';
+                $value['time'] = 'fas fa-lock';
+                $top_stock[$key] = $value;
+            }
+        }
         return [
             'status' => 200,
             'data' => $top_stock

@@ -1351,10 +1351,25 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                                                         return `${data}%`;
                                                     }
                                                 },
+                                                {
+                                                    targets: 6, // Index of the date column
+                                                    render: function (data, type, full, meta) {
+                                                        if(data =='fas fa-lock'){
+                                                            return '<i style="color:green" class="fas fa-lock"></i>';
+                                                        }
+                                                        if (type === 'display') {
+                                                            return parseFloat(data).toFixed(2);
+                                                        }
+                                                        return data; //
 
+                                                    }
+                                                },
                                                 {
                                                     targets: 7, // Index of the open_time column
                                                     render: function (data, type, row) {
+                                                        if (data == 'fas fa-lock') {
+                                                            return '<i style="color:green" class="fas fa-lock"></i>';
+                                                        }
                                                         if (type === 'display' || type === 'filter') {
                                                             return moment.tz(data, 'Europe/Moscow').format('DD/MM/YYYY'); // Format as HH:mm
                                                         }
@@ -1506,14 +1521,30 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                         },
 
                         {
-                            targets: 7, // Index of the open_time column
-                            render: function (data, type, row) {
-                                if (type === 'display' || type === 'filter') {
-                                    return moment.tz(data, 'Europe/Moscow').format('DD/MM/YYYY'); // Format as HH:mm
-                                }
-                                return data;
-                            }
-                        },
+                                                    targets: 6, // Index of the date column
+                                                    render: function (data, type, full, meta) {
+                                                        if(data =='fas fa-lock'){
+                                                            return '<i style="color:green" class="fas fa-lock"></i>';
+                                                        }
+                                                        if (type === 'display') {
+                                                            return parseFloat(data).toFixed(2);
+                                                        }
+                                                        return data; //
+
+                                                    }
+                                                },
+                                                {
+                                                    targets: 7, // Index of the open_time column
+                                                    render: function (data, type, row) {
+                                                        if (data == 'fas fa-lock') {
+                                                            return '<i style="color:green" class="fas fa-lock"></i>';
+                                                        }
+                                                        if (type === 'display' || type === 'filter') {
+                                                            return moment.tz(data, 'Europe/Moscow').format('DD/MM/YYYY'); // Format as HH:mm
+                                                        }
+                                                        return data;
+                                                    }
+                                                },
                     ],
 
 
