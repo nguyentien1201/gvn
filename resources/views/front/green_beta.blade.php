@@ -545,7 +545,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 {
                     targets: 0, // Index of the date column
                     createdCell: function (td, cellData, rowData, row, col) {
-                        if (rowData.close_time == null) {
+                        signal_close = rowData.signal_close.trim().toLowerCase();
+                        if (signal_close == 'hold') {
                             color = '#b6d7a8';
                         } else {
                             color = '#ffd966';

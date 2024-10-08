@@ -62,7 +62,8 @@
                 {
                     targets: 0, // Index of the date column
                     createdCell: function (td, cellData, rowData, row, col) {
-                        if (rowData.signal_close == 'Hold') {
+                        signal_close = rowData.signal_close.trim().toLowerCase();
+                        if (signal_close == 'hold') {
                             color = '#b6d7a8';
                         } else {
                             color = '#ffd966';
@@ -135,7 +136,8 @@
                 {
                     targets: 7, // Index of the date column
                     createdCell: function (td, cellData, rowData, row, col) {
-                        if (rowData.signal_close == '' || rowData.signal_close ==null || rowData.signal_close == 'Hold') {
+                        signal_close = rowData.signal_close.trim().toLowerCase();
+                        if (signal_close == '' || signal_close ==null || signal_close == 'hold') {
                             if (cellData >= 0) {
                                 color = '#b6d7a8';
                             } else {
