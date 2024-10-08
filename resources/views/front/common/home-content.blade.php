@@ -73,6 +73,7 @@
                         $(td).css('border-color', '#fff');
                     },
                     render: function (data, type, full, meta) {
+                        signal_close = rowData.signal_close.trim().toLowerCase();
                         if(signal_close != 'hold'){
                             return 'CLOSED';
                         }
