@@ -62,7 +62,7 @@
                 {
                     targets: 0, // Index of the date column
                     createdCell: function (td, cellData, rowData, row, col) {
-                        if (rowData.signal_close == null) {
+                        if (rowData.signal_close == 'Hold') {
                             color = '#b6d7a8';
                         } else {
                             color = '#ffd966';
