@@ -82,7 +82,6 @@
                 },
                 {
                     targets: 1, // Index of the date column
-
                     render: function (data, type, full, meta) {
                         if(data =='fas fa-lock'){
                             return '<i style="color:green" class="fas fa-lock"></i>';
@@ -94,6 +93,28 @@
 
                     }
                 },
+
+                {
+                    targets: 3, // Index of the date column
+
+                    render: function (data, type, full, meta) {
+                        if(data =='fas fa-lock'){
+                            return '<i style="color:green" class="fas fa-lock"></i>';
+                        }
+
+                        return data; //
+
+                    }
+                },
+                {
+                    targets: 9, // Index of the date column
+                    render: function (data, type, full, meta) {
+                        if(data=='fas fa-lock'){
+                            return '<i style="color:green" class="fas fa-lock"></i>';
+                        }
+                        return data; //
+                    }
+                },
                 {
                     targets: 2, // Index of the date column
                     render: function (data, type, full, meta) {
@@ -103,15 +124,11 @@
                         return data; //
                     }
                 },
-
                 {
-                    targets: 9, // Index of the date column
+                    targets: 10, // Index of the date column
                     render: function (data, type, full, meta) {
-                        if(data <= 0){
-                            return '';
-                        }
-                        if (type === 'display') {
-                            return parseFloat(data).toFixed(2);
+                        if(data =='fas fa-lock'){
+                            return '<i style="color:green" class="fas fa-lock"></i>';
                         }
                         return data; //
 
@@ -299,6 +316,20 @@
                     }
                 },
                 {
+                    targets: 2, // Index of the date column
+                    render: function (data, type, full, meta) {
+                        if(data =='fas fa-lock'){
+                            return '<i style="color:green" class="fas fa-lock"></i>';
+                        }
+
+                        if (type === 'display') {
+                            return parseFloat(data).toFixed(2);
+                        }
+                        return data; //
+
+                    }
+                },
+                {
                     targets: 3, // Index of the date column
                     createdCell: function (td, cellData, rowData, row, col) {
                         trending ='';
@@ -362,10 +393,26 @@
                         return `${data}%`;
                     }
                 },
+                {
+                    targets: 6, // Index of the date column
+                    render: function (data, type, full, meta) {
+                        if(data =='fas fa-lock'){
+                            return '<i style="color:green" class="fas fa-lock"></i>';
+                        }
 
+                        if (type === 'display') {
+                            return parseFloat(data).toFixed(2);
+                        }
+                        return data; //
+
+                    }
+                },
                 {
                     targets:7, // Index of the open_time column
                     render: function (data, type, row) {
+                        if(data =='fas fa-lock'){
+                            return '<i style="color:green" class="fas fa-lock"></i>';
+                        }
                         if (type === 'display' || type === 'filter') {
                             return moment.tz(data, 'Europe/Moscow').format('DD/MM/YYYY'); // Format as HH:mm
                         }

@@ -11,7 +11,7 @@ class SubscriptionController
 {
     public function store(Request $request)
     {
-        dd($request->all());
+
         $request->validate([
             'id' => 'required|exists:products,id',
         ]);

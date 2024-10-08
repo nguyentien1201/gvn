@@ -24,6 +24,9 @@ class HomeController
 {
     public function index(Request $request)
     {
+
+        // $role_id = $user->role_id ?? null;
+        // $subscription = Subscription::where('user_id', $user->id)->where('product_id',2)->where('end_date' ,'>=', now())->get();
         $signals = (new GreenBeta())->getListSignalsByGroup();
         // $signals  = array_slice($signals, 0, 5);
         $nas100 = $this->getHistorySignal(1);
@@ -36,27 +39,54 @@ class HomeController
         $default_chart['xausud'] = $xausud['data'];
         $green_stock = (new GreenStockNas100())->getListNas100Api(20);
         $green_data =[];
+        // if($subscription->isEmpty() && $role_id != 1){
+        //     return redirect()->route('front.home.trading-system');
+        // }
         if(!\Auth::check()){
             foreach ($signals as $key => $value) {
                 $value['open_time'] = 'fas fa-lock';
                 $value['price_open'] = 'fas fa-lock';
+                $value['trend_price'] = 'fas fa-lock';
+                $value['price_close'] = 'fas fa-lock';
+                $value['close_time'] = 'fas fa-lock';
                 $signals[$key] = $value;
             }
-        }
-        foreach ($green_stock as $key => $value) {
+            foreach ($green_stock as $key => $value) {
+                $value['code'] = 'fas fa-lock';
+                $value['company_name'] = 'fas fa-lock';
+                $value['current_price'] = 'fas fa-lock';
+                $value['price'] = 'fas fa-lock';
+                $value['time'] = 'fas fa-lock';
+                $green_data[$key] = $value;
 
-            $green_data[$key] =[
-                'rating' => $value['rating'],
-                'code' => \Auth::check() ? $value['code'] : 'fas fa-lock',
-                'company_name' => \Auth::check() ? $value['company_name'] : 'fas fa-lock',
-                'current_price' => $value['current_price'],
-                'trending' => $value['trending'],
-                'signal' => $value['signal'],
-                'profit' => $value['profit'],
-                'price' => $value['price'],
-                'time' => $value['time'],
-            ];
+            }
+        }else {
+            $user = \Auth::user();
+            $role_id = $user->role_id ?? null;
+            $subscriptionBeta = Subscription::where('user_id', $user->id)->where('product_id',2)->where('end_date' ,'>=', now())->get();
+            $subscriptionGreenStock = Subscription::where('user_id', $user->id)->where('product_id',3)->where('end_date' ,'>=', now())->get();
+            if($subscriptionBeta->isEmpty() && $role_id != 1){
+                foreach ($signals as $key => $value) {
+                    $value['open_time'] = 'fas fa-lock';
+                    $value['price_open'] = 'fas fa-lock';
+                    $value['price_close'] = 'fas fa-lock';
+                    $value['close_time'] = 'fas fa-lock';
+                    $signals[$key] = $value;
+                }
+            }
+            if($subscriptionGreenStock->isEmpty() && $role_id != 1){
+                foreach ($green_stock as $key => $value) {
+                    $value['code'] = 'fas fa-lock';
+                    $value['company_name'] = 'fas fa-lock';
+                    $value['price'] = 'fas fa-lock';
+                    $value['time'] = 'fas fa-lock';
+                    $green_data[$key] = $value;
+
+                }
+            }
         }
+
+
         $last_signal =  GreenAlpha::whereIn('close_time', function ($query) {
             $query->select(DB::raw('MAX(close_time)'))
                   ->from('green_alpha')
@@ -92,12 +122,20 @@ class HomeController
     {
         $user = \Auth::user();
         $role_id = $user->role_id ?? null;
-        $subscription = Subscription::where('user_id', $user->id)->where('product_id',2)->where('end_date' ,'>=', now())->get();
-        if($subscription->isEmpty() && $role_id != 1){
+        $subscription = Subscription::where('user_id', $user->id)->where('product_id',2)->where('end_date' ,'>=', now())->first();
+
+        if(empty($subscription) && $role_id != 1){
             return redirect()->route('front.home.trading-system');
         }
-        $signals = (new GreenBeta())->getListSignalsByGroup();
 
+        $signals = (new GreenBeta())->getListSignalsByGroup();
+        if($subscription['is_trial'] == 1){
+            foreach ($signals as $key => $value) {
+                $value['open_time'] = 'fas fa-lock';
+                $value['price_open'] = 'fas fa-lock';
+                $signals[$key] = $value;
+            }
+        }
         $data_chart = (new GreenBeta())->getDataChartSignals();
         $code = $data_chart->pluck('code_name')->toArray();
         $total = $data_chart->pluck('total')->toArray();
@@ -120,12 +158,19 @@ class HomeController
     {
         $user = \Auth::user();
         $role_id = $user->role_id ?? null;
-        $subscription = Subscription::where('user_id', $user->id)->where('product_id',1)->where('end_date' ,'>=', now())->get();
-        if($subscription->isEmpty() && $role_id != 1){
+        $subscription = Subscription::where('user_id', $user->id)->where('product_id',1)->where('end_date' ,'>=', now())->first();
+        if(empty($subscription) && $role_id != 1){
             return redirect()->route('front.home.trading-system');
         }
         $signals = (new GreenAlpha())->getListSignalsByGroup();
+        if($subscription['is_trial'] == 1){
+            foreach ($signals as $key => $value) {
+                $value['open_time'] = 'fas fa-lock';
+                $value['price_open'] = 'fas fa-lock';
+                $signals[$key] = $value;
 
+            }
+        }
         $data_chart = (new GreenAlpha())->getDataChartSignals();
         $dataChartProfit = (new GreenAlpha())->getCurrentMonthProfitSum();
 
@@ -220,11 +265,18 @@ class HomeController
     public function greenStock(){
         $user = \Auth::user();
         $role_id = $user->role_id ?? null;
-        $subscription = Subscription::where('user_id', $user->id)->where('product_id',3)->where('end_date' ,'>=', now())->get();
-        if($subscription->isEmpty() && $role_id != 1){
+        $subscription = Subscription::where('user_id', $user->id)->where('product_id',3)->where('end_date' ,'>=', now())->first();
+        if(empty($subscription) && $role_id != 1){
             return redirect()->route('front.home.trading-system');
         }
         $signals = (new GreenStockNas100())->getListNas100Api();
+        if($subscription['is_trial'] == 1){
+            foreach ($signals as $key => $value) {
+                $value['price'] = 'fas fa-lock';
+                $value['time'] = 'fas fa-lock';
+                $signals[$key] = $value;
+            }
+        }
         $top_stock = (new GreenStockNas100())->getTopStock();
         $chart_signal = (new GreenStockNas100())->getGroupSignal();
         usort($chart_signal, function($a, $b) {

@@ -564,6 +564,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     targets: 1, // Index of the date column
 
                     render: function (data, type, full, meta) {
+                        if(data =='fas fa-lock'){
+                            return '<i style="color:green" class="fas fa-lock"></i>';
+                        }
                         if (type === 'display') {
                             return parseFloat(data).toFixed(2);
                         }
@@ -572,8 +575,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     }
                 },
                 {
+                    targets: 2, // Index of the date column
+                    render: function (data, type, full, meta) {
+                        if(data=='fas fa-lock'){
+                            return '<i style="color:green" class="fas fa-lock"></i>';
+                        }
+                        return data; //
+                    }
+                },
+                {
                     targets: 9, // Index of the date column
                     render: function (data, type, full, meta) {
+
                         if(data <= 0){
                             return '';
                         }

@@ -278,6 +278,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </body>
 
 </html>
+<link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css') }}">
 <link rel="stylesheet" href="{{asset('plugins/font-awesome-4.7.0/css/font-awesome.min.css')}}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -812,11 +813,28 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 {
                     targets: 3, // Index of the open_time column
                     render: function (data, type, row) {
+                        if(data =='fas fa-lock'){
+                            return '<i style="color:green" class="fas fa-lock"></i>';
+                        }
                         if (data == null || data == '') return '';
                         if (type === 'display' || type === 'filter') {
                             return  moment.tz(data, 'Europe/Moscow').format('HH:mm'); // Format as HH:mm
                         }
                         return data;
+                    }
+                },
+                {
+                    targets: 2, // Index of the date column
+
+                    render: function (data, type, full, meta) {
+                        if(data =='fas fa-lock'){
+                            return '<i style="color:green" class="fas fa-lock"></i>';
+                        }
+                        if (type === 'display') {
+                            return parseFloat(data).toFixed(2);
+                        }
+                        return data; //
+
                     }
                 },
                 {
