@@ -51,6 +51,7 @@ class HomeController
                 $value['close_time'] = 'fas fa-lock';
                 $signals[$key] = $value;
             }
+            dd($green_stock);
             foreach ($green_stock as $key => $value) {
                 $value['code'] = 'fas fa-lock';
                 $value['company_name'] = 'fas fa-lock';
@@ -82,6 +83,7 @@ class HomeController
                     $signals[$key] = $value;
                 }
             }
+
             if(empty($subscriptionGreenStock) && $role_id != 1){
                 foreach ($green_stock as $key => $value) {
                     $value['code'] = 'fas fa-lock';
@@ -92,8 +94,9 @@ class HomeController
 
                 }
             }
+
             if(!empty($subscriptionGreenStock) && $subscriptionGreenStock['is_trial'] == 1 && $role_id != 1){
-                foreach ($signals as $key => $value) {
+                foreach ($green_stock as $key => $value) {
                     $value['price'] = 'fas fa-lock';
                     $value['time'] = 'fas fa-lock';
                     $green_stock[$key] = $value;
