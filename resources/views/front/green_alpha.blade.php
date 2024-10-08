@@ -641,7 +641,24 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             }]
                         },
                         options: {
-
+                            plugins: {
+                                datalabels: {
+                                    display: true, // Hiển thị giá trị
+                                    anchor: 'end',
+                                    align: 'end',
+                                    formatter: function (value, context) {
+                                        return window.innerWidth < 768 ? "" : value + '%';
+                                    },
+                                    labels: {
+                                        value: {
+                                            color: 'green',
+                                            font: {
+                                                weight: 'bold'
+                                            }
+                                        }
+                                    }
+                                }
+                            },
                             scales: {
                                 x: {
                                     ticks: {
@@ -660,6 +677,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             }
 
                         },
+                        plugins: [ChartDataLabels]
 
                     });
                     $('#dataTableModal').modal('show');
