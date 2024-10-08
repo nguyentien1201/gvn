@@ -63,9 +63,9 @@ class HomeController
         }else {
             $user = \Auth::user();
             $role_id = $user->role_id ?? null;
-            $subscriptionBeta = Subscription::where('user_id', $user->id)->where('product_id',2)->where('end_date' ,'>=', now())->get();
-            $subscriptionGreenStock = Subscription::where('user_id', $user->id)->where('product_id',3)->where('end_date' ,'>=', now())->get();
-            if($subscriptionBeta->isEmpty() && $role_id != 1){
+            $subscriptionBeta = Subscription::where('user_id', $user->id)->where('product_id',2)->where('end_date' ,'>=', now())->first();
+            $subscriptionGreenStock = Subscription::where('user_id', $user->id)->where('product_id',3)->where('end_date' ,'>=', now())->first();
+            if(empty($subscriptionBeta) && $role_id != 1){
                 foreach ($signals as $key => $value) {
                     $value['open_time'] = 'fas fa-lock';
                     $value['price_open'] = 'fas fa-lock';
@@ -74,7 +74,7 @@ class HomeController
                     $signals[$key] = $value;
                 }
             }
-            if($subscriptionGreenStock->isEmpty() && $role_id != 1){
+            if(empty($subscriptionGreenStock) && $role_id != 1){
                 foreach ($green_stock as $key => $value) {
                     $value['code'] = 'fas fa-lock';
                     $value['company_name'] = 'fas fa-lock';
