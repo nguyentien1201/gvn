@@ -17,7 +17,7 @@ return [
     'symbol'=>'Symbol',
     'last_sale'=>'Last Sale',
     'profit'=>'Profit',
-    'signal_close'=>'Signa Close',
+    'signal_close'=>'Signal Close',
     'price_close'=>"Price Close",
     'close_time'=>'Close Time',
     'no_trading'=>'No.Trading',
