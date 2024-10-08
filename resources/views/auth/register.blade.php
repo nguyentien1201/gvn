@@ -9,7 +9,7 @@
 @extends('layout.master-no-header')
 @section('content')
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-12">
         <div class="login-box">
         <div class="login-logo">
             <a href="../../index2.html">
