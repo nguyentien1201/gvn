@@ -19,6 +19,7 @@ use DateTime;
 use App\Models\Product;
 use Illuminate\Support\Facades\Session;
 use App\Models\ConstantModel;
+use App\Models\Subscription;
 class HomeController
 {
     public function index(Request $request)
@@ -89,6 +90,11 @@ class HomeController
     }
     public function greenBeta(Request $request)
     {
+        $user = \Auth::user();
+        $subscription = Subscription::where('user_id', $user->id)->where('product_id',2)->where('end_date' ,'>=', now())->get();
+        if($subscription->isEmpty()){
+            return redirect()->route('front.home.trading-system');
+        }
         $signals = (new GreenBeta())->getListSignalsByGroup();
 
         $data_chart = (new GreenBeta())->getDataChartSignals();
@@ -111,8 +117,12 @@ class HomeController
     }
     public function greenAlpha(Request $request)
     {
+        $user = \Auth::user();
+        $subscription = Subscription::where('user_id', $user->id)->where('product_id',1)->where('end_date' ,'>=', now())->get();
+        if($subscription->isEmpty()){
+            return redirect()->route('front.home.trading-system');
+        }
         $signals = (new GreenAlpha())->getListSignalsByGroup();
-
         $data_chart = (new GreenAlpha())->getDataChartSignals();
         $dataChartProfit = (new GreenAlpha())->getCurrentMonthProfitSum();
 
@@ -205,6 +215,11 @@ class HomeController
         ];
     }
     public function greenStock(){
+        $user = \Auth::user();
+        $subscription = Subscription::where('user_id', $user->id)->where('product_id',3)->where('end_date' ,'>=', now())->get();
+        if($subscription->isEmpty()){
+            return redirect()->route('front.home.trading-system');
+        }
         $signals = (new GreenStockNas100())->getListNas100Api();
         $top_stock = (new GreenStockNas100())->getTopStock();
         $chart_signal = (new GreenStockNas100())->getGroupSignal();
