@@ -51,7 +51,7 @@ class HomeController
                 $value['close_time'] = 'fas fa-lock';
                 $signals[$key] = $value;
             }
-            dd($green_data);
+
             foreach ($green_data as $key => $value) {
                 $value['code'] = 'fas fa-lock';
                 $value['company_name'] = 'fas fa-lock';
@@ -388,7 +388,7 @@ class HomeController
             $system = $value->system;
             $price_product[$system] = $value;
         }
-        // dd($price_product);
+
         return view('front.trading_system',compact('price_product'));
     }
     public function contact(){
