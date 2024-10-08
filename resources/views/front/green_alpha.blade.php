@@ -852,7 +852,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
             // Delay for 5 seconds, then highlight the 3rd column (index starts from 0)
             setTimeout(function() {
-                console.log('Highlighting column 4');
                 highlightColumn(4);  // Highlight the third column (index 2)
             }, 5000); // 5000 milliseconds = 5 seconds
 
@@ -864,15 +863,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         data: {
             labels: @json($dataChartProfit['lable']),
             datasets: [{
-                data: @json($dataChartProfit['profitMonth']),
-                label: 'Profit Month Current',
+                data: @json($dataChartProfit['profitWeek']),
+                label: 'Profit Week Current',
                 backgroundColor: '#40f35c',
                 borderWidth: 1,
                 fontweight: 600,
             },
             {
-                data: @json($dataChartProfit['profitYear']),
-                label: 'Profit Year Current',
+                data: @json($dataChartProfit['profitMonth']),
+                label: 'Profit Month Current',
                 backgroundColor: '#34a853',
                 borderWidth: 1,
                 fontweight: 600,

@@ -114,7 +114,8 @@ class HomeController
         $signals = (new GreenAlpha())->getListSignalsByGroup();
 
         $data_chart = (new GreenAlpha())->getDataChartSignals();
-        $dataChartProfit = (new GreenAlpha())->getCurrentYearProfitSum();
+        $dataChartProfit = (new GreenAlpha())->getCurrentMonthProfitSum();
+
         $data_chart_default = $this->getHistoryAlphaSignal(1);
         $code = $data_chart->pluck('code')->toArray();
         $total = $data_chart->pluck('total_trade')->toArray();

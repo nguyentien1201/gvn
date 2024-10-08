@@ -372,5 +372,40 @@ class GreenAlpha extends Model
                 }
     }
 }
+public function getCurrentMonthProfitSum()
+    {
+
+        $profitMonth = GreenAlpha::with('mstStock')->whereBetween('close_time', [Carbon::now()->startOfMonth(), Carbon::now()->endOfMonth()])->orderBy('code','asc')->get();
+
+        $groupedByCode = $profitMonth->groupBy('code');
+
+        $sumMonth = [];
+        $sumWeek = [];
+        $lable = [];
+        foreach ($groupedByCode as $key => $value) {
+
+            $sum = 0;
+            $sumweek=0;
+
+            foreach ($value as $i => $item) {
+                if($i == 0) {
+                    $lable[] = $item->mstStock->code;
+                  };
+                if(Carbon::now()->startOfWeek() <= $item->close_time && $item->close_time <= Carbon::now()->endOfWeek()){
+                    $sumweek += $item->calculateProfit() ?? 0;
+                }
+                $sum += $item->calculateProfit() ?? 0;
+            }
+            $sumWeek[] = round($sumweek,2);
+            $sumMonth[] = round($sum,2);
+        }
+
+        $result = [
+            'lable'=>$lable,
+            'profitWeek' => $sumWeek,
+            'profitMonth' => $sumMonth
+        ];
+        return $result;
+    }
 
 }
