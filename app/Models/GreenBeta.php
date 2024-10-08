@@ -17,7 +17,7 @@ class GreenBeta extends Model
     public $table = 'green_beta';
 
     protected $fillable = [
-        'code', 'price_open', 'open_time', 'signal_close', 'price_close', 'trending_price','price_cumulative_from', 'price_cumulative_to', 'profit', 'close_time', 'last_sale', 'signal_open'
+        'code', 'price_open', 'open_time', 'signal_close', 'price_close', 'trend_price','price_cumulative_from', 'price_cumulative_to', 'profit', 'close_time', 'last_sale', 'signal_open'
     ];
         protected $casts = [
         'open_time' => 'date',
@@ -206,7 +206,6 @@ class GreenBeta extends Model
                     'last_sale' =>!empty($item[5]) ? (float)$item[5] : null,
                     'price_close' =>!empty($item[7]) ? (float)$item[7] : null,
                     'trend_price' => $item[3] ?? null,
-
                 ];
 
                 $existingRecord = GreenBeta::where(['code'=>$greenBeta['code'],'price_open'=>$greenBeta['price_open'],'open_time'=> $greenBeta['open_time']] )->first();
