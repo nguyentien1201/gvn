@@ -73,7 +73,7 @@
                         $(td).css('border-color', '#fff');
                     },
                     render: function (data, type, full, meta) {
-                        if(full.close_time != null){
+                        if(signal_close != 'hold'){
                             return 'CLOSED';
                         }
                         return data; //
