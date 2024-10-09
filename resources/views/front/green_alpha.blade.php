@@ -758,9 +758,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 {
                     targets: 1, // Index of the date column
                     createdCell: function (td, cellData, rowData, row, col) {
-                        signal = cellData.trim().toLowerCase();
 
                         if (cellData == '') return false;
+                        signal = cellData.trim().toLowerCase();
                         if (rowData.close_time == '' || rowData.close_time == null) {
                             color = '#ffd966';
                             if (signal == 'buy') {
@@ -825,8 +825,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 },
                 {
                     targets: 2, // Index of the date column
-
                     render: function (data, type, full, meta) {
+                        if(data == "") return '';
                         if(data =='fas fa-lock'){
                             return '<i style="color:green" class="fas fa-lock"></i>';
                         }

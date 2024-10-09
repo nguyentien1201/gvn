@@ -545,7 +545,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 {
                     targets: 0, // Index of the date column
                     createdCell: function (td, cellData, rowData, row, col) {
-                        signal_close = rowData.signal_close.trim().toLowerCase();
+                        signal_close ='';
+                        if(rowData.signal_close != null){
+                            signal_close = rowData.signal_close.trim().toLowerCase();
+                        }
+
                         if (signal_close == 'hold') {
                             color = '#b6d7a8';
                         } else {
@@ -620,7 +624,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 {
                     targets: 3, // Index of the date column
                     createdCell: function (td, cellData, rowData, row, col) {
-                        trending_price = cellData.trim().toLowerCase();;
+                        trending_price ='';
+                        if(cellData !='' || cellData != null){
+                            trending_price = cellData.trim().toLowerCase();;
+                        }
+
                         // b6d7a8
                             if (trending_price == 'uptrend') {
                                 color = '#b6d7a8';
@@ -637,7 +645,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 {
                     targets: 8, // Index of the date column
                     createdCell: function (td, cellData, rowData, row, col) {
-                        signal_close =''
+                        signal_close ='';
                         if(rowData.signal_close != null){
                             signal_close = rowData.signal_close.trim().toLowerCase();
                         }
@@ -646,7 +654,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         } else if (signal_close == 'cutlossbuy') {
                             color = '#e06666';
                         } else {
-                            console.log(rowData.signal_close);
+
                             color = '#ffd966';
                         }
                         $(td).css('background-color', color);

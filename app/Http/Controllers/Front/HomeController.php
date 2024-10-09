@@ -147,13 +147,14 @@ class HomeController
         }
 
         $signals = (new GreenBeta())->getListSignalsByGroup();
-        if($subscription['is_trial'] == 1){
+        if(!empty($subscription) && $subscription['is_trial'] == 1){
             foreach ($signals as $key => $value) {
                 $value['open_time'] = 'fas fa-lock';
                 $value['price_open'] = 'fas fa-lock';
                 $signals[$key] = $value;
             }
         }
+
         $data_chart = (new GreenBeta())->getDataChartSignals();
         $code = $data_chart->pluck('code_name')->toArray();
         $total = $data_chart->pluck('total')->toArray();
@@ -181,7 +182,7 @@ class HomeController
             return redirect()->route('front.home.trading-system');
         }
         $signals = (new GreenAlpha())->getListSignalsByGroup();
-        if($subscription['is_trial'] == 1){
+        if(!empty($subscription) && $subscription['is_trial'] == 1 && $role_id != 1){
             foreach ($signals as $key => $value) {
                 $value['open_time'] = 'fas fa-lock';
                 $value['price_open'] = 'fas fa-lock';
@@ -189,6 +190,7 @@ class HomeController
 
             }
         }
+
         $data_chart = (new GreenAlpha())->getDataChartSignals();
         $dataChartProfit = (new GreenAlpha())->getCurrentMonthProfitSum();
 
@@ -288,7 +290,7 @@ class HomeController
             return redirect()->route('front.home.trading-system');
         }
         $signals = (new GreenStockNas100())->getListNas100Api();
-        if($subscription['is_trial'] == 1){
+        if(!empty($subscription) && $subscription['is_trial'] == 1){
             foreach ($signals as $key => $value) {
                 $value['price'] = 'fas fa-lock';
                 $value['time'] = 'fas fa-lock';
@@ -332,7 +334,7 @@ class HomeController
         $user = \Auth::user();
         $role_id = $user->role_id ?? null;
         $subscription = Subscription::where('user_id', $user->id)->where('product_id',3)->where('end_date' ,'>=', now())->first();
-        if($subscription['is_trial'] == 1 && $role_id != 1){
+        if( !empty($subscription) && $subscription['is_trial'] == 1 && $role_id != 1){
             foreach ($top_stock as $key => $value) {
                 $value['price'] = 'fas fa-lock';
                 $value['time'] = 'fas fa-lock';
