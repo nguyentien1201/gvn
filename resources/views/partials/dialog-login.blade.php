@@ -46,6 +46,18 @@
     .login-box-msg{
         text-align: center;
     }
+    .custom-color-hand{
+        color:#ff840a;
+    }
+    .icon-background {
+            background-color: white; /* Màu nền cho icon */
+            padding: 5px; /* Khoảng cách bên trong */
+            border-radius: 50%; /* Đường viền tròn */
+            display: inline-flex; /* Để căn giữa icon */
+            align-items: center; /* Canh giữa theo chiều dọc */
+            justify-content: center; /* Canh giữa theo chiều ngang */
+            margin-left: 5px; /* Khoảng cách giữa văn bản và icon */
+        }
 </style>
 
 <script>
@@ -70,11 +82,11 @@
                 <div class="row">
                     <div class="col-md-6 d-flex align-items-center justify-content-center" id="promo-box" style="background:#0a381d">
                         <div class="promo-box">
-                            <h3>Đăng nhập MIỄN PHÍ và nhận ngay:</h3>
+                            <h3>Đăng nhập <span class="custom-color-hand">MIỄN PHÍ</span> và nhận ngay:</h3>
                             <ul class="mt-5">
-                                <li><i class="bi bi-hand-index hand-right"></i>Xu hướng giá của các thị trường tài chính lớn</li>
-                                <li><i class="bi bi-hand-index hand-right"></i>Dùng thử 3 sản phẩm của GVN trong 1 tháng</li>
-                                <li><i class="bi bi-hand-index hand-right"></i>Cá nhân hóa các cổ phiếu quan tâm trong GreenStock</li>
+                                <li><i class="bi bi-hand-index hand-right custom-color-hand"></i></span></i>Xu hướng giá của các thị trường tài chính lớn</li>
+                                <li><i class="bi bi-hand-index hand-right custom-color-hand"></i>Dùng thử 3 sản phẩm của GVN trong 1 tháng</li>
+                                <li><i class="bi bi-hand-index hand-right custom-color-hand"></i>Cá nhân hóa các cổ phiếu quan tâm trong GreenStock</li>
                             </ul>
                         </div>
                     </div>
