@@ -47,7 +47,7 @@
         text-align: center;
     }
     .custom-color-hand{
-        color:#ff840a;
+        color:#15aa3d;
     }
     .icon-background {
             background-color: white; /* Màu nền cho icon */
@@ -60,18 +60,7 @@
         }
 </style>
 
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        var loginModal = new bootstrap.Modal(document.getElementById('loginModal'), {
-            backdrop: 'static', // Optional: Set backdrop to 'static' to prevent closing the modal by clicking outside
-            keyboard: false     // Optional: Disable closing the modal with the keyboard
-        });
-        // Example: Show the modal when a button is clicked
-        document.getElementById('showLoginModalButton').addEventListener('click', function () {
-            loginModal.show();
-        });
-    });
-</script>
+
 <div class="modal fade" id="loginModal" role="dialog" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -84,9 +73,9 @@
                         <div class="promo-box">
                             <h3>Đăng nhập <span class="custom-color-hand">MIỄN PHÍ</span> và nhận ngay:</h3>
                             <ul class="mt-5">
-                                <li><i class="bi bi-hand-index hand-right custom-color-hand"></i></span></i>Xu hướng giá của các thị trường tài chính lớn</li>
-                                <li><i class="bi bi-hand-index hand-right custom-color-hand"></i>Dùng thử 3 sản phẩm của GVN trong 1 tháng</li>
-                                <li><i class="bi bi-hand-index hand-right custom-color-hand"></i>Cá nhân hóa các cổ phiếu quan tâm trong GreenStock</li>
+                                <li><i class="bi bi-hand-index-thumb-fill hand-right custom-color-hand"></i></span></i>Xu hướng giá của các thị trường tài chính lớn</li>
+                                <li><i class="bi bi-hand-index-thumb-fill hand-right custom-color-hand"></i>Dùng thử 3 sản phẩm của GVN trong 1 tháng</li>
+                                <li><i class="bi bi-hand-index-thumb-fill hand-right custom-color-hand"></i>Cá nhân hóa các cổ phiếu quan tâm trong GreenStock</li>
                             </ul>
                         </div>
                     </div>

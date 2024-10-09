@@ -66,7 +66,19 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
     <!-- Navigation Bar -->
+    @guest
+<script>
+    // Hiển thị modal tự động khi trang được tải
 
+    window.onload = function() {
+        var myModal = new bootstrap.Modal(document.getElementById('loginModal'));
+        setTimeout(function() {
+            myModal.show();
+        }, 4000); // Đóng modal sau 5 giây
+
+    };
+</script>
+@endguest
     @include('front.common.header')
     @include('front.common.header-banner')
     <!-- Features Section -->

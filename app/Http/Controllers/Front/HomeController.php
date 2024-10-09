@@ -385,9 +385,11 @@ class HomeController
     }
     public function tradingSystem(){
         $product = Product::all();
+
         $price_product = [];
         foreach ($product as $key => $value) {
-            $system = $value->system;
+
+            $system = $value->system ?? '';
             $price_product[$system] = $value;
         }
 
