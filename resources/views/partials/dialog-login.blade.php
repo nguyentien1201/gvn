@@ -71,7 +71,7 @@
                     <div class="col-md-6 d-flex align-items-center justify-content-center" id="promo-box" style="background:#0a381d">
                         <div class="promo-box">
                             <h3>Đăng nhập MIỄN PHÍ và nhận ngay:</h3>
-                            <ul>
+                            <ul class="mt-3">
                                 <li><i class="bi bi-hand-index hand-right"></i>Xu hướng giá của các thị trường tài chính lớn</li>
                                 <li><i class="bi bi-hand-index hand-right"></i>Dùng thử 3 sản phẩm của GVN trong 1 tháng</li>
                                 <li><i class="bi bi-hand-index hand-right"></i>Cá nhân hóa các cổ phiếu quan tâm trong GreenStock</li>
