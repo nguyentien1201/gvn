@@ -42,6 +42,17 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
     <style>
+        .disabled-link {
+            opacity: 0.5;
+    pointer-events: none;
+    cursor: not-allowed;
+    color: #6c757d; /* Optional: Change the color to indicate it's disabled */
+    text-decoration: none; /* Optional: Remove underline */
+    background-color: #e9ecef; /* Optional: Change background color */
+    border: 1px solid #ced4da; /* Optional: Add border */
+    padding: 0.5rem 1rem; /* Optional: Add padding */
+    border-radius: 0.25rem; /* Optional: Add border radius */
+}
            .carousel-item {
 
 min-height: 300px;
@@ -545,7 +556,6 @@ background-size: cover;
                 <div class="ptable-footer">
                     <div class="ptable-action">
                         @if (Auth::check())
-                            <a class="subscription" data-id={{$price_product['beta']->id}} data-type="buy" data-month="1">Buy</a>
                             <a class="subscription" data-id={{$price_product['beta']->id}} data-type="trial" data-month="1">Trial</a>
                         @else
                             <a href="{{ route('login') }}">Login</a>
@@ -579,7 +589,7 @@ background-size: cover;
                 <div class="ptable-footer">
                     <div class="ptable-action">
                         @if (Auth::check())
-                            <a class="subscription" data-id={{$price_product['beta']->id}} data-type="buy" data-month="2">Buy</a>
+                            <a class="subscription disabled-link" data-id={{$price_product['beta']->id}} data-type="buy" data-month="2">Buy</a>
                         @else
                             <a href="{{ route('login') }}">Login</a>
                         @endif
@@ -609,7 +619,7 @@ background-size: cover;
                 <div class="ptable-footer">
                     <div class="ptable-action">
                     @if (Auth::check())
-                            <a class="subscription" data-id={{$price_product['beta']->id}} data-type="buy" data-month="3">Buy</a>
+                            <a class="subscription disabled-link" data-id={{$price_product['beta']->id}} data-type="buy" data-month="3">Buy</a>
                         @else
                             <a href="{{ route('login') }}">Login</a>
                         @endif
@@ -673,7 +683,7 @@ background-size: cover;
                 <div class="ptable-footer">
                     <div class="ptable-action">
                         @if (Auth::check())
-                            <a class="subscription" data-id={{$price_product['alpha']->id}} data-type="buy" data-month="1">Buy</a>
+                            <!-- <a class="subscription" data-id={{$price_product['alpha']->id}} data-type="buy" data-month="1">Buy</a> -->
                             <a class="subscription" data-id={{$price_product['alpha']->id}} data-type="trial" data-month="1">Trial</a>
                         @else
                             <a href="{{ route('login') }}">Login</a>
@@ -707,7 +717,7 @@ background-size: cover;
                 <div class="ptable-footer">
                     <div class="ptable-action">
                     @if (Auth::check())
-                            <a class="subscription" data-id={{$price_product['alpha']->id}} data-type="buy" data-month="2">Buy</a>
+                            <a class="subscription disabled-link" data-id={{$price_product['alpha']->id}} data-type="buy" data-month="2">Buy</a>
                         @else
                             <a href="{{ route('login') }}">Login</a>
                         @endif
@@ -737,7 +747,7 @@ background-size: cover;
                 <div class="ptable-footer">
                     <div class="ptable-action">
                         @if (Auth::check())
-                            <a class="subscription" data-id={{$price_product['alpha']->id}} data-type="buy" data-month="3">Buy</a>
+                            <a class="subscription disabled-link" data-id={{$price_product['alpha']->id}} data-type="buy" data-month="3">Buy</a>
                         @else
                             <a href="{{ route('login') }}">Login</a>
                         @endif
@@ -801,7 +811,7 @@ background-size: cover;
                 <div class="ptable-footer">
                     <div class="ptable-action">
                         @if (Auth::check())
-                            <a class="subscription" data-id={{$price_product['greenstock']->id}} data-type="buy" data-month="1">Buy</a>
+                            <!-- <a class="subscription" data-id={{$price_product['greenstock']->id}} data-type="buy" data-month="1">Buy</a> -->
                             <a class="subscription" data-id={{$price_product['greenstock']->id}} data-type="trial" data-month="1">Trial</a>
                         @else
                             <a href="{{ route('login') }}">Login</a>
@@ -835,7 +845,7 @@ background-size: cover;
                 <div class="ptable-footer">
                     <div class="ptable-action">
                         @if (Auth::check())
-                            <a class="subscription" data-id={{$price_product['greenstock']->id}} data-type="buy" data-month="2">Buy</a>
+                            <a  class="subscription disabled-link" data-id={{$price_product['greenstock']->id}} data-type="buy" data-month="2">Buy</a>
                         @else
                             <a href="{{ route('login') }}">Login</a>
                         @endif
@@ -865,7 +875,7 @@ background-size: cover;
                 <div class="ptable-footer">
                     <div class="ptable-action">
                         @if (Auth::check())
-                            <a class="subscription" data-id={{$price_product['greenstock']->id}} data-type="buy" data-month="3">Buy</a>
+                            <a class="subscription disabled-link" data-id={{$price_product['greenstock']->id}} data-type="buy" data-month="3">Buy</a>
                         @else
                             <a href="{{ route('login') }}">Login</a>
                         @endif

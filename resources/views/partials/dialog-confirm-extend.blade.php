@@ -1,4 +1,15 @@
 <style>
+     .disabled-link {
+            opacity: 0.5;
+    pointer-events: none;
+    cursor: not-allowed;
+    color: #6c757d; /* Optional: Change the color to indicate it's disabled */
+    text-decoration: none; /* Optional: Remove underline */
+    background-color: #e9ecef; /* Optional: Change background color */
+    border: 1px solid #ced4da; /* Optional: Add border */
+    padding: 0.5rem 1rem; /* Optional: Add padding */
+    border-radius: 0.25rem; /* Optional: Add border radius */
+}
     .pricing-table {
         display: flex;
         flex-flow: row wrap;
@@ -280,7 +291,7 @@
                                     </div>
                                     <div class="ptable-footer">
                                         <div class="ptable-action">
-                                            <a class="subscription" data-type="buy" data-month="2">Buy</a>
+                                            <a class="subscription disabled-link" data-type="buy" data-month="2">Buy</a>
                                         </div>
                                     </div>
                                 </div>
@@ -306,7 +317,7 @@
                                     </div>
                                     <div class="ptable-footer">
                                         <div class="ptable-action">
-                                            <a class="subscription" data-type="buy" data-month="3">Buy</a>
+                                            <a class="subscription disabled-link" data-type="buy" data-month="3">Buy</a>
                                         </div>
                                     </div>
                                 </div>
