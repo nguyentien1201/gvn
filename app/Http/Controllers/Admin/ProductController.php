@@ -46,13 +46,13 @@ class ProductController extends AdminController
         return view('admin.product.edit', compact('product'));
     }
 
-    public function update(Product $product,Request $request)
+    public function update($id,Request $request)
     {
         $request->validate([
             'id' => 'required|exists:products,id',
         ]);
         $request['description'] = trim($request['description']);
-
+        $product = Product::find($id);
         $product->fill($request->all());
         try {
             $product->save();

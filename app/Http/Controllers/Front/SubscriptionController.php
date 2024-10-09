@@ -63,6 +63,7 @@ class SubscriptionController
     {
 
         $product = Product::find($request->product_id);
+
         return response()->json(['product'=>$product]);
     }
     public function apiUpdateSubscription(Request $request)
@@ -73,6 +74,7 @@ class SubscriptionController
         ]);
 
         $product = Product::find($request->product_id)->toArray();
+
         $data = [
             'user_id' => Auth::id(),
             'product_id' => $product['id'],

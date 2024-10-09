@@ -640,7 +640,11 @@
 
 
 </script>
-
+<div class="text-center mt-5">
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-backdrop="static" data-bs-target="#loginModal">
+        Đăng nhập
+    </button>
+</div>
 <section class="features text-left mt-5">
     <div class="container">
         <h2 class="text-left mb-4 label-color color-home pb-3 d-flex" >{{__('front_end.most_interested')}} <a class="color-home" style="text-align:right;right: 0;
@@ -963,3 +967,4 @@
     </div>
 </section>
 
+@include('partials.dialog-login')
