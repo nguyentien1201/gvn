@@ -131,7 +131,7 @@
                                     <div class="w-100 text-center mt-3">
                                         <span class="mt-3" ><a style="font-weight:bold" class="color-home" href="{{ route('register') }}"><i>{{__('auth.register')}}</i></a></span>
                                         <span>|</span>
-                                        <a href="{{ route('password.email') }}" style="font-weight:bold" class="color-home" id="register">{{__('auth.forgot_password')}}</a>
+                                        <a href="{{ route('password.request') }}" style="font-weight:bold" class="color-home" id="register">{{__('auth.forgot_password')}}</a>
                                     </div>
 
 

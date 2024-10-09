@@ -5,6 +5,9 @@
 
     }
 }
+.color-home{
+    color:#008000 !important;
+}
 </style>
 @extends('layout.master-no-header')
 @section('content')
@@ -54,10 +57,11 @@
                         <button type="submit" class="btn btn-primary">{{__('panel.login')}}</button>
                     </div>
                 </form>
-                <div class="social-auth-links text-center mb-3">
-                    <p>- OR -</p>
-                <a href="{{ route('password.request') }}">Forgot Your Password?</a>
-                </div>  
+                <div class="w-100 text-center mt-3">
+                    <span class="mt-3" ><a style="font-weight:bold" class="color-home" href="{{ route('register') }}"><i>{{__('auth.register')}}</i></a></span>
+                    <span>|</span>
+                    <a href="{{ route('password.request') }}" style="font-weight:bold" class="color-home" >{{__('auth.forgot_password')}}</a>
+                </div>
             </div>
             <!-- /.login-card-body -->
         </div>
