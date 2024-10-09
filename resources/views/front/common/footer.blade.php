@@ -86,7 +86,7 @@
                         <li class="custom-ul-li">
                             <a href="#" class="text-white">
                                 <i class="fa fa-angle-right custom-icon" aria-hidden="true"></i>
-                                <span>info@yoursite.com</span>
+                                <span>admin@gvn-fintrade.com</span>
                             </a>
                         </li>
                         <li class="custom-ul-li">
