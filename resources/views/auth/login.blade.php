@@ -54,7 +54,10 @@
                         <button type="submit" class="btn btn-primary">{{__('panel.login')}}</button>
                     </div>
                 </form>
+                <div class="social-auth-links text-center mb-3">
+                    <p>- OR -</p>
                 <a href="{{ route('password.request') }}">Forgot Your Password?</a>
+                </div>  
             </div>
             <!-- /.login-card-body -->
         </div>

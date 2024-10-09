@@ -71,11 +71,11 @@
                 <div class="row">
                     <div class="col-md-6 d-flex align-items-center justify-content-center" id="promo-box" style="background:#0a381d">
                         <div class="promo-box">
-                            <h3>Đăng nhập <span class="custom-color-hand">MIỄN PHÍ</span> và nhận ngay:</h3>
+                            <h3> {!! __('front_end.login_and_get') !!}</h3>
                             <ul class="mt-5">
-                                <li><i class="bi bi-hand-index-thumb-fill hand-right custom-color-hand"></i></span></i>Xu hướng giá của các thị trường tài chính lớn</li>
-                                <li><i class="bi bi-hand-index-thumb-fill hand-right custom-color-hand"></i>Dùng thử 3 sản phẩm của GVN trong 1 tháng</li>
-                                <li><i class="bi bi-hand-index-thumb-fill hand-right custom-color-hand"></i>Cá nhân hóa các cổ phiếu quan tâm trong GreenStock</li>
+                                <li><i class="bi bi-hand-index-thumb-fill hand-right custom-color-hand"></i></span></i>{!! __('front_end.follow_trendprice')!!}</li>
+                                <li><i class="bi bi-hand-index-thumb-fill hand-right custom-color-hand"></i>{!! __('front_end.get_trial')!!}</li>
+                                <li><i class="bi bi-hand-index-thumb-fill hand-right custom-color-hand"></i>{!! __('front_end.personalize_stock')!!}</li>
                             </ul>
                         </div>
                     </div>
@@ -128,7 +128,12 @@
                                             <button type="submit" class="btn btn-primary">{{__('panel.login')}}</button>
                                         </div>
                                     </form>
-                                    <span class="mt-3 d-block" >Bạn chưa có tài khoản <a style="font-weight:bold" class="color-home" href="{{ route('register') }}"><i>Đăng ký</i></a></span>
+                                    <div class="w-100 text-center mt-3">
+                                        <span class="mt-3" ><a style="font-weight:bold" class="color-home" href="{{ route('register') }}"><i>{{__('auth.register')}}</i></a></span>
+                                        <span>|</span>
+                                        <a href="{{ route('password.email') }}" style="font-weight:bold" class="color-home" id="register">{{__('auth.forgot_password')}}</a>
+                                    </div>
+
 
                                 </div>
                                 <!-- /.login-card-body -->

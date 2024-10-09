@@ -114,4 +114,8 @@ return [
     'trend_signal_take_profit'=>'Trend signal take profit.',
     'trend_signal_hold'=>'Trend signal hold.',
     'trend_signal_cutloss'=>'Trend signal cutloss.',
+    'login_and_get'=>'Login <span class="custom-color-hand">FREE</span> and get:',
+    'follow_trendprice'=>'Follow TRENDPRICE of all big market in the world',
+    'get_trial'=>'Get 1 month trial on 3 products of GVN',
+    'personalize_stock'=>'Personalize your stocks of interest on GreenStock product',
 ];

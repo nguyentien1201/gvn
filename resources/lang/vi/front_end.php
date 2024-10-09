@@ -115,4 +115,8 @@ Người ta nói "Đồng tiền đi liền khúc ruột", nếu anh chị có �
     'trend_signal_take_profit'=>'Tín hiệu đã ở trạng thái chốt lời.',
     'trend_signal_hold'=>'Tín hiệu đang ở trạng thái giữ.',
     'trend_signal_cutloss'=>'Tín hiệu đã ở trạng thái cắt lỗ.',
+    'login_and_get'=>'Đăng nhập <span class="custom-color-hand">MIỄN PHÍ</span> và nhận ngay:',
+    'follow_trendprice'=>'Xu hướng giá của các thị trường tài chính lớn',
+    'get_trial'=>'Dùng thử 3 sản phẩm của GVN trong 1 tháng',
+    'personalize_stock'=>'Cá nhân hoá các cổ phiếu quan tâm trong GreenStock',
 ];
