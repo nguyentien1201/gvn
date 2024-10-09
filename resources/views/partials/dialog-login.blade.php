@@ -2,7 +2,7 @@
     .promo-box {
 
         color: white;
-        padding: 30px;
+        padding: 2rem 1rem 1rem 1rem;
         border-radius: 5px;
         text-align: left;
     }
@@ -19,7 +19,11 @@
     .promo-box h3 {
         font-weight: bold;
     }
-
+.hand-right {
+    display: inline-block; /* Đảm bảo icon được định dạng chính xác */
+            transform: rotate(90deg); /* Xoay icon 90 độ sang phải */
+            margin-right: 0.7rem; /* Thêm khoảng cách giữa văn bản và icon */
+}
     .promo-box ul {
         list-style-type: none;
         padding-left: 0;
@@ -27,6 +31,9 @@
 
     .promo-box ul li {
         margin-bottom: 10px;
+    }
+    .d-flex{
+        align-items: inherit !important;
     }
     .d-flex a{
         border: none;
@@ -65,9 +72,9 @@
                         <div class="promo-box">
                             <h3>Đăng nhập MIỄN PHÍ và nhận ngay:</h3>
                             <ul>
-                                <li>Xu hướng giá của các thị trường tài chính lớn</li>
-                                <li>Dùng thử 3 sản phẩm của GVN trong 1 tháng</li>
-                                <li>Cá nhân hóa các cổ phiếu quan tâm trong GreenStock</li>
+                                <li><i class="bi bi-hand-index hand-right"></i>Xu hướng giá của các thị trường tài chính lớn</li>
+                                <li><i class="bi bi-hand-index hand-right"></i>Dùng thử 3 sản phẩm của GVN trong 1 tháng</li>
+                                <li><i class="bi bi-hand-index hand-right"></i>Cá nhân hóa các cổ phiếu quan tâm trong GreenStock</li>
                             </ul>
                         </div>
                     </div>
