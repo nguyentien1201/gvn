@@ -22,7 +22,7 @@
 .hand-right {
     display: inline-block; /* Đảm bảo icon được định dạng chính xác */
             transform: rotate(90deg); /* Xoay icon 90 độ sang phải */
-            margin-right: 0.7rem; /* Thêm khoảng cách giữa văn bản và icon */
+            margin-right: 0.4rem; /* Thêm khoảng cách giữa văn bản và icon */
 }
     .promo-box ul {
         list-style-type: none;
