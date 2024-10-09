@@ -1,12 +1,21 @@
 <style>
     .promo-box {
-        background-color: #2b4b23;
+
         color: white;
         padding: 30px;
         border-radius: 5px;
         text-align: left;
     }
-
+    #promo-box::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: -20px; /* Đặt mũi tên ở bên phải */
+    transform: translateY(-50%);
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent transparent transparent #4caf50; /* Mũi tên hướng trái */
+}
     .promo-box h3 {
         font-weight: bold;
     }
@@ -52,7 +61,7 @@
             </div>
             <div class="modal-body">
                 <div class="row">
-                    <div class="col-md-6 d-flex align-items-center justify-content-center">
+                    <div class="col-md-6 d-flex align-items-center justify-content-center" id="promo-box" style="background:#0a381d">
                         <div class="promo-box">
                             <h3>Đăng nhập MIỄN PHÍ và nhận ngay:</h3>
                             <ul>
@@ -70,7 +79,7 @@
                                 </a>
                             </div>
                             <!-- /.login-logo -->
-                            <div class="card">
+                            <div class="card" style="border:none">
                                 <div class="card-body login-card-body">
                                     <h3 class="login-box-msg">{{__('panel.login_title')}}</h3>
                                     <form action="{{route('login')}}" method="post">
