@@ -1107,7 +1107,7 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                     data: {
                         labels: result.chart_group_data.current_month.labels,
                         datasets: [{
-                            label: 'Curent Month',
+                            label: 'Current Month',
                             data: result.chart_group_data.current_month.values,
                             backgroundColor: '#34a853',
                             fontweight: 600,
@@ -1116,7 +1116,7 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                         },
 
                         {
-                            label: 'Curent Quarter',
+                            label: 'Current Quarter',
                             data: result.chart_group_data.quarter.values,
                             backgroundColor: '#34a853',
                             fontweight: 600,
@@ -1124,7 +1124,7 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                             hidden: true // Hiển thị mặc định
                         },
                         {
-                            label: 'Curent Year',
+                            label: 'Current Year',
                             data: result.chart_group_data.current_year.values,
                             backgroundColor: '#34a853',
                             fontweight: 600,
