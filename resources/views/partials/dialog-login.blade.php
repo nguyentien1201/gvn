@@ -32,10 +32,10 @@
     .promo-box ul li {
         margin-bottom: 10px;
     }
-    .d-flex{
+    #promo-box{
         align-items: inherit !important;
     }
-    .d-flex a{
+    .login-logo a,.login-card-body a{
         border: none;
         padding: inherit !important;
     }
