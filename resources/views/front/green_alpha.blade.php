@@ -748,8 +748,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     },
                     render: function (data, type, full, meta) {
 
+
                         if (data != '') {
-                            console.log(data);
                             return `${parseFloat(data).toFixed(2)}%`;
                         }
                         return '';
