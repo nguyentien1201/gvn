@@ -41,19 +41,23 @@ class UserController extends AdminController
         return redirect()->route('admin.users.index')->with('success', __('panel.success'));
     }
 
-    public function edit(User $user)
+    public function edit($id)
     {
+        $user = User::find($id);
         $roles = ConstantModel::ROLES;
         return view('admin.users.edit', compact('user', 'roles'));
     }
 
-    public function update(UpdateProfileRequest $request, User $user): \Illuminate\Http\RedirectResponse
+    public function update( $id,Request $request): \Illuminate\Http\RedirectResponse
     {
+        $user = User::find($id);
+        if(!$user){
+            return redirect()->route('admin.users.index')->with('fail', __('panel.fail'));
+        }
         $user->fill(!empty($request->password) ? $request->all() : $request->except('password'));
         if (!empty($request->password)) {
             $user->password = Hash::make($request->password);
         }
-
         try {
             $user->save();
         } catch (\Exception $e) {
