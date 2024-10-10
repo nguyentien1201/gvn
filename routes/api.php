@@ -17,4 +17,9 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+// routes/web.php
+
+Route::group([ 'namespace' => 'Front'], function () {
+    Route::post('/recive-signal', 'ApiController@postSignal')->name('api.recive-signal');
+});
 
