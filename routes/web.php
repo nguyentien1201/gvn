@@ -43,6 +43,7 @@ Auth::routes(['register' => true]);
 
 
 Route::group([ 'namespace' => 'Front'], function () {
+
     Route::post('api/buy-product', 'SubscriptionController@store')->name('api.buy-product')->middleware('customer');
     Route::post('api/update-subscription', 'SubscriptionController@apiUpdateSubscription')->name('api.update-subscription')->middleware('customer');
 
