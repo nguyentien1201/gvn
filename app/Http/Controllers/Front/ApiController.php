@@ -26,7 +26,7 @@ class ApiController
     {
         $request = Request::all();
         \Log::info('api_request');
-        \Log::info($request);
+        \Log::info(json_encode($request));
         return  ['status' => 'success', 'message' => 'Recived signal'];
     }
 }
