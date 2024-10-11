@@ -25,6 +25,7 @@ class ApiController
     public function postSignal(Request $request)
     {
         $request = Request::all();
+        \Log::info('api_request');
         \Log::info($request);
         return  ['status' => 'success', 'message' => 'Recived signal'];
     }
