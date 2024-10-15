@@ -414,10 +414,7 @@ class HomeController
     public function postContact(Request $request)
     {
         $request = Request::all();
-        // Validate form data
 
-
-        // Lấy dữ liệu từ form
         $data = [
             'name' => $request['name'] ?? '',
             'email' => $request['email']?? '',
