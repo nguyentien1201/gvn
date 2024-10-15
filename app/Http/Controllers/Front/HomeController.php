@@ -20,6 +20,8 @@ use App\Models\Product;
 use Illuminate\Support\Facades\Session;
 use App\Models\ConstantModel;
 use App\Models\Subscription;
+use App\Models\UserFollowStock;
+
 class HomeController
 {
     public function index(Request $request)
@@ -417,10 +419,10 @@ class HomeController
 
         // Lấy dữ liệu từ form
         $data = [
-            'name' => $request['name'],
-            'email' => $request['email'],
-            'note' => $request['message'],
-            'product' => ConstantModel::PRODUCT[$request['product']],
+            'name' => $request['name'] ?? '',
+            'email' => $request['email']?? '',
+            'note' => $request['message'] ?? '',
+            'product' => ConstantModel::PRODUCT[$request['product']] ?? '',
         ];
 
         // Gửi email đến admin
@@ -435,5 +437,27 @@ class HomeController
         });
         // Redirect lại form với thông báo thành công
         return back()->with('success', 'Your message has been sent successfully!');
+    }
+    public function followUnfollowStock($stock_id)
+    {
+        $user = \Auth::user();
+
+
+        $isFollowed = UserFollowStock::where(['user_id'=>$user->id,'stock_id'=>$stock_id])->first();
+
+        if ($isFollowed){
+            //Already following, unfollow now
+            $btn_text = '<i class="i bi-heart-fill text-danger"></i>';
+            $isFollowed->delete();
+            return ['success' => true, 'btn_text' => $btn_text];
+        }else{
+            UserFollowStock::insert([
+                'user_id'=> $user->id,
+                'stock_id'=>$stock_id,
+                ]);
+
+            $btn_text =  '<i class="i bi-heart text-danger"></i> ';
+            return ['success' => true, 'btn_text' => $btn_text];
+        }
     }
 }
