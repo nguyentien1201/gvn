@@ -36,11 +36,13 @@ Route::group(['prefix' => '', 'as' => 'front.', 'namespace' => 'Front'], functio
     Route::get('trading-system', 'HomeController@tradingSystem')->name('home.trading-system');
     Route::get('contact', 'HomeController@contact')->name('home.contact');
     Route::get('mission', 'HomeController@mission')->name('home.mission');
+    Route::get('follow-stock/{stock_id}', 'HomeController@followUnfollowStock')->middleware(['auth']);
 
 });
 
 Auth::routes(['register' => true]);
 
+use Illuminate\Routing\Middleware\ThrottleRequests;
 
 Route::group([ 'namespace' => 'Front'], function () {
 
@@ -51,7 +53,7 @@ Route::group([ 'namespace' => 'Front'], function () {
     Route::post('/account/update', 'CustomerController@update')->name('account.update')->middleware('customer');
     Route::get('api/get-product', 'SubscriptionController@getProduct')->name('api.get-product')->middleware('customer');
     Route::post('/change-language','HomeController@changeLanguage')->name('changeLanguage');
-    Route::post('/contact','HomeController@postContact')->name('contact');
+    Route::post('/contact','HomeController@postContact')->middleware('throttle:5,1')->name('contact');
 });
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin'], function () {
