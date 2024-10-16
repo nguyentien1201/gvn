@@ -234,8 +234,23 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
             </div>
         </div>
     </div>
+
     <!-- Features Section -->
     <section class="text-left mt-5">
+    @if(session('success'))
+            <div class="mb-2">
+                <div class="col-lg-12">
+                    <div class="alert alert-success" role="alert">{{ session('success') }}</div>
+                </div>
+            </div>
+        @endif
+        @if(session('fail'))
+            <div class="mb-2">
+                <div class="col-lg-12">
+                    <div class="alert alert-danger" role="alert">{{ session('fail') }}</div>
+                </div>
+            </div>
+        @endif
     <div class="container">
         <div class="row  mt-5">
             <div class="col-12 col-sm-12 col-md-12 col-lg-12">

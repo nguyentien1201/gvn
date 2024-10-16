@@ -21,7 +21,7 @@ use Illuminate\Support\Facades\Session;
 use App\Models\ConstantModel;
 use App\Models\Subscription;
 use App\Models\UserFollowStock;
-
+use App\Models\BanIp;
 class HomeController
 {
     public function index(Request $request)
@@ -413,8 +413,28 @@ class HomeController
     }
     public function postContact(Request $request)
     {
+        $found = false;
         $request = Request::all();
-
+        $array = config('ban.key_word_ban');
+        foreach ($array as $string) {
+            if (strpos($request['email'], $string) !== false) {
+                $found = true;
+                break; // Dừng lại khi tìm thấy
+            }
+        }
+        if ($found  == true) {
+            $exist = BanIp::where('ip', Request::ip())->first();
+            if($exist){
+                return back()->with('error', 'Your IP has been banned!');
+            }else {
+                BanIp::create([
+                    'ip' => Request::ip(),
+                    'reason' => 'Spam email'
+                ]);
+                Cache::forget('banned_ips');
+                return back()->with('error', 'Your IP has been banned!');
+            }
+        }
         $data = [
             'name' => $request['name'] ?? '',
             'email' => $request['email']?? '',
