@@ -533,7 +533,7 @@ background-size: cover;
                 <div class="ptable-single">
                 <div class="ptable-header">
                     <div class="ptable-title">
-                    <h2>1 Tháng</h2>
+                    <h2>{{__('front_end.1_month')}}</h2>
                     </div>
                     <div class="ptable-price">
                     <h2><small>$</small>{{$price_product['beta']->monthly_price}}<span></span></h2>
@@ -660,7 +660,7 @@ background-size: cover;
                 <div class="ptable-single">
                 <div class="ptable-header">
                     <div class="ptable-title">
-                    <h2>1 Tháng</h2>
+                    <h2>{{__('front_end.1_month')}}</h2>
                     </div>
                     <div class="ptable-price">
                     <h2><small>$</small>{{$price_product['alpha']->monthly_price}}<span></span></h2>
@@ -788,7 +788,7 @@ background-size: cover;
                 <div class="ptable-single">
                 <div class="ptable-header">
                     <div class="ptable-title">
-                    <h2>1 Tháng</h2>
+                    <h2>{{__('front_end.1_month')}}</h2>
                     </div>
                     <div class="ptable-price">
                     <h2><small>$</small>{{$price_product['greenstock']->monthly_price}}<span></span></h2>
