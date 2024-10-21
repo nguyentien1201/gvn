@@ -122,6 +122,19 @@ Người ta nói "Đồng tiền đi liền khúc ruột", nếu anh chị có �
     "1_month"=>"Thời hạn 1 tháng",
     "6_month"=>"Thời hạn 6 tháng",
     "1_year"=>"Thời hạn 1 năm",
-    'product_free'=>"Sản phẩm dùng thử"
-
+    'product_free'=>"Sản phẩm dùng thử",
+    "time_line_beta"=>"Green Beta phiên bản đầu tiên được đưa vào giao dịch",
+    "time_line_greenstock"=>"Green Stock-NAS100 được đưa vào vận hành thực tế",
+    "time_line_greenstock_develop"=>"Green Stock-NAS100 được bắt đầu xây dựng",
+    "time_line_alpha_testing"=>"Green Alpha phiên bản hoàn chỉnh đầu tiên được đưa vào vận hành thử nghiệm",
+    "time_line_start_alpha_beta"=>"Bắt đầu xây dựng các mô hình đầu tiên của Alpha và Beta",
+    "start"=>"BẮT ĐẦU",
+    "name_product"=>"Tên sản phẩm",
+    'my_name'=>"Tên của bạn",
+    "select_product"=>"Chọn sản phẩm",
+    "message"=>'Lời nhắn',
+    "send"=>"Gửi",
+    "contact_info"=>"Thông tin liên hệ",
+    "address_info"=>"Thành phố Hồ Chí Minh Lô CD, Chung cư Bình Khánh, P. An Khánh, Quận 2",
+    "phone_contact"=>"Điện thoại"
 ];

@@ -254,8 +254,7 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
     <div class="container">
         <div class="row  mt-5">
             <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-                <p style="font-size:larger"> <i><b>Gửi nhà đầu tư</b></i></p>
-                <p> <i><b>GVN Fin Trade luôn mong muốn được kết nối với quý khách hàng và cung cấp cho khách hàng những công cụ hỗ trợ đầu tư tốt nhất và những giải pháp tối ưu hơn cho quý vị. Nếu quý vị có bất gì thắc mắc nào, vui lòng liên hệ với chúng tôi:</b></i></p>
+                <p style="font-size:larger">{{__('front_end.note_contact')}}</p>
             </div>
         </div>
         <div class="row">
@@ -263,16 +262,16 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
             <div class="contact-form">
             <form action="{{route('contact')}}" method="POST">
             @csrf
-                <label for="name">Tên của bạn <span class="required">*</span></label>
+                <label for="name">{{__('front_end.my_name')}} <span class="required">*</span></label>
                 <input type="text" id="name" name="name" placeholder="Nhập tên của bạn" required>
 
                 <label for="email">Email <span class="required">*</span></label>
                 <input type="email" id="email" name="email" placeholder="Nhập email của bạn" required>
 
                 <div class="form-group">
-                    <label for="product">Sản Phẩm</label>
+                    <label for="product">{{__('front_end.name_product')}}</label>
                     <select id="product" name="product">
-                        <option value="">Chọn sản phẩm</option>
+                        <option value="">{{__('front_end.select_product')}}</option>
                         <option value="1">Green Alpha</option>
                         <option value="2">Green Beta</option>
                         <option value="3">Green Stock</option>
@@ -280,17 +279,16 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                     </select>
                 </div>
 
-                <label for="message">Lời nhắn <span class="required">*</span></label>
+                <label for="message">{{__('front_end.message')}} <span class="required">*</span></label>
                 <textarea id="message" name="message" placeholder="Bạn cần hỗ trợ vấn đề gì ?" rows="5" required></textarea>
-                <button type="submit">Gửi</button>
+                <button type="submit">{{__('front_end.send')}}</button>
             </form>
         </div>
             </div>
             <div class="col-12 col-sm-12 col-md-5 col-lg-5 contact-info" style="font-weight:bold">
-                <p style="font-size:larger"> <i> Thông tin liên hệ</i></p>
-                <p><i class="fas fa-map-marker-alt"></i> Thành phố Hồ Chí Minh
-                Lô CD, Chung cư Bình Khánh, P. An Khánh, Quận 2</p>
-                <p><i class="fas fa-phone"></i> Điện thoại: 0909 889 889(Mr.Danh)</p>
+                <p style="font-size:larger"> <i>{{__('front_end.contact_info')}}</i></p>
+                <p><i class="fas fa-map-marker-alt"></i>{{__('front_end.address_info')}}</p>
+                <p><i class="fas fa-phone"></i>{{__('front_end.phone_contact')}}: 0909 889 889(Mr.Danh)</p>
                 <p><i class="fas fa-envelope"></i> Email: support@gvn-fintrade.com</p>
             </div>
 

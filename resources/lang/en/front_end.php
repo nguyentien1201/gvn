@@ -121,5 +121,19 @@ return [
     "1_month"=>"1 Month Term",
     "6_month"=>"6 Month Term",
     "1_year"=>"1 Year Term",
-    'product_free'=>"Product for FREE"
+    'product_free'=>"Product for FREE",
+    "time_line_beta"=>"Green Beta is our first version for trading",
+    "time_line_greenstock"=>"Green Stock-NAS100 is available for use now",
+    "time_line_greenstock_develop"=>"Green Stock-NAS100 is under development",
+    "time_line_alpha_testing"=>"The beta version of Green Alpha is under testing.",
+    "time_line_start_alpha_beta"=>"The first models of Alpha and Beta are officially under development.",
+    "start"=>"START",
+    "name_product"=>"Product Name",
+    'my_name'=>"My Name",
+    "select_product"=>"Select product",
+    "message"=>'Message',
+    "send"=>"Send",
+    "contact_info"=>"Contact information",
+    "address_info"=>"Ho Chi Minh City Lot CD, Binh Khanh Apartment, An Khanh Ward, District 2",
+    "phone_contact"=>"Phone"
 ];

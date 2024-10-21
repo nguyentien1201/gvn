@@ -469,10 +469,10 @@ background-size: cover;
 
     <div class="container">
     <div class="row  mt-5">
-        <p><i>"GVN được sinh ra với sứ mệnh là một sản phẩm tài chính hiệu quả cho các nhà đầu tư, sẽ luôn là một người đồng hành với nhà đầu tư trên chặng đường gia tăng tài sản một cách bền vững. Với những hệ thống thông minh, biết thích ứng với nhiều thị trường tài chính khác nhau và có hiệu quả giao dịch tốt, chúng tôi-những người sáng lập ra dự án mong rằng công việc của chúng tôi sẽ giúp các nhà đầu tư tiết kiệm thời gian theo dõi thị trường, hiệu quả trong việc ra quyết định đầu tư và luân chuyển dòng tiền của nhà đầu tư một cách chính xác."</i></p>
+        <p><i> {{__('front_end.mission_gvn')}}</i></p>
     </div>
     <div class="row mt-2 text-center" >
-            <h4><b>KỶ LUẬT - TRÁCH NHIỆM - HIỆU QUẢ</b> </h4>
+            <h4><b>{{__('front_end.maxim_gvn')}}</b> </h4>
     </div>
   <div class="row  mt-4">
     <div class="col">
@@ -481,8 +481,7 @@ background-size: cover;
           <div class="timeline-content">
             <span class="timeline-year">2023</span>
             <div class="content">
-              <p class="description">
-                    Dự án bắt đầu lên ý tưởng để truyền tải đến cho nhà đầu tư bằng tên miền <a target="_blank" href="https://www.gvn-fintrade.com">GVN-Fintrade.com</a>
+              <p class="description">{{__('front_end.idea_gvn')}}
               </p>
             </div>
           </div>
@@ -493,8 +492,8 @@ background-size: cover;
 
             <div class="content">
               <h3 class="title"></h3>
-              <p class="description">
-                Green Beta phiên bản đầu tiên được đưa vào giao dịch
+              <p class="description">{{__('front_end.idea_gvn')}}
+
               </p>
             </div>
           </a>
@@ -506,7 +505,7 @@ background-size: cover;
             <div class="content">
               <h3 class="title"></h3>
               <p class="description">
-              GreenStock-NAS100 được đưa vào vận hành thực tế.
+              {{__('front_end.time_line_greenstock')}}
               </p>
             </div>
           </a>
@@ -517,8 +516,8 @@ background-size: cover;
 
             <div class="content">
               <h3 class="title"></h3>
-              <p class="description">
-              GreenStock-NAS100 được bắt đầu xây dựng
+              <p class="description">{{__('front_end.time_line_greenstock_develop')}}
+
               </p>
             </div>
           </a>
@@ -529,8 +528,8 @@ background-size: cover;
 
             <div class="content">
               <h3 class="title"></h3>
-              <p class="description">
-              Green Alpha phiên bản hoàn chỉnh đầu tiên được đưa vào vận hành thử nghiệm
+              <p class="description">{{__('front_end.time_line_alpha_testing')}}
+
               </p>
             </div>
           </a>
@@ -540,9 +539,8 @@ background-size: cover;
             <span class="timeline-year">2012-2018</span>
 
             <div class="content">
-              <h3 class="title">START</h3>
-              <p class="description">
-              Bắt đầu xây dựng các mô hình giao dịch đầu tiên của Alpha và Beta
+              <h3 class="title">{{__('front_end.start')}}</h3>
+              <p class="description">{{__('front_end.time_line_start_alpha_beta')}}
               </p>
             </div>
           </a>
