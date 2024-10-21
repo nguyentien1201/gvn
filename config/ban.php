@@ -1,5 +1,5 @@
 <?php
 
 return [
-    'key_word_ban' => explode(',','registry.godaddy'),
+    'key_word_ban' => explode(',','registry.godaddy,address.com'),
 ];
