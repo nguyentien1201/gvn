@@ -119,4 +119,9 @@ Người ta nói "Đồng tiền đi liền khúc ruột", nếu anh chị có �
     'follow_trendprice'=>'Xu hướng giá của các thị trường tài chính lớn',
     'get_trial'=>'Dùng thử 3 sản phẩm của GVN trong 1 tháng',
     'personalize_stock'=>'Cá nhân hoá các cổ phiếu quan tâm trong GreenStock',
+    "1_month"=>"Thời hạn 1 tháng",
+    "6_month"=>"Thời hạn 6 tháng",
+    "1_year"=>"Thời hạn 1 năm",
+    'product_free'=>"Sản phẩm dùng thử"
+
 ];

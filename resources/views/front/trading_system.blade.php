@@ -510,13 +510,9 @@ background-size: cover;
     <section>
         <div class="container">
             <div class="row">
-                <h3 class="text-center mt-5">The trend is your friend” (Xu hướng chính là bạn) - Benjamin Graham</h3>
+                <h3 class="text-center mt-5">{{__('front_end.quote_benjamin')}}</h3>
                 <div class="col-md-6">
-                    <p class="text-center mt-3 " style="font-size: larger;">Xác định xu hướng là kim chỉ nam trước mỗi hành động đầu tư và chiếm tới
-                        70% khả năng chiến thắng của nhà đầu tư trên thị trường tài chính.
-                        Robot Green Beta của GVN là sự kết hợp giữa việc tìm kiếm xu hướng tăng giá bằng thuật toán và
-                        tự thích ứng khi xu hướng có dấu hiệu thay đổi.
-                        Với tỉ tệ chính xác xu hướng trung bình từ 70-80% trên các chỉ số.</p>
+                    <p class="text-center mt-3 " style="font-size: larger;">{{__('front_end.description_quote_benjamin')}}</p>
 
                 </div>
                 <div class="col-md-6">
@@ -527,9 +523,7 @@ background-size: cover;
             <div class="row">
 
                 <img src="{{ asset('images/history_beta.jpg') }}" alt="history_beta" class="img-fluid">
-                <h4 class="text-center mt-5" style="font-size: larger;">Green Beta có thể làm việc trên 20 chỉ số ở các thị trường Chứng khoán,
-                    Hàng hóa và Tiền điện tử, cho nhà đầu tư một cái nhìn rõ nét hơn về xu hướng thay đổi dòng tiền của
-                    cá mập trên thị trường toàn cầu.</h4>
+                <h4 class="text-center mt-5" style="font-size: larger;">{{__('front_end.description_greenbeta')}}</h4>
             </div>
         </div>
         <div class="container pb-3 mt-5" style="background: #f9f9f9;">
@@ -549,7 +543,7 @@ background-size: cover;
                     <div class="ptable-description">
                     <ul>
                         <li>{{$price_product['beta']->description}}</li>
-                        <li>Thời hạn 1 tháng</li>
+                        <li>{{__('front_end.1_month')}}</li>
                     </ul>
                     </div>
                 </div>
@@ -558,7 +552,7 @@ background-size: cover;
                         @if (Auth::check())
                             <a class="subscription" data-id={{$price_product['beta']->id}} data-type="trial" data-month="1">Trial</a>
                         @else
-                            <a href="{{ route('login') }}">Login</a>
+                            <a href="{{ route('login') }}">{{__('front_end.login')}}</a>
                         @endif
                     </div>
                 </div>
@@ -572,7 +566,7 @@ background-size: cover;
                     <span>Hot</span>
                     </div> -->
                     <div class="ptable-title">
-                    <h2>6 Tháng</h2>
+                    <h2>{{__('front_end.6_month')}}</h2>
                     </div>
                     <div class="ptable-price">
                     <h2><small>$</small>{{$price_product['beta']->six_month_price}}<span></span></h2>
@@ -581,8 +575,8 @@ background-size: cover;
                 <div class="ptable-body">
                     <div class="ptable-description">
                     <ul>
-                        <li>Phiên Bản Dùng Thử</li>
-                        <li>Thời hạn 1 tháng</li>
+                        <li>{{__('front_end.product_free')}}</li>
+                        <li>{{__('front_end.1_month')}}</li>
                     </ul>
                     </div>
                 </div>
@@ -591,7 +585,7 @@ background-size: cover;
                         @if (Auth::check())
                             <a class="subscription disabled-link" data-id={{$price_product['beta']->id}} data-type="buy" data-month="2">Buy</a>
                         @else
-                            <a href="{{ route('login') }}">Login</a>
+                            <a href="{{ route('login') }}">{{__('front_end.login')}}</a>
                         @endif
                     </div>
                 </div>
@@ -602,7 +596,7 @@ background-size: cover;
                 <div class="ptable-single">
                 <div class="ptable-header">
                     <div class="ptable-title">
-                    <h2>1 năm</h2>
+                    <h2>{{__('front_end.1_year')}}</h2>
                     </div>
                     <div class="ptable-price">
                     <h2><small>$</small>{{$price_product['beta']->yearly_price}}<span></span></h2>
@@ -611,8 +605,8 @@ background-size: cover;
                 <div class="ptable-body">
                     <div class="ptable-description">
                     <ul>
-                        <li>Phiên Bản Dùng Thử</li>
-                        <li>Thời hạn 1 tháng</li>
+                        <li>{{__('front_end.product_free')}}</li>
+                        <li>{{__('front_end.1_month')}}</li>
                     </ul>
                     </div>
                 </div>
@@ -621,7 +615,7 @@ background-size: cover;
                     @if (Auth::check())
                             <a class="subscription disabled-link" data-id={{$price_product['beta']->id}} data-type="buy" data-month="3">Buy</a>
                         @else
-                            <a href="{{ route('login') }}">Login</a>
+                            <a href="{{ route('login') }}">{{__('front_end.login')}}</a>
                         @endif
                     </div>
                 </div>
@@ -635,9 +629,9 @@ background-size: cover;
     <section>
     <div class="container">
             <div class="row">
-                <h3 class="text-center mt-5">Bạn đúng hay sai, điều đó không quan trọng, cái chính là bạn kiếm được bao nhiêu khi đúng và mất bao nhiêu khi bạn sai." – George Soros</h3>
+                <h3 class="text-center mt-5"> {{__('front_end.quote_soros')}}</h3>
                 <div class="col-12 col-sm-12 col-md-8 col-lg-9">
-                    <p class="text-center mt-3 " style="font-size: larger;">Bạn không thể kiểm soát thị trường, nhưng bạn có thể kiểm soát cách bạn phản ứng với nó, kiểm soát cảm xúc, kỷ luật trong đầu tư là cách tốt nhất để chiến thắng trong Trading. Một sản phẩm của GVN với các nhà đầu tư dành phần lớn thời gian hằng ngày giao dịch trên các thị trường, Robot Green Alpha phân tích xung lực của thị trường trong phiên, xác định điểm xu hướng  và cho ra các hành động giao dịch cụ thể</p>
+                    <p class="text-center mt-3 " style="font-size: larger;">{{__('front_end.description_quote_soros')}}</p>
                 </div>
                 <div class=" col-12 col-sm-12 col-md-4 col-lg-3">
                     <img src="{{ asset('images/signal_stock.jpg') }}" width="100%" alt="Trading System" class="img-fluid">
@@ -648,10 +642,10 @@ background-size: cover;
             <div class="col-md-6">
 
                 <img src="{{ asset('images/alpha_history.jpg') }}" alt="history_alpha" class="img-fluid">
-                <h4 class="text-center mt-5">TÍCH LŨY HIỆU QUẢ DÀI HẠNG </h4>
+                <h4 class="text-center mt-5">{{__('front_end.profit_accumulation')}}</h4>
             </div>
                 <div class="col-md-6">
-                <h4 class="text-center mt-5"3>THEO DÕI HIỆU QUẢ TÍN HIÊU MỖI THÁNG</h4>
+                <h4 class="text-center mt-5"3>{{__('front_end.manage_profit_month')}}</h4>
                     <img src="{{ asset('images/chart_profit.jpg') }}" alt="Trading System" class="img-fluid">
 
                 </div>
@@ -676,7 +670,7 @@ background-size: cover;
                     <div class="ptable-description">
                     <ul>
                         <li>{{$price_product['alpha']->description}}</li>
-                        <li>Thời hạn 1 tháng</li>
+                        <li>{{__('front_end.1_month')}}</li>
                     </ul>
                     </div>
                 </div>
@@ -686,7 +680,7 @@ background-size: cover;
                             <!-- <a class="subscription" data-id={{$price_product['alpha']->id}} data-type="buy" data-month="1">Buy</a> -->
                             <a class="subscription" data-id={{$price_product['alpha']->id}} data-type="trial" data-month="1">Trial</a>
                         @else
-                            <a href="{{ route('login') }}">Login</a>
+                            <a href="{{ route('login') }}">{{__('front_end.login')}}</a>
                         @endif
                     </div>
                 </div>
@@ -700,7 +694,7 @@ background-size: cover;
                     <span>Hot</span>
                     </div> -->
                     <div class="ptable-title">
-                    <h2>6 Tháng</h2>
+                    <h2>{{__('front_end.6_month')}}</h2>
                     </div>
                     <div class="ptable-price">
                     <h2><small>$</small>{{$price_product['alpha']->six_month_price}}<span></span></h2>
@@ -710,7 +704,7 @@ background-size: cover;
                     <div class="ptable-description">
                     <ul>
                         <li>{{$price_product['alpha']->description}}</li>
-                        <li>Thời hạn 1 tháng</li>
+                        <li>{{__('front_end.1_month')}}</li>
                     </ul>
                     </div>
                 </div>
@@ -719,7 +713,7 @@ background-size: cover;
                     @if (Auth::check())
                             <a class="subscription disabled-link" data-id={{$price_product['alpha']->id}} data-type="buy" data-month="2">Buy</a>
                         @else
-                            <a href="{{ route('login') }}">Login</a>
+                            <a href="{{ route('login') }}">{{__('front_end.login')}}</a>
                         @endif
                     </div>
                 </div>
@@ -730,7 +724,7 @@ background-size: cover;
                 <div class="ptable-single">
                 <div class="ptable-header">
                     <div class="ptable-title">
-                    <h2>1 năm</h2>
+                    <h2>{{__('front_end.1_year')}}</h2>
                     </div>
                     <div class="ptable-price">
                     <h2><small>$</small>{{$price_product['alpha']->yearly_price}}<span></span></h2>
@@ -740,7 +734,7 @@ background-size: cover;
                     <div class="ptable-description">
                     <ul>
                         <li>{{$price_product['alpha']->description}}</li>
-                        <li>Thời hạn 1 tháng</li>
+                        <li>{{__('front_end.1_month')}}</li>
                     </ul>
                     </div>
                 </div>
@@ -749,7 +743,7 @@ background-size: cover;
                         @if (Auth::check())
                             <a class="subscription disabled-link" data-id={{$price_product['alpha']->id}} data-type="buy" data-month="3">Buy</a>
                         @else
-                            <a href="{{ route('login') }}">Login</a>
+                            <a href="{{ route('login') }}">{{__('front_end.login')}}</a>
                         @endif
                     </div>
                 </div>
@@ -764,13 +758,13 @@ background-size: cover;
     <section>
     <div class="container">
             <div class="row">
-                <h3 class="text-center mt-5">"Thay vì cố gắng dự đoán thị trường, hãy tập trung vào việc tìm kiếm cơ hội đầu tư." - John Templeton</h3>
+                <h3 class="text-center mt-5">{{__('front_end.quote_templeton')}}</h3>
 
                 <div class="col-md-8 ">
                     <img src="{{ asset('images/system_greenstock.jpg') }}" alt="Trading System" class="img-fluid">
                 </div>
                 <div class="col-md-4" style="justify-content: center;align-items: center;display: flex;">
-                    <p class="text-center mt-3 " style="font-size: larger;">Hệ thống GreenStock-NAS100 tự động sắp xếp các cổ phiếu theo độ mạnh xung lực dòng tiền và xu hướng cổ phiếu trong rổ NAS100 hằng ngày, đưa ra hành động để nhà đầu tư theo dõi </p>
+                    <p class="text-center mt-3 " style="font-size: larger;">{{__('front_end.description_greenstock')}}</p>
                 </div>
             </div>
             <div class="row">
@@ -778,8 +772,8 @@ background-size: cover;
                     <img src="{{ asset('images/system_profit_greenstock.jpg') }}" alt="history_alpha" class="img-fluid">
                 </div>
                 <div class="col-md-4"  style="justify-content: center;align-items: center;display: flex;">
-                        <p class="text-center mt-3" style="font-size: larger;">
-                        Hệ thống sắp xếp các nhóm cổ phiếu có hiệu suất sinh lời trong khoảng thời gian năm, quý, tháng tốt hơn thị trường chung
+                        <p class="text-center mt-3" style="font-size: larger;">{{__('front_end.system_product')}}
+
                         </p>
 
                 </div>
@@ -804,7 +798,7 @@ background-size: cover;
                     <div class="ptable-description">
                     <ul>
                         <li>{{$price_product['greenstock']->description}}</li>
-                        <li>Thời hạn 1 tháng</li>
+                        <li>{{__('front_end.1_month')}}</li>
                     </ul>
                     </div>
                 </div>
@@ -814,7 +808,7 @@ background-size: cover;
                             <!-- <a class="subscription" data-id={{$price_product['greenstock']->id}} data-type="buy" data-month="1">Buy</a> -->
                             <a class="subscription" data-id={{$price_product['greenstock']->id}} data-type="trial" data-month="1">Trial</a>
                         @else
-                            <a href="{{ route('login') }}">Login</a>
+                            <a href="{{ route('login') }}">{{__('front_end.login')}}</a>
                         @endif
                     </div>
                 </div>
@@ -828,7 +822,7 @@ background-size: cover;
                     <span>Hot</span>
                     </div> -->
                     <div class="ptable-title">
-                    <h2>6 Tháng</h2>
+                    <h2>{{__('front_end.6_month')}}</h2>
                     </div>
                     <div class="ptable-price">
                     <h2><small>$</small>{{$price_product['greenstock']->six_month_price}}<span></span></h2>
@@ -837,8 +831,8 @@ background-size: cover;
                 <div class="ptable-body">
                     <div class="ptable-description">
                     <ul>
-                        <li>Phiên Bản Dùng Thử</li>
-                        <li>Thời hạn 1 tháng</li>
+                        <li>{{__('front_end.product_free')}}</li>
+                        <li>{{__('front_end.1_month')}}</li>
                     </ul>
                     </div>
                 </div>
@@ -847,7 +841,7 @@ background-size: cover;
                         @if (Auth::check())
                             <a  class="subscription disabled-link" data-id={{$price_product['greenstock']->id}} data-type="buy" data-month="2">Buy</a>
                         @else
-                            <a href="{{ route('login') }}">Login</a>
+                            <a href="{{ route('login') }}">{{__('front_end.login')}}</a>
                         @endif
                     </div>
                 </div>
@@ -858,7 +852,7 @@ background-size: cover;
                 <div class="ptable-single">
                 <div class="ptable-header">
                     <div class="ptable-title">
-                    <h2>1 năm</h2>
+                    <h2>{{__('front_end.1_year')}}</h2>
                     </div>
                     <div class="ptable-price">
                     <h2><small>$</small>{{$price_product['greenstock']->yearly_price}}<span></span></h2>
@@ -867,8 +861,8 @@ background-size: cover;
                 <div class="ptable-body">
                     <div class="ptable-description">
                     <ul>
-                        <li>Phiên Bản Dùng Thử</li>
-                        <li>Thời hạn 1 tháng</li>
+                        <li>{{__('front_end.product_free')}}</li>
+                        <li>{{__('front_end.1_month')}}</li>
                     </ul>
                     </div>
                 </div>
@@ -877,7 +871,7 @@ background-size: cover;
                         @if (Auth::check())
                             <a class="subscription disabled-link" data-id={{$price_product['greenstock']->id}} data-type="buy" data-month="3">Buy</a>
                         @else
-                            <a href="{{ route('login') }}">Login</a>
+                            <a href="{{ route('login') }}">{{__('front_end.login')}}</a>
                         @endif
                     </div>
                 </div>

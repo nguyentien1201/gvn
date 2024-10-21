@@ -118,4 +118,8 @@ return [
     'follow_trendprice'=>'Follow TRENDPRICE of all big market in the world',
     'get_trial'=>'Get 1 month trial on 3 products of GVN',
     'personalize_stock'=>'Personalize your stocks of interest on GreenStock product',
+    "1_month"=>"1 Month Term",
+    "6_month"=>"6 Month Term",
+    "1_year"=>"1 Year Term",
+    'product_free'=>"Product for FREE"
 ];
