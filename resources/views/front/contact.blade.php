@@ -254,7 +254,7 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
     <div class="container">
         <div class="row  mt-5">
             <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-                <p style="font-size:larger">{{__('front_end.note_contact')}}</p>
+                <p style="font-size:larger">{!!__('front_end.note_contact')!!}</p>
             </div>
         </div>
         <div class="row">
