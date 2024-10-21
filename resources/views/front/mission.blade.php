@@ -481,7 +481,7 @@ background-size: cover;
           <div class="timeline-content">
             <span class="timeline-year">2023</span>
             <div class="content">
-              <p class="description">{{__('front_end.idea_gvn')}}
+              <p class="description">{!!__('front_end.idea_gvn')!!}
               </p>
             </div>
           </div>
@@ -492,7 +492,7 @@ background-size: cover;
 
             <div class="content">
               <h3 class="title"></h3>
-              <p class="description">{{__('front_end.idea_gvn')}}
+              <p class="description">{!!__('front_end.time_line_beta')!!}
 
               </p>
             </div>
