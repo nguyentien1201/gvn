@@ -263,10 +263,10 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
             <form action="{{route('contact')}}" method="POST">
             @csrf
                 <label for="name">{{__('front_end.my_name')}} <span class="required">*</span></label>
-                <input type="text" id="name" name="name" placeholder="Nhập tên của bạn" required>
+                <input type="text" id="name" name="name" placeholder="{!!__('front_end.placeholder_name')!!}" required>
 
                 <label for="email">Email <span class="required">*</span></label>
-                <input type="email" id="email" name="email" placeholder="Nhập email của bạn" required>
+                <input type="email" id="email" name="email" placeholder="{{__('front_end.placeholder_email')}}" required>
 
                 <div class="form-group">
                     <label for="product">{{__('front_end.name_product')}}</label>
@@ -280,7 +280,7 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                 </div>
 
                 <label for="message">{{__('front_end.message')}} <span class="required">*</span></label>
-                <textarea id="message" name="message" placeholder="Bạn cần hỗ trợ vấn đề gì ?" rows="5" required></textarea>
+                <textarea id="message" name="message" placeholder="{{__('front_end.placeholder_note')}}" rows="5" required></textarea>
                 <button type="submit">{{__('front_end.send')}}</button>
             </form>
         </div>

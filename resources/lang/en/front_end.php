@@ -135,5 +135,9 @@ return [
     "send"=>"Send",
     "contact_info"=>"Contact information",
     "address_info"=>"Ho Chi Minh City Lot CD, Binh Khanh Apartment, An Khanh Ward, District 2",
-    "phone_contact"=>"Phone"
+    "phone_contact"=>"Phone",
+    "placeholder_name"=>"Enter your name",
+    "placeholder_email"=>"Enter your email",
+    "placeholder_note"=>"What problem do you need help with?"
+
 ];
