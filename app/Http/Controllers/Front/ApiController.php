@@ -45,7 +45,7 @@ class ApiController
             $profit = $signalData['price_close'] - $existSignal->price_open;
 
             $existSignal->update($signalData);
-            $message = "<b>GREEN ALPHA(Ver 10.5)</b>\nSymbol: <b>".$signal[0]."</b>\nSignal: <b>".$signalData['signal_close']."</b>\nPrice Close: <b>".$signalData['price_close']."\n"."Profit: <b>".$profit." pts</b>"."\nTime: <b>".$timeSendTelegram."</b>";
+            $message = "<b>GREEN ALPHA(Ver 10.5)</b>\nSymbol: <b>".$signal[0]."</b>\nSignal: <b>".$signalData['signal_close']."</b>\nPrice Close: <b>".$signalData['price_close']."</b>\n"."Profit: <b>".$profit." pts</b>"."\nTime: <b>".$timeSendTelegram."</b>";
         }
         if(in_array($signal[1],$signalOpen) ){
             $signalData = [
@@ -57,7 +57,12 @@ class ApiController
             GreenAlpha::create($signalData);
             $message = "<b>GREEN ALPHA(Ver 10.5)</b>\nSymbol: <b>".$signal[0]."</b>\nSignal: <b>".$signalData['signal_open']."</b>\nPrice Open:  <b>".$signalData['price_open']."</b>\nTime: <b>".$timeSendTelegram."</b>";
         }
-        Notification::route('telegram', config('telegram.group_id'))->notify(new SendTelegramNotification($message));
+        try {
+            Notification::route('telegram', config('telegram.group_id'))->notify(new SendTelegramNotification($message));
+        } catch (\Exception $e) {
+            \Log::error($e->getMessage());
+        }
+
         return  ['status' => 'success', 'message' => 'Recived signal'];
     }
 }
