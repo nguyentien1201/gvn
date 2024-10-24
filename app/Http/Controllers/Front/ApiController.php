@@ -3,35 +3,26 @@
 
 namespace App\Http\Controllers\Front;
 
-use Illuminate\Support\Facades\Mail;
-use App\Models\GreenBeta;
 use Illuminate\Support\Facades\Request;
 // use Illuminate\Http\Request;
 use App\Models\GreenAlpha;
-use App\Models\GreenStockNas100;
-use DB;
-use App\Models\SubGroup;
-use App\Models\Ma;
-use Illuminate\Support\Facades\Cache;
-use App\Models\GroupCap;
-use App\Models\SubGroupCapDetail;
-use DateTime;
-use App\Models\Product;
-use Illuminate\Support\Facades\Session;
-use App\Models\ConstantModel;
-use App\Models\Subscription;
 use App\Models\MstStock;
 use Carbon\Carbon;
+use App\Notifications\SendTelegramNotification;
+use Illuminate\Support\Facades\Notification;
 class ApiController
 {
     public function postSignal(Request $request)
     {
         $request = Request::all();
         \Log::info(json_encode($request));
+        $message ="";
         $param = $request['data'] ?? '';
         if(empty($param)){
             return  ['status' => 'error', 'message' => 'No signal recived'];
         }
+
+
         $signal = explode(' ', $param);
 
         $signalClose = ['TakeProfitBUY', 'TakeProfitSELL', 'CutLossBUY', 'CutLossSELL'];
@@ -40,6 +31,7 @@ class ApiController
 
         $time = str_replace('.', '-',$signal[3]).' '.$signal[4];
         $timeFormat = Carbon::parse($time)->format('Y-m-d H:i:s');
+        $timeSendTelegram = Carbon::parse($time)->format('H:i:s Y-m-d');
 
         if(in_array($signal[1],$signalClose) ){
             $signalData = [
@@ -48,7 +40,12 @@ class ApiController
                 'price_close'=> $signal[2],
                 'close_time'=> $timeFormat,
             ];
-            GreenAlpha::where('code', $listCode[$signal[0]])->whereNull('close_time')->whereDate('open_time', '=', $signal[3])->update($signalData);
+            $existSignal = GreenAlpha::where('code', $listCode[$signal[0]])->whereNull('close_time')->whereDate('open_time', '=', $signal[3])->first();
+            if(empty($existSignal)) return  ['status' => 'error', 'message' => 'No signal recived'];
+            $profit = $signalData['price_close'] - $existSignal->price_open;
+
+            $existSignal->update($signalData);
+            $message = "<b>GREEN ALPHA(Ver 10.5)</b>\nSymbol: <b>".$signal[0]."</b>\nSignal: <b>".$signalData['signal_close']."</b>\nPrice Close: ".$signalData['price_close']."\n"."Profit: <b>".$profit."</b> pts"."\nTime: <b>".$timeSendTelegram."</b>";
         }
         if(in_array($signal[1],$signalOpen) ){
             $signalData = [
@@ -57,8 +54,10 @@ class ApiController
                 'price_open'=> $signal[2],
                 'open_time'=> $timeFormat,
             ];
+            $message = "<b>GREEN ALPHA(Ver 10.5)</b>\nSymbol: <b>".$signal[0]."</b>\nSignal: <b>".$signalData['signal_open']."</b>\nPrice Open: ".$signalData['price_open']."\Time: <b>".$timeSendTelegram."</b>";
             GreenAlpha::create($signalData);
         }
+        Notification::route('telegram', config('telegram.group_id'))->notify(new SendTelegramNotification($message));
         return  ['status' => 'success', 'message' => 'Recived signal'];
     }
 }
