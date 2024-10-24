@@ -60,6 +60,7 @@ class ApiController
         try {
             Notification::route('telegram', config('telegram.group_id'))->notify(new SendTelegramNotification($message));
         } catch (\Exception $e) {
+            \Log::info($message);
             \Log::error($e->getMessage());
         }
 
