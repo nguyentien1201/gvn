@@ -45,7 +45,7 @@ class ApiController
             $profit = $signalData['price_close'] - $existSignal->price_open;
 
             $existSignal->update($signalData);
-            $message = "<b>GREEN ALPHA(Ver 10.5)</b>\nSymbol: <b>".$signal[0]."</b>\nSignal: <b>".$signalData['signal_close']."</b>\nPrice Close: ".$signalData['price_close']."\n"."Profit: <b>".$profit."</b> pts"."\nTime: <b>".$timeSendTelegram."</b>";
+            $message = "<b>GREEN ALPHA(Ver 10.5)</b>\nSymbol: <b>".$signal[0]."</b>\nSignal: <b>".$signalData['signal_close']."</b>\nPrice Close: <b>".$signalData['price_close']."\n"."Profit: <b>".$profit." pts</b>"."\nTime: <b>".$timeSendTelegram."</b>";
         }
         if(in_array($signal[1],$signalOpen) ){
             $signalData = [
@@ -54,7 +54,7 @@ class ApiController
                 'price_open'=> $signal[2],
                 'open_time'=> $timeFormat,
             ];
-            $message = "<b>GREEN ALPHA(Ver 10.5)</b>\nSymbol: <b>".$signal[0]."</b>\nSignal: <b>".$signalData['signal_open']."</b>\nPrice Open: ".$signalData['price_open']."\Time: <b>".$timeSendTelegram."</b>";
+            $message = "<b>GREEN ALPHA(Ver 10.5)</b>\nSymbol: <b>".$signal[0]."</b>\nSignal: <b>".$signalData['signal_open']."</b>\nPrice Open:  <b>".$signalData['price_open']."<b>\nTime: <b>".$timeSendTelegram."</b>";
             GreenAlpha::create($signalData);
         }
         Notification::route('telegram', config('telegram.group_id'))->notify(new SendTelegramNotification($message));
