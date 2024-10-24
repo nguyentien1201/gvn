@@ -54,8 +54,8 @@ class ApiController
                 'price_open'=> $signal[2],
                 'open_time'=> $timeFormat,
             ];
-            $message = "<b>GREEN ALPHA(Ver 10.5)</b>\nSymbol: <b>".$signal[0]."</b>\nSignal: <b>".$signalData['signal_open']."</b>\nPrice Open:  <b>".$signalData['price_open']."</b>\nTime: <b>".$timeSendTelegram."</b>";
             GreenAlpha::create($signalData);
+            $message = "<b>GREEN ALPHA(Ver 10.5)</b>\nSymbol: <b>".$signal[0]."</b>\nSignal: <b>".$signalData['signal_open']."</b>\nPrice Open:  <b>".$signalData['price_open']."</b>\nTime: <b>".$timeSendTelegram."</b>";
         }
         Notification::route('telegram', config('telegram.group_id'))->notify(new SendTelegramNotification($message));
         return  ['status' => 'success', 'message' => 'Recived signal'];
