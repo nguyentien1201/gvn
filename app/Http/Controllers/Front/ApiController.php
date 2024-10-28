@@ -42,10 +42,10 @@ class ApiController
             ];
             $existSignal = GreenAlpha::where('code', $listCode[$signal[0]])->whereNull('close_time')->whereDate('open_time', '=', $signal[3])->first();
             if(empty($existSignal)) return  ['status' => 'error', 'message' => 'No signal recived'];
-            $profit = $signalData['price_close'] - $existSignal->price_open;
+            $profit = (float)$signalData['price_close'] - (float)$existSignal->price_open;
 
             $existSignal->update($signalData);
-            $message = "<b>GREEN ALPHA(Ver 10.5)</b>\nSymbol: <b>".$signal[0]."</b>\nSignal: <b>".$signalData['signal_close']."</b>\nPrice Close: <b>".$signalData['price_close']."</b>\n"."Profit: <b>".$profit." pts</b>"."\nTime: <b>".$timeSendTelegram."</b>";
+            $message = "<b>GREEN ALPHA(Ver 10.5)</b>\nSymbol: <b>".$signal[0]."</b>\nSignal: <b>".$signalData['signal_close']."</b>\nPrice Close: <b>".$signalData['price_close']."</b>\n"."Profit: <b>".round($profit, 2)." pts</b>"."\nTime: <b>".$timeSendTelegram."</b>";
         }
         if(in_array($signal[1],$signalOpen) ){
             $signalData = [
