@@ -23,7 +23,7 @@
                     </div>
                 </div>
                 <div class="col-md-3">
-                    <h5 class="text-white text-bold text-26px mb-4">{{__('front_end.about_us')}}</h5>
+                    <h5 class="text-white text-bold text-26px mb-4">{{__('front_end.my_company')}}</h5>
                     <ul class="custom-ul-li">
                         <li class="custom-ul-li">
                             <a href="{{route('front.home.mission')}}" class="text-white">
