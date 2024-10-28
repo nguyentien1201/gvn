@@ -145,7 +145,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
             <div class="row">
                 <div class="col-md-12">
-                    <h2 class="text-center mb-4"><span class="title-trading-first label-color color-home">SIGNAL DASHBOARD</span>
+                    <h2 class="text-center mb-4"><span class="title-trading-first label-color color-home">{{__('front_end.SIGNAL_DASHBOARD')}}</span>
 
                     </h2>
                     <!-- Data and Chart Section -->
@@ -167,11 +167,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                             <ul style="padding-left:0">
                                                 <li class="list-item">
                                                     <button class="takeprofitbuy width-120">BUY</button>
-                                                    <span>Tín hiệu xu hướng đang mở.</span>
+                                                    <span>{{__('front_end.trend_signal_open')}}</span>
                                                 </li>
                                                 <li class="list-item">
                                                     <button class="hold width-120">CLOSED</button>
-                                                    <span>Tín hiệu xu hướng đã đóng.</span>
+                                                    <span>{{__('front_end.trend_signal_closed')}}</span>
                                                 </li>
 
                                             </ul>
@@ -181,11 +181,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
                                                 <li class="list-item">
                                                     <button class="takeprofitbuy width-120">TakeProfitBUY</button>
-                                                    <span>Tín hiệu đã ở trạng thái chốt lời.</span>
+                                                    <span>{{__('front_end.trend_signal_take_profit')}}</span>
                                                 </li>
                                                 <li class="list-item">
                                                     <button class="hold width-120">HOLD</button>
-                                                    <span>Tín hiệu đang ở trạng thái giữ.</span>
+                                                    <span>{{__('front_end.trend_signal_hold')}}</span>
                                                 </li>
                                             </ul>
                                         </div>
@@ -194,7 +194,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
                                                 <li class="list-item">
                                                     <button class="cutlossbuy width-120">CutLossBUY</button>
-                                                    <span>Tín hiệu đã ở trạng thái cắt lỗ.</span>
+                                                    <span>{{__('front_end.trend_signal_cutloss')}}</span>
                                                 </li>
                                             </ul>
 
@@ -216,8 +216,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <h2 class="text-center mb-4"><span class="title-trading-first label-color color-home">HISTORICAL
-                            PERFORMANCE</span>
+                    <h2 class="text-center mb-4"><span class="title-trading-first label-color color-home">{{__('front_end.HISTORICAL_PERFORMANCE')}}</span>
 
                     </h2>
                     <!-- Data and Chart Section -->
@@ -231,12 +230,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                             <thead>
 
                                                 <tr>
-                                                    <th>Symbol</th>
-                                                    <th>Price Open</th>
-                                                    <th>Open Time</th>
-                                                    <th>Price Close</th>
-                                                    <th>Close Time</th>
-                                                    <th>Profit</th>
+                                                    <th>{{__('front_end.symbol')}}</th>
+                                                    <th>{{__('front_end.price_open')}}</th>
+                                                    <th>{{__('front_end.open_time')}}</th>
+                                                    <th>{{__('front_end.price_close')}}</th>
+                                                    <th>{{__('front_end.close_time')}}</th>
+                                                    <th>{{__('front_end.profit')}}</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -278,19 +277,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                     <div class="table-responsive">
                                         <table class="table table-striped table-bordered" id="chart_table">
                                             <tr>
-                                                <td style="font-weight:600">Total Trade</td>
+                                                <td style="font-weight:600">{{__('front_end.total_trade')}}</td>
                                                 @foreach ($chart_data['total'] as $item)
                                                     <td>{{$item}}</td>
                                                 @endforeach
                                             </tr>
                                             <tr>
-                                                <td style="font-weight:600">Win Ratio</td>
+                                                <td style="font-weight:600">{{__('front_end.win_ratio')}}</td>
                                                 @foreach ($chart_data['winratio'] as $item)
                                                     <td>{{$item}}</td>
                                                 @endforeach
                                             </tr>
                                             <tr>
-                                                <td style="font-weight:600">Time Start</td>
+                                                <td style="font-weight:600">{{__('front_end.time_start')}}</td>
                                                 @foreach ($chart_data['startDate'] as $item)
                                                     <td>{{ (new DateTime($item))->format('Y') }}</td>
                                                 @endforeach
