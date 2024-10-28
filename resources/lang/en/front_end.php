@@ -134,10 +134,16 @@ return [
     "message"=>'Message',
     "send"=>"Send",
     "contact_info"=>"Contact information",
-    "address_info"=>"Ho Chi Minh City Lot CD, Binh Khanh Apartment, An Khanh Ward, District 2",
+    "address_info"=>"An Khanh ward, Thu Duc district, Ho Chi Minh city, Viet Nam",
     "phone_contact"=>"Phone",
     "placeholder_name"=>"Enter your name",
     "placeholder_email"=>"Enter your email",
-    "placeholder_note"=>"What problem do you need help with?"
-
+    "placeholder_note"=>"What problem do you need help with?",
+    'about_us'=>'About us',
+    'system_us' =>'My systerm',
+    'useful_references'=>"Useful references",
+    'our_performance'=>'Our Performance',
+    'how_it_work'=>"How it work",
+    'research_investment'=>'Research investment',
+    'our_contact'=>'Our contact'
 ];

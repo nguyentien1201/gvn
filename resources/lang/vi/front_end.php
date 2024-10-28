@@ -135,9 +135,16 @@ Người ta nói "Đồng tiền đi liền khúc ruột", nếu anh chị có �
     "message"=>'Lời nhắn',
     "send"=>"Gửi",
     "contact_info"=>"Thông tin liên hệ",
-    "address_info"=>"Thành phố Hồ Chí Minh Lô CD, Chung cư Bình Khánh, P. An Khánh, Quận 2",
+    "address_info"=>"Phường An Khánh, Tp.Thủ Đức, HCM",
     "phone_contact"=>"Điện thoại",
     "placeholder_name"=>"Nhập tên của bạn",
     "placeholder_email"=>"Nhập email của bạn",
-    "placeholder_note"=>"Bạn cần hỗ trợ vấn đề gì ?"
+    "placeholder_note"=>"Bạn cần hỗ trợ vấn đề gì ?",
+    'about_us'=>'Về chúng tôi',
+    'system_us' =>'Hệ thống của chúng tôi',
+    'useful_references'=>"Liên kết hữu ích",
+    'our_performance'=>'Hiệu quả giao dịch',
+    'how_it_work'=>"Cách hệ thống vận hành",
+    'research_investment'=>'Nguyên cứu đầu tư',
+    "our_contact"=>'Thông tin liên lạc'
 ];

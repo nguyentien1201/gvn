@@ -23,58 +23,58 @@
                     </div>
                 </div>
                 <div class="col-md-3">
-                    <h5 class="text-white text-bold text-26px mb-4"> Chúng tôi</h5>
+                    <h5 class="text-white text-bold text-26px mb-4">{{__('front_end.about_us')}}</h5>
                     <ul class="custom-ul-li">
                         <li class="custom-ul-li">
                             <a href="{{route('front.home.mission')}}" class="text-white">
                                 <i class="fa fa-angle-right custom-icon" aria-hidden="true"></i>
-                                <span>Về chúng tôi</span>
+                                <span>{{__('front_end.about_us')}}</span>
                             </a>
                         </li>
                         <li class="custom-ul-li">
                             <a href="{{route('front.home.trading-system')}}" class="text-white">
                                 <i class="fa fa-angle-right custom-icon" aria-hidden="true"></i>
-                                <span>Hệ thống của chúng tôi</span>
+                                <span>{{__('front_end.system_us')}}</span>
                             </a>
                         </li>
                         <li class="custom-ul-li">
                             <a href="{{route('front.home.trading-system')}}" class="text-white">
                                 <i class="fa fa-angle-right custom-icon" aria-hidden="true"></i>
-                                <span>Dịch vụ</span>
+                                <span><span>{{__('front_end.service_us')}}</span></span>
                             </a>
                         </li>
                     </ul>
                 </div>
                 <div class="col-md-3">
-                    <h5 class="text-white text-bold text-26px mb-4"> Liên kết hữu ích</h5>
+                    <h5 class="text-white text-bold text-26px mb-4"> {{__('front_end.useful_references')}}</h5>
                     <ul class="custom-ul-li">
                         <li class="custom-ul-li">
                             <a href="{{route('front.home.trading-system')}}" class="text-white">
                                 <i class="fa fa-angle-right custom-icon" aria-hidden="true"></i>
-                                <span>Hiệu quả giao dịch</span>
+                                <span>{{__('front_end.our_performance')}}</span>
                             </a>
                         </li>
                         <li class="custom-ul-li">
                             <a href="{{route('front.home.trading-system')}}" class="text-white">
                                 <i class="fa fa-angle-right custom-icon" aria-hidden="true"></i>
-                                <span>Cách hệ thống vận hành</span>
+                                <span>{{__('front_end.how_it_work')}}</span>
                             </a>
                         </li>
                         <li class="custom-ul-li">
                             <a href="{{route('front.home.contact')}}" class="text-white">
                                 <i class="fa fa-angle-right custom-icon" aria-hidden="true"></i>
-                                <span>Nghiên cứu đầu tư</span>
+                                <span>{{__('front_end.research_investment')}}</span>
                             </a>
                         </li>
                     </ul>
                 </div>
                 <div class="col-md-3">
-                    <h5 class="text-white text-bold text-26px mb-4"> Thông tin liên lạc</h5>
+                    <h5 class="text-white text-bold text-26px mb-4">{{__('front_end.our_contact')}}</h5>
                     <ul class="custom-ul-li">
                         <li class="custom-ul-li">
                             <a href="{{route('front.home.contact')}}" class="text-white">
                                 <i class="fa fa-angle-right custom-icon" aria-hidden="true"></i>
-                                <span>Phường An Khánh, Tp.Thủ Đức, HCM</span>
+                                <span>{{__('front_end.address_info')}}</span>
                             </a>
                         </li>
                         <li class="custom-ul-li">
