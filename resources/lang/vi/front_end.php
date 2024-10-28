@@ -41,7 +41,7 @@ return [
     'description_title_green_beta'=>'Phương pháp giao dịch của Green Beta là Position Trading, tìm những điểm có xác suất chiến thắng cao nhất và nắm giữ trung và dài hạn vị thế đó cho đến khi xuất hiện các tín hiệu chốt lời và cắt lỗ từ thị trường. Green Beta được phát triển có thể thích nghi hầu hết các chỉ số tài chính trên toàn thị trường như Index Future,Crypto, Commodity...',
     'description_title_end_green_beta'=>'Tìm kiếm sự dịch chuyển dòng tiền, tìm kiếm lợi thế lợi thế gia tăng tài sản của bạn!',
     'title_green_beta'=>'Giao dịch với GREEN BETA ',
-    'description_green_beta'=>'Xin chào anh chị,
+    'description_green_beta'=>'<span class="title-trading-first label-color">Xin chào anh chị,</span><br>
 Em tên là Green Beta - 1.3.3, một robot với khả năng phân tích và tìm xu hướng tăng của thị trường tài chính, hiện tại ở bảng phía dưới là 13 chỉ số thị trường em đang phân tích.
 Chúc anh chị có một ngày đầu tư thật nhiều thuận lợi và nếu có thêm góp ý, anh chị hãy gửi cho các sếp nhà GVN của em nhé!',
     'top_signal'=>'Top tín hiệu phiên trước đó',

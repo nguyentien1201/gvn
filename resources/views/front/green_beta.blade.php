@@ -99,13 +99,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                 </div>
                                 <!-- Chart Section -->
                                 <div class="col-md-9" style="font-size:0.9rem !important; margin-top:4rem">
-                                    <h5 class="text-center" style="font-size:1.5em"><span class="title-trading-first label-color">Xin chào anh chị,</span></h5>
+
                                     <p>
-                                    <span class="comment-div-left" style="font-size:1.4em"> Em tên là <b>Green Beta - 1.3.3</b>, một robot với khả năng phân tích và tìm xu hướng tăng của thị trường tài chính, hiện tại ở bảng phía dưới là 13 chỉ số thị trường em đang phân tích.</span>
+                                    <span class="comment-div-left" style="font-size:1.4em">{!!__('front_end.description_green_beta')!!}</span>
                                     </p>
-                                    <p style="font-size:1.25em">
-                                    <span><i>Chúc anh chị có một ngày đầu tư thật nhiều thuận lợi và nếu có thêm góp ý, anh chị hãy gửi cho các sếp nhà GVN của em nhé!</i> </span>
-                                    </p>
+
 
                                 </div>
                             </div>

@@ -41,7 +41,7 @@ return [
     'description_title_green_beta'=>"Green Beta's trading method is Position Trading, which is to find the points with the highest probability of winning and hold that position in the medium and long term until the market signals take profit and stop loss. Green Beta is developed to adapt to most financial indicators in the global market such as Index Future, Crypto, Commodity,etc.",
     'description_title_end_green_beta'=>'Searching for cash flow movement, searching for the advantage of increasing your assets!',
     'title_green_beta'=>'Trading on GREEN BETA 1.3.3',
-    'description_green_beta'=>"Hello,<br>
+    'description_green_beta'=>"<span class='title-trading-first label-color'>Hello,</span><br>
                 I am Green Beta - 1.3.3, a robot which is able to analyze and find upward trends in the financial market. There are 13 market indicators that I've currently analyzed showned as the below table.<br>
                 Wish you have a good day on your trading! If you have any further comments, please send them to my bosses at GVN!<br> Many thanks!",
     'top_signal'=>'Top signals in previous session',
