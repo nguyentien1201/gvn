@@ -83,17 +83,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                 </div>
                                 <!-- Chart Section -->
                                 <div class="col-md-9" style="font-size:0.9rem !important; margin-top:4rem">
-                                    <h5 class="text-center" style="font-size:1.5em"><span
-                                            class="title-trading-first label-color">Xin chào anh chị,</span></h5>
+
                                     <p>
-                                        <span class="comment-div-left" style="font-size:1.4em"> Em tên là <b>Green Alpha
-                                                - 9.5.8</b>, hãy để em tìm giúp anh chị xem có cơ hội nào để anh chị
-                                            giao dịch kiếm lợi nhuận ngay trong ngày hôm nay không nhé. </span>
-                                    </p>
-                                    <p style="font-size:1.25em">
-                                        <span><i>Người ta nói "Đồng tiền đi liền khúc ruột", nếu anh chị có đau ruột hôm
-                                                nay thì đừng ngần ngại gửi ý kiến đến các sếp nhà GVN của em!</i>
-                                        </span>
+                                        <span class="comment-div-left" style="font-size:1.4em">{!!__('front_end.description_green_alpha')!!}</span>
                                     </p>
 
                                 </div>
@@ -115,8 +107,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
             <div class="row">
                 <div class="ol-12 col-sm-12 col-md-12 col-lg-12">
-                    <h2 class="text-center mb-4"><span class="title-trading-first label-color color-home">SIGNAL
-                            DASHBOARD</span>
+                    <h2 class="text-center mb-4"><span class="title-trading-first label-color color-home">{{__('front_end.SIGNAL_DASHBOARD')}}</span>
                     </h2>
                     <!-- Data and Chart Section -->
                     <h5 class="color-home" style="padding:15px; text-align: right;"> <i><span id="date"></span>  <span id="time"> </span> (UTC+3)</i></h5>
@@ -138,11 +129,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                             <ul style="padding-left:0">
                                                 <li class="list-item">
                                                     <button class="takeprofitbuy width-120">BUY</button>
-                                                    <span>Tín hiệu vị thế Mua đang mở.</span>
+                                                    <span>{{__('front_end.trend_signal_buy_open')}}</span>
                                                 </li>
                                                 <li class="list-item">
                                                     <button class="cutlossbuy width-120">SELL</button>
-                                                    <span>Tín hiệu vị thế Bán đang mở.</span>
+                                                    <span>{{__('front_end.trend_signal_sell_open')}}</span>
                                                 </li>
 
 
@@ -153,11 +144,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
                                                 <li class="list-item">
                                                     <button class="takeprofitbuy width-120">TakeProfitBUY/SELL</button>
-                                                    <span>Chốt lời MUA/BÁN.</span>
+                                                    <span>{{__('front_end.take_profit_BUY_SELL')}}</span>
                                                 </li>
                                                 <li class="list-item">
                                                     <button class="cutlossbuy width-120">CutLossBUY/SELL</button>
-                                                    <span>Cắt lỗ MUA/BÁN.</span>
+                                                    <span>{{__('front_end.cutLoss_BUY_SELL')}}</span>
                                                 </li>
                                             </ul>
 
@@ -166,12 +157,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                             <ul style="padding-left:0">
                                                 <li class="list-item">
                                                     <button class="width-120" style="background-color:#ffd966">HOLD</button>
-                                                    <span>Tín hiệu đang ở trạng thái giữ.</span>
+                                                    <span>{{__('front_end.trend_signal_hold')}}</span>
                                                 </li>
 
                                                 <li class="list-item">
                                                     <button class="hold width-120">CLOSED</button>
-                                                    <span>Tín hiệu xu hướng đã đóng.</span>
+                                                    <span>{{__('front_end.trend_signal_closed')}}</span>
                                                 </li>
 
                                             </ul>
@@ -211,8 +202,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <h2 class="text-center mb-4"><span class="title-trading-first label-color color-home">HISTORICAL
-                            PERFORMANCE</span>
+                    <h2 class="text-center mb-4"><span class="title-trading-first label-color color-home">{{__('front_end.HISTORICAL_PERFORMANCE')}}</span>
 
                     </h2>
                     <!-- Data and Chart Section -->

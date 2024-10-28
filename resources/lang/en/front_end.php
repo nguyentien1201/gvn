@@ -46,7 +46,7 @@ return [
                 Wish you have a good day on your trading! If you have any further comments, please send them to my bosses at GVN!<br> Many thanks!",
     'top_signal'=>'Top signals in previous session',
     'green_allpha'=>'Trading on GREEN ALPHA',
-    'description_green_alpha'=>"Hello,<br>
+    'description_green_alpha'=>"<span class='title-trading-first label-color'>Hello,</span><br>
            I am Green Alpha - 9.5.8. Let me help you find any opportunities for profit during your trading today.<br>
            People say 'A fool and his money are soon parted'. If you wish to not be a fool today, please don't hesitate to send your direct messages to my bosses at GVN!",
     'description_title_green_alpha'=>"Green Alpha is an intelligent automated trading robot, designed to maximize short-term trading opportunities in the market. With the ability to analyze multiple levels of short-term indicators and the Day Trading method, Green Alpha helps investors find entry points with high and stable winning probability. It's suitable for investors who prefer active trading and the fast daily pace of the market.",
@@ -145,5 +145,10 @@ return [
     'our_performance'=>'Our Performance',
     'how_it_work'=>"How it work",
     'research_investment'=>'Research investment',
-    'our_contact'=>'Our contact'
+    'our_contact'=>'Our contact',
+    'trend_signal_buy_open'=>'Open Buy signal',
+    'trend_signal_buy_close'=>'Close Buy signal',
+    "trend_signal_sell_open"=>'Open Sell signal',
+    'take_profit_BUY_SELL'=>'TakeProfitBUY/SELL',
+    'cutLoss_BUY_SELL'=>'CutLossBUY/SELL',
 ];

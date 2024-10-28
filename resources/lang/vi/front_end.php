@@ -146,5 +146,9 @@ Người ta nói "Đồng tiền đi liền khúc ruột", nếu anh chị có �
     'our_performance'=>'Hiệu quả giao dịch',
     'how_it_work'=>"Cách hệ thống vận hành",
     'research_investment'=>'Nguyên cứu đầu tư',
-    "our_contact"=>'Thông tin liên lạc'
+    "our_contact"=>'Thông tin liên lạc',
+    'trend_signal_buy_open'=>'Tín hiệu vị thế Mua đang mở',
+    "trend_signal_sell_open"=>'Tín hiệu vị thế Bán đang mở.',
+    'take_profit_BUY_SELL'=>'Chốt lời MUA/BÁN.',
+    'cutLoss_BUY_SELL'=>'Cắt lỗ MUA/BÁN.',
 ];
