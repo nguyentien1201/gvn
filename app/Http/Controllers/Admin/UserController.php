@@ -66,9 +66,11 @@ class UserController extends AdminController
         return redirect()->route('admin.users.index')->with('success', __('panel.success'));
     }
 
-    public function destroy(User $user)
+    public function destroy( $id)
     {
         try {
+            $user = User::find($id);
+
             $user->delete();
         } catch (\Exception $e) {
             return redirect()->route('admin.users.index')->with('fail', __('panel.fail'));
