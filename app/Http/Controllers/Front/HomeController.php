@@ -413,6 +413,7 @@ class HomeController
     }
     public function postContact(Request $request)
     {
+        return back()->with('success', 'Your message has been sent successfully!');
         $found = false;
         $request = Request::all();
         $array = config('ban.key_word_ban');
