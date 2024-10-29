@@ -803,7 +803,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-                <h2 class="text-left mb-4 pb-3 d-flex"><span class="title-trading-first label-color ">Giao dịch với GREEN ALPHA 10.0.1</span>
+                <h2 class="text-left mb-4 pb-3 d-flex"><span class="title-trading-first label-color ">{{__('front_end.green_allpha')}}</span>
                     <a class="color-home" style="text-align:right;right: 0" href="/green-alpha"><i class="fas fa-chevron-right"></i></a>
                 </h2>
 
@@ -849,7 +849,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-                <h2 class="text-left mb-4 pb-3 d-flex"><span class="title-trading-first label-color color-home">Top StockRating by GVN</span>
+                <h2 class="text-left mb-4 pb-3 d-flex"><span class="title-trading-first label-color color-home">{{__('front_end.top_stockRating_by_gvn')}}</span>
                 <a class="color-home" style="text-align:right;right: 0" href="/greenstock-nas100"><i class="fas fa-chevron-right"></i></a>
             </h2>
             <!-- Data and Chart Section -->
