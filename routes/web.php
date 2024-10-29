@@ -25,7 +25,7 @@ Route::get('password/reset/{token}', 'ResetPasswordController@showResetForm')->n
 Route::post('password/reset','ResetPasswordController@reset')->name('password.update');
 
 Route::group(['prefix' => '', 'as' => 'front.', 'namespace' => 'Front'], function () {
-    Route::get('activate/{token}', 'CustomerController@activate')->name('user.activate');
+    Route::get('/activate/{token}', 'CustomerController@activate')->name('user.activate');
     Route::get('/', 'HomeController@index')->name('home.index');
     Route::get('/green-beta', 'HomeController@greenBeta')->name('home.green-beta')->middleware(['auth']);
     Route::get('/green-alpha', 'HomeController@greenAlpha')->name('home.green-alpha')->middleware(['auth']);
