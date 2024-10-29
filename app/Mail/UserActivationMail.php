@@ -18,7 +18,13 @@ class UserActivationMail extends Mailable
 
     public function build()
     {
-        $url = route('user.activate', $this->user->activation_token);
+        try{
+            $url = route('user.activate', $this->user->activation_token);
+        }catch(\Exception $e){
+            \Log::error($e->getMessage());
+
+            }
+
 
         return $this->view('front.common.activate')
                     ->with(['url' => $url])
