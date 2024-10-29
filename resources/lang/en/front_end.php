@@ -76,7 +76,7 @@ return [
     'green_stock_100'=>"Trading on GREENSTOCK-NAS100",
     'description_title_green_stock'=>"GreenStock-NAS100 is a system that analyzes stocks in the pool of NASDAQ100 stocks of the US market. The system automatically analyzes short-term and long-term trends of stocks, rank trends and cash flow momentum on each stock, thereby creating a technical Rating scorecard to give users actionable insights. A circle of action in users' trading: BUY-HOLD-SELL-CASH",
     'service_us'=>'Our service',
-    'service_1'=>'Giải pháp tự động hóa phân tích thị trường',
+    'service_1'=>'Solutions to automate market analysis',
     'description_service_1'=>'Our automated analytics services provide the most objective insights of market trends.',
     'service_2'=>'We provide analysis and market trends to our investors',
     'description_service_2'=>"The Buy-Sell signals will be automatically sent to the investors' mobile during real-time trading time within our system.",
