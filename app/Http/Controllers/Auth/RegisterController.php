@@ -10,6 +10,9 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\UserActivationMail;
+use Str;
 
 class RegisterController extends Controller
 {
@@ -70,6 +73,7 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'activation_token' => Str::random(60),
             'role_id' => 3,
         ]);
     }
@@ -77,8 +81,25 @@ class RegisterController extends Controller
     {
         $this->validator($request->all())->validate();
         $user = $this->create($request->all());
-        Auth::login($user);
+        try {
+            Mail::to($user->email)->send(new UserActivationMail($user));
+        }catch(\Exception $e){
+            \Log::error($e->getMessage());
+        }
+
         return redirect()->route('front.home.index'); // Redirect to a desired route after registration
+    }
+    public function activate($token)
+    {
+        $user = User::where('activation_token', $token)->first();
+
+        if (!$user) {
+            return redirect()->route('login')->with('error', 'Invalid activation link.');
+        }
+
+        $user->update(['activation_token' => null, 'is_active' => true]);
+
+        return redirect()->route('login')->with('success', 'Your account has been activated!');
     }
     public function showRegistrationForm()
     {

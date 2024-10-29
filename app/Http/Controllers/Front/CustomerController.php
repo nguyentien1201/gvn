@@ -37,4 +37,16 @@ class CustomerController
         }
         return redirect()->route('account')->with('success', __('panel.success'));
     }
+    public function activate($token)
+    {
+        $user = User::where('activation_token', $token)->first();
+
+        if (!$user) {
+            return redirect()->route('login')->with('error', 'Invalid activation link.');
+        }
+
+        $user->update(['activation_token' => null, 'is_active' => true]);
+
+        return redirect()->route('login')->with('success', 'Your account has been activated!');
+    }
 }

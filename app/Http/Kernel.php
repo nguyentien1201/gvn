@@ -72,5 +72,6 @@ class Kernel extends HttpKernel
         'admin' => IsAdmin::class,
         'staff' => IsStaff::class,
         'customer' => IsCustomer::class,
+        'checkActive' => \App\Http\Middleware\CheckIfActive::class,
     ];
 }

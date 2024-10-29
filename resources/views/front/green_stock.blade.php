@@ -437,6 +437,8 @@
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K38F4SGX"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css') }}">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+
 <!-- End Google Tag Manager (noscript) -->
     <!-- Navigation Bar -->
     <!-- green-beta-slider.jpg -->
@@ -492,11 +494,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                 <table class="table table-striped table-bordered" style="margin-bottom: 0px;">
                                     <thead>
                                         <th>No</th>
-                                        <th>Chứng Khoán</th>
-                                        <th>Gvn-Rating</th>
+                                        <th>{{__('front_end.STOCK')}}</th>
+                                        <th>{{__('front_end.GVN_Rating')}}</th>
 
-                                        <th>Giá mua/bán</th>
-                                        <th>Giá hiện tại</th>
+                                        <th>{{__('front_end.price_buy_sell')}}</th>
+                                        <th>{{__('front_end.last_sale')}}</th>
                                     </thead>
                                     <tbody>
                                         @foreach($top_stock as $key => $stock)
@@ -511,7 +513,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                         @endforeach
                                     </tbody>
                                 </table>
-                                <h5 class="mt-5 color-home" style="text-align:center;padding:10px">Top 5 Stock</h5>
+                                <h5 class="mt-5 color-home" style="text-align:center;padding:10px">{{__('front_end.Top_5_Stock')}}</h5>
                                 <table class="table table-striped table-bordered top-stock-table mb-3"
                                     style="margin-bottom: 0px;">
                                     <tr>
@@ -549,12 +551,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                 <table style="width:100%" class="table table-striped table-bordered" id="market_cap">
                                     <thead>
                                         <tr id="code_header">
-                                            <th colspan="2" style="text-align:center" class="code_header">TĂNG/GIẢM
-                                                THEO NHÓM VỐN HÓA</th>
+                                            <th colspan="2" style="text-align:center" class="code_header">{{__('front_end.up_down_by_markert')}}</th>
                                         </tr>
                                         <tr>
-                                            <th>NHÓM</th>
-                                            <th>TRUNG BÌNH NGÀY</th>
+                                            <th>{{__('GROUP')}}</th>
+                                            <th>{{__('front_end.avg_day')}}</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -578,19 +579,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             </table>
                             <div class="container_flex">
                                 <div class="column column-left">
-                                <h3 class="text-center mb-4"><span class="title-trading-first label-color color-home">TOP 10 TRADING VALUE</span>
+                                <h3 class="text-center mb-4"><span class="title-trading-first label-color color-home">{{__('front_end.top_10_trading_value')}}</span>
                                 </h3>
                                     <canvas class="mt-5" id="avg_cap" height="400"></canvas>
                                 </div>
                                 <div class="column column-right">
-                                <h3 class="text-center mb-4"><span class="title-trading-first label-color color-home">MARKET ALLOCATION WITH MA</span>
+                                <h3 class="text-center mb-4"><span class="title-trading-first label-color color-home">{{__('front_end.market_with_MA')}}</span>
                                 </h3>
                                     <canvas class="mt-5" id="group_ma" height="300"></canvas>
                                 </div>
                             </div>
                         </div>
                         <div class="">
-                        <h3 class="text-center mb-4"><span class="title-trading-first label-color color-home">TRADING VALUE RATIO</span>
+                        <h3 class="text-center mb-4"><span class="title-trading-first label-color color-home">{{__('front_end.trading_value_ratio')}}</span>
                         </h3>
                             <canvas class="mt-2" id="current_cap"></canvas>
                         </div>
@@ -634,11 +635,27 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
 <script src="https://cdn.datatables.net/v/bs5/dt-2.0.8/date-1.5.2/fc-5.0.1/fh-4.0.1/r-3.0.2/datatables.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.34/moment-timezone-with-data.min.js"></script>
-<script>
+<script src="https://unpkg.com/feather-icons"></script>
 
+<script>
+$(document).on('click', '.favourite', function()
+        {
+            var stock_id = $(this).attr('stock_id');
+            $.ajax({
+                type: 'GET',
+                url: '{{url("follow-stock")}}/' + stock_id,
+                data: {
+                    'id' : stock_id,
+                },
+                success: function(data) {
+                    console.log(data);
+
+                }
+            });
+        })
     var isCall = false;
     $(document).ready(function () {
-
+        // feather.replace();
 
         var ctx = document.getElementById('pieChart').getContext('2d');
         var myPieChart = new Chart(ctx, {
@@ -687,6 +704,7 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
             order: [[0, 'asc']],
             data: @json($signals),
             columns: [
+                {data:'id',title: 'Follow'},
                 { data: 'rating', title: 'RATING' },  // Apply bold formatting to the "PriceTrend" column data},
                 { data: 'code', title: 'CHỨNG KHOÁN' },
                 { data: 'current_price', title: 'LastSale' },
@@ -700,6 +718,13 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
             columnDefs: [
                 {
                     targets: 0, // Index of the date column
+                    render: function (data, type, row, meta) {
+                    icon = '<i stock_id="'+data+'" class="bi bi-heart text-danger favourite"></i>'; // High rating
+                    return icon;
+                    }
+                },
+                {
+                    targets: 1, // Index of the date column
                     createdCell: function (td, cellData, rowData, row, col) {
                         color = '';
                         bold = '';
@@ -712,7 +737,7 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                     },
                 },
                 {
-                    targets: 1, // Index of the date column
+                    targets: 2, // Index of the date column
                     createdCell: function (td, cellData, rowData, row, col) {
                         $(td).css('font-weight', 'bold');
                         var company = rowData.company_name;
@@ -738,7 +763,7 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                     },
                 },
                 {
-                    targets: 3, // Index of the date column
+                    targets: 4, // Index of the date column
                     createdCell: function (td, cellData, rowData, row, col) {
                         trending = '';
                         color = '';
@@ -765,7 +790,7 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                     }
                 },
                 {
-                    targets: 4, // Index of the date column
+                    targets: 5, // Index of the date column
                     createdCell: function (td, cellData, rowData, row, col) {
                         signal = '';
                         color = '';
@@ -786,7 +811,7 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                     }
                 },
                 {
-                    targets: 5, // Index of the date column
+                    targets: 6, // Index of the date column
                     createdCell: function (td, cellData, rowData, row, col) {
                         color = '';
                         if (cellData > 0) {
@@ -802,7 +827,7 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                     }
                 },
                 {
-                    targets: 6, // Index of the date column
+                    targets: 7, // Index of the date column
                     createdCell: function (td, cellData, rowData, row, col) {
                         color = '';
                         if (cellData > 0) {
@@ -822,7 +847,7 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
 
                 },
                 {
-                    targets: 7, // Index of the date column
+                    targets: 8, // Index of the date column
 
                     render: function (data, type, full, meta) {
                         if(data =='fas fa-lock'){
@@ -836,7 +861,7 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                     }
                 },
                 {
-                    targets: 8, // Index of the open_time column
+                    targets: 9, // Index of the open_time column
                     render: function (data, type, row) {
                         if(data =='fas fa-lock'){
                             return '<i style="color:green" class="fas fa-lock"></i>';

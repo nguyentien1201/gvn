@@ -20,6 +20,7 @@ class IsCustomer
         if(!Auth::check()) {
             return redirect()->route('login');
         }
+        
         if (Auth::user()->role_id != ConstantModel::ROLES['customer']) {
             abort(403);
         }

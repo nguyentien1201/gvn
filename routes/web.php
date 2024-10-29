@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\Auth\RegisterController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,6 +25,7 @@ Route::get('password/reset/{token}', 'ResetPasswordController@showResetForm')->n
 Route::post('password/reset','ResetPasswordController@reset')->name('password.update');
 
 Route::group(['prefix' => '', 'as' => 'front.', 'namespace' => 'Front'], function () {
+    Route::get('activate/{token}', 'CustomerController@activate')->name('user.activate');
     Route::get('/', 'HomeController@index')->name('home.index');
     Route::get('/green-beta', 'HomeController@greenBeta')->name('home.green-beta')->middleware(['auth']);
     Route::get('/green-alpha', 'HomeController@greenAlpha')->name('home.green-alpha')->middleware(['auth']);
@@ -39,7 +40,9 @@ Route::group(['prefix' => '', 'as' => 'front.', 'namespace' => 'Front'], functio
     Route::get('follow-stock/{stock_id}', 'HomeController@followUnfollowStock')->middleware(['auth']);
 
 });
-
+Route::get('/inactive', function () {
+    return view('front.common.inactive');
+})->name('inactive');
 Auth::routes(['register' => true]);
 
 use Illuminate\Routing\Middleware\ThrottleRequests;
@@ -54,6 +57,7 @@ Route::group([ 'namespace' => 'Front'], function () {
     Route::get('api/get-product', 'SubscriptionController@getProduct')->name('api.get-product')->middleware('customer');
     Route::post('/change-language','HomeController@changeLanguage')->name('changeLanguage');
     Route::post('/contact','HomeController@postContact')->middleware('throttle:3,1')->name('contact');
+
 });
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin'], function () {

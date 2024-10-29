@@ -7,7 +7,9 @@ use App\Models\ConstantModel;
 use App\Models\Token;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-
+use App\Models\User;
+use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
 class LoginController extends Controller
 {
     /*
@@ -36,6 +38,7 @@ class LoginController extends Controller
      * @var string
      */
     protected $username;
+    protected $is_active;
 
     /**
      * Check user's role and redirect user based on their role
@@ -46,7 +49,10 @@ class LoginController extends Controller
     {
         $user = auth()->user();
         if ($user) {
-            $this->redirectTo = route('front.home.index');
+            if($user->is_active ==1){
+                $this->redirectTo = route('front.home.index');
+            }
+
         }
     }
 
@@ -57,7 +63,7 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest')->except('logout');
+        $this->middleware(['guest'])->except('logout');
         $this->username = $this->findUsername();
     }
 
@@ -74,6 +80,26 @@ class LoginController extends Controller
 
         return $fieldType;
     }
+    function validateLogin(Request $request)
+    {
+        $request->validate([
+            $this->username() => 'required|string',
+            'password' => 'required|string',
+        ]);
+        $request->validate([
+            $this->username() => 'required|string',
+            'password' => 'required|string',
+        ]);
+
+        // Check if the user exists and if the account is active
+        $user = User::where($this->username(), $request->{$this->username()})->first();
+
+        if ($user && !$user->is_active) {
+            throw ValidationException::withMessages([
+                $this->username() => ['Your account is not active. Please Active from email '],
+            ]);
+        }
+    }
 
     /**
      * Get the login username to be used by the controller.
@@ -84,4 +110,10 @@ class LoginController extends Controller
     {
         return $this->username;
     }
+    public function isActive(): int
+    {
+        return $this->is_active ?? null;
+    }
+
+
 }
