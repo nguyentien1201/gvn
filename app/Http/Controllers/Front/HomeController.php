@@ -413,7 +413,10 @@ class HomeController
     }
     public function postContact(Request $request)
     {
-        return back()->with('success', 'Your message has been sent successfully!');
+        $user = \Auth::user();
+        if(empty($user)) {
+            return back()->with('fail', 'Please Login to contact!');
+        }
         $found = false;
         $request = Request::all();
         $array = config('ban.key_word_ban');
@@ -426,14 +429,14 @@ class HomeController
         if ($found  == true) {
             $exist = BanIp::where('ip', Request::ip())->first();
             if($exist){
-                return back()->with('error', 'Your IP has been banned!');
+                return back()->with('fail', 'Your IP has been banned!');
             }else {
                 BanIp::create([
                     'ip' => Request::ip(),
                     'reason' => 'Spam email'
                 ]);
                 Cache::forget('banned_ips');
-                return back()->with('error', 'Your IP has been banned!');
+                return back()->with('fail', 'Your IP has been banned!');
             }
         }
         $data = [

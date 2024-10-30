@@ -237,6 +237,8 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
 
     <!-- Features Section -->
     <section class="text-left mt-5">
+
+    <div class="container">
     @if(session('success'))
             <div class="mb-2">
                 <div class="col-lg-12">
@@ -251,7 +253,6 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                 </div>
             </div>
         @endif
-    <div class="container">
         <div class="row  mt-5">
             <div class="col-12 col-sm-12 col-md-12 col-lg-12">
                 <p style="font-size:larger">{!!__('front_end.note_contact')!!}</p>

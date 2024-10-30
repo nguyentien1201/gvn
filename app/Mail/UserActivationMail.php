@@ -23,9 +23,7 @@ class UserActivationMail extends Mailable
         }catch(\Exception $e){
             \Log::error($e->getMessage());
 
-            }
-
-
+        }
         return $this->view('front.common.activate')
                     ->with(['url' => $url])
                     ->subject('Activate Your Account');
