@@ -940,7 +940,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             beginAtZero: true,
                             ticks: {
                                 callback: function(value) {
-                                    return value + '%'; // Thêm ký hiệu % vào các giá trị trên trục y
+                                    return value.toFixed(2) + '%'; // Thêm ký hiệu % vào các giá trị trên trục y
                                 }
                             }
                         }
