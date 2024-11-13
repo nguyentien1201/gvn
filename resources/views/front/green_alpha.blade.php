@@ -953,7 +953,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 // Lấy thời gian và ngày tháng theo múi giờ
                 const dateOptions = { timeZone: 'Europe/Moscow', year: 'numeric', month: '2-digit', day: '2-digit' };
                 const timeOptions = { timeZone: 'Europe/Moscow', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false };
-
                 let dateString = now.toLocaleDateString('en-US', dateOptions).replace(/\//g, '-');
                 let timeString = now.toLocaleTimeString('en-US', timeOptions);
                 document.getElementById('date').textContent = dateString;
@@ -962,8 +961,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
             }
 
-setInterval(updateClock, 1000); // Cập nhật mỗi giây
-updateClock(); // Chạy ngay khi load trang
+            setInterval(updateClock, 1000); // Cập nhật mỗi giây
+            updateClock(); // Chạy ngay khi load trang
         });
 
 </script>

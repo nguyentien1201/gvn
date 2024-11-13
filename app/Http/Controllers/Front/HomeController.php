@@ -481,4 +481,8 @@ class HomeController
             return ['success' => true, 'btn_text' => $btn_text];
         }
     }
+    public function paymentProduct($id){
+        $product = Product::find($id);
+        return view('front.payment',compact('product'));
+    }
 }
