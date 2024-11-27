@@ -637,6 +637,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         <div class="">
                             <table class="table table-striped table-bordered" style="margin-bottom: 0px; width:100%"
                                 id="top_stock">
+                                <thead>
+                                    <th>{{__('front_end.RATING')}}</th>
+                                        <th>{{__('front_end.STOCK')}}</th>
+                                        <th>{{__('front_end.LAST_SALE')}}</th>
+                                        <th>{{__('front_end.TREND')}}</th>
+                                        <th>{{__('front_end.ACTION')}}</th>
+                                        <th>{{__('front_end.PROFIT')}}</th>
+                                        <th>{{__('front_end.PRICE')}}</th>
+                                        <th>{{__('front_end.TIME')}}</th>
+                                </thead>
+
                             </table>
                             <div class="container_flex">
                                 <div class="column column-left">
@@ -1145,8 +1156,8 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                     order: false,
                     data: result.market_cap,
                     columns: [
-                        { data: 'group', title: 'NHÓM' },  // Apply bold formatting to the "PriceTrend" column data},
-                        { data: 'avg_day', title: 'TRUNG BÌNH NGÀY' },
+                        { data: 'group',  },  // Apply bold formatting to the "PriceTrend" column data},
+                        { data: 'avg_day',  },
                     ],
                     //
                     columnDefs: [
@@ -1183,7 +1194,7 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                         labels: ['Tổng dòng tiền lời 5 phiên', 'Tổng dòng tiền lỗ 5 phiên'],
                         datasets: [{
                             data: result.cap,
-                            label: 'Tổng dòng tiền',
+                            label: 'Total Cap',
                             backgroundColor: function (context) {
                                 const value = context.dataset.data[context.dataIndex];
                                 return value < 0 ? 'red' : 'green'; // Nếu giá trị < 0 thì màu đỏ, ngược lại màu xanh lá
@@ -1367,14 +1378,14 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                                             order: [[0, 'asc']],
                                             data: data,
                                             columns: [
-                                                { data: 'rating', title: 'RATING' },  // Apply bold formatting to the "PriceTrend" column data},
-                                                { data: 'code', title: 'CHỨNG KHOÁN' },
-                                                { data: 'current_price', title: 'LastSale' },
-                                                { data: 'trending', title: 'XU HƯỚNG' },
-                                                { data: 'signal', title: 'HÀNH ĐỘNG' },
-                                                { data: 'profit', title: 'PROFIT' },
-                                                { data: 'price', title: 'PRICE' },
-                                                { data: 'time', title: 'THỜI GIAN' },
+                                                { data: 'rating'},  // Apply bold formatting to the "PriceTrend" column data},
+                                                { data: 'code',  },
+                                                { data: 'current_price' },
+                                                { data: 'trending'},
+                                                { data: 'signal' },
+                                                { data: 'profit' },
+                                                { data: 'price' },
+                                                { data: 'time' },
                                             ],
                                             columnDefs: [
                                                 {
@@ -1536,14 +1547,14 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                     order: [[0, 'asc']],
                     data: result.top_stock,
                     columns: [
-                        { data: 'rating', title: 'RATING' },  // Apply bold formatting to the "PriceTrend" column data},
-                        { data: 'code', title: 'CHỨNG KHOÁN' },
-                        { data: 'current_price', title: 'LastSale' },
-                        { data: 'trending', title: 'XU HƯỚNG' },
-                        { data: 'signal', title: 'HÀNH ĐỘNG' },
-                        { data: 'profit', title: 'PROFIT' },
-                        { data: 'price', title: 'PRICE' },
-                        { data: 'time', title: 'THỜI GIAN' },
+                        { data: 'rating' },  // Apply bold formatting to the "PriceTrend" column data},
+                        { data: 'code' },
+                        { data: 'current_price'},
+                        { data: 'trending' },
+                        { data: 'signal' },
+                        { data: 'profit'},
+                        { data: 'price' },
+                        { data: 'time' },
                     ],
                     columnDefs: [
                         {
