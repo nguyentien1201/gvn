@@ -214,7 +214,9 @@ class GreenStockNas100 extends Model
     }
     public function getListNas100Api($limit = 200)
     {
-        $data = $this->with('companyInfo')->orderBy('rating', 'asc')->limit($limit)->get();
+        $getData = $this->with('companyInfo');
+        $list_code = $getData->orderBy('code', 'asc');
+        $data = $getData->orderBy('rating', 'asc')->limit($limit)->get();
         $data = $data->map(function ($item) {
             if ($item->companyInfo) {
                 $item['company_name'] = $item->companyInfo->company_name;
@@ -222,7 +224,10 @@ class GreenStockNas100 extends Model
             return $item;
         });
 
-        return $data;
+        return [
+            'list_code'=>$list_code,
+            'data'=>$data
+        ];
     }
     public function companyInfo()
     {

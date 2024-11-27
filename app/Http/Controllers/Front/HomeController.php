@@ -40,7 +40,7 @@ class HomeController
         $default_chart['usOil'] = $usOil['data'];
         $default_chart['xausud'] = $xausud['data'];
         $green_data = (new GreenStockNas100())->getListNas100Api(20);
-
+        $green_data = $green_data['data'] ?? [];
         // if($subscription->isEmpty() && $role_id != 1){
         //     return redirect()->route('front.home.trading-system');
         // }
@@ -291,7 +291,15 @@ class HomeController
         if(empty($subscription) && $role_id != 1){
             return redirect()->route('front.home.trading-system');
         }
-        $signals = (new GreenStockNas100())->getListNas100Api();
+        $signalsData = (new GreenStockNas100())->getListNas100Api();
+
+
+        $signals = $signalsData['data'] ?? [];
+        $list_code = $signalsData['list_code'];
+        $list_stock = $list_code->pluck('code','id');
+        $list_code_follow = UserFollowStock::where(['user_id'=>$user->id])->orderBy('id')->pluck('stock_id')->toArray();
+        $list_folow = $signalsData['data']->whereIn('id', $list_code_follow);
+
         if(!empty($subscription) && $subscription['is_trial'] == 1){
             foreach ($signals as $key => $value) {
                 $value['price'] = 'fas fa-lock';
@@ -319,7 +327,7 @@ class HomeController
         $chart_group_data = array_slice($chart_group_data, 0, 10);
         $ma['up'] = [$ma['upMA50'],$ma['upMA200']];
         $ma['down'] = [$ma['downMA50'],$ma['downMA200']];
-        return view('front.green_stock',compact('signals','top_stock','chart_signal','labels','ma','chart_group_data'));
+        return view('front.green_stock',compact('signals','top_stock','chart_signal','labels','ma','chart_group_data','list_stock','list_folow'));
     }
     public function getMarketGreenStock(){
 
@@ -462,23 +470,33 @@ class HomeController
     public function followUnfollowStock($stock_id)
     {
         $user = \Auth::user();
-
-
+        $listFollow = UserFollowStock::where(['user_id'=>$user->id])->count();
+        if($listFollow >=5) {
+            return ['success' => true, 'message' => 'Limit follow'];
+        }
         $isFollowed = UserFollowStock::where(['user_id'=>$user->id,'stock_id'=>$stock_id])->first();
 
         if ($isFollowed){
-            //Already following, unfollow now
-            $btn_text = '<i class="i bi-heart-fill text-danger"></i>';
-            $isFollowed->delete();
-            return ['success' => true, 'btn_text' => $btn_text];
+            return ['success' => true, 'message' => 'You are ready follow'];
         }else{
             UserFollowStock::insert([
                 'user_id'=> $user->id,
                 'stock_id'=>$stock_id,
                 ]);
+            $stock_info = GreenStockNas100::find($stock_id);
 
-            $btn_text =  '<i class="i bi-heart text-danger"></i> ';
-            return ['success' => true, 'btn_text' => $btn_text];
+            return ['success' => true, 'message' => 'Follow Success','data'=> json_encode($stock_info)];
+        }
+    }
+    public function unfollowStock($stock_id)
+    {
+        $user = \Auth::user();
+        $isFollowed = UserFollowStock::where(['user_id'=>$user->id,'stock_id'=>$stock_id])->first();
+        if ($isFollowed){
+            $isFollowed->delete();
+            return ['success' => true, 'message' => 'You are ready unfollow'];
+        }else {
+            return ['success' => false, 'message' => 'Error unfollow'];
         }
     }
     public function paymentProduct($id){

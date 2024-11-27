@@ -159,4 +159,6 @@ Người ta nói "Đồng tiền đi liền khúc ruột", nếu anh chị có �
     'top_10_trading_value'=>'10 ngành giá trị giao dịch cao nhất',
     'market_with_MA'=>'Phân bố thị trường so với MA',
     'trading_value_ratio'=>'TỶ TRỌNG GIÁ TRỊ GIAO DỊCH NGÀNH',
+    'follow_list'=>'Thêm Danh sách yêu thích',
+
 ];

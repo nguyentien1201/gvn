@@ -428,6 +428,42 @@
                 height: 400px;
             }
         }
+        .select2-container--bootstrap-5 .select2-selection {
+    border-radius: 0.375rem; /* Áp dụng góc bo tròn của Bootstrap 5 */
+    border-color: #ced4da;  /* Màu border mặc định */
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+}
+
+.select2-container--bootstrap-5 .select2-selection--single .select2-selection__rendered {
+    line-height: 1.5; /* Dòng chữ thẳng hàng */
+}
+.custom-alert {
+            position: fixed;
+
+            z-index: 1050; /* Giúp nó hiển thị trên tất cả các thành phần khác */
+            min-width: 300px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-left: 5px solid;
+        }
+        .custom-alert.success {
+            border-color: #28a745;
+            background-color: #d4edda;
+            color: #155724;
+        }
+        .custom-alert.error {
+            border-color: #dc3545;
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        .custom-alert.info {
+            border-color: #17a2b8;
+            background-color: #d1ecf1;
+            color: #0c5460;
+        }
+        .custom-alert .btn-close {
+            float: right;
+        }
     </style>
 
 </head>
@@ -438,6 +474,9 @@
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css') }}">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css" />
+
 
 <!-- End Google Tag Manager (noscript) -->
     <!-- Navigation Bar -->
@@ -454,9 +493,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
     </div>
 
+</div>
+
 
     <section id="contentDiv" class="text-left">
+
         <div class="full-width-container">
+
         <h5 class="color-home" style="padding:15px; text-align: right;"> <i><span id="date"></span>  <span id="time"></span>  (UTC+3)</i></h5>
             <div class="col-12 col-sm-12 col-md-12 col-lg-12">
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -504,25 +547,29 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                 </table>
                             </div>
                             <div class="sidebar mt-2 col-12 col-sm-12 col-md-6 col-lg-6">
+                            <div id="alert-container"></div>
+                            <select id="select-stock" class="form-select">
+                            @foreach($list_stock as $key => $stock)
+                                <option value="{{$key}}">{{$stock}}</option>
+                            @endforeach
+                            </select>
                                 <h5 style="text-align:center;padding:10px" class="color-home">{{__('front_end.my_watchlist')}}</h5>
-                                <table class="table table-striped table-bordered" style="margin-bottom: 0px;">
+                                <table class="table table-striped table-bordered" style="margin-bottom: 0px;" id="my_watch_list">
                                     <thead>
-                                        <th>No</th>
                                         <th>{{__('front_end.STOCK')}}</th>
                                         <th>{{__('front_end.GVN_Rating')}}</th>
-
                                         <th>{{__('front_end.price_buy_sell')}}</th>
                                         <th>{{__('front_end.last_sale')}}</th>
+                                        <th></th>
                                     </thead>
                                     <tbody>
-                                        @foreach($top_stock as $key => $stock)
-                                            <tr>
-                                                <td>{{ $key + 1 }}</td>
+                                        @foreach($list_folow as  $stock)
+                                            <tr data-id="{{$stock->id}}">
                                                 <td>{{ $stock->code }}</td>
                                                 <td>{{ $stock->rating }}</td>
-
                                                 <td>{{ $stock->price }}</td>
                                                 <td>{{ $stock->current_price }}</td>
+                                                <td><button class="btn btn-danger btn-delete btn-sm"><i class="fas fa-minus"></i></button></td>
                                             </tr>
                                         @endforeach
                                     </tbody>
@@ -616,9 +663,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
         </div>
     </section>
-    <style>
 
-    </style>
     <section class="text-center mt-5">
         @include('front.common.footer')
     </section>
@@ -650,27 +695,86 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.34/moment-timezone-with-data.min.js"></script>
 <script src="https://unpkg.com/feather-icons"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.full.min.js"></script>
 <script>
-$(document).on('click', '.favourite', function()
-        {
-            var stock_id = $(this).attr('stock_id');
-            $.ajax({
-                type: 'GET',
-                url: '{{url("follow-stock")}}/' + stock_id,
-                data: {
-                    'id' : stock_id,
-                },
-                success: function(data) {
-                    console.log(data);
 
+        $('#select-stock').on('select2:select', function (e) {
+            let stock_id = $(this).val();
+                if (stock_id.trim()) {
+                    // Gọi AJAX thủ công khi nhấn Enter
+                    $.ajax({
+                        url: '{{url("follow-stock")}}/' + stock_id,
+                        method: 'GET',
+                        data: {
+                            'id' : stock_id,
+                            "_token": "{{ csrf_token() }}"
+                        },
+                        success: function (response) {
+                            showAlert(response.message,'success');
+                            if(response.data){
+                                result =JSON.parse(response.data);
+                                var newRow = `
+                            <tr  data-id="`+result.id+`" >
+                                <td>`+result.code+`</td>
+                                <td>`+result.rating+`</td>
+                                <td>`+result.price+`</td>
+                                <td>`+result.current_price+`</td>
+                                <td><button class="btn btn-danger btn-delete btn-sm"><i class="fas fa-minus"></i></button></td>
+                            </tr>
+                        `;
+                        $('#my_watch_list tbody').append(newRow);
+                            }
+
+                            // <td>{{ $stock->code }}</td>
+                            //                     <td>{{ $stock->rating }}</td>
+                            //                     <td>{{ $stock->price }}</td>
+                            //                     <td>{{ $stock->current_price }}</td>
+
+                            console.log(response.data);
+                            // Có thể hiển thị kết quả hoặc thêm logic xử lý
+                        },
+                        error: function (err) {
+                            console.error('Error:', err);
+                        }
+                    });
                 }
-            });
         })
+
     var isCall = false;
     $(document).ready(function () {
-        // feather.replace();
+        $('#select-stock').select2({
+        placeholder: 'Select an option',
+        theme: 'bootstrap-5', // Áp dụng theme Bootstrap 5
+        width: '100%' // Đảm bảo Select2 chiếm toàn bộ chiều rộng của element
+    });
+    $(document).on('click', '.btn-delete', function() {
+            var row = $(this).closest('tr');  // Lấy dòng <tr> chứa nút xóa
+            var stock_id = row.data('id');   // Lấy ID từ thuộc tính data-id của dòng
 
+            // Hiển thị cảnh báo xác nhận trước khi xóa
+            if (confirm('Are you sure you want to unfollow this stock ?')) {
+                // Gửi yêu cầu AJAX để xóa bản ghi
+                $.ajax({
+                    url: '{{url("unfollow-stock")}}/' + stock_id,  // Đường dẫn tới controller (sửa cho phù hợp với Laravel route)
+                    type: 'DELETE',  // Phương thức DELETE
+                    data: {
+                        "_token": "{{ csrf_token() }}"  // CSRF token bảo vệ
+                    },
+                    success: function(response) {
+                        if (response.success) {
+                            // Xóa dòng trong bảng nếu xóa thành công
+                            row.remove();
+                            alert('Record deleted successfully!');
+                        } else {
+                            alert('Error deleting record.');
+                        }
+                    },
+                    error: function() {
+                        alert('Something went wrong.');
+                    }
+                });
+            }
+        });
         var ctx = document.getElementById('pieChart').getContext('2d');
         var myPieChart = new Chart(ctx, {
             type: 'pie', // Kiểu biểu đồ là 'pie' (tròn)
@@ -1811,6 +1915,37 @@ $(document).on('click', '.favourite', function()
 
         }
 setInterval(updateClock, 1000); // Cập nhật mỗi giây
-document.getElementById('timezone').addEventListener('change', updateClock); // Cập nhật khi đổi múi giờ
-updateClock(); // Chạy ngay khi load trang
+const el = document.getElementById('timezone');
+if(el){
+    el.addEventListener('change', updateClock);
+    updateClock();
+}
+
+ // Chạy ngay khi load trang
+ function showAlert(message, type) {
+        const alertContainer = document.getElementById('alert-container');
+
+        // Create the alert div
+        const alertDiv = document.createElement('div');
+        alertDiv.className = `custom-alert ${type} alert d-flex align-items-center justify-content-between fade show`;
+        alertDiv.innerHTML = `
+            <span>${message}</span>
+            <button type="button" class="btn-close" aria-label="Close"></button>
+        `;
+
+        // Add the alert to the container
+        alertContainer.appendChild(alertDiv);
+
+        // Auto-close the alert after 5 seconds
+        setTimeout(() => {
+            alertDiv.classList.remove('show');
+            alertDiv.classList.add('fade-out');
+            setTimeout(() => alertDiv.remove(), 300); // Remove after fade-out animation
+        }, 5000);
+
+        // Close the alert when the close button is clicked
+        alertDiv.querySelector('.btn-close').addEventListener('click', () => {
+            alertDiv.remove();
+        });
+    }
 </script>

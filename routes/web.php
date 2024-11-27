@@ -39,6 +39,8 @@ Route::group(['prefix' => '', 'as' => 'front.', 'namespace' => 'Front'], functio
     Route::get('contact', 'HomeController@contact')->name('home.contact');
     Route::get('mission', 'HomeController@mission')->name('home.mission');
     Route::get('follow-stock/{stock_id}', 'HomeController@followUnfollowStock')->middleware(['auth']);
+    Route::delete('unfollow-stock/{stock_id}', 'HomeController@unfollowStock')->middleware(['auth']);
+
 
 });
 Route::get('/inactive', function () {
