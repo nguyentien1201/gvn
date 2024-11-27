@@ -381,6 +381,7 @@ class HomeController
         $user = \Auth::user();
         $role_id = $user->role_id ?? null;
         $subscription = Subscription::where('user_id', $user->id)->where('product_id',3)->where('end_date' ,'>=', now())->first();
+
         if($subscription['is_trial'] == 1 && $role_id != 1){
             foreach ($top_stock as $key => $value) {
                 $value['price'] = 'fas fa-lock';
@@ -471,7 +472,7 @@ class HomeController
     {
         $user = \Auth::user();
         $listFollow = UserFollowStock::where(['user_id'=>$user->id])->count();
-        if($listFollow >=5) {
+        if($listFollow >=10) {
             return ['success' => true, 'message' => 'Limit follow'];
         }
         $isFollowed = UserFollowStock::where(['user_id'=>$user->id,'stock_id'=>$stock_id])->first();
