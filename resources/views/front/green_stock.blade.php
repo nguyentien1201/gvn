@@ -735,14 +735,6 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                         `;
                         $('#my_watch_list tbody').append(newRow);
                             }
-
-                            // <td>{{ $stock->code }}</td>
-                            //                     <td>{{ $stock->rating }}</td>
-                            //                     <td>{{ $stock->price }}</td>
-                            //                     <td>{{ $stock->current_price }}</td>
-
-                            console.log(response.data);
-                            // Có thể hiển thị kết quả hoặc thêm logic xử lý
                         },
                         error: function (err) {
                             console.error('Error:', err);
