@@ -668,6 +668,7 @@
                                 <th>{{__('front_end.price_close')}}</th>
                                 <th>{{__('front_end.close_time')}}</th>
                             </tr>
+                        </thead>
                     </table>
                     </div>
 

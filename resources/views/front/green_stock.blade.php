@@ -487,10 +487,24 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             <div class="main col-12 col-sm-12 col-md-12 col-lg-6">
                                 <table class="table table-striped table-bordered" style="margin-bottom: 0px;"
                                     id="indices-table">
+                                    <thead>
+                                        <tr>
+                                            <th>{{__('front_end.RATING')}}</th>
+                                            <th>{{__('front_end.STOCK')}}</th>
+                                            <th>{{__('front_end.LAST_SALE')}}</th>
+                                            <th>{{__('front_end.TREND')}}</th>
+                                            <th>{{__('front_end.ACTION')}}</th>
+                                            <th>{{__('front_end.PROFIT')}}</th>
+                                            <th>{{__('front_end.AFTER_SELL')}}</th>
+                                            <th>{{__('front_end.PRICE')}}</th>
+                                            <th>{{__('front_end.TIME')}}</th>
+
+                                        </tr>
+                                    </thead>
                                 </table>
                             </div>
                             <div class="sidebar mt-2 col-12 col-sm-12 col-md-6 col-lg-6">
-                                <h5 style="text-align:center;padding:10px" class="color-home">My Watchlist</h5>
+                                <h5 style="text-align:center;padding:10px" class="color-home">{{__('front_end.my_watchlist')}}</h5>
                                 <table class="table table-striped table-bordered" style="margin-bottom: 0px;">
                                     <thead>
                                         <th>No</th>
@@ -704,27 +718,20 @@ $(document).on('click', '.favourite', function()
             order: [[0, 'asc']],
             data: @json($signals),
             columns: [
-                {data:'id',title: 'Follow'},
-                { data: 'rating', title: 'RATING' },  // Apply bold formatting to the "PriceTrend" column data},
-                { data: 'code', title: 'CHỨNG KHOÁN' },
-                { data: 'current_price', title: 'LastSale' },
-                { data: 'trending', title: 'XU HƯỚNG' },
-                { data: 'signal', title: 'HÀNH ĐỘNG' },
-                { data: 'profit', title: 'PROFIT' },
-                { data: 'post_sale_discount', title: 'GIẢM SAU BÁN' },
-                { data: 'price', title: 'PRICE' },
-                { data: 'time', title: 'THỜI GIAN' },
+
+                { data: 'rating', },  // Apply bold formatting to the "PriceTrend" column data},
+                { data: 'code', },
+                { data: 'current_price', },
+                { data: 'trending', },
+                { data: 'signal', },
+                { data: 'profit',  },
+                { data: 'post_sale_discount', },
+                { data: 'price',  },
+                { data: 'time' },
             ],
             columnDefs: [
                 {
                     targets: 0, // Index of the date column
-                    render: function (data, type, row, meta) {
-                    icon = '<i stock_id="'+data+'" class="bi bi-heart text-danger favourite"></i>'; // High rating
-                    return icon;
-                    }
-                },
-                {
-                    targets: 1, // Index of the date column
                     createdCell: function (td, cellData, rowData, row, col) {
                         color = '';
                         bold = '';
@@ -737,7 +744,7 @@ $(document).on('click', '.favourite', function()
                     },
                 },
                 {
-                    targets: 2, // Index of the date column
+                    targets: 1, // Index of the date column
                     createdCell: function (td, cellData, rowData, row, col) {
                         $(td).css('font-weight', 'bold');
                         var company = rowData.company_name;
@@ -763,7 +770,7 @@ $(document).on('click', '.favourite', function()
                     },
                 },
                 {
-                    targets: 4, // Index of the date column
+                    targets: 3, // Index of the date column
                     createdCell: function (td, cellData, rowData, row, col) {
                         trending = '';
                         color = '';
@@ -790,7 +797,7 @@ $(document).on('click', '.favourite', function()
                     }
                 },
                 {
-                    targets: 5, // Index of the date column
+                    targets: 4, // Index of the date column
                     createdCell: function (td, cellData, rowData, row, col) {
                         signal = '';
                         color = '';
@@ -811,7 +818,7 @@ $(document).on('click', '.favourite', function()
                     }
                 },
                 {
-                    targets: 6, // Index of the date column
+                    targets: 5, // Index of the date column
                     createdCell: function (td, cellData, rowData, row, col) {
                         color = '';
                         if (cellData > 0) {
@@ -827,7 +834,7 @@ $(document).on('click', '.favourite', function()
                     }
                 },
                 {
-                    targets: 7, // Index of the date column
+                    targets: 6, // Index of the date column
                     createdCell: function (td, cellData, rowData, row, col) {
                         color = '';
                         if (cellData > 0) {
@@ -847,7 +854,7 @@ $(document).on('click', '.favourite', function()
 
                 },
                 {
-                    targets: 8, // Index of the date column
+                    targets: 7, // Index of the date column
 
                     render: function (data, type, full, meta) {
                         if(data =='fas fa-lock'){
@@ -861,7 +868,7 @@ $(document).on('click', '.favourite', function()
                     }
                 },
                 {
-                    targets: 9, // Index of the open_time column
+                    targets: 8, // Index of the open_time column
                     render: function (data, type, row) {
                         if(data =='fas fa-lock'){
                             return '<i style="color:green" class="fas fa-lock"></i>';

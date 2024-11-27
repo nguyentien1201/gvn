@@ -155,8 +155,10 @@ return [
     'up_down_by_markert'=>'UP/DOWN ON MARKET CAPTITAL',
     "GROUP"=>"GROUP",
     'avg_day'=>'AVERAGE EACH GROUP PER DAY',
-     'top_10_trading_value'=>'TOP 10 SECTOR TRADING VALUE',
-     'market_with_MA'=>'MARKET ALLOCATION WITH MA',
-     'trading_value_ratio'=>'TRADING VALUE RATIO',
-     'my_company'=>'My Company',
+    'top_10_trading_value'=>'TOP 10 SECTOR TRADING VALUE',
+    'market_with_MA'=>'MARKET ALLOCATION WITH MA',
+    'trading_value_ratio'=>'TRADING VALUE RATIO',
+    'my_company'=>'My Company',
+    'my_watchlist' =>'My Watchlist',
+
 ];

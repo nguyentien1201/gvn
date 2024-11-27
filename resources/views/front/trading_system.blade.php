@@ -896,10 +896,10 @@ background-size: cover;
 <script>
     $(document).ready(function() {
         $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
         // $('.ptable-action .subscription').click(function(e) {
         //     e.preventDefault();
         //     let id = $(this).data('id');
