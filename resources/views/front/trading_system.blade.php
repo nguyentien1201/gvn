@@ -550,7 +550,7 @@ background-size: cover;
                 <div class="ptable-footer">
                     <div class="ptable-action">
                         @if (Auth::check())
-                            <a class="subscription" data-id={{$price_product['beta']->id}} data-type="trial" data-month="1">Trial</a>
+                            <a class="subscription"  data-product="beta"  data-id={{$price_product['beta']->id}} data-type="trial" data-month="1">Trial</a>
                         @else
                             <a href="{{ route('login') }}">{{__('front_end.login')}}</a>
                         @endif
@@ -583,7 +583,7 @@ background-size: cover;
                 <div class="ptable-footer">
                     <div class="ptable-action">
                         @if (Auth::check())
-                        <a class="subscription" data-id={{$price_product['beta']->id}} data-type="trial" data-month="1">Trial</a>
+                        <a class="subscription" data-product="beta"  data-id={{$price_product['beta']->id}} data-type="trial" data-month="1">Trial</a>
                           <!-- <a class=""  href="{{ route('front.home.payment', [$price_product['beta']->id])}}" >Buy</a> -->
                             <!-- <a class="subscription disabled-link" data-id={{$price_product['beta']->id}} data-type="buy" data-month="2">Buy</a> -->
                         @else
@@ -615,7 +615,7 @@ background-size: cover;
                 <div class="ptable-footer">
                     <div class="ptable-action">
                     @if (Auth::check())
-                    <a class="subscription" data-id={{$price_product['beta']->id}} data-type="trial" data-month="1">Trial</a>
+                    <a class="subscription"  data-product="beta" data-id={{$price_product['beta']->id}} data-type="trial" data-month="1">Trial</a>
                             <!-- <a class="subscription"  href="{{ route('front.home.payment', [$price_product['beta']->id])}}" >Buy</a> -->
                         @else
                             <a href="{{ route('login') }}">{{__('front_end.login')}}</a>
@@ -681,7 +681,7 @@ background-size: cover;
                     <div class="ptable-action">
                         @if (Auth::check())
                             <!-- <a class="subscription" data-id={{$price_product['alpha']->id}} data-type="buy" data-month="1">Buy</a> -->
-                            <a class="subscription" data-id={{$price_product['alpha']->id}} data-type="trial" data-month="1">Trial</a>
+                            <a class="subscription"  data-product="alpha" data-id={{$price_product['alpha']->id}} data-type="trial" data-month="1">Trial</a>
                         @else
                             <a href="{{ route('login') }}">{{__('front_end.login')}}</a>
                         @endif
@@ -714,7 +714,7 @@ background-size: cover;
                 <div class="ptable-footer">
                     <div class="ptable-action">
                     @if (Auth::check())
-                    <a class="subscription" data-id={{$price_product['alpha']->id}} data-type="trial" data-month="1">Trial</a>
+                    <a class="subscription"  data-product="alpha" data-id={{$price_product['alpha']->id}} data-type="trial" data-month="1">Trial</a>
                             <!-- <a class="subscription"  href="{{ route('front.home.payment', [$price_product['alpha']->id])}}" >Buy</a> -->
 
                         @else
@@ -746,7 +746,7 @@ background-size: cover;
                 <div class="ptable-footer">
                     <div class="ptable-action">
                         @if (Auth::check())
-                        <a class="subscription" data-id={{$price_product['alpha']->id}} data-type="trial" data-month="1">Trial</a>
+                        <a class="subscription" data-product="alpha" data-id={{$price_product['alpha']->id}} data-type="trial" data-month="1">Trial</a>
                         <!-- <a class="subscription"  href="{{ route('front.home.payment', [$price_product['alpha']->id])}}" >Buy</a> -->
 
                         @else
@@ -812,7 +812,7 @@ background-size: cover;
                 <div class="ptable-footer">
                     <div class="ptable-action">
                         @if (Auth::check())
-                        <a class="subscription" data-id={{$price_product['greenstock']->id}} data-type="trial" data-month="1">Trial</a>
+                        <a class="subscription" data-product="greenstock" data-id={{$price_product['greenstock']->id}} data-type="trial" data-month="1">Trial</a>
                         <!-- <a class="subscription"  href="{{ route('front.home.payment', [$price_product['greenstock']->id])}}" >Buy</a> -->
 
                         @else
@@ -847,7 +847,7 @@ background-size: cover;
                 <div class="ptable-footer">
                     <div class="ptable-action">
                         @if (Auth::check())
-                        <a class="subscription" data-id={{$price_product['greenstock']->id}} data-type="trial" data-month="1">Trial</a>
+                        <a class="subscription" data-product="greenstock" data-id={{$price_product['greenstock']->id}} data-type="trial" data-month="1">Trial</a>
                         <!-- <a class="subscription"  href="{{ route('front.home.payment', [$price_product['greenstock']->id])}}" >Buy</a> -->
 
                         @else
@@ -879,7 +879,7 @@ background-size: cover;
                 <div class="ptable-footer">
                     <div class="ptable-action">
                         @if (Auth::check())
-                        <a class="subscription" data-id={{$price_product['greenstock']->id}} data-type="trial" data-month="1">Trial</a>
+                        <a class="subscription" data-product="greenstock" data-id={{$price_product['greenstock']->id}} data-type="trial" data-month="1">Trial</a>
                         <!-- <a class="subscription"  href="{{ route('front.home.payment', [$price_product['greenstock']->id])}}" >Buy</a> -->
                         @else
                             <a href="{{ route('login') }}">{{__('front_end.login')}}</a>
@@ -912,6 +912,7 @@ background-size: cover;
             let id = $(this).data('id');
             let type = $(this).data('type');
             let month = $(this).data('month');
+            let product = $(this).data('product');
             $.ajax({
                 url: "{{ route('api.buy-product') }}",
                 type: 'POST',
@@ -923,6 +924,15 @@ background-size: cover;
                 success: function(data) {
                     if (data.status == 'success') {
                         alert('Buy product success');
+                        if(product == 'alpha') {
+                            window.open( "{{ route('front.home.green-alpha') }}", '_blank');
+                        }
+                        if(product=='beta'){
+                            window.open("{{ route('front.home.green-beta') }}", '_blank');
+                        }
+                        if(product=='greenstock'){
+                            window.open(`{{ route('front.home.green-stock') }}`, '_blank');
+                        }
                     } else {
                         alert('Buy product fail');
                     }

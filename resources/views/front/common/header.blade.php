@@ -28,6 +28,22 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{route('front.home.mission')}}">{{ __('front_end.Mission') }}</a>
             </li>
+            <li class="nav-item dropdown">
+                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-bs-expanded="false">
+                    {{ __('front_end.product') }}
+                </a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{{ route('front.home.green-beta') }}">
+                        Green Beta
+                    </a>
+                    <a class="dropdown-item" href="{{ route('front.home.green-alpha') }}">
+                        Green Alpha
+                    </a>
+                    <a class="dropdown-item" href="{{ route('front.home.green-stock') }}">
+                        Green Sock-NAS100
+                    </a>
+                </div>
+            </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{route('front.home.contact')}}">{{ __('front_end.Contact') }}</a>
             </li>

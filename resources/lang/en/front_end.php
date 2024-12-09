@@ -160,5 +160,5 @@ return [
     'trading_value_ratio'=>'TRADING VALUE RATIO',
     'my_company'=>'My Company',
     'my_watchlist' =>'My Watchlist',
-
+    "product"=>"Product",
 ];
