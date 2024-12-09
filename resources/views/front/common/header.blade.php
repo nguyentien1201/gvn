@@ -40,7 +40,7 @@
                         Green Alpha
                     </a>
                     <a class="dropdown-item" href="{{ route('front.home.green-stock') }}">
-                        Green Sock-NAS100
+                        Green Stock-NAS100
                     </a>
                 </div>
             </li>
