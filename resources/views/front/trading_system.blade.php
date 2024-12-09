@@ -583,7 +583,8 @@ background-size: cover;
                 <div class="ptable-footer">
                     <div class="ptable-action">
                         @if (Auth::check())
-                          <a class=""  href="{{ route('front.home.payment', [$price_product['beta']->id])}}" >Buy</a>
+                        <a class="subscription" data-id={{$price_product['beta']->id}} data-type="trial" data-month="1">Trial</a>
+                          <!-- <a class=""  href="{{ route('front.home.payment', [$price_product['beta']->id])}}" >Buy</a> -->
                             <!-- <a class="subscription disabled-link" data-id={{$price_product['beta']->id}} data-type="buy" data-month="2">Buy</a> -->
                         @else
                             <a href="{{ route('login') }}">{{__('front_end.login')}}</a>
@@ -614,7 +615,8 @@ background-size: cover;
                 <div class="ptable-footer">
                     <div class="ptable-action">
                     @if (Auth::check())
-                            <a class="subscription"  href="{{ route('front.home.payment', [$price_product['beta']->id])}}" >Buy</a>
+                    <a class="subscription" data-id={{$price_product['beta']->id}} data-type="trial" data-month="1">Trial</a>
+                            <!-- <a class="subscription"  href="{{ route('front.home.payment', [$price_product['beta']->id])}}" >Buy</a> -->
                         @else
                             <a href="{{ route('login') }}">{{__('front_end.login')}}</a>
                         @endif
@@ -712,7 +714,8 @@ background-size: cover;
                 <div class="ptable-footer">
                     <div class="ptable-action">
                     @if (Auth::check())
-                            <a class="subscription"  href="{{ route('front.home.payment', [$price_product['alpha']->id])}}" >Buy</a>
+                    <a class="subscription" data-id={{$price_product['alpha']->id}} data-type="trial" data-month="1">Trial</a>
+                            <!-- <a class="subscription"  href="{{ route('front.home.payment', [$price_product['alpha']->id])}}" >Buy</a> -->
 
                         @else
                             <a href="{{ route('login') }}">{{__('front_end.login')}}</a>
@@ -743,7 +746,8 @@ background-size: cover;
                 <div class="ptable-footer">
                     <div class="ptable-action">
                         @if (Auth::check())
-                        <a class="subscription"  href="{{ route('front.home.payment', [$price_product['alpha']->id])}}" >Buy</a>
+                        <a class="subscription" data-id={{$price_product['alpha']->id}} data-type="trial" data-month="1">Trial</a>
+                        <!-- <a class="subscription"  href="{{ route('front.home.payment', [$price_product['alpha']->id])}}" >Buy</a> -->
 
                         @else
                             <a href="{{ route('login') }}">{{__('front_end.login')}}</a>
@@ -808,7 +812,8 @@ background-size: cover;
                 <div class="ptable-footer">
                     <div class="ptable-action">
                         @if (Auth::check())
-                        <a class="subscription"  href="{{ route('front.home.payment', [$price_product['greenstock']->id])}}" >Buy</a>
+                        <a class="subscription" data-id={{$price_product['greenstock']->id}} data-type="trial" data-month="1">Trial</a>
+                        <!-- <a class="subscription"  href="{{ route('front.home.payment', [$price_product['greenstock']->id])}}" >Buy</a> -->
 
                         @else
                             <a href="{{ route('login') }}">{{__('front_end.login')}}</a>
@@ -842,7 +847,8 @@ background-size: cover;
                 <div class="ptable-footer">
                     <div class="ptable-action">
                         @if (Auth::check())
-                        <a class="subscription"  href="{{ route('front.home.payment', [$price_product['greenstock']->id])}}" >Buy</a>
+                        <a class="subscription" data-id={{$price_product['greenstock']->id}} data-type="trial" data-month="1">Trial</a>
+                        <!-- <a class="subscription"  href="{{ route('front.home.payment', [$price_product['greenstock']->id])}}" >Buy</a> -->
 
                         @else
                             <a href="{{ route('login') }}">{{__('front_end.login')}}</a>
@@ -873,7 +879,8 @@ background-size: cover;
                 <div class="ptable-footer">
                     <div class="ptable-action">
                         @if (Auth::check())
-                        <a class="subscription"  href="{{ route('front.home.payment', [$price_product['greenstock']->id])}}" >Buy</a>
+                        <a class="subscription" data-id={{$price_product['greenstock']->id}} data-type="trial" data-month="1">Trial</a>
+                        <!-- <a class="subscription"  href="{{ route('front.home.payment', [$price_product['greenstock']->id])}}" >Buy</a> -->
                         @else
                             <a href="{{ route('login') }}">{{__('front_end.login')}}</a>
                         @endif
@@ -900,28 +907,28 @@ background-size: cover;
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
-        // $('.ptable-action .subscription').click(function(e) {
-        //     e.preventDefault();
-        //     let id = $(this).data('id');
-        //     let type = $(this).data('type');
-        //     let month = $(this).data('month');
-        //     $.ajax({
-        //         url: "{{ route('api.buy-product') }}",
-        //         type: 'POST',
-        //         data: {
-        //             id: id,
-        //             type: type,
-        //             month: month
-        //         },
-        //         success: function(data) {
-        //             if (data.status == 'success') {
-        //                 alert('Buy product success');
-        //             } else {
-        //                 alert('Buy product fail');
-        //             }
-        //         }
-        //     });
-        // });
+        $('.ptable-action .subscription').click(function(e) {
+            e.preventDefault();
+            let id = $(this).data('id');
+            let type = $(this).data('type');
+            let month = $(this).data('month');
+            $.ajax({
+                url: "{{ route('api.buy-product') }}",
+                type: 'POST',
+                data: {
+                    id: id,
+                    type: type,
+                    month: month
+                },
+                success: function(data) {
+                    if (data.status == 'success') {
+                        alert('Buy product success');
+                    } else {
+                        alert('Buy product fail');
+                    }
+                }
+            });
+        });
     });
 </script>
 
