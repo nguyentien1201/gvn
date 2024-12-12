@@ -296,9 +296,9 @@ class GreenAlpha extends Model
         }
         return $formattedResults;
     }
-    public function getProfitByMonth($id,$current_version='10.7.10'){
-
-        $stocksAndSignals = GreenAlphaPortfolio::where('code_id',$id)->orderBy('month_year','asc')->select('profit',
+    public function getProfitByMonth($id){
+        $current_version= config('config.current_version');
+        $stocksAndSignals = GreenAlphaPortfolio::where('code_id',$id)->where('version',$current_version)->orderBy('month_year','asc')->select('profit',
         DB::raw('STR_TO_DATE(month_year, "%m/%Y") as month_year')
         )->get();
         foreach ($stocksAndSignals as $item) {
@@ -308,7 +308,8 @@ class GreenAlpha extends Model
     }
     public function getCurrentYearProfitSum()
     {
-        $profit = GreenAlphaPortfolio::select('code_id','month_year','profit','code')->orderBy('code_id','asc')->orderBy('month_year','desc')->get();
+        $current_version= config('config.current_version');
+        $profit = GreenAlphaPortfolio::select('code_id','month_year','profit','code')->where('version',$current_version)->orderBy('code_id','asc')->orderBy('month_year','desc')->get();
         // Get the current year
         $currentYear = date('Y');
 
@@ -345,7 +346,7 @@ class GreenAlpha extends Model
         $fileUrl = config('drivefile.drivefile.nas100');
         $alphas = $this->googleDriveService->getSheetData($fileUrl, 'Alpha!A1:H');
         array_shift($alphas);
-
+        $current_version = config('config.current_version');
         foreach($alphas as $item){
             if(empty($item[0])) continue;
             try {
@@ -358,6 +359,7 @@ class GreenAlpha extends Model
                     'signal_close' => $item[4] ?? null,
                     'price_close' =>!empty($item[5]) ? (float)$item[5] : null,
                     'profit' =>!empty($item[7]) ? (float)$item[7] : null,
+                    'version'=>$current_version
 
                 ];
                 $existingRecord = GreenAlpha::where(['code'=>$greenAlpha['code'],'price_open'=>$greenAlpha['price_open'],'open_time'=> $greenAlpha['open_time']] )->first();

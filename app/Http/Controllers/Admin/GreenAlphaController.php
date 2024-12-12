@@ -144,6 +144,7 @@ class GreenAlphaController extends AdminController
     }
     public function importPortfolio(Request $request)
     {
+        $current_version = config('config.current_version');
         $path = $request->file('select_file');
         $arrayData = Excel::toArray(null, $path);
 
@@ -163,7 +164,7 @@ class GreenAlphaController extends AdminController
         $dataRows = array_slice($sheetData, 1);
 
         foreach ($dataRows as $row) {
-            if(empty($row[0])) continue;
+            if(empty($row[0])) break;
             $code ='';
             foreach ($row as $key => $value) {
                 if($key == 0) {
@@ -175,7 +176,8 @@ class GreenAlphaController extends AdminController
                     'code_id'=> $listCode[$code],
                     'code'=> $code,
                     'month_year'=>$header[$key],
-                    'profit'=>$value
+                    'profit'=>$value,
+                    'version'=>$current_version
                 ];
 
                 $existingRecord = GreenAlphaPortfolio::where(['code_id'=>$data['code_id'],'month_year'=>$data['month_year']])->first();
