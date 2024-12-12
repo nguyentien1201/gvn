@@ -47,7 +47,7 @@ Chúc anh chị có một ngày đầu tư thật nhiều thuận lợi và nế
     'top_signal'=>'Top tín hiệu phiên trước đó',
     'green_allpha'=>'Giao dịch với GREEN ALPHA',
     'description_green_alpha'=>'Xin chào anh chị,
-Em tên là Green Alpha - 9.5.8, hãy để em tìm giúp anh chị xem có cơ hội nào để anh chị giao dịch kiếm lợi nhuận ngay trong ngày hôm nay không nhé.
+Em tên là Green Alpha - 10.7.10, hãy để em tìm giúp anh chị xem có cơ hội nào để anh chị giao dịch kiếm lợi nhuận ngay trong ngày hôm nay không nhé.
 
 Người ta nói "Đồng tiền đi liền khúc ruột", nếu anh chị có đau ruột hôm nay thì đừng ngần ngại gửi ý kiến đến các sếp nhà GVN của em!',
     'description_title_green_alpha'=>' Green Alpha là một robot với sự tích hợp đa tầng của các Indicator ngắn hạn, giao dịch với phương pháp Day Trading, là một robot giao dịch ngắn hạn trong phiên giao dịch,  tìm kiếm những điểm vào có xác suất chiến thắng cao và được lặp lại trong nhiều phiên. Green Alpha thích hợp cho các nhà đầu tư tìm kiếm các cơ hội nhanh, các nhà đầu tư dành phần lớn thời gian cho việc giao dịch và yêu thích sự phấn khích của nhịp độ thị trường hằng ngày.',

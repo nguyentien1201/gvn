@@ -47,7 +47,7 @@ return [
     'top_signal'=>'Top signals in previous session',
     'green_allpha'=>'Trading on GREEN ALPHA',
     'description_green_alpha'=>"<span class='title-trading-first label-color'>Hello,</span><br>
-           I am Green Alpha - 9.5.8. Let me help you find any opportunities for profit during your trading today.<br>
+           I am Green Alpha - 10.7.10. Let me help you find any opportunities for profit during your trading today.<br>
            People say 'A fool and his money are soon parted'. If you wish to not be a fool today, please don't hesitate to send your direct messages to my bosses at GVN!",
     'description_title_green_alpha'=>"Green Alpha is an intelligent automated trading robot, designed to maximize short-term trading opportunities in the market. With the ability to analyze multiple levels of short-term indicators and the Day Trading method, Green Alpha helps investors find entry points with high and stable winning probability. It's suitable for investors who prefer active trading and the fast daily pace of the market.",
     'profit_month_current'=>'Profit Month Current',
