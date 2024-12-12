@@ -19,7 +19,7 @@ class GreenAlpha extends Model
 
     protected $fillable = [
         'code', 'price_open', 'open_time', 'signal_close', 'price_close', 'price_cumulative_from', 'price_cumulative_to', 'profit', 'close_time', 'last_sale', 'signal_open',
-        'total_trade','win_ratio'
+        'total_trade','win_ratio','version'
     ];
         protected $casts = [
         'open_time' => 'date',

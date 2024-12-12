@@ -15,7 +15,7 @@ class GreenAlphaPortfolio extends Model
     public $table = 'green_alpha_portfolio';
 
     protected $fillable = [
-        'month_year', 'profit', 'code_id','code','win_ratio','total_trade'
+        'month_year', 'profit', 'code_id','code','win_ratio','total_trade','version'
     ];
     public function getPortfolio($id){
         $data  = self::where('code_id',$id)->select('id','code_id',
