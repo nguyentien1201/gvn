@@ -196,10 +196,10 @@ class GreenAlpha extends Model
         return $dataSelect;
     }
 
-    public function getDataChartSignals(){
+    public function getDataChartSignals($current_version='10.7.10'){
         $alphaStock = config('stock.green-alpha');
-        $stocksAndSignals = MstStock::with(['AlphaSignal'=> function($query){
-            $query->select('*')->orderBy('total_trade','desc')->first();
+        $stocksAndSignals = MstStock::with(['AlphaSignal'=> function($query) use($current_version){
+            $query->select('*')->where('version',$current_version)->orderBy('total_trade','desc')->first();
         }])->whereIn('code',$alphaStock)->orderBy('id','asc')->get();
         $dataSelect = [];
         foreach($stocksAndSignals as $key => $value){
@@ -296,7 +296,7 @@ class GreenAlpha extends Model
         }
         return $formattedResults;
     }
-    public function getProfitByMonth($id){
+    public function getProfitByMonth($id,$current_version='10.7.10'){
 
         $stocksAndSignals = GreenAlphaPortfolio::where('code_id',$id)->orderBy('month_year','asc')->select('profit',
         DB::raw('STR_TO_DATE(month_year, "%m/%Y") as month_year')
@@ -373,10 +373,10 @@ class GreenAlpha extends Model
                 }
     }
 }
-public function getCurrentMonthProfitSum()
+public function getCurrentMonthProfitSum($current_version='10.7.10')
     {
 
-        $profitMonth = GreenAlpha::with('mstStock')->whereBetween('close_time', [Carbon::now()->startOfMonth(), Carbon::now()->endOfMonth()])->orderBy('code','asc')->get();
+        $profitMonth = GreenAlpha::with('mstStock')->where('version',$current_version)->whereBetween('close_time', [Carbon::now()->startOfMonth(), Carbon::now()->endOfMonth()])->orderBy('code','asc')->get();
 
         $groupedByCode = $profitMonth->groupBy('code');
 

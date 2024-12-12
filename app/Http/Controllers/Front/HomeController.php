@@ -179,6 +179,7 @@ class HomeController
     {
         $user = \Auth::user();
         $role_id = $user->role_id ?? null;
+        $current_version = config('config.current_version');
         $subscription = Subscription::where('user_id', $user->id)->where('product_id',1)->where('end_date' ,'>=', now())->first();
         if(empty($subscription) && $role_id != 1){
             return redirect()->route('front.home.trading-system');
@@ -193,8 +194,8 @@ class HomeController
             }
         }
 
-        $data_chart = (new GreenAlpha())->getDataChartSignals();
-        $dataChartProfit = (new GreenAlpha())->getCurrentMonthProfitSum();
+        $data_chart = (new GreenAlpha())->getDataChartSignals($current_version);
+        $dataChartProfit = (new GreenAlpha())->getCurrentMonthProfitSum($current_version);
 
         $data_chart_default = $this->getHistoryAlphaSignal(1);
         $code = $data_chart->pluck('code')->toArray();
