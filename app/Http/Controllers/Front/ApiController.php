@@ -52,7 +52,7 @@ class ApiController
             }
             $signalData['profit'] = $profit;
             $existSignal->update($signalData);
-            $message = $signal[0]."</b>\nSignal: <b>".$signalData['signal_close']."</b>\nPrice Close: <b>".$signalData['price_close']."</b>\n"."Profit: <b>".round($profit, 2)." pts</b>"."\nTime: <b>".$timeSendTelegram."</b>";
+            $message = "Symbol: <b>".$signal[0]."</b>\nSignal: <b>".$signalData['signal_close']."</b>\nPrice Close: <b>".$signalData['price_close']."</b>\n"."Profit: <b>".round($profit, 2)." pts</b>"."\nTime: <b>".$timeSendTelegram."</b>";
         }
         if(in_array($signal[1],$signalOpen) ){
             $signalData = [
@@ -63,7 +63,7 @@ class ApiController
                 'version' =>$current_version
             ];
             GreenAlpha::create($signalData);
-            $message = $signal[0]."</b>\nSignal: <b>".$signalData['signal_open']."</b>\nPrice Open:  <b>".$signalData['price_open']."</b>\nTime: <b>".$timeSendTelegram."</b>";
+            $message = "Symbol: <b>".$signal[0]."</b>\nSignal: <b>".$signalData['signal_open']."</b>\nPrice Open:  <b>".$signalData['price_open']."</b>\nTime: <b>".$timeSendTelegram."</b>";
         }
         try {
             Notification::route('telegram', config('telegram.group_id'))->notify(new SendTelegramNotification($message));
