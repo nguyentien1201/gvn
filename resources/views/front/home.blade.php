@@ -55,12 +55,45 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
     background: no-repeat center center scroll;
     background-size: cover;
 }
-
+@media (max-width: 768px) {
+    #btn_telegram {
+      bottom: 10px;
+      right: 10px;
+      width: 50px;
+      height: 50px;
+    }
+    #btn_telegram img {
+      width: 20px;
+      height: 20px;
+    }
+  }
     </style>
 
 </head>
 
 <body>
+<div style="position: fixed; bottom: 20px; right: 20px; text-align: center; z-index: 1000;">
+  <a href="https://t.me/{{config('config.telegram_user')}}" target="_blank" style="text-decoration: none;">
+    <button style="
+       background-color: #33a853;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    "
+    onmouseover="this.style.backgroundColor='#33a853';"
+    onmouseout="this.style.backgroundColor='#198754';">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram" style="width: 30px; height: 30px;">
+    </button>
+  </a>
+</div>
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K38F4SGX"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
