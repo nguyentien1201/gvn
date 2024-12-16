@@ -85,7 +85,8 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
 </head>
 
 <body>
-<div style="position: fixed; bottom: 20px; right: 20px; text-align: center; z-index: 1000;">
+    @auth
+    <div style="position: fixed; bottom: 20px; right: 20px; text-align: center; z-index: 1000;">
 <div class="sc-9qme4p-0 hELAUe"><button class="decription_telegram"><span class="sc-1ee9gtf-2 bxZLwE">{{__('front_end.chat_with_me')}}</span></button></div>
   <a href="https://t.me/{{config('config.telegram_user')}}" target="_blank" style="text-decoration: none;">
     <button style="
@@ -109,6 +110,8 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
     </button>
   </a>
 </div>
+    @endauth
+
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K38F4SGX"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
