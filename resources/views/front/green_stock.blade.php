@@ -464,6 +464,19 @@
         .custom-alert .btn-close {
             float: right;
         }
+        .decription_telegram {
+
+padding: 0.75rem;
+  border: 0px;
+  width: max-content;
+  max-width: 280px;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  background: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+  border-radius: 1.25rem;
+  text-align: initial;
+}
     </style>
 
 </head>
@@ -476,7 +489,32 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" />
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css" />
-
+@auth
+    <div style="position: fixed; bottom: 20px; right: 20px; text-align: center; z-index: 1000;">
+<div class="sc-9qme4p-0 hELAUe"><button class="decription_telegram"><span class="sc-1ee9gtf-2 bxZLwE">{{__('front_end.chat_with_me')}}</span></button></div>
+  <a href="https://t.me/{{config('config.telegram_user')}}" target="_blank" style="text-decoration: none;">
+    <button style="
+        float: right;
+      background-color: #33a853;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    "
+    onmouseover="this.style.backgroundColor='#33a853';"
+    onmouseout="this.style.backgroundColor='#198754';">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram" style="width: 30px; height: 30px;">
+    </button>
+  </a>
+</div>
+    @endauth
 
 <!-- End Google Tag Manager (noscript) -->
     <!-- Navigation Bar -->
