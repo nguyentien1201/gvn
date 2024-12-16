@@ -571,6 +571,7 @@ padding: 0.75rem;
                 <div class="ptable-single">
                 <div class="ptable-header">
                     <div class="ptable-title">
+
                     <h2>{{__('front_end.1_month')}}</h2>
                     </div>
                     <div class="ptable-price">
@@ -580,7 +581,7 @@ padding: 0.75rem;
                 <div class="ptable-body">
                     <div class="ptable-description">
                     <ul>
-                        <li>{{$price_product['beta']->description}}</li>
+                        <li>{{__('front_end.product_free')}}</li>
                         <li>{{__('front_end.1_month')}}</li>
                     </ul>
                     </div>
@@ -710,7 +711,7 @@ padding: 0.75rem;
                 <div class="ptable-body">
                     <div class="ptable-description">
                     <ul>
-                        <li>{{$price_product['alpha']->description}}</li>
+                        <li>{{__('front_end.product_free')}}</li>
                         <li>{{__('front_end.1_month')}}</li>
                     </ul>
                     </div>
@@ -744,7 +745,7 @@ padding: 0.75rem;
                 <div class="ptable-body">
                     <div class="ptable-description">
                     <ul>
-                        <li>{{$price_product['alpha']->description}}</li>
+                        <li>{{__('front_end.product_free')}}</li>
                         <li>{{__('front_end.1_month')}}</li>
                     </ul>
                     </div>
@@ -776,7 +777,7 @@ padding: 0.75rem;
                 <div class="ptable-body">
                     <div class="ptable-description">
                     <ul>
-                        <li>{{$price_product['alpha']->description}}</li>
+                        <li>{{__('front_end.product_free')}}</li>
                         <li>{{__('front_end.1_month')}}</li>
                     </ul>
                     </div>
@@ -842,7 +843,7 @@ padding: 0.75rem;
                 <div class="ptable-body">
                     <div class="ptable-description">
                     <ul>
-                        <li>{{$price_product['greenstock']->description}}</li>
+                        <li>{{__('front_end.product_free')}}</li>
                         <li>{{__('front_end.1_month')}}</li>
                     </ul>
                     </div>
