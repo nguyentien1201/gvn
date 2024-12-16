@@ -67,15 +67,30 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
       height: 20px;
     }
   }
+  .decription_telegram {
+
+  padding: 0.75rem;
+    border: 0px;
+    width: max-content;
+    max-width: 280px;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    background: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    border-radius: 1.25rem;
+    text-align: initial;
+  }
     </style>
 
 </head>
 
 <body>
 <div style="position: fixed; bottom: 20px; right: 20px; text-align: center; z-index: 1000;">
+<div class="sc-9qme4p-0 hELAUe"><button class="decription_telegram"><span class="sc-1ee9gtf-2 bxZLwE">{{__('front_end.chat_with_me')}}</span></button></div>
   <a href="https://t.me/{{config('config.telegram_user')}}" target="_blank" style="text-decoration: none;">
     <button style="
-       background-color: #33a853;
+        float: right;
+      background-color: #33a853;
       color: white;
       border: none;
       border-radius: 50%;

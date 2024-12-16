@@ -161,4 +161,5 @@ return [
     'my_company'=>'My Company',
     'my_watchlist' =>'My Watchlist',
     "product"=>"Product",
+    'chat_with_me'=>'Chat with me!'
 ];

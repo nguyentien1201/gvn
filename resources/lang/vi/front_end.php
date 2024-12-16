@@ -161,4 +161,5 @@ Người ta nói "Đồng tiền đi liền khúc ruột", nếu anh chị có �
     'trading_value_ratio'=>'TỶ TRỌNG GIÁ TRỊ GIAO DỊCH NGÀNH',
     'follow_list'=>'Thêm Danh sách yêu thích',
     "product"=>"Sản Phẩm",
+    'chat_with_me'=>'Chat với chúng tôi'
 ];
