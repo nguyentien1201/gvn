@@ -33,6 +33,8 @@ class ApiController
         $timeFormat = Carbon::parse($time)->format('Y-m-d H:i:s');
         $timeSendTelegram = Carbon::parse($time)->format('H:i:s Y-m-d');
         $current_version = config('config.current_version');
+        $today = Carbon::today()->toDateString();
+        $no_trading = GreenAlpha::whereDate('open_time', '=', $today)->where('code',$listCode[$signal[0]])->count();
         if(in_array($signal[1],$signalClose) ){
             $signalData = [
                 'code' => $listCode[$signal[0]],
@@ -44,8 +46,7 @@ class ApiController
 
             $existSignal = GreenAlpha::where('code', $listCode[$signal[0]])->whereNull('close_time')->whereDate('open_time', '=', $signal[3])->first();
             if(empty($existSignal)) return  ['status' => 'error', 'message' => 'No signal recived'];
-            $today = Carbon::today()->toDateString();
-            $no_trading = GreenAlpha::whereDate('open_time', '=', $today)->where('code',$listCode[$signal[0]])->count();
+
             $profit =0;
             $open_price = (float)$existSignal->price_open ?? 0;
             if($existSignal->signal_open =='BUY'){
@@ -66,8 +67,10 @@ class ApiController
                 'open_time'=> $timeFormat,
                 'version' =>$current_version
             ];
+
+            $no_trading = $no_trading+1;
             GreenAlpha::create($signalData);
-            $message = "Symbol: <b>".$signal[0]." - No: 1</b>\nSignal: <b>".$signalData['signal_open']."</b>\nPrice Open:  <b>".$signalData['price_open']."</b>\nTime: <b>".$timeSendTelegram."</b>";
+            $message = "Symbol: <b>".$signal[0]."- No: ".$no_trading ."</b>\nSignal: <b>".$signalData['signal_open']."</b>\nPrice Open:  <b>".$signalData['price_open']."</b>\nTime: <b>".$timeSendTelegram."</b>";
         }
         try {
             Notification::route('telegram', config('telegram.group_id'))->notify(new SendTelegramNotification($message));
