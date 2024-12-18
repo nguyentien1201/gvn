@@ -44,15 +44,19 @@ class ApiController
 
             $existSignal = GreenAlpha::where('code', $listCode[$signal[0]])->whereNull('close_time')->whereDate('open_time', '=', $signal[3])->first();
             if(empty($existSignal)) return  ['status' => 'error', 'message' => 'No signal recived'];
+            $today = Carbon::today()->toDateString();
+            $no_trading = GreenAlpha::whereDate('open_time', '=', $today)->where('code',$listCode[$signal[0]])->count();
             $profit =0;
+            $open_price = (float)$existSignal->price_open ?? 0;
             if($existSignal->signal_open =='BUY'){
                 $profit = (float)$signalData['price_close'] - (float)$existSignal->price_open;
             }else{
                 $profit = (float)$existSignal->price_open - (float)$signalData['price_close'] ;
             }
             $signalData['profit'] = $profit;
+            $perce_profit = $profit/$open_price*100;
             $existSignal->update($signalData);
-            $message = "Symbol: <b>".$signal[0]."</b>\nSignal: <b>".$signalData['signal_close']."</b>\nPrice Close: <b>".$signalData['price_close']."</b>\n"."Profit: <b>".round($profit, 2)." pts</b>"."\nTime: <b>".$timeSendTelegram."</b>";
+            $message = "Symbol: <b>".$signal[0]."- No: ".$no_trading."</b>\nSignal: <b>".$signalData['signal_close']."</b>\nPrice Close: <b>".$signalData['price_close']."</b>\n"."Profit: <b>".round($perce_profit).'%('.round($profit, 2)." pts)</b>"."\nTime: <b>".$timeSendTelegram."</b>";
         }
         if(in_array($signal[1],$signalOpen) ){
             $signalData = [
@@ -63,7 +67,7 @@ class ApiController
                 'version' =>$current_version
             ];
             GreenAlpha::create($signalData);
-            $message = "Symbol: <b>".$signal[0]."</b>\nSignal: <b>".$signalData['signal_open']."</b>\nPrice Open:  <b>".$signalData['price_open']."</b>\nTime: <b>".$timeSendTelegram."</b>";
+            $message = "Symbol: <b>".$signal[0]."- No: 1</b>\nSignal: <b>".$signalData['signal_open']."</b>\nPrice Open:  <b>".$signalData['price_open']."</b>\nTime: <b>".$timeSendTelegram."</b>";
         }
         try {
             Notification::route('telegram', config('telegram.group_id'))->notify(new SendTelegramNotification($message));
