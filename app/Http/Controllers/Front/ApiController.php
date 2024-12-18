@@ -67,10 +67,14 @@ class ApiController
                 'open_time'=> $timeFormat,
                 'version' =>$current_version
             ];
-
+            if($signal[1] =='BUY'){
+                $color = '🟢';
+            }else{
+                $color = '🔴';
+            }
             $no_trading = $no_trading+1;
             GreenAlpha::create($signalData);
-            $message = "Symbol: <b>".$signal[0]."- No: ".$no_trading ."</b>\nSignal: <b>".$signalData['signal_open']."</b>\nPrice Open:  <b>".$signalData['price_open']."</b>\nTime: <b>".$timeSendTelegram."</b>";
+            $message = "Symbol: <b>".$signal[0]."- No: ".$no_trading ."</b>\nSignal: <b>".$signalData['signal_open'].$color."</b>\nPrice Open:  <b>".$signalData['price_open']."</b>\nTime: <b>".$timeSendTelegram."</b>";
         }
         try {
             Notification::route('telegram', config('telegram.group_id'))->notify(new SendTelegramNotification($message));

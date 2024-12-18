@@ -748,7 +748,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     targets: 7, // Index of the date column
                     createdCell: function (td, cellData, rowData, row, col) {
                         if (cellData >= 0) {
-                            color = '#b6d7a8';
+                            color = '#008000';
                         } else {
                             color = '#e06666';
                         }
@@ -766,7 +766,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     targets: 9, // Index of the date column
                     createdCell: function (td, cellData, rowData, row, col) {
                         if (cellData >= 0) {
-                            color = '#b6d7a8';
+                            color = '#008000';
                         } else {
                             color = '#e06666';
                         }
