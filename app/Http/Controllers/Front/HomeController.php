@@ -44,67 +44,67 @@ class HomeController
         // if($subscription->isEmpty() && $role_id != 1){
         //     return redirect()->route('front.home.trading-system');
         // }
-        if(!\Auth::check()){
-            foreach ($signals as $key => $value) {
-                $value['open_time'] = 'fas fa-lock';
-                $value['price_open'] = 'fas fa-lock';
-                $value['trend_price'] = 'fas fa-lock';
-                $value['price_close'] = 'fas fa-lock';
-                $value['close_time'] = 'fas fa-lock';
-                $signals[$key] = $value;
-            }
+        // if(!\Auth::check()){
+        //     foreach ($signals as $key => $value) {
+        //         $value['open_time'] = 'fas fa-lock';
+        //         $value['price_open'] = 'fas fa-lock';
+        //         $value['trend_price'] = 'fas fa-lock';
+        //         $value['price_close'] = 'fas fa-lock';
+        //         $value['close_time'] = 'fas fa-lock';
+        //         $signals[$key] = $value;
+        //     }
 
-            foreach ($green_data as $key => $value) {
-                $value['code'] = 'fas fa-lock';
-                $value['company_name'] = 'fas fa-lock';
-                $value['current_price'] = 'fas fa-lock';
-                $value['price'] = 'fas fa-lock';
-                $value['time'] = 'fas fa-lock';
-                $green_data[$key] = $value;
+        //     foreach ($green_data as $key => $value) {
+        //         $value['code'] = 'fas fa-lock';
+        //         $value['company_name'] = 'fas fa-lock';
+        //         $value['current_price'] = 'fas fa-lock';
+        //         $value['price'] = 'fas fa-lock';
+        //         $value['time'] = 'fas fa-lock';
+        //         $green_data[$key] = $value;
 
-            }
-        }else {
-            $user = \Auth::user();
-            $role_id = $user->role_id ?? null;
-            $subscriptionBeta = Subscription::where('user_id', $user->id)->where('product_id',2)->where('end_date' ,'>=', now())->first();
-            $subscriptionGreenStock = Subscription::where('user_id', $user->id)->where('product_id',3)->where('end_date' ,'>=', now())->first();
+        //     }
+        // }else {
+        //     $user = \Auth::user();
+        //     $role_id = $user->role_id ?? null;
+        //     $subscriptionBeta = Subscription::where('user_id', $user->id)->where('product_id',2)->where('end_date' ,'>=', now())->first();
+        //     $subscriptionGreenStock = Subscription::where('user_id', $user->id)->where('product_id',3)->where('end_date' ,'>=', now())->first();
 
-            if(empty($subscriptionBeta) && $role_id != 1){
-                foreach ($signals as $key => $value) {
-                    $value['open_time'] = 'fas fa-lock';
-                    $value['price_open'] = 'fas fa-lock';
-                    $value['price_close'] = 'fas fa-lock';
-                    $value['close_time'] = 'fas fa-lock';
-                    $signals[$key] = $value;
-                }
-            }
-            if(!empty($subscriptionBeta) && $subscriptionBeta['is_trial'] == 1 && $role_id != 1){
-                foreach ($signals as $key => $value) {
-                    $value['open_time'] = 'fas fa-lock';
-                    $value['price_open'] = 'fas fa-lock';
-                    $signals[$key] = $value;
-                }
-            }
+        //     if(empty($subscriptionBeta) && $role_id != 1){
+        //         foreach ($signals as $key => $value) {
+        //             $value['open_time'] = 'fas fa-lock';
+        //             $value['price_open'] = 'fas fa-lock';
+        //             $value['price_close'] = 'fas fa-lock';
+        //             $value['close_time'] = 'fas fa-lock';
+        //             $signals[$key] = $value;
+        //         }
+        //     }
+        //     if(!empty($subscriptionBeta) && $subscriptionBeta['is_trial'] == 1 && $role_id != 1){
+        //         foreach ($signals as $key => $value) {
+        //             $value['open_time'] = 'fas fa-lock';
+        //             $value['price_open'] = 'fas fa-lock';
+        //             $signals[$key] = $value;
+        //         }
+        //     }
 
-            if(empty($subscriptionGreenStock) && $role_id != 1){
-                foreach ($green_data as $key => $value) {
-                    $value['code'] = 'fas fa-lock';
-                    $value['company_name'] = 'fas fa-lock';
-                    $value['price'] = 'fas fa-lock';
-                    $value['time'] = 'fas fa-lock';
-                    $green_data[$key] = $value;
+        //     if(empty($subscriptionGreenStock) && $role_id != 1){
+        //         foreach ($green_data as $key => $value) {
+        //             $value['code'] = 'fas fa-lock';
+        //             $value['company_name'] = 'fas fa-lock';
+        //             $value['price'] = 'fas fa-lock';
+        //             $value['time'] = 'fas fa-lock';
+        //             $green_data[$key] = $value;
 
-                }
-            }
+        //         }
+        //     }
 
-            if(!empty($subscriptionGreenStock) && $subscriptionGreenStock['is_trial'] == 1 && $role_id != 1){
-                foreach ($green_data as $key => $value) {
-                    $value['price'] = 'fas fa-lock';
-                    $value['time'] = 'fas fa-lock';
-                    $green_data[$key] = $value;
-                }
-            }
-        }
+        //     if(!empty($subscriptionGreenStock) && $subscriptionGreenStock['is_trial'] == 1 && $role_id != 1){
+        //         foreach ($green_data as $key => $value) {
+        //             $value['price'] = 'fas fa-lock';
+        //             $value['time'] = 'fas fa-lock';
+        //             $green_data[$key] = $value;
+        //         }
+        //     }
+        // }
 
 
         $last_signal =  GreenAlpha::whereIn('close_time', function ($query) {
