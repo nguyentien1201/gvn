@@ -85,4 +85,23 @@ class ApiController
 
         return  ['status' => 'success', 'message' => 'Recived signal'];
     }
+    public function postSignalBeta(Request $request)
+    {
+
+        $request = Request::all();
+        \Log::info(json_encode($request));
+        return  ['status' => 'success', 'message' => 'Recived signal'];
+    //     $message ="";
+    //     // $param = $request['data'] ?? '';
+    //    $json_request = [
+    //         "data" => "GreenBeta ETHUSD BUY 19.1 2021.09.01 09:00",
+    //         "type" => 1
+    //     ];
+    //     $param = $json_request['data'] ?? '';
+    //     $type = $json_request['type'] ?? 0;
+    //     if(empty($param)){
+    //         return  ['status' => 'error', 'message' => 'No signal recived'];
+    //     }
+    //     $signal = explode(' ', $param);
+    }
 }

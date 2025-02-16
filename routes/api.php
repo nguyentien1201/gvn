@@ -21,5 +21,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::group([ 'namespace' => 'Front'], function () {
     Route::post('/recive-signal', 'ApiController@postSignal')->name('api.recive-signal');
+    Route::post('/recive-signal-beta ', 'ApiController@postSignalBeta')->name('api.recive-signal-beta');
 });
 

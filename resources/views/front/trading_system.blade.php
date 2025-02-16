@@ -614,19 +614,19 @@ padding: 0.75rem;
                 <div class="ptable-body">
                     <div class="ptable-description">
                     <ul>
-                        <li>{{__('front_end.product_free')}}</li>
-                        <li>{{__('front_end.1_month')}}</li>
+                        <li>{{__('front_end.comming_soon')}}</li>
+                        <li>{{__('front_end.6_month')}}</li>
                     </ul>
                     </div>
                 </div>
                 <div class="ptable-footer">
                     <div class="ptable-action">
                         @if (Auth::check())
-                        <a class="subscription" data-product="beta"  data-id={{$price_product['beta']->id}} data-type="trial" data-month="1">Trial</a>
+                        <a class="subscription" data-product="beta"  data-id={{$price_product['beta']->id}} data-type="trial" data-month="1">{{__('front_end.buy')}}</a>
                           <!-- <a class=""  href="{{ route('front.home.payment', [$price_product['beta']->id])}}" >Buy</a> -->
                             <!-- <a class="subscription disabled-link" data-id={{$price_product['beta']->id}} data-type="buy" data-month="2">Buy</a> -->
                         @else
-                            <a href="{{ route('login') }}">{{__('front_end.login')}}</a>
+                            <a disabled href="{{ route('login') }}">{{__('front_end.login')}}</a>
                         @endif
                     </div>
                 </div>
@@ -646,15 +646,15 @@ padding: 0.75rem;
                 <div class="ptable-body">
                     <div class="ptable-description">
                     <ul>
-                        <li>{{__('front_end.product_free')}}</li>
-                        <li>{{__('front_end.1_month')}}</li>
+                        <li>{{__('front_end.comming_soon')}}</li>
+                        <li>{{__('front_end.1_year')}}</li>
                     </ul>
                     </div>
                 </div>
                 <div class="ptable-footer">
                     <div class="ptable-action">
                     @if (Auth::check())
-                    <a class="subscription"  data-product="beta" data-id={{$price_product['beta']->id}} data-type="trial" data-month="1">Trial</a>
+                    <a class="subscription"  data-product="beta" data-id={{$price_product['beta']->id}} data-type="trial" data-month="1">{{__('front_end.buy')}}</a>
                             <!-- <a class="subscription"  href="{{ route('front.home.payment', [$price_product['beta']->id])}}" >Buy</a> -->
                         @else
                             <a href="{{ route('login') }}">{{__('front_end.login')}}</a>
@@ -745,8 +745,8 @@ padding: 0.75rem;
                 <div class="ptable-body">
                     <div class="ptable-description">
                     <ul>
-                        <li>{{__('front_end.product_free')}}</li>
-                        <li>{{__('front_end.1_month')}}</li>
+                        <li>{{__('front_end.comming_soon')}}</li>
+                        <li>{{__('front_end.6_month')}}</li>
                     </ul>
                     </div>
                 </div>

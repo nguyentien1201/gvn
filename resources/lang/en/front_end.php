@@ -116,7 +116,7 @@ return [
     'trend_signal_cutloss'=>'Trend signal cutloss.',
     'login_and_get'=>'Login <span class="custom-color-hand">FREE</span> and get:',
     'follow_trendprice'=>'Follow TRENDPRICE of all big market in the world',
-    'get_trial'=>'Get 1 month trial on 3 products of GVN',
+    'get_trial'=>'Get 6 month trial on 3 products of GVN',
     'personalize_stock'=>'Personalize your stocks of interest on GreenStock product',
     "1_month"=>"1 Month Term",
     "6_month"=>"6 Month Term",
@@ -161,5 +161,6 @@ return [
     'my_company'=>'My Company',
     'my_watchlist' =>'My Watchlist',
     "product"=>"Product",
-    'chat_with_me'=>'Chat with me!'
+    'chat_with_me'=>'Chat with me!',
+    'comming_soon'=>'Comming Soon',
 ];
