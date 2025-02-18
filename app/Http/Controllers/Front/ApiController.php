@@ -159,7 +159,7 @@ class ApiController
             $key_cache = Cache::has($code);
             $cachedData = Cache::get($code);
             \Log::info('cachedData:'.$cachedData);
-            Log::info('new_data:'.$new_data);
+            \Log::info('new_data:'.$new_data);
             if (!$key_cache) {
                 $cachedData = Cache::get($code);
                 // Nếu dữ liệu cũ khác thì cập nhật
