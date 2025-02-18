@@ -168,7 +168,10 @@ class ApiController
                 }
             }else {
                 Cache::put($code, $new_data, now()->endOfDay());
+
             }
+            $new = Cache::get($code);
+            \Log::info('cachedData:new '.$new);
             return  ['status' => 'success', 'message' => json_encode($request)];
         }
 
