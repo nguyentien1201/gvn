@@ -151,7 +151,7 @@ class ApiController
         }
          // type =2 update 5p
         if($type ==3){
-            $date = Carbon::now()->toDateString();
+
             $code = $codes[$signal[0]];
             $new_data = $signal[2];
             $cachedData = Cache::get($code);
@@ -164,6 +164,8 @@ class ApiController
                     Cache::forget($code); // Xóa cache cũ
                     Cache::put($code, $new_data, now()->endOfDay()); // Cập nhật cache mới
                 }
+            }else Ơ{
+                Cache::put($code, $new_data, now()->endOfDay());
             }
             return  ['status' => 'success', 'message' => json_encode($request)];
         }
