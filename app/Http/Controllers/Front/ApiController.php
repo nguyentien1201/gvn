@@ -153,12 +153,12 @@ class ApiController
         if($type ==3){
 
             $code = $codes[$signal[0]];
-            $new_data = $signal[2];
-            $cachedData = Cache::get($code);
+            $new_data = $signal[1];
 
-            if (Cache::has($code)) {
+            $key_cache = Cache::has($code);
+
+            if (!$key_cache) {
                 $cachedData = Cache::get($code);
-
                 // Nếu dữ liệu cũ khác thì cập nhật
                 if ($cachedData !== $new_data) {
                     Cache::forget($code); // Xóa cache cũ
