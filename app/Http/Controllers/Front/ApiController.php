@@ -10,6 +10,7 @@ use App\Models\MstStock;
 use Carbon\Carbon;
 use App\Notifications\SendTelegramNotification;
 use Illuminate\Support\Facades\Notification;
+use App\Models\GreenBeta;
 class ApiController
 {
     public function postSignal(Request $request)
@@ -90,18 +91,66 @@ class ApiController
 
         $request = Request::all();
         \Log::info(json_encode($request));
-        return  ['status' => 'success', 'message' => 'Recived signal'];
-    //     $message ="";
-    //     // $param = $request['data'] ?? '';
+
+        $message ="";
+        // $param = $request['data'] ?? '';
     //    $json_request = [
-    //         "data" => "GreenBeta ETHUSD BUY 19.1 2021.09.01 09:00",
+    //         "data" => "AUS200 TrendPrice UpTrend",
     //         "type" => 1
     //     ];
-    //     $param = $json_request['data'] ?? '';
-    //     $type = $json_request['type'] ?? 0;
-    //     if(empty($param)){
-    //         return  ['status' => 'error', 'message' => 'No signal recived'];
-    //     }
-    //     $signal = explode(' ', $param);
+        $param = $request['data'] ?? '';
+        $type = $request['type'] ?? 0;
+        if(empty($param)){
+            return  ['status' => 'error', 'message' => 'No signal recived'];
+        }
+        $signal = explode(' ', $param);
+        $codes = MstStock::pluck('id','code')->toArray();
+
+        // type =1 update trand price
+        if($type == 1){
+           $code = $codes[$signal[0]];
+            $greenBeta = [
+                'code' => $code,
+                'trend_price' => $signal[2] ?? null,
+            ];
+            $beta = GreenBeta::where('code', $code)
+            ->orderBy('open_time', 'desc')
+            ->first();
+            $beta->update($greenBeta);
+            return  ['status' => 'success', 'message' => 'Recived signal'];
+        }
+        $signalClose = ['TakeProfitBUY', 'CutLossBUY',];
+        $signalOpen = ['BUY', 'SELL'];
+        // type =2 update   7h
+        if($type ==2){
+            $code = $codes[$signal[0]];
+            $time = str_replace('.', '-',$signal[3]).' '.$signal[4];
+            $timeFormat = Carbon::parse($time)->format('Y-m-d H:i:s');
+            if(in_array($signal[1],$signalClose) ){
+                $greenBeta = [
+                    'code' => $code,
+                    'signal_close'=> $signal[1],
+                    'price_close'=> $signal[2],
+                    'close_time'=> $timeFormat,
+                ];
+                $existSignal = GreenBeta::where('code', $code)->whereNull('close_time') ->orderBy('open_time', 'desc')->first();
+                $existSignal->update($greenBeta);
+            }
+            if(in_array($signal[1],$signalOpen) ){
+                $signalData = [
+                    'code' => $code,
+                    'signal_open'=> $signal[1],
+                    'price_open'=> $signal[2],
+                    'open_time'=> $timeFormat,
+                ];
+                GreenBeta::create($signalData);
+            }
+            return  ['status' => 'success', 'message' => 'Recived signal'];
+        }
+         // type =2 update 5p
+        if($type ==3){
+            return  ['status' => 'success', 'message' => json_encode($request)];
+        }
+
     }
 }

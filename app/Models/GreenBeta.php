@@ -172,7 +172,7 @@ class GreenBeta extends Model
                 $formats = ['d-M-Y', 'Y-m-d', 'm/d/Y']; // Add more formats as needed
                 foreach ($formats as $format) {
                     try {
-                        $openTime =  Carbon::parse($item[2])->format('Y-m-d H:i:s');
+                        $openTime = Carbon::parse($item[2])->format('Y-m-d H:i:s');
                         break;
                     } catch (\Exception $e) {
 
