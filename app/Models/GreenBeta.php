@@ -10,6 +10,7 @@ use App\Models\SignalFree;
 use App\Service\GoogleDriveService;
 use DB;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Cache;
 class GreenBeta extends Model
 {
     use SoftDeletes;
@@ -86,6 +87,7 @@ class GreenBeta extends Model
         $data = $query->get();
         $result = [];
         foreach ($data as $key => $value) {
+            $last_sale = Cache::get($value->mstStock->code);
             $result[] = [
                 'signal_open' =>$value->signal_open,
                 'price_open' => $value->price_open,
@@ -93,7 +95,7 @@ class GreenBeta extends Model
                 'trend_price' => $value->trend_price ??'',
                 'price_better_buy' =>'',
                 'code' => $value->mstStock->code,
-                'last_sale' => $value->last_sale,
+                'last_sale' =>$last_sale ?? $value->last_sale,
                 'profit' => $value->calculateProfit(),
                 'signal_close' => $value->signal_close,
                 'price_close' => $value->price_close > 0 ? $value->price_close : null,

@@ -11,6 +11,7 @@ use Carbon\Carbon;
 use App\Notifications\SendTelegramNotification;
 use Illuminate\Support\Facades\Notification;
 use App\Models\GreenBeta;
+use Illuminate\Support\Facades\Cache;
 class ApiController
 {
     public function postSignal(Request $request)
@@ -143,12 +144,27 @@ class ApiController
                     'price_open'=> $signal[2],
                     'open_time'=> $timeFormat,
                 ];
+
                 GreenBeta::create($signalData);
             }
             return  ['status' => 'success', 'message' => 'Recived signal'];
         }
          // type =2 update 5p
         if($type ==3){
+            $date = Carbon::now()->toDateString();
+            $code = $codes[$signal[0]];
+            $new_data = $signal[2];
+            $cachedData = Cache::get($code);
+
+            if (Cache::has($code)) {
+                $cachedData = Cache::get($code);
+
+                // Nếu dữ liệu cũ khác thì cập nhật
+                if ($cachedData !== $new_data) {
+                    Cache::forget($code); // Xóa cache cũ
+                    Cache::put($code, $new_data, now()->endOfDay()); // Cập nhật cache mới
+                }
+            }
             return  ['status' => 'success', 'message' => json_encode($request)];
         }
 
