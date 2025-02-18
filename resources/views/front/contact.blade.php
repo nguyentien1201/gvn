@@ -327,8 +327,10 @@ padding: 0.75rem;
             <div class="col-12 col-sm-12 col-md-5 col-lg-5 contact-info" style="font-weight:bold">
                 <p style="font-size:larger"> <i>{{__('front_end.contact_info')}}</i></p>
                 <p><i class="fas fa-map-marker-alt"></i>{{__('front_end.address_info')}}</p>
-                <p><i class="fas fa-phone"></i>{{__('front_end.phone_contact')}}: 0909 889 889</p>
-                <p><i class="fas fa-envelope"></i> Email: support@gvn-fintrade.com</p>
+                <p><i class="fas fa-phone"></i>{{__('front_end.phone_contact')}}:(+84)354848375</p>
+                <p><i class="fas fa-envelope"></i> Email: admin@gvn-fintrade.com</p>
+                <p><i class="fas fa-clock"></i>  Mon-Sat</p>
+
             </div>
 
         </div>
