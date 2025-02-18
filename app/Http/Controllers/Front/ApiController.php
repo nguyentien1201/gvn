@@ -17,7 +17,7 @@ class ApiController
     public function postSignal(Request $request)
     {
         $request = Request::all();
-        \Log::info(json_encode($request));
+        \Log::info('Alpha: '.json_encode($request));
         $message ="";
         $param = $request['data'] ?? '';
         if(empty($param)){
@@ -91,9 +91,9 @@ class ApiController
     {
 
         $request = Request::all();
-        \Log::info(json_encode($request));
+        \Log::info('Beta:'.json_encode($request));
 
-        $message ="";
+
         // $param = $request['data'] ?? '';
     //    $json_request = [
     //         "data" => "AUS200 TrendPrice UpTrend",
@@ -106,7 +106,8 @@ class ApiController
         }
         $signal = explode(' ', $param);
         $codes = MstStock::pluck('id','code')->toArray();
-        $type =$signal[0];
+        $type = $signal[0];
+
         // type =1 update trand price
         if($type == 1){
            $code = $codes[$signal[1]];
@@ -150,6 +151,7 @@ class ApiController
             return  ['status' => 'success', 'message' => 'Recived signal'];
         }
          // type =2 update 5p
+         // {"data":"3 US30 44641.47 2025.02.18 00:00"}
         if($type ==3){
 
             $code = $codes[$signal[1]];
