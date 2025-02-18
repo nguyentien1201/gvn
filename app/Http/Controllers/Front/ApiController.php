@@ -154,13 +154,13 @@ class ApiController
 
             $code = $codes[$signal[0]];
             $new_data = $signal[1];
-
             $key_cache = Cache::has($code);
-
+            $cachedData = Cache::get($code);
+            \Log::info('cachedData:'.$cachedData);
             if (!$key_cache) {
                 $cachedData = Cache::get($code);
                 // Nếu dữ liệu cũ khác thì cập nhật
-                if ($cachedData !== $new_data) {
+                if ($cachedData != $new_data) {
                     Cache::forget($code); // Xóa cache cũ
                     Cache::put($code, $new_data, now()->endOfDay()); // Cập nhật cache mới
                 }
