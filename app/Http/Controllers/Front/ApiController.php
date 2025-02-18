@@ -164,7 +164,7 @@ class ApiController
                     Cache::forget($code); // Xóa cache cũ
                     Cache::put($code, $new_data, now()->endOfDay()); // Cập nhật cache mới
                 }
-            }else Ơ{
+            }else {
                 Cache::put($code, $new_data, now()->endOfDay());
             }
             return  ['status' => 'success', 'message' => json_encode($request)];
