@@ -100,19 +100,19 @@ class ApiController
     //         "type" => 1
     //     ];
         $param = $request['data'] ?? '';
-        $type = $request['type'] ?? 0;
+
         if(empty($param)){
             return  ['status' => 'error', 'message' => 'No signal recived'];
         }
         $signal = explode(' ', $param);
         $codes = MstStock::pluck('id','code')->toArray();
-
+        $type =$signal[0];
         // type =1 update trand price
         if($type == 1){
-           $code = $codes[$signal[0]];
+           $code = $codes[$signal[1]];
             $greenBeta = [
                 'code' => $code,
-                'trend_price' => $signal[2] ?? null,
+                'trend_price' => $signal[3] ?? null,
             ];
             $beta = GreenBeta::where('code', $code)
             ->orderBy('open_time', 'desc')
@@ -124,24 +124,24 @@ class ApiController
         $signalOpen = ['BUY', 'SELL'];
         // type =2 update   7h
         if($type ==2){
-            $code = $codes[$signal[0]];
-            $time = str_replace('.', '-',$signal[3]).' '.$signal[4];
+            $code = $codes[$signal[1]];
+            $time = str_replace('.', '-',$signal[4]).' '.$signal[5];
             $timeFormat = Carbon::parse($time)->format('Y-m-d H:i:s');
-            if(in_array($signal[1],$signalClose) ){
+            if(in_array($signal[2],$signalClose) ){
                 $greenBeta = [
                     'code' => $code,
-                    'signal_close'=> $signal[1],
-                    'price_close'=> $signal[2],
+                    'signal_close'=> $signal[2],
+                    'price_close'=> $signal[3],
                     'close_time'=> $timeFormat,
                 ];
                 $existSignal = GreenBeta::where('code', $code)->whereNull('close_time') ->orderBy('open_time', 'desc')->first();
                 $existSignal->update($greenBeta);
             }
-            if(in_array($signal[1],$signalOpen) ){
+            if(in_array($signal[2],$signalOpen) ){
                 $signalData = [
                     'code' => $code,
-                    'signal_open'=> $signal[1],
-                    'price_open'=> $signal[2],
+                    'signal_open'=> $signal[2],
+                    'price_open'=> $signal[3],
                     'open_time'=> $timeFormat,
                 ];
 
@@ -152,8 +152,8 @@ class ApiController
          // type =2 update 5p
         if($type ==3){
 
-            $code = $codes[$signal[0]];
-            $new_data = $signal[1];
+            $code = $codes[$signal[1]];
+            $new_data = $signal[2];
             $key_cache = Cache::has($code);
             $cachedData = Cache::get($code);
             \Log::info('cachedData:'.$cachedData);
