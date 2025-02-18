@@ -154,28 +154,21 @@ class ApiController
          // {"data":"3 US30 44641.47 2025.02.18 00:00"}
         if($type ==3){
 
-            $code = $codes[$signal[1]];
+            $code = $signal[1];
             $new_data = $signal[2];
             $key_cache = Cache::has($code);
             $cachedData = Cache::get($code);
-            \Log::info('cachedData:'.$cachedData);
-            \Log::info('new_data:'.$new_data);
-            \Log::info('key_cache:'.$key_cache);
             if (!$key_cache) {
                 $cachedData = Cache::get($code);
-                // Nếu dữ liệu cũ khác thì cập nhật
                 if ($cachedData != $new_data) {
-                    \Log::info('key_cache change:'.$new_data);
-                    Cache::forget($code); // Xóa cache cũ
+                    Cache::forget($code);
                     Cache::put($code, $new_data, now()->endOfDay()); // Cập nhật cache mới
                 }
             }else {
                 Cache::put($code, $new_data, now()->endOfDay());
 
             }
-            $new = Cache::get($code);
-            \Log::info('cachedData:new '.$new);
-            return  ['status' => 'success', 'message' => json_encode($request)];
+            return  ['status' => 'success', 'message' => 'Recived signal'];
         }
 
     }

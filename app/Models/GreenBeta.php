@@ -86,10 +86,9 @@ class GreenBeta extends Model
             ->orderBy('green_beta.id', 'desc'); // Use ID to break ties, assuming newer records have higher IDs
         $data = $query->get();
         $result = [];
+
         foreach ($data as $key => $value) {
             $last_sale = Cache::get($value->mstStock->code) ??  $value->last_sale;
-            \Log::info('last_sale:'.$last_sale);
-            \Log::info('code:'.$value->mstStock->code);
             $result[] = [
                 'signal_open' =>$value->signal_open,
                 'price_open' => $value->price_open,
