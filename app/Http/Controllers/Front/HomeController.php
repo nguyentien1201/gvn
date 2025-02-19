@@ -22,11 +22,12 @@ use App\Models\ConstantModel;
 use App\Models\Subscription;
 use App\Models\UserFollowStock;
 use App\Models\BanIp;
+
 class HomeController
 {
     public function index(Request $request)
     {
-
+        Cache::forget('banned_ips');
         // $role_id = $user->role_id ?? null;
         // $subscription = Subscription::where('user_id', $user->id)->where('product_id',2)->where('end_date' ,'>=', now())->get();
         $signals = (new GreenBeta())->getListSignalsByGroup();
