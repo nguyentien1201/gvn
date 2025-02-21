@@ -51,7 +51,6 @@ class SendProfitToday extends Command
         });
 
 
-
         $signalsMonth = (new GreenAlpha())->getListSignalsByGroupMonth();
         $profit_month = collect($signalsMonth)->mapWithKeys(function ($product, $key) {
             return [$product['code'] => $product['profit_month']];
@@ -61,34 +60,42 @@ class SendProfitToday extends Command
         $today = date('Y-m-d');
 
         // Define the profit date
-        $profitDate = '2025-02-20';
 
         // Start building the message
-        $message = "Profit Trading $today\n";
+        $message = "🟢<b>PROFIT TRANDING ". $today."</b>🟢\n";
 
         // Loop through the indices and append them to the message
         foreach ($profit_month as $index => $value) {
-            $message .= sprintf("%s:%.2f%% ---Today: %.2f%---Month: %.2f%%\n", $index,$signals[$index], $value);
+            $code = "<b>".$index."</b>";
+            if(empty($value)){
+                $value = 0;
+            }
+            $today = $profit_today[$index] ??  '';
+if(empty($today)){
+    $today = 0;
+            }
+
+                        $message .= sprintf("%s---Today: %.2f%%---Month: %.2f%%\n", $code, $today, $value);
         }
 
         // Output the final message
-        dd( $message);
+        // dd( $message);
 
 
 
-        $profit = 0;
-        $result = array_reduce($signals, function ($carry, $item) use (&$profit) {
-            $profit_today = empty($item['profit_today']) ? 0: $item['profit_today'];
-            $profit += $profit_today;
-            return $profit;
-        }, []);
-        if($profit >=0){
-            $color = '🟢';
-        }else{
-            $color = '🔴';
-        }
-        $today = date('Y-m-d');
-        $message = " <b>Profit trading ".$today.": ". $profit ."% " . $color ."</b>";
+        // $profit = 0;
+        // $result = array_reduce($signals, function ($carry, $item) use (&$profit) {
+        //     $profit_today = empty($item['profit_today']) ? 0: $item['profit_today'];
+        //     $profit += $profit_today;
+        //     return $profit;
+        // }, []);
+        // if($profit >=0){
+        //     $color = '🟢';
+        // }else{
+        //     $color = '🔴';
+        // }
+        // $today = date('Y-m-d');
+        // $message = " <b>Profit trading ".$today.": ". $profit ."% " . $color ."</b>";
         try {
             Notification::route('telegram', config('telegram.group_id'))->notify(new SendTelegramNotification($message));
         } catch (\Exception $e) {

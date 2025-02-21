@@ -622,7 +622,7 @@ padding: 0.75rem;
                 <div class="ptable-footer">
                     <div class="ptable-action">
                         @if (Auth::check())
-                        <a class="subscription" data-product="beta"  data-id={{$price_product['beta']->id}} data-type="trial" data-month="1">{{__('front_end.buy')}}</a>
+                        <a class="subscription" data-product="beta"  data-id={{$price_product['beta']->id}} data-type="trial" data-month="1">Trial</a>
                           <!-- <a class=""  href="{{ route('front.home.payment', [$price_product['beta']->id])}}" >Buy</a> -->
                             <!-- <a class="subscription disabled-link" data-id={{$price_product['beta']->id}} data-type="buy" data-month="2">Buy</a> -->
                         @else
@@ -654,7 +654,7 @@ padding: 0.75rem;
                 <div class="ptable-footer">
                     <div class="ptable-action">
                     @if (Auth::check())
-                    <a class="subscription"  data-product="beta" data-id={{$price_product['beta']->id}} data-type="trial" data-month="1">{{__('front_end.buy')}}</a>
+                    <a class="subscription"  data-product="beta" data-id={{$price_product['beta']->id}} data-type="trial" data-month="1">Trial</a>
                             <!-- <a class="subscription"  href="{{ route('front.home.payment', [$price_product['beta']->id])}}" >Buy</a> -->
                         @else
                             <a href="{{ route('login') }}">{{__('front_end.login')}}</a>
