@@ -46,6 +46,36 @@ class SendProfitToday extends Command
     public function handle()
     {
         $signals = (new GreenAlpha())->getListSignalsByGroup();
+        $profit_today = collect($signals)->mapWithKeys(function ($product, $key) {
+            return [$product['code'] => $product['profit_today']];
+        });
+
+
+
+        $signalsMonth = (new GreenAlpha())->getListSignalsByGroupMonth();
+        $profit_month = collect($signalsMonth)->mapWithKeys(function ($product, $key) {
+            return [$product['code'] => $product['profit_month']];
+        });
+
+
+        $today = date('Y-m-d');
+
+        // Define the profit date
+        $profitDate = '2025-02-20';
+
+        // Start building the message
+        $message = "Profit Trading $today\n";
+
+        // Loop through the indices and append them to the message
+        foreach ($profit_month as $index => $value) {
+            $message .= sprintf("%s:%.2f%% ---Today: %.2f%---Month: %.2f%%\n", $index,$signals[$index], $value);
+        }
+
+        // Output the final message
+        dd( $message);
+
+
+
         $profit = 0;
         $result = array_reduce($signals, function ($carry, $item) use (&$profit) {
             $profit_today = empty($item['profit_today']) ? 0: $item['profit_today'];

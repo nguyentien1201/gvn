@@ -410,5 +410,90 @@ public function getCurrentMonthProfitSum($current_version='10.7.10')
         ];
         return $result;
     }
+    public function getListSignalsByGroupMonth()
+{
+    $today = Carbon::today()->toDateString();
+    $currentMonth = Carbon::now()->format('m');  // Lấy tháng hiện tại
+    $currentYear = Carbon::now()->format('Y');  // Lấy năm hiện tại
+
+    // Query MstStock và load các bản ghi Signal liên quan với open_time trong tháng hiện tại
+    $alphaStock = config('stock.green-alpha');
+    $subQuery = GreenAlpha::select('code',
+                    DB::raw('MONTH(open_time) as month'),
+                    DB::raw('YEAR(open_time) as year'),
+                    DB::raw('SUM(profit) as total_profit'),  // Tính tổng lợi nhuận theo tháng
+                    DB::raw('MAX(open_time) as last_open_time'),
+                    DB::raw('count(*) as no_trading'))
+                    ->whereMonth('open_time', $currentMonth)  // Lọc theo tháng hiện tại
+                    ->whereYear('open_time', $currentYear)  // Lọc theo năm hiện tại
+                    ->groupBy('code', 'month', 'year');
+
+    $stocksAndSignals = MstStock::with(['AlphaSignal' => function($query) use ($today, $subQuery) {
+        $query->joinSub($subQuery, 'latest_signals', function($join) {
+            $join->on('green_alpha.code', '=', 'latest_signals.code')
+                 ->on('green_alpha.open_time', '=', 'latest_signals.last_open_time');
+        })
+        ->select('*')
+        ->groupBy('green_alpha.code');
+    }])->whereIn('code', $alphaStock)->get();
+
+    $result = [];
+    foreach ($stocksAndSignals as $key => $value) {
+        $signal = $value->AlphaSignal;
+        if (empty($signal)) {
+            $result[] = [
+                'code' => $value->code ?? '',
+                'group' => $value->group ?? '',
+                'signal_open' => '',
+                'price_open' => '',
+                'open_time' => '',
+                'profit' => '',
+                'signal_close' => '',
+                'price_close' => null,
+                'close_time' => '',
+                'id_code' => $value->id,
+                'profit_month' => '',
+                'no_trading' => ''
+            ];
+            continue;
+        }
+
+        // Cập nhật kết quả, tổng lợi nhuận theo tháng
+        $result[] = [
+            'signal_open' => $signal->signal_open ?? '',
+            'price_open' => $signal->price_open ?? '',
+            'open_time' => $signal->open_time ?? '',
+            'code' => $value->code ?? '',
+            'profit' => $signal->total_profit ?? '',  // Tổng lợi nhuận của tháng
+            'signal_close' => $signal->signal_close ?? '',
+            'price_close' => $signal->price_close > 0 ? $signal->price_close : null,
+            'close_time' => $signal->close_time ?? '',
+            'id_code' => $signal->code ?? '',
+            'group' => $value->group ?? '',
+            'profit_month' => $this->calculateProfitByMonth($signal->code) ?? '',
+            'no_trading' => $signal->no_trading ?? '',
+        ];
+    }
+
+    return $result;
+}
+public function calculateProfitByMonth($id){
+
+    $todayStart = now()->startOfMonth();
+    $todayEnd = now()->endOfMonth();
+    // Retrieve all GreenAlpha instances created today
+    $todaysInstances = $this->whereBetween('close_time', [$todayStart, $todayEnd])->where('code',$id)->get();
+
+    // Sum the profits for each instance
+    $totalProfitToday = 0;
+    foreach ($todaysInstances as $instance) {
+        $profit = $instance->calculateProfit(); // Assuming calculateProfit returns a numeric value
+        if (!is_null($profit)) { // Ensure that calculateProfit returned a valid number
+            $totalProfitToday += $profit;
+        }
+    }
+
+    return $totalProfitToday;
+}
 
 }
