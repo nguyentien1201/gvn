@@ -61,11 +61,13 @@ class GreenBeta extends Model
     }
     public function calculateProfit()
     {
+
         $profit = NULL;
+        $last_sale = Cache::get($this->mstStock->code) ??  $this->last_sale;
         if(!empty($this->price_close) && $this->price_open > 0){
             $profit = ($this->price_close - $this->price_open)/$this->price_open * 100;
-        }elseif($this->last_sale > 0) {
-            $profit = ($this->last_sale - $this->price_open)/$this->price_open * 100;
+        }elseif($last_sale > 0) {
+            $profit = ($last_sale- $this->price_open)/$this->price_open * 100;
         }
         return round($profit, 2);
     }
