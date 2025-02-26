@@ -90,6 +90,9 @@ class GreenBeta extends Model
         $result = [];
 
         foreach ($data as $key => $value) {
+            if($value->mstStock->code == 'USOIL'){
+                \Log::info(Cache::get($value->mstStock->code));
+            }
             $last_sale = Cache::get($value->mstStock->code) ??  $value->last_sale;
             $result[] = [
                 'signal_open' =>$value->signal_open,
