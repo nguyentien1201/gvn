@@ -42,9 +42,9 @@
                     <a class="dropdown-item" href="{{ route('front.home.green-stock') }}">
                         Green Stock-NAS100
                     </a>
-                    <a class="dropdown-item" href="{{ route('front.home.vnindex') }}">
+                    <!-- <a class="dropdown-item" href="{{ route('front.home.vnindex') }}">
                         VnIndex
-                    </a>
+                    </a> -->
                 </div>
             </li>
             <li class="nav-item">
