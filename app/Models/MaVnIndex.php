@@ -16,11 +16,17 @@ class MaVnIndex extends Model
         'upMA50', 'downMA50', 'upMA200', 'downMA200','time','vnindex'
     ];
     public function getMa(){
-        $data = $this->orderBy('time','desc')->select('upMA50','downMA50','upMA200','downMA200')->first()->toArray();
-        return $data;
+        $data = $this->orderBy('time','desc')->select('upMA50','downMA50','upMA200','downMA200')->first();
+        if($data){
+            return $data->toArray();
+        }
+        return [];
     }
     public function getMaApi(){
-        $data = $this->orderBy('time','asc')->select('*')->get()->toArray();
+        $data = $this->orderBy('time','asc')->select('*')->get();
+        if($data){
+            $data = $data->toArray();
+        }
         $labels = [];
         $ma200_values = [];
         $ma50_values = [];
