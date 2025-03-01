@@ -38,8 +38,17 @@ Route::group(['prefix' => '', 'as' => 'front.', 'namespace' => 'Front'], functio
     Route::get('trading-system', 'HomeController@tradingSystem')->name('home.trading-system');
     Route::get('contact', 'HomeController@contact')->name('home.contact');
     Route::get('mission', 'HomeController@mission')->name('home.mission');
+
+    Route::get('api/get-market-vnindex', 'HomeController@getMarketVnIndex')->name('api.market-vnindex');
+
+
     Route::get('follow-stock/{stock_id}', 'HomeController@followUnfollowStock')->middleware(['auth']);
     Route::delete('unfollow-stock/{stock_id}', 'HomeController@unfollowStock')->middleware(['auth']);
+
+    Route::get('follow-stock-vnindex/{stock_id}', 'HomeController@followUnfollowStockVnIndex')->middleware(['auth']);
+    Route::delete('unfollow-stock-vnindex/{stock_id}', 'HomeController@unfollowStockVnIndex')->middleware(['auth']);
+
+    Route::get('/vnindex', 'HomeController@vnIndex')->name('home.vnindex')->middleware(['auth']);
 
 
 });
@@ -94,6 +103,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin'], fu
     Route::resource('green-alpha', 'GreenAlphaController')->middleware('admin');
     Route::resource('portfolio', 'PortfolioController')->middleware('admin');
     Route::resource('nas100', 'GreenStockNas100Controller')->middleware('admin');
+    Route::resource('vnindex', 'VnIndexController')->middleware('admin');
     Route::resource('product', 'ProductController')->middleware('admin');
     Route::resource('subscription', 'SubscriptionController')->middleware('admin');
     Route::resource('product-version', 'ProductVersionController')->middleware('admin');
@@ -108,6 +118,8 @@ Route::get('admin/list-code', 'Admin\GreenAlphaController@portfolio')->middlewar
 Route::post('admin/green-alpha/import-portfolio', 'Admin\GreenAlphaController@importPortfolio')->middleware('admin')->name('admin.green-alpha.import-portfolio');
 Route::post('admin/signal-free/import', 'Admin\SignalFreeController@import')->middleware('admin')->name('admin.signalfree.import');
 Route::post('admin/green-stock-nas100/import', 'Admin\GreenStockNas100Controller@import')->middleware('admin')->name('admin.nas100.import');
+
+Route::post('admin/vnindex/import', 'Admin\VnIndexController@import')->middleware('admin')->name('admin.vnindex.import');
 
 Route::post('admin/green-alpha/import-by-drive', 'Admin\GreenAlphaController@importByDrive')->middleware('admin')->name('admin.green-alpha.import-by-drive');
 Route::post('admin/green-beta/import-by-drive', 'Admin\GreenBetaController@importByDrive')->middleware('admin')->name('admin.green-beta.import-by-drive');

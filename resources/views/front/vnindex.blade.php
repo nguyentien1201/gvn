@@ -741,6 +741,8 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
 <script
     src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0-rc/dist/chartjs-plugin-datalabels.min.js"></script>
 <script src="https://cdn.datatables.net/v/bs5/dt-2.0.8/date-1.5.2/fc-5.0.1/fh-4.0.1/r-3.0.2/datatables.min.js"></script>
+
+<!-- Include moment.js -->
 <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/moment.min.js"></script>
 
 <!-- Include moment-timezone.js -->
@@ -755,7 +757,7 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
                 if (stock_id.trim()) {
                     // Gọi AJAX thủ công khi nhấn Enter
                     $.ajax({
-                        url: '{{url("follow-stock")}}/' + stock_id,
+                        url: '{{url("follow-stock-vnindex")}}/' + stock_id,
                         method: 'GET',
                         data: {
                             'id' : stock_id,
@@ -799,7 +801,7 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
             if (confirm('Are you sure you want to unfollow this stock ?')) {
                 // Gửi yêu cầu AJAX để xóa bản ghi
                 $.ajax({
-                    url: '{{url("unfollow-stock")}}/' + stock_id,  // Đường dẫn tới controller (sửa cho phù hợp với Laravel route)
+                    url: '{{url("unfollow-stock-vnindex")}}/' + stock_id,  // Đường dẫn tới controller (sửa cho phù hợp với Laravel route)
                     type: 'DELETE',  // Phương thức DELETE
                     data: {
                         "_token": "{{ csrf_token() }}"  // CSRF token bảo vệ
@@ -1172,7 +1174,7 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
 
         // Mặc định hiển thị biểu đồ đầu tiên
 
-        var url = '/api/get-market-greenstock';
+        var url = '/api/get-market-vnindex';
         $.ajax({
             url: url,
             type: 'GET',

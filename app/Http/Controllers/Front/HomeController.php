@@ -3,15 +3,20 @@
 
 namespace App\Http\Controllers\Front;
 
+use App\Models\GroupCapVnIndex;
+use App\Models\SubGroupCapDetailVnIndex;
 use Illuminate\Support\Facades\Mail;
 use App\Models\GreenBeta;
 use Illuminate\Support\Facades\Request;
 // use Illuminate\Http\Request;
 use App\Models\GreenAlpha;
 use App\Models\GreenStockNas100;
+use App\Models\VnIndex;
 use DB;
 use App\Models\SubGroup;
 use App\Models\Ma;
+use App\Models\MaVnIndex;
+use App\Models\SubGroupVnIndex;
 use Illuminate\Support\Facades\Cache;
 use App\Models\GroupCap;
 use App\Models\SubGroupCapDetail;
@@ -22,6 +27,8 @@ use App\Models\ConstantModel;
 use App\Models\Subscription;
 use App\Models\UserFollowStock;
 use App\Models\BanIp;
+use App\Models\UserFollowStockVnIndex;
+
 
 class HomeController
 {
@@ -470,7 +477,7 @@ class HomeController
         // Redirect lại form với thông báo thành công
         return back()->with('success', 'Your message has been sent successfully!');
     }
-    public function followUnfollowStock($stock_id)
+    public function followUnfollowStock($stock_id,$type)
     {
         $user = \Auth::user();
         $listFollow = UserFollowStock::where(['user_id'=>$user->id])->count();
@@ -502,8 +509,126 @@ class HomeController
             return ['success' => false, 'message' => 'Error unfollow'];
         }
     }
+    public function followUnfollowStockVnIndex($stock_id)
+    {
+        $user = \Auth::user();
+        $listFollow = UserFollowStockVnIndex::where(['user_id'=>$user->id])->count();
+        if($listFollow >=10) {
+            return ['success' => true, 'message' => 'Limit follow'];
+        }
+        $isFollowed = UserFollowStockVnIndex::where(['user_id'=>$user->id,'stock_id'=>$stock_id])->first();
+
+        if ($isFollowed){
+            return ['success' => true, 'message' => 'You are ready follow'];
+        }else{
+            UserFollowStockVnIndex::insert([
+                'user_id'=> $user->id,
+                'stock_id'=>$stock_id,
+                ]);
+            $stock_info = VnIndex::find($stock_id);
+
+            return ['success' => true, 'message' => 'Follow Success','data'=> json_encode($stock_info)];
+        }
+    }
+    public function unfollowStockVnIndex($stock_id)
+    {
+        $user = \Auth::user();
+        $isFollowed = UserFollowStockVnIndex::where(['user_id'=>$user->id,'stock_id'=>$stock_id])->first();
+        if ($isFollowed){
+            $isFollowed->delete();
+            return ['success' => true, 'message' => 'You are ready unfollow'];
+        }else {
+            return ['success' => false, 'message' => 'Error unfollow'];
+        }
+    }
     public function paymentProduct($id){
         $product = Product::find($id);
         return view('front.payment',compact('product'));
+    }
+
+    public function vnIndex(){
+        $user = \Auth::user();
+        $role_id = $user->role_id ?? null;
+        // $subscription = Subscription::where('user_id', $user->id)->where('product_id',3)->where('end_date' ,'>=', now())->first();
+        // if(empty($subscription) && $role_id != 1){
+        //     return redirect()->route('front.home.trading-system');
+        // }
+        $signalsData = (new VnIndex())->getListNas100Api();
+
+
+        $signals = $signalsData['data'] ?? [];
+        $list_code = $signalsData['list_code'];
+        $list_stock = $list_code->pluck('code','id');
+        $list_code_follow = UserFollowStockVnIndex::where(['user_id'=>$user->id])->orderBy('id')->pluck('stock_id')->toArray();
+        $list_folow = $signalsData['data']->whereIn('id', $list_code_follow);
+
+        if(!empty($subscription) && $subscription['is_trial'] == 1){
+            foreach ($signals as $key => $value) {
+                $value['price'] = 'fas fa-lock';
+                $value['time'] = 'fas fa-lock';
+                $signals[$key] = $value;
+            }
+        }
+        $top_stock = (new VnIndex())->getTopStock();
+        $chart_signal = (new VnIndex())->getGroupSignal();
+        usort($chart_signal, function($a, $b) {
+            return strcmp($a['signal'], $b['signal']);
+        });
+        $totalCount = array_reduce($chart_signal, function ($carry, $item) {
+            return $carry + $item['total'];
+        }, 0);
+        $labels = array_map(function($item) {
+            return $item['signal'];
+        }, $chart_signal);
+
+        $chart_signal = array_map(function($item) use ($totalCount) {
+            return  round($item['total']/$totalCount*100,2);
+        }, $chart_signal);
+        $ma = (new MaVnIndex())->getMa();
+        $chart_group_data = (new SubGroupVnIndex())->getDataSubGroup(10);
+        $chart_group_data = array_slice($chart_group_data, 0, 10);
+        $ma['up'] = [$ma['upMA50'],$ma['upMA200']];
+        $ma['down'] = [$ma['downMA50'],$ma['downMA200']];
+        // dd($signals,$top_stock,$chart_signal,$labels,$ma,$chart_group_data,$list_stock,$list_folow);
+        return view('front.vnindex',compact('signals','top_stock','chart_signal','labels','ma','chart_group_data','list_stock','list_folow'));
+    }
+    public function getMarketVnIndex(){
+
+        // $marketOverview = Cache::get('market_overview');
+        // if($marketOverview){
+        //    return [
+        //        'status' => 200,
+        //        'data' => $marketOverview
+        //    ];
+        // }
+        $market_cap = (new GroupCapVnIndex())->getMarketCap();
+        $chart_group_data = (new SubGroupVnIndex())->getDataSubGroupApi();
+        $top_stock = (new VnIndex())->getTopStock();
+        $user = \Auth::user();
+        $role_id = $user->role_id ?? null;
+        // $subscription = Subscription::where('user_id', $user->id)->where('product_id',3)->where('end_date' ,'>=', now())->first();
+        // if( !empty($subscription) && $subscription['is_trial'] == 1 && $role_id != 1){
+        //     foreach ($top_stock as $key => $value) {
+        //         $value['price'] = 'fas fa-lock';
+        //         $value['time'] = 'fas fa-lock';
+        //         $top_stock[$key] = $value;
+        //     }
+        // }
+        $cap = [32869015625.5,-17106744206.5];
+        $ma = (new MaVnIndex())->getMaApi();
+        $current_cap =  (new SubGroupCapDetailVnIndex())->getCurrentCap();
+        $marketOverview = [
+            'market_cap' => $market_cap,
+            'chart_group_data' => $chart_group_data,
+            'top_stock' => $top_stock,
+            'cap' => $cap,
+            'ma' => $ma,
+            'current_cap' => $current_cap
+        ];
+        // Cache::put('market_overview', $marketOverview, 60*60);
+        return [
+            'status' => 200,
+            'data' => $marketOverview,
+        ];
     }
 }

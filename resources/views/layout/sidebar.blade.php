@@ -80,10 +80,19 @@
                         </li>
                         <li class="nav-item">
                             <a href="{{route('admin.nas100.index')}}"
-                               class="nav-link @if(!empty($path) && $path =='green-alpha') active @endif">
+                               class="nav-link @if(!empty($path) && $path =='nas100') active @endif">
                                 <i class="nav-icon far fa-user"></i>
                                 <p>
                                      Nas100 Rating
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('admin.vnindex.index')}}"
+                               class="nav-link @if(!empty($path) && $path =='vnindex') active @endif">
+                                <i class="nav-icon far fa-user"></i>
+                                <p>
+                                     VnIndex
                                 </p>
                             </a>
                         </li>

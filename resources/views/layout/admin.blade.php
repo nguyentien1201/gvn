@@ -112,7 +112,7 @@
     <script src="{{asset('plugins/fullcalendar-timegrid/main.min.js')}}"></script>
     <script src="{{asset('plugins/fullcalendar-interaction/main.min.js')}}"></script>
     <script src="{{asset('plugins/fullcalendar-bootstrap/main.min.js')}}"></script>
-    <script src="{{asset('pusher/pusher.min.js')}}"></script>
+    <script src="{{asset('plugins/pusher/pusher.min.js')}}"></script>
     @yield('scripts')
     <script>
         $(document).ready(function () {
