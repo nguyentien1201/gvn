@@ -15,6 +15,6 @@
 
     <!-- Background Chart Image -->
     <div class="absolute inset-0 flex justify-center items-end">
-        <img src="/images/chart-background.png" alt="Chart" class="max-w-3xl w-full opacity-90">
+
     </div>
 </section>

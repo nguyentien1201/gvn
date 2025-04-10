@@ -16,7 +16,7 @@ $(document).ready(function () {
         //replace the "Choose a file" label
         $(this).next('.custom-file-label').html(fileName);
     })
-
+resources
     $('.select2').select2();
     $('[data-mask]').inputmask();
     $('.date').datetimepicker({

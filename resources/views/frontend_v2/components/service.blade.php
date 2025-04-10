@@ -1,5 +1,5 @@
 <section class="py-16 bg-white">
-    <div class="container mx-auto px-6 lg:px-16">
+    <div class="container mx-auto">
         <h2 class="text-center text-3xl font-bold text-gray-900 mb-10">Our service</h2>
 
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
@@ -32,7 +32,7 @@
 
             <!-- Service Image -->
             <div>
-                <img src="/images/service-image.jpg" alt="Service" class="rounded-lg shadow-lg border border-green-300">
+                <img src="/images/service-image.png" alt="Service" class="rounded-lg shadow-lg border border-green-300">
             </div>
         </div>
     </div>
