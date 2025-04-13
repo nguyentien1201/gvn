@@ -581,7 +581,7 @@
                             background-color: ${background};
                             color: ${color};
                             border: 1px solid ${color};
-                            font-size: 14px;
+                            font-size: 13px;
                             padding: 4px 16px;
                             width: 176px;
                         ">${trending}</span>`);

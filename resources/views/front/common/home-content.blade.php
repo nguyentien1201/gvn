@@ -2,6 +2,8 @@
 
 <script>
     $(document).ready(function () {
+        const notify = new bootstrap.Modal(document.getElementById('notifyId'));
+        notify.show();
         var swiper = new Swiper('.swiper-container', {
         slidesPerView: 1,
         spaceBetween: 10,
@@ -965,3 +967,19 @@
 </section>
 
 @include('partials.dialog-login')
+<div class="modal fade" id="notifyId" tabindex="-1" aria-labelledby="notifyIdLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="notifyIdLabel">Thông Báo</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Website Đang trong quá trình nâng cấp !
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
