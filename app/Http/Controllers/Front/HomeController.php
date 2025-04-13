@@ -336,7 +336,7 @@ class HomeController
         $chart_group_data = array_slice($chart_group_data, 0, 10);
         $ma['up'] = [$ma['upMA50'],$ma['upMA200']];
         $ma['down'] = [$ma['downMA50'],$ma['downMA200']];
-        return view('front.green_stock',compact('signals','top_stock','chart_signal','labels','ma','chart_group_data','list_stock','list_folow'));
+        return view('frontend_v2.green_stock',compact('signals','top_stock','chart_signal','labels','ma','chart_group_data','list_stock','list_folow'));
     }
     public function getMarketGreenStock(){
 
