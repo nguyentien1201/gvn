@@ -594,6 +594,57 @@ body {
   font-size: 14px;
   font-weight: 400;
 }
+
+/*overview tab*/
+.content-overview .title-up-down-market-capital {
+  font-size: 24px;
+  font-weight: 600;
+}
+.content-overview .card-market-capital {
+  color: #fff;
+  padding: 16px;
+  border-radius: 8px;
+}
+.content-overview .card-market-capital .content-dynamic .title {
+  font-size: 16px;
+  font-weight: 500;
+}
+.content-overview .card-market-capital .content-dynamic .percent {
+  font-size: 20px;
+  font-weight: 700;
+}
+.content-overview .card-market-capital .content-static {
+  font-size: 12px;
+  font-weight: 300;
+}
+.container-chart {
+  border: 1px solid #D5D7DA;
+  padding: 32px 80px;
+  border-radius: 16px;
+}
+.title-chart {
+  font-size: 24px;
+  font-weight: 600;
+}
+.content-overview table.table thead th {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background-color: #fff; /* Hoặc dùng màu nền phù hợp với bảng */
+}
+.content-overview table#top_stock.table thead th {
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  background: var(--primary-color);
+}
+.content-overview table#top_stock.table thead tr {
+  background: var(--primary-color);
+}
+.content-overview table#top_stock.table tbody tr td {
+  color: #4D5B7C !important;
+  font-weight: 500;
+}
 @media (max-width: 768px) {
   .top-5-stocks .stocks .stock-container {
     width: 100%;
