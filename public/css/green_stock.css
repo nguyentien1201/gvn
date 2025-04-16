@@ -83,75 +83,6 @@ body {
   background: #f1f1f1;
 }
 
-.dt-scroll-head {
-  width: 99% !important;
-}
-
-
-#popupDataTable>thead {
-  display: none;
-}
-
-.dataTable {
-  margin-bottom: 0 !important;
-}
-
-.comment-div-left {
-  margin-right: 10px;
-  width: 50px;
-
-  text-align: center;
-}
-
-.comment-div-right {
-  margin-left: 10px;
-  width: 100px;
-
-  text-align: center;
-}
-
-.hold {
-  background-color: #ffd966;
-}
-
-.takeprofitbuy {
-  background-color: #b6d7a8;
-}
-
-.cutlossbuy {
-  background-color: #e06666;
-}
-
-.list-item {
-  display: flex;
-  align-items: center;
-  margin-bottom: 10px;
-}
-
-.list-item button {
-  cursor: none;
-  padding: 5px 10px;
-  border: none;
-  margin-right: 10px;
-}
-
-.width-120 {
-  width: 160px;
-  min-width: 160px;
-}
-
-th {
-  text-align: center !important;
-}
-
-.table-responsive {
-  overflow- x: hidden !important;
-}
-
-td {
-  text-align: center !important;
-}
-
 .custom-tooltip {
   position: absolute;
   background-color: #fff;
@@ -164,45 +95,7 @@ td {
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
 }
 
-.full-width-container {
-  width: 100%;
-  margin: 0;
-  padding: 0;
-}
 
-.top-stock-table td {
-  font-size: 1.1em;
-  font-weight: bold;
-
-  text-align: center;
-
-}
-
-.top-stock-table td:first-child {
-  background-color: #148e46;
-}
-
-.top-stock-table td:nth-child(2) {
-  background-color: #43ac4d;
-}
-
-.top-stock-table td:nth-child(3) {
-  background-color: #70b852;
-}
-
-.top-stock-table td:nth-child(4) {
-  background-color: #8ec784;
-}
-
-.top-stock-table td:nth-child(5) {
-  background-color: #bce8cb;
-}
-
-.center_flex {
-  display: inline-grid;
-  justify-content: center;
-  align-items: center;
-}
 
 .chart_column {
   display: flex;
@@ -214,175 +107,26 @@ td {
   font-weight: bold;
   padding: 5px 0 5px 0;
 }
-
-.container_layout {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.sidebar {
-  max-width: 450px;
-  flex: 1.5;
-  /* Chiếm một phần nhỏ */
-
-  /* Chiều rộng tối thiểu của sidebar */
-  padding: 10px;
-  text-align: center;
-
-}
-
-.sidebar_overview_cap>.cap {
-  padding: 1rem;
-  width: 100%;
-}
-
-.sidebar_overview_cap {
-  flex: 2;
-}
-
-.sidebar_overview_chart {
-  flex: 2;
-}
-
-.sidebar_overview {
-  max-width: 1000px;
-  flex: 1;
-  /* Chiếm một phần nhỏ */
-
-  /* Chiều rộng tối thiểu của sidebar */
-  padding: 10px;
-  text-align: center;
-}
-
-.main {
-  flex: 4;
-  /* Chiếm phần lớn ở giữa */
-  min-width: 300px;
-  /* Chiều rộng tối thiểu của main */
-  padding: 10px;
-  text-align: center;
-
-
-}
-.center_box {
-
-  justify-content: center;
-  display: flex;
-}
-
-@media (max-width: 1268px) {
-  body {
-    font-size: x-small !important   ;
-  },
-  thead th , td {
-    /* min-width:80px !important ; */
-    /* font-size: xx-small; */
-  }
-}
-
-/* Đảm bảo các block xếp dọc khi màn hình nhỏ hơn 768px */
-@media (max-width: 768px) {
-  #current_month {
-    height: 400px; /* 80% chiều cao của màn hình */
-  }
-  .container_layout {
-    flex-direction: column;
-    /* Xếp dọc các phần tử */
-  }
-
-  .sidebar {
-    width: 100%;
-    padding-bottom: 2rem;
-    max-width: inherit;
-    order: 1;
-    /* Sidebar 1 ở vị trí đầu */
-  }
-
-  .container_layout .main {
-    order: 3;
-    /* Đặt cột chính ở vị trí cuối cùng */
-  }
-
-  .center_flex {
-    /* padding-bottom: 5rem; */
-  }
-
-}
-@media (min-width: 1680px) {
-  .container_layout {
-    flex-direction: row;
-    /* Xếp ngang các phần tử */
-  }
-  #current_month {
-    height: 650px !important; /* 80% chiều cao của màn hình */
-  }
-
-}
-@media (min-width: 768px) and (max-width: 1680px) {
-
-  .container_layout {
-    flex-direction: row;
-    /* Xếp ngang các phần tử */
-  }
-  #current_month {
-    height: 700px !important; /* 80% chiều cao của màn hình */
-  }
-
-  .sidebar_overview_cap>.cap {
-    padding: 1rem;
-    width: 100%;
-  }
-
-  .sidebar {
-
-    max-width: inherit;
-    width: 50%;
-    /* Cả hai sidebar sẽ chiếm 50% chiều rộng */
-  }
-
-
-  .container_layout .main {
-    flex-basis: 100%;
-    /* Main cũng chiếm 100% chiều rộng */
-    order: 3;
-    /* Đặt main ở vị trí cuối cùng */
-    /* Đặt cột chính ở vị trí cuối cùng */
-  }
-}
-
-.container_flex {
-  display: flex;
-  flex-wrap: wrap;
-  /* Cho phép các cột xuống dòng nếu không đủ chỗ */
-  justify-content: space-between;
-  /* Khoảng cách giữa các cột */
-  padding: 20px;
-}
-
-
-
-.column {
-  flex: 1;
-  /* Mỗi cột chiếm cùng một phần không gian */
-  margin: 10px;
-  padding: 20px;
-  background-color: #f4f4f4;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  min-width: 300px;
-  /* Chiều rộng tối thiểu của mỗi cột */
-}
-
 .chart-container {
   position: relative;
-  /* height: 650px !important; */
-  width: 100%;
+  width: 100%;     /* co giãn theo chiều ngang */
+  height: 605px;   /* chiều cao cố định */
+}
+#pieChart, #maChart, #current_month, #capChart {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
 }
 
-@media (max-width: 768px) {
-  .chart-container {
-    height: 400px;
-  }
+.g-custom {
+  --bs-gutter-y: 2rem !important;
+  --bs-gutter-x: 2rem !important;
+}
+.my-80 {
+  margin-top: 80px !important;
+  margin-bottom: 80px !important;
 }
 .select2-container--bootstrap-5 .select2-selection {
   border-radius: 0.375rem; /* Áp dụng góc bo tròn của Bootstrap 5 */
@@ -504,7 +248,6 @@ body {
   background-color: #F2F2F2;
   border-radius: 70px;
   padding: 8px 16px;
-  width: 20%;
 }
 .top-5-stocks .stock-percent {
   font-size: 16px;
@@ -570,6 +313,10 @@ body {
   z-index: 2;
   background-color: #fff; /* Hoặc dùng màu nền phù hợp với bảng */
 }
+.content-stock-rating table#my_watch_list.table tbody tr td {
+  color: #4D5B7C !important;
+  font-weight: 500;
+}
 .content-stock-rating .title-chart-best-top-10 {
   font-size: 24px;
   font-weight: 600;
@@ -584,7 +331,7 @@ body {
   background: var(--primary-color);
 }
 .content-stock-rating table#indices-table.table tbody tr td {
-  color: #4D5B7C !important;
+  color: #4D5B7C;
   font-weight: 500;
 }
 .content-stock-rating table#my_watch_list-table.table tbody tr td {
@@ -642,7 +389,7 @@ body {
   background: var(--primary-color);
 }
 .content-overview table#top_stock.table tbody tr td {
-  color: #4D5B7C !important;
+  color: #4D5B7C;
   font-weight: 500;
 }
 @media (max-width: 768px) {
