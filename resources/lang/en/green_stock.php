@@ -19,5 +19,5 @@ return [
     'showing' => 'Showing',
     'up_down_market_capital' => 'Up Down on Market Capital',
     'chart_title_trading_day' => 'Tempor Win/Loss over 5 Trading day',
-    'sector' => 'Sectors'
+    'sector' => 'Sectors',
 ];

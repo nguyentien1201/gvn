@@ -124,15 +124,17 @@
                 <div class="top-5-stocks">
                     <div class="container">
                         <h4 class="title-top-stock">{{__('green_stock.top_5_stock')}}</h4>
-                        <div class="d-flex flex-md-row flex-column gap-3 stocks justify-content-between align-items-center">
+                        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 gy-4 stocks">
                             @forelse($top_stock as $stock)
-                                <div class="stock-container d-flex justify-content-between align-items-center">
-                                    <div class="stock d-flex align-items-center gap-2">
-                                        <img src="{{asset('images/stocks/gild-stock.png')}}"
-                                             class="rounded-circle img-fluid stock-image" alt="stock-gild-img">
-                                        <span class="stock-name">{{ $stock->code }}</span>
+                                <div class="col">
+                                    <div class="stock-container d-flex justify-content-between align-items-center">
+                                        <div class="stock d-flex align-items-center gap-2">
+                                            <img src="{{asset('images/stocks/gild-stock.png')}}"
+                                                 class="rounded-circle img-fluid stock-image" alt="stock-gild-img">
+                                            <span class="stock-name">{{ $stock->code }}</span>
+                                        </div>
+                                        <div class="stock-percent">{{ $stock->profit }}%</div>
                                     </div>
-                                    <div class="stock-percent">{{ $stock->profit }}%</div>
                                 </div>
                             @empty
                             @endforelse
@@ -144,30 +146,31 @@
                 <!-- Content tab -->
                 <div class="content-stock-rating">
                     <div class="container">
-                        <div class="row gy-4">
-                            <div class="col-12 col-md-6">
-                                <div class="row gy-4">
+                        <div class="row g-custom">
+                            <div class="col-12 col-md-12 col-lg-5">
+                                <div class="row g-custom">
                                     <div class="col-12">
                                         <div class="container-chart">
                                             <h4 class="title-chart-buy-cash-hold-sell text-uppercase text-center mb-5">{{ __('green_stock.buy_cash_hold_sell') }}</h4>
-                                            <div class="d-flex flex-column justify-content-center align-items-center">
-                                                <canvas id="pieChart" width="350"></canvas>
+                                            <div style="height: 363px;"
+                                                 class="d-flex flex-column justify-content-center align-items-center chart-container">
+                                                <canvas id="pieChart"></canvas>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="container-chart">
                                             <h4 class="title-chart-buy-cash-hold-sell text-uppercase text-center mb-5">{{ __('green_stock.down_up') }}</h4>
-                                            <div style="box-sizing: border-box;"
-                                                 class="d-flex flex-column justify-content-center align-items-center">
-                                                <canvas id="maChart" width="350" height="350"></canvas>
+                                            <div style="height: 363px;"
+                                                 class="d-flex flex-column justify-content-center align-items-center chart-container">
+                                                <canvas id="maChart"></canvas>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-12 col-md-6">
-                                <div class="row gy-4">
+                            <div class="col-12 col-md-12 col-lg-7">
+                                <div class="row g-custom">
                                     <div class="col-12">
                                         <div class="container-content">
                                             <div id="alert-container"></div>
@@ -183,21 +186,22 @@
                                                 <table class="table table-striped table-hover" id="my_watch_list">
                                                     <thead>
                                                     <th>{{__('front_end.STOCK')}}</th>
-                                                    <th>{{__('front_end.GVN_Rating')}}</th>
-                                                    <th>{{__('front_end.price_buy_sell')}}</th>
-                                                    <th>{{__('front_end.last_sale')}}</th>
-                                                    <th></th>
+                                                    <th class="text-center">{{__('front_end.GVN_Rating')}}</th>
+                                                    <th class="text-center">{{__('front_end.price_buy_sell')}}</th>
+                                                    <th class="text-center">{{__('front_end.last_sale')}}</th>
+                                                    <th class="text-center">{{__('green_stock.action')}}</th>
                                                     </thead>
                                                     <tbody>
                                                     @foreach($list_folow as  $stock)
                                                         <tr data-id="{{$stock->id}}">
-                                                            <td>{{ $stock->code }}</td>
-                                                            <td>{{ $stock->rating }}</td>
-                                                            <td>{{ $stock->price }}</td>
-                                                            <td>{{ $stock->current_price }}</td>
-                                                            <td>
-                                                                <button class="btn btn-danger btn-delete btn-sm"><i
-                                                                            class="fas fa-minus"></i></button>
+                                                            <td class="fw-bold">{{ $stock->code }}</td>
+                                                            <td class="text-center">{{ $stock->rating }}</td>
+                                                            <td class="text-center">{{ $stock->price }}</td>
+                                                            <td class="text-center">{{ $stock->current_price }}</td>
+                                                            <td class="text-center">
+                                                                <button class="btn btn-delete btn-sm">
+                                                                    <i class="far fa-trash-alt"></i>
+                                                                </button>
                                                             </td>
                                                         </tr>
                                                     @endforeach
@@ -209,8 +213,9 @@
                                     <div class="col-12">
                                         <div class="container-chart">
                                             <h4 class="title-chart-best-top-10 text-uppercase text-center mb-5">{{ __('green_stock.best_top_10') }}</h4>
-                                            <div class="mb-3">
-                                                <canvas id="groupStock" height="450"></canvas>
+                                            <div style="height: 423px;"
+                                                 class="d-flex flex-column justify-content-center align-items-center chart-container">
+                                                <canvas id="groupStock"></canvas>
                                             </div>
                                         </div>
                                     </div>
@@ -218,14 +223,14 @@
                             </div>
                         </div>
                     </div>
-                    <hr class="border-primary my-5">
+                    <hr class="border-primary my-80">
                     <div class="container">
                         <div class="row">
                             <div class="col-12 col-md-12">
                                 <div class="select-limit-items d-flex align-items-center flex-row gap-2">
                                     <span>{{__('green_stock.showing')}}</span>
-                                    <select class="form-select w-auto" aria-label="Limit select">
-                                        <option selected value="50">50</option>
+                                    <select id="selectLimitIndiceTable" class="form-select w-auto">
+                                        <option value="50">50</option>
                                         <option value="75">75</option>
                                         <option value="100">100</option>
                                     </select>
@@ -234,14 +239,14 @@
                                     <table class="table table-striped table-hover" id="indices-table">
                                         <thead>
                                         <tr>
-                                            <th class="text-capitalize">{{__('green_stock.rating')}}</th>
+                                            <th class="text-capitalize text-center">{{__('green_stock.rating')}}</th>
                                             <th class="text-capitalize">{{__('green_stock.stock')}}</th>
                                             <th class="text-capitalize">{{__('green_stock.last_sale')}}</th>
-                                            <th class="text-capitalize">{{__('green_stock.trend')}}</th>
-                                            <th class="text-capitalize">{{__('green_stock.action')}}</th>
-                                            <th class="text-capitalize">{{__('green_stock.profit')}}</th>
+                                            <th class="text-capitalize text-center">{{__('green_stock.trend')}}</th>
+                                            <th class="text-capitalize text-center">{{__('green_stock.action')}}</th>
+                                            <th class="text-capitalize text-right">{{__('green_stock.profit')}}</th>
                                             <th class="text-capitalize">{{__('green_stock.after_sell')}}</th>
-                                            <th class="text-capitalize">{{__('green_stock.price')}}</th>
+                                            <th class="text-capitalize text-right">{{__('green_stock.price')}}</th>
                                             <th class="text-capitalize">{{__('green_stock.time')}}</th>
                                         </tr>
                                         </thead>
@@ -275,39 +280,39 @@
                                 <!-- JS append col items -->
                             </div>
                         </div>
-                        <div class="row gy-4">
+                        <div class="row gx-custom g-custom">
                             <!-- Current month chart -->
-                            <div class="col-12 col-md-5">
-                                <div class="container-chart" style="padding: 32px 32px !important;">
+                            <div class="col-12 col-md-5 d-flex">
+                                <div class="container-chart h-100 w-100" style="padding: 32px 32px !important;">
                                     <h4 class="title-chart text-uppercase text-center mb-5">{{__('green_stock.chart_title_trading_day')}}</h4>
-                                    <div class="d-flex flex-column justify-content-center align-items-center">
-                                        <canvas class="mt-1" id="capChart" height="350" width="350"></canvas>
+                                    <div class="d-flex flex-column justify-content-center align-items-center chart-container">
+                                        <canvas id="capChart"></canvas>
                                     </div>
                                 </div>
                             </div>
                             <!-- cap Chart -->
-                            <div class="col-12 col-md-7">
-                                <div class="container-chart">
+                            <div class="col-12 col-md-7 d-flex">
+                                <div class="container-chart h-100 w-100" style="padding: 32px 60px !important;">
                                     <h4 class="title-chart text-uppercase text-center mb-5">{{__('green_stock.sector')}}</h4>
-                                    <div class="d-flex flex-column justify-content-center align-items-center">
-                                        <canvas id="current_month" height="350"></canvas>
+                                    <div class="d-flex flex-column justify-content-center align-items-center chart-container">
+                                        <canvas id="current_month"></canvas>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <hr class="border-primary my-5">
+                    <hr class="border-primary my-80" style="margin-bottom: 64px !important;">
                     <div class="container">
                         <div class="row">
                             <div class="col-12">
-                                <div class="table-responsive" style="max-height: 265px; overflow-y: auto;">
+                                <div class="table-responsive" style="max-height: 295px; overflow-y: auto;">
                                     <table class="table table-striped table-hover" id="top_stock">
                                         <thead>
-                                        <th class="text-capitalize">{{__('green_stock.rating')}}</th>
+                                        <th class="text-capitalize text-center">{{__('green_stock.rating')}}</th>
                                         <th class="text-capitalize">{{__('green_stock.stock')}}</th>
                                         <th class="text-capitalize">{{__('green_stock.last_sale')}}</th>
-                                        <th class="text-capitalize">{{__('green_stock.trend')}}</th>
-                                        <th class="text-capitalize">{{__('green_stock.action')}}</th>
+                                        <th class="text-capitalize text-center">{{__('green_stock.trend')}}</th>
+                                        <th class="text-capitalize text-center">{{__('green_stock.action')}}</th>
                                         <th class="text-capitalize">{{__('green_stock.profit')}}</th>
                                         <th class="text-capitalize">{{__('green_stock.after_sell')}}</th>
                                         <th class="text-capitalize">{{__('green_stock.price')}}</th>
@@ -318,40 +323,43 @@
                             </div>
                         </div>
                     </div>
-                    <hr class="border-primary my-5">
+                    <hr class="border-primary my-80">
                     <div class="container">
                         <div class="row">
                             <div class="col-12">
                                 <div class="container-chart" style="padding: 32px 32px !important;">
-                                    <h4 class="title-chart text-uppercase text-center mb-5">{{__('front_end.top_10_trading_value')}}</h4>
-                                    <div class="d-flex flex-column justify-content-center align-items-center">
-                                        <canvas class="mt-5" id="avg_cap" height="400"></canvas>
+                                    <h4 class="title-chart text-uppercase text-center">{{__('front_end.top_10_trading_value')}}</h4>
+                                    <div style="height: 425px;"
+                                         class="chart-contianer d-flex flex-column justify-content-center align-items-center">
+                                        <canvas id="avg_cap"></canvas>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <hr class="border-primary my-5">
+                    <hr class="border-primary my-80">
                     <div class="container">
                         <div class="row">
                             <div class="col-12">
                                 <div class="container-chart" style="padding: 32px 32px !important;">
-                                    <h4 class="title-chart text-uppercase text-center mb-5">{{__('front_end.market_with_MA')}}</h4>
-                                    <div class="d-flex flex-column justify-content-center align-items-center">
-                                        <canvas class="mt-5" id="group_ma" height="300"></canvas>
+                                    <h4 class="title-chart text-uppercase text-center">{{__('front_end.market_with_MA')}}</h4>
+                                    <div style="height:394.5px;"
+                                         class="chart-container d-flex flex-column justify-content-center align-items-center">
+                                        <canvas id="group_ma"></canvas>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="my-5"></div>
+                    <div class="my-80"></div>
                     <div class="container">
                         <div class="row">
                             <div class="col-12">
                                 <div class="container-chart" style="padding: 32px 32px !important;">
-                                    <h4 class="title-chart text-uppercase text-center mb-5">{{__('front_end.trading_value_ratio')}}</h4>
-                                    <div class="d-flex flex-column justify-content-center align-items-center">
-                                        <canvas class="mt-2" id="current_cap"></canvas>
+                                    <h4 class="title-chart text-uppercase text-center">{{__('front_end.trading_value_ratio')}}</h4>
+                                    <div style="height: 867px;"
+                                         class="chart-container d-flex flex-column justify-content-center align-items-center">
+                                        <canvas id="current_cap"></canvas>
                                     </div>
                                 </div>
                             </div>
@@ -411,12 +419,12 @@
                     if (response.data) {
                         result = JSON.parse(response.data);
                         var newRow = `
-                            <tr  data-id="` + result.id + `" >
+                            <tr data-id="` + result.id + `" >
                                 <td>` + result.code + `</td>
-                                <td>` + result.rating + `</td>
-                                <td>` + result.price + `</td>
-                                <td>` + result.current_price + `</td>
-                                <td><button class="btn btn-danger btn-delete btn-sm"><i class="fas fa-minus"></i></button></td>
+                                <td class="text-center">` + result.rating + `</td>
+                                <td class="text-center">` + result.price + `</td>
+                                <td class="text-center">` + result.current_price + `</td>
+                                <td class="text-center"><button class="btn btn-delete btn-sm"><i class="far fa-trash-alt"></i></button></td>
                             </tr>
                         `;
                         $('#my_watch_list tbody').append(newRow);
@@ -482,7 +490,8 @@
                 }]
             },
             options: {
-                responsive: false,
+                responsive: true,
+                maintainAspectRatio: false,
                 plugins: {
                     datalabels: {
                         display: true, // Hiển thị giá trị
@@ -518,11 +527,12 @@
         });
 
         var indices = $('#indices-table').DataTable({
-            searching: false,
-            lengthChange: false, //
-            responsive: true,
+            pageLength: 50,         // Giá trị mặc định
+            lengthChange: false,
             paging: false,
-            autoWidth: true,
+            searching: false,
+            responsive: true,
+            autoWidth: false,
             info: false,
             order: [[0, 'asc']],
             data: @json($signals),
@@ -545,6 +555,7 @@
                         if (cellData <= 30) {
                             bold = 'bold';
                         }
+                        $(td).addClass('text-center');
                         $(td).css('font-weight', bold);
                     },
                 },
@@ -572,6 +583,12 @@
                                 left: e.pageX + 20 + 'px'
                             });
                         });
+                    },
+                },
+                {
+                    targets: 2, // Index of the date column
+                    createdCell: function (td, cellData, rowData, row, col) {
+                        $(td).addClass('text-right');
                     },
                 },
                 {
@@ -606,16 +623,17 @@
                             background = '#FFC1C2';
                         }
                         $(td).html(`<span class="trend text-capitalize" style="
-                            display: inline-block;
-                            border-radius: 4px;
-                            background-color: ${background};
-                            color: ${color};
-                            border: 1px solid ${color};
-                            font-size: 13px;
-                            padding: 4px 16px;
-                            width: 176px;
-                        ">${trending}</span>`);
+                                display: inline-block;
+                                border-radius: 4px;
+                                background-color: ${background};
+                                color: ${color};
+                                border: 1px solid ${color};
+                                font-size: 13px;
+                                padding: 4px 16px;
+                                width: 176px;
+                            ">${trending}</span>`);
                         $(td).css('witdh', '176px');
+                        $(td).addClass('text-center');
                     }
                 },
                 {
@@ -640,15 +658,16 @@
                             color = 'rgb(227, 123, 113)';
                             background = '';
                         }
+                        $(td).addClass('text-center');
                         $(td).html(`<span class="action text-capitalize" style="
-                            display: inline-block;
-                            border-radius: 4px;
-                            background-color: ${background};
-                            color: ${color};
-                            border: 1px solid ${color};
-                            font-size: 14px;
-                            padding: 4px 16px;
-                        ">${signal}</span>`);
+                                display: inline-block;
+                                border-radius: 4px;
+                                background-color: ${background};
+                                color: ${color};
+                                border: 1px solid ${color};
+                                font-size: 14px;
+                                padding: 4px 16px;
+                            ">${signal}</span>`);
                     }
                 },
                 {
@@ -687,7 +706,9 @@
                 },
                 {
                     targets: 7, // Index of the date column
-
+                    createdCell: function (td, cellData, rowData, row, col) {
+                        $(td).addClass('text-right');
+                    },
                     render: function (data, type, full, meta) {
                         if (data == 'fas fa-lock') {
                             return '<i style="color:green" class="fas fa-lock"></i>';
@@ -696,7 +717,6 @@
                             return parseFloat(data).toFixed(2);
                         }
                         return data; //
-
                     }
                 },
                 {
@@ -718,6 +738,11 @@
                 }
             }
         });
+        // Khi user thay đổi dropdown
+        // $('#selectLimitIndiceTable').on('change', function () {
+        //     const selectedValue = parseInt($(this).val(), 50);
+        //     indices.page.len(selectedValue).draw(); // 👈 Cập nhật số dòng hiển thị
+        // });
 
         var barGroupctx = document.getElementById('groupStock').getContext('2d');
         var labelCount = @json($chart_group_data['labels']).
@@ -862,8 +887,8 @@
                 ],
             },
             options: {
-                responsive: false,  // <== RẤT QUAN TRỌNG
-                // maintainAspectRatio: false, // Nếu bạn không muốn giữ tỉ lệ mặc định
+                responsive: true,
+                maintainAspectRatio: false,
                 plugins: {
                     legend: {
                         display: true,
@@ -1080,7 +1105,7 @@
                     },
                     options: {
                         maintainAspectRatio: false,
-                        responsive: true, //
+                        responsive: true,
                         plugins: {
                             legend: {
                                 onClick: () => {
@@ -1183,10 +1208,9 @@
                     options: {
                         indexAxis: 'y', // Chuyển sang biểu đồ cột ngang
                         responsive: true, // Cho phép tùy chỉnh tỷ lệ
-                        maintainAspectRatio: false, // Cho phép tùy chỉnh tỷ lệ
+                        maintainAspectRatio: false, // Cho phép tự điều chỉnh theo container
                         lenged: {
                             display: true,
-
                         },
                         plugins: {
                             tooltip: {
@@ -1290,7 +1314,7 @@
                                             lengthChange: false, //
                                             responsive: true,
                                             paging: false,
-                                            autoWidth: true,
+                                            autoWidth: false,
                                             info: false,
                                             order: [[0, 'asc']],
                                             data: data,
@@ -1313,6 +1337,7 @@
                                                         if (cellData <= 30) {
                                                             bold = 'bold';
                                                         }
+                                                        $(td).addClass('text-center');
                                                         $(td).css('font-weight', bold);
                                                     },
                                                 },
@@ -1378,6 +1403,7 @@
                                                             color = '#F65D60';
                                                             background = '#FFC1C2';
                                                         }
+                                                        $(td).addClass('text-center');
                                                         $(td).html(`<span class="trend text-capitalize" style="
                                                             display: inline-block;
                                                             border-radius: 4px;
@@ -1413,6 +1439,7 @@
                                                             color = 'rgb(227, 123, 113)';
                                                             background = '';
                                                         }
+                                                        $(td).addClass('text-center');
                                                         $(td).html(`<span class="action text-capitalize" style="
                                                             display: inline-block;
                                                             border-radius: 4px;
@@ -1441,6 +1468,15 @@
                                                 },
                                                 {
                                                     targets: 6, // Index of the date column
+                                                    createdCell: function (td, cellData, rowData, row, col) {
+                                                        color = '';
+                                                        if (cellData > 0) {
+                                                            color = '#277248';
+                                                        } else if (cellData < 0) {
+                                                            color = '#EF5657';
+                                                        }
+                                                        $(td).css('color', color);
+                                                    },
                                                     render: function (data, type, full, meta) {
                                                         if (data == 'fas fa-lock') {
                                                             return '<i style="color:green" class="fas fa-lock"></i>';
@@ -1481,7 +1517,7 @@
                     lengthChange: false, //
                     responsive: true,
                     paging: false,
-                    autoWidth: true,
+                    autoWidth: false,
                     info: false,
                     order: [[0, 'asc']],
                     data: result.top_stock,
@@ -1504,6 +1540,7 @@
                                 if (cellData <= 30) {
                                     bold = 'bold';
                                 }
+                                $(td).addClass('text-center');
                                 $(td).css('font-weight', bold);
                             },
                         },
@@ -1569,16 +1606,17 @@
                                     color = '#F65D60';
                                     background = '#FFC1C2';
                                 }
+                                $(td).addClass('text-center');
                                 $(td).html(`<span class="trend text-capitalize" style="
-                            display: inline-block;
-                            border-radius: 4px;
-                            background-color: ${background};
-                            color: ${color};
-                            border: 1px solid ${color};
-                            font-size: 13px;
-                            padding: 4px 16px;
-                            width: 176px;
-                        ">${trending}</span>`);
+                                display: inline-block;
+                                border-radius: 4px;
+                                background-color: ${background};
+                                color: ${color};
+                                border: 1px solid ${color};
+                                font-size: 13px;
+                                padding: 4px 16px;
+                                width: 176px;
+                            ">${trending}</span>`);
                                 $(td).css('witdh', '176px');
                             }
                         },
@@ -1604,15 +1642,16 @@
                                     color = 'rgb(227, 123, 113)';
                                     background = '';
                                 }
+                                $(td).addClass('text-center');
                                 $(td).html(`<span class="action text-capitalize" style="
-                                                            display: inline-block;
-                                                            border-radius: 4px;
-                                                            background-color: ${background};
-                                                            color: ${color};
-                                                            border: 1px solid ${color};
-                                                            font-size: 14px;
-                                                            padding: 4px 16px;
-                                                        ">${signal}</span>`);
+                                    display: inline-block;
+                                    border-radius: 4px;
+                                    background-color: ${background};
+                                    color: ${color};
+                                    border: 1px solid ${color};
+                                    font-size: 14px;
+                                    padding: 4px 16px;
+                                ">${signal}</span>`);
                             }
                         },
                         {
@@ -1672,19 +1711,31 @@
                 });
                 // top_stock
                 var ctxavg_cap = document.getElementById('avg_cap').getContext('2d');
+                var mappedLabels = [];
+                var rawLabels = result.chart_group_data.avg_cap?.labels; // optional chaining
+
+                if (Array.isArray(rawLabels)) {
+                    mappedLabels = rawLabels
+                        .filter(label => typeof label === 'string') // lọc an toàn
+                        .map(label => customSplit(label));
+                }
                 avg_capBar = new Chart(ctxavg_cap, {
                     type: 'bar',
                     data: {
-                        labels: result.chart_group_data.avg_cap.labels,
+                        labels: mappedLabels,
                         datasets: [{
                             data: result.chart_group_data.avg_cap.values,
                             label: '',
                             backgroundColor: '#008000',
                             borderWidth: 1,
-                            fontweight: 600,
+                            fontweight: 400,
+                            borderRadius: 4,
+                            barThickness: 40,
                         }]
                     },
                     options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
                         plugins: {
                             legend: {
                                 display: false,
@@ -1698,7 +1749,7 @@
                                 },
                                 labels: {
                                     value: {
-                                        color: 'green',
+                                        color: '#008000',
                                         font: {
                                             weight: 'bold'
                                         }
@@ -1710,12 +1761,15 @@
                             x: {
                                 ticks: {
                                     font: {
+                                        style: 'normal', // 👈 bỏ italic
                                         family: 'Montserrat, sans-serif',   // 👈 Font chữ
-                                        size: 14,                           // 👈 Kích thước chữ (px)
+                                        size: 12,                           // 👈 Kích thước chữ (px)
                                         weight: '400'                       // 👈 Font-weight (bold/400/600...)
                                     },
                                     color: '#000C2A',
-                                }
+                                    maxRotation: 0,
+                                    minRotation: 0
+                                },
                             },
                             y: {
                                 ticks: {
@@ -1731,41 +1785,88 @@
 
                     },
                     plugins: [ChartDataLabels]
-
                 });
+
+                function customSplit(str) {
+                    if (typeof str !== 'string') return [];
+
+                    const parts = str.trim().split(' ');
+                    const result = [];
+
+                    for (let part of parts) {
+                        if (part.includes('/')) {
+                            // Tách từng phần có /
+                            const split = part.split('/');
+                            for (let i = 0; i < split.length; i++) {
+                                const p = split[i];
+                                if (p) {
+                                    if (i < split.length - 1) {
+                                        result.push(p + '/'); // giữ dấu /
+                                    } else {
+                                        result.push(p);
+                                    }
+                                }
+                            }
+                        } else {
+                            result.push(part);
+                        }
+                    }
+
+                    return result;
+                }
+
                 var ctx_ma = document.getElementById('group_ma').getContext('2d');
+                var mappedMaLabels = [];
+                var rawMaLabels = result.ma?.labels; // optional chaining
+
+                if (Array.isArray(rawMaLabels)) {
+                    mappedMaLabels = rawMaLabels
+                        .filter(label => typeof label === 'string') // lọc an toàn
+                        .map(label => customSplit(label));
+                }
                 const chart = new Chart(ctx_ma, {
                     type: 'line',
                     data: {
-                        labels: result.ma.labels,
+                        labels: mappedMaLabels,
                         datasets: [
                             {
                                 label: 'Index',
                                 data: result.ma.nas100_values,
-                                borderColor: 'purple',
-                                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                                borderColor: '#EF5657',
+                                backgroundColor: '#EF5657',
                                 yAxisID: 'y',  // Gắn với trục y đầu tiên
-                                color: 'white'
+                                color: 'white',
+                                borderWidth: 1,
+                                pointRadius: 0,
+                                fill: false
                             },
                             {
                                 label: 'MA200',
                                 data: result.ma.ma200_values,
-                                borderColor: 'orange',
-                                backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                                borderColor: '#008000',
+                                backgroundColor: '#008000',
                                 yAxisID: 'y1',  // Gắn với trục y thứ hai
-                                color: 'white'
+                                color: 'white',
+                                borderWidth: 1,
+                                pointRadius: 0,
+                                fill: false
                             },
                             {
                                 label: 'MA50',
                                 data: result.ma.ma50_values,
-                                borderColor: 'Green',
-                                backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                                borderColor: '#F1C32A',
+                                backgroundColor: '#F1C32A',
                                 yAxisID: 'y1',  // Gắn với trục y thứ hai
-                                color: 'white'
+                                color: 'white',
+                                borderWidth: 1,
+                                pointRadius: 0,
+                                fill: false
                             }
                         ]
                     },
                     options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
                         plugins: {
                             legend: {
                                 display: true,
@@ -1785,6 +1886,28 @@
                             },
                         },
                         scales: {
+                            x: {
+                                ticks: {
+                                    maxRotation: 0,
+                                    minRotation: 0,
+                                    // callback: function(value) {
+                                    //     const month = parseInt(this.getLabelForValue(value));
+                                    //     if (month === 12) {
+                                    //         return '2024'; // hoặc new Date().getFullYear()
+                                    //     }
+                                    //
+                                    //     // Tạo Date object tạm để lấy tên tháng viết tắt
+                                    //     const date = new Date(2023, month - 1); // tháng trong JS là 0-indexed
+                                    //     return date.toLocaleString('en-US', { month: 'short' }); // Jan, Feb, ...
+                                    // },
+                                    font: {
+                                        family: 'Montserrat, sans-serif',   // 👈 Font chữ
+                                        size: 12,                           // 👈 Kích thước chữ (px)
+                                        weight: '400'                       // 👈 Font-weight (bold/400/600...)
+                                    },
+                                    color: '#000C2A',
+                                }
+                            },
                             y: {
                                 type: 'linear',
                                 position: 'left',  // Trục y đầu tiên ở bên trái
@@ -1824,6 +1947,7 @@
                     },
                     options: {
                         responsive: true,
+                        maintainAspectRatio: false,
                         scales: {
                             y: {
                                 type: 'linear',
@@ -1835,7 +1959,7 @@
                                 ticks: {
                                     font: {
                                         family: 'Montserrat, sans-serif',   // 👈 Font chữ
-                                        size: 14,                           // 👈 Kích thước chữ (px)
+                                        size: 12,                           // 👈 Kích thước chữ (px)
                                         weight: '400'                       // 👈 Font-weight (bold/400/600...)
                                     },
                                     color: '#000C2A',
@@ -1845,7 +1969,7 @@
                                 ticks: {
                                     font: {
                                         family: 'Montserrat, sans-serif',   // 👈 Font chữ
-                                        size: 14,                           // 👈 Kích thước chữ (px)
+                                        size: 12,                           // 👈 Kích thước chữ (px)
                                         weight: '400'                       // 👈 Font-weight (bold/400/600...)
                                     },
                                     color: '#000C2A',
@@ -1854,7 +1978,7 @@
                         },
                         plugins: {
                             legend: {
-                                display: true,
+                                display: false,
                                 position: 'right',
                                 labels: {
                                     boxWidth: 20, // Điều chỉnh kích thước hộp màu
@@ -1991,4 +2115,9 @@
             alertDiv.remove();
         });
     }
+
+    // Fix lỗi table khi chuyển tabs
+    $('a[data-bs-toggle="pill"]').on('shown.bs.tab', function () {
+        $($.fn.dataTable.tables(true)).DataTable().columns.adjust().responsive.recalc();
+    });
 </script>
