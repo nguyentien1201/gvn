@@ -144,7 +144,7 @@ class HomeController
         $ma['down'] = [$ma['downMA50'],$ma['downMA200']];
         $chart_group_data = (new SubGroup())->getDataSubGroup(20);
         $chart_group_data = array_slice($chart_group_data, 0, 20);
-        return view('front.home',compact('signals','green_data','default_chart','last_signal','data_chart_default','chart_group_data','ma','chart_signal','labels'));
+        return view('frontend_v2.home',compact('signals','green_data','default_chart','last_signal','data_chart_default','chart_group_data','ma','chart_signal','labels'));
     }
     public function greenBeta(Request $request)
     {
