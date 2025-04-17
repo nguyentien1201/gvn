@@ -962,16 +962,12 @@
 
     $(document).on('click', '#pills-market-overview-tab', function () {
         if (isCall == true) return;
-        var index_up = 0;
-        var index_down = 0;
         const endColorDown = "rgb(255, 0, 0)"; // Red
         const startColorDown = "rgb(255, 255, 0)"; // Yellow
         const steps = 5;
-        const rangeDown = generateGradient(startColorDown, endColorDown, steps);
         const startColorUp = "rgb(5, 100, 40)"; // Red
         const endColorUp = "rgb(8, 190, 75)"; // Yellow
         var barCurentMonthGroup = null;
-        const rangeUp = generateGradient(startColorUp, endColorUp, steps);
 
         function showChart(index) {
             // Ẩn tất cả các datasets
@@ -994,7 +990,6 @@
             success: function (data) {
                 isCall = true;
                 var result = data.data;
-                console.log(result);
                 // Generate market cap items
                 var market_cap_data = result.market_cap;
                 if (market_cap_data) {
@@ -1108,6 +1103,12 @@
                         responsive: true,
                         plugins: {
                             legend: {
+                                onHover: function (event, legendItem, legend) {
+                                    event.native.target.style.cursor = 'pointer';
+                                },
+                                onLeave: function (event, legendItem, legend) {
+                                    event.native.target.style.cursor = 'default';
+                                },
                                 onClick: () => {
                                 }, // ✅ Vô hiệu hóa sự kiện click legend
                                 display: true,
@@ -1210,6 +1211,12 @@
                         responsive: true, // Cho phép tùy chỉnh tỷ lệ
                         maintainAspectRatio: false, // Cho phép tự điều chỉnh theo container
                         lenged: {
+                            onHover: function (event, legendItem, legend) {
+                                event.native.target.style.cursor = 'pointer';
+                            },
+                            onLeave: function (event, legendItem, legend) {
+                                event.native.target.style.cursor = 'default';
+                            },
                             display: true,
                         },
                         plugins: {
@@ -1738,6 +1745,12 @@
                         maintainAspectRatio: false,
                         plugins: {
                             legend: {
+                                onHover: function (event, legendItem, legend) {
+                                    event.native.target.style.cursor = 'pointer';
+                                },
+                                onLeave: function (event, legendItem, legend) {
+                                    event.native.target.style.cursor = 'default';
+                                },
                                 display: false,
                             },
                             datalabels: {
@@ -1869,6 +1882,12 @@
                         maintainAspectRatio: false,
                         plugins: {
                             legend: {
+                                onHover: function (event, legendItem, legend) {
+                                    event.native.target.style.cursor = 'pointer';
+                                },
+                                onLeave: function (event, legendItem, legend) {
+                                    event.native.target.style.cursor = 'default';
+                                },
                                 display: true,
                                 labels: {
                                     font: {
@@ -1929,21 +1948,62 @@
                     }
                 });
 
+                function lightenColor(hex, percent) {
+                    // Chuyển HEX sang RGB
+                    const num = parseInt(hex.replace('#', ''), 16);
+                    let r = (num >> 16);
+                    let g = (num >> 8) & 0x00FF;
+                    let b = (num) & 0x0000FF;
+
+                    // Làm nhạt màu bằng cách pha trắng (255,255,255)
+                    r = Math.round(r + (255 - r) * percent);
+                    g = Math.round(g + (255 - g) * percent);
+                    b = Math.round(b + (255 - b) * percent);
+
+                    // Trả về dạng HEX
+                    return `#${((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1)}`;
+                }
+
+                function generateColors(count) {
+                    // Danh sách màu border chính xác (có thể tuỳ biến)
+                    const baseColors = [
+                        '#0d99ff', '#e83e8c', '#28a745', '#ffc107', '#6f42c1',
+                        '#20c997', '#fd7e14', '#dc3545', '#6610f2', '#198754'
+                    ];
+
+                    const colors = [];
+
+                    for (let i = 0; i < count; i++) {
+                        const borderColor = baseColors[i % baseColors.length];
+                        const backgroundColor = lightenColor(borderColor, 0.7); // Làm nhạt ~70%
+
+                        colors.push({ borderColor, backgroundColor });
+                    }
+
+                    return colors;
+                }
+
+                var currentCapLabels = result.current_cap.labels;
+                var currentCapData = result.current_cap.data;
+                var currentCapGroupNames = result.current_cap.groupNames;
+                const generatedColors = generateColors(currentCapData.length);
+                const currentCapDatasets = currentCapData.map((item, i) => ({
+                    borderColor: generatedColors[i].borderColor,
+                    backgroundColor: generatedColors[i].backgroundColor,
+                    fill: true,
+                    borderWidth: 1,
+                    pointRadius: 0,
+                    tension: 0.1,
+                    label: currentCapGroupNames[i],
+                    data: item,
+                    ...item // 👈 cuối cùng mới merge
+                }));
                 var ctx_current_cap = document.getElementById('current_cap').getContext('2d');
                 const current_cap = new Chart(ctx_current_cap, {
                     type: 'line',
                     data: {
-                        labels: result.current_cap.labels,
-                        datasets: result.current_cap.data.map((item, index) => {
-                            return {
-                                label: result.current_cap.groupNames[index],
-                                data: item,
-                                fill: true,
-                                borderWidth: 0,
-                                pointRadius: 0,        // Loại bỏ các điểm trên đường
-                                pointHoverRadius: 0,   // Loại bỏ các điểm khi hover
-                            };
-                        })
+                        labels: currentCapLabels,
+                        datasets: currentCapDatasets
                     },
                     options: {
                         responsive: true,
@@ -1978,7 +2038,13 @@
                         },
                         plugins: {
                             legend: {
-                                display: false,
+                                onHover: function (event, legendItem, legend) {
+                                    event.native.target.style.cursor = 'pointer';
+                                },
+                                onLeave: function (event, legendItem, legend) {
+                                    event.native.target.style.cursor = 'default';
+                                },
+                                display: true,
                                 position: 'right',
                                 labels: {
                                     boxWidth: 20, // Điều chỉnh kích thước hộp màu
@@ -2012,47 +2078,6 @@
             return 8;
         }
         return 12;
-    }
-
-    function generateGradient(startColor, endColor, steps) {
-        // Parse the RGB values from the start and end colors
-        const startRGB = startColor.match(/\d+/g).map(Number);
-        const endRGB = endColor.match(/\d+/g).map(Number);
-
-        const gradient = [];
-        for (let i = 0; i <= steps; i++) {
-            const r = Math.round(startRGB[0] + (i * (endRGB[0] - startRGB[0]) / steps));
-            const g = Math.round(startRGB[1] + (i * (endRGB[1] - startRGB[1]) / steps));
-            const b = Math.round(startRGB[2] + (i * (endRGB[2] - startRGB[2]) / steps));
-            gradient.push(`rgb(${r}, ${g}, ${b})`);
-        }
-
-        return gradient;
-    }
-
-    function getChartOptions() {
-        const isMobile = window.innerWidth < 768; // Check if the screen width is below 768px
-
-        return {
-            x: {
-                ticks: {
-                    display: !isMobile, // Hide x-axis labels on mobile
-                    font: {
-                        weight: 'bold' // Makes x-axis labels bold
-                    }
-                }
-            },
-            y: {
-                beginAtZero: true,
-
-                ticks: {
-                    callback: function (value) {
-                        return value + '%'; // Thêm ký hiệu % vào các giá trị trên trục y
-                    }
-                }
-            }
-
-        };
     }
 
     function updateClock() {
@@ -2121,3 +2146,4 @@
         $($.fn.dataTable.tables(true)).DataTable().columns.adjust().responsive.recalc();
     });
 </script>
+
