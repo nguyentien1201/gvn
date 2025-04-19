@@ -79,10 +79,7 @@
   margin-right: 5px;
 }
 .footer-bottom {
-  background: #000;
-  padding: 30px 20px;
-  text-align: center;
-  color: #fff;
+  border-top: 1px solid #eff4f1;
 }
 #home-content .top-session-before-signal {
   margin-bottom: 20px;
@@ -219,4 +216,111 @@ swiper-container::part(button-prev), swiper-container::part(button-next) {
   color: #fff !important;
   width: calc(25px / 44* 25);
   height: 40px;
+}
+
+/*green page css*/
+:root {
+  --primary-default-color: #000C2A;
+  --primary-color: #008000;
+  --percent-stock-color: #198754;
+  --gray-color: #4D5B7C;
+}
+body {
+  font-family: "Montserrat", sans-serif !important;
+  font-optical-sizing: auto;
+  font-weight: 600 !important;
+  font-style: normal;
+  color: var(--primary-default-color);
+}
+#navbarNav .nav-link {
+  font-size: 1.1rem;
+  color: #000;
+  border: 3px solid transparent;
+  font-weight: 600;
+}
+.inter-font-family {
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+.montserrat-font-family {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+}
+.noto-sans-jp-font-family {
+  font-family: "Noto Sans JP", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+/*header css*/
+.dropdown-item {
+  display: flex;
+  align-items: center;
+}
+.dropdown-item .flag-icon {
+  margin-right: 8px;
+}
+.header {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--gray-color);
+}
+.header #navbarNav .nav-link {
+  color: var(--gray-color);
+  font-size: 16px;
+  font-weight: 500;
+}
+.header .dropdown-item:active {
+  color: #fff;
+  text-decoration: none;
+  background-color: var(--primary-color);
+}
+.btn-custom {
+  background: var(--primary-color);
+  padding: 8px 16px;
+}
+.btn-custom:hover, .btn-custom:focus, .btn-custom:active {
+  background: var(--primary-color);
+  padding: 8px 16px;
+}
+.btn-outline-custom {
+  color: var(--primary-color);
+  padding: 8px 16px;
+  background: #fff;
+  border: 1px solid var(--primary-color);
+}
+.btn-outline-custom:hover {
+  background: var(--primary-color);
+  padding: 8px 16px;
+  color: #fff;
+}
+/*footer css*/
+footer {
+  background: #F5FFF7;
+  color: var(--gray-color) !important;
+}
+footer a, footer span, footer p {
+  color: var(--gray-color) !important;
+  font-size: 16px !important;
+}
+footer .blocks-title {
+  font-weight: 700;
+  font-size: 18px !important;
+  color: #0A381D !important;
+}
+footer ul.list-unstyled li:hover a {
+  color: var(--primary-color) !important;
+}
+footer .social-icons a:hover {
+  color: var(--primary-color) !important;
+}
+@media (min-width: 992px) {
+  .w-lg-auto {
+    width: auto !important;
+  }
 }

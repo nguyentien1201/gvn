@@ -1,0 +1,41 @@
+.heading-page {
+    font-size: 36px;
+    text-align: center;
+    padding: 10px;
+    font-weight: 600;
+}
+
+.container-heading {
+    background: #F5FFF7;
+    padding: 65px 0;
+}
+
+#banner-home .content {
+    font-weight: 400 !important;
+    font-size: 18px;
+    font-family: "Noto Sans JP", sans-serif ! important;
+}
+#banner-home .container-button .btn.btn-primary {
+    color: #fff;
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    padding: 12px 52px;
+    border-radius: 8px;
+}
+#banner-home .container-button .btn {
+    font-family: "Noto Sans JP", sans-serif ! important;
+    font-weight: 500;
+    font-size: 16px;
+}
+#banner-home .container-button .btn.btn-outline-primary {
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+    background-color: #fff;
+    padding: 12px 52px;
+    border-radius: 8px;
+}
+#banner-home .container-button .btn.btn-outline-primary:hover {
+    color: #fff;
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
