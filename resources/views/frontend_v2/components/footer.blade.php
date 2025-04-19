@@ -1,31 +1,66 @@
-<footer class="bg-gray-100 py-6 mt-12">
-    <div class="container mx-auto flex flex-col md:flex-row justify-between items-center px-4">
-        <div class="text-center md:text-left">
-            <img src="/images/logo.png" alt="GVN Fin Trade Logo" class="w-32 mb-2">
-            <p class="text-gray-600 text-sm">An Khanh ward, Thu Duc district, Ho Chi Minh city, Vietnam</p>
-            <p class="text-gray-600 text-sm">📞 +843154848375</p>
-            <p class="text-gray-600 text-sm">✉ support@gvn-fintrade.com</p>
-        </div>
-
-        <div class="text-center md:text-left mt-4 md:mt-0">
-            <h4 class="font-semibold">My Company</h4>
-            <ul class="text-gray-600 text-sm">
-                <li><a href="#">About Us</a></li>
-                <li><a href="#">My System</a></li>
-                <li><a href="#">Our Service</a></li>
-            </ul>
-        </div>
-
-        <div class="text-center md:text-left mt-4 md:mt-0">
-            <h4 class="font-semibold">Useful references</h4>
-            <ul class="text-gray-600 text-sm">
-                <li><a href="#">Our Performance</a></li>
-                <li><a href="#">How It Work</a></li>
-                <li><a href="#">Research Investment</a></li>
-            </ul>
+<footer class="inter-font-family">
+    <div class="top-footer py-4">
+        <div class="container">
+            <div class="row">
+                <!-- Logo & Contact -->
+                <div class="col-md-6 col-lg-4 mb-4 mb-lg-0">
+                    <img src="{{ asset('images/logo.png') }}" alt="GVN Fin Trade" style="max-width: 180px;" class="mb-4">
+                    <ul class="list-unstyled small text-muted">
+                        <li class="mb-2 d-flex align-items-start gap-2">
+                            <img width="24" height="24" class="img-fluid object-contain" src="{{asset('images/icons/2marker-pin-03.png')}}" alt="">
+                            <span>An Khanh ward, Thu Duc district, Ho Chi Minh city, Viet Nam</span>
+                        </li>
+                        <li class="mb-2 d-flex align-items-center gap-2">
+                            <img width="24" height="24" class="img-fluid" src="{{asset('images/icons/2phone.png')}}" alt="">
+                            <span>(+84)354848375</span>
+                        </li>
+                        <li class="mb-2 d-flex align-items-center gap-2">
+                            <img width="24" height="24" class="img-fluid" src="{{asset('images/icons/2mail-02.png')}}" alt="">
+                            <span>support@gvn-fintrade.com</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-12 col-lg-6 ms-auto">
+                    <div class="row">
+                        <!-- My Company -->
+                        <div class="col-6 col-lg-6">
+                            <h6 class="blocks-title mb-3">My Company</h6>
+                            <ul class="list-unstyled">
+                                <li><a href="#" class="text-decoration-none text-muted d-block mb-2">About Us</a></li>
+                                <li><a href="#" class="text-decoration-none text-muted d-block mb-2">My System</a></li>
+                                <li><a href="#" class="text-decoration-none text-muted d-block">Our Service</a></li>
+                            </ul>
+                        </div>
+                        <!-- Useful references -->
+                        <div class="col-6 col-lg-6">
+                            <h6 class="blocks-title mb-3">Useful references</h6>
+                            <ul class="list-unstyled">
+                                <li><a href="#" class="text-decoration-none text-muted d-block mb-2">Our Performance</a></li>
+                                <li><a href="#" class="text-decoration-none text-muted d-block mb-2">How It Work</a></li>
+                                <li><a href="#" class="text-decoration-none text-muted d-block">Research Investment</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="text-center text-gray-500 text-sm mt-6">
-        Copyright 2023 © GVN-Fintrade
+    <div class="footer-bottom py-4">
+        <div class="container">
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-center small">
+                <p class="mb-2 mb-md-0 text-muted">Copyright 2023 © GVN-Fintrade</p>
+                <div class="social-icons d-flex gap-3">
+                    <a href="#" class="text-dark">
+                        <img width="24" height="24" class="img-fluid" src="{{asset('images/icons/x.png')}}" alt="">
+                    </a>
+                    <a href="#" class="text-dark">
+                        <img width="24" height="24" class="img-fluid" src="{{asset('images/icons/facebook.png')}}" alt="">
+                    </a>
+                    <a href="#" class="text-dark">
+                        <img width="24" height="24" class="img-fluid" src="{{asset('images/icons/youtube.png')}}" alt="">
+                    </a>
+                </div>
+            </div>
+        </div>
     </div>
 </footer>

@@ -1,20 +1,21 @@
 <!-- resources/views/components/hero.blade.php -->
-<section class="relative bg-gradient-to-b from-green-100 to-white py-20 mt-16">
-    <div class="container mx-auto text-center">
-        <h1 class="text-4xl font-bold text-gray-900">System Exclusively for Investors</h1>
-        <p class="text-gray-700 mt-4 max-w-2xl mx-auto">
-            We create these systems to serve the demands of investors.
-            Saving time in market analysis and increasing the efficiency of client’s investment.
-        </p>
-
-        <div class="mt-6 space-x-4">
-            <a href="#" class="bg-green-600 text-white px-6 py-3 rounded-lg shadow-lg hover:bg-green-700">See more</a>
-            <a href="#" class="border border-green-600 text-green-600 px-6 py-3 rounded-lg shadow-lg hover:bg-green-100">Contact</a>
+<section id="banner-home">
+    <div class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item container-heading active text-center">
+                <h3 class="heading-page" style="font-size: 48px;">{{__('home.title_banner')}}</h3>
+                <p class="content noto-sans-jp-font-family my-3">
+                    <span>{{__('home.content_1')}}</span><br>
+                    <span>{{__('home.content_2')}}</span>
+                </p>
+                <div class="container-button d-flex justify-content-center gap-3">
+                    <button class="btn btn-primary">{{__('home.see_more')}}</button>
+                    <button class="btn btn-outline-primary">{{__('home.contact')}}</button>
+                </div>
+                <div class="container background-banner">
+                    <img height="400px" class="img-fluid w-100 d-block" src="{{asset('images/home/header-banner.png')}}" alt="">
+                </div>
+            </div>
         </div>
-    </div>
-
-    <!-- Background Chart Image -->
-    <div class="absolute inset-0 flex justify-center items-end">
-
     </div>
 </section>
