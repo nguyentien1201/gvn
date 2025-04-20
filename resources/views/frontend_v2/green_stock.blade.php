@@ -157,14 +157,14 @@
                 order: [[0, 'asc']],
                 data: @json($signals),
                 columns: [
-                    {data: 'rating',},  // Apply bold formatting to the "PriceTrend" column data},
-                    {data: 'code',},
-                    {data: 'current_price',},
-                    {data: 'trending',},
-                    {data: 'signal',},
-                    {data: 'profit',},
-                    {data: 'post_sale_discount',},
-                    {data: 'price',},
+                    {data: 'rating'},  // Apply bold formatting to the "PriceTrend" column data},
+                    {data: 'code'},
+                    {data: 'current_price'},
+                    {data: 'trending'},
+                    {data: 'signal'},
+                    {data: 'profit'},
+                    {data: 'post_sale_discount'},
+                    {data: 'price'},
                     {data: 'time'},
                 ],
                 columnDefs: [
@@ -367,8 +367,7 @@
             // });
 
             var barGroupctx = document.getElementById('groupStock').getContext('2d');
-            var labelCount = @json($chart_group_data['labels']).
-            length;
+            var labelCount = @json($chart_group_data['labels']).length;
             barGroup = new Chart(barGroupctx, {
                 type: 'bar',
                 data: {
@@ -432,6 +431,7 @@
                 },
                 plugins: [ChartDataLabels]
             });
+
             // 🔧 Plugin vẽ đường kẻ ngang & dọc nét đứt
             const dashedGridLinesPlugin = {
                 id: 'dashedGridLinesPlugin',

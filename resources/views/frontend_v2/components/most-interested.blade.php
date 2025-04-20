@@ -25,9 +25,6 @@
 </section>
 
 @push('scripts')
-    <!-- DataTables with Bootstrap 5 styling -->
-    <script src="https://cdn.datatables.net/v/bs5/dt-2.0.8/date-1.5.2/fc-5.0.1/fh-4.0.1/r-3.0.2/datatables.min.js"></script>
-
     <script>
         $(document).ready(function () {
             console.log(@json($signals));

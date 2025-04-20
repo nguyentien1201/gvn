@@ -12,6 +12,9 @@
         @include('frontend_v2.components.most-interested')
         @include('frontend_v2.components.trade-tab')
         @include('frontend_v2.components.top-signals')
+        @include('frontend_v2.components.scan-qr')
+        @include('frontend_v2.components.stock-rating-tabs')
+        @include('frontend_v2.components.trading-green-stock-NAS100')
         @include('frontend_v2.components.footer')
     </div>
 @endsection
