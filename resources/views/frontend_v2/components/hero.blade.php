@@ -13,7 +13,7 @@
                     <button class="btn btn-outline-primary">{{__('home.contact')}}</button>
                 </div>
                 <div class="container background-banner">
-                    <img height="400px" class="img-fluid w-100 d-block" src="{{asset('images/home/header-banner.png')}}" alt="">
+                    <img height="400px" class="img-fluid w-100 d-block" src="{{asset('images/home/header-banner-1.png')}}" alt="">
                 </div>
             </div>
         </div>

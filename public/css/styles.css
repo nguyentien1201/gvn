@@ -301,8 +301,9 @@ body {
 }
 /*footer css*/
 footer {
-  background: #F5FFF7;
+  background: linear-gradient(to top, #F5FFF7, #fff);
   color: var(--gray-color) !important;
+  padding-top: 180px;
 }
 footer a, footer span, footer p {
   color: var(--gray-color) !important;
@@ -323,4 +324,65 @@ footer .social-icons a:hover {
   .w-lg-auto {
     width: auto !important;
   }
+}
+/*css thead cho tất cả table*/
+.table thead th {
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  background: var(--primary-color);
+}
+.table tbody {
+  font-size: 16px;
+  font-weight: 600;
+  color: #4D5B7C !important;
+}
+table.table thead th {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+table.table>:not(caption)>*>* {
+  border-bottom-width: 0;
+}
+table.table>tbody>tr:nth-of-type(odd) {
+  --bs-table-accent-bg: transparent;
+  color: var(--gray-color);
+}
+table.table>tbody>tr:hover {
+  --bs-table-accent-bg: #F1F4F8 !important;
+  color: #000 !important;
+  cursor: pointer;
+}
+table.table>tbody>tr:nth-of-type(even) {
+  --bs-table-accent-bg: #F1F4F8;
+  color: var(--gray-color);
+}
+
+/*custom btn tabs*/
+.tabs-green {
+  padding: 8px;
+  text-align: center;
+  margin: 0 auto;
+  width: fit-content;
+  background: #DEF5EA;
+  border-radius: 160px;
+}
+.tabs-green #pills-tab {
+  margin: 0 !important;
+}
+.tabs-green .btn-tab {
+  background: transparent;
+  border-radius: 160px !important;
+  padding: 10px 16px;
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--primary-default-color) !important;
+}
+.tabs-green .btn-tab:hover {
+  color: var(--primary-color) !important;
+}
+.tabs-green .btn-tab.active {
+  background: var(--primary-color) !important;
+  color: #fff !important;
 }

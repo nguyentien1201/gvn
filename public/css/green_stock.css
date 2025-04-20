@@ -14,9 +14,6 @@ body {
   margin-left: auto !important;
 }
 
-
-
-
 .cta {
   background-color: #007bff;
   color: white;
@@ -187,32 +184,6 @@ body {
   font-style: normal;
   color: var(--primary-default-color);
 }
-.tabs-green {
-  padding: 8px;
-  text-align: center;
-  margin: 0 auto;
-  width: fit-content;
-  background: #DEF5EA;
-  border-radius: 160px;
-}
-.tabs-green #pills-tab {
-  margin: 0 !important;
-}
-.tabs-green .btn-tab {
-  background: transparent;
-  border-radius: 160px !important;
-  padding: 10px 16px;
-  font-weight: 600;
-  font-size: 16px;
-  color: var(--primary-default-color) !important;
-}
-.tabs-green .btn-tab:hover {
-  color: var(--primary-color) !important;
-}
-.tabs-green .btn-tab.active {
-  background: var(--primary-color) !important;
-  color: #fff !important;
-}
 .time-live {
   text-align: center;
   font-weight: 500;
@@ -289,28 +260,10 @@ body {
   color: #000 !important;
   cursor: pointer;
 }
-.content-stock-rating table.table>tbody>tr:nth-of-type(even) {
-  --bs-table-accent-bg: #F1F4F8;
-  color: var(--primary-default-color);
-}
-.content-stock-rating table.table>tbody>tr:nth-of-type(odd) {
-  --bs-table-accent-bg: transparent;
-  color: var(--primary-default-color);
-}
-.content-stock-rating table.table>:not(caption)>*>* {
-  border-bottom-width: 0;
-}
 .content-stock-rating table.table>:not(:last-child)>:last-child>* {
   border-bottom: 1px solid #D5D7DA !important;
 }
-.content-stock-rating table.table thead th {
-  position: sticky;
-  top: 0;
-  z-index: 2;
-  background-color: #fff; /* Hoặc dùng màu nền phù hợp với bảng */
-}
 .content-stock-rating table#my_watch_list.table tbody tr td {
-  color: #4D5B7C !important;
   font-weight: 500;
 }
 .content-stock-rating .title-chart-best-top-10 {
@@ -322,13 +275,6 @@ body {
   font-weight: 600;
   color: #fff;
   background: var(--primary-color);
-}
-.content-stock-rating table#indices-table.table thead tr {
-  background: var(--primary-color);
-}
-.content-stock-rating table#indices-table.table tbody tr td {
-  color: #4D5B7C;
-  font-weight: 500;
 }
 .content-stock-rating table#my_watch_list-table.table tbody tr td {
   color: #4D5B7C !important;
@@ -380,13 +326,6 @@ body {
   font-weight: 600;
   color: #fff;
   background: var(--primary-color);
-}
-.content-overview table#top_stock.table thead tr {
-  background: var(--primary-color);
-}
-.content-overview table#top_stock.table tbody tr td {
-  color: #4D5B7C;
-  font-weight: 500;
 }
 @media (max-width: 768px) {
   .top-5-stocks .stocks .stock-container {
