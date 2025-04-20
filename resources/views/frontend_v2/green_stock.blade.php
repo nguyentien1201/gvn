@@ -151,7 +151,7 @@
                 lengthChange: false,
                 paging: false,
                 searching: false,
-                responsive: true,
+                responsive: false,
                 autoWidth: false,
                 info: false,
                 order: [[0, 'asc']],
@@ -299,6 +299,7 @@
                             } else if (cellData < 0) {
                                 color = '#EF5657';
                             }
+                            $(td).addClass('text-right');
                             $(td).css('color', color);
                         },
                         render: function (data, type, full, meta) {
@@ -314,6 +315,7 @@
                             } else if (cellData < 0) {
                                 color = '#EF5657';
                             }
+                            $(td).addClass('text-right');
                             $(td).css('color', color);
                         },
                         render: function (data, type, full, meta) {
@@ -331,7 +333,7 @@
                         },
                         render: function (data, type, full, meta) {
                             if (data == 'fas fa-lock') {
-                                return '<i style="color:green" class="fas fa-lock"></i>';
+                                return '<i style="color:#277248" class="fas fa-lock"></i>';
                             }
                             if (type === 'display') {
                                 return parseFloat(data).toFixed(2);
@@ -939,7 +941,7 @@
                                             top_stock = $('#top_stock').DataTable({
                                                 searching: false,
                                                 lengthChange: false, //
-                                                responsive: true,
+                                                responsive: false,
                                                 paging: false,
                                                 autoWidth: false,
                                                 info: false,
@@ -2003,12 +2005,12 @@
                                                 <thead>
                                                 <th class="text-capitalize text-center">{{__('green_stock.rating')}}</th>
                                                 <th class="text-capitalize">{{__('green_stock.stock')}}</th>
-                                                <th class="text-capitalize">{{__('green_stock.last_sale')}}</th>
+                                                <th class="text-capitalize tex-right">{{__('green_stock.last_sale')}}</th>
                                                 <th class="text-capitalize text-center">{{__('green_stock.trend')}}</th>
                                                 <th class="text-capitalize text-center">{{__('green_stock.action')}}</th>
-                                                <th class="text-capitalize">{{__('green_stock.profit')}}</th>
-                                                <th class="text-capitalize">{{__('green_stock.after_sell')}}</th>
-                                                <th class="text-capitalize">{{__('green_stock.price')}}</th>
+                                                <th class="text-capitalize tex-right">{{__('green_stock.profit')}}</th>
+                                                <th class="text-capitalize tex-right">{{__('green_stock.after_sell')}}</th>
+                                                <th class="text-capitalize tex-right">{{__('green_stock.price')}}</th>
                                                 <th class="text-capitalize">{{__('green_stock.time')}}</th>
                                                 </thead>
                                             </table>

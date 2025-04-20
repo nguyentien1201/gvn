@@ -1,39 +1,109 @@
-<section class="py-16 bg-white">
-    <div class="container mx-auto">
-        <h2 class="text-center text-3xl font-bold text-gray-900 mb-10">Our service</h2>
+<section id="services" class="py-5">
+    <div class="container">
+        <h2 class="text-center services-title pb-5">{{ __('home.our_service') }}</h2>
+        <div class="row align-items-center gx-4 gy-4 gy-lg-0">
+        @php
+            $services = [
+                [
+                    'icon' => 'candlestick-chart.png',
+                    'title' => __('front_end.service_1'),
+                    'text' => __('front_end.description_service_1'),
+                    'image' => 'service.png'
+                ],
+                [
+                    'icon' => 'laptop.png',
+                    'title' => __('front_end.service_2'),
+                    'text' => __('front_end.description_service_2'),
+                    'image' => 'service2.png'
+                ],
+                [
+                    'icon' => 'briefcase.png',
+                    'title' => __('front_end.service_3'),
+                    'text' => __('front_end.description_service_3'),
+                    'image' => 'service3.png'
+                ]
+            ];
+        @endphp
 
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-            <!-- Service List -->
-            <div class="space-y-6">
-                <div class="flex items-start space-x-4">
-                    <span class="text-green-600 text-2xl">📡</span>
-                    <div>
-                        <h3 class="text-lg font-semibold text-gray-900">We provide analysis and market trends to our investors</h3>
-                        <p class="text-gray-700">The Buy-Sell signals will be automatically sent to the investors' mobile during real-time trading time within our system.</p>
-                    </div>
-                </div>
-
-                <div class="flex items-start space-x-4">
-                    <span class="text-green-600 text-2xl">💻</span>
-                    <div>
-                        <h3 class="text-lg font-semibold text-gray-900">Solutions to automate market analysis</h3>
-                        <p class="text-gray-700">Our automated analytics services provide the most objective insights of market trends.</p>
-                    </div>
-                </div>
-
-                <div class="flex items-start space-x-4">
-                    <span class="text-green-600 text-2xl">📊</span>
-                    <div>
-                        <h3 class="text-lg font-semibold text-gray-900">Consulting solutions to save time for investors</h3>
-                        <p class="text-gray-700">Our Investment Service provides solutions and supporting tools for investors to achieve the best investment efficiency.</p>
+        <!-- Left: Tab content (vertical nav pills) -->
+            <div class="col-12 col-lg-6">
+                <div class="d-flex align-items-start">
+                    <div class="nav flex-column nav-pills me-3 w-100" id="service-tab" role="tablist" aria-orientation="vertical">
+                        @foreach($services as $index => $service)
+                            <div class="service nav-link d-flex text-start gap-3 p-3 {{ $index === 0 ? 'active' : '' }}"
+                                    id="service-tab-{{ $index }}"
+                                    data-bs-toggle="pill"
+                                    data-bs-target="#service-content-{{ $index }}"
+                                    role="tab"
+                                    aria-controls="service-content-{{ $index }}"
+                                    aria-selected="{{ $index === 0 ? 'true' : 'false' }}">
+                                <div class="service-icon">
+                                    <img src="{{ asset('images/icons/' . $service['icon']) }}" alt="Analysis Icon">
+                                </div>
+                                <div class="service-content">
+                                    <h6 class="service-title mb-2">
+                                        {{ $service['title'] }}
+                                    </h6>
+                                    <p class="service-text">
+                                        {{ $service['text'] }}
+                                    </p>
+                                </div>
+                            </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
 
-            <!-- Service Image -->
-            <div>
-                <img src="/images/service-image.png" alt="Service" class="rounded-lg shadow-lg border border-green-300">
+            <!-- Right: Tab image -->
+            <div class="col-12 col-lg-6 text-center">
+                <div class="tab-content" id="service-tabContent">
+                    @foreach($services as $index => $service)
+                        <div class="tab-pane fade {{ $index === 0 ? 'show active' : '' }}"
+                             id="service-content-{{ $index }}"
+                             role="tabpanel"
+                             aria-labelledby="service-tab-{{ $index }}">
+                            <img src="{{ asset('images/home/' . $service['image']) }}"
+                                 alt="Service image {{ $index }}"
+                                 class="img-fluid services-img">
+                        </div>
+                    @endforeach
+                </div>
             </div>
         </div>
     </div>
 </section>
+
+@push('scripts')
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const tabs = document.querySelectorAll('.nav-link');
+
+            function updateBeforeWidths(activeIndex) {
+                tabs.forEach((tab, index) => {
+                    const beforeEl = tab;
+                    if (index === activeIndex) {
+                        beforeEl.style.setProperty('--before-width', '35%');
+                    } else if (index < activeIndex) {
+                        beforeEl.style.setProperty('--before-width', '100%');
+                    } else {
+                        beforeEl.style.setProperty('--before-width', '0%');
+                    }
+
+                    // Gán width vào pseudo-element bằng cách dùng style biến custom
+                    beforeEl.style.setProperty('--before-width', beforeEl.style.getPropertyValue('--before-width'));
+                });
+            }
+
+            // Observer tab click
+            tabs.forEach((tab, index) => {
+                tab.addEventListener('click', () => {
+                    updateBeforeWidths(index);
+                });
+            });
+
+            // Khởi tạo trạng thái ban đầu
+            const initialActive = Array.from(tabs).findIndex(tab => tab.classList.contains('active'));
+            updateBeforeWidths(initialActive);
+        });
+    </script>
+@endpush

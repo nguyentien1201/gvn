@@ -1,0 +1,23 @@
+<?php
+return [
+    'gs_nas100' => 'Green Stock - NAS100',
+    'stock_rating' => 'Stock Rating',
+    'market_overview' => 'Market Overview',
+    'top_5_stock'   => 'Top 5 Stock',
+    'buy_cash_hold_sell' => 'BUY - CASH - HOLD - SELL',
+    'down_up' => 'DOWN - UP',
+    'best_top_10' => 'Best Top 10',
+    'rating'=>'Rating',
+    'stock'=>'Stock',
+    'last_sale'=>'Last Sale',
+    'trend'=>'Trend',
+    'action'=>'Action',
+    'profit'=>'Profit',
+    'after_sell'=>'After Sell',
+    'price'=>'Price',
+    'time'=>'Time',
+    'showing' => 'Showing',
+    'up_down_market_capital' => 'Up Down on Market Capital',
+    'chart_title_trading_day' => 'Tempor Win/Loss over 5 Trading day',
+    'sector' => 'Sectors',
+];

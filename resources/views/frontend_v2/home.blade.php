@@ -11,6 +11,7 @@
         @include('frontend_v2.components.service')
         @include('frontend_v2.components.most-interested')
         @include('frontend_v2.components.trade-tab')
+        @include('frontend_v2.components.top-signals')
         @include('frontend_v2.components.footer')
     </div>
 @endsection

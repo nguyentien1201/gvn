@@ -39,3 +39,151 @@
     background-color: var(--primary-color);
     border-color: var(--primary-color);
 }
+#services {
+    border-bottom: 1px solid #eff4f1;
+}
+#services .service-content {
+    padding: 5px;
+}
+#services .service-icon {
+    width: 82px;
+}
+#services .services-title {
+    font-weight: 600;
+    font-size: 36px;
+}
+#services .service-title {
+    font-weight: 600;
+    font-size: 20px;
+    color: var(--primary-default-color);
+}
+#services .service-text {
+    font-size: 16px;
+    color: var(--gray-color);
+}
+#services .service {
+    position: relative;
+    color: var(--gray-color);
+    --before-width: 0%;
+}
+#services .service:hover {
+    cursor: pointer;
+}
+#services .service.active {
+    background: #fff;
+    color: var(--gray-color);
+}
+#services .service::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    width: var(--before-width, 0%);
+    background-color: var(--primary-color);
+    z-index: 2;
+    transition: width 0.4s ease-in-out;
+}
+#services .service:hover::before {
+    /*width: 35%;*/
+}
+#services .service:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    width: 100%;
+    border-bottom: 2px solid #D9FFE3;
+    background-color: #D9FFE3;
+    z-index: 1;
+}
+#services .services-img {
+    height: 400px;
+    width: 100%;
+    border: 2px solid var(--primary-color);
+    border-radius: 21px;
+}
+/*most_interested*/
+#most_interested .services-title {
+    font-weight: 600;
+    font-size: 36px;
+}
+#most_interested table#most-interested-table .signal-open
+{
+    padding: 4px 16px;
+    font-weight: 600;
+    font-size: 14px;
+    color: #fff;
+    border-radius: 4px;
+    border: 1px solid;
+    width: 90px;
+    display: inline-block;
+}
+#most_interested table#most-interested-table .signal-close
+{
+    padding: 4px 16px;
+    font-weight: 600;
+    font-size: 14px;
+    color: #fff;
+    border-radius: 4px;
+    border: 1px solid;
+    width: 140px;
+    display: inline-block;
+}
+#most_interested table#most-interested-table .signal-open.buy {
+    background: var(--primary-color);
+}
+#most_interested table#most-interested-table .signal-open.closed {
+    background: #E0B21A;
+}
+#most_interested table#most-interested-table .signal-close.hold {
+    background: #F6CC3F;
+}
+#most_interested table#most-interested-table .signal-close.profit-buy {
+    background: #E6FFF1;
+    border: 1px solid #277248;
+    color: #277248;
+}
+#most_interested table#most-interested-table .signal-close.loss-buy {
+    background: #FFE3E3;
+    border: 1px solid #EF5657;
+    color: #EF5657;
+}
+#most_interested table#most-interested-table .trend {
+    font-weight: 700;
+    font-size: 16px;
+}
+#most_interested table#most-interested-table .profit {
+    font-weight: 600;
+    font-size: 16px;
+}
+#most_interested table#most-interested-table .down-trend {
+    color: #EF5657;
+}
+#most_interested table#most-interested-table .up-trend {
+    color: #198754;
+}
+#most_interested table#most-interested-table .sideway {
+    color: #F1C32A;
+}
+
+/*trade on*/
+#trading-on .services-title {
+    font-weight: 600;
+    font-size: 36px;
+}
+#trading-on .trading-container .trading-on-content .head-text {
+    font-weight: 400;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+#trading-on .trading-container .trading-on-content .last-text {
+    font-weight: 700;
+    font-size: 20px;
+    color: #198754;
+}
+.chart-container {
+    position: relative;
+    width: 100%;
+}

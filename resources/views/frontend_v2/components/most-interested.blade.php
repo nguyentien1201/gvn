@@ -1,234 +1,153 @@
-<!-- resources/views/components/most-interested.blade.php -->
-<section class="py-12 bg-white">
-    <div class="container mx-auto">
-        <h2 class="text-xl font-semibold text-center mb-6">Most interested 🔵</h2>
-
-        <div class="overflow-x-auto bg-white shadow-lg rounded-lg">
-            <table class="min-w-full border-collapse border border-gray-300 text-center justify-start text-[#4d5b7c] text-base font-medium font-['Inter'] leading-tight" id="indices-table">
-                <thead class="bg-green-600 text-white">
+<section id="most_interested" class="py-5">
+    <div class="container">
+        <h2 class="text-center services-title pb-5">{{__('home.most_interested')}}</h2>
+        <div class="table-responsive" style="max-height: 848px; overflow-y: auto;">
+            <table id="most-interested-table" class="table table-striped table-hover">
+                <thead>
                     <tr>
-                        <th class="p-3 border border-gray-300 text-center">Signal Open</th>
-                        <th class="p-3 border border-gray-300 text-center">Price Open</th>
-                        <th class="p-3 border border-gray-300 text-center">Open Time</th>
-                        <th class="p-3 border border-gray-300 text-center">Trend Price</th>
-                        <th class="p-3 border border-gray-300 text-center">Market</th>
-                        <th class="p-3 border border-gray-300 text-center">Symbol</th>
-                        <th class="p-3 border border-gray-300 text-center">Last Sale</th>
-                        <th class="p-3 border border-gray-300 text-center">Profit</th>
-                        <th class="p-3 border border-gray-300 text-center">Signal Close</th>
-                        <th class="p-3 border border-gray-300 text-center">Price Close</th>
-                        <th class="p-3 border border-gray-300 text-center">Close Time</th>
+                        <th class="text-capitalize text-center">Signal Open</th>
+                        <th class="text-capitalize">Price Open</th>
+                        <th class="text-capitalize">Open Time</th>
+                        <th class="text-capitalize text-center">Trend Price</th>
+                        <th class="text-capitalize">Market</th>
+                        <th class="text-capitalize">Symbol</th>
+                        <th class="text-capitalize text-center">Last Sale</th>
+                        <th class="text-capitalize text-right">Profit</th>
+                        <th class="text-capitalize text-center">Signal Close</th>
+                        <th class="text-capitalize">Price Close</th>
+                        <th class="text-capitalize">Close Time</th>
                     </tr>
                 </thead>
-                <tbody class="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
-
-        </tbody>
             </table>
         </div>
     </div>
+
 </section>
 
 @push('scripts')
-<script>
-    $(document).ready(function() {
-    var indices = $('#indices-table').DataTable({
-        searching: false,
-        // lengthChange: false, //
-        scrollX: true, // Kích hoạt cuộn ngang
-        fixedColumns: true,
-        fixedColumns: {
-            leftColumns: 3 // Cố định cột đầu tiên (Tên sản phẩm)
-        },
-        paging: false,
-        // scrollX:true,
-        autoWidth: false,
+    <!-- DataTables with Bootstrap 5 styling -->
+    <script src="https://cdn.datatables.net/v/bs5/dt-2.0.8/date-1.5.2/fc-5.0.1/fh-4.0.1/r-3.0.2/datatables.min.js"></script>
 
-        info: false,
-        data: @json($signals),
-        order: [[4, 'desc']],
-        columns: [
-            { data: 'signal_open', title: 'Signal Open' },  // Apply bold formatting to the "PriceTrend" column data},
-            { data: 'price_open', title: 'Price Open' },
-            { data: 'open_time', title: 'Open Time' },
-            { data: 'trend_price', title: 'Trend Price' },
-            { data: 'group', title: 'Markets' },
-            { data: 'code', title: 'Symbol' },
-            { data: 'last_sale', title: 'Last Sale' },
-            { data: 'profit', title: 'Profit' },
-            { data: 'signal_close', title: 'Signal Close' },
-            { data: 'price_close', title: 'Price Close' },
-            { data: 'close_time', title: 'Close Time' }
-        ],
-        columnDefs: [
-            {
-                targets: 0, // Index of the date column
-                // createdCell: function (td, cellData, rowData, row, col) {
-                //     if (rowData.close_time == null) {
-                //         color = '#b6d7a8';
-                //     } else {
-                //         color = '#ffd966';
-                //     }
-                //     $(td).css('background-color', color);
-                //     $(td).css('box-shadow', 'none');
-                //     $(td).css('border-color', '#fff');
-                // },
-
-                render: function (data, type, full, meta) {
-                    if(full.close_time != null){
-                        return '<div class="text-center"><span class="inline-block text-center w-24 px-2 py-1 text-xs font-bold text-white bg-yellow-500 rounded">CLOSED</span></div>';
-                    }
-
-                    return '<div class="text-center"><span class="inline-block text-center w-24 px-2 py-1 text-xs font-bold text-white bg-green-600 rounded">BUY</span></div>';
-
-                }
-            },
-            {
-                targets: 1, // Index of the date column
-
-                render: function (data, type, full, meta) {
-                    if(data =='fas fa-lock'){
-                        return '<i style="color:green" class="fas fa-lock"></i>';
-                    }
-                    if (type === 'display') {
-                        const numberFormatter = new Intl.NumberFormat('en-US', { maximumFractionDigits: 0 }); // No decimal places
-                        const formattedNumber = numberFormatter.format(data); // Format the number with commas
-                        return formattedNumber;
-                    }
-                    return data; //
-
-                }
-            },
-            {
-                targets: 2, // Index of the date column
-                render: function (data, type, full, meta) {
-                    if(data=='fas fa-lock'){
-                        return '<i style="color:green" class="fas fa-lock"></i>';
-                    }
-                    return data; //
-                }
-            },
-
-            {
-                targets: 9, // Index of the date column
-                render: function (data, type, full, meta) {
-                    if(data <= 0){
-                        return '';
-                    }
-                    if (type === 'display') {
-                        const numberFormatter = new Intl.NumberFormat('en-US', { maximumFractionDigits: 0 }); // No decimal places
-                        const formattedNumber = numberFormatter.format(data); // Format the number with commas
-                        return formattedNumber;
-                    }
-                    return data; //
-
-                }
-            },
-            {
-                targets: 7, // Index of the date column
-                createdCell: function (td, cellData, rowData, row, col) {
-                    if (rowData.close_time == '' || rowData.close_time ==null) {
-                        if (cellData >= 0) {
-                            color = '#b6d7a8';
-                        } else {
-                            color = '#e06666';
+    <script>
+        $(document).ready(function () {
+            console.log(@json($signals));
+            const logoBaseUrl = "{{ asset('images/logo') }}"; // trả ra đường dẫn base
+            $('#most-interested-table').DataTable({
+                responsive: false,
+                autoWidth: false,
+                paging: false,
+                info: false,
+                searching: false,
+                data: @json($signals),
+                order: [[4, 'desc']],
+                columns: [
+                    { data: "signal_open"},
+                    { data: "price_open"},
+                    { data: "open_time"},
+                    { data: "trend_price"},
+                    { data: "group"},
+                    { data: "code"},
+                    { data: "last_sale"},
+                    { data: "profit"},
+                    { data: "signal_close"},
+                    { data: "price_close"},
+                    { data: "close_time"}
+                ],
+                columnDefs: [
+                    {
+                        targets: 0,
+                        createdCell: function (td, cellData, rowData, row, col) {
+                            let signalOpenText = (rowData.signal_open === "Close") ? "CLOSED" : "BUY";
+                            let signalOpenClass = (rowData.signal_open === "Close") ? "closed" : "buy";
+                            $(td).html(`<span class="text-capitalize signal-open ${signalOpenClass}">${signalOpenText}</span>`);
+                            $(td).addClass('text-center');
                         }
-                    } else {
-                        color = '#ffd966';
-                    }
-                    $(td).css('background-color', color);
-                    $(td).css('box-shadow', 'none');
-                },
-                render: function (data, type, full, meta) {
-                    if(data=='fas fa-lock'){
-                        return '<i class="fas fa-lock"></i>';
-                    }
-                    return `${data}%`;
-                }
-            },
-            {
-                targets: 8,
-                // createdCell: function (td, cellData, rowData, row, col) {
-                //     signal_close =''
-                //     if(rowData.signal_close != null){
-                //         signal_close = rowData.signal_close.trim().toLowerCase();
-                //     }
-                //     if (signal_close == 'takeprofitbuy') {
-                //         color = '#b6d7a8';
-                //     } else if (signal_close == 'cutlossbuy') {
-                //         color = '#e06666';
-                //     } else {
-                //         color = '#ffd966';
-                //     }
-                //     $(td).css('background-color', color);
-                //     $(td).css('box-shadow', 'none');
-                // },
-                render: function (data, type, full, meta) {
-                    console.log(data);
-                    let className = '';
-                    switch(data) {
-                    case 'Hold':
-                        className = 'bg-yellow-400 text-white';
-                        break;
-                    case 'TakeProfitBUY':
-                        className = 'border border-green-500 text-green-600 bg-white';
-                        break;
-                    case 'CutLossBuy':
-                        className = 'border border-red-300 text-red-600 bg-red-100';
-                        break;
-                    default:
-                        data = 'Hold';
-                        className = 'bg-yellow-400 text-white';
-                    }
-                    // if(data == null || data == '' || data == undefined || data == 'Hold'){
-                    //     return 'Hold';
-                    // }
-                    // return `${data}`;
-                    return `<div class="text-center">
-                        <span class="inline-block w-24 text-center px-2 py-1 text-xs font-bold rounded-md ${className}">
-                            ${data}
-                        </span>
-                        </div>`;
-                }
-            },
-            {
-                targets: 5, // Index of the 'code' column
-                createdCell: function (td, cellData, rowData, row, col) {
-                    $(td).css('text-align', 'left');
-                    $(td).css('font-weight', 'bold');
-                    $(td).css('padding-left', '0.5em');
-                    $(td).css('min-width', '100px');
-                    $(td).css('padding-right', '0');
+                    },
+                    {
+                        targets: 1,
+                        createdCell: function (td, cellData, rowData, row, col) {
+                            let priceOpen = rowData.price_open ;
+                            $(td).html(`<span>${priceOpen}</span>`);
+                            $(td).addClass('text-right');
+                        }
+                    },
+                    {
+                        targets: 3,
+                        createdCell: (td, cellData, rowData, row, col) => {
+                            const trendPrice = rowData.trend_price;
+                            let colorClass = "trend ";
+                                if(trendPrice === "UPTREND") {
+                                colorClass += "up-trend";
+                            }
+                            else if(trendPrice === "DOWNTREND") {
+                                colorClass += "down-trend";
+                            } else {
+                                colorClass += "sideway";
+                            }
+                            $(td).html(`<span class="trend ${colorClass}">${trendPrice}</span>`);
+                            $(td).addClass('text-center');
+                        }
+                    },
+                    {
+                        targets: 5,
+                        render: function(data, type, row) {
+                            let code = data;
+                            let codeImg = logoBaseUrl + '/' + code + ".png";
+                            let html = `<div class="code d-flex align-items-center gap-2">
+                                <img style="width: 25px; height: 25px; object-fit: cover;" src="${codeImg}" alt="${codeImg}" class="rounded-circle">
+                                <span>${code}</span>
+                            </div>`;
+                            return html;
+                        }
+                    },
+                    {
+                        targets: 6,
+                        createdCell: function (td, cellData, rowData, row, col) {
+                            let lastSale = rowData.last_sale ? rowData.last_sale : '';
+                            $(td).html(`<span>${lastSale}</span>`);
+                            $(td).addClass('text-right');
+                        }
+                    },
+                    {
+                        targets: 7,
+                        createdCell: (td, cellData, rowData, row, col) => {
+                            const trendPrice = rowData.trend_price;
+                            const profit = rowData.profit ? rowData.profit + '%' : '';
+                            let colorClass = "";
+                            if(trendPrice === "UPTREND") {
+                                colorClass += "up-trend";
+                            }
+                            else if(trendPrice === "DOWNTREND") {
+                                colorClass += "down-trend";
+                            } else {
+                                colorClass += "sideway";
+                            }
 
-
-                },
-                render: function(data, type, row) {
-                    return  '<img src="images/logo/'+data+'.png" alt="Logo" style="max-width:2em;width:30px; margin-right:0.5em"> '+ data; // Adjust the path and style as needed
-                }
-            },
-            {
-                targets: 3, // Index of the date column
-                createdCell: function (td, cellData, rowData, row, col) {
-                    trending_price = cellData.trim().toLowerCase();;
-
-                        if (trending_price == 'uptrend') {
-                            color = '#b6d7a8';
-                        } else if (trending_price == 'downtrend') {
-                            color = '#e06666';
-                        } else {
-                        color = '#ffd966';
+                            $(td).html(`<span class="profit ${colorClass}">${profit}</span>`);
+                            $(td).addClass('text-right');
+                        }
+                    },
+                    {
+                        targets: 8,
+                        createdCell: (td, cellData, rowData, row, col) => {
+                            const signalClose = rowData.signal_close;
+                            let colorClass = "";
+                            if(signalClose === "TakeProfitBUY") {
+                                colorClass += "profit-buy";
+                            }
+                            else if(signalClose === "CutLossBuy") {
+                                colorClass += "loss-buy";
+                            } else {
+                                colorClass += "hold";
+                            }
+                            if(signalClose) {
+                                $(td).html(`<span class="signal-close ${colorClass}">${signalClose}</span>`);
+                                $(td).addClass('text-center');
+                            }
+                        }
                     }
-                    $(td).css('font-weight', 'bold');
-                    $(td).css('color', color);
-                    $(td).css('box-shadow', 'none');
-                }
-            },
-        ],
-        createdRow: function (row, data, dataIndex) {
-            // Assuming 'code' is the property you want to use for data-id
-            $(row).attr('data-id', data.id_code);
-        }
-    });
-})
-
-</script>
+                ]
+            });
+        });
+    </script>
 @endpush
