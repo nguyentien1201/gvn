@@ -145,7 +145,7 @@
 }
 @media (max-width: 568px) {
   footer {
-    padding-top: 40px;
+    padding-top: 40px !important;
   }
   body span {
     font-size: 14px;
@@ -172,7 +172,7 @@
     font-weight: 500 !important;
   }
 }
-@media (max-width: 360px) {
+@media (max-width: 368px) {
   .tabs-green .btn-tab {
     font-size: 11px !important;
   }
