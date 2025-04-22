@@ -1,6 +1,6 @@
-<section id="trading-on" class="py-5">
+<section id="trading-on" class="py-0 py-lg-5">
     <div class="container">
-        <h2 class="text-center services-title pb-5">{{__('home.trade_on')}}</h2>
+        <h2 class="text-center services-title py-4 py-lg-5">{{__('home.trade_on')}}</h2>
         <div class="tabs-green">
             <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                 <li class="nav-item" role="presentation">
@@ -22,7 +22,7 @@
         <div class="tab-content" id="pills-tabContent">
             <div class="tab-pane fade show active" id="pills-green-beta" role="tabpanel"
                  aria-labelledby="pills-green-beta-tab">
-                <div class="trading-container my-5">
+                <div class="trading-container my-3 my-lg-5">
                     <div class="row gy-4 gy-lg-0">
                         <div class="co-12 col-lg-6">
                             <div class="trading-on-content">
@@ -46,7 +46,7 @@
             </div>
             <div class="tab-pane fade" id="pills-green-alpha" role="tabpanel"
                  aria-labelledby="pills-green-alpha-tab">
-                <div class="trading-container my-5">
+                <div class="trading-container my-4">
                     <div class="row gy-4 gy-lg-0">
                         <div class="co-12 col-lg-6">
                             <img class="img-fluid" src="{{asset('images/robot-alpha.png')}}" alt="{{asset('images/robot-alpha.png')}}">
@@ -126,9 +126,18 @@
                 },
                 plugins: {
                     legend: {
-                        display: false,
+                        display: true,
+                        position: 'top',
+                        align: 'end',
                         labels: {
-                            color: '#008000'
+                            font: {
+                                family: 'Montserrat, sans-serif',
+                                size: 14,
+                                weight: '400'
+                            },
+                            color: '#008000',
+                            usePointStyle: true,
+                            pointStyle: 'circle'
                         }
                     }
                 }

@@ -26,7 +26,7 @@
                         <div class="row g-custom">
                             <div class="col-12">
                                 <div class="container-chart">
-                                    <h4 class="title-chart-buy-cash-hold-sell text-uppercase text-center mb-5">{{ __('green_stock.buy_cash_hold_sell') }}</h4>
+                                    <h4 class="title-chart-buy-cash-hold-sell text-uppercase text-center mb-4 mb-lg-5">{{ __('green_stock.buy_cash_hold_sell') }}</h4>
                                     <div style="height: 363px;"
                                          class="d-flex flex-column justify-content-center align-items-center chart-container">
                                         <canvas id="pieChart"></canvas>

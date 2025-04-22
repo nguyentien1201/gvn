@@ -3,7 +3,7 @@
     <div class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item container-heading active text-center">
-                <h3 class="heading-page" style="font-size: 48px;">{{__('home.title_banner')}}</h3>
+                <h3 class="heading-page">{{__('home.title_banner')}}</h3>
                 <p class="content noto-sans-jp-font-family my-3">
                     <span>{{__('home.content_1')}}</span><br>
                     <span>{{__('home.content_2')}}</span>

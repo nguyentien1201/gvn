@@ -26,15 +26,15 @@
                     <table id="green-stock-NAS100-table" class="table table-striped table-hover">
                         <thead>
                             <tr>
-                                <th class="text-capitalize text-center">{{__('home.rating')}}</th>
-                                <th class="text-capitalize">{{__('home.stock')}}</th>
-                                <th class="text-capitalize">{{__('home.last_sale')}}</th>
-                                <th class="text-capitalize text-center">{{__('home.trend')}}</th>
-                                <th class="text-capitalize text-center">{{__('home.action')}}</th>
-                                <th class="text-capitalize text-right">{{__('home.profit')}}</th>
-                                <th class="text-capitalize">{{__('home.after_sell')}}</th>
-                                <th class="text-capitalize text-right">{{__('home.price')}}</th>
-                                <th class="text-capitalize">{{__('home.time')}}</th>
+                                <th class="text-capitalize text-center text-nowrap">{{__('home.rating')}}</th>
+                                <th class="text-capitalize text-center text-nowrap">{{__('home.stock')}}</th>
+                                <th class="text-capitalize text-center text-nowrap">{{__('home.last_sale')}}</th>
+                                <th class="text-capitalize text-center text-nowrap">{{__('home.trend')}}</th>
+                                <th class="text-capitalize text-center text-nowrap">{{__('home.action')}}</th>
+                                <th class="text-capitalize text-center text-nowrap">{{__('home.profit')}}</th>
+                                <th class="text-capitalize text-center text-nowrap">{{__('home.after_sell')}}</th>
+                                <th class="text-capitalize text-center text-nowrap">{{__('home.price')}}</th>
+                                <th class="text-capitalize text-center text-nowrap">{{__('home.time')}}</th>
                             </tr>
                         </thead>
                     </table>
@@ -42,19 +42,19 @@
             </div>
             <div class="tab-pane fade" id="pills-green-stock-vn-index" role="tabpanel"
                  aria-labelledby="pills-green-stock-vn-index-tab">
-                <div class="table-responsive" style="max-height: 848px; overflow-y: auto;">
+                <div class="table-responsive" style="max-height: 848px; overflow-y: auto; position: relative">
                     <table id="green-stock-vn-index-table" class="table table-striped table-hover">
                         <thead>
                         <tr>
-                            <th class="text-capitalize text-center">{{__('home.rating')}}</th>
-                            <th class="text-capitalize">{{__('home.stock')}}</th>
-                            <th class="text-capitalize">{{__('home.last_sale')}}</th>
-                            <th class="text-capitalize text-center">{{__('home.trend')}}</th>
-                            <th class="text-capitalize text-center">{{__('home.action')}}</th>
-                            <th class="text-capitalize text-right">{{__('home.profit')}}</th>
-                            <th class="text-capitalize">{{__('home.after_sell')}}</th>
-                            <th class="text-capitalize text-right">{{__('home.price')}}</th>
-                            <th class="text-capitalize">{{__('home.time')}}</th>
+                            <th class="text-capitalize text-center text-nowrap">{{__('home.rating')}}</th>
+                            <th class="text-capitalize text-center text-nowrap">{{__('home.stock')}}</th>
+                            <th class="text-capitalize text-center text-nowrap">{{__('home.last_sale')}}</th>
+                            <th class="text-capitalize text-center text-nowrap">{{__('home.trend')}}</th>
+                            <th class="text-capitalize text-center text-nowrap">{{__('home.action')}}</th>
+                            <th class="text-capitalize text-center text-nowrap">{{__('home.profit')}}</th>
+                            <th class="text-capitalize text-center text-nowrap">{{__('home.after_sell')}}</th>
+                            <th class="text-capitalize text-center text-nowrap">{{__('home.price')}}</th>
+                            <th class="text-capitalize text-center text-nowrap">{{__('home.time')}}</th>
                         </tr>
                         </thead>
                     </table>
@@ -128,7 +128,7 @@
                     {
                         targets: 2, // Index of the date column
                         createdCell: function (td, cellData, rowData, row, col) {
-                            $(td).addClass('text-right');
+                            $(td).addClass('text-center');
                         },
                     },
                     {
@@ -219,7 +219,7 @@
                             } else if (cellData < 0) {
                                 color = '#EF5657';
                             }
-                            $(td).addClass('text-right');
+                            $(td).addClass('text-center');
                             $(td).css('color', color);
                         },
                         render: function (data, type, full, meta) {
@@ -235,7 +235,7 @@
                             } else if (cellData < 0) {
                                 color = '#EF5657';
                             }
-                            $(td).addClass('text-right');
+                            $(td).addClass('text-center');
                             $(td).css('color', color);
                         },
                         render: function (data, type, full, meta) {
@@ -249,7 +249,7 @@
                     {
                         targets: 7, // Index of the date column
                         createdCell: function (td, cellData, rowData, row, col) {
-                            $(td).addClass('text-right');
+                            $(td).addClass('text-center');
                         },
                         render: function (data, type, full, meta) {
                             if (data == 'fas fa-lock') {
@@ -343,7 +343,7 @@
                     {
                         targets: 2, // Index of the date column
                         createdCell: function (td, cellData, rowData, row, col) {
-                            $(td).addClass('text-right');
+                            $(td).addClass('text-center');
                         },
                     },
                     {
@@ -434,7 +434,7 @@
                             } else if (cellData < 0) {
                                 color = '#EF5657';
                             }
-                            $(td).addClass('text-right');
+                            $(td).addClass('text-center');
                             $(td).css('color', color);
                         },
                         render: function (data, type, full, meta) {
@@ -450,7 +450,7 @@
                             } else if (cellData < 0) {
                                 color = '#EF5657';
                             }
-                            $(td).addClass('text-right');
+                            $(td).addClass('text-center');
                             $(td).css('color', color);
                         },
                         render: function (data, type, full, meta) {
@@ -464,7 +464,7 @@
                     {
                         targets: 7, // Index of the date column
                         createdCell: function (td, cellData, rowData, row, col) {
-                            $(td).addClass('text-right');
+                            $(td).addClass('text-center');
                         },
                         render: function (data, type, full, meta) {
                             if (data == 'fas fa-lock') {

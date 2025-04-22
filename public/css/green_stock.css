@@ -255,13 +255,14 @@ body {
   font-size: 24px;
   font-weight: 600;
 }
+
 .content-stock-rating table.table>tbody>tr:hover {
   --bs-table-accent-bg: #F1F4F8 !important;
   color: #000 !important;
   cursor: pointer;
 }
 .content-stock-rating table.table>:not(:last-child)>:last-child>* {
-  border-bottom: 1px solid #D5D7DA !important;
+  border-bottom: 1px solid var(--primary-color) !important;
 }
 .content-stock-rating table#my_watch_list.table tbody tr td {
   font-weight: 500;
@@ -327,7 +328,11 @@ body {
   color: #fff;
   background: var(--primary-color);
 }
+
 @media (max-width: 768px) {
+  .content-stock-rating .container-chart {
+    padding: 32px 0;
+  }
   .top-5-stocks .stocks .stock-container {
     width: 100%;
   }
