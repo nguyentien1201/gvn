@@ -1,5 +1,5 @@
 .heading-page {
-    font-size: 36px;
+    font-size: 48px;
     text-align: center;
     padding: 10px;
     font-weight: 600;
@@ -185,6 +185,7 @@
     font-weight: 400;
     font-size: 20px;
     margin-bottom: 20px;
+    color: #4D5B7C;
 }
 #trading-on .trading-container .trading-on-content .last-text {
     font-weight: 700;
@@ -331,13 +332,71 @@
     --bs-gutter-x: 2rem !important;
 }
 @media (max-width: 768px) {
+    #banner-home .container-button .btn {
+        font-size: 14px;
+    }
+    #banner-home .content {
+        font-size: 14px;
+        color: var(--gray-color);
+    }
     #scan-qr {
-        padding-top: 40px;
+        padding: 40px 0px 10px 0;
+    }
+    #services .services-title {
+        font-size: 24px;
+    }
+    #services .service-title {
+        font-size: 18px;
+    }
+    #services .service-text {
+        font-size: 14px;
+    }
+    #most_interested .services-title {
+        font-size: 24px;
+    }
+    #trading-on {
+        border-top: 1px solid #eee;
+    }
+    #trading-on .services-title {
+        font-size: 24px;
+    }
+    #top-signals .top-signals-container .top-signals-title {
+        font-size: 24px;
+        padding-bottom: 40px;
     }
     #scan-qr .scan-qr-container {
         padding: 32px 16px;
         background:
         radial-gradient(circle at top right, #76E497 -10%, transparent 70%),
         radial-gradient(circle at bottom left, #76E497 -10%, #F5FFF7 70%);
+    }
+    #scan-qr .scan-qr-title {
+        font-size: 24px;
+    }
+    #scan-qr .scan-qr-text {
+        font-size: 14px;
+    }
+    #top-stock-rating-by-gvn {
+        padding: 40px 0;
+    }
+    #top-stock-rating-by-gvn .rating-title {
+        font-size: 24px;
+        padding-bottom: 40px;
+    }
+    #trading-green-stock-NAS100 .NAS100-title {
+        font-size: 24px;
+        padding: 40px 0;
+    }
+    #trading-green-stock-NAS100 .trading-on-content .head-text span {
+        font-size: 24px;
+    }
+    #trading-green-stock-NAS100 .content-stock-rating .container-chart {
+        padding: 32px 0px;
+    }
+    .heading-page {
+        font-size: 36px;
+    }
+    #top-signals {
+        padding: 80px 0;
     }
 }

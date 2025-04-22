@@ -1,21 +1,21 @@
 <section id="most_interested" class="py-5">
     <div class="container">
-        <h2 class="text-center services-title pb-5">{{__('home.most_interested')}}</h2>
+        <h2 class="text-center services-title pb-3 pb-lg-5">{{__('home.most_interested')}}</h2>
         <div class="table-responsive" style="max-height: 848px; overflow-y: auto;">
             <table id="most-interested-table" class="table table-striped table-hover">
                 <thead>
                     <tr>
-                        <th class="text-capitalize text-center">Signal Open</th>
-                        <th class="text-capitalize">Price Open</th>
-                        <th class="text-capitalize">Open Time</th>
-                        <th class="text-capitalize text-center">Trend Price</th>
-                        <th class="text-capitalize">Market</th>
-                        <th class="text-capitalize">Symbol</th>
-                        <th class="text-capitalize text-center">Last Sale</th>
-                        <th class="text-capitalize text-right">Profit</th>
-                        <th class="text-capitalize text-center">Signal Close</th>
-                        <th class="text-capitalize">Price Close</th>
-                        <th class="text-capitalize">Close Time</th>
+                        <th class="text-capitalize text-center text-nowrap">Signal Open</th>
+                        <th class="text-capitalize text-center text-nowrap">Price Open</th>
+                        <th class="text-capitalize text-center text-nowrap">Open Time</th>
+                        <th class="text-capitalize text-center text-nowrap">Trend Price</th>
+                        <th class="text-capitalize text-center text-nowrap">Market</th>
+                        <th class="text-capitalize text-center text-nowrap">Symbol</th>
+                        <th class="text-capitalize text-center text-nowrap">Last Sale</th>
+                        <th class="text-capitalize text-center text-nowrap">Profit</th>
+                        <th class="text-capitalize text-center text-nowrap">Signal Close</th>
+                        <th class="text-capitalize text-center text-nowrap">Price Close</th>
+                        <th class="text-capitalize text-center text-nowrap">Close Time</th>
                     </tr>
                 </thead>
             </table>
@@ -65,7 +65,14 @@
                         createdCell: function (td, cellData, rowData, row, col) {
                             let priceOpen = rowData.price_open ;
                             $(td).html(`<span>${priceOpen}</span>`);
-                            $(td).addClass('text-right');
+                            $(td).addClass('text-center');
+                        }
+                    },
+                    {
+                        targets: 2,
+                        createdCell: function (td, cellData, rowData, row, col) {
+                            let openTime = rowData.open_time ;
+                            $(td).html(`<span class="text-nowrap">${openTime}</span>`);
                         }
                     },
                     {
@@ -102,7 +109,7 @@
                         createdCell: function (td, cellData, rowData, row, col) {
                             let lastSale = rowData.last_sale ? rowData.last_sale : '';
                             $(td).html(`<span>${lastSale}</span>`);
-                            $(td).addClass('text-right');
+                            $(td).addClass('text-center');
                         }
                     },
                     {
@@ -121,7 +128,7 @@
                             }
 
                             $(td).html(`<span class="profit ${colorClass}">${profit}</span>`);
-                            $(td).addClass('text-right');
+                            $(td).addClass('text-center');
                         }
                     },
                     {
@@ -142,7 +149,14 @@
                                 $(td).addClass('text-center');
                             }
                         }
-                    }
+                    },
+                    {
+                        targets: 10,
+                        createdCell: function (td, cellData, rowData, row, col) {
+                            let closeTime = rowData.close_time ;
+                            $(td).html(`<span class="text-nowrap">${closeTime}</span>`);
+                        }
+                    },
                 ]
             });
         });

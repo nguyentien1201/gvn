@@ -144,6 +144,12 @@
   }
 }
 @media (max-width: 568px) {
+  footer {
+    padding-top: 40px !important;
+  }
+  body span {
+    font-size: 14px;
+  }
   #footer .py-100px {
     padding: 50px 20px;
   }
@@ -156,6 +162,19 @@
     width: 100%;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
+  }
+  .tabs-green {
+    padding: 4px !important;
+  }
+  .tabs-green .btn-tab {
+    font-size: 14px !important;
+    padding: 8px !important;
+    font-weight: 500 !important;
+  }
+}
+@media (max-width: 368px) {
+  .tabs-green .btn-tab {
+    font-size: 11px !important;
   }
 }
 #home-content .title-trading-first, #home-content .title-trading-second {
@@ -337,10 +356,29 @@ footer .social-icons a:hover {
   font-weight: 600;
   color: #4D5B7C !important;
 }
-table.table thead th {
+table.table thead {
   position: sticky;
   top: 0;
   z-index: 2;
+  /*border: 1px solid var(--primary-color);*/
+}
+table.table thead th {
+  border: 1px solid var(--primary-color);
+}
+table {
+  border-collapse: separate !important;
+  border-spacing: 0;
+}
+
+table th,
+table td {
+  white-space: nowrap;
+}
+table.table thead tr {
+  background: var(--primary-color);
+}
+table.table>tbody>tr {
+  text-align: center;
 }
 table.table>:not(caption)>*>* {
   border-bottom-width: 0;
@@ -359,6 +397,10 @@ table.table>tbody>tr:nth-of-type(even) {
   color: var(--gray-color);
 }
 
+/* Ẩn pagination của datatable*/
+.dt-paging.paging_full_numbers {
+  display: none;
+}
 /*custom btn tabs*/
 .tabs-green {
   padding: 8px;

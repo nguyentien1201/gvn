@@ -146,10 +146,11 @@
                 }, plugins: [ChartDataLabels]
             });
 
+            let limitDefault = $('#selectLimitIndiceTable option:first').val();
             var indices = $('#indices-table').DataTable({
-                pageLength: 50,         // Giá trị mặc định
-                lengthChange: false,
-                paging: false,
+                lengthChange: false, // Ẩn dropdown mặc định
+                pageLength: limitDefault,
+                paging: true,
                 searching: false,
                 responsive: false,
                 autoWidth: false,
@@ -208,7 +209,7 @@
                     {
                         targets: 2, // Index of the date column
                         createdCell: function (td, cellData, rowData, row, col) {
-                            $(td).addClass('text-right');
+                            $(td).addClass('text-center');
                         },
                     },
                     {
@@ -299,7 +300,7 @@
                             } else if (cellData < 0) {
                                 color = '#EF5657';
                             }
-                            $(td).addClass('text-right');
+                            $(td).addClass('text-center');
                             $(td).css('color', color);
                         },
                         render: function (data, type, full, meta) {
@@ -315,7 +316,7 @@
                             } else if (cellData < 0) {
                                 color = '#EF5657';
                             }
-                            $(td).addClass('text-right');
+                            $(td).addClass('text-center');
                             $(td).css('color', color);
                         },
                         render: function (data, type, full, meta) {
@@ -329,7 +330,7 @@
                     {
                         targets: 7, // Index of the date column
                         createdCell: function (td, cellData, rowData, row, col) {
-                            $(td).addClass('text-right');
+                            $(td).addClass('text-center');
                         },
                         render: function (data, type, full, meta) {
                             if (data == 'fas fa-lock') {
@@ -359,6 +360,12 @@
                         $(row).css('background-color', 'palegreen');
                     }
                 }
+            });
+
+            $('#selectLimitIndiceTable').on('change', function () {
+                const length = parseInt($(this).val());
+                console.log('sd')
+                indices.page.len(length).draw();
             });
             // Khi user thay đổi dropdown
             // $('#selectLimitIndiceTable').on('change', function () {
@@ -592,8 +599,10 @@
             var barCurentMonthGroup = null;
 
             function showChart(index) {
+                console.log(index);
                 // Ẩn tất cả các datasets
                 barCurentMonthGroup.data.datasets.forEach((dataset, i) => {
+                    console.log(dataset);
                     dataset.hidden = true;
                 });
 
@@ -1844,7 +1853,7 @@
                                         <div class="row g-custom">
                                             <div class="col-12">
                                                 <div class="container-chart">
-                                                    <h4 class="title-chart-buy-cash-hold-sell text-uppercase text-center mb-5">{{ __('green_stock.buy_cash_hold_sell') }}</h4>
+                                                    <h4 class="title-chart-buy-cash-hold-sell text-uppercase text-center mb-4 mb-lg-5">{{ __('green_stock.buy_cash_hold_sell') }}</h4>
                                                     <div style="height: 363px;"
                                                          class="d-flex flex-column justify-content-center align-items-center chart-container">
                                                         <canvas id="pieChart"></canvas>
@@ -1881,10 +1890,10 @@
                                                                id="my_watch_list">
                                                             <thead>
                                                             <th>{{__('front_end.STOCK')}}</th>
-                                                            <th class="text-center">{{__('front_end.GVN_Rating')}}</th>
-                                                            <th class="text-center">{{__('front_end.price_buy_sell')}}</th>
-                                                            <th class="text-center">{{__('front_end.last_sale')}}</th>
-                                                            <th class="text-center">{{__('green_stock.action')}}</th>
+                                                            <th class="text-center text-nowrap">{{__('front_end.GVN_Rating')}}</th>
+                                                            <th class="text-center text-nowrap">{{__('front_end.price_buy_sell')}}</th>
+                                                            <th class="text-center text-nowrap">{{__('front_end.last_sale')}}</th>
+                                                            <th class="text-center text-nowrap">{{__('green_stock.action')}}</th>
                                                             </thead>
                                                             <tbody>
                                                             @foreach($list_folow as  $stock)
@@ -1924,25 +1933,28 @@
                                     <div class="col-12 col-md-12">
                                         <div class="select-limit-items d-flex align-items-center flex-row gap-2">
                                             <span>{{__('green_stock.showing')}}</span>
+                                            @php
+                                                $limitOptions = [30, 50, 75, 100];
+                                            @endphp
                                             <select id="selectLimitIndiceTable" class="form-select w-auto">
-                                                <option value="50">50</option>
-                                                <option value="75">75</option>
-                                                <option value="100">100</option>
+                                                @for($i = 0; $i < count($limitOptions); $i++)
+                                                    <option value="{{$limitOptions[$i]}}">{{$limitOptions[$i]}}</option>
+                                                @endfor
                                             </select>
                                         </div>
-                                        <div class="table-responsive" style="max-height: 600px; overflow-y: auto;">
+                                        <div class="table-responsive" style="overflow-y: auto;">
                                             <table class="table table-striped table-hover" id="indices-table">
                                                 <thead>
                                                 <tr>
-                                                    <th class="text-capitalize text-center">{{__('green_stock.rating')}}</th>
-                                                    <th class="text-capitalize">{{__('green_stock.stock')}}</th>
-                                                    <th class="text-capitalize">{{__('green_stock.last_sale')}}</th>
-                                                    <th class="text-capitalize text-center">{{__('green_stock.trend')}}</th>
-                                                    <th class="text-capitalize text-center">{{__('green_stock.action')}}</th>
-                                                    <th class="text-capitalize text-right">{{__('green_stock.profit')}}</th>
-                                                    <th class="text-capitalize">{{__('green_stock.after_sell')}}</th>
-                                                    <th class="text-capitalize text-right">{{__('green_stock.price')}}</th>
-                                                    <th class="text-capitalize">{{__('green_stock.time')}}</th>
+                                                    <th class="text-capitalize text-center text-nowrap">{{__('green_stock.rating')}}</th>
+                                                    <th class="text-capitalize text-center text-nowrap">{{__('green_stock.stock')}}</th>
+                                                    <th class="text-capitalize text-center text-nowrap">{{__('green_stock.last_sale')}}</th>
+                                                    <th class="text-capitalize text-center text-nowrap">{{__('green_stock.trend')}}</th>
+                                                    <th class="text-capitalize text-center text-nowrap">{{__('green_stock.action')}}</th>
+                                                    <th class="text-capitalize text-center text-nowrap">{{__('green_stock.profit')}}</th>
+                                                    <th class="text-capitalize text-center text-nowrap">{{__('green_stock.after_sell')}}</th>
+                                                    <th class="text-capitalize text-center text-nowrap">{{__('green_stock.price')}}</th>
+                                                    <th class="text-capitalize text-center text-nowrap">{{__('green_stock.time')}}</th>
                                                 </tr>
                                                 </thead>
                                             </table>
@@ -2003,15 +2015,15 @@
                                         <div class="table-responsive" style="max-height: 295px; overflow-y: auto;">
                                             <table class="table table-striped table-hover" id="top_stock">
                                                 <thead>
-                                                <th class="text-capitalize text-center">{{__('green_stock.rating')}}</th>
-                                                <th class="text-capitalize">{{__('green_stock.stock')}}</th>
-                                                <th class="text-capitalize tex-right">{{__('green_stock.last_sale')}}</th>
-                                                <th class="text-capitalize text-center">{{__('green_stock.trend')}}</th>
-                                                <th class="text-capitalize text-center">{{__('green_stock.action')}}</th>
-                                                <th class="text-capitalize tex-right">{{__('green_stock.profit')}}</th>
-                                                <th class="text-capitalize tex-right">{{__('green_stock.after_sell')}}</th>
-                                                <th class="text-capitalize tex-right">{{__('green_stock.price')}}</th>
-                                                <th class="text-capitalize">{{__('green_stock.time')}}</th>
+                                                <th class="text-capitalize text-center text-nowrap">{{__('green_stock.rating')}}</th>
+                                                <th class="text-capitalize text-center text-nowrap">{{__('green_stock.stock')}}</th>
+                                                <th class="text-capitalize text-center text-nowrap">{{__('green_stock.last_sale')}}</th>
+                                                <th class="text-capitalize text-center text-nowrap">{{__('green_stock.trend')}}</th>
+                                                <th class="text-capitalize text-center text-nowrap">{{__('green_stock.action')}}</th>
+                                                <th class="text-capitalize text-center text-nowrap">{{__('green_stock.profit')}}</th>
+                                                <th class="text-capitalize text-center text-nowrap">{{__('green_stock.after_sell')}}</th>
+                                                <th class="text-capitalize text-center text-nowrap">{{__('green_stock.price')}}</th>
+                                                <th class="text-capitalize text-center text-nowrap">{{__('green_stock.time')}}</th>
                                                 </thead>
                                             </table>
                                         </div>
