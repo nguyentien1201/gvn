@@ -590,7 +590,7 @@ class HomeController
         $ma['up'] = [$ma['upMA50'],$ma['upMA200']];
         $ma['down'] = [$ma['downMA50'],$ma['downMA200']];
         // dd($signals,$top_stock,$chart_signal,$labels,$ma,$chart_group_data,$list_stock,$list_folow);
-        return view('front.vnindex',compact('signals','top_stock','chart_signal','labels','ma','chart_group_data','list_stock','list_folow'));
+        return view('frontend_v2.vnindex',compact('signals','top_stock','chart_signal','labels','ma','chart_group_data','list_stock','list_folow'));
     }
     public function getMarketVnIndex(){
 
