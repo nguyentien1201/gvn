@@ -1028,25 +1028,26 @@
                                                             if (rowData.trending != null) {
                                                                 trending = rowData.trending.trim().toLowerCase();
                                                             }
-                                                            if (trending == 'breaking high price') {
+                                                            let signal_slug = slugify(trending);
+                                                            if (signal_slug == 'vuot-dinh') {
                                                                 color = '#9B54FF';
                                                                 background = '#E9DBFD';
-                                                            } else if (trending == 'build up') {
+                                                            } else if (signal_slug == 'tich-luy') {
                                                                 color = '#F1C32A';
                                                                 background = '#FFF4CE';
-                                                            } else if (trending == 'go up') {
+                                                            } else if (signal_slug == 'tang') {
                                                                 color = '#008000';
                                                                 background = '#CCFFCC';
-                                                            } else if (trending == 'bottom fishing') {
+                                                            } else if (signal_slug == 'bat-day') {
                                                                 color = '#008AD9';
                                                                 background = '#BFE8FF';
-                                                            } else if (trending == 'go down') {
+                                                            } else if (signal_slug == 'giam') {
                                                                 color = '#FC2F31';
                                                                 background = '#FED6D6';
-                                                            } else if (trending == 'recovery') {
+                                                            } else if (signal_slug == 'phuc-hoi') {
                                                                 color = '#E76A36';
                                                                 background = '#FFDACA';
-                                                            } else if (trending == 'breaking low price') {
+                                                            } else if (signal_slug == 'thung-day') {
                                                                 color = '#F65D60';
                                                                 background = '#FFC1C2';
                                                             }
@@ -1276,17 +1277,17 @@
                                     if (cellData != null) {
                                         signal = cellData.trim().toLowerCase();
                                     }
-                                    signal = slugify(signal);
-                                    if (signal == 'mua') {
+                                    let signal_slug = slugify(signal);
+                                    if (signal_slug == 'mua') {
                                         color = '#157347';
                                         background = '#69E872';
-                                    } else if (signal == 'nam-giu') {
+                                    } else if (signal_slug == 'nam-giu') {
                                         color = '#157347';
                                         background = '#CCFFCC';
-                                    } else if (signal == 'tien-mat') {
+                                    } else if (signal_slug == 'tien-mat') {
                                         color = '#F1C32A';
                                         background = '#F7EFAF';
-                                    } else if (signal == 'ban') {
+                                    } else if (signal_slug == 'ban') {
                                         color = 'rgb(227, 123, 113)';
                                         background = '';
                                     }
