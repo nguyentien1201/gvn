@@ -5,7 +5,7 @@ return [
     'market_overview' => 'Market Overview',
     'top_5_stock'   => 'Top 5 Stock',
     'buy_cash_hold_sell' => 'BUY - CASH - HOLD - SELL',
-    'down_up' => 'DOWN - UP',
+    'down_up' => 'UP - DOWN',
     'best_top_10' => 'Best Top 10',
     'rating'=>'Rating',
     'stock'=>'Stock',

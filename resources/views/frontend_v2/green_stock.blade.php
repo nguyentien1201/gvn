@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title', 'Greenstock Nas100')
 @push('styles')
     <!-- Favicon -->
     <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}">
@@ -217,8 +218,8 @@
                         render: function(data, type, row) {
                             let code = data;
                             let codeImg = logoBaseUrl + '/' + code + ".png";
+                            let imgHtml = `<img style="width: 25px; height: 25px; object-fit: cover;" src="${codeImg}" alt="${codeImg}" class="rounded-circle">`;
                             let htmlCode = `<div class="code d-flex align-items-center gap-2">
-                                <img style="width: 25px; height: 25px; object-fit: cover;" src="${codeImg}" alt="${codeImg}" class="rounded-circle">
                                 <span>${code}</span>
                             </div>`;
                             return htmlCode;
@@ -337,12 +338,17 @@
                             $(td).addClass('text-center');
                             $(td).css('color', color);
                         },
+
                         render: function (data, type, full, meta) {
-                            if (data != null) {
-                                return `${data}%`;
+                            if (data == 'fas fa-lock') {
+                                return '<i style="color:green" class="fas fa-lock"></i>';
                             }
-                            return '';
-                        },
+                            if (type === 'display') {
+                                return isNaN(parseFloat(data)) ? "" : parseFloat(data).toFixed(2);
+                            }
+                            return data; //
+
+                        }
 
                     },
                     {
@@ -520,15 +526,15 @@
                     labels: ['MA50', 'MA200'],
                     datasets: [
                         {
+                            label: 'UP',
+                            data: @json($ma['up']),
+                            backgroundColor: '#008000',
+                        },
+                        {
                             label: 'DOWN',
                             data: @json($ma['down']),
                             backgroundColor: '#EF5657',
                         },
-                        {
-                            label: 'UP',
-                            data: @json($ma['up']),
-                            backgroundColor: '#008000',
-                        }
                     ],
                 },
                 options: {
@@ -644,7 +650,7 @@
                             // Map group -> order
                             const orderMap = {
                                 'Large Cap': 1,
-                                'NAS100': 2,
+                                'Nas100': 2,
                                 'Mega Cap': 3,
                                 'Mid Cap': 4,
                                 'Small Cap': 5
@@ -652,7 +658,7 @@
                             // Map group -> màu class
                             const colorMap = {
                                 'Large Cap': '#008000',
-                                'NAS100': '#ECC546',
+                                'Nas100': '#ECC546',
                                 'Mega Cap': '#F4A953',
                                 'Mid Cap': '#FC8B3A',
                                 'Small Cap': '#EF5657'
@@ -1333,7 +1339,14 @@
                                     $(td).css('color', color);
                                 },
                                 render: function (data, type, full, meta) {
-                                    return `${data}%`;
+                                    if(data =='fas fa-lock'){
+                                        return '<i style="color:green" class="fas fa-lock"></i>';
+                                    }
+                                    if (type === 'display') {
+                                        return isNaN(parseFloat(data)) ? "" : parseFloat(data).toFixed(2);
+                                    }
+                                    return data; //
+
                                 }
                             },
                             {
@@ -1830,7 +1843,7 @@
                         <div class="container-tab-heading">
                             <h3 class="heading-page pb-1 mb-0">{{ __('green_stock.stock_rating') }}</h3>
                             <h5 class="time-live mb-0">
-                                <i><span class="date-js"></span><span class="time-js"></span> (UTC+3)</i>
+                                <i><span class="date-js"></span> <span class="time-js"></span> (UTC+3)</i>
                             </h5>
                         </div>
                         <!-- End heading tab -->
@@ -1953,11 +1966,11 @@
                                         <div class="select-limit-items d-flex align-items-center flex-row gap-2">
                                             <span>{{__('green_stock.showing')}}</span>
                                             @php
-                                                $limitOptions = [30, 50, 75, 100];
+                                                $limitOptions = [30, 50, 75, 100,-1];
                                             @endphp
                                             <select id="selectLimitIndiceTable" class="form-select w-auto">
                                                 @for($i = 0; $i < count($limitOptions); $i++)
-                                                    <option value="{{$limitOptions[$i]}}">{{$limitOptions[$i]}}</option>
+                                                    <option value="{{$limitOptions[$i]}}">{{$limitOptions[$i] ==-1 ? 'All':$limitOptions[$i]}}</option>
                                                 @endfor
                                             </select>
                                         </div>
@@ -1990,7 +2003,7 @@
                         <div class="container-tab-heading">
                             <h3 class="heading-page pb-1 mb-0">{{ __('green_stock.market_overview') }}</h3>
                             <h5 class="time-live mb-0">
-                                <i><span class="date-js"></span><span class="time-js"></span> (UTC+3)</i>
+                                <i><span class="date-js"></span> <span class="time-js"></span> (UTC+3)</i>
                             </h5>
                         </div>
                         <!-- End heading tab -->

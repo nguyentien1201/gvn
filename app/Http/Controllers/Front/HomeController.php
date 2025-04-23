@@ -121,7 +121,8 @@ class HomeController
                   ->groupBy('code');
         })
         ->orderBy('close_time', 'desc')
-        ->limit(10)->get();
+        ->limit(12)->get();
+
         $data_chart_default = $this->getHistoryAlphaSignal(1);
 
         $chart_signal = (new GreenStockNas100())->getGroupSignal();

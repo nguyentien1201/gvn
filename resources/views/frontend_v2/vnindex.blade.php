@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title', 'Greenstock VnIndex')
 @push('styles')
     <!-- Favicon -->
     <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}">
@@ -279,16 +280,17 @@
                             if (cellData != null) {
                                 signal = cellData.trim().toLowerCase();
                             }
-                            if (signal == 'buy') {
+                            let signal_slug = slugify(signal);
+                            if (signal_slug == 'mua') {
                                 color = '#157347';
                                 background = '#69E872';
-                            } else if (signal == 'hold') {
+                            } else if (signal_slug == 'nam-giu') {
                                 color = '#157347';
                                 background = '#CCFFCC';
-                            } else if (signal == 'cash') {
+                            } else if (signal_slug == 'tien-mat') {
                                 color = '#F1C32A';
                                 background = '#F7EFAF';
-                            } else if (signal == 'sell') {
+                            } else if (signal_slug == 'ban') {
                                 color = 'rgb(227, 123, 113)';
                                 background = '';
                             }
@@ -517,15 +519,16 @@
                     labels: ['MA50', 'MA200'],
                     datasets: [
                         {
+                            label: 'UP',
+                            data: @json($ma['up']),
+                            backgroundColor: '#008000',
+                        },
+                        {
                             label: 'DOWN',
                             data: @json($ma['down']),
                             backgroundColor: '#EF5657',
                         },
-                        {
-                            label: 'UP',
-                            data: @json($ma['up']),
-                            backgroundColor: '#008000',
-                        }
+
                     ],
                 },
                 options: {
@@ -643,7 +646,7 @@
                             // Map group -> order
                             const orderMap = {
                                 'Large Cap': 1,
-                                'NAS100': 2,
+                                'VNindex': 2,
                                 'Mega Cap': 3,
                                 'Mid Cap': 4,
                                 'Small Cap': 5
@@ -651,7 +654,7 @@
                             // Map group -> màu class
                             const colorMap = {
                                 'Large Cap': '#008000',
-                                'NAS100': '#ECC546',
+                                'VNindex': '#ECC546',
                                 'Mega Cap': '#F4A953',
                                 'Mid Cap': '#FC8B3A',
                                 'Small Cap': '#EF5657'
@@ -1129,16 +1132,12 @@
                                                             }
                                                             $(td).css('color', color);
                                                         },
-                                                        render: function (data, type, full, meta) {
-                                                            if (data == 'fas fa-lock') {
-                                                                return '<i style="color:green" class="fas fa-lock"></i>';
-                                                            }
-                                                            if (type === 'display') {
-                                                                return parseFloat(data).toFixed(2);
-                                                            }
-                                                            return data; //
-
-                                                        }
+                                                    render: function (data, type, full, meta) {
+                                                                if (data != null) {
+                                                                    return `${data}%`;
+                                                                }
+                                                                return '';
+                                                            },
                                                     },
                                                     {
                                                         targets: 7, // Index of the open_time column
@@ -1236,25 +1235,26 @@
                                     if (rowData.trending != null) {
                                         trending = rowData.trending.trim().toLowerCase();
                                     }
-                                    if (trending == 'breaking high price') {
+                                    let signal_slug = slugify(trending);
+                                    if (signal_slug == 'vuot-dinh') {
                                         color = '#9B54FF';
                                         background = '#E9DBFD';
-                                    } else if (trending == 'build up') {
+                                    } else if (signal_slug == 'tich-luy') {
                                         color = '#F1C32A';
                                         background = '#FFF4CE';
-                                    } else if (trending == 'go up') {
+                                    } else if (signal_slug == 'tang') {
                                         color = '#008000';
                                         background = '#CCFFCC';
-                                    } else if (trending == 'bottom fishing') {
+                                    } else if (signal_slug == 'bat-day') {
                                         color = '#008AD9';
                                         background = '#BFE8FF';
-                                    } else if (trending == 'go down') {
+                                    } else if (signal_slug == 'giam') {
                                         color = '#FC2F31';
                                         background = '#FED6D6';
-                                    } else if (trending == 'recovery') {
+                                    } else if (signal_slug == 'phuc-hoi') {
                                         color = '#E76A36';
                                         background = '#FFDACA';
-                                    } else if (trending == 'breaking low price') {
+                                    } else if (signal_slug == 'thung-day') {
                                         color = '#F65D60';
                                         background = '#FFC1C2';
                                     }
@@ -1334,7 +1334,15 @@
                                     $(td).css('color', color);
                                 },
                                 render: function (data, type, full, meta) {
-                                    return `${data}%`;
+                                    if(data =='fas fa-lock'){
+                                        return '<i style="color:green" class="fas fa-lock"></i>';
+                                    }
+                                    if (type === 'display') {
+
+                                        return isNaN(parseFloat(data)) ? "" : parseFloat(data).toFixed(2);
+                                    }
+                                    return data; //
+
                                 }
                             },
                             {
@@ -1831,7 +1839,7 @@
                         <div class="container-tab-heading">
                             <h3 class="heading-page pb-1 mb-0">{{ __('green_stock.stock_rating') }}</h3>
                             <h5 class="time-live mb-0">
-                                <i><span class="date-js"></span><span class="time-js"></span> (UTC+3)</i>
+                                <i><span class="date-js"></span> <span class="time-js"></span> (UTC+3)</i>
                             </h5>
                         </div>
                         <!-- End heading tab -->
@@ -1949,11 +1957,11 @@
                                         <div class="select-limit-items d-flex align-items-center flex-row gap-2">
                                             <span>{{__('green_stock.showing')}}</span>
                                             @php
-                                                $limitOptions = [30, 50, 75, 100];
+                                                $limitOptions = [30, 50, 75, 100,-1];
                                             @endphp
                                             <select id="selectLimitIndiceTable" class="form-select w-auto">
                                                 @for($i = 0; $i < count($limitOptions); $i++)
-                                                    <option value="{{$limitOptions[$i]}}">{{$limitOptions[$i]}}</option>
+                                                    <option value="{{$limitOptions[$i]}}">{{$limitOptions[$i] ==-1 ? 'Tất cả':$limitOptions[$i]}}</option>
                                                 @endfor
                                             </select>
                                         </div>
@@ -1986,7 +1994,7 @@
                         <div class="container-tab-heading">
                             <h3 class="heading-page pb-1 mb-0">{{ __('green_stock.market_overview') }}</h3>
                             <h5 class="time-live mb-0">
-                                <i><span class="date-js"></span><span class="time-js"></span> (UTC+3)</i>
+                                <i><span class="date-js"></span> <span class="time-js"></span> (UTC+3)</i>
                             </h5>
                         </div>
                         <!-- End heading tab -->

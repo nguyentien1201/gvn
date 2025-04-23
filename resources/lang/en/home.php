@@ -13,8 +13,8 @@ return [
     'our_service' => 'Our service',
     'most_interested' => 'Most interested',
     'trade_on' => 'Trade on',
-    'trading_on_green_beta' => 'Trading on green beta',
-    'trading_on_green_alpha' => 'Trading on green alpha',
+    'trading_on_green_beta' => 'Trading on Green beta',
+    'trading_on_green_alpha' => 'Trading on Green Alpha',
     'trade_on_content' => [
         'beta' => [
             'head_text' => 'Green Beta\'s trading method is Position Trading, which is to find the points with the highest probability of winning and hold that position in the medium and long term until the market signals take profit and stop loss. Green Beta is developed to adapt to most financial indicators in the global market such as Index Future, Crypto, Commodity,etc.',
