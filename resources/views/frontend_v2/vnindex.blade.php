@@ -30,7 +30,9 @@
     .replace(/[\u0300-\u036f]/g, '')    // xóa dấu
     .replace(/[^a-z0-9 -]/g, '')        // loại bỏ ký tự đặc biệt
     .replace(/\s+/g, '-')               // thay khoảng trắng bằng "-"
-    .replace(/-+/g, '-')                // loại bỏ dấu "-" lặp lại
+    .replace(/-+/g, '-')
+    .replace(/đ/g, 'd')                   // Tùy chọn: đổi "đ" thành "d"
+    .replace(/Đ/g, 'D')              // loại bỏ dấu "-" lặp lại
     .replace(/^-+|-+$/g, '');           // xóa "-" ở đầu và cuối
 }
         $('#select-stock').on('select2:select', function (e) {
