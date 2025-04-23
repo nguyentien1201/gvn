@@ -38,9 +38,17 @@
                         showAlert(response.message, 'success');
                         if (response.data) {
                             result = JSON.parse(response.data);
+                            let code = result.code;
+                            let codeImg = logoBaseUrl + '/' + code + ".png";
+
                             var newRow = `
                             <tr data-id="` + result.id + `" >
-                                <td>` + result.code + `</td>
+                                <td>
+                                    <div class="code d-flex align-items-center gap-2">
+                                        <img style="width: 25px; height: 25px; object-fit: cover;" src="${codeImg}" alt="${codeImg}" class="rounded-circle">
+                                        <span>${code}</span>
+                                    </div>
+                                </td>
                                 <td class="text-center">` + result.rating + `</td>
                                 <td class="text-center">` + result.price + `</td>
                                 <td class="text-center">` + result.current_price + `</td>
@@ -59,6 +67,7 @@
 
         var isCall = false;
         $(document).ready(function () {
+            const logoBaseUrl = "{{ asset('images/logo') }}"; // trả ra đường dẫn base
             $('#select-stock').select2({
                 placeholder: 'Select an option',
                 theme: 'bootstrap-5', // Áp dụng theme Bootstrap 5
@@ -205,6 +214,15 @@
                                 });
                             });
                         },
+                        render: function(data, type, row) {
+                            let code = data;
+                            let codeImg = logoBaseUrl + '/' + code + ".png";
+                            let htmlCode = `<div class="code d-flex align-items-center gap-2">
+                                <img style="width: 25px; height: 25px; object-fit: cover;" src="${codeImg}" alt="${codeImg}" class="rounded-circle">
+                                <span>${code}</span>
+                            </div>`;
+                            return htmlCode;
+                        }
                     },
                     {
                         targets: 2, // Index of the date column
@@ -364,7 +382,6 @@
 
             $('#selectLimitIndiceTable').on('change', function () {
                 const length = parseInt($(this).val());
-                console.log('sd')
                 indices.page.len(length).draw();
             });
             // Khi user thay đổi dropdown
@@ -496,7 +513,6 @@
                 }
             };
 
-
             const ctxMaChart = document.getElementById('maChart').getContext('2d');
             const maChart = new Chart(ctxMaChart, {
                 type: 'bar',
@@ -599,10 +615,8 @@
             var barCurentMonthGroup = null;
 
             function showChart(index) {
-                console.log(index);
                 // Ẩn tất cả các datasets
                 barCurentMonthGroup.data.datasets.forEach((dataset, i) => {
-                    console.log(dataset);
                     dataset.hidden = true;
                 });
 
@@ -1898,7 +1912,12 @@
                                                             <tbody>
                                                             @foreach($list_folow as  $stock)
                                                                 <tr data-id="{{$stock->id}}">
-                                                                    <td class="fw-bold">{{ $stock->code }}</td>
+                                                                    <td class="fw-bold">
+                                                                        <div class="code d-flex align-items-center gap-2">
+                                                                            <img style="width: 25px; height: 25px; object-fit: cover;" src="{{ asset('images/logo/' . $stock->code . '.png') }}" alt="{{ asset('images/logo/' . $stock->code . 'png') }}" class="rounded-circle">
+                                                                            <span>{{ $stock->code }}</span>
+                                                                        </div>
+                                                                    </td>
                                                                     <td class="text-center">{{ $stock->rating }}</td>
                                                                     <td class="text-center">{{ $stock->price }}</td>
                                                                     <td class="text-center">{{ $stock->current_price }}</td>
