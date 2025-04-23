@@ -27,7 +27,6 @@
 @push('scripts')
     <script>
         $(document).ready(function () {
-            console.log(@json($signals));
             const logoBaseUrl = "{{ asset('images/logo') }}"; // trả ra đường dẫn base
             $('#most-interested-table').DataTable({
                 responsive: false,
@@ -54,8 +53,15 @@
                     {
                         targets: 0,
                         createdCell: function (td, cellData, rowData, row, col) {
-                            let signalOpenText = (rowData.signal_open === "Close") ? "CLOSED" : "BUY";
-                            let signalOpenClass = (rowData.signal_open === "Close") ? "closed" : "buy";
+                            let signalOpenText = '';
+                            let signalOpenClass = '';
+                            if(rowData.signal_open === "Close") {
+                                signalOpenText = "CLOSED";
+                                signalOpenClass = "closed";
+                            } else {
+                                signalOpenText = "BUY";
+                                signalOpenClass = "buy";
+                            }
                             $(td).html(`<span class="text-capitalize signal-open ${signalOpenClass}">${signalOpenText}</span>`);
                             $(td).addClass('text-center');
                         }
@@ -153,7 +159,7 @@
                     {
                         targets: 10,
                         createdCell: function (td, cellData, rowData, row, col) {
-                            let closeTime = rowData.close_time ;
+                            let closeTime = rowData.close_time ? rowData.close_time : '';
                             $(td).html(`<span class="text-nowrap">${closeTime}</span>`);
                         }
                     },
