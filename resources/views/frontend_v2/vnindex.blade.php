@@ -23,6 +23,16 @@
 
     <!-- JS load data and event -->
     <script>
+                            function slugify(str) {
+  return str
+    .toLowerCase()
+    .normalize('NFD')                   // chuẩn hóa ký tự có dấu
+    .replace(/[\u0300-\u036f]/g, '')    // xóa dấu
+    .replace(/[^a-z0-9 -]/g, '')        // loại bỏ ký tự đặc biệt
+    .replace(/\s+/g, '-')               // thay khoảng trắng bằng "-"
+    .replace(/-+/g, '-')                // loại bỏ dấu "-" lặp lại
+    .replace(/^-+|-+$/g, '');           // xóa "-" ở đầu và cuối
+}
         $('#select-stock').on('select2:select', function (e) {
             let stock_id = $(this).val();
             if (stock_id.trim()) {
@@ -663,16 +673,7 @@
                             $('.market-capital-container .row').append(html);
                         })
                     }
-                    function slugify(str) {
-  return str
-    .toLowerCase()
-    .normalize('NFD')                   // chuẩn hóa ký tự có dấu
-    .replace(/[\u0300-\u036f]/g, '')    // xóa dấu
-    .replace(/[^a-z0-9 -]/g, '')        // loại bỏ ký tự đặc biệt
-    .replace(/\s+/g, '-')               // thay khoảng trắng bằng "-"
-    .replace(/-+/g, '-')                // loại bỏ dấu "-" lặp lại
-    .replace(/^-+|-+$/g, '');           // xóa "-" ở đầu và cuối
-}
+
                     const ctxcapChart = document.getElementById('capChart').getContext('2d');
                     // Plugin custom để vẽ label nằm cuối cột, có màu theo cột
                     const customLabelPlugin = {
