@@ -1081,16 +1081,17 @@
                                                             if (cellData != null) {
                                                                 signal = cellData.trim().toLowerCase();
                                                             }
-                                                            if (signal == 'buy') {
+                                                            let signal_slug = slugify(signal);
+                                                            if (signal_slug == 'mua') {
                                                                 color = '#157347';
                                                                 background = '#69E872';
-                                                            } else if (signal == 'hold') {
+                                                            } else if (signal_slug == 'nam-giu') {
                                                                 color = '#157347';
                                                                 background = '#CCFFCC';
-                                                            } else if (signal == 'cash') {
+                                                            } else if (signal_slug == 'tien-mat') {
                                                                 color = '#F1C32A';
                                                                 background = '#F7EFAF';
-                                                            } else if (signal == 'sell') {
+                                                            } else if (signal_slug == 'ban') {
                                                                 color = 'rgb(227, 123, 113)';
                                                                 background = '';
                                                             }
@@ -1132,15 +1133,25 @@
                                                             }
                                                             $(td).css('color', color);
                                                         },
-                                                    render: function (data, type, full, meta) {
-                                                                if (data != null) {
-                                                                    return `${data}%`;
-                                                                }
-                                                                return '';
-                                                            },
+                                                        render: function (data, type, full, meta) {
+                                                                    if (data != null) {
+                                                                        return `${data}%`;
+                                                                    }
+                                                                    return '';
+                                                                },
+                                                        },
+                                                    {
+                                                        targets: 7, // Index of the price column
+                                                        render: function (data, type, full, meta) {
+                                                            if (type === 'display') {
+                                                                return parseFloat(data).toFixed(2);
+                                                            }
+                                                            return data; //
+
+                                                        }
                                                     },
                                                     {
-                                                        targets: 7, // Index of the open_time column
+                                                        targets: 8, // Index of the open_time column
                                                         render: function (data, type, row) {
                                                             if (data == 'fas fa-lock') {
                                                                 return '<i style="color:green" class="fas fa-lock"></i>';
