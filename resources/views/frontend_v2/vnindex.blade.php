@@ -221,28 +221,29 @@
                             if (rowData.trending != null) {
                                 trending = rowData.trending.trim().toLowerCase();
                             }
-                            if (trending == 'breaking high price') {
-                                color = '#9B54FF';
-                                background = '#E9DBFD';
-                            } else if (trending == 'build up') {
-                                color = '#F1C32A';
-                                background = '#FFF4CE';
-                            } else if (trending == 'go up') {
-                                color = '#008000';
-                                background = '#CCFFCC';
-                            } else if (trending == 'bottom fishing') {
-                                color = '#008AD9';
-                                background = '#BFE8FF';
-                            } else if (trending == 'go down') {
-                                color = '#FC2F31';
-                                background = '#FED6D6';
-                            } else if (trending == 'recovery') {
-                                color = '#E76A36';
-                                background = '#FFDACA';
-                            } else if (trending == 'breaking low price') {
-                                color = '#F65D60';
-                                background = '#FFC1C2';
-                            }
+                            let signal_slug = slugify(trending);
+                                                            if (signal_slug == 'vuot-dinh') {
+                                                                color = '#9B54FF';
+                                                                background = '#E9DBFD';
+                                                            } else if (signal_slug == 'tich-luy') {
+                                                                color = '#F1C32A';
+                                                                background = '#FFF4CE';
+                                                            } else if (signal_slug == 'tang') {
+                                                                color = '#008000';
+                                                                background = '#CCFFCC';
+                                                            } else if (signal_slug == 'bat-day') {
+                                                                color = '#008AD9';
+                                                                background = '#BFE8FF';
+                                                            } else if (signal_slug == 'giam') {
+                                                                color = '#FC2F31';
+                                                                background = '#FED6D6';
+                                                            } else if (signal_slug == 'phuc-hoi') {
+                                                                color = '#E76A36';
+                                                                background = '#FFDACA';
+                                                            } else if (signal_slug == 'thung-day') {
+                                                                color = '#F65D60';
+                                                                background = '#FFC1C2';
+                                                            }
                             $(td).html(`<span class="trend text-capitalize" style="
                                 display: inline-block;
                                 border-radius: 4px;
