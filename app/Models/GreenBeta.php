@@ -29,14 +29,14 @@ class GreenBeta extends Model
         if(empty($value)){
             return null;
         }
-        return Carbon::parse($value)->format('d-m-Y'); // Customize the format as needed
+        return Carbon::parse($value)->format('m-d-Y'); // Customize the format as needed
     }
     public function getCloseTimeAttribute($value)
     {
         if(empty($value)){
             return null;
         }
-        return Carbon::parse($value)->format('d-m-Y'); // Customize the format as needed
+        return Carbon::parse($value)->format('m-d-Y'); // Customize the format as needed
     }
 
     public function getListSignals( Request $request)
