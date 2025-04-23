@@ -662,7 +662,16 @@
                             $('.market-capital-container .row').append(html);
                         })
                     }
-
+                    function slugify(str) {
+  return str
+    .toLowerCase()
+    .normalize('NFD')                   // chuẩn hóa ký tự có dấu
+    .replace(/[\u0300-\u036f]/g, '')    // xóa dấu
+    .replace(/[^a-z0-9 -]/g, '')        // loại bỏ ký tự đặc biệt
+    .replace(/\s+/g, '-')               // thay khoảng trắng bằng "-"
+    .replace(/-+/g, '-')                // loại bỏ dấu "-" lặp lại
+    .replace(/^-+|-+$/g, '');           // xóa "-" ở đầu và cuối
+}
                     const ctxcapChart = document.getElementById('capChart').getContext('2d');
                     // Plugin custom để vẽ label nằm cuối cột, có màu theo cột
                     const customLabelPlugin = {
@@ -1267,16 +1276,17 @@
                                     if (cellData != null) {
                                         signal = cellData.trim().toLowerCase();
                                     }
-                                    if (signal == 'buy') {
+                                    signal = slugify(signal);
+                                    if (signal == 'mua') {
                                         color = '#157347';
                                         background = '#69E872';
-                                    } else if (signal == 'hold') {
+                                    } else if (signal == 'nam-giu') {
                                         color = '#157347';
                                         background = '#CCFFCC';
-                                    } else if (signal == 'cash') {
+                                    } else if (signal == 'tien-mat') {
                                         color = '#F1C32A';
                                         background = '#F7EFAF';
-                                    } else if (signal == 'sell') {
+                                    } else if (signal == 'ban') {
                                         color = 'rgb(227, 123, 113)';
                                         background = '';
                                     }
