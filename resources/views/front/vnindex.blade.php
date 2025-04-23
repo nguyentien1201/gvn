@@ -1392,7 +1392,7 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
 
                                 // Gọi AJAX khi click vào phần tử
                                 $.ajax({
-                                    url: '/api/get-top-stock',
+                                    url: '/api/get-top-stock-vnindex',
                                     method: 'GET',
                                     type: 'GET',
                                     data: {

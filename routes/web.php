@@ -38,6 +38,7 @@ Route::group(['prefix' => '', 'as' => 'front.', 'namespace' => 'Front'], functio
     Route::get('trading-system', 'HomeController@tradingSystem')->name('home.trading-system');
     Route::get('contact', 'HomeController@contact')->name('home.contact');
     Route::get('mission', 'HomeController@mission')->name('home.mission');
+    Route::get('api/get-top-stock-vnindex', 'HomeController@getTopStockVNIndex')->middleware(['auth'])->name('api.top-stock-vnindex');
 
     Route::get('api/get-market-vnindex', 'HomeController@getMarketVnIndex')->name('api.market-vnindex');
 

@@ -952,7 +952,7 @@
 
                                     // Gọi AJAX khi click vào phần tử
                                     $.ajax({
-                                        url: '/api/get-top-stock',
+                                        url: '/api/get-top-stock-vnindex',
                                         method: 'GET',
                                         type: 'GET',
                                         data: {
@@ -1808,7 +1808,7 @@
         <div id="heroCarousel" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item container-heading active">
-                    <h3 class="heading-page">{{ __('green_stock.gs_nas100') }}</h3>
+                    <h3 class="heading-page">{{ __('green_stock.gs_vnindex') }}</h3>
                     <div class="tabs-green">
                         <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                             <li class="nav-item" role="presentation">

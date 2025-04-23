@@ -392,13 +392,13 @@ class HomeController
         $role_id = $user->role_id ?? null;
         $subscription = Subscription::where('user_id', $user->id)->where('product_id',3)->where('end_date' ,'>=', now())->first();
 
-        if($subscription['is_trial'] == 1 && $role_id != 1){
-            foreach ($top_stock as $key => $value) {
-                $value['price'] = 'fas fa-lock';
-                $value['time'] = 'fas fa-lock';
-                $top_stock[$key] = $value;
-            }
-        }
+        // if($subscription['is_trial'] == 1 && $role_id != 1){
+        //     foreach ($top_stock as $key => $value) {
+        //         $value['price'] = 'fas fa-lock';
+        //         $value['time'] = 'fas fa-lock';
+        //         $top_stock[$key] = $value;
+        //     }
+        // }
         return [
             'status' => 200,
             'data' => $top_stock
@@ -630,6 +630,33 @@ class HomeController
         return [
             'status' => 200,
             'data' => $marketOverview,
+        ];
+    }
+    public function getTopStockVNIndex(){
+        $request = Request::all();
+        $labels = $request['label'] ?? '';
+
+        if(empty($labels)){
+            return [
+                'status' => 200,
+                'data' => []
+            ];
+        }
+        $top_stock = (new VnIndex())->getTopStockByGroup($labels);
+        $user = \Auth::user();
+        $role_id = $user->role_id ?? null;
+        $subscription = Subscription::where('user_id', $user->id)->where('product_id',3)->where('end_date' ,'>=', now())->first();
+
+        // if($subscription['is_trial'] == 1 && $role_id != 1){
+        //     foreach ($top_stock as $key => $value) {
+        //         $value['price'] = 'fas fa-lock';
+        //         $value['time'] = 'fas fa-lock';
+        //         $top_stock[$key] = $value;
+        //     }
+        // }
+        return [
+            'status' => 200,
+            'data' => $top_stock
         ];
     }
 }
