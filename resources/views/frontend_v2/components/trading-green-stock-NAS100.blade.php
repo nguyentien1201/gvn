@@ -127,15 +127,16 @@
                 data: {
                     labels: ['MA50', 'MA200'],
                     datasets: [
-                        {
-                            label: 'DOWN',
-                            data: @json($ma['down']),
-                            backgroundColor: '#EF5657',
-                        },
+
                         {
                             label: 'UP',
                             data: @json($ma['up']),
                             backgroundColor: '#008000',
+                        },
+                        {
+                            label: 'DOWN',
+                            data: @json($ma['down']),
+                            backgroundColor: '#EF5657',
                         }
                     ]
                 },
