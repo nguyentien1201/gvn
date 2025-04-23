@@ -614,7 +614,7 @@
             }
 
             // Mặc định hiển thị biểu đồ đầu tiên
-            var url = '/api/get-market-greenstock';
+            var url = '/api/get-market-vnindex';
             $.ajax({
                 url: url,
                 type: 'GET',
