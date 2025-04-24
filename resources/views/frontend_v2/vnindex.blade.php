@@ -72,6 +72,7 @@
 
         var isCall = false;
         $(document).ready(function () {
+            const logoBaseUrl = "{{ asset('images/VNindexlogo') }}"; // trả ra đường dẫn base
             $('#select-stock').select2({
                 placeholder: 'Select an option',
                 theme: 'bootstrap-5', // Áp dụng theme Bootstrap 5
@@ -1019,11 +1020,17 @@
                                                                 });
                                                             });
                                                         },
-                                                        render: function (data, type, full, meta) {
+                                                        render: function(data, type, row) {
                                                             if (data == 'fas fa-lock') {
                                                                 return '<i style="color:green" class="fas fa-lock"></i>';
                                                             }
-                                                            return data; //
+                                                            let code = data;
+                                                            let codeImg = logoBaseUrl + '/' + code + ".jpg";
+                                                            let codeHtml = `<div class="code d-flex align-items-center gap-2">
+                                                                <img style="width: 25px; height: 25px; object-fit: cover;" src="${codeImg}" alt="${codeImg}" class="rounded-circle">
+                                                                <span>${code}</span>
+                                                            </div>`;
+                                                            return codeHtml;
                                                         }
                                                     },
                                                     {
@@ -1229,12 +1236,17 @@
                                         });
                                     });
                                 },
-                                render: function (data, type, full, meta) {
+                                render: function(data, type, row) {
                                     if (data == 'fas fa-lock') {
                                         return '<i style="color:green" class="fas fa-lock"></i>';
                                     }
-
-                                    return data; //
+                                    let code = data;
+                                    let codeImg = logoBaseUrl + '/' + code + ".jpg";
+                                    let codeHtml = `<div class="code d-flex align-items-center gap-2">
+                                        <img style="width: 25px; height: 25px; object-fit: cover;" src="${codeImg}" alt="${codeImg}" class="rounded-circle">
+                                        <span>${code}</span>
+                                    </div>`;
+                                    return codeHtml;
                                 }
                             },
                             {
