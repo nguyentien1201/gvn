@@ -140,7 +140,7 @@
                     {
                         targets: 8,
                         createdCell: (td, cellData, rowData, row, col) => {
-                            const signalClose = rowData.signal_close;
+                            let signalClose = rowData.signal_close;
                             if(signalClose == null || signalClose == '' || signalClose == undefined || signalClose == 'Hold'){
                                 signalClose = "Hold";
                             }
