@@ -66,7 +66,7 @@
 @push('scripts')
     <script>
         $(document).ready(function () {
-            const logoBaseUrl = "{{ asset('images/logo/nas100') }}"; // trả ra đường dẫn base
+            const logoBaseUrl = "{{ asset('images/nas100') }}"; // trả ra đường dẫn base
             $('#green-stock-NAS100-table').DataTable({
                 pageLength: 50,         // Giá trị mặc định
                 lengthChange: false,
