@@ -1861,6 +1861,7 @@
                                                     <img src="{{asset('images/stocks/gild-stock.png')}}"
                                                          class="rounded-circle img-fluid stock-image"
                                                          alt="stock-gild-img">
+
                                                     <span class="stock-name">{{ $stock->code }}</span>
                                                 </div>
                                                 <div class="stock-percent">{{ $stock->profit }}%</div>
@@ -1928,7 +1929,7 @@
                                                                 <tr data-id="{{$stock->id}}">
                                                                     <td class="fw-bold">
                                                                         <div class="code d-flex align-items-center gap-2">
-                                                                            <img style="width: 25px; height: 25px; object-fit: cover;" src="{{ asset('images/logo/' . $stock->code . '.png') }}" alt="{{ asset('images/logo/' . $stock->code . 'png') }}" class="rounded-circle">
+                                                                            <img style="width: 25px; height: 25px; object-fit: cover;" src="{{ asset('images/logo/nas100/' . $stock->code . '.svg') }}" alt="{{ asset('images/logo/nas100/' . $stock->code . 'svg') }}" class="rounded-circle">
                                                                             <span>{{ $stock->code }}</span>
                                                                         </div>
                                                                     </td>

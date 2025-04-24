@@ -66,7 +66,7 @@
 @push('scripts')
     <script>
         $(document).ready(function () {
-            const logoBaseUrl = "{{ asset('images/logo') }}"; // trả ra đường dẫn base
+            const logoBaseUrl = "{{ asset('images/logo/nas100') }}"; // trả ra đường dẫn base
             $('#green-stock-NAS100-table').DataTable({
                 pageLength: 50,         // Giá trị mặc định
                 lengthChange: false,
@@ -127,7 +127,7 @@
                         },
                         render: function(data, type, row) {
                             let code = data;
-                            let codeImg = logoBaseUrl + '/' + code + ".png";
+                            let codeImg = logoBaseUrl + '/' + code + ".svg";
                             let codeHtml = `<div class="code d-flex align-items-center gap-2">
                                 <img style="width: 25px; height: 25px; object-fit: cover;" src="${codeImg}" alt="${codeImg}" class="rounded-circle">
                                 <span>${code}</span>
