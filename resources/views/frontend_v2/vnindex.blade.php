@@ -24,6 +24,7 @@
 
     <!-- JS load data and event -->
     <script>
+         const logoBaseUrl = "{{ asset('images/VNindexlogo') }}"; // trả ra đường dẫn base
                             function slugify(str) {
   return str
     .toLowerCase()
@@ -72,7 +73,7 @@
 
         var isCall = false;
         $(document).ready(function () {
-            const logoBaseUrl = "{{ asset('images/VNindexlogo') }}"; // trả ra đường dẫn base
+
             $('#select-stock').select2({
                 placeholder: 'Select an option',
                 theme: 'bootstrap-5', // Áp dụng theme Bootstrap 5
