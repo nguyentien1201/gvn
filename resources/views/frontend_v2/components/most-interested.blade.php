@@ -153,7 +153,7 @@
                             } else {
                                 colorClass += "hold";
                             }
-                    }
+
                             if(signalClose) {
                                 $(td).html(`<span class="signal-close ${colorClass}">${signalClose}</span>`);
                                 $(td).addClass('text-center');
