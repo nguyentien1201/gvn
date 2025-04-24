@@ -141,6 +141,9 @@
                         targets: 8,
                         createdCell: (td, cellData, rowData, row, col) => {
                             const signalClose = rowData.signal_close;
+                            if(signalClose == null || signalClose == '' || signalClose == undefined || signalClose == 'Hold'){
+                                $signalClose = "Hold";
+                            }
                             let colorClass = "";
                             if(signalClose === "TakeProfitBUY") {
                                 colorClass += "profit-buy";
@@ -150,6 +153,7 @@
                             } else {
                                 colorClass += "hold";
                             }
+                    }
                             if(signalClose) {
                                 $(td).html(`<span class="signal-close ${colorClass}">${signalClose}</span>`);
                                 $(td).addClass('text-center');
