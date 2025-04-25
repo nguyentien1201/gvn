@@ -532,14 +532,14 @@
                 data: {
                     labels: ['MA50', 'MA200'],
                     datasets: [
-
                         {
-                            label: 'DOWN',
+                            label: 'UP',
                             data: @json($ma['down']),
                             backgroundColor: '#EF5657',
                         },
                         {
-                            label: 'UP',
+
+                            label: 'DOWN',
                             data: @json($ma['up']),
                             backgroundColor: '#008000',
                         }
@@ -551,8 +551,10 @@
                     plugins: {
                         legend: {
                             display: true,
+
                             position: 'bottom', // 👈 Legend xuống dưới chart
                             labels: {
+
                                 font: {
                                     family: 'Montserrat, sans-serif',   // 👈 Font chữ
                                     size: 16,                           // 👈 Kích thước chữ (px)
@@ -563,7 +565,8 @@
                                 pointStyle: 'circle',   // 👈 Kiểu là hình tròn
                                 pointStyleWidth: 8,     // 👈 Thu nhỏ width marker (mặc định là ~10-12)
                                 boxHeight: 5,            // 👈 Thu nhỏ height marker (mặc định là ~10-12)
-                                padding: 20             // (Tuỳ chọn) Khoảng cách giữa các legend item
+                                padding: 20 ,
+                                      // (Tuỳ chọn) Khoảng cách giữa các legend item
                             }
                         },
                         datalabels: {
@@ -1889,7 +1892,8 @@
                                         <div class="col">
                                             <div class="stock-container d-flex justify-content-between align-items-center">
                                                 <div class="stock d-flex align-items-center gap-2">
-                                                    <img src="{{asset('images/stocks/gild-stock.png')}}"
+
+                                                    <img src="{{asset('images/VNindexlogo/'. $stock->code.'.jpg')}}"
                                                          class="rounded-circle img-fluid stock-image"
                                                          alt="stock-gild-img">
                                                     <span class="stock-name">{{ $stock->code }}</span>
