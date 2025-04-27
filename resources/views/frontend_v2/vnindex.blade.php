@@ -533,13 +533,13 @@
                     labels: ['MA50', 'MA200'],
                     datasets: [
                         {
-                            label: 'UP',
+                            label: 'DOWN',
                             data: @json($ma['down']),
                             backgroundColor: '#EF5657',
                         },
                         {
+                            label: 'UP',
 
-                            label: 'DOWN',
                             data: @json($ma['up']),
                             backgroundColor: '#008000',
                         }
@@ -554,7 +554,7 @@
 
                             position: 'bottom', // 👈 Legend xuống dưới chart
                             labels: {
-
+                                reverse: true,
                                 font: {
                                     family: 'Montserrat, sans-serif',   // 👈 Font chữ
                                     size: 16,                           // 👈 Kích thước chữ (px)

@@ -49,6 +49,8 @@ class HomeController
         $default_chart['xausud'] = $xausud['data'];
         $green_data = (new GreenStockNas100())->getListNas100Api(20);
         $green_data = $green_data['data'] ?? [];
+        $green_vnindex = (new VnIndex())->getListNas100Api(20);
+        $green_vnindex = $green_vnindex['data'] ?? [];
         // if($subscription->isEmpty() && $role_id != 1){
         //     return redirect()->route('front.home.trading-system');
         // }
@@ -141,11 +143,11 @@ class HomeController
         }, $chart_signal);
         $ma = (new Ma())->getMa();
 
-        $ma['up'] = [$ma['upMA200'],$ma['upMA50']];
-        $ma['down'] = [$ma['downMA200'],$ma['downMA50']];
+        $ma['up'] = [$ma['upMA50'],$ma['upMA200']];
+        $ma['down'] = [$ma['downMA50'],$ma['downMA200']];
         $chart_group_data = (new SubGroup())->getDataSubGroup(20);
         $chart_group_data = array_slice($chart_group_data, 0, 20);
-        return view('frontend_v2.home',compact('signals','green_data','default_chart','last_signal','data_chart_default','chart_group_data','ma','chart_signal','labels'));
+        return view('frontend_v2.home',compact('signals','green_data','green_vnindex','default_chart','last_signal','data_chart_default','chart_group_data','ma','chart_signal','labels'));
     }
     public function greenBeta(Request $request)
     {

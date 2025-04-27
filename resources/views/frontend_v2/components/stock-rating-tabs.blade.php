@@ -65,8 +65,20 @@
 </section>
 @push('scripts')
     <script>
+                            function slugify(str) {
+  return str
+    .toLowerCase()
+    .normalize('NFD')                   // chuẩn hóa ký tự có dấu
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/đ/g, 'd')                   // Tùy chọn: đổi "đ" thành "d"
+    .replace(/Đ/g, 'D')        // xóa dấu
+    .replace(/[^a-z0-9 -]/g, '')        // loại bỏ ký tự đặc biệt
+    .replace(/\s+/g, '-')               // thay khoảng trắng bằng "-"
+    .replace(/-+/g, '-')
+    .replace(/^-+|-+$/g, '');           // xóa "-" ở đầu và cuối
+}
         $(document).ready(function () {
-            const logoBaseUrl = "{{ asset('images/nas100') }}"; // trả ra đường dẫn base
+            const logoBaseUrl = "{{ asset('images') }}"; // trả ra đường dẫn base
             $('#green-stock-NAS100-table').DataTable({
                 pageLength: 50,         // Giá trị mặc định
                 lengthChange: false,
@@ -127,7 +139,7 @@
                         },
                         render: function(data, type, row) {
                             let code = data;
-                            let codeImg = logoBaseUrl + '/' + code + ".svg";
+                            let codeImg = logoBaseUrl + '/nas100/' + code + ".svg";
                             let codeHtml = `<div class="code d-flex align-items-center gap-2">
                                 <img style="width: 25px; height: 25px; object-fit: cover;" src="${codeImg}" alt="${codeImg}" class="rounded-circle">
                                 <span>${code}</span>
@@ -300,7 +312,7 @@
                 autoWidth: false,
                 info: false,
                 order: [[0, 'asc']],
-                data: @json($green_data),
+                data: @json($green_vnindex),
                 columns: [
                     {data: 'rating'},  // Apply bold formatting to the "PriceTrend" column data},
                     {data: 'code'},
@@ -351,7 +363,7 @@
                         },
                         render: function(data, type, row) {
                             let code = data;
-                            let codeImg = logoBaseUrl + '/' + code + ".png";
+                            let codeImg = logoBaseUrl + '/VNindexlogo/' + code + ".jpg";
                             let codeHtml = `<div class="code d-flex align-items-center gap-2">
                                 <img style="width: 25px; height: 25px; object-fit: cover;" src="${codeImg}" alt="${codeImg}" class="rounded-circle">
                                 <span>${code}</span>
@@ -374,25 +386,26 @@
                             if (rowData.trending != null) {
                                 trending = rowData.trending.trim().toLowerCase();
                             }
-                            if (trending == 'breaking high price') {
+                            let signal_slug = slugify(trending);
+                            if (signal_slug == 'vuot-dinh') {
                                 color = '#9B54FF';
                                 background = '#E9DBFD';
-                            } else if (trending == 'build up') {
+                            } else if (signal_slug == 'tich-luy') {
                                 color = '#F1C32A';
                                 background = '#FFF4CE';
-                            } else if (trending == 'go up') {
+                            } else if (signal_slug == 'tang') {
                                 color = '#008000';
                                 background = '#CCFFCC';
-                            } else if (trending == 'bottom fishing') {
+                            } else if (signal_slug == 'bat-day') {
                                 color = '#008AD9';
                                 background = '#BFE8FF';
-                            } else if (trending == 'go down') {
+                            } else if (signal_slug == 'giam') {
                                 color = '#FC2F31';
                                 background = '#FED6D6';
-                            } else if (trending == 'recovery') {
+                            } else if (signal_slug == 'phuc-hoi') {
                                 color = '#E76A36';
                                 background = '#FFDACA';
-                            } else if (trending == 'breaking low price') {
+                            } else if (signal_slug == 'thung-day') {
                                 color = '#F65D60';
                                 background = '#FFC1C2';
                             }
@@ -419,16 +432,17 @@
                             if (cellData != null) {
                                 signal = cellData.trim().toLowerCase();
                             }
-                            if (signal == 'buy') {
+                            let signal_slug = slugify(signal);
+                            if (signal_slug == 'mua') {
                                 color = '#157347';
                                 background = '#69E872';
-                            } else if (signal == 'hold') {
+                            } else if (signal_slug == 'nam-giu') {
                                 color = '#157347';
                                 background = '#CCFFCC';
-                            } else if (signal == 'cash') {
+                            } else if (signal_slug == 'tien-mat') {
                                 color = '#F1C32A';
                                 background = '#F7EFAF';
-                            } else if (signal == 'sell') {
+                            } else if (signal_slug == 'ban') {
                                 color = 'rgb(227, 123, 113)';
                                 background = '';
                             }
