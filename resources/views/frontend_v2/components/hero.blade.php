@@ -24,7 +24,7 @@
                  const logoBaseUrl = "{{ asset('images/animation') }}";
         var animation = lottie.loadAnimation({
                 container: document.getElementById('lottie-container'), // id của div
-                renderer: 'svg', // có thể là 'svg', 'canvas', hoặc 'html'
+                renderer: 'canvas', // có thể là 'svg', 'canvas', hoặc 'html'
                 loop: true, // lặp vô tận
                 autoplay: true, // tự động chạy
                 path: logoBaseUrl+'/data.json', // đường dẫn tới file JSON
@@ -34,9 +34,9 @@
             });
             animation.addEventListener('enterFrame', function(e) {
             if (e.currentTime < 120) {
-                animation.setSpeed(2); // trước frame 60 chạy nhanh
+                animation.setSpeed(3); // trước frame 60 chạy nhanh
             } else {
-                animation.setSpeed(1); // sau frame 60 chạy bình thường
+                animation.setSpeed(1.5); // sau frame 60 chạy bình thường
             }
             });
 
