@@ -481,7 +481,7 @@ class HomeController
         // Redirect lại form với thông báo thành công
         return back()->with('success', 'Your message has been sent successfully!');
     }
-    public function followUnfollowStock($stock_id,$type)
+    public function followUnfollowStock($stock_id)
     {
         $user = \Auth::user();
         $listFollow = UserFollowStock::where(['user_id'=>$user->id])->count();
