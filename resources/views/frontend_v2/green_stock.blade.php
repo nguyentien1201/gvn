@@ -1870,7 +1870,7 @@
                                             <div class="stock-container d-flex justify-content-between align-items-center">
                                                 <div class="stock d-flex align-items-center gap-2">
                                                
-                                                         <img src="{{asset('images/nas100/'. $stock->code.'.jpg')}}"
+                                                         <img src="{{asset('images/nas100/'. $stock->code.'.svg')}}"
                                                          class="rounded-circle img-fluid stock-image"
                                                          alt="stock-gild-img">
                                                     <span class="stock-name">{{ $stock->code }}</span>
