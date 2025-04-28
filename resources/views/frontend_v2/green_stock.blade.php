@@ -219,7 +219,7 @@
                             let code = data;
                             let codeImg = logoBaseUrl + '/nas100/' + code + ".svg";
                             let imgHtml = `<img style="width: 25px; height: 25px; object-fit: cover;" src="${codeImg}" alt="${codeImg}" class="rounded-circle">`;
-                            let htmlCode = `<div class="code d-flex align-items-center gap-2">
+                            let htmlCode = `<div class="code d-flex align-items-center gap-2">${imgHtml}
                                 <span>${code}</span>
                             </div>`;
                             return htmlCode;
@@ -1232,12 +1232,17 @@
                                         });
                                     });
                                 },
-                                render: function (data, type, full, meta) {
+                                render: function(data, type, row) {
                                     if (data == 'fas fa-lock') {
                                         return '<i style="color:green" class="fas fa-lock"></i>';
                                     }
-
-                                    return data; //
+                                    let code = data;
+                                    let codeImg = logoBaseUrl + '/nas100/' + code + ".jpg";
+                                    let codeHtml = `<div class="code d-flex align-items-center gap-2">
+                                        <img style="width: 25px; height: 25px; object-fit: cover;" src="${codeImg}" alt="${codeImg}" class="rounded-circle">
+                                        <span>${code}</span>
+                                    </div>`;
+                                    return codeHtml;
                                 }
                             },
                             {
