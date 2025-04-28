@@ -13,9 +13,24 @@
                     <button class="btn btn-outline-primary">{{__('home.contact')}}</button>
                 </div>
                 <div class="container background-banner">
-                    <img height="400px" class="img-fluid w-100 d-block" src="{{asset('images/home/data.svg')}}" alt="">
+                    <div id="lottie-container" style="height:400px;" class="img-fluid w-100 d-block" alt="">
                 </div>
             </div>
         </div>
     </div>
 </section>
+@push('scripts')
+    <script>
+                 const logoBaseUrl = "{{ asset('images/animation') }}";
+        var animation = lottie.loadAnimation({
+                container: document.getElementById('lottie-container'), // id của div
+                renderer: 'svg', // có thể là 'svg', 'canvas', hoặc 'html'
+                loop: true, // lặp vô tận
+                autoplay: true, // tự động chạy
+                path: logoBaseUrl+'/data.json', // đường dẫn tới file JSON
+                rendererSettings: {
+                    preserveAspectRatio: 'none' // <<-- cực kỳ quan trọng
+                }
+            });
+        </script>
+@endpush
