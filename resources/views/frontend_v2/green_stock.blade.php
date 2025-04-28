@@ -651,7 +651,7 @@
                             // Map group -> order
                             const orderMap = {
                                 'Large Cap': 1,
-                                'Nas100': 2,
+                                'NAS100': 2,
                                 'Mega Cap': 3,
                                 'Mid Cap': 4,
                                 'Small Cap': 5
@@ -659,7 +659,7 @@
                             // Map group -> màu class
                             const colorMap = {
                                 'Large Cap': '#008000',
-                                'Nas100': '#ECC546',
+                                'NAS100': '#ECC546',
                                 'Mega Cap': '#F4A953',
                                 'Mid Cap': '#FC8B3A',
                                 'Small Cap': '#EF5657'
