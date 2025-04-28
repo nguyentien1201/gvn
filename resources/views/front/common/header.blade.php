@@ -34,7 +34,7 @@
                             <a class="dropdown-item" href="{{ route('front.home.green-beta') }}">Green Beta</a>
                             <a class="dropdown-item" href="{{ route('front.home.green-alpha') }}">Green Alpha</a>
                             <a class="dropdown-item" href="{{ route('front.home.green-stock') }}">Green Stock-NAS100</a>
-                            <a class="dropdown-item" href="{{ route('front.home.vnindex') }}">Green VN-Index</a>
+                            <a class="dropdown-item" href="{{ route('front.home.vnindex') }}">Green Stock-Vnindex</a>
                         </div>
                     </li>
                     <li class="nav-item">
