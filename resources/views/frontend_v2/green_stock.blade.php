@@ -24,6 +24,7 @@
 
     <!-- JS load data and event -->
     <script>
+          const logoBaseUrl = "{{ asset('images') }}"; // trả ra đường dẫn base
         $('#select-stock').on('select2:select', function (e) {
             let stock_id = $(this).val();
             if (stock_id.trim()) {
@@ -68,7 +69,7 @@
 
         var isCall = false;
         $(document).ready(function () {
-            const logoBaseUrl = "{{ asset('images') }}"; // trả ra đường dẫn base
+          
             $('#select-stock').select2({
                 placeholder: 'Select an option',
                 theme: 'bootstrap-5', // Áp dụng theme Bootstrap 5
