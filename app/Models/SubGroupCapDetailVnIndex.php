@@ -21,7 +21,7 @@ class SubGroupCapDetailVnIndex extends Model
         $latestDates = $this->orderBy('date', 'desc')
                             ->select('date')
                             ->distinct()
-                            ->limit(20)
+                            ->limit(10)
                             ->pluck('date')
                             ->toArray();
 
