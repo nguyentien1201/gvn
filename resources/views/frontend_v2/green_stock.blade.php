@@ -1133,39 +1133,49 @@
                                                         }
                                                     },
                                                     {
-                                                        targets: 6, // Index of the date column
-                                                        createdCell: function (td, cellData, rowData, row, col) {
-                                                            color = '';
-                                                            if (cellData > 0) {
-                                                                color = '#277248';
-                                                            } else if (cellData < 0) {
-                                                                color = '#EF5657';
-                                                            }
-                                                            $(td).css('color', color);
-                                                        },
-                                                        render: function (data, type, full, meta) {
-                                                            if (data == 'fas fa-lock') {
-                                                                return '<i style="color:green" class="fas fa-lock"></i>';
-                                                            }
-                                                            if (type === 'display') {
-                                                                return parseFloat(data).toFixed(2);
-                                                            }
-                                                            return data; //
+                                targets: 6, // Index of the date column
+                                createdCell: function (td, cellData, rowData, row, col) {
+                                    color = '';
+                                    if (cellData > 0) {
+                                        color = '#277248';
+                                    } else if (cellData < 0) {
+                                        color = '#EF5657';
+                                    }
+                                    $(td).css('color', color);
+                                },
+                                render: function (data, type, full, meta) {
+                                    if(data =='fas fa-lock'){
+                                        return '<i style="color:green" class="fas fa-lock"></i>';
+                                    }
+                                    if (type === 'display') {
+                                        return isNaN(parseFloat(data)) ? "" : parseFloat(data).toFixed(2);
+                                    }
+                                    return data; //
 
-                                                        }
-                                                    },
-                                                    {
-                                                        targets: 7, // Index of the open_time column
-                                                        render: function (data, type, row) {
-                                                            if (data == 'fas fa-lock') {
-                                                                return '<i style="color:green" class="fas fa-lock"></i>';
-                                                            }
-                                                            if (type === 'display' || type === 'filter') {
-                                                                return moment.tz(data, 'Europe/Moscow').format('DD/MM/YYYY'); // Format as HH:mm
-                                                            }
-                                                            return data;
-                                                        }
-                                                    },
+                                }
+                            },
+                            {
+                                targets: 7, // Index of the price column
+                                render: function (data, type, full, meta) {
+                                    if (type === 'display') {
+                                        return parseFloat(data).toFixed(2);
+                                    }
+                                    return data; //
+
+                                }
+                            },
+                            {
+                                targets: 8, // Index of the open_time column
+                                render: function (data, type, row) {
+                                    if (data == 'fas fa-lock') {
+                                        return '<i style="color:green" class="fas fa-lock"></i>';
+                                    }
+                                    if (type === 'display' || type === 'filter') {
+                                        return moment.tz(data, 'Europe/Moscow').format('DD/MM/YYYY'); // Format as HH:mm
+                                    }
+                                    return data;
+                                }
+                            },
                                                 ],
 
                                             });
