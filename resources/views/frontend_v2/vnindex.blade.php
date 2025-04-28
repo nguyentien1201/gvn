@@ -52,9 +52,17 @@
                         showAlert(response.message, 'success');
                         if (response.data) {
                             result = JSON.parse(response.data);
+                            let code = result.code;
+                            let codeImg = logoBaseUrl + '/' + code + ".jpg";
+
                             var newRow = `
                             <tr data-id="` + result.id + `" >
-                                <td>` + result.code + `</td>
+                                <td>
+                                    <div class="code d-flex align-items-center gap-2">
+                                        <img style="width: 25px; height: 25px; object-fit: cover;" src="${codeImg}" alt="${codeImg}" class="rounded-circle">
+                                        <span>${code}</span>
+                                    </div>
+                                </td>
                                 <td class="text-center">` + result.rating + `</td>
                                 <td class="text-center">` + result.price + `</td>
                                 <td class="text-center">` + result.current_price + `</td>
@@ -1962,7 +1970,12 @@
                                                             <tbody>
                                                             @foreach($list_folow as  $stock)
                                                                 <tr data-id="{{$stock->id}}">
-                                                                    <td class="fw-bold">{{ $stock->code }}</td>
+                                                                <td class="fw-bold">
+                                                                        <div class="code d-flex align-items-center gap-2">
+                                                                            <img style="width: 25px; height: 25px; object-fit: cover;" src="{{ asset('images/VNindexlogo/' . $stock->code . '.jpg') }}" alt="{{ asset('images/VNindexlogo/' . $stock->code . '.jpg') }}" class="rounded-circle">
+                                                                            <span>{{ $stock->code }}</span>
+                                                                        </div>
+                                                                    </td>
                                                                     <td class="text-center">{{ $stock->rating }}</td>
                                                                     <td class="text-center">{{ $stock->price }}</td>
                                                                     <td class="text-center">{{ $stock->current_price }}</td>
