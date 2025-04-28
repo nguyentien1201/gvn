@@ -32,6 +32,13 @@
                     preserveAspectRatio: 'none' // <<-- cực kỳ quan trọng
                 }
             });
-            animation.setSpeed(1.5);
+            animation.addEventListener('enterFrame', function(e) {
+            if (e.currentTime < 120) {
+                animation.setSpeed(2); // trước frame 60 chạy nhanh
+            } else {
+                animation.setSpeed(1); // sau frame 60 chạy bình thường
+            }
+            });
+
         </script>
 @endpush
