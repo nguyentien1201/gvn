@@ -1869,10 +1869,10 @@
                                         <div class="col">
                                             <div class="stock-container d-flex justify-content-between align-items-center">
                                                 <div class="stock d-flex align-items-center gap-2">
-                                                    <img src="{{asset('images/stocks/gild-stock.png')}}"
+                                               
+                                                         <img src="{{asset('images/nas100/'. $stock->code.'.jpg')}}"
                                                          class="rounded-circle img-fluid stock-image"
                                                          alt="stock-gild-img">
-
                                                     <span class="stock-name">{{ $stock->code }}</span>
                                                 </div>
                                                 <div class="stock-percent">{{ $stock->profit }}%</div>
