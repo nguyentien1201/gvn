@@ -337,8 +337,9 @@ class HomeController
         $ma = (new Ma())->getMa();
         $chart_group_data = (new SubGroup())->getDataSubGroup(10);
         $chart_group_data = array_slice($chart_group_data, 0, 10);
-        $ma['up'] = [$ma['upMA200'],$ma['upMA50']];
-        $ma['down'] = [$ma['downMA200'],$ma['downMA50']];
+ 
+        $ma['up'] = [$ma['upMA50'],$ma['upMA200']];
+        $ma['down'] = [$ma['downMA50'],$ma['downMA200']];
         return view('frontend_v2.green_stock',compact('signals','top_stock','chart_signal','labels','ma','chart_group_data','list_stock','list_folow'));
     }
     public function getMarketGreenStock(){
@@ -591,8 +592,8 @@ class HomeController
         $chart_group_data = (new SubGroupVnIndex())->getDataSubGroup(10);
         $chart_group_data = array_slice($chart_group_data, 0, 10);
 
-        $ma['up'] = [$ma['upMA200'],$ma['upMA50']];
-        $ma['down'] = [$ma['downMA200'],$ma['downMA50']];
+        $ma['up'] = [$ma['upMA50'],$ma['upMA200']];
+        $ma['down'] = [$ma['downMA50'],$ma['downMA200']];
         // dd($signals,$top_stock,$chart_signal,$labels,$ma,$chart_group_data,$list_stock,$list_folow);
         return view('frontend_v2.vnindex',compact('signals','top_stock','chart_signal','labels','ma','chart_group_data','list_stock','list_folow'));
     }
