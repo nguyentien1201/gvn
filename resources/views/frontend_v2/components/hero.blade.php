@@ -32,5 +32,6 @@
                     preserveAspectRatio: 'none' // <<-- cực kỳ quan trọng
                 }
             });
+            animation.setSpeed(1.5);
         </script>
 @endpush
