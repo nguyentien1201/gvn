@@ -40,7 +40,7 @@
                         if (response.data) {
                             result = JSON.parse(response.data);
                             let code = result.code;
-                            let codeImg = logoBaseUrl + '/' + code + ".png";
+                            let codeImg = logoBaseUrl + '/nas100/' + code + ".svg";
 
                             var newRow = `
                             <tr data-id="` + result.id + `" >
@@ -217,7 +217,7 @@
                         },
                         render: function(data, type, row) {
                             let code = data;
-                            let codeImg = logoBaseUrl + '/' + code + ".png";
+                            let codeImg = logoBaseUrl + '/nas100/' + code + ".svg";
                             let imgHtml = `<img style="width: 25px; height: 25px; object-fit: cover;" src="${codeImg}" alt="${codeImg}" class="rounded-circle">`;
                             let htmlCode = `<div class="code d-flex align-items-center gap-2">
                                 <span>${code}</span>
@@ -1929,7 +1929,7 @@
                                                                 <tr data-id="{{$stock->id}}">
                                                                     <td class="fw-bold">
                                                                         <div class="code d-flex align-items-center gap-2">
-                                                                            <img style="width: 25px; height: 25px; object-fit: cover;" src="{{ asset('images/logo/nas100/' . $stock->code . '.svg') }}" alt="{{ asset('images/logo/nas100/' . $stock->code . 'svg') }}" class="rounded-circle">
+                                                                            <img style="width: 25px; height: 25px; object-fit: cover;" src="{{ asset('images/nas100/' . $stock->code . '.svg') }}" alt="{{ asset('images/nas100/' . $stock->code . 'svg') }}" class="rounded-circle">
                                                                             <span>{{ $stock->code }}</span>
                                                                         </div>
                                                                     </td>

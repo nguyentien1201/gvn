@@ -42,7 +42,7 @@
             if (stock_id.trim()) {
                 // Gọi AJAX thủ công khi nhấn Enter
                 $.ajax({
-                    url: '{{url("follow-stock")}}/' + stock_id,
+                    url: '{{url("follow-stock-vnindex")}}/' + stock_id,
                     method: 'GET',
                     data: {
                         'id': stock_id,
@@ -87,7 +87,7 @@
                 if (confirm('Are you sure you want to unfollow this stock ?')) {
                     // Gửi yêu cầu AJAX để xóa bản ghi
                     $.ajax({
-                        url: '{{url("unfollow-stock")}}/' + stock_id,  // Đường dẫn tới controller (sửa cho phù hợp với Laravel route)
+                        url: '{{url("unfollow-stock-vnindex")}}/' + stock_id,  // Đường dẫn tới controller (sửa cho phù hợp với Laravel route)
                         type: 'DELETE',  // Phương thức DELETE
                         data: {
                             "_token": "{{ csrf_token() }}"  // CSRF token bảo vệ
@@ -96,13 +96,14 @@
                             if (response.success) {
                                 // Xóa dòng trong bảng nếu xóa thành công
                                 row.remove();
-                                alert('Record deleted successfully!');
+                                showAlert('Mã đã xóa khỏi danh sách theo dõi !','success');
                             } else {
                                 alert('Error deleting record.');
+                                showAlert('Có vấn đề trong quá trình xóa mã !','error');
                             }
                         },
                         error: function () {
-                            alert('Something went wrong.');
+                            showAlert('Có vấn đề trong quá trình xóa mã !','error');
                         }
                     });
                 }
