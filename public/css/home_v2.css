@@ -168,6 +168,69 @@
     color: #F1C32A;
 }
 
+/*most_interested*/
+#most_interested .services-title {
+    font-weight: 600;
+    font-size: 36px;
+}
+#most_interested table#most-interested-table .signal-open
+{
+    padding: 4px 16px;
+    font-weight: 600;
+    font-size: 14px;
+    color: #fff;
+    border-radius: 4px;
+    border: 1px solid;
+    width: 90px;
+    display: inline-block;
+}
+#chart_table_beta table.most-interested-table .signal-close
+{
+    padding: 4px 16px;
+    font-weight: 600;
+    font-size: 14px;
+    color: #fff;
+    border-radius: 4px;
+    border: 1px solid;
+    width: 140px;
+    display: inline-block;
+}
+#chart_table_beta table.most-interested-table .signal-open.buy {
+    background: var(--primary-color);
+}
+#chart_table_beta table.most-interested-table .signal-open.closed {
+    background: #E0B21A;
+}
+#chart_table_beta table.most-interested-table .signal-close.hold {
+    background: #F6CC3F;
+}
+#chart_table_beta table.most-interested-table .signal-close.profit-buy {
+    background: #E6FFF1;
+    border: 1px solid #277248;
+    color: #277248;
+}
+#chart_table_beta table.most-interested-table .signal-close.loss-buy {
+    background: #FFE3E3;
+    border: 1px solid #EF5657;
+    color: #EF5657;
+}
+#chart_table_beta table.most-interested-table .trend {
+    font-weight: 700;
+    font-size: 16px;
+}
+#chart_table_beta table.most-interested-table .profit {
+    font-weight: 600;
+    font-size: 16px;
+}
+#chart_table_beta table.most-interested-table .down-trend {
+    color: #EF5657;
+}
+#chart_table_beta table.most-interested-table .up-trend {
+    color: #198754;
+}
+#chart_table_beta table.most-interested-table .sideway {
+    color: #F1C32A;
+}
 /*trade on*/
 #trading-on {
     z-index: 1;

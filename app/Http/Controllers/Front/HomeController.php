@@ -182,7 +182,8 @@ class HomeController
         $nas100 = $this->getHistorySignal(1);
 
         $default_chart = $nas100['data'];
-        return view('front.green_beta',compact('signals',
+        
+        return view('frontend_v2.green_beta',compact('signals',
         'chart_data','default_chart'));
 
     }
