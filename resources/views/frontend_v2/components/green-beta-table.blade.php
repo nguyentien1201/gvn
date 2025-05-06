@@ -6,7 +6,7 @@
         </h5>
         @include('frontend_v2.components.sumary-list')
         <div class="table-responsive" style="max-height: 848px; overflow-y: auto;">
-            <table id="most-interested-table" class="table table-striped table-hover">
+            <table id="green-beta-table" class="table table-striped table-hover">
                 <thead>
                     <tr>
                         <th class="text-capitalize text-center text-nowrap">Signal Open</th>
@@ -32,7 +32,7 @@
     <script>
         $(document).ready(function () {
             const logoBaseUrl = "{{ asset('images/logo') }}"; // trả ra đường dẫn base
-            $('#most-interested-table').DataTable({
+            $('#green-beta-table').DataTable({
                 responsive: false,
                 autoWidth: false,
                 paging: false,
@@ -171,7 +171,11 @@
                             $(td).html(`<span class="text-nowrap">${closeTime}</span>`);
                         }
                     },
-                ]
+                ],
+                createdRow: function (row, data, dataIndex) {
+                // Assuming 'code' is the property you want to use for data-id
+                $(row).attr('data-id', data.id_code);
+            }
             });
         });
     </script>

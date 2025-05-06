@@ -42,6 +42,9 @@
 #services {
     border-bottom: 1px solid #eff4f1;
 }
+.common-services {
+    border-bottom: 1px solid #eff4f1 important;
+}
 #services .service-content {
     padding: 5px;
 }
@@ -109,6 +112,10 @@
     font-weight: 600;
     font-size: 36px;
 }
+.common .services-title {
+    font-weight: 600;
+    font-size: 36px;
+}
 #most_interested table#most-interested-table .signal-open
 {
     padding: 4px 16px;
@@ -170,6 +177,10 @@
 
 /*most_interested*/
 #most_interested .services-title {
+    font-weight: 600;
+    font-size: 36px;
+}
+.common.services-title {
     font-weight: 600;
     font-size: 36px;
 }
@@ -415,6 +426,9 @@
         font-size: 14px;
     }
     #most_interested .services-title {
+        font-size: 24px;
+    }
+    .common .services-title {
         font-size: 24px;
     }
     #trading-on {

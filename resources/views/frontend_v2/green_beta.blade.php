@@ -16,6 +16,11 @@
     .div-row:last-child .div-cell:first-child { border-bottom-left-radius: .5rem; }
     .div-row:last-child .div-cell:last-child { border-bottom-right-radius: .5rem; }
     .div-cell:last-child, .div-header:last-child { border-right: none; }
+    #popupDataTable_wrapper .dt-scroll-head{
+   display: none !important;
+}
+
+
 </style>
 @endpush
 
@@ -33,7 +38,7 @@
     </div>
 
                     <!-- End heading tab -->
-        <section id="trading-on" class="py-0 py-lg-5">
+        <section id="trading-on" class="py-0 py-lg-5 common-services" style="border-bottom: 1px solid #eff4f1;">
             <div class="container">
             <div class="row gy-4 gy-lg-0">
                         <div class="co-12 col-lg-6 trading-container">
@@ -55,24 +60,25 @@
       
         @include('frontend_v2.components.green-beta-table')
        
-        <section id="table-chart" class="py-0 py-lg-5">
-            <div class="container">
+        <section id="table-chart" class="py-0 py-lg-5 common-services">
+            <div class="container common">
+    
+                    <h3 class="text-center services-title pb-3 pb-lg-2 color-home">{{__('front_end.HISTORICAL_PERFORMANCE')}}</h3>
                 <div class="row gy-4 gy-lg-0">
                     <div class="co-12 col-lg-6">
-                    <div class="table-responsive" style="max-height: 428px; overflow-y: auto;">
-                            <table id="popupDataTable" class="most-interested-table table table-striped table-hover">
-                                <thead>
-                                    <tr>
-                                        <th>{{__('front_end.symbol')}}</th>
-                                        <th>{{__('front_end.price_open')}}</th>
-                                        <th>{{__('front_end.open_time')}}</th>
-                                        <th>{{__('front_end.price_close')}}</th>
-                                        <th>{{__('front_end.close_time')}}</th>
-                                        <th>{{__('front_end.profit')}}</th>
-                                    </tr>
-                                </thead>
-                            </table>
-                        </div>
+                    <table  style="width:100%;" id="popupDataTable" class="table table-striped table-hover">
+                    <thead>
+
+                        <tr>
+                            <th>{{__('front_end.symbol')}}</th>
+                            <th>{{__('front_end.price_open')}}</th>
+                            <th>{{__('front_end.open_time')}}</th>
+                            <th>{{__('front_end.price_close')}}</th>
+                            <th>{{__('front_end.close_time')}}</th>
+                            <th>{{__('front_end.profit')}}</th>
+                        </tr>
+                        </thead>
+                                </table>
                     </div>
                     <div class="co-12 col-lg-6">
                         <div style="height: 428px;"
@@ -204,21 +210,162 @@
     }
 
         $(document).ready(function () {
+            $(document).on('click', '#green-beta-table tbody tr', function () {
+            var dataId = $(this).data('id');
+
+            if (dataId == undefined) {
+                return;
+            }
+            $.ajax({
+                url: '/api/get-history-signal/' + dataId,
+                type: 'GET',
+                success: function (data) {
+                    data = data.data;   
+                        if ($.fn.DataTable.isDataTable('#popupDataTable')) {
+                            $('#popupDataTable').DataTable().clear().destroy();
+                        }
+
+                let dataTable = $('#popupDataTable').DataTable({
+                    destroy: true,
+                    data: data.list,
+                    searching: false,
+                    scrollX: true, // Kích hoạt cuộn ngang
+                  
+                    autoWidth: true,
+                    paging: false,
+                    info: false,
+                    scrollY: '428px',
+                    columns: [
+                        { data: 'code', title: 'Symbol' },
+                        { data: 'price_open', title: 'Price Open' },
+                        { data: 'open_time', title: 'Open Time' },
+                        { data: 'price_close', title: 'Price Close' },
+                        { data: 'close_time', title: 'Close Time' },
+                        { data: 'profit', title: 'Profit' },
+                    ],
+                    columnDefs: [
+                        {
+                            targets: 0, // Index of the 'code' column
+                            createdCell: function (td, cellData, rowData, row, col) {
+                                $(td).css('font-weight', 'bold');
+                            }
+                        },
+                        {
+                            targets: 4, // Assuming `close_time` is the 5th column
+                            type: 'date', // Specify the type
+                            // Specify the date format if necessary
+                        },
+                        {
+                            targets: 5, // Index of the date column
+                            createdCell: function (td, cellData, rowData, row, col) {
+                                if (cellData >= 0) {
+                                    color = '#b6d7a8';
+                                } else {
+                                    color = '#e06666';
+                                }
+                                $(td).css('background-color', color);
+                                $(td).css('box-shadow', 'none');
+                            },
+                            render: function (data, type, full, meta) {
+                                return `${data}%`;
+                            }
+                        },
+                    ],
+
+                });
+                if (greenBetaChart) {
+                        // If it exists, destroy it before creating a new one
+                        greenBetaChart.destroy();
+                    }
+                    const profitData =  data.profit;
+        let ctxBetaChart = document.getElementById('green-beta-chart').getContext('2d');
+
+        // Tạo gradient chiều dọc từ trên xuống dưới
+        let greenGradient = ctxBetaChart.createLinearGradient(0, 0, 0, 400);
+        greenGradient.addColorStop(0, '#9ACAB3');  // Màu nhạt trên
+        greenGradient.addColorStop(1, '#fff');  // Màu đậm dưới
+
+        greenBetaChart = new Chart(ctxBetaChart, {
+            type: 'line',
+            data: {
+                labels: profitData.map((_, index) => index),
+                datasets: [{
+                    label: 'Cumulative Profit',
+                    data: profitData,
+                    backgroundColor: greenGradient,
+                    borderColor: '#008000',
+                    borderWidth: 0.5,
+                    fill: true,
+                    pointRadius: 0 // Tùy chọn: ẩn chấm tròn cho mượt
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        beginAtZero: false,
+                        ticks: {
+                            display: false // Ẩn nhãn trục X nếu cần
+                        },
+                        grid: {
+                            display: false // Ẩn grid nếu muốn sạch biểu đồ
+                        }
+                    },
+                    y: {
+                        beginAtZero: false,
+                        ticks: {
+                            stepSize: 100 // Có thể tinh chỉnh nếu cần
+                        },
+                        grid: {
+                            display: false // Ẩn grid nếu muốn sạch biểu đồ
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'top',
+                        align: 'end',
+                        labels: {
+                            font: {
+                                family: 'Montserrat, sans-serif',
+                                size: 14,
+                                weight: '400'
+                            },
+                            color: '#008000',
+                            usePointStyle: true,
+                            pointStyle: 'circle'
+                        }
+                    }
+                }
+            }
+        });
+                },
+                error: function (error) {
+                    console.log(error);
+                }})
+            });
+            if ($.fn.DataTable.isDataTable('#popupDataTable')) {
+                            $('#popupDataTable').DataTable().clear().destroy();
+                        }
             $('#popupDataTable').DataTable({
-                responsive: false,
-                autoWidth: false,
+             
+                autoWidth: true,
                 paging: false,
                 info: false,
                 searching: false,
-                
+                scrollY: '428px',
+      
+                scrollCollapse: true,
                 data: @json($default_chart['list']),
                 columns: [
-                    { data: 'code' },
-                    { data: 'price_open'},
-                    { data: 'open_time' },
-                    { data: 'price_close'},
-                    { data: 'close_time'},
-                    { data: 'profit'},
+                    { data: 'code', },
+                    { data: 'price_open', },
+                    { data: 'open_time', },
+                    { data: 'price_close',  },
+                    { data: 'close_time', },
+                    { data: 'profit', },
                 ],
             columnDefs: [
                 {
