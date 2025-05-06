@@ -182,10 +182,48 @@ class HomeController
         $nas100 = $this->getHistorySignal(1);
 
         $default_chart = $nas100['data'];
-        
+        $list_signal = $this->countResultSignal($signals);
+        \Log::info($list_signal);
         return view('frontend_v2.green_beta',compact('signals',
-        'chart_data','default_chart'));
+        'chart_data','default_chart','list_signal'));
 
+    }
+    public function countResultSignal($signals){
+        $openBuyCount       = 0;
+$closeHoldCount     = 0;
+$closeTakeProfit    = 0;
+$closeCutLoss       = 0;
+
+// 4) Duyệt mảng và tăng counter
+foreach ($signals as $item) {
+    // count signal_open = BUY
+    if (isset($item['signal_open']) && $item['signal_open'] === 'BUY') {
+        $openBuyCount++;
+    }
+
+    // count signal_close
+    $c = $item['signal_close'];
+    if (is_null($c) || $c === '' || $c === 'Hold') {
+        // null/empty cũng tính vào Hold
+        $closeHoldCount++;
+    }
+    elseif ($c === 'TakeProfitBUY') {
+        $closeTakeProfit++;
+    }
+    elseif (strcasecmp($c, 'CutLossBUY') === 0) {
+        // so sánh không phân biệt hoa thường
+        $closeCutLoss++;
+    }
+}
+
+// 5) Kết quả
+$result = [
+    'signal_open'        => $openBuyCount,
+    'signal_hold'      => $closeHoldCount,
+    'signal_TakeProfitBUY' => $closeTakeProfit,
+    'signal_CutLossBUY'=> $closeCutLoss,
+];
+    return $result;
     }
     public function greenAlpha(Request $request)
     {

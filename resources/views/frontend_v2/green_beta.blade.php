@@ -2,16 +2,41 @@
 @section('title', 'Green Beta')
 @push('styles')
     <link rel="stylesheet" href="{{ asset('css/home_v2.css') }}">
+    <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}">
+
+<link rel="stylesheet" href="{{ asset('css/green_stock.css') }}">
+<style>
+ .div-table { display: table; width: 100%; border: 1px solid #dee2e6; border-radius: .5rem; border-collapse: separate; }
+    .div-row { display: table-row; }
+    .div-header, .div-cell { display: table-cell; padding: .75rem; text-align: center; vertical-align: middle; border-bottom: 1px solid #dee2e6; border-right: 1px solid #dee2e6; }
+    .div-header { font-weight: 600; background-color: #fff; }
+    .div-cell:first-child, .div-header:first-child { background-color: #f0fcf5; }
+    .div-header:first-child { border-top-left-radius: .5rem; }
+    .div-header:last-child { border-top-right-radius: .5rem; }
+    .div-row:last-child .div-cell:first-child { border-bottom-left-radius: .5rem; }
+    .div-row:last-child .div-cell:last-child { border-bottom-right-radius: .5rem; }
+    .div-cell:last-child, .div-header:last-child { border-right: none; }
+</style>
 @endpush
 
 @section('content')
     <div class="home-page inter-font-family">
         @include('front.common.header')
-        @include('frontend_v2.components.hero')
+       <!-- Heading tab -->
+       <div id="heroCarousel" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item container-heading active">
+                <h3 class="heading-page">Green Beta</h3>
+            
+            </div>
+        </div>
+    </div>
+
+                    <!-- End heading tab -->
         <section id="trading-on" class="py-0 py-lg-5">
             <div class="container">
             <div class="row gy-4 gy-lg-0">
-                        <div class="co-12 col-lg-6">
+                        <div class="co-12 col-lg-6 trading-container">
                             <div class="trading-on-content">
                                 <div class="head-text">
                                     <span>{{__('home.trade_on_content.beta.head_text')}}</span>
@@ -27,7 +52,8 @@
                     </div>
             </div>
         </section>
-        @include('frontend_v2.components.most-interested')
+      
+        @include('frontend_v2.components.green-beta-table')
        
         <section id="table-chart" class="py-0 py-lg-5">
             <div class="container">
@@ -56,6 +82,51 @@
                     </div>
                 </div>
             </div>
+        </section>
+        <section id="green-stock" class="py-0 py-lg-5">
+                <div class="container">
+                <div class="row mb-2">
+                                <!-- Chart Section -->
+                                <div class="col-md-12 text-center m-auto">
+                                <div class="container-chart">
+                                    <canvas id="myChart" style="width:100%"
+                                        height="230"></canvas>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="row mb-2">
+                            <div class="table-responsive">
+                <div id="chart_table" class="div-table">
+        
+
+                {{-- Total row --}}
+                <div class="div-row">
+                    <div class="div-cell fw-bold">Total</div>
+                    @foreach($chart_data['total'] as $item)
+                    <div class="div-cell">{{ $item }}</div>
+                    @endforeach
+                </div>
+
+                {{-- Win Ratio row --}}
+                <div class="div-row">
+                    <div class="div-cell fw-bold">{{ __('front_end.win_ratio') }}</div>
+                    @foreach($chart_data['winratio'] as $item)
+                    <div class="div-cell">{{ $item }}</div>
+                    @endforeach
+                </div>
+
+                {{-- Time Start row --}}
+                <div class="div-row">
+                    <div class="div-cell fw-bold">{{ __('front_end.time_start') }}</div>
+                    @foreach($chart_data['startDate'] as $item)
+                    <div class="div-cell">{{ (new DateTime($item))->format('Y') }}</div>
+                    @endforeach
+                </div>
+                </div>
+            </div>
+                                
+                            </div>
+                        </div>
         </section>
         @auth
             <div style="position: fixed; bottom: 20px; right: 20px; text-align: center; z-index: 1000;">
@@ -94,7 +165,44 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0-rc/dist/chartjs-plugin-datalabels.min.js"></script>
 <script>
-    
+    function updateClock() {
+        const now = new Date();
+        // Lấy thời gian và ngày tháng theo múi giờ
+        const dateOptions = {
+            timeZone: 'Europe/Moscow',
+            year: 'numeric',
+            month: '2-digit',
+            day: '2-digit'
+        };
+        const timeOptions = {
+            timeZone: 'Europe/Moscow',
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit',
+            hour12: false
+        };
+
+        let dateString = now.toLocaleDateString('en-US', dateOptions).replace(/\//g, '-');
+        let timeString = now.toLocaleTimeString('en-US', timeOptions);
+
+        const elmDates = document.getElementsByClassName('date-js');
+        const elmTimes = document.getElementsByClassName('time-js');
+
+        for (let i = 0; i < elmDates.length; i++) {
+            elmDates[i].textContent = dateString;
+        }
+        for (let i = 0; i < elmDates.length; i++) {
+            elmTimes[i].textContent = timeString;
+        }
+    }
+
+    setInterval(updateClock, 1000); // Cập nhật mỗi giây
+    const el = document.getElementById('timezone');
+    if (el) {
+        el.addEventListener('change', updateClock);
+        updateClock();
+    }
+
         $(document).ready(function () {
             $('#popupDataTable').DataTable({
                 responsive: false,
@@ -208,7 +316,70 @@
                 }
             }
         });
+        var ctx = document.getElementById('myChart').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: @json($chart_data['code']),
+            datasets: [{
+                data: @json($chart_data['winratio']),
+                label: 'Win Ratio',
+                backgroundColor: '#34a853',
+                borderWidth: 1,
+                fontweight: 600,
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false, // Allows the chart to stretch vertically
+            plugins: {
+                datalabels: {
+                    display: true, // Hiển thị giá trị
+                    anchor: 'end',
+                    align: 'end',
+                    formatter: function(value, context) {
+                        return window.innerWidth < 768 ? "" : value + '%';
+                    },
+                    labels: {
+                    value: {
+                        color: 'green',
+                        font: {
+                                    weight: 'bold'
+                                }
+                    }
+                    }
+                    }
+                },
+            scales: getChartOptions(),
+
+        },
+        plugins: [ChartDataLabels]
+
+    });
         });
+            function getChartOptions() {
+    const isMobile = window.innerWidth < 768; // Check if the screen width is below 768px
+
+    return {
+            x: {
+                ticks: {
+                    display: !isMobile, // Hide x-axis labels on mobile
+                    font: {
+                            weight: 'bold' // Makes x-axis labels bold
+                        }
+                }
+            },
+            y: {
+                    beginAtZero: true,
+                    ticks: {
+                        callback: function(value) {
+                            return value + '%'; // Thêm ký hiệu % vào các giá trị trên trục y
+                        }
+                    }
+                }
+
+    };
+}
 </script>
 
 @endpush
