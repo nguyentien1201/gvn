@@ -1,5 +1,5 @@
 @push('styles')
-   <style> 
+   <style>
 
 .card {
       border: 1px solid #e5e7eb;       /* xám nhạt */
@@ -68,7 +68,7 @@
    </style>
 @endpush
 
-<div class="row g-4">
+<div class="row g-4 pt-lg-5">
       <!-- Signal Open -->
       <div class="col-md-3">
         <div class="card">

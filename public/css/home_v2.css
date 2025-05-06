@@ -116,7 +116,7 @@
     font-weight: 600;
     font-size: 36px;
 }
-#most_interested table#most-interested-table .signal-open
+ .signal-open
 {
     padding: 4px 16px;
     font-weight: 600;
@@ -127,7 +127,7 @@
     width: 90px;
     display: inline-block;
 }
-#most_interested table#most-interested-table .signal-close
+ .signal-close
 {
     padding: 4px 16px;
     font-weight: 600;
@@ -138,40 +138,40 @@
     width: 140px;
     display: inline-block;
 }
-#most_interested table#most-interested-table .signal-open.buy {
+ .signal-open.buy {
     background: var(--primary-color);
 }
-#most_interested table#most-interested-table .signal-open.closed {
+ .signal-open.closed {
     background: #E0B21A;
 }
-#most_interested table#most-interested-table .signal-close.hold {
+ .signal-close.hold {
     background: #F6CC3F;
 }
-#most_interested table#most-interested-table .signal-close.profit-buy {
+ .signal-close.profit-buy {
     background: #E6FFF1;
     border: 1px solid #277248;
     color: #277248;
 }
-#most_interested table#most-interested-table .signal-close.loss-buy {
+ .signal-close.loss-buy {
     background: #FFE3E3;
     border: 1px solid #EF5657;
     color: #EF5657;
 }
-#most_interested table#most-interested-table .trend {
+ .trend {
     font-weight: 700;
     font-size: 16px;
 }
-#most_interested table#most-interested-table .profit {
+ .profit {
     font-weight: 600;
     font-size: 16px;
 }
-#most_interested table#most-interested-table .down-trend {
+ .down-trend {
     color: #EF5657;
 }
-#most_interested table#most-interested-table .up-trend {
+ .up-trend {
     color: #198754;
 }
-#most_interested table#most-interested-table .sideway {
+ .sideway {
     color: #F1C32A;
 }
 
@@ -184,7 +184,7 @@
     font-weight: 600;
     font-size: 36px;
 }
-#most_interested table#most-interested-table .signal-open
+ .signal-open
 {
     padding: 4px 16px;
     font-weight: 600;
