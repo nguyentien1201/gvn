@@ -119,6 +119,8 @@ class ApiController
             ->orderBy('open_time', 'desc')
             ->first();
             $beta->update($greenBeta);
+            \Log::info('update trend price '.$code.' success');
+
             return  ['status' => 'success', 'message' => 'Recived signal'];
         }
         $signalClose = ['TakeProfitBUY', 'CutLossBUY',];
@@ -168,6 +170,7 @@ class ApiController
                 Cache::put($code, $new_data, now()->endOfDay());
 
             }
+            \Log::info('update last price  '.$code.' success');
             return  ['status' => 'success', 'message' => 'Recived signal'];
         }
 
