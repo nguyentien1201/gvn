@@ -43,7 +43,7 @@
     border-bottom: 1px solid #eff4f1;
 }
 .common-services {
-    border-bottom: 1px solid #eff4f1 important;
+    border-bottom: 1px solid #eff4f1 !important;
 }
 #services .service-content {
     padding: 5px;
@@ -143,6 +143,9 @@
 }
  .signal-open.closed {
     background: #E0B21A;
+}
+.signal-open.sell {
+    background: #EF5657;
 }
  .signal-close.hold {
     background: #F6CC3F;
