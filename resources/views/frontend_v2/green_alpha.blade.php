@@ -46,15 +46,13 @@
                         <div class="co-12 col-lg-6 trading-container">
                             <div class="trading-on-content">
                                 <div class="head-text">
-                                    <span>{{__('home.trade_on_content.beta.head_text')}}</span>
+                                    <span>{{__('home.trade_on_content.alpha.head_text')}}</span>
                                 </div>
-                                <div class="last-text">
-                                    <span>{{__('home.trade_on_content.beta.last_text')}}</span>
-                                </div>
+
                             </div>
                         </div>
                         <div class="co-12 col-lg-6">
-                            <img class="img-fluid" src="{{asset('images/robot-beta.png')}}" alt="{{asset('images/robot-alpha.png')}}">
+                            <img class="img-fluid" src="{{asset('images/robot-alpha.png')}}" alt="{{asset('images/robot-alpha.png')}}">
                         </div>
                     </div>
             </div>
