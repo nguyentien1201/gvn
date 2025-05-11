@@ -43,6 +43,10 @@
         <section id="trading-on" class="py-0 py-lg-5 common-services" style="border-bottom: 1px solid #eff4f1;">
             <div class="container">
             <div class="row gy-4 gy-lg-0">
+
+                        <div class="co-12 col-lg-6">
+                            <img class="img-fluid" src="{{asset('images/robot-alpha.png')}}" alt="{{asset('images/robot-alpha.png')}}">
+                        </div>
                         <div class="co-12 col-lg-6 trading-container">
                             <div class="trading-on-content">
                                 <div class="head-text">
@@ -50,9 +54,6 @@
                                 </div>
 
                             </div>
-                        </div>
-                        <div class="co-12 col-lg-6">
-                            <img class="img-fluid" src="{{asset('images/robot-alpha.png')}}" alt="{{asset('images/robot-alpha.png')}}">
                         </div>
                     </div>
             </div>
