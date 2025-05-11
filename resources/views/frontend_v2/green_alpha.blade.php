@@ -33,7 +33,7 @@
        <div id="heroCarousel" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item container-heading active">
-                <h3 class="heading-page">Green Beta</h3>
+                <h3 class="heading-page">Green Alpha</h3>
 
             </div>
         </div>
