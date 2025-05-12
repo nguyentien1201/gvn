@@ -183,13 +183,13 @@ class HomeController
         $nas100 = $this->getHistorySignal(1);
 
         $default_chart = $nas100['data'];
-        $list_signal = $this->countResultSignal($signals);
+        $list_signal = $this->countResultSignalBeta($signals);
         \Log::info($list_signal);
         return view('frontend_v2.green_beta',compact('signals',
         'chart_data','default_chart','list_signal'));
 
     }
-    public function countResultSignal($signals){
+    public function countResultSignalBeta($signals){
         $openBuyCount       = 0;
 $closeHoldCount     = 0;
 $closeTakeProfit    = 0;
@@ -226,6 +226,72 @@ $result = [
 ];
     return $result;
     }
+
+    public function countResultSignalAlpha($signals){
+        $buyCount = 0;
+        $signalCloseCount = 0;
+        $holdCount = 0;
+
+        // Khởi tạo đủ 4 loại trước
+        $signalCloseTypes = [
+            'TakeProfitBUY' => 0,
+            'TakeProfitSELL' => 0,
+            'CutLossBUY' => 0,
+            'CutLossSELL' => 0,
+        ];
+
+        $maxProfit = null;
+        $minProfit = null;
+        $maxProfitCode = null;
+        $minProfitCode = null;
+
+        foreach ($signals as $item) {
+            // Đếm signal_open là 'Buy'
+            if (isset($item['signal_open']) && strtolower($item['signal_open']) === 'buy') {
+                $buyCount++;
+            }
+
+            $signalClose = isset($item['signal_close']) ? strtolower(trim($item['signal_close'])) : '';
+            $closeTime = isset($item['close_time']) ? trim($item['close_time']) : '';
+
+            if ($signalClose === '' || $closeTime === '') {
+                $holdCount++;
+            } else {
+                $signalCloseCount++;
+
+                // Gộp key thống kê theo chuẩn
+                if (in_array($signalClose, array_keys($signalCloseTypes))) {
+                    $signalCloseTypes[$signalClose]++;
+                }
+            }
+
+            // Tính profit
+            $profit = isset($item['profit']) && is_numeric($item['profit']) ? floatval($item['profit']) : null;
+
+            if ($profit !== null) {
+                if ($maxProfit === null || $profit > $maxProfit) {
+                    $maxProfit = $profit;
+                    $maxProfitCode = $item['code'];
+                }
+
+                if ($minProfit === null || $profit < $minProfit) {
+                    $minProfit = $profit;
+                    $minProfitCode = $item['code'];
+                }
+            }
+        }
+
+        return [
+            'buy_count' => $buyCount,
+            'signal_close_count' => $signalCloseCount,
+            'hold_count' => $holdCount,
+            'signal_close_types' => $signalCloseTypes,
+            'highest_profit' => $maxProfit,
+            'highest_profit_code' => $maxProfitCode,
+            'lowest_profit' => $minProfit,
+            'lowest_profit_code' => $minProfitCode,
+        ];
+    }
     public function greenAlpha(Request $request)
     {
         $user = \Auth::user();
@@ -248,7 +314,10 @@ $result = [
         $data_chart = (new GreenAlpha())->getDataChartSignals($current_version);
         $dataChartProfit = (new GreenAlpha())->getCurrentMonthProfitSum($current_version);
 
+        $list_signal = $this->countResultSignalAlpha($signals);
+
         $data_chart_default = $this->getHistoryAlphaSignal(1);
+
         $code = $data_chart->pluck('code')->toArray();
         $total = $data_chart->pluck('total_trade')->toArray();
         $winratio = $data_chart->pluck('win_ratio')->toArray();
@@ -259,8 +328,8 @@ $result = [
             // 'startDate' => $startDate
         ];
 
-        return view('front.green_alpha',compact('signals',
-        'chart_data','dataChartProfit','data_chart_default'));
+        return view('frontend_v2.green_alpha',compact('signals',
+        'chart_data','dataChartProfit','data_chart_default','list_signal'));
     }
     public function getHistorySignal($id)
     {
@@ -377,7 +446,7 @@ $result = [
         $ma = (new Ma())->getMa();
         $chart_group_data = (new SubGroup())->getDataSubGroup(10);
         $chart_group_data = array_slice($chart_group_data, 0, 10);
- 
+
         $ma['up'] = [$ma['upMA50'],$ma['upMA200']];
         $ma['down'] = [$ma['downMA50'],$ma['downMA200']];
         return view('frontend_v2.green_stock',compact('signals','top_stock','chart_signal','labels','ma','chart_group_data','list_stock','list_folow'));
