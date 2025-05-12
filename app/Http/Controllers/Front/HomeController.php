@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Front;
 
 use App\Models\GroupCapVnIndex;
 use App\Models\SubGroupCapDetailVnIndex;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Mail;
 use App\Models\GreenBeta;
 use Illuminate\Support\Facades\Request;
@@ -461,9 +462,25 @@ $result = [
     public function contact(){
         return view('front.contact');
     }
+
     public function mission(){
-        return view('front.mission');
+        $directory = public_path('images/mission/timeline');
+        $files = File::files($directory);
+        $colors = ['#D80027','#EF4A25','#F1C32A','#005BBF','#00B1A7','#008000'];
+        $timelineTimes = ['2012_2018', '2019', '2020', '2021', '2022', '2023'];
+        foreach ($files as $key => $file) {
+            $timelines[] = [
+                'image' => $file->getFilename(),
+                'color' => $colors[$key],
+                'timeline_time' => __('mission.timelines.' . $timelineTimes[$key] . '.time'),
+                'timeline_name' => __('mission.timelines.' . $timelineTimes[$key] . '.name'),
+                'timeline_des' => __('mission.timelines.' . $timelineTimes[$key] . '.des')
+            ];
+        }
+
+        return view('frontend_v2.mission', compact('timelines'));
     }
+
     public function changeLanguage(Request $request)
     {
 
