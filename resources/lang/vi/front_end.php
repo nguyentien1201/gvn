@@ -164,4 +164,5 @@ Người ta nói "Đồng tiền đi liền khúc ruột", nếu anh chị có �
     'chat_with_me'=>'Chat với chúng tôi',
 
     'comming_soon'=>'SẮP RA MẮT',
+    'contact_us'=>'Contact Us',
 ];

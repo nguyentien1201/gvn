@@ -21,7 +21,7 @@
                 </div>
             </div>
         </div>
-        <div class="container px-5">
+        <div class="container  px-5">
             <div class="content-our-mission mb-4">
                 <h3 class="heading-page my-5">{{ __('mission.descipline_responsibility_efficiency') }}</h3>
                 <img class="m-auto img-fluid" src="{{ asset('images/mission/device-macbook-air.png') }}"

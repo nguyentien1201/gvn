@@ -163,4 +163,5 @@ return [
     "product"=>"Product",
     'chat_with_me'=>'Chat with me!',
     'comming_soon'=>'Comming Soon',
+    'contact_us'=>'Contact Us',
 ];

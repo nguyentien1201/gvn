@@ -529,7 +529,7 @@ $result = [
         return view('front.trading_system',compact('price_product'));
     }
     public function contact(){
-        return view('front.contact');
+        return view('frontend_v2.contact');
     }
 
     public function mission(){
