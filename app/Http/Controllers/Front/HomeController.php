@@ -526,10 +526,10 @@ $result = [
             $price_product[$system] = $value;
         }
 
-        return view('front.trading_system',compact('price_product'));
+        return view('frontend_v2.trading_system',compact('price_product'));
     }
     public function contact(){
-        return view('front.contact');
+        return view('frontend_v2.contact');
     }
 
     public function mission(){
