@@ -428,3 +428,15 @@ table.table>tbody>tr:nth-of-type(even) {
   background: var(--primary-color) !important;
   color: #fff !important;
 }
+.common .btn.btn-outline-primary {
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+    background-color: #fff;
+    padding: 12px 52px;
+    border-radius: 8px;
+}
+.common .btn.btn-outline-primary:hover {
+    color: #fff;
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
