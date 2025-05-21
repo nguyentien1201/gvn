@@ -80,6 +80,33 @@
 .timeline-container {
   margin-top: 380px;
 }
+.timeline-mobile .timeline-img img{
+  width: 48px;
+  height: 48px;
+}
+.timeline-mobile .timeline-items {
+  display: flex;
+  flex-direction: column;
+  background-image: url("/images/mission/vector-mobile.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin-bottom: 60px;
+}
+.timeline-mobile {
+  display: none;
+}
+.timeline-mobile .timeline-item {
+  gap: 15px;
+  position: relative;
+  top: 35px;
+  left: -16px;
+}
+.timeline-mobile .timeline-item .timeline-info {
+  margin-top: 5px;
+}
+.timeline-mobile>img {
+  left: 17px;
+}
 @media (max-width: 768px) {
   .heading-page {
     font-size: 24px;
@@ -91,6 +118,13 @@
   }
 }
 @media (max-width: 992px) {
+  .timeline-container {
+    margin-top: unset;
+    margin-bottom: 30px;
+  }
+  .timeline-mobile {
+    display: block;
+  }
   .timeline {
     display: none;
   }
@@ -102,5 +136,21 @@
   }
   .time-des {
     font-size: 14px;
+  }
+}
+@media (min-width: 1400px) {
+  .container-xxl {
+    max-width: 1400px;
+  }
+}
+@media (min-width: 580px) and (max-width: 992px) {
+  .timeline-mobile .timeline-items .timeline-item:last-child {
+    margin-bottom: 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .timeline-mobile .timeline-items .timeline-item:last-child {
+    margin-bottom: -10px;
   }
 }

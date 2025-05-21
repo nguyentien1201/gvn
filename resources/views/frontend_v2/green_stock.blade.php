@@ -1935,10 +1935,8 @@
                     aria-labelledby="pills-stock-rating-tab">
                     <!-- Heading tab -->
                     <div class="container-tab-heading">
-                        <h3 class="heading-page pb-1 mb-0">{{ __('green_stock.stock_rating') }}</h3>
-                        <h5 class="time-live mb-0">
-                            <i><span class="date-js"></span> <span class="time-js"></span> (UTC+3)</i>
-                        </h5>
+                        <h3 class="heading-page pb-1 mb-0">"The trend is your friend" - Benjamin Graham</h3>
+                       
                     </div>
                     <!-- End heading tab -->
 
