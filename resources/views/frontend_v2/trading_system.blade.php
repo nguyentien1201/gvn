@@ -209,10 +209,10 @@
 									<div class="price">$1</div>
 									<p class="text-muted">/month</p>
 									<ul class="list-unstyled text-start px-4 mb-4">
-										<li>✅ Sản phẩm dùng thử</li>
-										<li>✅ Thời hạn 1 tháng</li>
-										<li>✅ Sản phẩm dùng thử</li>
-										<li>✅ Thời hạn 1 tháng</li>
+										 <li><i class="bi bi-check-circle-fill text-success me-2"></i> Sản phẩm dùng thử</li>
+                <li><i class="bi bi-check-circle-fill text-success me-2"></i> Thời hạn 1 năm</li>
+                <li><i class="bi bi-check-circle-fill text-success me-2"></i> Sản phẩm dùng thử</li>
+                <li><i class="bi bi-check-circle-fill text-success me-2"></i> Thời hạn 1 tháng</li>
 									</ul>
 									<a href="#" class="btn btn-green w-75 mx-auto">Get started</a>
 								</div>
@@ -229,11 +229,11 @@
 											<div class="price text-success">$5</div>
 											<p class="text-muted">/month</p>
 											<ul class="list-unstyled text-start px-4 mb-4">
-												<li>✅ Sản phẩm dùng thử</li>
-												<li>✅ Thời hạn 1 tháng</li>
-												<li>✅ Sản phẩm dùng thử</li>
-												<li>✅ Thời hạn 1 tháng</li>
-											</ul>
+                                                <li><i class="bi bi-check-circle-fill text-success me-2"></i> Sản phẩm dùng thử</li>
+                                                <li><i class="bi bi-check-circle-fill text-success me-2"></i> Thời hạn 1 năm</li>
+                                                <li><i class="bi bi-check-circle-fill text-success me-2"></i> Sản phẩm dùng thử</li>
+                                                <li><i class="bi bi-check-circle-fill text-success me-2"></i> Thời hạn 1 tháng</li>
+                                            </ul>
 										</div>
 										<a href="#" class="btn btn-green w-75 mx-auto mt-auto">Get started</a>
 									</div>
@@ -248,10 +248,10 @@
 									<div class="price">$10</div>
 									<p class="text-muted">/year</p>
 									<ul class="list-unstyled text-start px-4 mb-4">
-										<li>✅ Sản phẩm dùng thử</li>
-										<li>✅ Thời hạn 1 năm</li>
-										<li>✅ Sản phẩm dùng thử</li>
-										<li>✅ Thời hạn 1 tháng</li>
+										  <li><i class="bi bi-check-circle-fill text-success me-2"></i> Sản phẩm dùng thử</li>
+                                                <li><i class="bi bi-check-circle-fill text-success me-2"></i> Thời hạn 1 năm</li>
+                                                <li><i class="bi bi-check-circle-fill text-success me-2"></i> Sản phẩm dùng thử</li>
+                                                <li><i class="bi bi-check-circle-fill text-success me-2"></i> Thời hạn 1 tháng</li>
 									</ul>
 									<a href="#" class="btn btn-green w-75 mx-auto">Get started</a>
 								</div>
@@ -305,10 +305,10 @@
 										<div class="price">$1</div>
 										<p class="text-muted">/month</p>
 										<ul class="list-unstyled text-start px-4 mb-4">
-											<li>✅ Sản phẩm dùng thử</li>
-											<li>✅ Thời hạn 1 tháng</li>
-											<li>✅ Sản phẩm dùng thử</li>
-											<li>✅ Thời hạn 1 tháng</li>
+											  <li><i class="bi bi-check-circle-fill text-success me-2"></i> Sản phẩm dùng thử</li>
+                                                <li><i class="bi bi-check-circle-fill text-success me-2"></i> Thời hạn 1 năm</li>
+                                                <li><i class="bi bi-check-circle-fill text-success me-2"></i> Sản phẩm dùng thử</li>
+                                                <li><i class="bi bi-check-circle-fill text-success me-2"></i> Thời hạn 1 tháng</li>
 										</ul>
 										<a href="#" class="btn btn-green w-75 mx-auto">Get started</a>
 									</div>
@@ -325,10 +325,10 @@
 												<div class="price text-success">$5</div>
 												<p class="text-muted">/month</p>
 												<ul class="list-unstyled text-start px-4 mb-4">
-													<li>✅ Sản phẩm dùng thử</li>
-													<li>✅ Thời hạn 1 tháng</li>
-													<li>✅ Sản phẩm dùng thử</li>
-													<li>✅ Thời hạn 1 tháng</li>
+													  <li><i class="bi bi-check-circle-fill text-success me-2"></i> Sản phẩm dùng thử</li>
+                                                <li><i class="bi bi-check-circle-fill text-success me-2"></i> Thời hạn 1 năm</li>
+                                                <li><i class="bi bi-check-circle-fill text-success me-2"></i> Sản phẩm dùng thử</li>
+                                                <li><i class="bi bi-check-circle-fill text-success me-2"></i> Thời hạn 1 tháng</li>
 												</ul>
 											</div>
 											<a href="#" class="btn btn-green w-75 mx-auto mt-auto">Get started</a>
@@ -344,10 +344,10 @@
 										<div class="price">$10</div>
 										<p class="text-muted">/year</p>
 										<ul class="list-unstyled text-start px-4 mb-4">
-											<li>✅ Sản phẩm dùng thử</li>
-											<li>✅ Thời hạn 1 năm</li>
-											<li>✅ Sản phẩm dùng thử</li>
-											<li>✅ Thời hạn 1 tháng</li>
+											  <li><i class="bi bi-check-circle-fill text-success me-2"></i> Sản phẩm dùng thử</li>
+                                                <li><i class="bi bi-check-circle-fill text-success me-2"></i> Thời hạn 1 năm</li>
+                                                <li><i class="bi bi-check-circle-fill text-success me-2"></i> Sản phẩm dùng thử</li>
+                                                <li><i class="bi bi-check-circle-fill text-success me-2"></i> Thời hạn 1 tháng</li>
 										</ul>
 										<a href="#" class="btn btn-green w-75 mx-auto">Get started</a>
 									</div>
@@ -387,7 +387,7 @@
 									<p class="text-secondary fs-6">
 									The system sorts groups of stocks with better profitability over a period of year, quarter, or month than the overall market.
 									</p>
-									
+
 								</div>
 							</div>
 
@@ -407,10 +407,10 @@
 										<div class="price">$1</div>
 										<p class="text-muted">/month</p>
 										<ul class="list-unstyled text-start px-4 mb-4">
-											<li>✅ Sản phẩm dùng thử</li>
-											<li>✅ Thời hạn 1 tháng</li>
-											<li>✅ Sản phẩm dùng thử</li>
-											<li>✅ Thời hạn 1 tháng</li>
+											<li><i class="bi bi-check-circle-fill text-success me-2"></i> Sản phẩm dùng thử</li>
+                                                <li><i class="bi bi-check-circle-fill text-success me-2"></i> Thời hạn 1 năm</li>
+                                                <li><i class="bi bi-check-circle-fill text-success me-2"></i> Sản phẩm dùng thử</li>
+                                                <li><i class="bi bi-check-circle-fill text-success me-2"></i> Thời hạn 1 tháng</li>
 										</ul>
 										<a href="#" class="btn btn-green w-75 mx-auto">Get started</a>
 									</div>
@@ -427,10 +427,10 @@
 												<div class="price text-success">$5</div>
 												<p class="text-muted">/month</p>
 												<ul class="list-unstyled text-start px-4 mb-4">
-													<li>✅ Sản phẩm dùng thử</li>
-													<li>✅ Thời hạn 1 tháng</li>
-													<li>✅ Sản phẩm dùng thử</li>
-													<li>✅ Thời hạn 1 tháng</li>
+													<li><i class="bi bi-check-circle-fill text-success me-2"></i> Sản phẩm dùng thử</li>
+                                                <li><i class="bi bi-check-circle-fill text-success me-2"></i> Thời hạn 1 năm</li>
+                                                <li><i class="bi bi-check-circle-fill text-success me-2"></i> Sản phẩm dùng thử</li>
+                                                <li><i class="bi bi-check-circle-fill text-success me-2"></i> Thời hạn 1 tháng</li>
 												</ul>
 											</div>
 											<a href="#" class="btn btn-green w-75 mx-auto mt-auto">Get started</a>
@@ -446,10 +446,10 @@
 										<div class="price">$10</div>
 										<p class="text-muted">/year</p>
 										<ul class="list-unstyled text-start px-4 mb-4">
-											<li>✅ Sản phẩm dùng thử</li>
-											<li>✅ Thời hạn 1 năm</li>
-											<li>✅ Sản phẩm dùng thử</li>
-											<li>✅ Thời hạn 1 tháng</li>
+											<li><i class="bi bi-check-circle-fill text-success me-2"></i> Sản phẩm dùng thử</li>
+                                                <li><i class="bi bi-check-circle-fill text-success me-2"></i> Thời hạn 1 năm</li>
+                                                <li><i class="bi bi-check-circle-fill text-success me-2"></i> Sản phẩm dùng thử</li>
+                                                <li><i class="bi bi-check-circle-fill text-success me-2"></i> Thời hạn 1 tháng</li>
 										</ul>
 										<a href="#" class="btn btn-green w-75 mx-auto">Get started</a>
 									</div>

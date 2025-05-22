@@ -81,6 +81,34 @@
             background-color: #198754;
             border-color: #198754;
         }
+           .form-label.required::after {
+        content: " *";
+        color: red;
+    }
+     .custom-success-alert {
+        background-color: #e6ffe6; /* Light green background */
+        border: 1px solid #ccebcc; /* Slightly darker green border */
+        color: #008000; /* Dark green text */
+        padding: 10px 15px;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 20px; /* Adjust as needed */
+        width: fit-content; /* Make it fit its content */
+    }
+    .custom-success-alert .icon-check {
+        color: #008000; /* Green checkmark */
+        margin-right: 10px;
+        font-size: 1.2em;
+    }
+    .custom-success-alert .close-btn {
+        background: none;
+        border: none;
+        font-size: 1.2em;
+        color: #008000;
+        cursor: pointer;
+    }
     </style>
 @endpush
 @section('content')
@@ -167,7 +195,7 @@
                                             <td>2020-05-06 11:24:08</td>
                                             <td>2020-05-05 10:21:13</td>
                                             <td>Thương mại</td>
-                                            <td><i class="bi bi-pencil edit-icon"></i></td>
+                                            <td><i class="bi bi-pencil edit-icon" data-bs-toggle="modal" data-bs-target="#purchar"></i></td>
                                         </tr>
                                         <tr>
                                             <td>2</td>
@@ -175,7 +203,7 @@
                                             <td>2020-05-03 08:14:01</td>
                                             <td>2020-05-01 06:05:46</td>
                                             <td>Thương mại</td>
-                                            <td><i class="bi bi-pencil edit-icon"></i></td>
+                                            <td><i class="bi bi-pencil edit-icon" data-bs-toggle="modal" data-bs-target="#purchar"></i></td>
                                         </tr>
                                         <tr>
                                             <td>3</td>
@@ -183,7 +211,7 @@
                                             <td>2020-05-02 07:10:15</td>
                                             <td>2020-05-04 09:18:16</td>
                                             <td>Thương mại</td>
-                                            <td><i class="bi bi-pencil edit-icon"></i></td>
+                                            <td><i class="bi bi-pencil edit-icon" data-bs-toggle="modal" data-bs-target="#purchar"></i></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -247,7 +275,7 @@
                                     style="max-width: 280px;">
                                 <button class="btn btn-success">Search</button>
                                 <button class="btn btn-outline-secondary">Reset</button>
-                                <button class="btn btn-success ms-auto">Add User</button>
+                                <button class="btn btn-success ms-auto" data-bs-toggle="modal" data-bs-target="#addUserModal">Add User</button>
                             </div>
                             <div class="table-responsive">
                                 <table class="table table-hover table-bordered">
@@ -506,7 +534,92 @@
     </div>
   </div>
 </div>
+<div class="modal fade" id="purchar" tabindex="-1" aria-labelledby="planModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title">Payment</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form>
+                <div class="mb-3">
+                    <label for="cardNumber" class="form-label required">Card number</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="cardNumber" placeholder="Enter card number">
+                        <span class="input-group-text">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Visa_Inc._logo.svg/1280px-Visa_Inc._logo.svg.png" alt="Visa" style="height: 1.2em; margin-right: 5px;">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Mastercard-logo.svg/800px-Mastercard-logo.svg.png" alt="Mastercard" style="height: 1.2em;">
+                        </span>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="nameOnCard" class="form-label required">Name on card</label>
+                    <input type="text" class="form-control" id="nameOnCard" placeholder="Enter name on card">
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="expirationDate" class="form-label required">Expiration date</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="bi bi-calendar"></i></span>
+                            <input type="text" class="form-control" id="expirationDate" placeholder="MM/YY">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="cvvCvc" class="form-label required">CVV/CVC</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="bi bi-credit-card-fill"></i></span>
+                            <input type="text" class="form-control" id="cvvCvc" placeholder="CVV/CVC">
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="billingAddress" class="form-label required">Billing address</label>
+                    <input type="text" class="form-control" id="billingAddress" placeholder="Enter billing address">
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer d-flex justify-content-end">
+            <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
+            <button type="submit" class="btn btn-success">Payment</button>
+        </div>
+    </div>
+</div>
+</div>
+<div class="modal fade" id="addUserModal" tabindex="-1" aria-labelledby="addUserModalLabel" aria-hidden="true">
+    <div class="modal-dialog"> <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addUserModalLabel">Add User</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="addUserForm">
+                    <div class="mb-3">
+                        <label for="userName" class="form-label required">User name</label>
+                        <input type="text" class="form-control" id="userName" placeholder="Enter username" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="userEmail" class="form-label required">Email</label>
+                        <input type="email" class="form-control" id="userEmail" placeholder="Enter email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="phoneNumber" class="form-label required">Phone number</label>
+                        <input type="tel" class="form-control" id="phoneNumber" placeholder="Enter phone number" required>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer d-flex justify-content-end">
+                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
+                <button type="submit" class="btn btn-success" form="addUserForm">Add</button> </div>
+        </div>
+    </div>
+</div>
 
+
+<div aria-live="polite" aria-atomic="true" class="position-relative">
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        </div>
+</div>
         @include('frontend_v2.components.footer')
     </div>
 @endsection
