@@ -160,7 +160,7 @@
                             if(signalClose == null || signalClose == '' || signalClose == undefined || signalClose == 'Hold'){
                                 signalClose = "Hold";
                             }
-                              if(signalClose !='' || signalClose != null){
+                            if(signalClose !='' || signalClose != null){
                                 signal_close = signalClose.trim().toLowerCase();
                             }
                             let colorClass = "";

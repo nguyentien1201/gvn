@@ -51,10 +51,10 @@
                             const trendPrice = rowData.trend_price;
                             const profit = rowData.profit ? rowData.profit + '%' : '';
                             let colorClass = "";
-                            if(trendPrice === "UPTREND") {
+                            if(rowData.profit >0) {
                                 colorClass += "up-trend";
                             }
-                            else if(trendPrice === "DOWNTREND") {
+                            else if(rowData.profit <0) {
                                 colorClass += "down-trend";
                             } else {
                                 colorClass += "sideway";
@@ -78,7 +78,9 @@
                     } else {
                         colorClass += "sideway";
                     }
-
+                    if(rowData.profit_today){
+                        profit = `${parseFloat(rowData.profit_today).toFixed(2)}%`
+                    }
                     $(td).html(`<span class="profit ${colorClass}">${profit}</span>`);
                     $(td).addClass('text-center');
                     }
@@ -112,11 +114,14 @@
                             if(signalClose == null || signalClose == '' || signalClose == undefined || signalClose == 'Hold'){
                                 signalClose = "Hold";
                             }
+                            if(signalClose !='' || signalClose != null){
+                                signal_close = signalClose.trim().toLowerCase();
+                            }
                             let colorClass = "";
-                            if(signalClose === "TakeProfitBUY" || signalClose === "TakeProfitSELL") {
+                            if(signal_close === "takeprofitbuy" || signal_close === "takeprofitsell") {
                                 colorClass += "profit-buy";
                             }
-                            else if(signalClose === "CutLossBUY " || signalClose === "CutLossSELL") {
+                            else if(signal_close === "cutlossbuy " || signal_close === "cutlosssell") {
                                 colorClass += "loss-buy";
                             } else {
                                 colorClass += "hold";
