@@ -29,6 +29,23 @@
     color: black;
 
         }
+               @keyframes blink {
+
+            0%,
+            90% {
+                opacity: 1;
+                /* Phần tử hiển thị trong phần lớn thời gian */
+                color: black;
+                background: #ffd966;
+            }
+
+            95%,
+            100% {
+                opacity: 0;
+                /* Chớp nháy nhanh trong khoảng thời gian ngắn */
+                background-color: #ffd966;
+            }
+        }
 </style>
 @endpush
 
