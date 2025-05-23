@@ -156,7 +156,7 @@
                         createdCell: (td, cellData, rowData, row, col) => {
                             let signalClose = rowData.signal_close;
                              if(signalClose !='' || signalClose != null){
-                                signal_close = signalClose.trim().toLowerCase();
+                                signal_close = signalClose.toLowerCase();
                             }
                             console.log('signalClose',signalClose)
                             if(signalClose == null || signalClose == '' || signalClose == undefined || signalClose == 'Hold'){
