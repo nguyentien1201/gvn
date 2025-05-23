@@ -196,7 +196,26 @@
                 $(row).attr('data-id', data.id_code);
             }
         });
+         // indices.columns.adjust().responsive.recalc();
+        function highlightColumn(columnIndex) {
+            // Add a class to all cells in the specified column
 
+            var columnNodes = indices.column(4).nodes().to$();
+
+            // Extract text content from each cell in the column
+            var columnValues = columnNodes.map(function () {
+                let value = $(this).text();
+                if (value == "HOLD") {
+                    $(this).addClass('blink-box blink-effect');
+                }
+                // or .html() if you want to get the HTML content
+            }).get();  //
+        }
+
+        // Delay for 5 seconds, then highlight the 3rd column (index starts from 0)
+        setTimeout(function () {
+            highlightColumn(4);  // Highlight the third column (index 2)
+        }, 5000);
     </script>
 
 
