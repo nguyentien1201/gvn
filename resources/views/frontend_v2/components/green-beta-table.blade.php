@@ -139,10 +139,10 @@
 
                             const profit = rowData.profit ? rowData.profit + '%' : '';
                             let colorClass = "";
-                            if(profit >= 0) {
+                            if(rowData.profit >= 0) {
                                 colorClass += "up-trend";
                             }
-                            else if(profit < 0 ) {
+                            else if(rowData.profit < 0 ) {
                                 colorClass += "down-trend";
                             } else {
                                 colorClass += "sideway";
