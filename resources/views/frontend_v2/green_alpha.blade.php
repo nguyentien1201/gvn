@@ -25,10 +25,7 @@
 .blink-effect {
     animation: blink 5s infinite; /* Hiệu ứng chớp nháy, lặp lại mãi mãi */
 }
-.blink-box {
-    color: black;
 
-        }
                @keyframes blink {
 
             0%,
