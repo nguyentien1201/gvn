@@ -160,7 +160,7 @@
                                 signalClose = "Hold";
                             }
                               if(signalClose !='' || signalClose != null){
-                                signal_close = signalClose.trim()toLowerCase();
+                                signal_close = signalClose.trim().toLowerCase();
                             }
                             let colorClass = "";
                             if(signal_close === "takeprofitbuy") {
