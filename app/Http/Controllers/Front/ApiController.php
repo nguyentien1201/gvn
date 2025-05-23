@@ -94,7 +94,7 @@ class ApiController
         \Log::info('Beta:'.json_encode($request));
 
 
-        // $param = $request['data'] ?? '';
+        $param = $request['data'] ?? '';
     //    $json_request = [
     //         "data" => "AUS200 TrendPrice UpTrend",
     //         "type" => 1
@@ -164,10 +164,10 @@ class ApiController
                 $cachedData = Cache::get($code);
                 if ($cachedData != $new_data) {
                     Cache::forget($code);
-                    Cache::put($code, $new_data, now()->endOfDay()); // Cập nhật cache mới
+                    Cache::put($code, $new_data, now()->addDays(7)); // Cập nhật cache mới
                 }
             }else {
-                Cache::put($code, $new_data, now()->endOfDay());
+                Cache::put($code, $new_data, now()->addDays(7));
 
             }
             \Log::info('update last price  '.$code.' success');

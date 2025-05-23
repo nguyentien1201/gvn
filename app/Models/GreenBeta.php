@@ -90,8 +90,10 @@ class GreenBeta extends Model
         $result = [];
 
         foreach ($data as $key => $value) {
-           
+
             $last_sale = Cache::get($value->mstStock->code) ??  $value->last_sale;
+            dump(Cache::get($value->mstStock->code));
+            dump($value->mstStock->code);
             $result[] = [
                 'signal_open' =>$value->signal_open,
                 'price_open' => $value->price_open,
