@@ -117,6 +117,7 @@
                             if(signalClose !='' || signalClose != null){
                                 signal_close = signalClose.trim().toLowerCase();
                             }
+                            console.log(signal_close);
                             let colorClass = "";
                             if(signal_close === "takeprofitbuy" || signal_close === "takeprofitsell") {
                                 colorClass += "profit-buy";
