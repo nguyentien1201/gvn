@@ -207,7 +207,7 @@
                 var columnValues = columnNodes.map(function () {
                     let value = $(this).text();
                     if (value == "Hold") {
-                        $(this).addClass('blink-box blink-effect');
+                        $(this).find('span').addClass('blink-box blink-effect');
                     }
                     // or .html() if you want to get the HTML content
                 }).get();  //
