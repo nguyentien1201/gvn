@@ -59,7 +59,8 @@
                         createdCell: function (td, cellData, rowData, row, col) {
                             let signalOpenText = '';
                             let signalOpenClass = '';
-                            if(rowData.signal_open === "Close") {
+
+                            if(rowData.close_time != null) {
                                 signalOpenText = "CLOSED";
                                 signalOpenClass = "closed";
                             } else {
