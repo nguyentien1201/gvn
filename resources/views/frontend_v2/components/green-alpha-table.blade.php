@@ -117,12 +117,13 @@
                             if(signalClose !='' || signalClose != null){
                                 signal_close = signalClose.trim().toLowerCase();
                             }
-                            console.log(signal_close);
+
+
                             let colorClass = "";
                             if(signal_close === "takeprofitbuy" || signal_close === "takeprofitsell") {
                                 colorClass += "profit-buy";
                             }
-                            else if(signal_close === "cutlossbuy " || signal_close === "cutlosssell") {
+                            else if(signal_close === "cutlossbuy" || signal_close === "cutlosssell") {
                                 colorClass += "loss-buy";
                             } else {
                                 colorClass += "hold";
