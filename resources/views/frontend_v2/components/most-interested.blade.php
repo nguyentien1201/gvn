@@ -124,10 +124,10 @@
                             const trendPrice = rowData.trend_price;
                             const profit = rowData.profit ? rowData.profit + '%' : '';
                             let colorClass = "";
-                            if(trendPrice === "UPTREND") {
+                            if(profit > 0 ) {
                                 colorClass += "up-trend";
                             }
-                            else if(trendPrice === "DOWNTREND") {
+                            else if(profit < 0 ) {
                                 colorClass += "down-trend";
                             } else {
                                 colorClass += "sideway";
