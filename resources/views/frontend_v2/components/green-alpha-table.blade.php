@@ -205,7 +205,7 @@
             // Extract text content from each cell in the column
             var columnValues = columnNodes.map(function () {
                 let value = $(this).text();
-                if (value == "HOLD") {
+                if (value == "Hold") {
                     $(this).addClass('blink-box blink-effect');
                 }
                 // or .html() if you want to get the HTML content
