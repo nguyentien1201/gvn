@@ -148,10 +148,10 @@
                                 signal_close = signalClose.trim().toLowerCase();
                             }
                             let colorClass = "";
-                            if(signalClose === "TakeProfitBUY") {
+                            if(signalClose === "takeprofitbuy") {
                                 colorClass += "profit-buy";
                             }
-                            else if(signalClose === "CutLossBuy") {
+                            else if(signalClose === "cutlossbuy") {
                                 colorClass += "loss-buy";
                             } else {
                                 colorClass += "hold";
