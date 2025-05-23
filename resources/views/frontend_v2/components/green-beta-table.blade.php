@@ -155,14 +155,18 @@
                         targets: 8,
                         createdCell: (td, cellData, rowData, row, col) => {
                             let signalClose = rowData.signal_close;
+                             if(signalClose !='' || signalClose != null){
+                                signal_close = signalClose.trim().toLowerCase();
+                            }
+                            console.log('signalClose',signalClose)
                             if(signalClose == null || signalClose == '' || signalClose == undefined || signalClose == 'Hold'){
                                 signalClose = "Hold";
                             }
                             let colorClass = "";
-                            if(signalClose === "TakeProfitBUY") {
+                            if(signal_close === "takeprofitbuy") {
                                 colorClass += "profit-buy";
                             }
-                            else if(signalClose === "CutLossBuy") {
+                            else if(signal_close === "cutlossbuy") {
                                 colorClass += "loss-buy";
                             } else {
                                 colorClass += "hold";
