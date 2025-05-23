@@ -74,7 +74,12 @@
                         targets: 1,
                         createdCell: function (td, cellData, rowData, row, col) {
                             let priceOpen = rowData.price_open ;
-                            $(td).html(`<span>${priceOpen}</span>`);
+                             if(priceOpen =='fas fa-lock'){
+                                    $(td).html('<i style="color:green" class="fas fa-lock"></i>');
+                                }else{
+                                     $(td).html(`<span>${priceOpen}</span>`);
+                                }
+
                             $(td).addClass('text-center');
                         }
                     },
@@ -82,7 +87,12 @@
                         targets: 2,
                         createdCell: function (td, cellData, rowData, row, col) {
                             let openTime = rowData.open_time ;
-                            $(td).html(`<span class="text-nowrap">${openTime}</span>`);
+                             if(openTime =='fas fa-lock'){
+                                  $(td).html('<i style="color:green" class="fas fa-lock"></i>');
+                             }else {
+                                 $(td).html(`<span class="text-nowrap">${openTime}</span>`);
+                             }
+
                         }
                     },
                     {
