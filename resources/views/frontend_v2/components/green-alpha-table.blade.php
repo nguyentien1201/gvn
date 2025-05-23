@@ -68,7 +68,7 @@
                     targets: 9, // Index of the date column
                     createdCell: (td, cellData, rowData, row, col) => {
 
-                    const profit = rowData.profit_today ? rowData.profit_today + '%' : '';
+                    let profit = rowData.profit_today ? rowData.profit_today + '%' : '';
                     let colorClass = "";
                     if(rowData.profit_today >= 0) {
                         colorClass += "up-trend";
