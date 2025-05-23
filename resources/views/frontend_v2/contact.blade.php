@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Mission')
+@section('title', 'Contact')
 @push('styles')
     <!-- Favicon -->
     <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}">

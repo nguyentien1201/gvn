@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Green Beta')
+@section('title', 'Green Alpha')
 @push('styles')
     <link rel="stylesheet" href="{{ asset('css/home_v2.css') }}">
     <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}">

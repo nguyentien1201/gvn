@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('title', 'Home Page')
 @push('styles')
     <link rel="stylesheet" href="{{ asset('css/home_v2.css') }}">
 @endpush
