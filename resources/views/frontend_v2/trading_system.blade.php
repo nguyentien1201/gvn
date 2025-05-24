@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Mission')
+@section('title', 'Trading System')
 @push('styles')
 <!-- Favicon -->
 <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}">
@@ -392,10 +392,7 @@
 							</div>
 
 						</div>
-						<div class="container my-5">
-							<img src="{{ asset('images/hisstory-alpha.png') }}" alt="Trading System" class="img-fluid">
-							<img src="{{ asset('images/profit-month.png') }}" alt="Trading System" class="img-fluid">
-						</div>
+
 						<div class="container py-5">
 							<div class="row g-4 justify-content-center">
 
