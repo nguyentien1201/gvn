@@ -2,16 +2,16 @@
 <html lang="en">
 
 <head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-09NXCQGTBV"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-09NXCQGTBV"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
 
-  gtag('config', 'G-09NXCQGTBV');
-</script>
-<!-- End Google Tag Manager -->
+        gtag('config', 'G-09NXCQGTBV');
+    </script>
+    <!-- End Google Tag Manager -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Green Alpha</title>
@@ -22,84 +22,92 @@
     <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}">
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
     <link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css') }}">
-<link rel="stylesheet" href="{{asset('plugins/font-awesome-4.7.0/css/font-awesome.min.css')}}">
+    <link rel="stylesheet" href="{{asset('plugins/font-awesome-4.7.0/css/font-awesome.min.css')}}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.dataTables.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/fixedcolumns/4.0.1/css/fixedColumns.dataTables.min.css">
 
-<link rel="stylesheet" href="{{ asset('css/home.css') }}">
-<style>
+    <link rel="stylesheet" href="{{ asset('css/home.css') }}">
+    <style>
+        /* Định nghĩa animation chớp nháy */
+        @keyframes blink {
 
-    /* Định nghĩa animation chớp nháy */
-@keyframes blink {
-    0%, 90% {
-        opacity: 1; /* Phần tử hiển thị trong phần lớn thời gian */
-        color: black;
-        background: #ffd966;
-    }
-    95%, 100% {
-        opacity: 0; /* Chớp nháy nhanh trong khoảng thời gian ngắn */
-        background-color: #ffd966;
-    }
-}
+            0%,
+            90% {
+                opacity: 1;
+                /* Phần tử hiển thị trong phần lớn thời gian */
+                color: black;
+                background: #ffd966;
+            }
 
-/* Tạo lớp với animation */
-.blink-effect {
-    animation: blink 5s infinite; /* Hiệu ứng chớp nháy, lặp lại mãi mãi */
-}
-.blink-box {
-    color: black;
+            95%,
+            100% {
+                opacity: 0;
+                /* Chớp nháy nhanh trong khoảng thời gian ngắn */
+                background-color: #ffd966;
+            }
+        }
+
+        /* Tạo lớp với animation */
+        .blink-effect {
+            animation: blink 5s infinite;
+            /* Hiệu ứng chớp nháy, lặp lại mãi mãi */
+        }
+
+        .blink-box {
+            color: black;
 
         }
+
         .decription_telegram {
 
-padding: 0.75rem;
-  border: 0px;
-  width: max-content;
-  max-width: 280px;
-  overflow-wrap: break-word;
-  word-break: break-word;
-  background: rgb(255, 255, 255);
-  color: rgb(0, 0, 0);
-  border-radius: 1.25rem;
-  text-align: initial;
-}
-</style>
+            padding: 0.75rem;
+            border: 0px;
+            width: max-content;
+            max-width: 280px;
+            overflow-wrap: break-word;
+            word-break: break-word;
+            background: rgb(255, 255, 255);
+            color: rgb(0, 0, 0);
+            border-radius: 1.25rem;
+            text-align: initial;
+        }
+    </style>
 </head>
 
 <body>
-@auth
-    <div style="position: fixed; bottom: 20px; right: 20px; text-align: center; z-index: 1000;">
-<div class="sc-9qme4p-0 hELAUe"><button class="decription_telegram"><span class="sc-1ee9gtf-2 bxZLwE">{{__('front_end.chat_with_me')}}</span></button></div>
-  <a href="https://t.me/{{config('config.telegram_user')}}" target="_blank" style="text-decoration: none;">
-    <button style="
-        float: right;
-      background-color: #33a853;
-      color: white;
-      border: none;
-      border-radius: 50%;
-      width: 60px;
-      height: 60px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    "
-    onmouseover="this.style.backgroundColor='#33a853';"
-    onmouseout="this.style.backgroundColor='#198754';">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram" style="width: 30px; height: 30px;">
-    </button>
-  </a>
-</div>
+    @auth
+        <div style="position: fixed; bottom: 20px; right: 20px; text-align: center; z-index: 1000;">
+            <div class="sc-9qme4p-0 hELAUe"><button class="decription_telegram"><span
+                        class="sc-1ee9gtf-2 bxZLwE">{{__('front_end.chat_with_me')}}</span></button></div>
+            <a href="https://t.me/{{config('config.telegram_user')}}" target="_blank" style="text-decoration: none;">
+                <button style="
+            float: right;
+          background-color: #33a853;
+          color: white;
+          border: none;
+          border-radius: 50%;
+          width: 60px;
+          height: 60px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+          cursor: pointer;
+          transition: background-color 0.3s ease;
+        " onmouseover="this.style.backgroundColor='#33a853';" onmouseout="this.style.backgroundColor='#198754';">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram"
+                        style="width: 30px; height: 30px;">
+                </button>
+            </a>
+        </div>
     @endauth
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K38F4SGX"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K38F4SGX" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
     <!-- Navigation Bar -->
     <!-- green-beta-slider.jpg -->
     @include('front.common.header')
@@ -130,7 +138,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                 <div class="col-md-9" style="font-size:0.9rem !important; margin-top:4rem">
 
                                     <p>
-                                        <span class="comment-div-left" style="font-size:1.4em">{!!__('front_end.description_green_alpha')!!}</span>
+                                        <span class="comment-div-left"
+                                            style="font-size:1.4em">{!!__('front_end.description_green_alpha')!!}</span>
                                     </p>
 
                                 </div>
@@ -152,21 +161,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
             <div class="row">
                 <div class="ol-12 col-sm-12 col-md-12 col-lg-12">
-                    <h2 class="text-center mb-4"><span class="title-trading-first label-color color-home">{{__('front_end.SIGNAL_DASHBOARD')}}</span>
+                    <h2 class="text-center mb-4"><span
+                            class="title-trading-first label-color color-home">{{__('front_end.SIGNAL_DASHBOARD')}}</span>
                     </h2>
                     <!-- Data and Chart Section -->
-                    <h5 class="color-home" style="padding:15px; text-align: right;"> <i><span id="date"></span>  <span id="time"> </span> (UTC+3)</i></h5>
+                    <h5 class="color-home" style="padding:15px; text-align: right;"> <i><span id="date"></span> <span
+                                id="time"> </span> (UTC+3)</i></h5>
                     <div class="row">
                         <!-- Chart Section -->
                         <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center form-group">
 
                             <div class="card">
                                 <div class="card-body">
-                                <div class="col-md-12 text-center">
-                                <table class="table table-striped table-bordered display responsive nowrap" style="margin-bottom: 0px; width:100%"
-                                        id="indices-table">
-                                    </table>
-                                </div>
+                                    <div class="col-md-12 text-center">
+                                        <table class="table table-striped table-bordered display responsive nowrap"
+                                            style="margin-bottom: 0px; width:100%" id="indices-table">
+                                        </table>
+                                    </div>
 
                                     <div class="row mt-4">
 
@@ -201,7 +212,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                         <div class="col-md-4 text-left form-group">
                                             <ul style="padding-left:0">
                                                 <li class="list-item">
-                                                    <button class="width-120" style="background-color:#ffd966">HOLD</button>
+                                                    <button class="width-120"
+                                                        style="background-color:#ffd966">HOLD</button>
                                                     <span>{{__('front_end.trend_signal_hold')}}</span>
                                                 </li>
 
@@ -247,7 +259,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <h2 class="text-center mb-4"><span class="title-trading-first label-color color-home">{{__('front_end.HISTORICAL_PERFORMANCE')}}</span>
+                    <h2 class="text-center mb-4"><span
+                            class="title-trading-first label-color color-home">{{__('front_end.HISTORICAL_PERFORMANCE')}}</span>
 
                     </h2>
                     <!-- Data and Chart Section -->
@@ -262,25 +275,26 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             <div class="row mt-3">
                                 <!-- Data Section -->
                                 <div class="col-md-6 text-center">
-                                        <table style="width:100%" class="table table-striped table-bordered display responsive nowrap"
-                                            id="popupDataTable">
-                                            <thead>
-                                                <tr id="code_header">
-                                                    <th colspan="6" style="text-align:center" class="code_header"></th>
-                                                </tr>
-                                                <tr>
-                                                    <th>Signal</th>
-                                                    <th>Price Open</th>
-                                                    <th>Open Time</th>
-                                                    <th>Price Close</th>
-                                                    <th>Close Time</th>
-                                                    <th>Profit</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
+                                    <table style="width:100%"
+                                        class="table table-striped table-bordered display responsive nowrap"
+                                        id="popupDataTable">
+                                        <thead>
+                                            <tr id="code_header">
+                                                <th colspan="6" style="text-align:center" class="code_header"></th>
+                                            </tr>
+                                            <tr>
+                                                <th>Signal</th>
+                                                <th>Price Open</th>
+                                                <th>Open Time</th>
+                                                <th>Price Close</th>
+                                                <th>Close Time</th>
+                                                <th>Profit</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
 
-                                            </tbody>
-                                        </table>
+                                        </tbody>
+                                    </table>
 
                                 </div>
                                 <!-- Chart Section -->
@@ -315,24 +329,26 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </html>
 
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/fixedcolumns/4.0.1/js/dataTables.fixedColumns.min.js"></script>
 
-<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0-rc/dist/chartjs-plugin-datalabels.min.js"></script>
+<script
+    src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0-rc/dist/chartjs-plugin-datalabels.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/moment.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/moment-timezone@0.5.34/builds/moment-timezone-with-data.min.js"></script>
 <style>
-.carousel-item {
-    min-height: 300px;
-    height: 300px;
-    background: no-repeat center center scroll;
-    background-size: cover;
-}
-
-    </style>
+    .carousel-item {
+        min-height: 300px;
+        height: 300px;
+        background: no-repeat center center scroll;
+        background-size: cover;
+    }
+</style>
 <script>
     $(document).ready(function () {
 
@@ -532,7 +548,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             }
 
             $.ajax({
-                url:  '/api/get-history-alpha/' + dataId,
+                url: '/api/get-history-alpha/' + dataId,
                 type: 'GET',
                 success: function (data) {
                     data = data.data;
@@ -722,11 +738,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             lengthChange: false, //
             paging: false,
             scrollX: true, // Kích hoạt cuộn ngang
-                        fixedColumns: {
-                            leftColumns: 2 // Cố định cột đầu tiên (Tên sản phẩm)
-                        },
-                        scrollCollapse: true,
-                        autoWidth: false,
+            fixedColumns: {
+                leftColumns: 2 // Cố định cột đầu tiên (Tên sản phẩm)
+            },
+            scrollCollapse: true,
+            autoWidth: false,
             info: false,
             order: [[3, 'desc']],
             data: @json($signals),
@@ -774,7 +790,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         $(td).css('color', color);
                     },
                     render: function (data, type, full, meta) {
-                        if (data != '' ) {
+                        if (data != '') {
                             return `${parseFloat(data).toFixed(2)}%`;
                         }
                         return '';
@@ -802,7 +818,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         $(td).css('box-shadow', 'none');
                     },
                     render: function (data, type, full, meta) {
-                        if(full.close_time != "" ){
+                        if (full.close_time != "") {
                             return 'CLOSED';
                         }
                         return data; //
@@ -811,7 +827,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 {
                     targets: 4, // Index of the date column
                     render: function (data, type, full, meta) {
-                        if(full.signal_close == "" &&  full.signal_open != ""){
+                        if (full.signal_close == "" && full.signal_open != "") {
                             return 'HOLD';
                         }
                         return data; //
@@ -828,7 +844,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         } else {
                             color = '';
                         }
-                        if(signal_close == "" &&  rowData.signal_open != ""){
+                        if (signal_close == "" && rowData.signal_open != "") {
                             color = '#ffd966';
                         }
                         $(td).css('background-color', color);
@@ -838,12 +854,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 {
                     targets: 3, // Index of the open_time column
                     render: function (data, type, row) {
-                        if(data =='fas fa-lock'){
+                        if (data == 'fas fa-lock') {
                             return '<i style="color:green" class="fas fa-lock"></i>';
                         }
                         if (data == null || data == '') return '';
                         if (type === 'display' || type === 'filter') {
-                            return  moment.tz(data, 'Europe/Moscow').format('HH:mm'); // Format as HH:mm
+                            return moment.tz(data, 'Europe/Moscow').format('HH:mm'); // Format as HH:mm
                         }
                         return data;
                     }
@@ -851,8 +867,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 {
                     targets: 2, // Index of the date column
                     render: function (data, type, full, meta) {
-                        if(data == "") return '';
-                        if(data =='fas fa-lock'){
+                        if (data == "") return '';
+                        if (data == 'fas fa-lock') {
                             return '<i style="color:green" class="fas fa-lock"></i>';
                         }
                         if (type === 'display') {
@@ -867,7 +883,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     render: function (data, type, row) {
                         if (data == null || data == '') return '';
                         if (type === 'display' || type === 'filter') {
-                            return  moment.tz(data, 'Europe/Moscow').format('HH:mm'); // Format as HH:mm
+                            return moment.tz(data, 'Europe/Moscow').format('HH:mm'); // Format as HH:mm
                         }
                         return data;
                     }
@@ -899,26 +915,26 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         });
         // indices.columns.adjust().responsive.recalc();
         function highlightColumn(columnIndex) {
-        // Add a class to all cells in the specified column
+            // Add a class to all cells in the specified column
 
-                var columnNodes = indices.column(4).nodes().to$();
+            var columnNodes = indices.column(4).nodes().to$();
 
-    // Extract text content from each cell in the column
-            var columnValues = columnNodes.map(function() {
+            // Extract text content from each cell in the column
+            var columnValues = columnNodes.map(function () {
                 let value = $(this).text();
-                if(value =="HOLD"){
+                if (value == "HOLD") {
                     $(this).addClass('blink-box blink-effect');
                 }
-                 // or .html() if you want to get the HTML content
+                // or .html() if you want to get the HTML content
             }).get();  //
         }
 
-            // Delay for 5 seconds, then highlight the 3rd column (index starts from 0)
-            setTimeout(function() {
-                highlightColumn(4);  // Highlight the third column (index 2)
-            }, 5000); // 5000 milliseconds = 5 seconds
+        // Delay for 5 seconds, then highlight the 3rd column (index starts from 0)
+        setTimeout(function () {
+            highlightColumn(4);  // Highlight the third column (index 2)
+        }, 5000); // 5000 milliseconds = 5 seconds
 
-            });
+    });
 
     var ctx = document.getElementById('myChart').getContext('2d');
     var myChart = new Chart(ctx, {
@@ -962,45 +978,44 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         plugins: [ChartDataLabels]
     });
     function getChartOptions() {
-            const isMobile = window.innerWidth < 768; // Check if the screen width is below 768px
+        const isMobile = window.innerWidth < 768; // Check if the screen width is below 768px
 
-            return {
-                    x: {
-                        ticks: {
-                            display: !isMobile, // Hide x-axis labels on mobile
-                            font: {
-                                    weight: 'bold' // Makes x-axis labels bold
-                                }
-                        }
-                    },
-                    y: {
-                            beginAtZero: true,
-                            ticks: {
-                                callback: function(value) {
-                                    return value.toFixed(2) + '%'; // Thêm ký hiệu % vào các giá trị trên trục y
-                                }
-                            }
-                        }
-
-            };
-        }
-        $(document).ready(function(){
-            function updateClock() {
-                const now = new Date();
-                // Lấy thời gian và ngày tháng theo múi giờ
-                const dateOptions = { timeZone: 'Europe/Moscow', year: 'numeric', month: '2-digit', day: '2-digit' };
-                const timeOptions = { timeZone: 'Europe/Moscow', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false };
-                let dateString = now.toLocaleDateString('en-US', dateOptions).replace(/\//g, '-');
-                let timeString = now.toLocaleTimeString('en-US', timeOptions);
-                document.getElementById('date').textContent = dateString;
-                document.getElementById('time').textContent = timeString;
-
-
+        return {
+            x: {
+                ticks: {
+                    display: !isMobile, // Hide x-axis labels on mobile
+                    font: {
+                        weight: 'bold' // Makes x-axis labels bold
+                    }
+                }
+            },
+            y: {
+                beginAtZero: true,
+                ticks: {
+                    callback: function (value) {
+                        return value.toFixed(2) + '%'; // Thêm ký hiệu % vào các giá trị trên trục y
+                    }
+                }
             }
 
-            setInterval(updateClock, 1000); // Cập nhật mỗi giây
-            updateClock(); // Chạy ngay khi load trang
-        });
+        };
+    }
+    $(document).ready(function () {
+        function updateClock() {
+            const now = new Date();
+            // Lấy thời gian và ngày tháng theo múi giờ
+            const dateOptions = { timeZone: 'Europe/Moscow', year: 'numeric', month: '2-digit', day: '2-digit' };
+            const timeOptions = { timeZone: 'Europe/Moscow', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false };
+            let dateString = now.toLocaleDateString('en-US', dateOptions).replace(/\//g, '-');
+            let timeString = now.toLocaleTimeString('en-US', timeOptions);
+            document.getElementById('date').textContent = dateString;
+            document.getElementById('time').textContent = timeString;
+
+
+        }
+
+        setInterval(updateClock, 1000); // Cập nhật mỗi giây
+        updateClock(); // Chạy ngay khi load trang
+    });
 
 </script>
-
