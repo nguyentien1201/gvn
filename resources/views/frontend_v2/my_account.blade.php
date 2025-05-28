@@ -189,30 +189,23 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Green Beta 1.3.3</td>
-                                            <td>2020-05-06 11:24:08</td>
-                                            <td>2020-05-05 10:21:13</td>
-                                            <td>Thương mại</td>
-                                            <td><i class="bi bi-pencil edit-icon" data-bs-toggle="modal" data-bs-target="#purchar"></i></td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>Green Stock</td>
-                                            <td>2020-05-03 08:14:01</td>
-                                            <td>2020-05-01 06:05:46</td>
-                                            <td>Thương mại</td>
-                                            <td><i class="bi bi-pencil edit-icon" data-bs-toggle="modal" data-bs-target="#purchar"></i></td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>Green Alpha</td>
-                                            <td>2020-05-02 07:10:15</td>
-                                            <td>2020-05-04 09:18:16</td>
-                                            <td>Thương mại</td>
-                                            <td><i class="bi bi-pencil edit-icon" data-bs-toggle="modal" data-bs-target="#purchar"></i></td>
-                                        </tr>
+                                         @forelse($subscriptions as $idx => $subscription)
+                                            <tr>
+                                                <td>{{$idx + 1}}</td>
+                                                <td>{{$subscription->product->name}}</td>
+                                                <td>{{$subscription->start_date}}</td>
+                                                <td>{{$subscription->end_date}}</td>
+                                                <td>{{$subscription->is_trial == 0 ? 'Thương mại' : 'Dùng Thử'}}</td>
+                                                <td><i class="bi bi-pencil edit-icon" data-bs-toggle="modal" data-bs-target="#purchar"></i></td>
+                                            </tr>
+                                            @empty
+                                                <tr>
+                                                <td colspan="8" class="text-center">
+                                                    {{ __('panel.nodata') }}
+                                                </td>
+                                            </tr>
+                                        @endforelse
+
                                     </tbody>
                                 </table>
                             </div>
@@ -233,12 +226,13 @@
                                         </div>
                                     </div>
 
-                                    <form>
+                                     <form class="tg-form" action="{{route('account.update')}}" method="POST" enctype="multipart/form-data">
+                                            @csrf
                                         <div class="row mb-3">
                                             <div class="col-md-6">
                                                 <label class="form-label">FullName <span
                                                         class="text-danger">*</span></label>
-                                                <input type="text" class="form-control" value="Tien Nguyen">
+                                                <input type="text" class="form-control" name="name" value="{{ $info->profile->name }}">
                                             </div>
                                             <div class="col-md-6">
                                                 <label class="form-label">Email <span class="text-danger">*</span></label>
@@ -249,17 +243,17 @@
                                             <div class="col-md-6">
                                                 <label class="form-label">Phone number <span
                                                         class="text-danger">*</span></label>
-                                                <input type="text" class="form-control" placeholder="Enter your name">
+                                                <input name="phone" type="text" class="form-control" value="{{ $info->profile->phone }}" placeholder="Enter your Phone">
                                             </div>
                                             <div class="col-md-6">
                                                 <label class="form-label">Birthdate <span
                                                         class="text-danger">*</span></label>
-                                                <input type="date" class="form-control">
+                                                <input name="birthday" value="{{ $info->profile->birthday }}" type="text" class="form-control">
                                             </div>
                                         </div>
                                         <div class="mb-4">
                                             <label class="form-label">Address <span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" placeholder="Enter your address">
+                                            <input type="text" name="address" class="form-control" value="{{ $info->profile->address }}" placeholder="Enter your address">
                                         </div>
                                         <button type="submit" class="btn btn-success px-4">Save Profile</button>
                                     </form>

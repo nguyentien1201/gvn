@@ -25,6 +25,7 @@ class Subscription extends Model
     }
     public function getMySubscription()
     {
+
         $query = self::where('user_id', auth()->id())->select();
         return $query->with(['user','product'])->orderBy('id', 'desc')->paginate(ConstantModel::$PAGINATION);
     }

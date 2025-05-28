@@ -15,6 +15,7 @@ class CustomerController
         $subscriptions = (new Subscription())->getMySubscription();
 
         $info = User::with(['profile'])->where('id', Auth::id())->select('id', 'email',  'name')->first();
+
         return view('frontend_v2.my_account', compact('subscriptions','info'));
     }
     public function update( Profile $profile ,Request $request)
