@@ -232,28 +232,28 @@
                                             <div class="col-md-6">
                                                 <label class="form-label">FullName <span
                                                         class="text-danger">*</span></label>
-                                                <input type="text" class="form-control" name="name" value="{{ $info->profile->name }}">
+                                                <input type="text" class="form-control" name="name" value="{{ $info->profile->name ?? ''}}">
                                             </div>
                                             <div class="col-md-6">
                                                 <label class="form-label">Email <span class="text-danger">*</span></label>
-                                                <input type="email" class="form-control" value="nguyentien1201@gmail.com">
+                                                <input type="email" class="form-control" value="{{ $info->email ?? '' }}" name="email">
                                             </div>
                                         </div>
                                         <div class="row mb-3">
                                             <div class="col-md-6">
                                                 <label class="form-label">Phone number <span
                                                         class="text-danger">*</span></label>
-                                                <input name="phone" type="text" class="form-control" value="{{ $info->profile->phone }}" placeholder="Enter your Phone">
+                                                <input name="phone" type="text" class="form-control" value="{{ $info->profile->phone ??'' }}" placeholder="Enter your Phone">
                                             </div>
                                             <div class="col-md-6">
                                                 <label class="form-label">Birthdate <span
                                                         class="text-danger">*</span></label>
-                                                <input name="birthday" value="{{ $info->profile->birthday }}" type="text" class="form-control">
+                                                <input name="birthday" value="{{ $info->profile->birthday ?? ''}}" type="text" class="form-control">
                                             </div>
                                         </div>
                                         <div class="mb-4">
                                             <label class="form-label">Address <span class="text-danger">*</span></label>
-                                            <input type="text" name="address" class="form-control" value="{{ $info->profile->address }}" placeholder="Enter your address">
+                                            <input type="text" name="address" class="form-control" value="{{ $info->profile->address  ?? ''}}" placeholder="Enter your address">
                                         </div>
                                         <button type="submit" class="btn btn-success px-4">Save Profile</button>
                                     </form>
