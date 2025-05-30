@@ -14,7 +14,7 @@ class CustomerController
     public function myAccount(){
         $subscriptions = (new Subscription())->getMySubscription();
 
-        $info = User::with(['profile'])->where('id', Auth::id())->select('id', 'email',  'name')->first();
+        $info = User::with(['profile.UserManager'])->where('id', Auth::id())->select('id', 'email',  'name')->first();
 
         return view('frontend_v2.my_account', compact('subscriptions','info'));
     }
@@ -22,9 +22,23 @@ class CustomerController
     {
 
         try {
+            $managerId = null;
             $request['birthday'] = Carbon::parse($request['birthday'])->format('Y-m-d');
+            $manager  = $request['manager'];
+            if(!empty($manager) && filter_var($manager, FILTER_VALIDATE_EMAIL)) {
+              $managerId = optional(User::where('role_id', ConstantModel::ROLES['company'])
+                    ->where('email', $manager)
+                    ->first())->id;
+            }
+            
+             
+           
+
+        
+            $request['manager_id'] = $managerId;
             $user_id = Auth::id();
             $profile = Profile::where('user_id', $user_id)->first();
+           
             if($profile){
                 $profile->update($request->all());
             }else {
@@ -34,6 +48,7 @@ class CustomerController
                 $profile->save();
             }
         } catch (\Exception $e) {
+            dd($e->getMessage());
             return redirect()->route('account')->with('fail', __('panel.fail'));
         }
         return redirect()->route('account')->with('success', __('panel.success'));
