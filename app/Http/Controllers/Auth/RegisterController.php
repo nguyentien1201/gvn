@@ -58,6 +58,7 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'role_id' => ['required', 'in:2,3']
         ]);
     }
 
@@ -69,18 +70,32 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'activation_token' => Str::random(60),
-            'role_id' => 3,
+            'role_id' => $data['role_id'] ?? 3, // Default to user role if not provided
         ]);
     }
     public function register(Request $request)
     {
-        $this->validator($request->all())->validate();
+      
+         $validator = $this->validator($request->all());
+
+    if ($validator->fails()) {
+        return redirect()
+            ->back()
+            ->withErrors($validator)
+            ->withInput();
+    }
+
+        $validatedData = $validator->validated();
         $user = $this->create($request->all());
+        if(!empty($request['manager_id'])) {
+            $user->profile()->create(['manager_id' => $request['manager_id']]);
+        }
         try {
             Mail::to($user->email)->send(new UserActivationMail($user));
         }catch(\Exception $e){
