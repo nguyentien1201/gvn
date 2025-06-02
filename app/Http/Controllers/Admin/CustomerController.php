@@ -6,7 +6,7 @@ use App\Http\Requests\Customer\StoreCustomerRequest;
 use App\Http\Requests\Customer\UpdateCustomerRequest;
 use App\Imports\CustomerImport;
 use App\Models\ConstantModel;
-use App\Models\Customer;
+use App\Models\User;
 use App\Service\WooCommerceApiService;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
@@ -15,11 +15,14 @@ class CustomerController extends AdminController
 {
     public function index(Request $request)
     {
-        $searchCustomers = Customer::all();
-        $customers = (new Customer())->getListCustomers($request);
-        return view('admin.customers.index', compact('customers', 'searchCustomers'));
-    }
+        $customers = (new User())->getListCustomers();
 
+        return view('admin.customers.index', compact('customers'));
+    }
+    public function listUser($id)
+    {
+        $customers = (new User())->getListUser($id);
+    }
     public function create()
     {
         return view('admin.customers.create');

@@ -84,7 +84,7 @@
                                         </div>
                                     </div>
                                     @if (isset($isProfile))
-                                        <input type="hidden" name="role_id" value="{{$roles['staff']}}"/>
+                                        <input type="hidden" name="role_id" value="{{$roles['admin']}}"/>
                                     @else
                                         <div class="form-group row">
                                             <label for="role"
