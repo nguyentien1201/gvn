@@ -49,7 +49,7 @@
                                 <th width="15%">{{ __('customer.name') }}</th>
                                 <th width="15%">{{ __('customer.email') }}</th>
                                 <th width="10%">{{ __('customer.phone_number') }}</th>
-
+<th width="10%">{{ __('customer.address') }}</th>
                                 <th width="10%" class="text-nowrap text-center">{{ __('panel.action') }}</th>
                             </tr>
                             </thead>
@@ -59,23 +59,15 @@
                                     <td width="5%" class="text-center">{{$idx + 1}}</td>
                                     <td width="15%">{{$customer->name}}</td>
                                     <td width="15%">{{$customer->email}}</td>
-                                    <td width="10%">{{$customer->phone}}</td>
+                                    <td width="10%">{{$customer->profile->phone ?? ''}}</td>
+                                     <td width="10%">{{$customer->profile->address ?? ''}}</td>
                                     <td width="10%" class="text-center text-nowrap">
-                                        <a href="{{ route('admin.customers.edit', [$customer->id]) }}"
+                                        <a href="{{ route('admin.users.edit', [$customer->profile->user_id ?? '']) }}"
                                            class="btn btn-primary btn-circle btn-sm">
                                             <i class="fas fa-edit" aria-hidden="true"></i>
                                         </a>
-                                         <a href="{{ route('admin.customers.list', [$customer->id]) }}"
-                                           class="btn btn-primary btn-circle btn-sm">
-                                            <i class="fas fa-users" aria-hidden="true"></i>
-                                        </a>
-                                        <a href="#confirmDelete" data-toggle="modal"
-                                           onclick="removeItem(this)"
-                                           data-id="{{$customer->id}}"
-                                           data-action="{{ route('admin.customers.destroy', [$customer->id])}}"
-                                           class="btn btn-danger btn-circle btn-sm remove">
-                                            <i class="fas fa-trash" aria-hidden="true"></i>
-                                        </a>
+
+
                                     </td>
                                 </tr>
                             @empty

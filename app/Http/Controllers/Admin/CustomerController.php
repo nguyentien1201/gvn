@@ -22,6 +22,11 @@ class CustomerController extends AdminController
     public function listUser($id)
     {
         $customers = (new User())->getListUser($id);
+        if ($customers->isEmpty()) {
+            return redirect()->route('admin.customers.index')->with('fail', __('panel.fail'));
+        }
+
+        return view('admin.customers.list', compact('customers'));
     }
     public function create()
     {

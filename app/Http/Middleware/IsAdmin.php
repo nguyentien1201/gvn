@@ -20,7 +20,7 @@ class IsAdmin
         if(!Auth::check()) {
             return redirect()->route('login');
         }
-        if (Auth::user()->role_id != ConstantModel::ROLES['admin'] && Auth::user()->role_id != ConstantModel::ROLES['company']) {
+        if (Auth::user()->role_id != ConstantModel::ROLES['admin'] && Auth::user()->role_id != ConstantModel::ROLES['customer']) {
             abort(403);
         }
         return $next($request);

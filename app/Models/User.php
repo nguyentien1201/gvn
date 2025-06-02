@@ -48,8 +48,9 @@ class User extends Authenticatable
     }
     public function getListUser($id)
     {
-        return $this->where('role_id', $id)
-            ->orderBy('created_at', 'desc')
-            ->paginate(10);
+        $users = User::with('profile')->whereHas('profile', function ($query) use ($id) {
+            $query->where('manager_id', $id);
+        })->get();
+        return $users;
     }
 }

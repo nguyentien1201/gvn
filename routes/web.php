@@ -93,7 +93,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin'], fu
         Route::post('/customers/import/', 'CustomerController@import')->name('customers.import');
     });
     Route::resource('customers', 'CustomerController')->middleware('admin');
-    Route::get('customers/{id}/list', 'CustomerController@listUser')->name('admin.customers.list');
+    Route::get('customers/{id}/list', 'CustomerController@listUser')->name('customers.list');
     //Oauth Token
     Route::resource('tokens', 'TokenController')->middleware('admin');
     //Promotions
