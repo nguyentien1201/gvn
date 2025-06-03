@@ -26,19 +26,15 @@ class CustomerController
             $request['birthday'] = Carbon::parse($request['birthday'])->format('Y-m-d');
             $manager  = $request['manager'];
             if(!empty($manager) && filter_var($manager, FILTER_VALIDATE_EMAIL)) {
-              $managerId = optional(User::where('role_id', ConstantModel::ROLES['company'])
+              $managerId = optional(User::where('role_id', ConstantModel::ROLES['customer'])
                     ->where('email', $manager)
                     ->first())->id;
             }
-            
-             
-           
 
-        
             $request['manager_id'] = $managerId;
             $user_id = Auth::id();
             $profile = Profile::where('user_id', $user_id)->first();
-           
+
             if($profile){
                 $profile->update($request->all());
             }else {

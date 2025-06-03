@@ -40,4 +40,17 @@ class User extends Authenticatable
     {
         return $this->hasOne(Profile::class);
     }
+    public function getListCustomers()
+    {
+        return $this->where('role_id', ConstantModel::ROLES['customer'])
+            ->orderBy('created_at', 'desc')
+            ->paginate(10);
+    }
+    public function getListUser($id)
+    {
+        $users = User::with('profile')->whereHas('profile', function ($query) use ($id) {
+            $query->where('manager_id', $id);
+        })->get();
+        return $users;
+    }
 }
