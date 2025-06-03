@@ -85,11 +85,14 @@
                         targets: 3,
                         createdCell: (td, cellData, rowData, row, col) => {
                             const trendPrice = rowData.trend_price;
+                            if(trendPrice != null || trendPrice != '' || trendPrice != undefined) {
+                                trendPrice = trendPrice.trim().toLowerCase();
+                            }
                             let colorClass = "trend ";
-                                if(trendPrice === "UPTREND") {
+                                if(trendPrice == "uptrend") {
                                 colorClass += "up-trend";
                             }
-                            else if(trendPrice === "DOWNTREND") {
+                            else if(trendPrice == "downtrend") {
                                 colorClass += "down-trend";
                             } else {
                                 colorClass += "sideway";

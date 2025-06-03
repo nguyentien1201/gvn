@@ -41,10 +41,10 @@
                             @forelse($subscriptions as $idx => $subscription)
                                 <tr>
                                     <td width="5%" class="text-center">{{$idx + 1}}</td>
-                                    <td width="15%">{{$subscription->user->name}}</td>
-                                    <td width="15%">{{$subscription->product->name}}</td>
-                                    <td width="10%">{{$subscription->start_date}}</td>
-                                    <td width="15%">{{$subscription->end_date}}</td>
+                                    <td width="15%">{{$subscription->user->name ?? ''}}</td>
+                                    <td width="15%">{{$subscription->product->name ?? ''}}</td>
+                                    <td width="10%">{{$subscription->start_date ?? ''}}</td>
+                                    <td width="15%">{{$subscription->end_date ?? ''}}</td>
                                     <td width="10%" class="text-center text-nowrap">
                                         <a href="#"
                                            class="btn btn-primary btn-circle btn-sm">
