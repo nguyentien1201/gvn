@@ -206,7 +206,7 @@
 								<div class="card text-center p-4 h-100">
 									<h5 class="card-title">Basic plan</h5>
 									<p class="text-muted">Our most popular plan.</p>
-									<div class="price">$1</div>
+									<div class="price">${{$price_product['beta']['monthly_price'] ?? 0}}</div>
 									<p class="text-muted">/month</p>
 									<ul class="list-unstyled text-start px-4 mb-4">
 										 <li><i class="bi bi-check-circle-fill text-success me-2"></i> Sản phẩm dùng thử</li>
@@ -226,8 +226,8 @@
 										<div class="card-content text-center">
 											<h5 class="card-title">Business plan</h5>
 											<p class="text-muted">Our most popular plan.</p>
-											<div class="price text-success">$5</div>
-											<p class="text-muted">/month</p>
+											<div class="price text-success">${{$price_product['beta']['six_month_price'] ?? 0}}</div>
+											<p class="text-muted">/6 month</p>
 											<ul class="list-unstyled text-start px-4 mb-4">
                                                 <li><i class="bi bi-check-circle-fill text-success me-2"></i> Sản phẩm dùng thử</li>
                                                 <li><i class="bi bi-check-circle-fill text-success me-2"></i> Thời hạn 1 năm</li>
@@ -245,7 +245,7 @@
 								<div class="card text-center p-4 h-100">
 									<h5 class="card-title">Enterprise plan</h5>
 									<p class="text-muted">Our most popular plan.</p>
-									<div class="price">$10</div>
+									<div class="price">{{$price_product['beta']['yearly_price'] ?? 0}}</div>
 									<p class="text-muted">/year</p>
 									<ul class="list-unstyled text-start px-4 mb-4">
 										  <li><i class="bi bi-check-circle-fill text-success me-2"></i> Sản phẩm dùng thử</li>
@@ -302,7 +302,7 @@
 									<div class="card text-center p-4 h-100">
 										<h5 class="card-title">Basic plan</h5>
 										<p class="text-muted">Our most popular plan.</p>
-										<div class="price">$1</div>
+										<div class="price">${{$price_product['alpha']['monthly_price'] ?? 0}}</div>
 										<p class="text-muted">/month</p>
 										<ul class="list-unstyled text-start px-4 mb-4">
 											  <li><i class="bi bi-check-circle-fill text-success me-2"></i> Sản phẩm dùng thử</li>
@@ -322,8 +322,8 @@
 											<div class="card-content text-center">
 												<h5 class="card-title">Business plan</h5>
 												<p class="text-muted">Our most popular plan.</p>
-												<div class="price text-success">$5</div>
-												<p class="text-muted">/month</p>
+												<div class="price text-success">${{$price_product['alpha']['six_month_price'] ?? 0}}</div>
+												<p class="text-muted">/6 month</p>
 												<ul class="list-unstyled text-start px-4 mb-4">
 													  <li><i class="bi bi-check-circle-fill text-success me-2"></i> Sản phẩm dùng thử</li>
                                                 <li><i class="bi bi-check-circle-fill text-success me-2"></i> Thời hạn 1 năm</li>
@@ -341,7 +341,7 @@
 									<div class="card text-center p-4 h-100">
 										<h5 class="card-title">Enterprise plan</h5>
 										<p class="text-muted">Our most popular plan.</p>
-										<div class="price">$10</div>
+										<div class="price">${{$price_product['alpha']['yearly_price'] ?? 0}}</div>
 										<p class="text-muted">/year</p>
 										<ul class="list-unstyled text-start px-4 mb-4">
 											  <li><i class="bi bi-check-circle-fill text-success me-2"></i> Sản phẩm dùng thử</li>
@@ -401,7 +401,7 @@
 									<div class="card text-center p-4 h-100">
 										<h5 class="card-title">Basic plan</h5>
 										<p class="text-muted">Our most popular plan.</p>
-										<div class="price">$1</div>
+										<div class="price">${{$price_product['alpha']['monthly_price'] ?? 0}}</div>
 										<p class="text-muted">/month</p>
 										<ul class="list-unstyled text-start px-4 mb-4">
 											<li><i class="bi bi-check-circle-fill text-success me-2"></i> Sản phẩm dùng thử</li>
@@ -421,7 +421,7 @@
 											<div class="card-content text-center">
 												<h5 class="card-title">Business plan</h5>
 												<p class="text-muted">Our most popular plan.</p>
-												<div class="price text-success">$5</div>
+												<div class="price text-success">${{$price_product['alpha']['six_month_price'] ?? 0}}</div>
 												<p class="text-muted">/month</p>
 												<ul class="list-unstyled text-start px-4 mb-4">
 													<li><i class="bi bi-check-circle-fill text-success me-2"></i> Sản phẩm dùng thử</li>
@@ -440,7 +440,7 @@
 									<div class="card text-center p-4 h-100">
 										<h5 class="card-title">Enterprise plan</h5>
 										<p class="text-muted">Our most popular plan.</p>
-										<div class="price">$10</div>
+										<div class="price">${{$price_product['alpha']['yearly_price'] ?? 0}}</div>
 										<p class="text-muted">/year</p>
 										<ul class="list-unstyled text-start px-4 mb-4">
 											<li><i class="bi bi-check-circle-fill text-success me-2"></i> Sản phẩm dùng thử</li>

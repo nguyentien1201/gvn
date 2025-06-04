@@ -521,11 +521,9 @@ $result = [
 
         $price_product = [];
         foreach ($product as $key => $value) {
-
             $system = $value->system ?? '';
             $price_product[$system] = $value;
         }
-
         return view('frontend_v2.trading_system',compact('price_product'));
     }
     public function contact(){
