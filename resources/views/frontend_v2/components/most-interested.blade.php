@@ -84,7 +84,7 @@
                     {
                         targets: 3,
                         createdCell: (td, cellData, rowData, row, col) => {
-                            const trendPrice = rowData.trend_price;
+                            let trendPrice = rowData.trend_price;
                             if(trendPrice != null || trendPrice != '' || trendPrice != undefined) {
                                 trendPrice = trendPrice.trim().toLowerCase();
                             }
