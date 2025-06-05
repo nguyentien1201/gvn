@@ -20,8 +20,7 @@ class IsCustomer
         if(!Auth::check()) {
             return redirect()->route('login');
         }
-        
-        if (Auth::user()->role_id != ConstantModel::ROLES['company'] && Auth::user()->role_id != ConstantModel::ROLES['personal']) {
+  if (Auth::user()->role_id != ConstantModel::ROLES['company'] && Auth::user()->role_id != ConstantModel::ROLES['personal']) {
             abort(403);
         }
         return $next($request);

@@ -66,8 +66,8 @@ class ConstantModel
 
     const ROLES = [
         'admin' => 1,
-        'customer' => 2,
-        'user' => 3,
+        'company' => 2,
+        'personal' => 3,
     ];
     const MONTH_PRICE = [
         '1' => 'monthly_price',

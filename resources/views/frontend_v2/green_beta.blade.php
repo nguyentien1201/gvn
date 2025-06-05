@@ -32,7 +32,7 @@
         <div class="carousel-inner">
             <div class="carousel-item container-heading active">
                 <h3 class="heading-page">Green Beta</h3>
-            
+
             </div>
         </div>
     </div>
@@ -57,12 +57,12 @@
                     </div>
             </div>
         </section>
-      
+
         @include('frontend_v2.components.green-beta-table')
-       
+
         <section id="table-chart" class="py-0 py-lg-5 common-services">
             <div class="container common">
-    
+
                     <h3 class="text-center services-title pb-3 pb-lg-2 color-home">{{__('front_end.HISTORICAL_PERFORMANCE')}}</h3>
                 <div class="row gy-4 gy-lg-0">
                     <div class="co-12 col-lg-6">
@@ -103,7 +103,7 @@
                             <div class="row mb-2">
                             <div class="table-responsive">
                 <div id="chart_table" class="div-table">
-        
+
 
                 {{-- Total row --}}
                 <div class="div-row">
@@ -130,7 +130,7 @@
                 </div>
                 </div>
             </div>
-                                
+
                             </div>
                         </div>
         </section>
@@ -220,7 +220,7 @@
                 url: '/api/get-history-signal/' + dataId,
                 type: 'GET',
                 success: function (data) {
-                    data = data.data;   
+                    data = data.data;
                         if ($.fn.DataTable.isDataTable('#popupDataTable')) {
                             $('#popupDataTable').DataTable().clear().destroy();
                         }
@@ -230,7 +230,7 @@
                     data: data.list,
                     searching: false,
                     scrollX: true, // Kích hoạt cuộn ngang
-                  
+
                     autoWidth: true,
                     paging: false,
                     info: false,
@@ -350,13 +350,13 @@
                             $('#popupDataTable').DataTable().clear().destroy();
                         }
             $('#popupDataTable').DataTable({
-             
+
                 autoWidth: true,
                 paging: false,
                 info: false,
                 searching: false,
                 scrollY: '428px',
-      
+
                 scrollCollapse: true,
                 data: @json($default_chart['list']),
                 columns: [
@@ -407,7 +407,7 @@
         greenGradient.addColorStop(0, '#9ACAB3');  // Màu nhạt trên
         greenGradient.addColorStop(1, '#fff');  // Màu đậm dưới
 
-        const greenBetaChart = new Chart(ctxBetaChart, {
+        let greenBetaChart = new Chart(ctxBetaChart, {
             type: 'line',
             data: {
                 labels: profitData.map((_, index) => index),

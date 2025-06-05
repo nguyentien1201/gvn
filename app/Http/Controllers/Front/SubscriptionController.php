@@ -15,7 +15,10 @@ class SubscriptionController
         $request->validate([
             'id' => 'required|exists:products,id',
         ]);
-
+        if($request->month !=6) {
+            \Log::info('User ' . Auth::id() . ' is trying to subscribe with month: ' . $request->month);
+            return redirect()->route('logout');
+        }
         $product = Product::find($request->id)->toArray();
         $data = [
             'user_id' => Auth::id(),
@@ -31,12 +34,18 @@ class SubscriptionController
         }
 
         $subscription = Subscription::where('user_id', Auth::id())->where('product_id', $product['id'])->first();
+
         if($subscription){
+            $now = Carbon::now();
             $subscriptionEndDate = Carbon::parse($subscription->end_date);
+            if ($subscriptionEndDate->greaterThan($now) && $subscription->is_trial == 1) {
+                return ['status' => 'error', 'message' => 'Bạn đang sử dụng gói dùng thử, vui lòng đợi hết hạn để đăng ký gói mới'];
+            }
+
             if($request->month == 1){
                 $data['end_date'] = $subscriptionEndDate->addMonth();
             }
-            if($request->month == 2){
+            if($request->month == 6){
                 $data['end_date'] =  $subscriptionEndDate->addMonths(6);
             }
             if($request->month == 3){
@@ -48,12 +57,13 @@ class SubscriptionController
              if($request->month == 1){
                 $data['end_date'] =  now()->addMonth();
             }
-            if($request->month == 2){
+            if($request->month == 6){
                 $data['end_date'] = now()->addMonths(6);
             }
             if($request->month == 3){
                 $data['end_date'] = now()->addYear();
             }
+
             Subscription::create($data);
         }
         // Lưu thông tin mua gói sản phẩm
@@ -110,10 +120,12 @@ class SubscriptionController
 
 
         }else {
+
              if($request->month == 1){
                 $data['end_date'] =  now()->addMonth();
             }
             if($request->month == 2){
+
                 $data['end_date'] = now()->addMonths(6);
             }
             if($request->month == 3){
