@@ -9,8 +9,8 @@
                     <span>{{__('home.content_2')}}</span>
                 </p>
                 <div class="container-button d-flex justify-content-center gap-3">
-                    <button class="btn btn-primary">{{__('home.see_more')}}</button>
-                    <button class="btn btn-outline-primary">{{__('home.contact')}}</button>
+                    <a class="btn btn-primary" href="{{ route('front.home.trading-system') }}">{{__('home.see_more')}}</a>
+                    <a class="btn btn-outline-primary"  href="{{ route('front.home.contact') }}">{{__('home.contact')}}</a>
                 </div>
                 <div class="container background-banner">
                     <div id="lottie-container" style="height:400px;" class="img-fluid w-100 d-block" alt="">
