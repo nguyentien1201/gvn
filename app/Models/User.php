@@ -42,7 +42,7 @@ class User extends Authenticatable
     }
     public function getListCustomers()
     {
-        return $this->where('role_id', ConstantModel::ROLES['customer'])
+        return $this->where('role_id', ConstantModel::ROLES['company'])
             ->orderBy('created_at', 'desc')
             ->paginate(10);
     }
