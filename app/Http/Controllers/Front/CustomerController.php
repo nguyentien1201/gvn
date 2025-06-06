@@ -15,8 +15,15 @@ class CustomerController
         $subscriptions = (new Subscription())->getMySubscription();
     
         $info = User::with(['profile.UserManager'])->where('id', Auth::id())->select('id', 'email',  'name')->first();
+        $product = Product::all();
 
-        return view('frontend_v2.my_account', compact('subscriptions','info'));
+        $price_product = [];
+        foreach ($product as $key => $value) {
+            $system = $value->system ?? '';
+            $price_product[$system] = $value;
+        }
+        
+        return view('frontend_v2.my_account', compact('subscriptions','info','price_product'));
     }
     public function update( Profile $profile ,Request $request)
     {
@@ -44,7 +51,6 @@ class CustomerController
                 $profile->save();
             }
         } catch (\Exception $e) {
-            dd($e->getMessage());
             return redirect()->route('account')->with('fail', __('panel.fail'));
         }
         return redirect()->route('account')->with('success', __('panel.success'));

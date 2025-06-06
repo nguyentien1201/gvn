@@ -408,12 +408,12 @@
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link active btn-tab me-2" id="pills-green-stock-nas100-tab" data-bs-toggle="pill"
                                     data-bs-target="#pills-green-stock-nas100" type="button" role="tab"
-                                    aria-controls="pills-green-stock-nas100" aria-selected="true">Green Stock Nas100</button>
+                                    aria-controls="pills-green-stock-nas100" aria-selected="true">Green Stock-NAS100</button>
                             </li>
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link btn-tab" id="pills-green-stock-vnindex-tab" data-bs-toggle="pill"
                                     data-bs-target="#pills-green-stock-vnindex" type="button" role="tab"
-                                    aria-controls="pills-green-stock-vnindex" aria-selected="false">Green Stock VNIndex</button>
+                                    aria-controls="pills-green-stock-vnindex" aria-selected="false">Green Stock-VNindex</button>
                             </li>
                            
                         </ul>
@@ -430,7 +430,7 @@
                                 <div class="row align-items-center g-4 flex-column-reverse flex-md-row">
                                     <div class="col-md-6 col-6">
                                         <p class="text-secondary fs-6">
-                                            The GreenStock-NAS100 system automatically sorts stocks by cash flow momentum
+                                            The Green Stock-NAS100 system automatically sorts stocks by cash flow momentum
                                             strength and stock trends in the NAS100 index daily, provides actions for
                                             investors to update.
                                         </p>
@@ -551,8 +551,8 @@
                                 <div class="row align-items-center g-4 flex-column-reverse flex-md-row">
                                     <div class="col-md-6 col-6">
                                         <p class="text-secondary fs-6">
-                                            The GreenStock-NAS100 system automatically sorts stocks by cash flow momentum
-                                            strength and stock trends in the NAS100 index daily, provides actions for
+                                            The Green Stock-VNindex system automatically sorts stocks by cash flow momentum
+                                            strength and stock trends in the VNindex index daily, provides actions for
                                             investors to update.
                                         </p>
                                     </div>
