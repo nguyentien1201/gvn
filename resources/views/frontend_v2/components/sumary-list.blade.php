@@ -128,7 +128,7 @@
             <div>
               <div class="card-title">Cut Loss BUY</div>
               <div>
-                <span class="card-value text-success">{{$list_signal['signal_CutLossBUY'] ?? 0}}<</span>
+                <span class="card-value text-success">{{$list_signal['signal_CutLossBUY'] ?? 0}}</span>
                 <span class="card-unit">Symbol</span>
               </div>
             </div>
