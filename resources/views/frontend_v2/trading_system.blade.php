@@ -403,15 +403,15 @@
                     </div>
                     <div class="tab-pane fade" id="pills-green-stock" role="tabpanel"
                         aria-labelledby="pills-green-stock-tab">
-                        <div class="tabs-green">
-                        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                        <div class="tabs-green mt-3">
+                        <ul class="nav nav-pills mb-3 " id="pills-tab" role="tablist">
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link active btn-tab me-2" id="pills-green-stock-nas100-tab" data-bs-toggle="pill"
+                                <button class="nav-link active btn-tab me-2" style="font-size: 11px;" id="pills-green-stock-nas100-tab" data-bs-toggle="pill"
                                     data-bs-target="#pills-green-stock-nas100" type="button" role="tab"
                                     aria-controls="pills-green-stock-nas100" aria-selected="true">Green Stock-NAS100</button>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link btn-tab" id="pills-green-stock-vnindex-tab" data-bs-toggle="pill"
+                                <button class="nav-link btn-tab" style="font-size: 11px;" id="pills-green-stock-vnindex-tab" data-bs-toggle="pill"
                                     data-bs-target="#pills-green-stock-vnindex" type="button" role="tab"
                                     aria-controls="pills-green-stock-vnindex" aria-selected="false">Green Stock-VNindex</button>
                             </li>
