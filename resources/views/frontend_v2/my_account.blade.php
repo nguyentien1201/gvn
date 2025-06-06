@@ -171,7 +171,7 @@
                                         data-type="alpha">
                                         <h6>Green Alpha</h6>
                                         <div class="fs-4">${{ $price_product['alpha']['six_month_price'] }}</div>
-                                        <small>Basic plan /month</small>
+                                        <small>Business plan/6 month</small>
                                     </div>
                                 </div>
                                 <div class="col-md-3">
@@ -179,7 +179,7 @@
                                         data-type="beta">
                                         <h6>Green Beta</h6>
                                         <div class="fs-4">${{ $price_product['beta']['six_month_price'] }}</div>
-                                        <small>Basic plan /month</small>
+                                        <small>Business plan/6 month</small>
                                     </div>
                                 </div>
                                 <div class="col-md-3">
@@ -187,7 +187,7 @@
                                         data-type="greenstock-nas100">
                                         <h6>Green Stock-Nas100</h6>
                                         <div class="fs-4">${{ $price_product['greenstock-nas100']['six_month_price'] }}</div>
-                                        <small>Basic plan /month</small>
+                                        <small>Business plan/6 month</small>
                                     </div>
                                 </div>
                                 <div class="col-md-3">
@@ -195,7 +195,7 @@
                                         data-type="greenstock-vnindex">
                                         <h6>Green Stock-VNIndex</h6>
                                         <div class="fs-4">${{ $price_product['greenstock-vnindex']['six_month_price'] }}</div>
-                                        <small>Basic plan /month</small>
+                                        <small>Business plan/6 month</small>
                                     </div>
                                 </div>
                             </div>
