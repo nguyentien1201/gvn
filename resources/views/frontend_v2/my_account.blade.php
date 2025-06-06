@@ -194,12 +194,12 @@
                             <table class="table table-bordered table-striped align-middle">
                                 <thead class="table-light">
                                     <tr>
-                                        <th>No.</th>
-                                        <th>Product Name</th>
-                                        <th>Start Date</th>
-                                        <th>End Date</th>
-                                        <th>Version</th>
-                                        <th>Gia Hạn</th>
+                                        <th class="text-capitalize text-center text-nowrap">No.</th>
+                                        <th class="text-capitalize text-center text-nowrap">Product Name</th>
+                                        <th class="text-capitalize text-center text-nowrap">Start Date</th>
+                                        <th class="text-capitalize text-center text-nowrap">End Date</th>
+                                        <th class="text-capitalize text-center text-nowrap">Version</th>
+                                        <th class="text-capitalize text-center text-nowrap">Gia Hạn</th>
                                     </tr>
                                 </thead>
                                 <tbody>
