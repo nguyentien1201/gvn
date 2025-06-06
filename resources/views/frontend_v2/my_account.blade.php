@@ -166,7 +166,7 @@
                             <!-- My Orders -->
                             <div class="col-md-2 fw-semibold pb-3">My order</div>
                             <div class="row g-3 mb-4">
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <div class="card card-price p-3" data-bs-toggle="modal" data-bs-target="#planModal"
                                         data-type="alpha">
                                         <h6>Green Alpha</h6>
@@ -174,7 +174,7 @@
                                         <small>Basic plan /month</small>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <div class="card card-price p-3" data-bs-toggle="modal" data-bs-target="#planModal"
                                         data-type="beta">
                                         <h6>Green Beta</h6>
@@ -182,10 +182,18 @@
                                         <small>Basic plan /month</small>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <div class="card card-price p-3" data-bs-toggle="modal" data-bs-target="#planModal"
-                                        data-type="greenstock">
-                                        <h6>Green Stock</h6>
+                                        data-type="greenstock-nas100">
+                                        <h6>Green Stock-Nas100</h6>
+                                        <div class="fs-4">$2</div>
+                                        <small>Basic plan /month</small>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="card card-price p-3" data-bs-toggle="modal" data-bs-target="#planModal"
+                                        data-type="greenstock-vnindex">
+                                        <h6>Green Stock-VNIndex</h6>
                                         <div class="fs-4">$2</div>
                                         <small>Basic plan /month</small>
                                     </div>
