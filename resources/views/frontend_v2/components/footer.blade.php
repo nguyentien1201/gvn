@@ -16,7 +16,7 @@
                         </li>
                         <li class="mb-2 d-flex align-items-center gap-2">
                             <img width="24" height="24" class="img-fluid" src="{{asset('images/icons/2mail-02.png')}}" alt="">
-                            <span>support@gvn-fintrade.com</span>
+                            <span>admin@gvn-fintrade.com</span>
                         </li>
                     </ul>
                 </div>
@@ -26,17 +26,17 @@
                         <div class="col-6 col-lg-6">
                             <h6 class="blocks-title mb-3">My Company</h6>
                             <ul class="list-unstyled">
-                                <li><a href="#" class="text-decoration-none text-muted d-block mb-2">About Us</a></li>
-                                <li><a href="#" class="text-decoration-none text-muted d-block mb-2">My System</a></li>
-                                <li><a href="#" class="text-decoration-none text-muted d-block">Our Service</a></li>
+                                <li><a href="{{route('front.home.mission')}}" class="text-decoration-none text-muted d-block mb-2">About Us</a></li>
+                                <li><a href="{{route('front.home.trading-system')}}" class="text-decoration-none text-muted d-block mb-2">My System</a></li>
+                                <li><a href="{{route('front.home.contact')}}" class="text-decoration-none text-muted d-block">Our Service</a></li>
                             </ul>
                         </div>
                         <!-- Useful references -->
                         <div class="col-6 col-lg-6">
                             <h6 class="blocks-title mb-3">Useful references</h6>
                             <ul class="list-unstyled">
-                                <li><a href="#" class="text-decoration-none text-muted d-block mb-2">Our Performance</a></li>
-                                <li><a href="#" class="text-decoration-none text-muted d-block mb-2">How It Work</a></li>
+                                <li><a href="{{route('front.home.contact')}}" class="text-decoration-none text-muted d-block mb-2">Our Performance</a></li>
+                                <li><a href="{{route('front.home.mission')}}" class="text-decoration-none text-muted d-block mb-2">How It Work</a></li>
                                 <li><a href="#" class="text-decoration-none text-muted d-block">Research Investment</a></li>
                             </ul>
                         </div>

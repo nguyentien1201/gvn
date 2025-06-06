@@ -50,6 +50,13 @@
                                            class="btn btn-primary btn-circle btn-sm">
                                             <i class="fas fa-edit" aria-hidden="true"></i>
                                         </a>
+                                        <a href="#confirmDelete" data-toggle="modal"
+                                           onclick="removeItem(this)"
+                                           data-id="{{$subscription->id}}"
+                                           data-action="{{ route('admin.subscription.destroy', [$subscription->id])}}"
+                                           class="btn btn-danger btn-circle btn-sm remove">
+                                            <i class="fas fa-trash" aria-hidden="true"></i>
+                                        </a>
                                 </tr>
                             @empty
                                 <tr>

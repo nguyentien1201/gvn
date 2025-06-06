@@ -13,7 +13,7 @@ class CustomerController
 {
     public function myAccount(){
         $subscriptions = (new Subscription())->getMySubscription();
-
+    
         $info = User::with(['profile.UserManager'])->where('id', Auth::id())->select('id', 'email',  'name')->first();
 
         return view('frontend_v2.my_account', compact('subscriptions','info'));

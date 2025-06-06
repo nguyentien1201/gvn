@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\ConstantModel;
 use App\Models\Customer;
-use App\Models\Product;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Models\Subscription;
@@ -63,26 +62,19 @@ class SubscriptionController extends AdminController
         return redirect()->route('admin.product.index')->with('success', __('panel.success'));
     }
 
-    public function destroy(Customer $customer)
+    public function destroy($id)
     {
         try {
-            $customer->delete();
+            $subscription = Subscription::find($id);
+            if(!$subscription){
+                return redirect()->route('admin.subscription.index')->with('fail', 'Không thể xóa subscription');
+            }
+            $subscription->delete();
         } catch (\Exception $e) {
-            return redirect()->route('admin.product.index')->with('fail', __('panel.fail'));
+            return redirect()->route('admin.subscription.index')->with('fail', __('panel.fail'));
         }
-        return redirect()->route('admin.product.index')->with('success', __('panel.success'));
+        return redirect()->route('admin.subscription.index')->with('success', __('panel.success'));
     }
 
-    public function import(Request $request) {
-        $path = $request->file('select_file');
-        $customer = new CustomerImport();
-        try {
-            Excel::import($customer, $path);
-            if ($request->type_upload == 0) {
-                return back()->with('success', __('panel.success'));
-            }
-        } catch (\Exception $e) {
-            return back()->with('fail', __('panel.fail'));
-        }
-    }
+
 }
