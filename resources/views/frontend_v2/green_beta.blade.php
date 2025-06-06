@@ -81,7 +81,7 @@
                                 </table>
                     </div>
                     <div class="co-12 col-lg-6">
-                        <div style="height: 428px;"
+                        <div style="height: 470px;"
                             class="d-flex flex-column justify-content-center align-items-center chart-container">
                             <canvas id="green-beta-chart"></canvas>
                         </div>

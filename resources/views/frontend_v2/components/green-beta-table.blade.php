@@ -1,3 +1,11 @@
+@push('styles')
+<style>
+
+   .dataTables_scrollHeadInner .table {
+    margin: 0;
+   }
+</style>
+@endpush
 <section id="most_interested" class="py-5">
     <div class="container">
         <h2 class="text-center services-title pb-3 pb-lg-2">{{__('front_end.SIGNAL_DASHBOARD')}}</h2>
@@ -6,7 +14,7 @@
         </h5>
         @include('frontend_v2.components.sumary-list')
         <div class="table-responsive mt-5" style="">
-            <table id="green-beta-table" class="table table-striped table-hover">
+            <table id="green-beta-table" class="table table-striped table-hover" style="margin:none">
                 <thead>
                     <tr>
                         <th class="text-capitalize text-center text-nowrap">Signal Open</th>
@@ -158,7 +166,7 @@
                             let signalClose = rowData.signal_close;
 
                             if(signalClose == null || signalClose == '' || signalClose == undefined || signalClose == 'Hold'){
-                                signalClose = "Hold";
+                                signalClose = "HOLD";
                             }
                             if(signalClose !='' || signalClose != null){
                                 signal_close = signalClose.trim().toLowerCase();

@@ -32,7 +32,8 @@
             90% {
                 opacity: 1;
                 /* Phần tử hiển thị trong phần lớn thời gian */
-                color: black;
+                color: white;
+                border: 1px solid #fff;
                 background: #ffd966;
             }
 
