@@ -141,15 +141,15 @@
                         data-bs-target="#pills-my-profile" type="button" role="tab" aria-controls="pills-my-profile"
                         aria-selected="false">My Profile</button>
                 </li>
-                   @auth
-                    @if (Auth::user()->role_id ==2)
+                @auth
+                @if (Auth::user()->role_id ==2)
                 <li class="nav-item" role="presentation">
                     <button class="nav-link btn-tab" id="pills-user-management-tab" data-bs-toggle="pill"
                         data-bs-target="#pills-user-management" type="button" role="tab"
                         aria-controls="pills-user-management" aria-selected="false">User Management</button>
                 </li>
-                 @endif
-                    @endauth
+                @endif
+                @endauth
                 <li class="nav-item" role="presentation">
                     <button class="nav-link btn-tab" id="pills-voucher-tab" data-bs-toggle="pill"
                         data-bs-target="#pills-voucher" type="button" role="tab" aria-controls="pills-voucher"
@@ -167,21 +167,21 @@
                         <div class="col-md-2 fw-semibold pb-3">My order</div>
                         <div class="row g-3 mb-4">
                             <div class="col-md-4">
-                                <div class="card card-price p-3" data-bs-toggle="modal" data-bs-target="#planModal">
+                                <div class="card card-price p-3" data-bs-toggle="modal" data-bs-target="#planModal" data-type="alpha">
                                     <h6>Green Alpha</h6>
                                     <div class="fs-4">$2</div>
                                     <small>Basic plan /month</small>
                                 </div>
                             </div>
                             <div class="col-md-4">
-                                <div class="card card-price p-3" data-bs-toggle="modal" data-bs-target="#planModal">
+                                <div class="card card-price p-3" data-bs-toggle="modal" data-bs-target="#planModal" data-type="beta">
                                     <h6>Green Beta</h6>
                                     <div class="fs-4">$2</div>
                                     <small>Basic plan /month</small>
                                 </div>
                             </div>
                             <div class="col-md-4">
-                                <div class="card card-price p-3" data-bs-toggle="modal" data-bs-target="#planModal">
+                                <div class="card card-price p-3" data-bs-toggle="modal" data-bs-target="#planModal" data-type="greenstock">
                                     <h6>Green Stock</h6>
                                     <div class="fs-4">$2</div>
                                     <small>Basic plan /month</small>
@@ -271,20 +271,20 @@
                                             <input type="text" name="address" class="form-control" value="{{ $info->profile->address  ?? ''}}" placeholder="Enter your address">
                                         </div>
                                         @auth
-                                            @if (Auth::user()->role_id == 3)
-                                                  <div class="col-md-6">
-                                                    <label class="form-label">Quản Lý</label>
-                                                    <input type="email" name="manager" class="form-control" value="{{$info->profile->UserManager->email ?? ''}}" placeholder="Enter your email manager">
-                                                </div>
-                                            @endif
+                                        @if (Auth::user()->role_id == 3)
+                                        <div class="col-md-6">
+                                            <label class="form-label">Quản Lý</label>
+                                            <input type="email" name="manager" class="form-control" value="{{$info->profile->UserManager->email ?? ''}}" placeholder="Enter your email manager">
+                                        </div>
+                                        @endif
                                         @endauth
-                                                                        </div>
+                                    </div>
                                     <button type="submit" class="btn btn-success px-4">Save Profile</button>
                                 </form>
                             </div>
                         </div>
                     </div>
-                      @auth
+                    @auth
                     @if (Auth::user()->role_id ==2)
                     <div class="tab-pane fade pt-3" id="pills-user-management" role="tabpanel"
                         aria-labelledby="pills-user-management-tab">
@@ -392,7 +392,7 @@
                             </nav>
                         </div>
                     </div>
-                     @endif
+                    @endif
                     @endauth
                     <div class="tab-pane fade pt-3" id="pills-voucher" role="tabpanel"
                         aria-labelledby="pills-voucher-tab">
@@ -509,7 +509,7 @@
                             <div class="border rounded-4 p-4 h-100 shadow-sm">
                                 <h6 class="text-success fw-bold">Basic plan</h6>
                                 <small class="text-muted d-block mb-2">Our most popular plan.</small>
-                                <div class="fs-2 fw-bold">$2</div>
+                                <div class="fs-2 fw-bold" id="price_month">$2</div>
                                 <small class="text-muted">/month</small>
                                 <ul class="list-unstyled mt-3 text-start">
                                     <li><i class="bi bi-check-circle-fill text-success me-2"></i> Sản phẩm dùng thử</li>
@@ -517,7 +517,7 @@
                                     <li><i class="bi bi-check-circle-fill text-success me-2"></i> Sản phẩm dùng thử</li>
                                     <li><i class="bi bi-check-circle-fill text-success me-2"></i> Thời hạn 1 tháng</li>
                                 </ul>
-                                <button class="btn btn-success w-100 rounded mt-3">Buy</button>
+                                <button aria-disabled="true" onclick="return false;" style="cursor: default;  pointer-events: none;" class="btn btn-success w-100 rounded mt-3">Buy</button>
                             </div>
                         </div>
                         <!-- Lặp lại 2 card tiếp theo tương tự -->
@@ -525,7 +525,7 @@
                             <div class="border rounded-4 p-4 h-100 shadow-sm">
                                 <h6 class="text-success fw-bold">Business plan</h6>
                                 <small class="text-muted d-block mb-2">Our most popular plan.</small>
-                                <div class="fs-2 fw-bold">$10</div>
+                                <div class="fs-2 fw-bold" id="price_6month">$10</div>
                                 <small class="text-muted">/6month</small>
                                 <ul class="list-unstyled mt-3 text-start">
                                     <li><i class="bi bi-check-circle-fill text-success me-2"></i> Sản phẩm dùng thử</li>
@@ -533,14 +533,14 @@
                                     <li><i class="bi bi-check-circle-fill text-success me-2"></i> Sản phẩm dùng thử</li>
                                     <li><i class="bi bi-check-circle-fill text-success me-2"></i> Thời hạn 1 tháng</li>
                                 </ul>
-                                <button class="btn btn-success w-100 rounded mt-3">Buy</button>
+                                <a class="btn btn-success w-100 rounded mt-3" id="action_buy" >Buy</a>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="border rounded-4 p-4 h-100 shadow-sm">
                                 <h6 class="text-success fw-bold">Enterprise plan</h6>
                                 <small class="text-muted d-block mb-2">Our most popular plan.</small>
-                                <div class="fs-2 fw-bold">$20</div>
+                                <div class="fs-2 fw-bold" id="price_year">$20</div>
                                 <small class="text-muted">/year</small>
                                 <ul class="list-unstyled mt-3 text-start">
                                     <li><i class="bi bi-check-circle-fill text-success me-2"></i> Sản phẩm dùng thử</li>
@@ -548,7 +548,7 @@
                                     <li><i class="bi bi-check-circle-fill text-success me-2"></i> Sản phẩm dùng thử</li>
                                     <li><i class="bi bi-check-circle-fill text-success me-2"></i> Thời hạn 1 tháng</li>
                                 </ul>
-                                <button class="btn btn-success w-100 rounded mt-3">Buy</button>
+                                <button aria-disabled="true" onclick="return false;" style="cursor: default;  pointer-events: none;" class="btn btn-success w-100 rounded mt-3">Buy</button>
                             </div>
                         </div>
                     </div>
@@ -616,7 +616,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                   <form method="POST" action="{{ route('register') }}">
+                    <form method="POST" action="{{ route('register') }}">
                         @csrf
                         <input type="hidden" name="manager_id" value="{{ Auth::user()->id }}">
                         <div class="mb-3">
@@ -642,7 +642,7 @@
 
                             </div>
                         </div>
-                          <div class="mb-3">
+                        <div class="mb-3">
                             <label class="form-label">Password <span class="text-danger">*</span></label>
                             <div class="input-group">
                                 <input type="password" class="form-control  @error('password') is-invalid @enderror" name="password" required autocomplete="new-password"
@@ -668,14 +668,14 @@
 
                             </div>
                         </div>
-                         <div class="modal-footer d-flex justify-content-end" style="border-top: none;">
-                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
-                     <button class="btn btn-success">Register</button>
-                </div>
+                        <div class="modal-footer d-flex justify-content-end" style="border-top: none;">
+                            <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
+                            <button class="btn btn-success">Register</button>
+                        </div>
                     </form>
-                   
+
                 </div>
-                
+
             </div>
         </div>
     </div>
@@ -692,4 +692,64 @@
 
 @push('scripts')
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    const modalElement = document.getElementById('planModal');
+
+    modalElement.addEventListener('show.bs.modal', function(event) {
+        // Button hoặc element đã kích hoạt modal
+        const button = event.relatedTarget;
+
+        // Lấy data từ button
+        const type = button.getAttribute('data-type');
+        const data = @json($price_product);
+        // Set data vào modal
+        modalElement.querySelector('#price_month').textContent = `${data[type].monthly_price}`;
+        modalElement.querySelector('#price_6month').textContent = `${data[type].six_month_price}`;
+        modalElement.querySelector('#price_year').textContent = `${data[type].yearly_price}`;
+        modalElement.querySelector('#action_buy').setAttribute('data-type', 'trial');
+        modalElement.querySelector('#action_buy').setAttribute('data-product', type);
+        modalElement.querySelector('#action_buy').setAttribute('data-month',  `${data[type].six_month_price}`);
+         modalElement.querySelector('#action_buy').setAttribute('data-id', `${data[type].id}`);
+    });
+     $(document).ready(function() {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+    });
+    $(document).on('click', '#action_buy', function(e) {
+            e.preventDefault();
+            let id = $(this).data('id');
+            let type = $(this).data('type');
+            let month = $(this).data('month');
+            let product = $(this).data('product');
+            $.ajax({
+                url: "{{ route('api.buy-product') }}",
+                type: 'POST',
+                data: {
+                    id: id,
+                    type: type,
+                    month: month
+                },
+                success: function(data) {
+                    if (data.status == 'success') {
+                        alert(data.message);
+                        if(product == 'alpha') {
+                            window.open( "{{ route('front.home.green-alpha') }}", '_blank');
+                        }
+                        if(product=='beta'){
+                            window.open("{{ route('front.home.green-beta') }}", '_blank');
+                        }
+                        if(product=='greenstock'){
+                            window.open(`{{ route('front.home.green-stock') }}`, '_blank');
+                        }
+                    } else {
+                         alert(data.message);
+                    }
+                }
+            });
+        });
+</script>
 @endpush

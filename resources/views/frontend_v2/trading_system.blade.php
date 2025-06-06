@@ -248,7 +248,7 @@
                                                 </ul>
                                             </div>
                                             @if (Auth::check())
-                                                <button class="register-product btn btn-green w-75 mx-auto mt-auto"  data-product="beta"  data-id={{$price_product['beta']->id}} data-type="trial" data-month="6">Get started</button>
+                                                <button class="register-product btn btn-green w-75 mx-auto mt-auto"  data-product="beta"  data-id="{{$price_product['beta']->id}}" data-type="trial" data-month="6">Get started</button>
                                             @else
                                                 <a  class="btn btn-green w-75 mx-auto mt-auto" href="{{ route('login') }}">Get started</a>
                                             @endif
@@ -367,7 +367,7 @@
                                                     </ul>
                                                 </div>
                                                  @if (Auth::check())
-                                                <button class="register-product btn btn-green w-75 mx-auto mt-auto"  data-product="alpha"  data-id={{$price_product['alpha']->id}} data-type="trial" data-month="6">Get started</button>
+                                                <button class="register-product btn btn-green w-75 mx-auto mt-auto"  data-product="alpha"  data-id="{{$price_product['alpha']->id}}" data-type="trial" data-month="6">Get started</button>
                                             @else
                                                 <a  class="btn btn-green w-75 mx-auto mt-auto" href="{{ route('login') }}">Get started</a>
                                             @endif
@@ -403,7 +403,25 @@
                     </div>
                     <div class="tab-pane fade" id="pills-green-stock" role="tabpanel"
                         aria-labelledby="pills-green-stock-tab">
-                        <div class="container-tab-heading">
+                        <div class="tabs-green">
+                        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active btn-tab me-2" id="pills-green-stock-nas100-tab" data-bs-toggle="pill"
+                                    data-bs-target="#pills-green-stock-nas100" type="button" role="tab"
+                                    aria-controls="pills-green-stock-nas100" aria-selected="true">Green Stock Nas100</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link btn-tab" id="pills-green-stock-vnindex-tab" data-bs-toggle="pill"
+                                    data-bs-target="#pills-green-stock-vnindex" type="button" role="tab"
+                                    aria-controls="pills-green-stock-vnindex" aria-selected="false">Green Stock VNIndex</button>
+                            </li>
+                           
+                        </ul>
+                    </div>
+                    <div class="tab-content" id="pills-tabContent">
+                        <div class="tab-pane fade show active" id="pills-green-stock-nas100" role="tabpanel"
+                            aria-labelledby="pills-green-stock-nas100-tab">
+                                <div class="container-tab-heading">
                             <div class="container text-center py-5">
                                 <h2 class="mb-4">“Instead of predicting the market, let focus on finding investment
                                     opportunities.”
@@ -450,7 +468,7 @@
                                         <div class="card text-center p-4 h-100">
                                             <h5 class="card-title">Basic plan</h5>
                                             <p class="text-muted">Our most popular plan.</p>
-                                            <div class="price">${{$price_product['greenstock']['monthly_price'] ?? 0}}</div>
+                                            <div class="price">${{$price_product['greenstock-nas100']['monthly_price'] ?? 0}}</div>
                                             <p class="text-muted">/month</p>
                                             <ul class="list-unstyled text-start px-4 mb-4">
                                                 <li><i class="bi bi-check-circle-fill text-success me-2"></i> Sản phẩm dùng
@@ -475,7 +493,7 @@
                                                     <h5 class="card-title">Business plan</h5>
                                                     <p class="text-muted">Our most popular plan.</p>
                                                     <div class="price text-success">
-                                                        ${{$price_product['alpha']['six_month_price'] ?? 0}}</div>
+                                                        ${{$price_product['greenstock-nas100']['six_month_price'] ?? 0}}</div>
                                                     <p class="text-muted">/month</p>
                                                     <ul class="list-unstyled text-start px-4 mb-4">
                                                         <li><i class="bi bi-check-circle-fill text-success me-2"></i> Sản
@@ -489,7 +507,7 @@
                                                     </ul>
                                                 </div>
                                                 @if (Auth::check())
-                                                <button class="register-product btn btn-green w-75 mx-auto mt-auto"  data-product="greenstock"  data-id={{$price_product['greenstock']->id}} data-type="trial" data-month="6">Get started</button>
+                                                <button class="register-product btn btn-green w-75 mx-auto mt-auto"  data-product="greenstock-nas100"  data-id="{{$price_product['greenstock-nas100']->id}}" data-type="trial" data-month="6">Get started</button>
                                             @else
                                                 <a  class="btn btn-green w-75 mx-auto mt-auto" href="{{ route('login') }}">Get started</a>
                                             @endif
@@ -502,7 +520,7 @@
                                         <div class="card text-center p-4 h-100">
                                             <h5 class="card-title">Enterprise plan</h5>
                                             <p class="text-muted">Our most popular plan.</p>
-                                            <div class="price">${{$price_product['alpha']['yearly_price'] ?? 0}}</div>
+                                            <div class="price">${{$price_product['greenstock-nas100']['yearly_price'] ?? 0}}</div>
                                             <p class="text-muted">/year</p>
                                             <ul class="list-unstyled text-start px-4 mb-4">
                                                 <li><i class="bi bi-check-circle-fill text-success me-2"></i> Sản phẩm dùng
@@ -520,6 +538,129 @@
 
                                 </div>
                             </div>
+                        </div>
+                        </div>
+                        <div class="tab-pane fade" id="pills-green-stock-vnindex" role="tabpanel"
+                            aria-labelledby="pills-green-stock-vnindex-tab">
+                            <div class="container-tab-heading">
+                            <div class="container text-center py-5">
+                                <h2 class="mb-4">“Instead of predicting the market, let focus on finding investment
+                                    opportunities.”
+                                    <h3 class="text-success">John Templeton</h3>
+                                </h2>
+                                <div class="row align-items-center g-4 flex-column-reverse flex-md-row">
+                                    <div class="col-md-6 col-6">
+                                        <p class="text-secondary fs-6">
+                                            The GreenStock-NAS100 system automatically sorts stocks by cash flow momentum
+                                            strength and stock trends in the NAS100 index daily, provides actions for
+                                            investors to update.
+                                        </p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="banner-container mx-auto mb-4">
+                                            <img src="{{asset('images/device.png')}}" alt="GVN Banner"
+                                                class="img-fluid w-100 rounded-banner" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row align-items-center g-4 flex-column-reverse flex-md-row">
+                                    <div class="col-md-6 col-6">
+                                        <div class="banner-container mx-auto mb-4">
+                                            <img src="{{asset('images/greenstock-banner-2.png')}}" alt="GVN Banner"
+                                                class="img-fluid w-100 rounded-banner" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p class="text-secondary fs-6">
+                                            The system sorts groups of stocks with better profitability over a period of
+                                            year, quarter, or month than the overall market.
+                                        </p>
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="container py-5">
+                                <div class="row g-4 justify-content-center">
+
+                                    <!-- Basic Plan -->
+                                    <div class="col-12 col-md-4">
+                                        <div class="card text-center p-4 h-100">
+                                            <h5 class="card-title">Basic plan</h5>
+                                            <p class="text-muted">Our most popular plan.</p>
+                                            <div class="price">${{$price_product['greenstock-vnindex']['monthly_price'] ?? 0}}</div>
+                                            <p class="text-muted">/month</p>
+                                            <ul class="list-unstyled text-start px-4 mb-4">
+                                                <li><i class="bi bi-check-circle-fill text-success me-2"></i> Sản phẩm dùng
+                                                    thử</li>
+                                                <li><i class="bi bi-check-circle-fill text-success me-2"></i> Thời hạn 1 năm
+                                                </li>
+                                                <li><i class="bi bi-check-circle-fill text-success me-2"></i> Sản phẩm dùng
+                                                    thử</li>
+                                                <li><i class="bi bi-check-circle-fill text-success me-2"></i> Thời hạn 1
+                                                    tháng</li>
+                                            </ul>
+                                              <a href="#" class="btn btn-green w-75 mx-auto" aria-disabled="true" onclick="return false;" style="cursor: default;  pointer-events: none;">Get started</a>
+                                        </div>
+                                    </div>
+
+                                    <!-- Business Plan - Most Popular -->
+                                    <div class="col-12 col-md-4 d-flex position-relative">
+                                        <div class="card p-4 w-100 popular position-relative">
+                                            <div class="popular-badge">Most Popular plan</div>
+                                            <div class="card-body d-flex flex-column">
+                                                <div class="card-content text-center">
+                                                    <h5 class="card-title">Business plan</h5>
+                                                    <p class="text-muted">Our most popular plan.</p>
+                                                    <div class="price text-success">
+                                                        ${{$price_product['greenstock-vnindex']['six_month_price'] ?? 0}}</div>
+                                                    <p class="text-muted">/month</p>
+                                                    <ul class="list-unstyled text-start px-4 mb-4">
+                                                        <li><i class="bi bi-check-circle-fill text-success me-2"></i> Sản
+                                                            phẩm dùng thử</li>
+                                                        <li><i class="bi bi-check-circle-fill text-success me-2"></i> Thời
+                                                            hạn 1 năm</li>
+                                                        <li><i class="bi bi-check-circle-fill text-success me-2"></i> Sản
+                                                            phẩm dùng thử</li>
+                                                        <li><i class="bi bi-check-circle-fill text-success me-2"></i> Thời
+                                                            hạn 1 tháng</li>
+                                                    </ul>
+                                                </div>
+                                                @if (Auth::check())
+                                                <button class="register-product btn btn-green w-75 mx-auto mt-auto"  data-product="greenstock-vnindex"  data-id="{{$price_product['greenstock-vnindex']->id}}" data-type="trial" data-month="6">Get started</button>
+                                            @else
+                                                <a  class="btn btn-green w-75 mx-auto mt-auto" href="{{ route('login') }}">Get started</a>
+                                            @endif
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Enterprise Plan -->
+                                    <div class="col-12 col-md-4">
+                                        <div class="card text-center p-4 h-100">
+                                            <h5 class="card-title">Enterprise plan</h5>
+                                            <p class="text-muted">Our most popular plan.</p>
+                                            <div class="price">${{$price_product['greenstock-vnindex']['yearly_price'] ?? 0}}</div>
+                                            <p class="text-muted">/year</p>
+                                            <ul class="list-unstyled text-start px-4 mb-4">
+                                                <li><i class="bi bi-check-circle-fill text-success me-2"></i> Sản phẩm dùng
+                                                    thử</li>
+                                                <li><i class="bi bi-check-circle-fill text-success me-2"></i> Thời hạn 1 năm
+                                                </li>
+                                                <li><i class="bi bi-check-circle-fill text-success me-2"></i> Sản phẩm dùng
+                                                    thử</li>
+                                                <li><i class="bi bi-check-circle-fill text-success me-2"></i> Thời hạn 1
+                                                    tháng</li>
+                                            </ul>
+                                              <a href="#" class="btn btn-green w-75 mx-auto" aria-disabled="true" onclick="return false;" style="cursor: default;  pointer-events: none;">Get started</a>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        </div>
                         </div>
                     </div>
                 </div>
@@ -590,8 +731,11 @@
                         if(product=='beta'){
                             window.open("{{ route('front.home.green-beta') }}", '_blank');
                         }
-                        if(product=='greenstock'){
+                        if(product=='greenstock-nas100'){
                             window.open(`{{ route('front.home.green-stock') }}`, '_blank');
+                        }
+                        if(product=='greenstock-vnindex'){
+                            window.open(`{{ route('front.home.vnindex') }}`, '_blank');
                         }
                     } else {
                          alert(data.message);
