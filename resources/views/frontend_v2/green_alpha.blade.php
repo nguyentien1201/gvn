@@ -122,7 +122,7 @@
                                         </table>
                     </div>
                     <div class="co-12 col-lg-6">
-                        <div style="height: 428px;"
+                        <div style="height: 470px;"
                             class="d-flex flex-column justify-content-center align-items-center chart-container">
                             <canvas id="lineChart"></canvas>
                         </div>
@@ -481,7 +481,7 @@ $.ajax({
             },
             scrollCollapse: true,
             autoWidth: false,
-            scrollY: '400px',
+              scrollY: '280px',
             columns: [
                 { data: 'signal_open' },
                 { data: 'price_open', title: 'Price Open' },
@@ -494,10 +494,20 @@ $.ajax({
             columnDefs: [
                 {
                     targets: 0, // Index of the 'code' column
-                    createdCell: function (td, cellData, rowData, row, col) {
-                        $(td).css('font-weight', 'bold');
-
-                    },
+                   createdCell: function (td, cellData, rowData, row, col) {
+                        if(rowData.signal_open =="") return false
+                            let signalOpenText = '';
+                            let signalOpenClass = '';
+                            if(rowData.signal_open === "SELL") {
+                                signalOpenText = "SELL";
+                                signalOpenClass = "sell";
+                            } else {
+                                signalOpenText = "BUY";
+                                signalOpenClass = "buy";
+                            }
+                            $(td).html(`<span class="text-capitalize signal-open ${signalOpenClass}">${signalOpenText}</span>`);
+                            $(td).addClass('text-center');
+                    }
                 },
                 {
                     targets: 2, // Index of the open_time column
