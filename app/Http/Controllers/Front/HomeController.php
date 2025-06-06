@@ -161,13 +161,13 @@ class HomeController
         }
 
         $signals = (new GreenBeta())->getListSignalsByGroup();
-        if(!empty($subscription) && $subscription['is_trial'] == 1){
-            foreach ($signals as $key => $value) {
-                $value['open_time'] = 'fas fa-lock';
-                $value['price_open'] = 'fas fa-lock';
-                $signals[$key] = $value;
-            }
-        }
+        // if(!empty($subscription) && $subscription['is_trial'] == 1){
+        //     foreach ($signals as $key => $value) {
+        //         $value['open_time'] = 'fas fa-lock';
+        //         $value['price_open'] = 'fas fa-lock';
+        //         $signals[$key] = $value;
+        //     }
+        // }
 
         $data_chart = (new GreenBeta())->getDataChartSignals();
         $code = $data_chart->pluck('code_name')->toArray();
@@ -302,14 +302,14 @@ $result = [
             return redirect()->route('front.home.trading-system');
         }
         $signals = (new GreenAlpha())->getListSignalsByGroup();
-        if(!empty($subscription) && $subscription['is_trial'] == 1 && $role_id != 1){
-            foreach ($signals as $key => $value) {
-                $value['open_time'] = 'fas fa-lock';
-                $value['price_open'] = 'fas fa-lock';
-                $signals[$key] = $value;
+        // if(!empty($subscription) && $subscription['is_trial'] == 1 && $role_id != 1){
+        //     foreach ($signals as $key => $value) {
+        //         $value['open_time'] = 'fas fa-lock';
+        //         $value['price_open'] = 'fas fa-lock';
+        //         $signals[$key] = $value;
 
-            }
-        }
+        //     }
+        // }
 
         $data_chart = (new GreenAlpha())->getDataChartSignals($current_version);
         $dataChartProfit = (new GreenAlpha())->getCurrentMonthProfitSum($current_version);

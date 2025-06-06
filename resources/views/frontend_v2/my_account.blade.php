@@ -729,6 +729,7 @@
             // Lấy data từ button
             const type = button.getAttribute('data-type');
             const data = @json($price_product);
+            console.log(data);
             // Set data vào modal
             modalElement.querySelector('#price_month').textContent = `${data[type].monthly_price}`;
             modalElement.querySelector('#price_6month').textContent = `${data[type].six_month_price}`;
