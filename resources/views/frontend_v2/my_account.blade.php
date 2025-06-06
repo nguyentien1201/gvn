@@ -442,61 +442,11 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>HP:0003456</td>
-                                        <td><span class="status-unused">Unused</span></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td>2025-05-21 10:21:13</td>
-                                        <td>
-                                            <i class="action-icon bi bi-files"></i>
-                                            <i class="action-icon delete bi bi-trash ms-2"></i>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>HP:0012461</td>
-                                        <td><span class="status-used">Used</span></td>
-                                        <td>Kathryn Murphy</td>
-                                        <td>2025-05-21 10:21:13</td>
-                                        <td>2025-05-21 10:21:13</td>
-                                        <td>
-                                            <i class="action-icon bi bi-files"></i>
-                                            <i class="action-icon delete bi bi-trash ms-2"></i>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>HP:0012461</td>
-                                        <td><span class="status-used">Used</span></td>
-                                        <td>Kathryn Murphy</td>
-                                        <td>2025-05-21 10:21:13</td>
-                                        <td>2025-05-21 10:21:13</td>
-                                        <td>
-                                            <i class="action-icon bi bi-files"></i>
-                                            <i class="action-icon delete bi bi-trash ms-2"></i>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>HP:0012461</td>
-                                        <td><span class="status-used">Used</span></td>
-                                        <td>Kathryn Murphy</td>
-                                        <td>2025-05-21 10:21:13</td>
-                                        <td>2025-05-21 10:21:13</td>
-                                        <td>
-                                            <i class="action-icon bi bi-files"></i>
-                                            <i class="action-icon delete bi bi-trash ms-2"></i>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>HP:0012461</td>
-                                        <td><span class="status-used">Used</span></td>
-                                        <td>Kathryn Murphy</td>
-                                        <td>2025-05-21 10:21:13</td>
-                                        <td>2025-05-21 10:21:13</td>
-                                        <td>
-                                            <i class="action-icon bi bi-files"></i>
-                                            <i class="action-icon delete bi bi-trash ms-2"></i>
-                                        </td>
-                                    </tr>
+                                     <tr>
+                                    <td colspan="6" class="text-center">
+                                        {{ __('panel.nodata') }}
+                                    </td>
+                                </tr>
                                     <!-- thêm các hàng khác -->
                                 </tbody>
                             </table>
