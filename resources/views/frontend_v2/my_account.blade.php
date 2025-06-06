@@ -5,7 +5,7 @@
     <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}">
 
     <link rel="stylesheet" href="{{ asset('css/green_stock.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
     <style>
         .table>tbody>tr:nth-of-type(odd) {
             background-color: #f9f9f9;
