@@ -19,7 +19,28 @@
     #popupDataTable_wrapper .dt-scroll-head{
    display: none !important;
 }
+.blink-effect {
+    animation: blink 5s infinite; /* Hiệu ứng chớp nháy, lặp lại mãi mãi */
+}
 
+               @keyframes blink {
+
+            0%,
+            90% {
+                opacity: 1;
+                /* Phần tử hiển thị trong phần lớn thời gian */
+                color: white;
+                border: 1px solid #fff;
+                background: #ffd966;
+            }
+
+            95%,
+            100% {
+                opacity: 0;
+                /* Chớp nháy nhanh trong khoảng thời gian ngắn */
+                background-color: #ffd966;
+            }
+        }
 
 </style>
 @endpush

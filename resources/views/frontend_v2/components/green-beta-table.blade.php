@@ -39,8 +39,9 @@
 @push('scripts')
     <script>
         $(document).ready(function () {
+
             const logoBaseUrl = "{{ asset('images/logo') }}"; // trả ra đường dẫn base
-            $('#green-beta-table').DataTable({
+             var indices = $('#green-beta-table').DataTable({
                 responsive: false,
                 autoWidth: false,
                 paging: false,
@@ -200,6 +201,25 @@
                 $(row).attr('data-id', data.id_code);
             }
             });
+                   function highlightColumn(columnIndex) {
+                // Add a class to all cells in the specified column
+
+                var columnNodes = indices.column(8).nodes().to$();
+
+                // Extract text content from each cell in the column
+                var columnValues = columnNodes.map(function () {
+                    let value = $(this).text();
+                    if (value == "HOLD") {
+                        $(this).find('span').addClass('blink-box blink-effect');
+                    }
+                    // or .html() if you want to get the HTML content
+                }).get();  //
+            }
+
+            // Delay for 5 seconds, then highlight the 3rd column (index starts from 0)
+            setTimeout(function () {
+                highlightColumn(8);  // Highlight the third column (index 2)
+            }, 5000);
         });
     </script>
 @endpush
