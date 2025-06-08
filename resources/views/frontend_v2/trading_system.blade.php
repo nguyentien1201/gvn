@@ -182,7 +182,7 @@
 
                             </div>
 
-                            <div class="noto-sans-jp-font-family my-3 text-muted mb-3" style=" margin: 0 auto;">
+                            <div class="des-title my-3 text-muted mb-3" style=" margin: 0 auto;font-size:16px">
                                 Identifying the correct trend is the golden key that opens the door to success in trading
                                 and accounts for up to 70% of the chance of winning. Getting the right market trend is a key
                                 factor for every investor in the financial market. GVN’s Green Beta Robot is a combined
@@ -191,7 +191,7 @@
                                 70-80%, Green Beta Robot is a great assistant for every investor.
                             </div>
 
-                            <div class=" noto-sans-jp-font-family my-3 fw-medium" style=" margin: 0 auto;">
+                            <div class=" des-title my-3 fw-medium" style=" margin: 0 auto;font-size:16px">
                                 Green Beta is able to work on different 20 indicators in Stock, Commodity and Cryptocurrency
                                 markets, giving investors a holistic view of the changing trends of shark’s money flow in
                                 the global market.
@@ -415,7 +415,7 @@
                                     data-bs-target="#pills-green-stock-vnindex" type="button" role="tab"
                                     aria-controls="pills-green-stock-vnindex" aria-selected="false">Green Stock-VNindex</button>
                             </li>
-                           
+
                         </ul>
                     </div>
                     <div class="tab-content" id="pills-tabContent">
