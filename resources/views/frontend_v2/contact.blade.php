@@ -158,5 +158,8 @@
                 .bindPopup('Lô CD, Chung cư Bình Khánh')
                 .openPopup();
         });
+      function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-09NXCQGTBV');
     </script>
 @endpush

@@ -8,7 +8,12 @@
     <link rel="stylesheet" href="{{ asset('css/mission.css') }}">
 @endpush
 @push('scripts')
+   <script>
+      function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
+  gtag('config', 'G-09NXCQGTBV');
+   </script>
 @endpush
 
 @section('content')
