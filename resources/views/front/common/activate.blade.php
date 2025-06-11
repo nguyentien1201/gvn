@@ -7,7 +7,14 @@
 </head>
 <body>
     <h1>Hello, {{ $user->name }}</h1>
-    <p>Thank you for registering. Please activate your account by clicking the link below:</p>
-    <a href="{{ $url }}">Activate Account</a>
+    @if ( $user->role_id == \App\Models\ConstantModel::ROLES['personal'] )
+        <p>Thank you for registering. Please activate your account by clicking the link below:</p>
+        <a href="{{ $url }}">Activate Account</a>
+
+    @endif
+   @if ( $user->role_id == \App\Models\ConstantModel::ROLES['company'] )
+        <p>Thank you for registering. Waiting admin appprove.</p>
+
+    @endif
 </body>
 </html>

@@ -13,7 +13,7 @@ class CustomerController
 {
     public function myAccount(){
         $subscriptions = (new Subscription())->getMySubscription();
-    
+
         $info = User::with(['profile.UserManager'])->where('id', Auth::id())->select('id', 'email',  'name')->first();
         $product = Product::all();
 
@@ -22,8 +22,9 @@ class CustomerController
             $system = $value->system ?? '';
             $price_product[$system] = $value;
         }
-        
-        return view('frontend_v2.my_account', compact('subscriptions','info','price_product'));
+        $id = Auth::id();
+        $customers = (new User())->getListUser($id);
+        return view('frontend_v2.my_account', compact('subscriptions','info','price_product','customers'));
     }
     public function update( Profile $profile ,Request $request)
     {

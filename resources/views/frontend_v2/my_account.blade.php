@@ -319,6 +319,8 @@
                                         <button class="btn btn-success ms-auto" data-bs-toggle="modal"
                                             data-bs-target="#addUserModal">Add User</button>
                                     </div>
+
+
                                     <div class="table-responsive">
                                         <table class="table table-hover table-bordered">
                                             <thead class="table-light">
@@ -332,86 +334,34 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>Ronald Richards</td>
-                                                    <td>kenzi.lawson@example.com</td>
-                                                    <td>(629) 555-0129</td>
-                                                    <td>2020-05-05 10:21:13</td>
-                                                    <td><i class="bi bi-trash text-danger" role="button"></i></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>Ronald Richards</td>
-                                                    <td>kenzi.lawson@example.com</td>
-                                                    <td>(629) 555-0129</td>
-                                                    <td>2020-05-05 10:21:13</td>
-                                                    <td><i class="bi bi-trash text-danger" role="button"></i></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>Ronald Richards</td>
-                                                    <td>kenzi.lawson@example.com</td>
-                                                    <td>(629) 555-0129</td>
-                                                    <td>2020-05-05 10:21:13</td>
-                                                    <td><i class="bi bi-trash text-danger" role="button"></i></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>Ronald Richards</td>
-                                                    <td>kenzi.lawson@example.com</td>
-                                                    <td>(629) 555-0129</td>
-                                                    <td>2020-05-05 10:21:13</td>
-                                                    <td><i class="bi bi-trash text-danger" role="button"></i></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>Ronald Richards</td>
-                                                    <td>kenzi.lawson@example.com</td>
-                                                    <td>(629) 555-0129</td>
-                                                    <td>2020-05-05 10:21:13</td>
-                                                    <td><i class="bi bi-trash text-danger" role="button"></i></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>Ronald Richards</td>
-                                                    <td>kenzi.lawson@example.com</td>
-                                                    <td>(629) 555-0129</td>
-                                                    <td>2020-05-05 10:21:13</td>
-                                                    <td><i class="bi bi-trash text-danger" role="button"></i></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>Ronald Richards</td>
-                                                    <td>kenzi.lawson@example.com</td>
-                                                    <td>(629) 555-0129</td>
-                                                    <td>2020-05-05 10:21:13</td>
-                                                    <td><i class="bi bi-trash text-danger" role="button"></i></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>Ronald Richards</td>
-                                                    <td>kenzi.lawson@example.com</td>
-                                                    <td>(629) 555-0129</td>
-                                                    <td>2020-05-05 10:21:13</td>
-                                                    <td><i class="bi bi-trash text-danger" role="button"></i></td>
-                                                </tr>
-                                                <!-- Thêm các dòng khác ở đây tương tự -->
+                                 @forelse($customers as $idx => $customer)
+                                <tr>
+                                    <td width="5%" class="text-center">{{$idx + 1}}</td>
+                                    <td width="15%">{{$customer->name}}</td>
+                                    <td width="15%">{{$customer->email}}</td>
+                                    <td width="10%">{{$customer->profile->phone ?? ''}}</td>
+                                     <td width="10%">{{$customer->profile->address ?? ''}}</td>
+                                    <td width="10%" class="text-center text-nowrap">
+                                        <a href="{{ route('admin.users.edit', [$customer->profile->user_id ?? '']) }}"
+                                           class="btn btn-primary btn-circle btn-sm">
+                                            <i class="fas fa-edit" aria-hidden="true"></i>
+                                        </a>
+
+
+                                    </td>
+                                </tr>
+                            @empty
+                                <tr>
+                                    <td colspan="8" class="text-center">
+                                        {{ __('panel.nodata') }}
+                                    </td>
+                                </tr>
+                            @endforelse
                                             </tbody>
                                         </table>
                                     </div>
                                     <div class="d-flex justify-content-between align-items-center mt-2">
-                                        <div class="text-muted">Show 1–10 items</div>
-                                        <nav>
-                                            <ul class="pagination mb-0">
-                                                <li class="btn-success page-item disabled"><a class="page-link" href="#">«</a></li>
-                                                <li class="btn-success page-item active"><a class="page-link" href="#">1</a></li>
-                                                <li class="btn-success page-item"><a class="page-link" href="#">2</a></li>
-                                                <li class="page-item disabled"><span class="page-link">...</span></li>
-                                                <li class="page-item"><a class="page-link" href="#">10</a></li>
-                                                <li class="page-item"><a class="page-link" href="#">»</a></li>
-                                            </ul>
-                                        </nav>
+                                        {{ $customers->links() }}
                                     </div>
                                 </div>
                             @endif

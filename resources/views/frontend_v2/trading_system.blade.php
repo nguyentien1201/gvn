@@ -317,7 +317,6 @@
 
                             </div>
                             <div class="container my-5">
-                                <img src="{{ asset('images/hisstory-alpha.png') }}" alt="Trading System" class="img-fluid">
                                 <img src="{{ asset('images/profit-month.png') }}" alt="Trading System" class="img-fluid" style="width: 100%; ">
                             </div>
                             <div class="container py-5">

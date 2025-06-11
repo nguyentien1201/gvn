@@ -48,9 +48,13 @@ class User extends Authenticatable
     }
     public function getListUser($id)
     {
-        $users = User::with('profile')->whereHas('profile', function ($query) use ($id) {
-            $query->where('manager_id', $id);
-        })->get();
+        $users = User::with('profile')
+            ->whereHas('profile', function ($query) use ($id) {
+                $query->where('manager_id', $id);
+            })
+            ->paginate(10); // <-- paging here
+
         return $users;
     }
+
 }
