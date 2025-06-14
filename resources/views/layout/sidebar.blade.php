@@ -34,23 +34,15 @@
                 @endif
                 @if(Auth::user()->role_id == \App\Models\ConstantModel::ROLES['admin'])
                         <li class="nav-item">
-                            <a href="{{route('admin.mst-stock.index')}}"
-                               class="nav-link @if(!empty($path) && $path =='mst-stock') active @endif">
+                            <a href="{{route('admin.approve-account.index')}}"
+                               class="nav-link @if(!empty($path) && $path =='approve-account') active @endif">
                                 <i class="nav-icon far fa-user"></i>
                                 <p>
-                                    {{__('panel.stock_free')}}
+                                    Aprrove Account
                                 </p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="{{route('admin.freesignal.index')}}"
-                            class="nav-link @if(!empty($path) && $path =='freesignal') active @endif">
-                                <i class="nav-icon far fa-user"></i>
-                                <p>
-                                    {{__('panel.freesignal')}}
-                                </p>
-                            </a>
-                        </li>
+                       
                         <li class="nav-item">
                             <a href="{{route('admin.green-beta.index')}}"
                                class="nav-link @if(!empty($path) && $path =='green-beta') active @endif">
@@ -130,7 +122,7 @@
                            class="nav-link @if(!empty($routeName) && strpos($routeName, 'customers') != false) active @endif">
                             <i class="nav-icon fas fa-users"></i>
                             <p>
-                                {{__('panel.customer')}}
+                                Company Account
                             </p>
                         </a>
                     </li>

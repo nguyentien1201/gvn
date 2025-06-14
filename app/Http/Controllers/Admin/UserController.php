@@ -50,6 +50,7 @@ class UserController extends AdminController
 
     public function update( $id,Request $request): \Illuminate\Http\RedirectResponse
     {
+        $approve = $request->approve ?? '';
         $user = User::find($id);
         if(!$user){
             return redirect()->route('admin.users.index')->with('fail', __('panel.fail'));
@@ -63,7 +64,12 @@ class UserController extends AdminController
         } catch (\Exception $e) {
             return redirect()->route('admin.users.index')->with('fail', __('panel.fail'));
         }
-        return redirect()->route('admin.users.index')->with('success', __('panel.success'));
+        if( $approve == 'approve') {
+            return redirect()->route('admin.approve-account.index')->with('success', __('panel.success'));
+        } else {
+            return redirect()->route('admin.users.index')->with('success', __('panel.success'));
+        }
+        
     }
 
     public function destroy( $id)

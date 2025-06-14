@@ -56,5 +56,10 @@ class User extends Authenticatable
 
         return $users;
     }
-
+    public function getListActive()
+    {
+        return $this->where('role_id', ConstantModel::ROLES['company'])->where('is_active',0)
+            ->orderBy('created_at', 'desc')
+            ->paginate(10);
+    }
 }
