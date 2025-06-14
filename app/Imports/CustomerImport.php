@@ -2,7 +2,7 @@
 
 namespace App\Imports;
 
-use App\Models\Customer;
+use App\Models\Users;
 use Illuminate\Support\Collection;
 use Maatwebsite\Excel\Concerns\ToCollection;
 use Maatwebsite\Excel\Concerns\WithBatchInserts;

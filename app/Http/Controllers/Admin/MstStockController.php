@@ -6,7 +6,7 @@ use App\Http\Requests\MstStock\StoreMstStockRequest;
 use App\Http\Requests\MstStock\UpdateMstStockRequest;
 use App\Imports\CustomerImport;
 use App\Models\ConstantModel;
-use App\Models\Customer;
+use App\Models\Users;
 use App\Models\GreenBeta;
 use App\Models\MstStock;
 use App\Models\SignalFree;

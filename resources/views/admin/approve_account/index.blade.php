@@ -40,14 +40,14 @@
                                     <a href="#confirmApprove"
                                             onclick="approveUser(this)"
                                             data-id="{{$customer->id}}"
-                                            data-action="{{ route('admin.users.update', [$customer->id])}}"
+                                            data-action="{{ route('admin.customers.update', [$customer->id])}}"
                                             data-text-confirm="Do you want approve user ?"
                                             data-data='{"is_active": 1}'
                                             class="btn btn-danger btn-circle btn-sm remove"
                                             class="btn btn-primary btn-circle btn-sm">
                                             <i class="fas fa-user-check" aria-hidden="true"></i>
                                         </a>
-                                        <a href="{{ route('admin.users.edit', [$customer->id]) }}"
+                                        <a href="{{ route('admin.customers.edit', [$customer->id]) }}"
                                            class="btn btn-primary btn-circle btn-sm">
                                             <i class="fas fa-edit" aria-hidden="true"></i>
                                         </a>

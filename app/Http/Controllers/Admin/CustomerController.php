@@ -33,35 +33,53 @@ class CustomerController extends AdminController
         return view('admin.customers.create');
     }
 
-    public function store(StoreCustomerRequest $request)
+    public function store(StoreUserRequest $request): \Illuminate\Http\RedirectResponse
     {
-        $customer = new Customer();
-        $customer->fill($request->all());
-        try {
-            $customer->save();
-        } catch (\Exception $e) {
-            return redirect()->route('admin.customers.index')->with('fail', __('panel.fail'));
+        $user = new User();
+        $user->fill(!empty($request->password) ? $request->all() : $request->except('password'));
+        if (!empty($request->password)) {
+            $user->password = Hash::make($request->password);
         }
-        return redirect()->route('admin.customers.index')->with('success', __('panel.success'));
+        try {
+            $user->save();
+        } catch (\Exception $e) {
+            return redirect()->route('admin.users.index')->with('fail', __('panel.fail'));
+        }
+        return redirect()->route('admin.users.index')->with('success', __('panel.success'));
     }
 
-    public function edit(Customer $customer)
+    public function edit($id)
     {
+        $customer = User::find($id);
+        $roles = ConstantModel::ROLES;
         return view('admin.customers.edit', compact('customer'));
     }
 
-    public function update(Customer $customer, UpdateCustomerRequest $request)
+   public function update( $id,Request $request): \Illuminate\Http\RedirectResponse
     {
-        $customer->fill($request->all());
-        try {
-            $customer->save();
-        } catch (\Exception $e) {
-            return redirect()->route('admin.customers.index')->with('fail', __('panel.fail'));
+        $approve = $request->approve ?? '';
+        $user = User::find($id);
+        if(!$user){
+            return redirect()->route('admin.users.index')->with('fail', __('panel.fail'));
         }
-        return redirect()->route('admin.customers.index')->with('success', __('panel.success'));
+        $user->fill(!empty($request->password) ? $request->all() : $request->except('password'));
+        if (!empty($request->password)) {
+            $user->password = Hash::make($request->password);
+        }
+        try {
+            $user->save();
+        } catch (\Exception $e) {
+            return redirect()->route('admin.users.index')->with('fail', __('panel.fail'));
+        }
+        if( $approve == 'approve') {
+            return redirect()->route('admin.approve-account.index')->with('success', __('panel.success'));
+        } else {
+            return redirect()->route('admin.customers.index')->with('success', __('panel.success'));
+        }
+        
     }
 
-    public function destroy(Customer $customer)
+    public function destroy(User $customer)
     {
         try {
             $customer->delete();
@@ -71,16 +89,16 @@ class CustomerController extends AdminController
         return redirect()->route('admin.customers.index')->with('success', __('panel.success'));
     }
 
-    public function import(Request $request) {
-        $path = $request->file('select_file');
-        $customer = new CustomerImport();
-        try {
-            Excel::import($customer, $path);
-            if ($request->type_upload == 0) {
-                return back()->with('success', __('panel.success'));
-            }
-        } catch (\Exception $e) {
-            return back()->with('fail', __('panel.fail'));
-        }
-    }
+    // public function import(Request $request) {
+    //     $path = $request->file('select_file');
+    //     $customer = new CustomerImport();
+    //     try {
+    //         Excel::import($customer, $path);
+    //         if ($request->type_upload == 0) {
+    //             return back()->with('success', __('panel.success'));
+    //         }
+    //     } catch (\Exception $e) {
+    //         return back()->with('fail', __('panel.fail'));
+    //     }
+    // }
 }
