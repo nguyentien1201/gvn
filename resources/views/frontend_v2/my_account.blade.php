@@ -438,7 +438,7 @@
                                     </ul>
                                     <button aria-disabled="true" onclick="return false;"
                                         style="cursor: default;  pointer-events: none;"
-                                        class="btn btn-success w-100 rounded mt-3">Buy</button>
+                                        class="btn btn-success w-100 rounded mt-3" >Buy</button>
                                 </div>
                             </div>
                             <!-- Lặp lại 2 card tiếp theo tương tự -->
@@ -454,7 +454,7 @@
                                         <li><i class="bi bi-check-circle-fill text-success me-2"></i> Sản phẩm dùng thử</li>
                                         <li><i class="bi bi-check-circle-fill text-success me-2"></i> Thời hạn 1 tháng</li>
                                     </ul>
-                                    <a class="btn btn-success w-100 rounded mt-3" id="action_buy">Buy</a>
+                                    <a class="btn btn-success w-100 rounded mt-3" id="action_buy" data-month="6">Buy</a>
                                 </div>
                             </div>
                             <div class="col-md-4">
@@ -641,7 +641,6 @@
             modalElement.querySelector('#price_year').textContent = `${data[type].yearly_price}`;
             modalElement.querySelector('#action_buy').setAttribute('data-type', 'trial');
             modalElement.querySelector('#action_buy').setAttribute('data-product', type);
-            modalElement.querySelector('#action_buy').setAttribute('data-month', `${data[type].six_month_price}`);
             modalElement.querySelector('#action_buy').setAttribute('data-id', `${data[type].id}`);
         });
         $(document).ready(function () {

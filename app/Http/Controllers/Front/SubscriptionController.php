@@ -16,8 +16,9 @@ class SubscriptionController
             'id' => 'required|exists:products,id',
         ]);
         if($request->month !=6) {
+
             \Log::info('User ' . Auth::id() . ' is trying to subscribe with month: ' . $request->month);
-            return redirect()->route('logout');
+             return ['status' => 'error', 'message' => 'Hệ thông chỉ cho phép dùng thử gói 6 tháng'];
         }
         $product = Product::find($request->id)->toArray();
         $data = [

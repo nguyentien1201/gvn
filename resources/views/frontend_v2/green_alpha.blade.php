@@ -88,7 +88,7 @@
                                 <div class="col-md-12 text-center m-auto">
                                 <div class="container-chart">
                                     <canvas id="myChart" style="width:100%"
-                                        height="230"></canvas>
+                                        height="260"></canvas>
                                 </div>
                                 </div>
                             </div>

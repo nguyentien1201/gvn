@@ -214,12 +214,9 @@
                                         <ul class="list-unstyled text-start px-4 mb-4">
                                             <li><i class="bi bi-check-circle-fill text-success me-2"></i> Sản phẩm dùng thử
                                             </li>
-                                            <li><i class="bi bi-check-circle-fill text-success me-2"></i> Thời hạn 1 năm
+                                            <li><i class="bi bi-check-circle-fill text-success me-2"></i>Trải nghiệm 1 tháng
                                             </li>
-                                            <li><i class="bi bi-check-circle-fill text-success me-2"></i> Sản phẩm dùng thử
-                                            </li>
-                                            <li><i class="bi bi-check-circle-fill text-success me-2"></i> Thời hạn 1 tháng
-                                            </li>
+
                                         </ul>
                                         <a aria-disabled="true" onclick="return false;" style="cursor: default;  pointer-events: none;" class="btn btn-green w-75 mx-auto">Get started</a>
                                     </div>
@@ -239,12 +236,8 @@
                                                 <ul class="list-unstyled text-start px-4 mb-4">
                                                     <li><i class="bi bi-check-circle-fill text-success me-2"></i> Sản phẩm
                                                         dùng thử</li>
-                                                    <li><i class="bi bi-check-circle-fill text-success me-2"></i> Thời hạn 1
-                                                        năm</li>
-                                                    <li><i class="bi bi-check-circle-fill text-success me-2"></i> Sản phẩm
-                                                        dùng thử</li>
-                                                    <li><i class="bi bi-check-circle-fill text-success me-2"></i> Thời hạn 1
-                                                        tháng</li>
+                                                    <li><i class="bi bi-check-circle-fill text-success me-2"></i> Trải nghiệm 6 tháng</li>
+
                                                 </ul>
                                             </div>
                                             @if (Auth::check())
@@ -267,12 +260,9 @@
                                         <ul class="list-unstyled text-start px-4 mb-4">
                                             <li><i class="bi bi-check-circle-fill text-success me-2"></i> Sản phẩm dùng thử
                                             </li>
-                                            <li><i class="bi bi-check-circle-fill text-success me-2"></i> Thời hạn 1 năm
+                                            <li><i class="bi bi-check-circle-fill text-success me-2"></i> TTrải nghiệm 1 năm
                                             </li>
-                                            <li><i class="bi bi-check-circle-fill text-success me-2"></i> Sản phẩm dùng thử
-                                            </li>
-                                            <li><i class="bi bi-check-circle-fill text-success me-2"></i> Thời hạn 1 tháng
-                                            </li>
+
                                         </ul>
                                         <a href="#" class="btn btn-green w-75 mx-auto" aria-disabled="true" onclick="return false;" style="cursor: default;  pointer-events: none;">Get started</a>
                                     </div>
@@ -332,12 +322,9 @@
                                             <ul class="list-unstyled text-start px-4 mb-4">
                                                 <li><i class="bi bi-check-circle-fill text-success me-2"></i> Sản phẩm dùng
                                                     thử</li>
-                                                <li><i class="bi bi-check-circle-fill text-success me-2"></i> Thời hạn 1 năm
+                                                <li><i class="bi bi-check-circle-fill text-success me-2"></i> Trải nghiệm 1 tháng
                                                 </li>
-                                                <li><i class="bi bi-check-circle-fill text-success me-2"></i> Sản phẩm dùng
-                                                    thử</li>
-                                                <li><i class="bi bi-check-circle-fill text-success me-2"></i> Thời hạn 1
-                                                    tháng</li>
+
                                             </ul>
                                               <a href="#" class="btn btn-green w-75 mx-auto" aria-disabled="true" onclick="return false;" style="cursor: default;  pointer-events: none;">Get started</a>
                                         </div>
@@ -357,12 +344,8 @@
                                                     <ul class="list-unstyled text-start px-4 mb-4">
                                                         <li><i class="bi bi-check-circle-fill text-success me-2"></i> Sản
                                                             phẩm dùng thử</li>
-                                                        <li><i class="bi bi-check-circle-fill text-success me-2"></i> Thời
-                                                            hạn 1 năm</li>
-                                                        <li><i class="bi bi-check-circle-fill text-success me-2"></i> Sản
-                                                            phẩm dùng thử</li>
-                                                        <li><i class="bi bi-check-circle-fill text-success me-2"></i> Thời
-                                                            hạn 1 tháng</li>
+                                                        <li><i class="bi bi-check-circle-fill text-success me-2"></i> Trải nghiệm 6 tháng</li>
+
                                                     </ul>
                                                 </div>
                                                  @if (Auth::check())
@@ -384,12 +367,9 @@
                                             <ul class="list-unstyled text-start px-4 mb-4">
                                                 <li><i class="bi bi-check-circle-fill text-success me-2"></i> Sản phẩm dùng
                                                     thử</li>
-                                                <li><i class="bi bi-check-circle-fill text-success me-2"></i> Thời hạn 1 năm
+                                                <li><i class="bi bi-check-circle-fill text-success me-2"></i>Trải nghiệm 6 tháng
                                                 </li>
-                                                <li><i class="bi bi-check-circle-fill text-success me-2"></i> Sản phẩm dùng
-                                                    thử</li>
-                                                <li><i class="bi bi-check-circle-fill text-success me-2"></i> Thời hạn 1
-                                                    tháng</li>
+
                                             </ul>
                                              <a href="#" class="btn btn-green w-75 mx-auto" aria-disabled="true" onclick="return false;" style="cursor: default;  pointer-events: none;">Get started</a>
                                         </div>
@@ -472,12 +452,9 @@
                                             <ul class="list-unstyled text-start px-4 mb-4">
                                                 <li><i class="bi bi-check-circle-fill text-success me-2"></i> Sản phẩm dùng
                                                     thử</li>
-                                                <li><i class="bi bi-check-circle-fill text-success me-2"></i> Thời hạn 1 năm
+                                                <li><i class="bi bi-check-circle-fill text-success me-2"></i>Trải nghiệm 1 tháng
                                                 </li>
-                                                <li><i class="bi bi-check-circle-fill text-success me-2"></i> Sản phẩm dùng
-                                                    thử</li>
-                                                <li><i class="bi bi-check-circle-fill text-success me-2"></i> Thời hạn 1
-                                                    tháng</li>
+
                                             </ul>
                                               <a href="#" class="btn btn-green w-75 mx-auto" aria-disabled="true" onclick="return false;" style="cursor: default;  pointer-events: none;">Get started</a>
                                         </div>
@@ -497,12 +474,8 @@
                                                     <ul class="list-unstyled text-start px-4 mb-4">
                                                         <li><i class="bi bi-check-circle-fill text-success me-2"></i> Sản
                                                             phẩm dùng thử</li>
-                                                        <li><i class="bi bi-check-circle-fill text-success me-2"></i> Thời
-                                                            hạn 1 năm</li>
-                                                        <li><i class="bi bi-check-circle-fill text-success me-2"></i> Sản
-                                                            phẩm dùng thử</li>
-                                                        <li><i class="bi bi-check-circle-fill text-success me-2"></i> Thời
-                                                            hạn 1 tháng</li>
+                                                        <li><i class="bi bi-check-circle-fill text-success me-2"></i> Trải nghiệm 6 tháng</li>
+
                                                     </ul>
                                                 </div>
                                                 @if (Auth::check())
@@ -524,12 +497,9 @@
                                             <ul class="list-unstyled text-start px-4 mb-4">
                                                 <li><i class="bi bi-check-circle-fill text-success me-2"></i> Sản phẩm dùng
                                                     thử</li>
-                                                <li><i class="bi bi-check-circle-fill text-success me-2"></i> Thời hạn 1 năm
+                                                <li><i class="bi bi-check-circle-fill text-success me-2"></i>Trải nghiệm 1 năm
                                                 </li>
-                                                <li><i class="bi bi-check-circle-fill text-success me-2"></i> Sản phẩm dùng
-                                                    thử</li>
-                                                <li><i class="bi bi-check-circle-fill text-success me-2"></i> Thời hạn 1
-                                                    tháng</li>
+
                                             </ul>
                                               <a href="#" class="btn btn-green w-75 mx-auto" aria-disabled="true" onclick="return false;" style="cursor: default;  pointer-events: none;">Get started</a>
                                         </div>
@@ -593,12 +563,9 @@
                                             <ul class="list-unstyled text-start px-4 mb-4">
                                                 <li><i class="bi bi-check-circle-fill text-success me-2"></i> Sản phẩm dùng
                                                     thử</li>
-                                                <li><i class="bi bi-check-circle-fill text-success me-2"></i> Thời hạn 1 năm
+                                                <li><i class="bi bi-check-circle-fill text-success me-2"></i>Trải nghiệm 1 tháng
                                                 </li>
-                                                <li><i class="bi bi-check-circle-fill text-success me-2"></i> Sản phẩm dùng
-                                                    thử</li>
-                                                <li><i class="bi bi-check-circle-fill text-success me-2"></i> Thời hạn 1
-                                                    tháng</li>
+
                                             </ul>
                                               <a href="#" class="btn btn-green w-75 mx-auto" aria-disabled="true" onclick="return false;" style="cursor: default;  pointer-events: none;">Get started</a>
                                         </div>
@@ -618,12 +585,8 @@
                                                     <ul class="list-unstyled text-start px-4 mb-4">
                                                         <li><i class="bi bi-check-circle-fill text-success me-2"></i> Sản
                                                             phẩm dùng thử</li>
-                                                        <li><i class="bi bi-check-circle-fill text-success me-2"></i> Thời
-                                                            hạn 1 năm</li>
-                                                        <li><i class="bi bi-check-circle-fill text-success me-2"></i> Sản
-                                                            phẩm dùng thử</li>
-                                                        <li><i class="bi bi-check-circle-fill text-success me-2"></i> Thời
-                                                            hạn 1 tháng</li>
+                                                        <li><i class="bi bi-check-circle-fill text-success me-2"></i> Trải nghiệm 6 tháng</li>
+
                                                     </ul>
                                                 </div>
                                                 @if (Auth::check())
@@ -645,12 +608,9 @@
                                             <ul class="list-unstyled text-start px-4 mb-4">
                                                 <li><i class="bi bi-check-circle-fill text-success me-2"></i> Sản phẩm dùng
                                                     thử</li>
-                                                <li><i class="bi bi-check-circle-fill text-success me-2"></i> Thời hạn 1 năm
+                                                <li><i class="bi bi-check-circle-fill text-success me-2"></i> Trải nghiệm 1 năm
                                                 </li>
-                                                <li><i class="bi bi-check-circle-fill text-success me-2"></i> Sản phẩm dùng
-                                                    thử</li>
-                                                <li><i class="bi bi-check-circle-fill text-success me-2"></i> Thời hạn 1
-                                                    tháng</li>
+
                                             </ul>
                                               <a href="#" class="btn btn-green w-75 mx-auto" aria-disabled="true" onclick="return false;" style="cursor: default;  pointer-events: none;">Get started</a>
                                         </div>
