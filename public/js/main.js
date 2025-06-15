@@ -74,6 +74,26 @@ function removeInvalid(elm) {
         }
     }
 }
+function approveUser(obj) {
+    const $btn = $(obj);
+    const action = $btn.data('action'); // URL submit
+    const id = $btn.data('id');
+    
+    const data = $btn.data('data'); // JSON object chứa param cho request
+    const textConfirm = $btn.data('text-confirm') || 'Are you sure you want to approve this user?'
+
+    if (typeof textConfirm !== 'undefined') {
+        $('#confirmApprove .text-confirm').text(textConfirm);
+    }
+    // Gắn dữ liệu vào form hoặc nơi bạn submit
+    const $form = $('#confirmApprove form');
+    $form.attr('action', action);
+    $form.data('payload', data); // lưu lại tạm data nếu dùng submit AJAX
+    $form.find('input[name="id"]').val(id);
+    $form.find('input[name="is_active"]').val(1);
+     $form.find('input[name="approve"]').val('approve');
+    $('#confirmApprove').modal('show');
+}
 
 function removeItem(obj) {
     let action = $(obj).data('action');

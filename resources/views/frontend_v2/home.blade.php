@@ -18,3 +18,11 @@
         @include('frontend_v2.components.footer')
     </div>
 @endsection
+@push('scripts')
+   <script>
+      function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-09NXCQGTBV');
+   </script>
+@endpush

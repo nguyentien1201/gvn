@@ -34,6 +34,7 @@
                 @endif
                 @if(Auth::user()->role_id == \App\Models\ConstantModel::ROLES['admin'])
 
+
                         <li class="nav-item">
                             <a href="{{route('admin.green-beta.index')}}"
                                class="nav-link @if(!empty($path) && $path =='green-beta') active @endif">
@@ -113,11 +114,20 @@
                            class="nav-link @if(!empty($routeName) && strpos($routeName, 'customers') != false) active @endif">
                             <i class="nav-icon fas fa-users"></i>
                             <p>
-                                {{__('panel.customer')}}
+                                Company Account
                             </p>
                         </a>
                     </li>
                     <li class="nav-item">
+                            <a href="{{route('admin.approve-account.index')}}"
+                               class="nav-link @if(!empty($path) && $path =='approve-account') active @endif">
+                                <i class="nav-icon far fa-user"></i>
+                                <p>
+                                    Aprrove Account
+                                </p>
+                            </a>
+                        </li>
+                    <!-- <li class="nav-item">
                         <a href="{{route('admin.promotions.index')}}"
                            class="nav-link @if(!empty($routeName) && strpos($routeName, 'promotions') != false) active @endif">
                             <i class="nav-icon fas fa-gift"></i>
@@ -125,9 +135,8 @@
                                 {{__('panel.promotion')}}
                             </p>
                         </a>
-                    </li>
-                    @if(Auth::user()->role_id == \App\Models\ConstantModel::ROLES['admin'])
-                        <li class="nav-item">
+                    </li> -->
+                     <li class="nav-item">
                             <a href="{{route('admin.users.index')}}"
                                class="nav-link @if(!empty($routeName) && strpos($routeName, 'users') != false) active @endif">
                                 <i class="nav-icon far fa-user"></i>
@@ -136,7 +145,7 @@
                                 </p>
                             </a>
                         </li>
-                    @endif
+
 {{--                    <li class="nav-item has-treeview @if(!empty($routeName) && (strpos($routeName, 'tokens') != false || strpos($routeName, 'review_settings') != false)) menu-open @endif">--}}
 {{--                        <a href="#"--}}
 {{--                           class="nav-link @if(!empty($routeName) && (strpos($routeName, 'tokens') != false || strpos($routeName, 'review_settings') != false)) active @endif">--}}

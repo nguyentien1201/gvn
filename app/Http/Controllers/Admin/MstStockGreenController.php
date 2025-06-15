@@ -6,7 +6,7 @@ use App\Http\Requests\MstStockGreen\StoreMstStockGreenRequest;
 use App\Http\Requests\MstStockGreen\UpdateMstStockGreenRequest;
 use App\Imports\CustomerImport;
 use App\Models\ConstantModel;
-use App\Models\Customer;
+use App\Models\Users;
 use App\Models\MstStockGreen;
 use App\Models\GreenBeta;
 use App\Service\WooCommerceApiService;

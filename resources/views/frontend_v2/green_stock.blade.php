@@ -24,6 +24,9 @@
 
 <!-- JS load data and event -->
 <script>
+      function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-09NXCQGTBV');
     const logoBaseUrl = "{{ asset('images') }}"; // trả ra đường dẫn base
     $('#select-stock').on('select2:select', function(e) {
         let stock_id = $(this).val();
