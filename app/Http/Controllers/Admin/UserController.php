@@ -69,7 +69,7 @@ class UserController extends AdminController
         } else {
             return redirect()->route('admin.users.index')->with('success', __('panel.success'));
         }
-        
+
     }
 
     public function destroy( $id)
@@ -82,5 +82,25 @@ class UserController extends AdminController
             return redirect()->route('admin.users.index')->with('fail', __('panel.fail'));
         }
         return redirect()->route('admin.users.index')->with('success', __('panel.success'));
+    }
+    public function createUser(StoreUserRequest $request)
+    {
+
+        $user = new User();
+        $user->fill(!empty($request->password) ? $request->all() : $request->except('password'));
+        if (!empty($request->password)) {
+            $user->password = Hash::make($request->password);
+        }
+        try {
+            \Log::info($user);
+            $user->save();
+            if(!empty($request->manager_id)) {
+                $user->profile()->create(['manager_id' => $request['manager_id']]);
+            }
+        } catch (\Exception $e) {
+              \Log::info($e);
+
+        }
+        return redirect()->route('account')->with('success', __('panel.success'));
     }
 }

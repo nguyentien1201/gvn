@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Admin\UserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,6 +16,7 @@ use App\Http\Controllers\Auth\RegisterController;
 // Route::redirect('/', '/login');
 Route::get('/register', 'Auth/RegisterController@showRegistrationForm')->name('register');
 Route::post('/register', 'Auth/RegisterController@register');
+Route::post('/create-user', [UserController::class, 'createUser'])->name('create-user')->middleware('customer');
 Route::get('password/reset', 'Auth/RegisterController@showLinkRequestForm')->name('password.request');
 
 Route::post('password/email','Auth/ForgotPasswordController@sendResetLinkEmail')->name('password.email');

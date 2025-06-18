@@ -342,11 +342,6 @@
                                     <td width="10%">{{$customer->profile->phone ?? ''}}</td>
                                      <td width="10%">{{$customer->profile->address ?? ''}}</td>
                                     <td width="10%" class="text-center text-nowrap">
-                                        <a href="{{ route('admin.users.edit', [$customer->profile->user_id ?? '']) }}"
-                                           class="btn btn-primary btn-circle btn-sm">
-                                            <i class="fas fa-edit" aria-hidden="true"></i>
-                                        </a>
-
 
                                     </td>
                                 </tr>
@@ -542,18 +537,26 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form method="POST" action="{{ route('register') }}">
+                        <form id="addUserForm" method="POST" data-url="{{ route('create-user') }}">
                             @csrf
                             <input type="hidden" name="manager_id" value="{{ Auth::user()->id }}">
+                              <input type="hidden" name="role_id" value="3">
+                            @if ($errors->any())
+                                <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-2 rounded mb-4">
+                                    <ul class="list-disc list-inside text-sm">
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
                             <div class="mb-3">
                                 <label class="form-label">Username <span class="text-danger">*</span></label>
                                 <div class="input-group has-validation">
                                     <input type="text" class="form-control  @error('name') is-invalid @enderror" name="name"
                                         value="{{ old('name') }}" required>
                                     <span class="input-group-text"><i class="bi bi-person"></i></span>
-                                    @error('name')
-                                        <div class="invalid-feedback"><strong>{{ $message }}</strong></div>
-                                    @enderror
+
                                 </div>
                             </div>
                             <div class="mb-3">
@@ -562,11 +565,7 @@
                                     <input type="email" class="form-control @error('email') is-invalid @enderror"
                                         name="email" value="{{ old('email') }}">
                                     <span class="input-group-text"><i class="bi bi-envelope"></i></span>
-                                    @error('email')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
+
 
                                 </div>
                             </div>
@@ -576,15 +575,11 @@
                                     <input type="password" class="form-control  @error('password') is-invalid @enderror"
                                         name="password" required autocomplete="new-password"
                                         pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-                                        title="Must contain at least one number, one uppercase and lowercase letter, and at least 8 or more characters"" placeholder="
+                                        title="Must contain at least one number, one uppercase and lowercase letter, and at least 8 or more characters" placeholder="
                                         Password">
                                     <span class="input-group-text"><i class="bi bi-lock"></i></span>
                                 </div>
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+
                                 <small class="form-text text-muted">
                                     Must contain at least one number, one uppercase and lowercase letter, and at least 8 or
                                     more characters.
@@ -595,7 +590,7 @@
                             <div class="mb-3">
                                 <label class="form-label">Confirm Password <span class="text-danger">*</span></label>
                                 <div class="input-group">
-                                    <input name="password_confirmation" type="password" class="form-control">
+                                    <input name="confirm_password" type="password" class="form-control">
                                     <span class="input-group-text"><i class="bi bi-lock"></i></span>
 
                                 </div>
@@ -625,6 +620,63 @@
 @push('scripts')
 
     <script>
+$(document).ready(function () {
+    $('#addUserForm').submit(function (e) {
+        e.preventDefault();
+
+        let $form = $(this);
+        let formData = $form.serialize();
+        let url = $form.data('url');
+
+        // Clear old errors
+        $form.find('.is-invalid').removeClass('is-invalid');
+        $form.find('.invalid-feedback').remove();
+        $form.find('.alert-danger').remove();
+
+        $.ajax({
+            type: "POST",
+            url: url,
+            data: formData,
+            success: function (response) {
+                // Close modal
+                $('#addUserModal').modal('hide');
+
+                // Optional: show a success message
+                alert('User registered successfully!');
+                $form[0].reset();
+            },
+            error: function (xhr) {
+                if (xhr.status === 422) {
+                    let errors = xhr.responseJSON.errors;
+
+                    // Loop through errors and show them
+                    for (let field in errors) {
+                        let input = $form.find(`[name="${field}"]`);
+                        input.addClass('is-invalid');
+
+                    }
+
+                    // Show full error list
+                    let errorList = '<ul class="list-disc list-inside text-sm">';
+                    for (let field in errors) {
+                        errorList += `<li>${errors[field][0]}</li>`;
+                    }
+                    errorList += '</ul>';
+
+                    $form.prepend(`
+                        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-2 rounded mb-4 alert-danger">
+                            ${errorList}
+                        </div>
+                    `);
+                } else {
+                    alert('Something went wrong. Please try again.');
+                }
+            }
+        });
+    });
+});
+
+
         const modalElement = document.getElementById('planModal');
 
         modalElement.addEventListener('show.bs.modal', function (event) {
@@ -634,7 +686,6 @@
             // Lấy data từ button
             const type = button.getAttribute('data-type');
             const data = @json($price_product);
-            console.log(data);
             // Set data vào modal
             modalElement.querySelector('#price_month').textContent = `${data[type].monthly_price}`;
             modalElement.querySelector('#price_6month').textContent = `${data[type].six_month_price}`;
