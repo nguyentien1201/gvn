@@ -91,6 +91,7 @@ class UserController extends AdminController
         if (!empty($request->password)) {
             $user->password = Hash::make($request->password);
         }
+        $user->is_active =1;
         try {
             \Log::info($user);
             $user->save();
