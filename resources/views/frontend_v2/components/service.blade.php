@@ -1,6 +1,6 @@
 <section id="services" class="py-5">
     <div class="container">
-        <h2 class="text-center services-title pb-3 pb-lg-5">{{ __('base.our_service') }}</h2>
+        <h2 class="text-center services-title pb-3 pb-lg-5">{{ __('base.Our_Service') }}</h2>
         <div class="row align-items-center gx-4 gy-4 gy-lg-0">
         @php
             $services = [
