@@ -6,15 +6,42 @@
 
         <!-- Navigation -->
         <nav class="hidden md:flex space-x-6">
-            <a href="#" class="hover:text-green-600">Mainpage</a>
-            <a href="#" class="hover:text-green-600">Systems</a>
-            <a href="#" class="hover:text-green-600">Mission</a>
-            <a href="#" class="hover:text-green-600">Product</a>
-            <a href="#" class="hover:text-green-600">Contact</a>
+            <a href="#" class="hover:text-green-600">{{__('base.Mainpage')}}</a>
+            <a href="#" class="hover:text-green-600">{{__('base.Systems')}}</a>
+            <a href="#" class="hover:text-green-600">{{__('base.Mission')}}</a>
+            <a href="#" class="hover:text-green-600">{{__('base.Product')}}</a>
+            <a href="#" class="hover:text-green-600">{{__('base.Contact')}}</a>
         </nav>
 
         <!-- Actions -->
         <div class="flex items-center space-x-4">
+             <div class="dropdown ml-2">
+                        @php
+                            $locale = session('locale', config('app.locale'));
+                            $flags = ['en' => 'flag-icon-gb', 'vi' => 'flag-icon-vn'];
+                            $flagClass = $flags[$locale] ?? 'flag-icon-gb';
+                        @endphp
+                        <div class="dropdown-toggle" id="langDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            <span class="flag-icon {{ $flagClass }}"></span>
+                        </div>
+                        <div class="dropdown-menu dropdown-menu" aria-labelledby="langDropdown">
+                            <form action="{{ route('changeLanguage') }}" method="POST" id="language-form">
+                                @csrf
+                                <button type="submit" name="language" value="en" class="dropdown-item">
+                                    <span class="flag-icon flag-icon-gb"></span> English
+                                </button>
+                                <button type="submit" name="language" value="vi" class="dropdown-item">
+                                    <span class="flag-icon flag-icon-vn"></span> Vietnam
+                                </button>
+                                <button type="submit" name="language" value="zh" class="dropdown-item">
+                                    <span class="flag-icon flag-icon-cn"></span> China
+                                </button>
+                                <button type="submit" name="language" value="es" class="dropdown-item">
+                                    <span class="flag-icon flag-icon-es"></span> Spain
+                                </button>
+                            </form>
+                        </div>
+                    </div>
             <button class="text-gray-600 hover:text-green-600">🌍</button>
             <a href="#" class="text-gray-700 hover:text-green-600">Log in</a>
             <a href="#" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700">Sign up</a>

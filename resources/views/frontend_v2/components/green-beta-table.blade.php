@@ -17,17 +17,18 @@
             <table id="green-beta-table" class="table table-striped table-hover" style="margin:none">
                 <thead>
                     <tr>
-                        <th class="text-capitalize text-center text-nowrap">Signal Open</th>
-                        <th class="text-capitalize text-center text-nowrap">Price Open</th>
-                        <th class="text-capitalize text-center text-nowrap">Open Time</th>
-                        <th class="text-capitalize text-center text-nowrap">Trend Price</th>
-                        <th class="text-capitalize text-center text-nowrap">Market</th>
-                        <th class="text-capitalize text-center text-nowrap">Symbol</th>
-                        <th class="text-capitalize text-center text-nowrap">Last Sale</th>
-                        <th class="text-capitalize text-center text-nowrap">Profit</th>
-                        <th class="text-capitalize text-center text-nowrap">Signal Close</th>
-                        <th class="text-capitalize text-center text-nowrap">Price Close</th>
-                        <th class="text-capitalize text-center text-nowrap">Close Time</th>
+                        <th class="text-capitalize text-center text-nowrap">{{__('base.Signal_Open')}}</th>
+                        <th class="text-capitalize text-center text-nowrap">{{__('base.Price_Open')}}</th>
+                        <th class="text-capitalize text-center text-nowrap">{{__('base.Open_Time')}}</th>
+                        <th class="text-capitalize text-center text-nowrap">{{__('base.Trend_Price')}}</th>
+                        <th class="text-capitalize text-center text-nowrap">{{__('base.Market')}}</th>
+                        <th class="text-capitalize text-center text-nowrap">{{__('base.Symbol')}}</th>
+                        <th class="text-capitalize text-center text-nowrap">{{__('base.Last_Sale')}}</th>
+                        <th class="text-capitalize text-center text-nowrap">{{__('base.Profit')}}</th>
+                        <th class="text-capitalize text-center text-nowrap">{{__('base.Signal_Close')}}</th>
+                        <th class="text-capitalize text-center text-nowrap">{{__('base.Price_Close')}}</th>
+                        <th class="text-capitalize text-center text-nowrap">{{__('base.Close_Time')}}</th>
+
                     </tr>
                 </thead>
             </table>

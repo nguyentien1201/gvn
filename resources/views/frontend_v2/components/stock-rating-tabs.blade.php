@@ -1,6 +1,6 @@
 <section id="top-stock-rating-by-gvn">
     <div class="container">
-        <h2 class="text-center rating-title">{{__('home.top_stock_rating_by_gvn')}}</h2>
+        <h2 class="text-center rating-title">{{__('base.GVN_Rating')}}</h2>
         <div class="tabs-green mb-3">
             <ul class="nav nav-pills" id="pills-tab1" role="tablist">
                 <li class="nav-item" role="presentation">
@@ -9,13 +9,13 @@
                             data-bs-target="#pills-green-stock-NAS100"
                             type="button" role="tab"
                             aria-controls="pills-green-stock-NAS100"
-                            aria-selected="true">{{__('home.green_stock_NAS100')}}</button>
+                            aria-selected="true">Green Stock NAS100</button>
                 </li>
                 <li class="nav-item" role="presentation">
                     <button class="nav-link btn-tab" id="pills-green-stock-vn-index-tab" data-bs-toggle="pill"
                             data-bs-target="#pills-green-stock-vn-index" type="button" role="tab"
                             aria-controls="pills-green-stock-vn-index"
-                            aria-selected="false">{{__('home.green_stock_vn_index')}}</button>
+                            aria-selected="false">Green Stock VNINDEX</button>
                 </li>
             </ul>
         </div>
@@ -26,15 +26,15 @@
                     <table id="green-stock-NAS100-table" class="table table-striped table-hover">
                         <thead>
                             <tr>
-                                <th class="text-capitalize text-center text-nowrap">{{__('home.rating')}}</th>
-                                <th class="text-capitalize text-center text-nowrap">{{__('home.stock')}}</th>
-                                <th class="text-capitalize text-center text-nowrap">{{__('home.last_sale')}}</th>
-                                <th class="text-capitalize text-center text-nowrap">{{__('home.trend')}}</th>
-                                <th class="text-capitalize text-center text-nowrap">{{__('home.action')}}</th>
-                                <th class="text-capitalize text-center text-nowrap">{{__('home.profit')}}</th>
-                                <th class="text-capitalize text-center text-nowrap">{{__('home.after_sell')}}</th>
-                                <th class="text-capitalize text-center text-nowrap">{{__('home.price')}}</th>
-                                <th class="text-capitalize text-center text-nowrap">{{__('home.time')}}</th>
+                                <th class="text-capitalize text-center text-nowrap">{{__('base.rating')}}</th>
+                                <th class="text-capitalize text-center text-nowrap">{{__('base.stock')}}</th>
+                                <th class="text-capitalize text-center text-nowrap">{{__('base.last_sale')}}</th>
+                                <th class="text-capitalize text-center text-nowrap">{{__('base.trend')}}</th>
+                                <th class="text-capitalize text-center text-nowrap">{{__('base.action')}}</th>
+                                <th class="text-capitalize text-center text-nowrap">{{__('base.profit')}}</th>
+                                <th class="text-capitalize text-center text-nowrap">{{__('base.after_sell')}}</th>
+                                <th class="text-capitalize text-center text-nowrap">{{__('base.price')}}</th>
+                                <th class="text-capitalize text-center text-nowrap">{{__('base.time')}}</th>
                             </tr>
                         </thead>
                     </table>
@@ -46,15 +46,15 @@
                     <table id="green-stock-vn-index-table" class="table table-striped table-hover">
                         <thead>
                         <tr>
-                            <th class="text-capitalize text-center text-nowrap">{{__('home.rating')}}</th>
-                            <th class="text-capitalize text-center text-nowrap">{{__('home.stock')}}</th>
-                            <th class="text-capitalize text-center text-nowrap">{{__('home.last_sale')}}</th>
-                            <th class="text-capitalize text-center text-nowrap">{{__('home.trend')}}</th>
-                            <th class="text-capitalize text-center text-nowrap">{{__('home.action')}}</th>
-                            <th class="text-capitalize text-center text-nowrap">{{__('home.profit')}}</th>
-                            <th class="text-capitalize text-center text-nowrap">{{__('home.after_sell')}}</th>
-                            <th class="text-capitalize text-center text-nowrap">{{__('home.price')}}</th>
-                            <th class="text-capitalize text-center text-nowrap">{{__('home.time')}}</th>
+                            <th class="text-capitalize text-center text-nowrap">{{__('base.rating')}}</th>
+                            <th class="text-capitalize text-center text-nowrap">{{__('base.stock')}}</th>
+                            <th class="text-capitalize text-center text-nowrap">{{__('base.last_sale')}}</th>
+                            <th class="text-capitalize text-center text-nowrap">{{__('base.trend')}}</th>
+                            <th class="text-capitalize text-center text-nowrap">{{__('base.action')}}</th>
+                            <th class="text-capitalize text-center text-nowrap">{{__('base.profit')}}</th>
+                            <th class="text-capitalize text-center text-nowrap">{{__('base.after_sell')}}</th>
+                            <th class="text-capitalize text-center text-nowrap">{{__('base.price')}}</th>
+                            <th class="text-capitalize text-center text-nowrap">{{__('base.time')}}</th>
                         </tr>
                         </thead>
                     </table>

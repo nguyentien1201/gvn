@@ -2074,15 +2074,15 @@
                                         <table class="table table-striped table-hover" id="indices-table">
                                             <thead>
                                                 <tr>
-                                                    <th class="text-capitalize text-center text-nowrap">{{__('green_stock.rating')}}</th>
-                                                    <th class="text-capitalize text-center text-nowrap">{{__('green_stock.stock')}}</th>
-                                                    <th class="text-capitalize text-center text-nowrap">{{__('green_stock.last_sale')}}</th>
-                                                    <th class="text-capitalize text-center text-nowrap">{{__('green_stock.trend')}}</th>
-                                                    <th class="text-capitalize text-center text-nowrap">{{__('green_stock.action')}}</th>
-                                                    <th class="text-capitalize text-center text-nowrap">{{__('green_stock.profit')}}</th>
-                                                    <th class="text-capitalize text-center text-nowrap">{{__('green_stock.after_sell')}}</th>
-                                                    <th class="text-capitalize text-center text-nowrap">{{__('green_stock.price')}}</th>
-                                                    <th class="text-capitalize text-center text-nowrap">{{__('green_stock.time')}}</th>
+                                                    <th class="text-capitalize text-center text-nowrap">{{__('base.RATING')}}</th>
+                                                    <th class="text-capitalize text-center text-nowrap">{{__('base.STOCK')}}</th>
+                                                    <th class="text-capitalize text-center text-nowrap">{{__('base.LAST_SALE')}}</th>
+                                                    <th class="text-capitalize text-center text-nowrap">{{__('base.TREND')}}</th>
+                                                    <th class="text-capitalize text-center text-nowrap">{{__('base.ACTION')}}</th>
+                                                    <th class="text-capitalize text-center text-nowrap">{{__('base.PROFIT')}}</th>
+                                                    <th class="text-capitalize text-center text-nowrap">{{__('base.AFTER_SELL')}}</th>
+                                                    <th class="text-capitalize text-center text-nowrap">{{__('base.PRICE')}}</th>
+                                                    <th class="text-capitalize text-center text-nowrap">{{__('base.TIME')}}</th>
                                                 </tr>
                                             </thead>
                                         </table>
@@ -2108,7 +2108,7 @@
                     <div class="content-overview">
                         <div class="container">
                             <h4 class="title-up-down-market-capital">
-                                {{__('green_stock.up_down_market_capital')}}
+                                {{__('base.MARKET_CAPTITAL')}}
                             </h4>
                             <div class="market-capital-container my-4">
                                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 gy-4">
@@ -2119,7 +2119,7 @@
                                 <!-- Current month chart -->
                                 <div class="col-12 col-md-5 d-flex">
                                     <div class="container-chart h-100 w-100" style="padding: 32px 32px !important;">
-                                        <h4 class="title-chart text-uppercase text-center mb-5">{{__('green_stock.chart_title_trading_day')}}</h4>
+                                        <h4 class="title-chart text-uppercase text-center mb-5">{{__('base.Tempor_Win_lost_5_day')}}</h4>
                                         <div class="d-flex flex-column justify-content-center align-items-center chart-container">
                                             <canvas id="capChart"></canvas>
                                         </div>
@@ -2143,15 +2143,15 @@
                                     <div class="table-responsive" style="max-height: 295px; overflow-y: auto;">
                                         <table class="table table-striped table-hover" id="top_stock">
                                             <thead>
-                                                <th class="text-capitalize text-center text-nowrap">{{__('green_stock.rating')}}</th>
-                                                <th class="text-capitalize text-center text-nowrap">{{__('green_stock.stock')}}</th>
-                                                <th class="text-capitalize text-center text-nowrap">{{__('green_stock.last_sale')}}</th>
-                                                <th class="text-capitalize text-center text-nowrap">{{__('green_stock.trend')}}</th>
-                                                <th class="text-capitalize text-center text-nowrap">{{__('green_stock.action')}}</th>
-                                                <th class="text-capitalize text-center text-nowrap">{{__('green_stock.profit')}}</th>
-                                                <th class="text-capitalize text-center text-nowrap">{{__('green_stock.after_sell')}}</th>
-                                                <th class="text-capitalize text-center text-nowrap">{{__('green_stock.price')}}</th>
-                                                <th class="text-capitalize text-center text-nowrap">{{__('green_stock.time')}}</th>
+                                                <th class="text-capitalize text-center text-nowrap">{{__('base.RATING')}}</th>
+                                                <th class="text-capitalize text-center text-nowrap">{{__('base.STOCK')}}</th>
+                                                <th class="text-capitalize text-center text-nowrap">{{__('base.LAST_SALE')}}</th>
+                                                <th class="text-capitalize text-center text-nowrap">{{__('base.TREND')}}</th>
+                                                <th class="text-capitalize text-center text-nowrap">{{__('base.ACTION')}}</th>
+                                                <th class="text-capitalize text-center text-nowrap">{{__('base.PROFIT')}}</th>
+                                                <th class="text-capitalize text-center text-nowrap">{{__('base.AFTER_SELL')}}</th>
+                                                <th class="text-capitalize text-center text-nowrap">{{__('base.PRICE')}}</th>
+                                                <th class="text-capitalize text-center text-nowrap">{{__('base.TIME')}}</th>
                                             </thead>
                                         </table>
                                     </div>
@@ -2163,7 +2163,7 @@
                             <div class="row">
                                 <div class="col-12">
                                     <div class="container-chart" style="padding: 32px 32px !important;">
-                                        <h4 class="title-chart text-uppercase text-center">{{__('front_end.top_10_trading_value')}}</h4>
+                                        <h4 class="title-chart text-uppercase text-center">{{__('base.TOP_10_SECTOR')}}</h4>
                                         <div style="height: 425px;"
                                             class="chart-contianer d-flex flex-column justify-content-center align-items-center">
                                             <canvas id="avg_cap"></canvas>

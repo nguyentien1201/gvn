@@ -71,7 +71,7 @@
                         <div class="co-12 col-lg-6 trading-container">
                             <div class="trading-on-content">
                                 <div class="head-text">
-                                    <span>{{__('home.trade_on_content.alpha.head_text')}}</span>
+                                    <span>{{__('base.description_title_green_alpha')}}</span>
                                 </div>
 
                             </div>
@@ -97,7 +97,7 @@
         <section id="table-chart" class="py-0 py-lg-5 common-services">
             <div class="container common">
 
-                    <h3 class="text-center services-title pb-3 pb-lg-2 color-home">{{__('front_end.HISTORICAL_PERFORMANCE')}}</h3>
+                    <h3 class="text-center services-title pb-3 pb-lg-2 color-home">{{__('base.HISTORICAL_PERFORMANCE')}}</h3>
                 <div class="row gy-4 gy-lg-0">
                     <div class="co-12 col-lg-6">
 
@@ -108,12 +108,12 @@
                                                     <th colspan="6" style="text-align:center" class="code_header"></th>
                                                 </tr>
                                                 <tr>
-                                                    <th>Signal</th>
-                                                    <th>Price Open</th>
-                                                    <th>Open Time</th>
-                                                    <th>Price Close</th>
-                                                    <th>Close Time</th>
-                                                    <th>Profit</th>
+                                                    <th>{{__('base.Signal_Open')}}</th>
+                                                    <th>{{__('base.Price_Open')}}</th>
+                                                    <th>{{__('base.Open_Time')}}</th>
+                                                    <th>{{__('base.Price_Close')}}</th>
+                                                    <th>{{__('base.Close_Time')}}</th>
+                                                    <th>{{__('base.Profit')}}</th>
                                                 </tr>
                                             </thead>
                                             <tbody>

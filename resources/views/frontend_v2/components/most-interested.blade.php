@@ -1,21 +1,21 @@
 <section id="most_interested" class="py-5">
     <div class="container">
-        <h2 class="text-center services-title pb-3 pb-lg-5">{{__('home.most_interested')}}</h2>
+        <h2 class="text-center services-title pb-3 pb-lg-5">{{__('base.Most_interested')}}</h2>
         <div class="table-responsive" style="max-height: 848px; overflow-y: auto;">
             <table id="most-interested-table" class="table table-striped table-hover">
                 <thead>
                     <tr>
-                        <th class="text-capitalize text-center text-nowrap">Signal Open</th>
-                        <th class="text-capitalize text-center text-nowrap">Price Open</th>
-                        <th class="text-capitalize text-center text-nowrap">Open Time</th>
-                        <th class="text-capitalize text-center text-nowrap">Trend Price</th>
-                        <th class="text-capitalize text-center text-nowrap">Market</th>
-                        <th class="text-capitalize text-center text-nowrap">Symbol</th>
-                        <th class="text-capitalize text-center text-nowrap">Last Sale</th>
-                        <th class="text-capitalize text-center text-nowrap">Profit</th>
-                        <th class="text-capitalize text-center text-nowrap">Signal Close</th>
-                        <th class="text-capitalize text-center text-nowrap">Price Close</th>
-                        <th class="text-capitalize text-center text-nowrap">Close Time</th>
+                        <th class="text-capitalize text-center text-nowrap">{{__('base.Signal_Open')}}</th>
+                        <th class="text-capitalize text-center text-nowrap">{{__('base.Price_Open')}}</th>
+                        <th class="text-capitalize text-center text-nowrap">{{__('base.Open_Time')}}</th>
+                        <th class="text-capitalize text-center text-nowrap">{{__('base.Trend_Price')}}</th>
+                        <th class="text-capitalize text-center text-nowrap">{{__('base.Market')}}</th>
+                        <th class="text-capitalize text-center text-nowrap">{{__('base.Symbol')}}</th>
+                        <th class="text-capitalize text-center text-nowrap">{{__('base.Last_Sale')}}</th>
+                        <th class="text-capitalize text-center text-nowrap">{{__('base.Profit')}}</th>
+                        <th class="text-capitalize text-center text-nowrap">{{__('base.Signal_Close')}}</th>
+                        <th class="text-capitalize text-center text-nowrap">{{__('base.Price_Close')}}</th>
+                        <th class="text-capitalize text-center text-nowrap">{{__('base.Close_Time')}}</th>
                     </tr>
                 </thead>
             </table>

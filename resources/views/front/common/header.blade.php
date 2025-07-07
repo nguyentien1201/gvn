@@ -64,6 +64,12 @@
                                 <button type="submit" name="language" value="vi" class="dropdown-item">
                                     <span class="flag-icon flag-icon-vn"></span> Vietnam
                                 </button>
+                                <button type="submit" name="language" value="zh" class="dropdown-item">
+                                    <span class="flag-icon flag-icon-cn"></span> China
+                                </button>
+                                <button type="submit" name="language" value="es" class="dropdown-item">
+                                    <span class="flag-icon flag-icon-es"></span> Spain
+                                </button>
                             </form>
                         </div>
                     </div>

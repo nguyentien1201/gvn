@@ -3,14 +3,14 @@
     <div class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item container-heading active text-center">
-                <h3 class="heading-page">{{__('home.title_banner')}}</h3>
+                <h3 class="heading-page">{{__('base.title_banner')}}</h3>
                 <p class="content noto-sans-jp-font-family my-3">
-                    <span>{{__('home.content_1')}}</span><br>
-                    <span>{{__('home.content_2')}}</span>
+                    <span>{{__('base.content_1')}}</span><br>
+                    <span>{{__('base.content_2')}}</span>
                 </p>
                 <div class="container-button d-flex justify-content-center gap-3">
-                    <a class="btn btn-primary" href="{{ route('front.home.trading-system') }}">{{__('home.see_more')}}</a>
-                    <a class="btn btn-outline-primary"  href="{{ route('front.home.contact') }}">{{__('home.contact')}}</a>
+                    <a class="btn btn-primary" href="{{ route('front.home.trading-system') }}">{{__('base.see_more')}}</a>
+                    <a class="btn btn-outline-primary"  href="{{ route('front.home.contact') }}">{{__('base.contact')}}</a>
                 </div>
                 <div class="container background-banner">
                     <div id="lottie-container" style="height:400px;" class="img-fluid w-100 d-block" alt="">

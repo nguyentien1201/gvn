@@ -7,14 +7,25 @@
 @endpush
 <section id="most_interested" class="py-5">
     <div class="container">
-        <h2 class="text-center services-title pb-3 pb-lg-2">{{__('front_end.SIGNAL_DASHBOARD')}}</h2>
+        <h2 class="text-center services-title pb-3 pb-lg-2">{{__('base.SIGNAL_DASHBOARD')}}</h2>
         <h5 class="time-live mb-0 text-right">
             <i><span class="date-js"></span> <span class="time-js"></span> (UTC+3)</i>
         </h5>
         @include('frontend_v2.components.sumary-list-alpha')
         <div class="table-responsive" style="max-height: 848px; overflow-y: auto;">
             <table id="green-beta-table" class="table table-striped table-hover">
-
+                <th class="text-capitalize text-center text-nowrap">{{__('base.Symbol')}}</th>
+                     <th class="text-capitalize text-center text-nowrap">{{__('base.Signal_Open')}}</th>
+                    <th class="text-capitalize text-center text-nowrap">{{__('base.Price_Open')}}</th>
+                    <th class="text-capitalize text-center text-nowrap">{{__('base.Open_Time')}}</th>
+                    
+                    <th class="text-capitalize text-center text-nowrap">{{__('base.Signal_Close')}}</th>
+                    <th class="text-capitalize text-center text-nowrap">{{__('base.Price_Close')}}</th>
+                    <th class="text-capitalize text-center text-nowrap">{{__('base.Close_Time')}}</th>
+                    
+                        <th class="text-capitalize text-center text-nowrap">{{__('base.Profit')}}</th>
+                           <th class="text-capitalize text-center text-nowrap">{{__('base.No_trading')}}</th>
+                              <th class="text-capitalize text-center text-nowrap">{{__('base.Profit_Today')}}</th>
             </table>
         </div>
     </div>
@@ -40,16 +51,16 @@
                 order: [[3, 'desc']],
                 data: @json($signals),
                 columns: [
-                    { data: 'code', title: 'Symbol' },
-                    { data: 'signal_open', title: 'Signal Open' },  // Apply bold formatting to the "PriceTrend" column data},
-                    { data: 'price_open', title: 'Price Open' },
-                    { data: 'open_time', title: 'Open Time' },
-                    { data: 'signal_close', title: 'Signal Close' },
-                    { data: 'price_close', title: 'Price Close' },
-                    { data: 'close_time', title: 'Close Time' },
-                    { data: 'profit', title: 'Profit' },
-                    { data: 'no_trading', title: 'No.Trading' },
-                    { data: 'profit_today', title: 'Profit Today' }
+                    { data: 'code'},
+                    { data: 'signal_open'},  // Apply bold formatting to the "PriceTrend" column data},
+                    { data: 'price_open'},
+                    { data: 'open_time'},
+                    { data: 'signal_close'},
+                    { data: 'price_close'},
+                    { data: 'close_time'},
+                    { data: 'profit'},
+                    { data: 'no_trading'},
+                    { data: 'profit_today'}
 
                 ],
                 columnDefs: [
