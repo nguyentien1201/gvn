@@ -1,0 +1,27 @@
+<?php
+return [
+   'BUY' => 'MUA',
+    'SELL' => 'BÁN',
+    'TakeProfitBuy' => 'CHỐT LỜI MUA',
+    'CutLossBuy' => 'CẮT LỖ MUA',
+    'TakeProfitSell' => 'CHỐT LỜI BÁN',
+    'CutLossSell' => 'CẮT LỖ BÁN',
+    'RATING' => 'XẾP HẠNG',
+    'STOCK' => 'CHỨNG KHOÁN',
+    'LAST_SALE' => 'GIÁ HIỆN TẠI',
+    'TREND' => 'XU HƯỚNG',
+    'ACTION' => 'HÀNH ĐỘNG',
+    'PROFIT' => 'LỢI NHUẬN',
+    'AFTER_SELL' => 'GIẢM SAU BÁN',
+    'PRICE' => 'GIÁ',
+    'TIME' => 'THỜI GIAN',
+    'BREAKING_HIGH_PRICE' => 'VƯỢT ĐỈNH',
+    'GO_UP' => 'XU HƯỚNG TĂNG',
+    'BUILD_UP' => 'TÍCH LUỸ',
+    'RECY' => 'PHỤC HỒI',
+    'DOWN' => 'GIẢM',
+    'HOLD' => 'NẮM GIỮ',
+    'CASH' => 'TIỀN MẶT',
+     'UPTREND' =>'UPTREND',
+      'DOWNTREND' =>'DOWNTREND'
+];

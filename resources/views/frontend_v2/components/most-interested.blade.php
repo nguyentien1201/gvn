@@ -9,7 +9,7 @@
                         <th class="text-capitalize text-center text-nowrap">{{__('base.Price_Open')}}</th>
                         <th class="text-capitalize text-center text-nowrap">{{__('base.Open_Time')}}</th>
                         <th class="text-capitalize text-center text-nowrap">{{__('base.Trend_Price')}}</th>
-                        <th class="text-capitalize text-center text-nowrap">{{__('base.Market')}}</th>
+                        <th class="text-capitalize text-center text-nowrap">{{__('base.Markets')}}</th>
                         <th class="text-capitalize text-center text-nowrap">{{__('base.Symbol')}}</th>
                         <th class="text-capitalize text-center text-nowrap">{{__('base.Last_Sale')}}</th>
                         <th class="text-capitalize text-center text-nowrap">{{__('base.Profit')}}</th>
@@ -62,7 +62,9 @@
                                 signalOpenText = "BUY";
                                 signalOpenClass = "buy";
                             }
-                            $(td).html(`<span class="text-capitalize signal-open ${signalOpenClass}">${signalOpenText}</span>`);
+                            console.log('i18nKey',i18nKey)
+                            console.log(i18nKey[signalOpenText])
+                            $(td).html(`<span class="text-capitalize signal-open ${signalOpenClass}">${i18nKey[signalOpenText]}</span>`);
                             $(td).addClass('text-center');
                         }
                     },
@@ -97,7 +99,9 @@
                             } else {
                                 colorClass += "sideway";
                             }
-                            $(td).html(`<span class="trend ${colorClass}">${trendPrice}</span>`);
+                            console.log('trendPrice',trendPrice)
+                            console.log('i18nKey[trendPrice]',i18nKey[trendPrice])
+                            $(td).html(`<span class="trend ${colorClass}">${i18nKey[trendPrice]}</span>`);
                             $(td).addClass('text-center');
                         }
                     },
@@ -145,7 +149,7 @@
                         createdCell: (td, cellData, rowData, row, col) => {
                             let signalClose = rowData.signal_close;
                             if(signalClose == null || signalClose == '' || signalClose == undefined || signalClose == 'Hold'){
-                                signalClose = "Hold";
+                                signalClose = "HOLD";
                             }
                              if(signalClose !='' || signalClose != null){
                                 signal_close = signalClose.trim().toLowerCase();
@@ -159,9 +163,9 @@
                             } else {
                                 colorClass += "hold";
                             }
-
+                            console.log('signalClose',signalClose)
                             if(signalClose) {
-                                $(td).html(`<span class="signal-close ${colorClass}">${signalClose}</span>`);
+                                $(td).html(`<span class="signal-close ${colorClass}">${i18nKey[signalClose]}</span>`);
                                 $(td).addClass('text-center');
                             }
                         }

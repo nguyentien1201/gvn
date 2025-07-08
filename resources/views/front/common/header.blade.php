@@ -15,20 +15,20 @@
                 <ul class="navbar-nav gap-4 mx-auto align-items-lg-center">
                     <li class="nav-item active">
                         <a class="nav-link" href="{{ route('front.home.index') }}">
-                            {{ __('front_end.mainpage') }} <span class="visually-hidden">(current)</span>
+                            {{ __('base.Mainpage') }} <span class="visually-hidden">(current)</span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link"
-                           href="{{ route('front.home.trading-system') }}">{{ __('front_end.systems') }}</a>
+                           href="{{ route('front.home.trading-system') }}">{{ __('base.Systems') }}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('front.home.mission') }}">{{ __('front_end.Mission') }}</a>
+                        <a class="nav-link" href="{{ route('front.home.mission') }}">{{ __('base.Mission') }}</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                            aria-expanded="false">
-                            {{ __('front_end.product') }}
+                            {{ __('base.Product') }}
                         </a>
                         <div class="dropdown-menu dropdown-menu-end">
                             <a class="dropdown-item" href="{{ route('front.home.green-beta') }}">Green Beta</a>
@@ -38,7 +38,7 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('front.home.contact') }}">{{ __('front_end.Contact') }}</a>
+                        <a class="nav-link" href="{{ route('front.home.contact') }}">{{ __('base.Contact') }}</a>
                     </li>
                 </ul>
 
@@ -77,12 +77,12 @@
                     {{-- Auth Buttons --}}
                     @guest
                         <a class="btn btn-outline-primary btn-outline-custom w-100 w-lg-auto" href="{{ route('login') }}">
-                            {{ __('front_end.login') }}
+                            {{ __('base.Login') }}
                         </a>
 
                         @if (Route::has('register'))
                             <a class="btn btn-primary btn-custom w-100 w-lg-auto" href="{{ route('register') }}">
-                                {{ __('front_end.register') }}
+                                {{ __('base.Register') }}
                             </a>
                         @endif
                     @else
@@ -99,13 +99,13 @@
                             <ul class="dropdown-menu dropdown-menu dropdown-menu-lg-end" aria-labelledby="userDropdown">
                                 <li>
                                     <a class="dropdown-item d-flex align-items-center gap-2" href="{{ route('account') }}">
-                                        <i class="bi bi-person-circle"></i> {{ __('front_end.my_page') }}
+                                        <i class="bi bi-person-circle"></i> {{ __('base.My_Account') }}
                                     </a>
                                 </li>
                                 <li>
                                     <a class="dropdown-item d-flex align-items-center gap-2" href="{{ route('logout') }}"
                                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                        <i class="bi bi-box-arrow-right"></i> {{ __('front_end.logout') }}
+                                        <i class="bi bi-box-arrow-right"></i> {{ __('base.Logout') }}
                                     </a>
                                 </li>
                             </ul>

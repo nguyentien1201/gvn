@@ -1,0 +1,27 @@
+<?php
+return [
+   'BUY' => 'Comprar',
+    'SELL' => 'Vender',
+    'TakeProfitBuy' => 'Tomar ganancia en compra',
+    'CutLossBuy' => 'Cortar pérdida en compra',
+    'TakeProfitSell' => 'Tomar ganancia en venta',
+    'CutLossSell' => 'Cortar pérdida en venta',
+    'RATING' => 'Calificación',
+    'STOCK' => 'Acción',
+    'LAST_SALE' => 'Última venta',
+    'TREND' => 'Tendencia',
+    'ACTION' => 'Acción',
+    'PROFIT' => 'Ganancia',
+    'AFTER_SELL' => 'Después de vender',
+    'PRICE' => 'Precio',
+    'TIME' => 'Tiempo',
+    'BREAKING_HIGH_PRICE' => 'Rompiendo precio alto',
+    'GO_UP' => 'Subir',
+    'BUILD_UP' => 'Construir',
+    'RECOVERY' => 'Recuperación',
+    'DOWN' => 'Bajar',
+    'HOLD' => 'Mantener',
+    'CASH' => 'Efectivo',
+     'UPTREND' =>'UPTREND',
+      'DOWNTREND' =>'DOWNTREND'
+];

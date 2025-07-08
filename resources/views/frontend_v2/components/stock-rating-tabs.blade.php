@@ -156,11 +156,15 @@
                     {
                         targets: 3, // Index of the date column
                         createdCell: function (td, cellData, rowData, row, col) {
+                            let string_key_language =''
                             trending = '';
                             color = '';
                             background = '';
                             if (rowData.trending != null) {
                                 trending = rowData.trending.trim().toLowerCase();
+                                string_key_language =  trending.replace(/ /g, "_");
+                                string_key_language = string_key_language.trim().toUpperCase()
+                                
                             }
                             if (trending == 'breaking high price') {
                                 color = '#9B54FF';
@@ -193,7 +197,7 @@
                                 font-size: 13px;
                                 padding: 4px 16px;
                                 width: 176px;
-                            ">${trending}</span>`);
+                            ">${i18nKey[string_key_language]}</span>`);
                             $(td).css('witdh', '176px');
                             $(td).addClass('text-center');
                         }
@@ -203,9 +207,11 @@
                         createdCell: function (td, cellData, rowData, row, col) {
                             signal = '';
                             color = '';
+                            let string_key_language ='';
                             background = '';
                             if (cellData != null) {
                                 signal = cellData.trim().toLowerCase();
+                                string_key_language = signal.trim().toUpperCase()
                             }
                             if (signal == 'buy') {
                                 color = '#157347';
@@ -229,7 +235,7 @@
                                 border: 1px solid ${color};
                                 font-size: 14px;
                                 padding: 4px 16px;
-                            ">${signal}</span>`);
+                            ">${i18nKey[string_key_language]}</span>`);
                         }
                     },
                     {

@@ -1,6 +1,6 @@
 <section id="trading-on" class="py-0 py-lg-5">
     <div class="container">
-        <h2 class="text-center services-title py-4 py-lg-5">{{__('home.trade_on')}}</h2>
+        <h2 class="text-center services-title py-4 py-lg-5">{{__('base.trade_on')}}</h2>
         <div class="tabs-green">
             <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                 <li class="nav-item" role="presentation">
@@ -15,7 +15,7 @@
                     <button class="nav-link btn-tab" id="pills-green-alpha-tab" data-bs-toggle="pill"
                             data-bs-target="#pills-green-alpha" type="button" role="tab"
                             aria-controls="pills-green-alpha"
-                            aria-selected="false">{{__('base.green_beta_trading_on')}}</button>
+                            aria-selected="false">{{__('base.green_alpha_trading_on')}}</button>
                 </li>
             </ul>
         </div>

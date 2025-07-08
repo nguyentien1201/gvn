@@ -1,0 +1,27 @@
+<?php
+return [
+   'BUY' => 'BUY',
+    'SELL' => 'SELL',
+    'TakeProfitBuy' => 'TakeProfitBuy',
+    'CutLossBuy' => 'CutLossBuy',
+    'TakeProfitSell' => 'TakeProfitSell',
+    'CutLossSell' => 'CutLossSell',
+    'RATING' => 'RATING',
+    'STOCK' => 'STOCK',
+    'LAST_SALE' => 'LAST SALE',
+    'TREND' => 'TREND',
+    'ACTION' => 'ACTION',
+    'PROFIT' => 'PROFIT',
+    'AFTER_SELL' => 'AFTER SELL',
+    'PRICE' => 'PRICE',
+    'TIME' => 'TIME',
+    'BREAKING_HIGH_PRICE' => 'BREAKING HIGH PRICE',
+    'GO_UP' => 'GO UP',
+    'BUILD_UP' => 'BUILD UP',
+    'RECOVERY' => 'RECOVERY',
+    'DOWN' => 'DOWN',
+    'HOLD' => 'HOLD',
+    'CASH' => 'CASH',
+    'UPTREND' =>'UPTREND',
+     'DOWNTREND' =>'DOWNTREND'
+];
