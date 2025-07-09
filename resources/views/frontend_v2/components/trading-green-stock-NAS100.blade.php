@@ -9,11 +9,11 @@
                 <div class="co-12 col-lg-6 d-flex flex-column justify-content-center">
                     <div class="trading-on-content">
                         <div class="head-text mb-2">
-                            <span>{{__('home.trading_green_stock_NAS100.title')}}</span>
+                            <span>GreenStock-NAS100</span>
                         </div>
                         <div class="last-text">
                             <span>
-                                GreenStock-NAS100
+                                {{__('base.description_title_green_stock')}}
                             </span>
                         </div>
                     </div>

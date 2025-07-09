@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\UserActivationMail;
 use Str;
-
+use Illuminate\Support\Facades\Request;
 class RegisterController extends Controller
 {
     /*
@@ -77,6 +77,7 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
             'activation_token' => Str::random(60),
             'role_id' => $data['role_id'] ?? 3, // Default to user role if not provided
+            'id' =>$data['ip']
         ]);
     }
     public function register(Request $request)
@@ -93,6 +94,7 @@ class RegisterController extends Controller
 
         $validatedData = $validator->validated();
         $user = $this->create($request->all());
+        $user['ip'] = Request::ip();
         if(!empty($request['manager_id'])) {
             $user->profile()->create(['manager_id' => $request['manager_id']]);
         }

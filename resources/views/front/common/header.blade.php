@@ -49,7 +49,7 @@
                     <div class="dropdown ml-2">
                         @php
                             $locale = session('locale', config('app.locale'));
-                            $flags = ['en' => 'flag-icon-gb', 'vi' => 'flag-icon-vn'];
+                            $flags = ['en' => 'flag-icon-gb', 'vi' => 'flag-icon-vn','zh'=>'flag-icon-cn','es'=>'flag-icon-es'];
                             $flagClass = $flags[$locale] ?? 'flag-icon-gb';
                         @endphp
                         <div class="dropdown-toggle" id="langDropdown" data-bs-toggle="dropdown" aria-expanded="false">

@@ -85,7 +85,7 @@ class UserController extends AdminController
     }
     public function createUser(StoreUserRequest $request)
     {
-
+        return false;
         $user = new User();
         $user->fill(!empty($request->password) ? $request->all() : $request->except('password'));
         if (!empty($request->password)) {
