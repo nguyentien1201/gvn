@@ -66,9 +66,7 @@ return [
     'HOLD' => '持有',
     'CASH' => '现金',
     'green_stock_100' => '在GREENSTOCK-NAS100上的交易',
-    'description_title_green_stock' => 'GreenStock-NAS100是一个分析美国市场NASDAQ100股票池中股票的系统。系统自动分析股票的短期和长期趋势，排名趋势和每只股票的资金流动势头，从而创建技术评级评分卡，为用户提供可行的见解。用户交易中的操作循环：买入-持有-卖出-现金
-
-',
+    'description_title_green_stock' => 'GreenStock-NAS100是一个分析美国市场NASDAQ100股票池中股票的系统。系统自动分析股票的短期和长期趋势，排名趋势和每只股票的资金流动势头，从而创建技术评级评分卡，为用户提供可行的见解。用户交易中的操作循环：买入-持有-卖出-现金',
     'quote_benjamin' => '“趋势是你的朋友” - Benjamin Graham',
     'description_quote_benjamin' => '确定正确的趋势是打开交易成功之门的金钥匙，占胜率的70%。抓住正确的市场趋势是每个金融市场投资者的关键因素。GVN的Green Beta机器人结合了通过智能算法寻找看涨趋势，并在市场趋势出现变化迹象时进行自我调整的工程设计。以70-80%的平均趋势预测准确率，Green Beta机器人是每位投资者的绝佳助手。',
     'description_greenbeta' => ' Green Beta可以在股票、大宗商品和加密货币市场的20个不同指标上工作，为投资者提供全球市场中资金流动趋势变化的整体视图。',
