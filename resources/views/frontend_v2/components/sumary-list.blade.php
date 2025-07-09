@@ -74,10 +74,10 @@
         <div class="card">
           <div class="card-body">
             <div>
-              <div class="card-title">{{__(base.Signal_Open')}}</div>
+              <div class="card-title">{{__('base.Signal_Open')}}</div>
               <div>
                 <span class="card-value text-warning">{{$list_signal['signal_open'] ?? 0}}</span>
-                <span class="card-unit">{{__(base.Symbol')}}</span>
+                <span class="card-unit">{{__('base.Symbol')}}</span>
               </div>
             </div>
             <div class="card-icon icon-signal">
@@ -92,10 +92,10 @@
         <div class="card">
           <div class="card-body">
             <div>
-              <div class="card-title">{{__(base.HOLD')}}</div>
+              <div class="card-title">{{__('base.HOLD')}}</div>
               <div>
                 <span class="card-value text-primary">{{$list_signal['signal_hold'] ?? 0}}</span>
-                <span class="card-unit">{{__(base.Symbol')}}</span>
+                <span class="card-unit">{{__('base.Symbol')}}</span>
               </div>
             </div>
             <div class="card-icon icon-hold">
@@ -109,14 +109,14 @@
         <div class="card">
           <div class="card-body">
             <div>
-              <div class="card-title">{{__(base.TakeProfitBuy')}}</div>
+              <div class="card-title">{{__('base.TakeProfitBuy')}}</div>
               <div>
                 <span class="card-value text-success">{{$list_signal['signal_TakeProfitBUY'] ?? 0}}</span>
-                <span class="card-unit">{{__(base.Symbol')}}</span>
+                <span class="card-unit">{{__('base.Symbol')}}</span>
               </div>
             </div>
             <div class="card-icon icon-profit">
-              {{__(base.BUY')}}
+              {{__('base.BUY')}}
             </div>
           </div>
         </div>
@@ -126,14 +126,14 @@
         <div class="card">
           <div class="card-body">
             <div>
-              <div class="card-title">{{__(base.CutLossBuy')}}</div>
+              <div class="card-title">{{__('base.CutLossBuy')}}</div>
               <div>
                 <span class="card-value text-success">{{$list_signal['signal_CutLossBUY'] ?? 0}}</span>
-                <span class="card-unit">{{__(base.Symbol')}}</span>
+                <span class="card-unit">{{__('base.Symbol')}}</span>
               </div>
             </div>
             <div class="card-icon icon-cut">
-               {{__(base.BUY')}}
+               {{__('base.BUY')}}
             </div>
           </div>
         </div>
