@@ -63,12 +63,12 @@ use Illuminate\Routing\Middleware\ThrottleRequests;
 
 Route::group([ 'namespace' => 'Front'], function () {
 
-    Route::post('api/buy-product', 'SubscriptionController@store')->name('api.buy-product')->middleware('customer');
-    Route::post('api/update-subscription', 'SubscriptionController@apiUpdateSubscription')->name('api.update-subscription')->middleware('customer');
+    Route::post('api/buy-product', 'SubscriptionController@store')->name('api.buy-product')->middleware('auth');
+    Route::post('api/update-subscription', 'SubscriptionController@apiUpdateSubscription')->name('api.update-subscription')->middleware('auth');
 
     Route::get('/account', 'CustomerController@myAccount')->name('account');
-    Route::post('/account/update', 'CustomerController@update')->name('account.update')->middleware('customer');
-    Route::get('api/get-product', 'SubscriptionController@getProduct')->name('api.get-product')->middleware('customer');
+    Route::post('/account/update', 'CustomerController@update')->name('account.update')->middleware('auth');
+    Route::get('api/get-product', 'SubscriptionController@getProduct')->name('api.get-product')->middleware('auth');
     Route::post('/change-language','HomeController@changeLanguage')->name('changeLanguage');
     Route::post('/contact','HomeController@postContact')->middleware('throttle:3,1')->name('contact');
 
