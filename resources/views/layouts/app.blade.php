@@ -55,7 +55,7 @@
 <script src="https://unpkg.com/feather-icons"></script>
 <script>
      const i18nKey = @json(trans('const_signal'));
-     console.log(i18nKey)
+
 </script>
 @stack('scripts')
 </body>

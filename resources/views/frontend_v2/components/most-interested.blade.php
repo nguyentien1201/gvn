@@ -62,8 +62,8 @@
                                 signalOpenText = "BUY";
                                 signalOpenClass = "buy";
                             }
-                            console.log('i18nKey',i18nKey)
-                            console.log(i18nKey[signalOpenText])
+                            console.log('i18nKey',i18nKey[signalOpenText])
+
                             $(td).html(`<span class="text-capitalize signal-open ${signalOpenClass}">${i18nKey[signalOpenText]}</span>`);
                             $(td).addClass('text-center');
                         }
@@ -99,8 +99,6 @@
                             } else {
                                 colorClass += "sideway";
                             }
-                            console.log('trendPrice',trendPrice)
-                            console.log('i18nKey[trendPrice]',i18nKey[trendPrice])
                             $(td).html(`<span class="trend ${colorClass}">${i18nKey[trendPrice]}</span>`);
                             $(td).addClass('text-center');
                         }
@@ -163,7 +161,6 @@
                             } else {
                                 colorClass += "hold";
                             }
-                            console.log('signalClose',signalClose)
                             if(signalClose) {
                                 $(td).html(`<span class="signal-close ${colorClass}">${i18nKey[signalClose]}</span>`);
                                 $(td).addClass('text-center');
