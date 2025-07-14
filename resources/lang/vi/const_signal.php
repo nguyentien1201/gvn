@@ -23,5 +23,6 @@ return [
     'HOLD' => 'NẮM GIỮ',
     'CASH' => 'TIỀN MẶT',
      'UPTREND' =>'UPTREND',
-      'DOWNTREND' =>'DOWNTREND'
+      'DOWNTREND' =>'DOWNTREND',
+      'CLOSED' => 'ĐÃ ĐÓNG',
 ];

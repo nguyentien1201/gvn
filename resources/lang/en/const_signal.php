@@ -23,5 +23,6 @@ return [
     'HOLD' => 'HOLD',
     'CASH' => 'CASH',
     'UPTREND' =>'UPTREND',
-     'DOWNTREND' =>'DOWNTREND'
+     'DOWNTREND' =>'DOWNTREND',
+       'CLOSED' => 'CLOSED',
 ];

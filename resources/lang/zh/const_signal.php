@@ -23,6 +23,7 @@ return [
     'HOLD' => '持有',
     'CASH' => '现金',
      'UPTREND' =>'UPTREND',
-     'DOWNTREND' =>'DOWNTREND'
+     'DOWNTREND' =>'DOWNTREND',
+      'CLOSED' => '已平仓',
 
 ];
