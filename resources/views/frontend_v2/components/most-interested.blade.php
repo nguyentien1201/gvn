@@ -53,7 +53,7 @@
                     {
                         targets: 0,
                         createdCell: function (td, cellData, rowData, row, col) {
-                            let signalOpenText = '';
+                            let signalOpenText = 'HOLD';
                             let signalOpenClass = '';
                             if(rowData.close_time != null) {
                                 signalOpenText = "CLOSED";
@@ -62,7 +62,7 @@
                                 signalOpenText = "BUY";
                                 signalOpenClass = "buy";
                             }
-                            console.log('i18nKey',i18nKey[signalOpenText])
+                    
 
                             $(td).html(`<span class="text-capitalize signal-open ${signalOpenClass}">${i18nKey[signalOpenText]}</span>`);
                             $(td).addClass('text-center');
