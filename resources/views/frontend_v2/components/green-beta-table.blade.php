@@ -77,7 +77,7 @@
                                 signalOpenText = "BUY";
                                 signalOpenClass = "buy";
                             }
-                            $(td).html(`<span class="text-capitalize signal-open ${signalOpenClass}">${signalOpenText}</span>`);
+                            $(td).html(`<span class="text-capitalize signal-open ${signalOpenClass}">${i18nKey[signalOpenText]}</span>`);
                             $(td).addClass('text-center');
                         }
                     },
@@ -166,11 +166,10 @@
                         targets: 8,
                         createdCell: (td, cellData, rowData, row, col) => {
                             let signalClose = rowData.signal_close;
-
                             if(signalClose == null || signalClose == '' || signalClose == undefined || signalClose == 'Hold'){
                                 signalClose = "HOLD";
                             }
-                            if(signalClose !='' || signalClose != null){
+                             if(signalClose !='' || signalClose != null){
                                 signal_close = signalClose.trim().toLowerCase();
                             }
                             let colorClass = "";
@@ -182,9 +181,8 @@
                             } else {
                                 colorClass += "hold";
                             }
-
                             if(signalClose) {
-                                $(td).html(`<span class="signal-close ${colorClass}">${signalClose}</span>`);
+                                $(td).html(`<span class="signal-close ${colorClass}">${i18nKey[signalClose]}</span>`);
                                 $(td).addClass('text-center');
                             }
                         }
