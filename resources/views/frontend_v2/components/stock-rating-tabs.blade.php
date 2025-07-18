@@ -26,15 +26,15 @@
                     <table id="green-stock-NAS100-table" class="table table-striped table-hover">
                         <thead>
                             <tr>
-                                <th class="text-capitalize text-center text-nowrap">{{__('base.rating')}}</th>
-                                <th class="text-capitalize text-center text-nowrap">{{__('base.stock')}}</th>
-                                <th class="text-capitalize text-center text-nowrap">{{__('base.last_sale')}}</th>
-                                <th class="text-capitalize text-center text-nowrap">{{__('base.trend')}}</th>
-                                <th class="text-capitalize text-center text-nowrap">{{__('base.action')}}</th>
-                                <th class="text-capitalize text-center text-nowrap">{{__('base.profit')}}</th>
-                                <th class="text-capitalize text-center text-nowrap">{{__('base.after_sell')}}</th>
-                                <th class="text-capitalize text-center text-nowrap">{{__('base.price')}}</th>
-                                <th class="text-capitalize text-center text-nowrap">{{__('base.time')}}</th>
+                                <th class="text-capitalize text-center text-nowrap">{{__('const_signal.RATING')}}</th>
+                                <th class="text-capitalize text-center text-nowrap">{{__('const_signal.STOCK')}}</th>
+                                <th class="text-capitalize text-center text-nowrap">{{__('const_signal.LAST_SALE')}}</th>
+                                <th class="text-capitalize text-center text-nowrap">{{__('const_signal.TREND')}}</th>
+                                <th class="text-capitalize text-center text-nowrap">{{__('const_signal.ACTION')}}</th>
+                                <th class="text-capitalize text-center text-nowrap">{{__('const_signal.PROFIT')}}</th>
+                                <th class="text-capitalize text-center text-nowrap">{{__('const_signal.AFTER_SELL')}}</th>
+                                <th class="text-capitalize text-center text-nowrap">{{__('const_signal.PRICE')}}</th>
+                                <th class="text-capitalize text-center text-nowrap">{{__('const_signal.TIME')}}</th>
                             </tr>
                         </thead>
                     </table>
@@ -46,15 +46,15 @@
                     <table id="green-stock-vn-index-table" class="table table-striped table-hover">
                         <thead>
                         <tr>
-                            <th class="text-capitalize text-center text-nowrap">{{__('base.rating')}}</th>
-                            <th class="text-capitalize text-center text-nowrap">{{__('base.stock')}}</th>
-                            <th class="text-capitalize text-center text-nowrap">{{__('base.last_sale')}}</th>
-                            <th class="text-capitalize text-center text-nowrap">{{__('base.trend')}}</th>
-                            <th class="text-capitalize text-center text-nowrap">{{__('base.action')}}</th>
-                            <th class="text-capitalize text-center text-nowrap">{{__('base.profit')}}</th>
-                            <th class="text-capitalize text-center text-nowrap">{{__('base.after_sell')}}</th>
-                            <th class="text-capitalize text-center text-nowrap">{{__('base.price')}}</th>
-                            <th class="text-capitalize text-center text-nowrap">{{__('base.time')}}</th>
+                            <th class="text-capitalize text-center text-nowrap">{{__('const_signal.RATING')}}</th>
+                            <th class="text-capitalize text-center text-nowrap">{{__('const_signal.STOCK')}}</th>
+                            <th class="text-capitalize text-center text-nowrap">{{__('const_signal.LAST_SALE')}}</th>
+                            <th class="text-capitalize text-center text-nowrap">{{__('const_signal.TREND')}}</th>
+                            <th class="text-capitalize text-center text-nowrap">{{__('const_signal.ACTION')}}</th>
+                            <th class="text-capitalize text-center text-nowrap">{{__('const_signal.PROFIT')}}</th>
+                            <th class="text-capitalize text-center text-nowrap">{{__('const_signal.AFTER_SELL')}}</th>
+                            <th class="text-capitalize text-center text-nowrap">{{__('const_signal.PRICE')}}</th>
+                            <th class="text-capitalize text-center text-nowrap">{{__('const_signal.TIME')}}</th>
                         </tr>
                         </thead>
                     </table>

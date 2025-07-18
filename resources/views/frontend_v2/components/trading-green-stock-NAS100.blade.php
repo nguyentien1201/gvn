@@ -35,7 +35,7 @@
                             </div>
                             <div class="col-12">
                                 <div class="container-chart">
-                                    <h4 class="title-chart-buy-cash-hold-sell text-uppercase text-center mb-5">{{ __('base.DOWN') }}-{{ __('base.UP') }}</h4>
+                                    <h4 class="title-chart-buy-cash-hold-sell text-uppercase text-center mb-5">{{ __('base.DOWN') }}-{{ __('base.GO_UP') }}</h4>
                                     <div style="height: 363px;"
                                          class="d-flex flex-column justify-content-center align-items-center chart-container">
                                         <canvas id="maChart"></canvas>

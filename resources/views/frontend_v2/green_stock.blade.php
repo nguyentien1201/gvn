@@ -2075,15 +2075,15 @@
                                         <table class="table table-striped table-hover" id="indices-table">
                                             <thead>
                                                 <tr>
-                                                    <th class="text-capitalize text-center text-nowrap">{{__('base.RATING')}}</th>
-                                                    <th class="text-capitalize text-center text-nowrap">{{__('base.STOCK')}}</th>
-                                                    <th class="text-capitalize text-center text-nowrap">{{__('base.LAST_SALE')}}</th>
-                                                    <th class="text-capitalize text-center text-nowrap">{{__('base.TREND')}}</th>
-                                                    <th class="text-capitalize text-center text-nowrap">{{__('base.ACTION')}}</th>
-                                                    <th class="text-capitalize text-center text-nowrap">{{__('base.PROFIT')}}</th>
-                                                    <th class="text-capitalize text-center text-nowrap">{{__('base.AFTER_SELL')}}</th>
-                                                    <th class="text-capitalize text-center text-nowrap">{{__('base.PRICE')}}</th>
-                                                    <th class="text-capitalize text-center text-nowrap">{{__('base.TIME')}}</th>
+                                                    <th class="text-capitalize text-center text-nowrap">{{__('const_signal.RATING')}}</th>
+                                                    <th class="text-capitalize text-center text-nowrap">{{__('const_signal.STOCK')}}</th>
+                                                    <th class="text-capitalize text-center text-nowrap">{{__('const_signal.LAST_SALE')}}</th>
+                                                    <th class="text-capitalize text-center text-nowrap">{{__('const_signal.TREND')}}</th>
+                                                    <th class="text-capitalize text-center text-nowrap">{{__('const_signal.ACTION')}}</th>
+                                                    <th class="text-capitalize text-center text-nowrap">{{__('const_signal.PROFIT')}}</th>
+                                                    <th class="text-capitalize text-center text-nowrap">{{__('const_signal.AFTER_SELL')}}</th>
+                                                    <th class="text-capitalize text-center text-nowrap">{{__('const_signal.PRICE')}}</th>
+                                                    <th class="text-capitalize text-center text-nowrap">{{__('const_signal.TIME')}}</th>
                                                 </tr>
                                             </thead>
                                         </table>
@@ -2144,15 +2144,15 @@
                                     <div class="table-responsive" style="max-height: 295px; overflow-y: auto;">
                                         <table class="table table-striped table-hover" id="top_stock">
                                             <thead>
-                                                <th class="text-capitalize text-center text-nowrap">{{__('base.RATING')}}</th>
-                                                <th class="text-capitalize text-center text-nowrap">{{__('base.STOCK')}}</th>
-                                                <th class="text-capitalize text-center text-nowrap">{{__('base.LAST_SALE')}}</th>
-                                                <th class="text-capitalize text-center text-nowrap">{{__('base.TREND')}}</th>
-                                                <th class="text-capitalize text-center text-nowrap">{{__('base.ACTION')}}</th>
-                                                <th class="text-capitalize text-center text-nowrap">{{__('base.PROFIT')}}</th>
-                                                <th class="text-capitalize text-center text-nowrap">{{__('base.AFTER_SELL')}}</th>
-                                                <th class="text-capitalize text-center text-nowrap">{{__('base.PRICE')}}</th>
-                                                <th class="text-capitalize text-center text-nowrap">{{__('base.TIME')}}</th>
+                                                <th class="text-capitalize text-center text-nowrap">{{__('const_signal.RATING')}}</th>
+                                                <th class="text-capitalize text-center text-nowrap">{{__('const_signal.STOCK')}}</th>
+                                                <th class="text-capitalize text-center text-nowrap">{{__('const_signal.LAST_SALE')}}</th>
+                                                <th class="text-capitalize text-center text-nowrap">{{__('const_signal.TREND')}}</th>
+                                                <th class="text-capitalize text-center text-nowrap">{{__('const_signal.ACTION')}}</th>
+                                                <th class="text-capitalize text-center text-nowrap">{{__('const_signal.PROFIT')}}</th>
+                                                <th class="text-capitalize text-center text-nowrap">{{__('const_signal.AFTER_SELL')}}</th>
+                                                <th class="text-capitalize text-center text-nowrap">{{__('const_signal.PRICE')}}</th>
+                                                <th class="text-capitalize text-center text-nowrap">{{__('const_signal.TIME')}}</th>
                                             </thead>
                                         </table>
                                     </div>
