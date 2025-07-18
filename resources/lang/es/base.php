@@ -72,9 +72,9 @@ return [
     'quote_benjamin' => '\"La tendencia es tu amiga\" - Benjamin Graham',
     'description_quote_benjamin' => 'Identificar la tendencia correcta es la clave de oro que abre la puerta al éxito en el trading y representa hasta el 70% de las posibilidades de ganar. Captar la tendencia correcta del mercado es un factor clave para cada inversor en el mercado financiero. El robot Green Beta de GVN es una ingeniería combinada para buscar tendencias alcistas con algoritmos inteligentes y autoajuste cuando las tendencias del mercado muestran signos de cambio. Con una tasa promedio de precisión de predicción de tendencias del 70-80%, el robot Green Beta es un excelente asistente para cada inversor.',
     'description_greenbeta' => 'Green Beta puede trabajar con 20 indicadores diferentes en los mercados de acciones, materias primas y criptomonedas, proporcionando a los inversores una visión holística de las tendencias cambiantes del flujo de dinero en el mercado global.',
-    'quote_soros' => '\"No importa si tienes razón o no, sino cuánto dinero ganas cuando tienes razón y cuánto pierdes cuando estás equivocado.\"– George Soros',
+    'quote_soros' => '\"No importa si tienes razón o no, sino cuánto dinero ganas cuando tienes razón y cuánto pierdes cuando estás equivocado.\"',
     'description_quote_soros' => 'No puedes controlar el mercado, pero puedes controlarte a ti mismo.El robot Green Alpha de GVN será una herramienta poderosa para ayudarte a dominar tus emociones, tomar decisiones de trading disciplinadas y lograr alta eficiencia en el trading. El robot Green Alpha de GVN analiza el impulso del mercado durante la sesión, identifica tendencias y proporciona acciones de trading específicas. El robot Green Alpha es adecuado para traders de día en los mercados.',
-    'quote_templeton' => '\"En lugar de predecir el mercado, enfoquémonos en encontrar oportunidades de inversión.\" - John Templeton',
+    'quote_templeton' => '\"En lugar de predecir el mercado, enfoquémonos en encontrar oportunidades de inversión.\"',
     'description_greenstock' => ' El sistema GreenStock-NAS100 clasifica automáticamente las acciones por la fuerza del impulso del flujo de efectivo y las tendencias de las acciones en el índice NAS100 diariamente, proporcionando acciones para que los inversores se actualicen.',
     'system_product' => 'El sistema clasifica grupos de acciones con mejor rentabilidad en un período de año, trimestre o mes que el mercado general.',
     'mission_gvn' => 'GVN fue fundada por cofundadores con muchos años de experiencia en el sector financiero. Entendemos las dificultades que enfrentan los inversores y siempre queremos ofrecer las mejores soluciones.GVN ha creado sistemas inteligentes que se adaptan a muchos mercados financieros diferentes y tienen una buena eficiencia en el comercio rentable. Con GVN, los inversores pueden estar completamente tranquilos con sus activos. GVN realmente ayuda a los inversores a ahorrar tiempo y tomar decisiones efectivas durante el comercio. Creamos un futuro financiero sostenible con GVN.',
@@ -87,10 +87,18 @@ return [
     'The_first_models' => 'Los primeros modelos de Alpha y Beta están en desarrollo oficial.',
     'Our_Team' => 'Nuestro equipo',
     'Meet_the_Experts' => 'Conoce a los expertos que impulsan el éxito de GVN con años de innovación financiera.',
-    'danh_contact' => 'Nguyen Ngoc Danh 
-Fundador
-Con más de 10 años de experiencia en finanzas, fundó GVN para ayudar a los inversores a tener éxito.',
-    'note_contact' => 'Estimados inversores, con nuestra experiencia a largo plazo en el sector financiero, GVN Fin Trade se enorgullece de ser su socio de confianza.Siempre nos esforzamos por ofrecer productos y servicios de inversión eficientes. Si necesita apoyo, por favor contáctenos.',
+    'intro_contact' => [
+        'danh_contact'=> [
+            'name' => 'Nguyen Ngoc Danh',
+            'position' => 'Fundador',
+            'bio' => 'With more 10 years of experience in finance, he founded GVN to help investors succeed.',
+    ],
+    'thong_contact'=> [
+            'name' => 'Huynh Duy Thong',
+            'position' => 'Cofundador',
+            'bio' => 'Financial advisor with over 10 years of experience in the financial sector',
+    ],
+],
     'Location' => 'Ubicación',
     'address_company' => 'Barrio An Khanh, distrito Thu Duc, ciudad de Ho Chi Minh, Vietnam',
     'phone' => 'Teléfono',
@@ -154,4 +162,28 @@ Con más de 10 años de experiencia en finanzas, fundó GVN para ayudar a los in
         'green_alpha_trading_on'=>'perar en Green Alpha',
         'trade_on' => 'Trade on',
 
+         'basic_plan' => 'Plan básico',
+    'month' => 'Mes',
+    'version_free' => 'Versión gratuita',
+    'trial_1_month' => 'Prueba de 1 mes',
+    'advanced_plan' => 'Plan avanzado',
+    'advanced_plan_note' => 'Nuestro plan más popular',
+    'trial_6_months' => 'Prueba de 6 meses',
+    'month_6' => '6 meses',
+    'business_plan' => 'Plan empresarial',
+    'year' => 'Año',
+    'trial_1_year' => 'Prueba de 1 año',
+    'get_started' => 'Comenzar',	
+    'most_plan_note' => 'Plan más popular',	
 ];
+
+
+
+
+
+
+
+
+
+
+

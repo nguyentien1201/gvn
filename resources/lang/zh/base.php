@@ -70,9 +70,9 @@ return [
     'quote_benjamin' => '“趋势是你的朋友” - Benjamin Graham',
     'description_quote_benjamin' => '确定正确的趋势是打开交易成功之门的金钥匙，占胜率的70%。抓住正确的市场趋势是每个金融市场投资者的关键因素。GVN的Green Beta机器人结合了通过智能算法寻找看涨趋势，并在市场趋势出现变化迹象时进行自我调整的工程设计。以70-80%的平均趋势预测准确率，Green Beta机器人是每位投资者的绝佳助手。',
     'description_greenbeta' => ' Green Beta可以在股票、大宗商品和加密货币市场的20个不同指标上工作，为投资者提供全球市场中资金流动趋势变化的整体视图。',
-    'quote_soros' => '“这不是关于你是否对错，而是当你对时赚了多少钱，当你错时亏了多少钱” – George Soros',
+    'quote_soros' => '“这不是关于你是否对错，而是当你对时赚了多少钱，当你错时亏了多少钱”',
     'description_quote_soros' => '你无法控制市场，但你可以控制自己。GVN的Green Alpha机器人将是一个强大的工具，帮助您掌控情绪，做出有纪律的交易决策，并在交易中实现高效。GVN的Green Alpha机器人在交易期间分析市场动量，识别趋势并提供具体的交易操作。Green Alpha机器人适合市场中的日内交易者。',
-    'quote_templeton' => ' “与其预测市场，不如专注于寻找投资机会。”- John Templeton',
+    'quote_templeton' => ' “与其预测市场，不如专注于寻找投资机会。”',
     'description_greenstock' => 'GreenStock-NAS100系统每天按现金流动强度和NAS100指数中的股票趋势自动排序，并为投资者提供更新操作。',
     'system_product' => '系统按年、季度或月期间的盈利能力将股票分组排序，比整体市场更好。',
     'mission_gvn' => 'GVN由具有多年金融行业经验的联合创始人创立。我们了解投资者面临的困难，并始终希望提供最佳解决方案。GVN创建了能够适应多种不同金融市场且具有良好盈利交易效率的智能系统。有了GVN，投资者可以完全放心他们的资产。GVN真正帮助投资者节省时间并在交易中做出有效决策。让我们与GVN一起创造一个可持续的金融未来。',
@@ -85,10 +85,18 @@ return [
     'The_first_models' => 'Alpha和Beta的第一个模型正在正式开发中。',
     'Our_Team' => '我们的团队',
     'Meet_the_Experts' => '与推动GVN成功的多年金融创新专家见面',
-    'danh_contact' => 'Nguyen Ngoc Danh 
-创始人 
-拥有超过10年的金融经验，他创立了GVN以帮助投资者成功。',
-    'note_contact' => '亲爱的投资者，凭借我们在金融领域的长期专业知识，GVN Fin Trade自豪地成为您值得信赖的合作伙伴。我们始终努力带来高效的投资产品和服务。如果您需要支持，请随时联系我们。',
+    'intro_contact' => [
+        'danh_contact'=> [
+            'name' => 'Nguyen Ngoc Danh',
+            'position' => '创始人',
+            'bio' => '拥有超过10年的金融经验，他创立了GVN以帮助投资者成功。',
+    ],
+    'thong_contact'=> [
+            'name' => 'Huynh Duy Thong',
+            'position' => '联合创始人',
+            'bio' => '拥有超过10年金融领域经验的财务顾问',
+    ],
+],
     'Location' => '地址',
     'address_company' => '越南胡志明市守德区安庆坊',
     'phone' => '电话',
@@ -152,4 +160,30 @@ return [
     'green_beta_trading_on'=>'在GreenBeta上的交易',
     'green_alpha_trading_on'=>'在GreenAlpha上的交易',
     'trade_on' => 'Trade on',
+
+     'basic_plan' => '基础计划',
+    'month' => '月',
+    'version_free' => '免费版本',
+    'trial_1_month' => '1个月试用',
+    'advanced_plan' => '高级计划',
+    'advanced_plan_note' => '我们最受欢迎的计划',
+    'trial_6_months' => '6个月试用',
+    'month_6' => '6 月',
+    'business_plan' => '商业计划',
+    'year' => '年',
+    'trial_1_year' => '1年试用',
+    'get_started' => '开始',		
 ];
+
+
+
+
+
+
+
+
+
+
+
+
+

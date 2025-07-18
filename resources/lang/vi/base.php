@@ -70,9 +70,9 @@ return [
     'quote_benjamin' => '\"Xu hướng chính là bạn\"- Benjamin Graham',
     'description_quote_benjamin' => 'Xác định xu hướng chính xác là chìa khóa vàng mở ra cánh cửa thành công trong đầu tư và chiếm tới 70% cơ hội chiến thắng. Việc nắm bắt đúng xu hướng thị trường là yếu tố không thể thiếu đối với mọi nhà đầu tư trong lĩnh vực tài chính. Robot Green Beta của GVN là sự kết hợp giữa việc tìm kiếm các xu hướng tăng giá bằng các thuật toán thông minh và tự thích ứng khi xu hướng thị trường có dấu hiệu thay đổi. Với tỷ lệ dự đoán xu hướng chính xác trung bình từ 70-80%, Robot Green Beta này là một trợ thủ đắc lực cho mọi nhà đầu tư.',
     'description_greenbeta' => 'Green Beta có thể làm việc trên 20 chỉ số ở các thị trường Chứng khoán, Hàng hóa và Tiền điện tử, cho nhà đầu tư một cái nhìn rõ nét hơn về xu hướng thay đổi dòng tiền của cá mập trên thị trường toàn cầu.',
-    'quote_soros' => 'Bạn đúng hay sai, điều đó không quan trọng, cái chính là bạn kiếm được bao nhiêu khi đúng và mất bao nhiêu khi bạn sai.\" – George Soros',
+    'quote_soros' => 'Bạn đúng hay sai, điều đó không quan trọng, cái chính là bạn kiếm được bao nhiêu khi đúng và mất bao nhiêu khi bạn sai.\" ',
     'description_quote_soros' => 'Bạn không thể kiểm soát thị trường, nhưng bạn có thể kiểm soát bản thân. Robot Green Alpha của GVN sẽ là công cụ đắc lực giúp bạn làm chủ cảm xúc, đưa ra quyết định giao dịch một cách kỷ luật và đạt được hiệu quả cao trong Trading. Robot Green Alpha của GVN phân tích xung lực của thị trường trong phiên, xác định điểm xu hướng và cho ra các hành động giao dịch cụ thể. Robot Green Alpha là phù hợp cho các nhà đầu tư dành phần lớn thời gian hằng ngày giao dịch trên các thị trường.',
-    'quote_templeton' => '\"Thay vì cố gắng dự đoán thị trường, hãy tập trung vào việc tìm kiếm cơ hội đầu tư.\" - John Templeton',
+    'quote_templeton' => '\"Thay vì cố gắng dự đoán thị trường, hãy tập trung vào việc tìm kiếm cơ hội đầu tư.\"',
     'description_greenstock' => 'Hệ thống GreenStock-NAS100 tự động sắp xếp các cổ phiếu theo độ mạnh xung lực dòng tiền và xu hướng cổ phiếu trong rổ NAS100 hằng ngày, đưa ra hành động để nhà đầu tư theo dõi',
     'system_product' => 'Hệ thống sắp xếp các nhóm cổ phiếu có hiệu suất sinh lời trong khoảng thời gian năm, quý, tháng tốt hơn thị trường chung',
     'mission_gvn' => '\"GVN được xây dựng bởi những Co-founder có nhiều năm kinh nghiệm trong lĩnh vực tài chính. Chúng tôi hiểu rõ những khó khăn mà nhà đầu tư gặp phải và luôn mong muốn mang đến những giải pháp tốt nhất. GVN xây dựng những hệ thống thông minh, biết thích ứng với nhiều thị trường tài chính khác nhau và có hiệu quả giao dịch sinh lời tốt. Với GVN, nhà đầu tư hoàn toàn yên tâm về sự an toàn của tài sản. GVN giúp nhà đầu tư tiết kiệm thời gian và ra quyết định hiệu quả khi đầu tư. Hãy cùng GVN xây dựng một tương lai tài chính thịnh vượng.\"',
@@ -85,11 +85,18 @@ return [
     'The_first_models' => 'Bắt đầu xây dựng các mô hình đầu tiên của Alpha và Beta',
     'Our_Team' => 'Đội ngũ của chúng tôi',
     'Meet_the_Experts' => 'Gặp gỡ các chuyên gia thúc đẩy thành công của GVN với nhiều năm đổi mới tài chính.',
-    'danh_contact' => 'Nguyễn Ngọc Danh
-Người sáng lập
-Với hơn năm kinh nghiệm trong lĩnh vực tài chính, ông đã thành lập GVN nhằm giúp nhà đầu tư thành công hơn.',
-    'note_contact' => '\"Kính gửi Quý nhà đầu tư, 
- Với nhiều năm kinh nghiệm trong lĩnh vực tài chính, GVN Fin Trade tự hào là đối tác tin cậy của Quý vị. Chúng tôi luôn nỗ lực mang đến những sản phẩm và dịch vụ đầu tư chất lượng cao. Nếu Quý vị cần được tư vấn hoặc hỗ trợ, xin vui lòng liên hệ với chúng tôi.\"',
+    'intro_contact' => [
+        'danh_contact'=> [
+            'name' => 'Nguyễn Ngọc Danh',
+            'position' => 'Người sáng lập',
+            'bio' => 'Với hơn năm kinh nghiệm trong lĩnh vực tài chính, ông đã thành lập GVN nhằm giúp nhà đầu tư thành công hơn.',
+    ],
+    'thong_contact'=> [
+            'name' => 'Huỳnh Duy Thông',
+            'position' => 'Đồng sáng lập',
+            'bio' => 'Chuyên viên tư vấn tài chính, có hơn 10 năm kinh nghiệp trong lĩnh vực tài chính',
+    ],
+],
     'Location' => 'Địa điểm',
     'address_company' => 'Phường An Khánh, Tp.Thủ Đức, HCM',
     'phone' => 'Số điện thoại ',
@@ -152,4 +159,17 @@ Với hơn năm kinh nghiệm trong lĩnh vực tài chính, ông đã thành l�
     'Profit_Today'=>'Profit Today',
     'green_alpha_trading_on'=>'Giao dịch với Green Alpha',
     'trade_on' => 'Trade on',
+
+    'basic_plan' => 'Gói cơ bản',
+    'month' => 'Tháng',
+    'version_free' => 'Sản phẩm dùng thử',
+    'trial_1_month' => 'Trải nghiệm 1 tháng',
+    'advanced_plan' => 'Gói nâng cao',
+    'advanced_plan_note' => 'Gói thông dụng nhất của chúng tôi',
+    'trial_6_months' => 'Trải nghiệm 6 tháng',
+    'month_6' => '6 tháng',
+    'business_plan' => 'Gói doanh nghiệp',
+    'year' => 'năm',
+    'trial_1_year' => '1-year trial',
+    'get_started' => 'Bắt đầu',					
 ];
