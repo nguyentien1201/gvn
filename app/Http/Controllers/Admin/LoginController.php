@@ -22,7 +22,7 @@ class LoginController extends Controller
 {
     public function getLogin()
     {
-        return view('frontend_v2.auth.login');
+        return view('auth.login');
     }
 
     public function postLogin(StoreLoginRequest $request)

@@ -69,14 +69,14 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-
+        
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'activation_token' => Str::random(60),
             'role_id' => $data['role_id'] ?? 3, // Default to user role if not provided
-            'id' =>$data['ip']
+            'ip' => $data['ip']
         ]);
     }
     public function register(Request $request)
@@ -93,6 +93,7 @@ class RegisterController extends Controller
     }
 
         $validatedData = $validator->validated();
+      
         $userData['ip'] =  $request->ip() ?? '';
         $user = $this->create($userData);
        
