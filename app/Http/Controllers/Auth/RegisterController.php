@@ -13,7 +13,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\UserActivationMail;
 use Str;
-use Illuminate\Support\Facades\Request;
 class RegisterController extends Controller
 {
     /*
