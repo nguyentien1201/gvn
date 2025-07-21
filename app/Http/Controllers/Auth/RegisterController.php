@@ -93,7 +93,7 @@ class RegisterController extends Controller
     }
 
         $validatedData = $validator->validated();
-        $userData['ip'] = Request::ip() ?? '';
+        $userData['ip'] =  $request->ip() ?? '';
         $user = $this->create($userData);
        
         if(!empty($request['manager_id'])) {
