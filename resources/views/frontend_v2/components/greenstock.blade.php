@@ -24,7 +24,7 @@
 
         <!-- Bar Chart -->
         <div class="bg-white p-4 shadow-md rounded-lg">
-            <h4 class="text-lg font-semibold mb-2">{{__('base.DOWN')}} - {{__('base.UP')}}</h4>
+            <h4 class="text-lg font-semibold mb-2">{{__('base.DOWN')}} - {{__('base.GO_UP')}}</h4>
             <img src="/images/bar-chart.png" alt="Bar Chart" class="mx-auto w-full">
         </div>
     </div>
