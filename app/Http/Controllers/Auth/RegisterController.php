@@ -76,14 +76,15 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
             'activation_token' => Str::random(60),
             'role_id' => $data['role_id'] ?? 3, // Default to user role if not provided
-            // 'id' =>$data['ip']
+            'id' =>$data['ip']
         ]);
     }
     public function register(Request $request)
     {
+        $userData = $request->all();
       
-         $validator = $this->validator($request->all());
-
+         $validator = $this->validator($userData);
+        
     if ($validator->fails()) {
         return redirect()
             ->back()
@@ -92,8 +93,9 @@ class RegisterController extends Controller
     }
 
         $validatedData = $validator->validated();
-        $user = $this->create($request->all());
-        // $user['ip'] = Request::ip() ?? '';
+        $userData['ip'] = Request::ip() ?? '';
+        $user = $this->create($userData);
+       
         if(!empty($request['manager_id'])) {
             $user->profile()->create(['manager_id' => $request['manager_id']]);
         }
