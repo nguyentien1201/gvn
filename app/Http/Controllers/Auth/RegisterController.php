@@ -93,7 +93,7 @@ class RegisterController extends Controller
 
         $validatedData = $validator->validated();
         $user = $this->create($request->all());
-        $user['ip'] = Request::ip();
+        $user['ip'] = Request::ip() ?? '';
         if(!empty($request['manager_id'])) {
             $user->profile()->create(['manager_id' => $request['manager_id']]);
         }
