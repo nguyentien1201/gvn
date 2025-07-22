@@ -96,16 +96,17 @@ class RegisterController extends Controller
       
         $userData['ip'] =  $request->ip() ?? '';
         $user = $this->create($userData);
-       
         if(!empty($request['manager_id'])) {
             $user->profile()->create(['manager_id' => $request['manager_id']]);
         }
-        try {
-            Mail::to($user->email)->send(new UserActivationMail($user));
-        }catch(\Exception $e){
-            \Log::error($e->getMessage());
+        if($user->role ==3){
+            try {
+                Mail::to($user->email)->send(new UserActivationMail($user));
+            }catch(\Exception $e){
+                \Log::error($e->getMessage());
+            }
         }
-
+       
         return redirect()->route('front.home.index'); // Redirect to a desired route after registration
     }
     public function activate($token)
