@@ -35,7 +35,7 @@
                             </div>
                         </div>
                         <div class="co-12 col-lg-6">
-                            <img class="img-fluid" src="{{asset('images/robot-beta.png')}}" alt="{{asset('images/robot-alpha.png')}}">
+                            <img class="img-fluid" src="{{asset('images/robotbeta.jpg')}}" alt="{{asset('images/robotbeta.jpg')}}">
                         </div>
                     </div>
                 </div>
