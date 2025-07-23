@@ -1,3 +1,36 @@
+@push('styles')
+<style>
+
+        @keyframes blink {
+
+            0%,
+            90% {
+                opacity: 1;
+                /* Phần tử hiển thị trong phần lớn thời gian */
+                color: black;
+                background: #ffd966;
+            }
+
+            95%,
+            100% {
+                opacity: 0;
+                /* Chớp nháy nhanh trong khoảng thời gian ngắn */
+                background-color: #ffd966;
+            }
+        }
+
+        /* Tạo lớp với animation */
+        .blink-effect {
+            animation: blink 5s infinite;
+            /* Hiệu ứng chớp nháy, lặp lại mãi mãi */
+        }
+
+        .blink-box {
+            color: black;
+
+        }
+</style>
+@endpush
 <section id="most_interested" class="py-5">
     <div class="container">
         <h2 class="text-center services-title pb-3 pb-lg-5">{{__('base.Most_interested')}}</h2>
@@ -28,7 +61,7 @@
     <script>
         $(document).ready(function () {
             const logoBaseUrl = "{{ asset('images/logo') }}"; // trả ra đường dẫn base
-            $('#most-interested-table').DataTable({
+             var indices =  $('#most-interested-table').DataTable({
                 responsive: false,
                 autoWidth: false,
                 paging: false,
@@ -176,6 +209,25 @@
                     },
                 ]
             });
+               function highlightColumn(columnIndex) {
+    // Add a class to all cells in the specified column
+
+    var columnNodes = indices.column(8).nodes().to$();
+
+    // Extract text content from each cell in the column
+    var columnValues = columnNodes.map(function () {
+        let value = $(this).text();
+        if (value == "Hold" || value == "HOLD") {
+            $(this).find('span').addClass('blink-box blink-effect');
+        }
+        // or .html() if you want to get the HTML content
+    }).get();  //
+}
+
+// Delay for 5 seconds, then highlight the 3rd column (index starts from 0)
+            setInterval(function () {
+                highlightColumn(8);  // Highlight the third column (index 2)
+            }, 5000);
         });
     </script>
 @endpush
