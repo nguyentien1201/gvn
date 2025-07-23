@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\UserActivationMail;
 use Str;
+use Illuminate\Support\Facades\DB;
 class RegisterController extends Controller
 {
     /*
@@ -54,7 +55,22 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
+            'name' => ['required', 'string', 'max:255',
+                function ($attribute, $value, $fail) {
+                // Nếu name chứa link, từ khóa www hoặc tên miền thì fail
+                if (preg_match('/https?:\/\/|www\.|[a-z0-9-]+\.[a-z]{2,}/i', $value)) {
+                     $ip = request()->ip();
+                    // Ghi vào bảng block_ip (tùy bạn tạo)
+                    DB::table('ban_ip')->insertOrIgnore([
+                        'ip' => $ip,
+                        'reason' => 'Username contains link',
+                        'created_at' => now()
+                    ]);
+
+                    // Trả lỗi và dừng lại
+                    $fail('Phát hiện liên kết trong tên. Truy cập của bạn đã bị chặn.');
+                }
+            }],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'role_id' => ['required', 'in:2,3']
