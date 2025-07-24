@@ -64,6 +64,7 @@ class RegisterController extends Controller
                     DB::table('ban_ip')->insertOrIgnore([
                         'ip' => $ip,
                         'reason' => 'Username contains link',
+                        'description'=> $value,
                         'created_at' => now()
                     ]);
 
