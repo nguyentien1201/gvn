@@ -13,7 +13,7 @@
             <i><span class="date-js"></span> <span class="time-js"></span> (UTC+3)</i>
         </h5>
         @include('frontend_v2.components.sumary-list')
-        <div class="table-responsive mt-5" style="">
+        <div class="table-responsive mt-5" >
             <table id="green-beta-table" class="table table-striped table-hover" style="margin:none">
                 <thead>
                     <tr>
