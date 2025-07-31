@@ -22,6 +22,10 @@
 .code_header{
     border-bottom: 1px solid #fff !important;
 }
+    .blink-box {
+            color: white;
+
+        }
 .blink-effect {
     animation: blink 5s infinite; /* Hiệu ứng chớp nháy, lặp lại mãi mãi */
 }

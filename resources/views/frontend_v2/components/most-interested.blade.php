@@ -26,7 +26,7 @@
         }
 
         .blink-box {
-            color: black;
+            color: white;
 
         }
 </style>

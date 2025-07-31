@@ -19,6 +19,10 @@
     #popupDataTable_wrapper .dt-scroll-head{
    display: none !important;
 }
+    .blink-box {
+            color: white;
+
+        }
 .blink-effect {
     animation: blink 5s infinite; /* Hiệu ứng chớp nháy, lặp lại mãi mãi */
 }
