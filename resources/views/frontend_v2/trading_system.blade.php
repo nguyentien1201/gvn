@@ -222,7 +222,7 @@
                                         <div class="popular-badge">{{__('base.most_plan_note')}}</div>
                                         <div class="card-body d-flex flex-column">
                                             <div class="card-content text-center ptable-action">
-                                                <h5 class="card-title">{{__('base.business_plan')}}</h5>
+                                                <h5 class="card-title">{{__('base.advanced_plan')}}</h5>
                                                 <p class="text-muted">{{__('base.advanced_plan_note')}}</p>
                                                 <div class="price text-success">
                                                     ${{$price_product['beta']['six_month_price'] ?? 0}}</div>
@@ -322,7 +322,7 @@
                                             <div class="popular-badge">{{__('base.most_plan_note')}}</div>
                                             <div class="card-body d-flex flex-column">
                                                 <div class="card-content text-center">
-                                                    <h5 class="card-title">{{__('base.business_plan')}}</h5>
+                                                    <h5 class="card-title">{{__('base.advanced_plan')}}</h5>
                                                     <p class="text-muted">{{__('base.advanced_plan_note')}}</p>
                                                     <div class="price text-success">
                                                         ${{$price_product['alpha']['six_month_price'] ?? 0}}</div>
@@ -446,7 +446,7 @@
                                             <div class="popular-badge">{{__('base.most_plan_note')}}</div>
                                             <div class="card-body d-flex flex-column">
                                                 <div class="card-content text-center">
-                                                    <h5 class="card-title">{{__('base.business_plan')}}</h5>
+                                                    <h5 class="card-title">{{__('base.advanced_plan')}}</h5>
                                                     <p class="text-muted">{{__('base.advanced_plan_note')}}</p>
                                                     <div class="price text-success">
                                                         ${{$price_product['greenstock-nas100']['six_month_price'] ?? 0}}</div>
@@ -552,7 +552,7 @@
                                             <div class="popular-badge">{{__('base.most_plan_note')}}</div>
                                             <div class="card-body d-flex flex-column">
                                                 <div class="card-content text-center">
-                                                    <h5 class="card-title">{{__('base.business_plan')}}</h5>
+                                                    <h5 class="card-title">{{__('base.advanced_plan')}}</h5>
                                                     <p class="text-muted">{{__('base.advanced_plan_note')}}</p>
                                                     <div class="price text-success">
                                                         ${{$price_product['greenstock-vnindex']['six_month_price'] ?? 0}}</div>

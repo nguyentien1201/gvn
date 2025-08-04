@@ -88,15 +88,17 @@ return [
     'intro_contact' => [
         'danh_contact'=> [
             'name' => 'Nguyen Ngoc Danh',
-            'position' => 'Founder',
-            'bio' => 'Con más de 10 años de experiencia en finanzas, fundó GVN para ayudar a los inversores a tener éxito.',
+            'position' => 'Fundador',
+            'bio' => 'With more 10 years of experience in finance, he founded GVN to help investors succeed.',
+        ],
+        'thong_contact'=> [
+                'name' => 'Huynh Duy Thong',
+                'position' => 'Cofundador',
+                'bio' => 'Financial advisor with over 10 years of experience in the financial sector',
+        ],
     ],
-    'thong_contact'=> [
-            'name' => 'Huynh Duy Thong',
-            'position' => 'Co-founder',
-            'bio' => 'Asesor financiero con más de 10 años de experiencia en el sector financiero',
-    ],
-],
+
+
     'note_contact' => '\"Dear Investors,
  With our long-term expertise in the financial sector, GVN Fin Trade is proud to be your trusted partner. We always strive to bring efficent investment products and services. If you need support, please kindly contact us.\"',
     'Location' => 'Location',

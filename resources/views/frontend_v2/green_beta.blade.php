@@ -72,7 +72,7 @@
                                     <span>{{__('base.description_title_green_beta')}}</span>
                                 </div>
                                 <div class="last-text">
-                                    <span>{{__('base.tdescription_title_end_green_beta')}}</span>
+                                    <span>{{__('base.description_title_end_green_beta')}}</span>
                                 </div>
                             </div>
                         </div>

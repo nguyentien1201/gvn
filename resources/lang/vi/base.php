@@ -157,6 +157,7 @@ return [
     'Birthdate_*' => 'Ngày tháng năm sinh*',
     'Save_Profile' => 'Lưu thông tin',
     'Profit_Today'=>'Profit Today',
+    'green_beta_trading_on'=>'Giao dịch với Green Beta',
     'green_alpha_trading_on'=>'Giao dịch với Green Alpha',
     'trade_on' => 'Trade on',
 

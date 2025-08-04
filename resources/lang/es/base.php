@@ -87,6 +87,7 @@ return [
     'The_first_models' => 'Los primeros modelos de Alpha y Beta están en desarrollo oficial.',
     'Our_Team' => 'Nuestro equipo',
     'Meet_the_Experts' => 'Conoce a los expertos que impulsan el éxito de GVN con años de innovación financiera.',
+    
     'intro_contact' => [
         'danh_contact'=> [
             'name' => 'Nguyen Ngoc Danh',
@@ -159,8 +160,9 @@ return [
     'Birthdate_*' => 'Fecha de nacimiento *',
     'Save_Profile' => 'Guardar perfil',
       'Profit_Today'=>'Profit Today',
-        'green_alpha_trading_on'=>'perar en Green Alpha',
-        'trade_on' => 'Trade on',
+    'green_beta_trading_on'=>'perar en Green Beta',
+    'green_alpha_trading_on'=>'perar en Green Alpha',
+    'trade_on' => 'Trade on',
 
          'basic_plan' => 'Plan básico',
     'month' => 'Mes',
