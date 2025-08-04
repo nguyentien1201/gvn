@@ -97,6 +97,7 @@ return [
             'bio' => 'Chuyên viên tư vấn tài chính, có hơn 10 năm kinh nghiệp trong lĩnh vực tài chính',
     ],
 ],
+ 'note_contact' => "Gửi nhà đầu tư, <br>GVN Fin Trade luôn mong muốn được kết nối với quý khách hàng và cung cấp cho khách hàng những công cụ hỗ trợ đầu tư tốt nhất và những giải pháp tối ưu hơn cho quý vị. Nếu quý vị có bất gì thắc mắc nào, vui lòng liên hệ với chúng tôi:",
     'Location' => 'Địa điểm',
     'address_company' => 'Phường An Khánh, Tp.Thủ Đức, HCM',
     'phone' => 'Số điện thoại ',

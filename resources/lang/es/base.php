@@ -100,6 +100,7 @@ return [
             'bio' => 'Financial advisor with over 10 years of experience in the financial sector',
     ],
 ],
+    "note_contact"=>"Estimados inversores, con nuestra experiencia a largo plazo en el sector financiero, GVN Fin Trade se enorgullece de ser su socio de confianza.Siempre nos esforzamos por ofrecer productos y servicios de inversión eficientes. Si necesita apoyo, por favor contáctenos.",
     'Location' => 'Ubicación',
     'address_company' => 'Barrio An Khanh, distrito Thu Duc, ciudad de Ho Chi Minh, Vietnam',
     'phone' => 'Teléfono',

@@ -108,7 +108,7 @@ return [
     'My_Name_contact' => 'My Name *',
     'Product_contract' => 'Product *',
     'Message_contract' => 'Message *',
-    'Send_Message_' => 'Send Message ',
+    'Send_Message' => 'Send Message ',
     'SIGNAL_DASHBOARD' => 'SIGNAL DASHBOARD',
     'HISTORICAL_PERFORMANCE' => 'HISTORICAL PERFORMANCE',
     'CLOSED' => 'CLOSED',
