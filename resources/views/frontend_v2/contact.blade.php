@@ -74,7 +74,7 @@
                 <input type="email" class="form-control" id="email" name="email" placeholder="{{__('front_end.placeholder_email')}}"  required />
               </div>
               <div class="col-12">
-                <label for="product" class="form-label">{__('base.Product_contract')}}</label>
+                <label for="product" class="form-label">{{__('base.Product_contract')}}</label>
                 <select class="form-select" id="product" name="product" required>
                     <option selected disabled value="">{{__('front_end.select_product')}}</option>
                     <option value="1">Green Alpha</option>
