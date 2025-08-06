@@ -66,7 +66,7 @@
             @csrf
             <div class="row g-3">
               <div class="col-md-6">
-                <label for="name" class="form-label">{{!!__('base.My_Name_contact')}}</label>
+                <label for="name" class="form-label">{{__('base.My_Name_contact')}}</label>
                 <input type="text" class="form-control" name="name"  id="name" placeholder="{!!__('front_end.placeholder_name')!!}" required />
               </div>
               <div class="col-md-6">
@@ -74,7 +74,7 @@
                 <input type="email" class="form-control" id="email" name="email" placeholder="{{__('front_end.placeholder_email')}}"  required />
               </div>
               <div class="col-12">
-                <label for="product" class="form-label">{{!!__('base.Product_contract')}}</label>
+                <label for="product" class="form-label">{__('base.Product_contract')}}</label>
                 <select class="form-select" id="product" name="product" required>
                     <option selected disabled value="">{{__('front_end.select_product')}}</option>
                     <option value="1">Green Alpha</option>
@@ -83,7 +83,7 @@
                 </select>
               </div>
               <div class="col-12">
-                <label for="message" class="form-label">{{!!__('base.Message_contract')}}</label>
+                <label for="message" class="form-label">{{__('base.Message_contract')}}</label>
                 <textarea class="form-control" id="message" rows="4" name="message" placeholder="{{__('front_end.placeholder_note')}}" required></textarea>
               </div>
               <div class="col-12">
