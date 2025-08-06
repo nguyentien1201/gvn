@@ -47,7 +47,7 @@
       <!-- Left Column: Contact Info -->
       <div class="col-md-5">
         <div class="card shadow-sm p-4 h-100 rounded">
-            <p>{{__('base.note_contact')}}</p>
+            <p>{!!__('base.note_contact')!!}</p>
             <p><i class="bi bi-geo-alt-fill text-success me-2"></i><strong>{{__('base.Location')}}</strong><br />{{__('base.address_company')}}</p>
             <p> <i class="bi bi-telephone-fill text-success me-2"></i><strong>{{__('base.phone')}}</strong><br />(+84)354848375</p>
             <p><i class="bi bi-envelope-fill text-success me-2"></i><strong>Email</strong><br />admin@gvn-fintrade.com</p>

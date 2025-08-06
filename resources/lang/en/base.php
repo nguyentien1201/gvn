@@ -99,8 +99,8 @@ return [
     ],
 
 
-    'note_contact' => '\"Dear Investors,
- With our long-term expertise in the financial sector, GVN Fin Trade is proud to be your trusted partner. We always strive to bring efficent investment products and services. If you need support, please kindly contact us.\"',
+    'note_contact' => 'Dear Investors,<br>
+ With our long-term expertise in the financial sector, GVN Fin Trade is proud to be your trusted partner. We always strive to bring efficent investment products and services. If you need support, please kindly contact us.',
     'Location' => 'Location',
     'address_company' => 'An Khanh ward, Thu Duc district, Ho Chi Minh city, Viet Nam',
     'phone' => 'Phone',
