@@ -172,6 +172,6 @@ return [
     'month_6' => '6 tháng',
     'business_plan' => 'Gói doanh nghiệp',
     'year' => 'năm',
-    'trial_1_year' => '1-year trial',
+    'trial_1_year' => 'Trải nghiệm 1 năm',
     'get_started' => 'Bắt đầu',					
 ];

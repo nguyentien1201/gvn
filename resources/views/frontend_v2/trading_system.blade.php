@@ -348,7 +348,7 @@
                                             <h5 class="card-title">{{__('base.business_plan')}}</h5>
                                             <p class="text-muted">{{__('base.advanced_plan_note')}}</p>
                                             <div class="price">${{$price_product['alpha']['yearly_price'] ?? 0}}</div>
-                                            <p class="text-muted">/year</p>
+                                            <p class="text-muted">/{{__('base.year')}}</p>
                                             <ul class="list-unstyled text-start px-4 mb-4">
                                                 <li><i class="bi bi-check-circle-fill text-success me-2"></i> {{__('base.version_free')}}</li>
                                                 <li><i class="bi bi-check-circle-fill text-success me-2"></i>{{__('base.trial_1_year')}}
@@ -472,7 +472,7 @@
                                             <h5 class="card-title">Enterprise plan</h5>
                                             <p class="text-muted">{{__('base.advanced_plan_note')}}</p>
                                             <div class="price">${{$price_product['greenstock-nas100']['yearly_price'] ?? 0}}</div>
-                                            <p class="text-muted">/year</p>
+                                            <p class="text-muted">/ {{ __('base.year')}}</p>
                                             <ul class="list-unstyled text-start px-4 mb-4">
                                                 <li><i class="bi bi-check-circle-fill text-success me-2"></i> {{__('base.version_free')}}</li>
                                                 <li><i class="bi bi-check-circle-fill text-success me-2"></i>{{__('base.trial_1_year')}}
@@ -577,10 +577,10 @@
                                             <h5 class="card-title">Enterprise plan</h5>
                                             <p class="text-muted">{{__('base.advanced_plan_note')}}</p>
                                             <div class="price">${{$price_product['greenstock-vnindex']['yearly_price'] ?? 0}}</div>
-                                            <p class="text-muted">/year</p>
+                                            <p class="text-muted">/{{__('base.year')}}</p>
                                             <ul class="list-unstyled text-start px-4 mb-4">
                                                 <li><i class="bi bi-check-circle-fill text-success me-2"></i> {{__('base.version_free')}}</li>
-                                                <li><i class="bi bi-check-circle-fill text-success me-2"></i> {{__('base.trial_6_months')}}
+                                                <li><i class="bi bi-check-circle-fill text-success me-2"></i> {{__('base.trial_1_year')}}
                                                 </li>
 
                                             </ul>
