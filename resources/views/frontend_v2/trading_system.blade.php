@@ -580,9 +580,8 @@
                                             <div class="price">${{$price_product['greenstock-vnindex']['yearly_price'] ?? 0}}</div>
                                             <p class="text-muted">/year</p>
                                             <ul class="list-unstyled text-start px-4 mb-4">
-                                                <li><i class="bi bi-check-circle-fill text-success me-2"></i> Sản phẩm dùng
-                                                    thử</li>
-                                                <li><i class="bi bi-check-circle-fill text-success me-2"></i> Trải nghiệm 1 năm
+                                                <li><i class="bi bi-check-circle-fill text-success me-2"></i> {{__('base.version_free')}}</li>
+                                                <li><i class="bi bi-check-circle-fill text-success me-2"></i> {{__('base.trial_6_months')}}
                                                 </li>
 
                                             </ul>
