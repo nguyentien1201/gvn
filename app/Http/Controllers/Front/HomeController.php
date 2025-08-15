@@ -473,7 +473,7 @@ $result = [
                 $top_stock[$key] = $value;
             }
         }
-        $cap = [431361279352,-107271216263];
+        $cap = [387937374749,-126127771631];
         $ma = (new Ma())->getMaApi();
         $current_cap =  (new SubGroupCapDetail())->getCurrentCap();
         $marketOverview = [
@@ -743,7 +743,7 @@ $result = [
         //         $top_stock[$key] = $value;
         //     }
         // }
-        $cap = [108770608026,-6397995747];
+        $cap = [124005609101,-22750531595];
         $ma = (new MaVnIndex())->getMaApi();
         $current_cap =  (new SubGroupCapDetailVnIndex())->getCurrentCap();
         $marketOverview = [
