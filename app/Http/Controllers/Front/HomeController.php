@@ -129,19 +129,18 @@ class HomeController
         $data_chart_default = $this->getHistoryAlphaSignal(1);
 
         $chart_signal = (new GreenStockNas100())->getGroupSignalV2();
-        usort($chart_signal, function($a, $b) {
-            return strcmp($a['signal'], $b['signal']);
-        });
         $totalCount = array_reduce($chart_signal, function ($carry, $item) {
             return $carry + $item['total'];
         }, 0);
-        $labels = array_map(function($item) {
-            return $item['signal'];
-        }, $chart_signal);
+
+        $labels = array_column($chart_signal, 'signal');
 
         $chart_signal = array_map(function($item) use ($totalCount) {
-            return  round($item['total']/$totalCount*100,2);
+            return $totalCount > 0 
+                ? round($item['total'] / $totalCount * 100, 2) 
+                : 0;
         }, $chart_signal);
+        // usort($chart_sig
         $ma = (new Ma())->getMa();
 
         $ma['up'] = [$ma['upMA50'],$ma['upMA200']];
