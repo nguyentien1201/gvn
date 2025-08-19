@@ -128,7 +128,7 @@ class HomeController
 
         $data_chart_default = $this->getHistoryAlphaSignal(1);
 
-        $chart_signal = (new GreenStockNas100())->getGroupSignal();
+        $chart_signal = (new GreenStockNas100())->getGroupSignalV2();
         usort($chart_signal, function($a, $b) {
             return strcmp($a['signal'], $b['signal']);
         });
