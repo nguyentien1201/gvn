@@ -711,6 +711,7 @@ $result = [
         }
         $top_stock = (new VnIndex())->getTopStock();
         $chart_signal = (new VnIndex())->getGroupSignalV2();
+       
         $totalCount = array_reduce($chart_signal, function ($carry, $item) {
             return $carry + $item['total'];
         }, 0);
@@ -722,6 +723,7 @@ $result = [
                 ? round($item['total'] / $totalCount * 100, 2) 
                 : 0;
         }, $chart_signal);
+   
         // usort($chart_signal, function($a, $b) {
         //     return strcmp($a['signal'], $b['signal']);
         // });

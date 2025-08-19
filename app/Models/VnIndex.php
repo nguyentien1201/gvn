@@ -258,7 +258,7 @@ class VnIndex extends Model
             ->toArray();
 
         // Đảm bảo đủ 4 loại signal cố định
-        $signals = ['CASH', 'HOLD', 'BUY', 'SELL'];
+        $signals = ['TIỀN MẶT', 'NẮM GIỮ', 'MUA', 'BÁN'];
         $result = [];
 
         // Convert $data thành map [signal => total]
