@@ -13,7 +13,7 @@ use App\Models\MaVnIndex;
 use App\Models\SubGroupVnIndex;
 use App\Models\GroupCapVnIndex;
 use App\Models\SubGroupCapDetailVnIndex;
-
+use Illuminate\Support\Facades\Cache;
 class VnIndex extends Model
 {
     use SoftDeletes;
@@ -70,10 +70,13 @@ class VnIndex extends Model
         $header = $listData[0] ?? [];
         array_shift($listData);
 
-        foreach ($listData as $item) {
+        foreach ($listData as $index => $item) {
             try {
                 $greenstock_nas100 = [];
-
+                if($index ==0 ){
+                    Cache::put('vnindex_win', $item[33]);
+                    Cache::put('vnindex_loss', $item[34]);
+                }
                 foreach ($item as $key => $value) {
                     if ($key < 40) continue;
                     if(empty($header[$key])) continue;

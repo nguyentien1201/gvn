@@ -473,7 +473,9 @@ $result = [
                 $top_stock[$key] = $value;
             }
         }
-        $cap = [61153987935,-334930984165];
+        $nas_win = Cache::get('nas100_win');
+        $nas_loss = Cache::get('nas100_loss');
+        $cap = [$nas_win,$nas_loss];
         $ma = (new Ma())->getMaApi();
         $current_cap =  (new SubGroupCapDetail())->getCurrentCap();
         $marketOverview = [
@@ -743,7 +745,9 @@ $result = [
         //         $top_stock[$key] = $value;
         //     }
         // }
-        $cap = [32869015625.5,-17106744206.5];
+        $vnindex_win = Cache::get('vnindex_win');
+        $vnindex_loss = Cache::get('vnindex_loss');
+        $cap = [$vnindex_win,$vnindex_loss];
         $ma = (new MaVnIndex())->getMaApi();
         $current_cap =  (new SubGroupCapDetailVnIndex())->getCurrentCap();
         $marketOverview = [

@@ -13,7 +13,7 @@ use App\Models\Ma;
 use App\Models\SubGroup;
 use App\Models\GroupCap;
 use App\Models\SubGroupCapDetail;
-
+use Illuminate\Support\Facades\Cache;
 class GreenStockNas100 extends Model
 {
     use SoftDeletes;
@@ -71,10 +71,17 @@ class GreenStockNas100 extends Model
         $header = explode(",", $header);
 
         array_shift($listData);
-        foreach ($listData as $item) {
+        // \Log::info($listData);
+
+        foreach ($listData as $index=> $item) {
             try {
+
                 $greenstock_nas100 = [];
                 $item = explode(",", $item);
+                if($index ==0 ){
+                    Cache::put('nas100_win', $item[33]);
+                    Cache::put('nas100_loss', $item[34]);
+                }
                 foreach ($item as $key => $value) {
                     if ($key < 40) continue;
                     if(empty($header[$key])) continue;
