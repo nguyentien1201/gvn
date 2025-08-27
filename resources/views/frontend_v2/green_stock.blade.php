@@ -856,16 +856,38 @@
                 });
 
                 var current_monthctx = document.getElementById('current_month').getContext('2d');
+
+                    let labels = result.chart_group_data.current_month.labels;
+                    let monthData   = mapValues(labels, result.chart_group_data.current_month);
+                    let quarterData = mapValues(labels, result.chart_group_data.quarter);
+                    let yearData    = mapValues(labels, result.chart_group_data.current_year);
+
+                    // Gộp labels + monthData thành 1 mảng để sort
+                    let combined = labels.map((label, i) => ({
+                        label,
+                        month: monthData[i],
+                        quarter: quarterData[i],
+                        year: yearData[i]
+                    }));
+
+                    // Sort giảm dần theo month (hoặc theo dataset bạn muốn)
+                    combined.sort((a, b) => b.month - a.month);
+
+                    // Sau khi sort, tách lại ra
+                    labels      = combined.map(item => item.label);
+                    monthData   = combined.map(item => item.month);
+                    quarterData = combined.map(item => item.quarter);
+                    yearData    = combined.map(item => item.year);
                 barCurentMonthGroup = new Chart(current_monthctx, {
                     type: 'bar',
                     barPercentage: 0.5,
                     barThickness: 20,
                     categoryPercentage: 0.5,
                     data: {
-                        labels: result.chart_group_data.current_month.labels,
+                        labels: labels,
                         datasets: [{
                                 label: 'Current Month',
-                                data: result.chart_group_data.current_month.values,
+                                data: monthData,
                                 backgroundColor: '#008000',
                                 fontweight: 600,
                                 minBarLength: 5,
@@ -873,7 +895,7 @@
                             },
                             {
                                 label: 'Current Quarter',
-                                data: result.chart_group_data.quarter.values,
+                                data: quarterData,
                                 backgroundColor: '#008000',
                                 fontweight: 600,
                                 minBarLength: 5,
@@ -881,7 +903,7 @@
                             },
                             {
                                 label: 'Current Year',
-                                data: result.chart_group_data.current_year.values,
+                                data: yearData,
                                 backgroundColor: '#008000',
                                 fontweight: 600,
                                 minBarLength: 5,
@@ -1820,7 +1842,29 @@
             }
         });
     });
+    function mapValues(labels, dataset) {
+        return labels.map(label => {
+            const idx = dataset.labels.indexOf(label);
+            return idx > -1 ? dataset.values[idx] : 0;
+        });
+    }
+    function sortByDataset(labels, month, quarter, year, type = 'month') {
+        let combined = labels.map((label, i) => ({
+            label,
+            month: month[i],
+            quarter: quarter[i],
+            year: year[i]
+        }));
 
+        combined.sort((a, b) => b[type] - a[type]);
+
+        return {
+            labels: combined.map(item => item.label),
+            month: combined.map(item => item.month),
+            quarter: combined.map(item => item.quarter),
+            year: combined.map(item => item.year),
+        };
+    }
     // current_cap
     function calculateFontSize() {
         const screenWidth = window.innerWidth;
@@ -1940,7 +1984,7 @@
                     <!-- Heading tab -->
                     <div class="container-tab-heading">
                         <h3 class="heading-page pb-1 mb-0">"The trend is your friend" - Benjamin Graham</h3>
-                       
+
                     </div>
                     <!-- End heading tab -->
 
