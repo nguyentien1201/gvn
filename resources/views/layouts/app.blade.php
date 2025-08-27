@@ -53,7 +53,10 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.10.2/lottie.min.js"></script>
 <script src="https://unpkg.com/feather-icons"></script>
+<script>
+     const i18nKey = @json(trans('const_signal'));
 
+</script>
 @stack('scripts')
 </body>
 </html>

@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\UserActivationMail;
 use Str;
-
+use Illuminate\Support\Facades\DB;
 class RegisterController extends Controller
 {
     /*
@@ -55,7 +55,23 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
+            'name' => ['required', 'string', 'max:255',
+                function ($attribute, $value, $fail) {
+                // Nếu name chứa link, từ khóa www hoặc tên miền thì fail
+                if (preg_match('/https?:\/\/|www\.|[a-z0-9-]+\.[a-z]{2,}/i', $value)) {
+                     $ip = request()->ip();
+                    // Ghi vào bảng block_ip (tùy bạn tạo)
+                    DB::table('ban_ip')->insertOrIgnore([
+                        'ip' => $ip,
+                        'reason' => 'Username contains link',
+                        'description'=> $value,
+                        'created_at' => now()
+                    ]);
+
+                    // Trả lỗi và dừng lại
+                    $fail('Phát hiện liên kết trong tên. Truy cập của bạn đã bị chặn.');
+                }
+            }],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'role_id' => ['required', 'in:2,3']
@@ -70,20 +86,22 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-
+        
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'activation_token' => Str::random(60),
             'role_id' => $data['role_id'] ?? 3, // Default to user role if not provided
+            'ip' => $data['ip']
         ]);
     }
     public function register(Request $request)
     {
+        $userData = $request->all();
       
-         $validator = $this->validator($request->all());
-
+         $validator = $this->validator($userData);
+        
     if ($validator->fails()) {
         return redirect()
             ->back()
@@ -92,16 +110,20 @@ class RegisterController extends Controller
     }
 
         $validatedData = $validator->validated();
-        $user = $this->create($request->all());
+      
+        $userData['ip'] =  $request->ip() ?? '';
+        $user = $this->create($userData);
         if(!empty($request['manager_id'])) {
             $user->profile()->create(['manager_id' => $request['manager_id']]);
         }
-        try {
-            Mail::to($user->email)->send(new UserActivationMail($user));
-        }catch(\Exception $e){
-            \Log::error($e->getMessage());
+        if($user->role ==3){
+            try {
+                Mail::to($user->email)->send(new UserActivationMail($user));
+            }catch(\Exception $e){
+                \Log::error($e->getMessage());
+            }
         }
-
+       
         return redirect()->route('front.home.index'); // Redirect to a desired route after registration
     }
     public function activate($token)

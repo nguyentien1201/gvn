@@ -1,21 +1,54 @@
+@push('styles')
+<style>
+
+        @keyframes blink {
+
+            0%,
+            90% {
+                opacity: 1;
+                /* Phần tử hiển thị trong phần lớn thời gian */
+                color: white;
+                background: #ffd966;
+            }
+
+            95%,
+            100% {
+                opacity: 0;
+                /* Chớp nháy nhanh trong khoảng thời gian ngắn */
+                background-color: #ffd966;
+            }
+        }
+
+        /* Tạo lớp với animation */
+        .blink-effect {
+            animation: blink 5s infinite;
+            /* Hiệu ứng chớp nháy, lặp lại mãi mãi */
+        }
+
+        .blink-box {
+            color: white;
+
+        }
+</style>
+@endpush
 <section id="most_interested" class="py-5">
     <div class="container">
-        <h2 class="text-center services-title pb-3 pb-lg-5">{{__('home.most_interested')}}</h2>
+        <h2 class="text-center services-title pb-3 pb-lg-5">{{__('base.Most_interested')}}</h2>
         <div class="table-responsive" style="max-height: 848px; overflow-y: auto;">
             <table id="most-interested-table" class="table table-striped table-hover">
                 <thead>
                     <tr>
-                        <th class="text-capitalize text-center text-nowrap">Signal Open</th>
-                        <th class="text-capitalize text-center text-nowrap">Price Open</th>
-                        <th class="text-capitalize text-center text-nowrap">Open Time</th>
-                        <th class="text-capitalize text-center text-nowrap">Trend Price</th>
-                        <th class="text-capitalize text-center text-nowrap">Market</th>
-                        <th class="text-capitalize text-center text-nowrap">Symbol</th>
-                        <th class="text-capitalize text-center text-nowrap">Last Sale</th>
-                        <th class="text-capitalize text-center text-nowrap">Profit</th>
-                        <th class="text-capitalize text-center text-nowrap">Signal Close</th>
-                        <th class="text-capitalize text-center text-nowrap">Price Close</th>
-                        <th class="text-capitalize text-center text-nowrap">Close Time</th>
+                        <th class="text-capitalize text-center text-nowrap">{{__('base.Signal_Open')}}</th>
+                        <th class="text-capitalize text-center text-nowrap">{{__('base.Price_Open')}}</th>
+                        <th class="text-capitalize text-center text-nowrap">{{__('base.Open_Time')}}</th>
+                        <th class="text-capitalize text-center text-nowrap">{{__('base.Trend_Price')}}</th>
+                        <th class="text-capitalize text-center text-nowrap">{{__('base.Markets')}}</th>
+                        <th class="text-capitalize text-center text-nowrap">{{__('base.Symbol')}}</th>
+                        <th class="text-capitalize text-center text-nowrap">{{__('base.Last_Sale')}}</th>
+                        <th class="text-capitalize text-center text-nowrap">{{__('base.Profit')}}</th>
+                        <th class="text-capitalize text-center text-nowrap">{{__('base.Signal_Close')}}</th>
+                        <th class="text-capitalize text-center text-nowrap">{{__('base.Price_Close')}}</th>
+                        <th class="text-capitalize text-center text-nowrap">{{__('base.Close_Time')}}</th>
                     </tr>
                 </thead>
             </table>
@@ -28,7 +61,7 @@
     <script>
         $(document).ready(function () {
             const logoBaseUrl = "{{ asset('images/logo') }}"; // trả ra đường dẫn base
-            $('#most-interested-table').DataTable({
+             var indices =  $('#most-interested-table').DataTable({
                 responsive: false,
                 autoWidth: false,
                 paging: false,
@@ -62,7 +95,9 @@
                                 signalOpenText = "BUY";
                                 signalOpenClass = "buy";
                             }
-                            $(td).html(`<span class="text-capitalize signal-open ${signalOpenClass}">${signalOpenText}</span>`);
+                    
+
+                            $(td).html(`<span class="text-capitalize signal-open ${signalOpenClass}">${i18nKey[signalOpenText]}</span>`);
                             $(td).addClass('text-center');
                         }
                     },
@@ -97,7 +132,7 @@
                             } else {
                                 colorClass += "sideway";
                             }
-                            $(td).html(`<span class="trend ${colorClass}">${trendPrice}</span>`);
+                            $(td).html(`<span class="trend ${colorClass}">${i18nKey[trendPrice]}</span>`);
                             $(td).addClass('text-center');
                         }
                     },
@@ -145,7 +180,7 @@
                         createdCell: (td, cellData, rowData, row, col) => {
                             let signalClose = rowData.signal_close;
                             if(signalClose == null || signalClose == '' || signalClose == undefined || signalClose == 'Hold'){
-                                signalClose = "Hold";
+                                signalClose = "HOLD";
                             }
                              if(signalClose !='' || signalClose != null){
                                 signal_close = signalClose.trim().toLowerCase();
@@ -159,9 +194,8 @@
                             } else {
                                 colorClass += "hold";
                             }
-
                             if(signalClose) {
-                                $(td).html(`<span class="signal-close ${colorClass}">${signalClose}</span>`);
+                                $(td).html(`<span class="signal-close ${colorClass}">${i18nKey[signalClose]}</span>`);
                                 $(td).addClass('text-center');
                             }
                         }
@@ -175,6 +209,25 @@
                     },
                 ]
             });
+               function highlightColumn(columnIndex) {
+    // Add a class to all cells in the specified column
+
+    var columnNodes = indices.column(8).nodes().to$();
+
+    // Extract text content from each cell in the column
+    var columnValues = columnNodes.map(function () {
+        let value = $(this).text();
+        if (value == "Hold" || value == "HOLD") {
+            $(this).find('span').addClass('blink-box blink-effect');
+        }
+        // or .html() if you want to get the HTML content
+    }).get();  //
+}
+
+// Delay for 5 seconds, then highlight the 3rd column (index starts from 0)
+            setInterval(function () {
+                highlightColumn(8);  // Highlight the third column (index 2)
+            }, 5000);
         });
     </script>
 @endpush

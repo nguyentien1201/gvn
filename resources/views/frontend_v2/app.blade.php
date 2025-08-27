@@ -18,4 +18,14 @@
     </main>
 
 </body>
+<script>
+      const i18n = {
+        'base.Last_Sale': "{{ __('base.Last_Sale') }}",
+        'base.Signal_Buy': "{{ __('base.Signal_Buy') }}",
+        'base.Signal_Sell': "{{ __('base.Signal_Sell') }}",
+        'base.Waiting': "{{ __('base.Waiting') }}",
+        'base.Closed': "{{ __('base.Closed') }}"
+    };
+</script>
+
 </html>

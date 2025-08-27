@@ -47,12 +47,9 @@
       <!-- Left Column: Contact Info -->
       <div class="col-md-5">
         <div class="card shadow-sm p-4 h-100 rounded">
-            <h5>Main Office</h5>
-            <p><strong>Dear Investors,</strong><br />
-                With our long-term expertise in the financial sector, GVN Fin Trade is proud to be your trusted partner. We always strive to bring efficient investment products and services. If you need support, please kindly contact us.
-            </p>
-            <p><i class="bi bi-geo-alt-fill text-success me-2"></i><strong>Location</strong><br />{{__('front_end.address_info')}}</p>
-            <p> <i class="bi bi-telephone-fill text-success me-2"></i><strong>Phone</strong><br />(+84)354848375</p>
+            <p>{!!__('base.note_contact')!!}</p>
+            <p><i class="bi bi-geo-alt-fill text-success me-2"></i><strong>{{__('base.Location')}}</strong><br />{{__('base.address_company')}}</p>
+            <p> <i class="bi bi-telephone-fill text-success me-2"></i><strong>{{__('base.phone')}}</strong><br />(+84)354848375</p>
             <p><i class="bi bi-envelope-fill text-success me-2"></i><strong>Email</strong><br />admin@gvn-fintrade.com</p>
             <div class="d-flex gap-3 mt-3">
                 <a href="#"><i class="bi bi-facebook fs-4 text-primary"></i></a>
@@ -69,7 +66,7 @@
             @csrf
             <div class="row g-3">
               <div class="col-md-6">
-                <label for="name" class="form-label">My Name *</label>
+                <label for="name" class="form-label">{{__('base.My_Name_contact')}}</label>
                 <input type="text" class="form-control" name="name"  id="name" placeholder="{!!__('front_end.placeholder_name')!!}" required />
               </div>
               <div class="col-md-6">
@@ -77,7 +74,7 @@
                 <input type="email" class="form-control" id="email" name="email" placeholder="{{__('front_end.placeholder_email')}}"  required />
               </div>
               <div class="col-12">
-                <label for="product" class="form-label">Product *</label>
+                <label for="product" class="form-label">{{__('base.Product_contract')}}</label>
                 <select class="form-select" id="product" name="product" required>
                     <option selected disabled value="">{{__('front_end.select_product')}}</option>
                     <option value="1">Green Alpha</option>
@@ -86,11 +83,11 @@
                 </select>
               </div>
               <div class="col-12">
-                <label for="message" class="form-label">Message *</label>
+                <label for="message" class="form-label">{{__('base.Message_contract')}}</label>
                 <textarea class="form-control" id="message" rows="4" name="message" placeholder="{{__('front_end.placeholder_note')}}" required></textarea>
               </div>
               <div class="col-12">
-                <button type="submit" class="btn btn-success px-4">Send Message</button>
+                <button type="submit" class="btn btn-success px-4">{{__('base.Send_Message')}}</button>
               </div>
             </div>
           </form>

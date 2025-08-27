@@ -128,20 +128,19 @@ class HomeController
 
         $data_chart_default = $this->getHistoryAlphaSignal(1);
 
-        $chart_signal = (new GreenStockNas100())->getGroupSignal();
-        usort($chart_signal, function($a, $b) {
-            return strcmp($a['signal'], $b['signal']);
-        });
+        $chart_signal = (new GreenStockNas100())->getGroupSignalV2();
         $totalCount = array_reduce($chart_signal, function ($carry, $item) {
             return $carry + $item['total'];
         }, 0);
-        $labels = array_map(function($item) {
-            return $item['signal'];
-        }, $chart_signal);
+
+        $labels = array_column($chart_signal, 'signal');
 
         $chart_signal = array_map(function($item) use ($totalCount) {
-            return  round($item['total']/$totalCount*100,2);
+            return $totalCount > 0
+                ? round($item['total'] / $totalCount * 100, 2)
+                : 0;
         }, $chart_signal);
+        // usort($chart_sig
         $ma = (new Ma())->getMa();
 
         $ma['up'] = [$ma['upMA50'],$ma['upMA200']];
@@ -429,20 +428,31 @@ $result = [
             }
         }
         $top_stock = (new GreenStockNas100())->getTopStock();
-        $chart_signal = (new GreenStockNas100())->getGroupSignal();
-        usort($chart_signal, function($a, $b) {
-            return strcmp($a['signal'], $b['signal']);
-        });
+        $chart_signal = (new GreenStockNas100())->getGroupSignalV2();
         $totalCount = array_reduce($chart_signal, function ($carry, $item) {
             return $carry + $item['total'];
         }, 0);
-        $labels = array_map(function($item) {
-            return $item['signal'];
-        }, $chart_signal);
+
+        $labels = array_column($chart_signal, 'signal');
 
         $chart_signal = array_map(function($item) use ($totalCount) {
-            return  round($item['total']/$totalCount*100,2);
+            return $totalCount > 0
+                ? round($item['total'] / $totalCount * 100, 2)
+                : 0;
         }, $chart_signal);
+        // usort($chart_signal, function($a, $b) {
+        //     return strcmp($a['signal'], $b['signal']);
+        // });
+        // $totalCount = array_reduce($chart_signal, function ($carry, $item) {
+        //     return $carry + $item['total'];
+        // }, 0);
+        // $labels = array_map(function($item) {
+        //     return $item['signal'];
+        // }, $chart_signal);
+
+        // $chart_signal = array_map(function($item) use ($totalCount) {
+        //     return  round($item['total']/$totalCount*100,2);
+        // }, $chart_signal);
         $ma = (new Ma())->getMa();
         $chart_group_data = (new SubGroup())->getDataSubGroup(10);
         $chart_group_data = array_slice($chart_group_data, 0, 10);
@@ -700,20 +710,33 @@ $result = [
             }
         }
         $top_stock = (new VnIndex())->getTopStock();
-        $chart_signal = (new VnIndex())->getGroupSignal();
-        usort($chart_signal, function($a, $b) {
-            return strcmp($a['signal'], $b['signal']);
-        });
+        $chart_signal = (new VnIndex())->getGroupSignalV2();
+
         $totalCount = array_reduce($chart_signal, function ($carry, $item) {
             return $carry + $item['total'];
         }, 0);
-        $labels = array_map(function($item) {
-            return $item['signal'];
-        }, $chart_signal);
+
+        $labels = array_column($chart_signal, 'signal');
 
         $chart_signal = array_map(function($item) use ($totalCount) {
-            return  round($item['total']/$totalCount*100,2);
+            return $totalCount > 0
+                ? round($item['total'] / $totalCount * 100, 2)
+                : 0;
         }, $chart_signal);
+
+        // usort($chart_signal, function($a, $b) {
+        //     return strcmp($a['signal'], $b['signal']);
+        // });
+        // $totalCount = array_reduce($chart_signal, function ($carry, $item) {
+        //     return $carry + $item['total'];
+        // }, 0);
+        // $labels = array_map(function($item) {
+        //     return $item['signal'];
+        // }, $chart_signal);
+
+        // $chart_signal = array_map(function($item) use ($totalCount) {
+        //     return  round($item['total']/$totalCount*100,2);
+        // }, $chart_signal);
         $ma = (new MaVnIndex())->getMa();
         $chart_group_data = (new SubGroupVnIndex())->getDataSubGroup(10);
         $chart_group_data = array_slice($chart_group_data, 0, 10);

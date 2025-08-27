@@ -127,18 +127,34 @@
             <p class="text-center des-title">{{__('mission.text_title')}}</p>
             <div class="container-our-team container container-xxl my-3">
                 <div class="row gy-4">
-                    @for($i = 1; $i <= 8; $i++)
                         <div class="col-6 col-md-4 col-lg-3">
+                            <div class="member flex flex-column gap-2">
+                                <img class="img-fluid" src="{{asset('images/mission/danh.jpg')}}"
+                                     alt="{{asset('images/mission/danh.jpg')}}">
+                                <h3 class="member-name">{{__('base.intro_contact.danh_contact.name')}}</h3>
+                                <h4 class="member-position">{{__('base.intro_contact.danh_contact.position')}}</h4>
+                                <p class="member-introduce">{{__('base.intro_contact.danh_contact.bio')}}</p>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-4 col-lg-3">
+                            <div class="member flex flex-column gap-2">
+                                <img class="img-fluid" src="{{asset('images/mission/thong.jpg')}}"
+                                     alt="{{asset('images/mission/thong.jpg')}}">
+                                 <h3 class="member-name">{{__('base.intro_contact.thong_contact.name')}}</h3>
+                                <h4 class="member-position">{{__('base.intro_contact.thong_contact.position')}}</h4>
+                                <p class="member-introduce">{{__('base.intro_contact.thong_contact.bio')}}</p>
+                            </div>
+                        </div>
+                        <!-- <div class="col-6 col-md-4 col-lg-3">
                             <div class="member flex flex-column gap-2">
                                 <img class="img-fluid" src="{{asset('images/mission/member.png')}}"
                                      alt="{{asset('images/mission/member.png')}}">
-                                <h3 class="member-name">Darrell Steward</h3>
+                                <h3 class="member-name">{{__('base.intro_contact.d')}}</h3>
                                 <h4 class="member-position">Chief Technology Officer</h4>
                                 <p class="member-introduce">20 years in finance, founded GVN to empower investors.
                                     Ex-Senior Executive at a hedge fund.</p>
                             </div>
-                        </div>
-                    @endfor
+                        </div> -->
                 </div>
             </div>
         </div>

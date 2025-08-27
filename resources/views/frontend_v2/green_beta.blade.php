@@ -19,6 +19,10 @@
     #popupDataTable_wrapper .dt-scroll-head{
    display: none !important;
 }
+    .blink-box {
+            color: white;
+
+        }
 .blink-effect {
     animation: blink 5s infinite; /* Hiệu ứng chớp nháy, lặp lại mãi mãi */
 }
@@ -65,10 +69,10 @@
                         <div class="co-12 col-lg-6 trading-container">
                             <div class="trading-on-content">
                                 <div class="head-text">
-                                    <span>{{__('home.trade_on_content.beta.head_text')}}</span>
+                                    <span>{{__('base.description_title_green_beta')}}</span>
                                 </div>
                                 <div class="last-text">
-                                    <span>{{__('home.trade_on_content.beta.last_text')}}</span>
+                                    <span>{{__('base.description_title_end_green_beta')}}</span>
                                 </div>
                             </div>
                         </div>
@@ -84,19 +88,20 @@
         <section id="table-chart" class="py-0 py-lg-5 common-services">
             <div class="container common">
 
-                    <h3 class="text-center services-title pb-3 pb-lg-2 color-home">{{__('front_end.HISTORICAL_PERFORMANCE')}}</h3>
+                    <h3 class="text-center services-title pb-3 pb-lg-2 color-home">{{__('base.HISTORICAL_PERFORMANCE')}}</h3>
                 <div class="row gy-4 gy-lg-0">
                     <div class="co-12 col-lg-6">
                     <table  style="width:100%;" id="popupDataTable" class="table table-striped table-hover">
                     <thead>
 
                         <tr>
-                            <th>{{__('front_end.symbol')}}</th>
-                            <th>{{__('front_end.price_open')}}</th>
-                            <th>{{__('front_end.open_time')}}</th>
-                            <th>{{__('front_end.price_close')}}</th>
-                            <th>{{__('front_end.close_time')}}</th>
-                            <th>{{__('front_end.profit')}}</th>
+                             <th>{{__('base.Signal_Open')}}</th>
+                            <th>{{__('base.Price_Open')}}</th>
+                            <th>{{__('base.Open_Time')}}</th>
+                            <th>{{__('base.Price_Close')}}</th>
+                            <th>{{__('base.Close_Time')}}</th>
+                            <th>{{__('base.Profit')}}</th>
+                  
                         </tr>
                         </thead>
                                 </table>
@@ -128,7 +133,7 @@
 
                 {{-- Total row --}}
                 <div class="div-row">
-                    <div class="div-cell fw-bold">Total</div>
+                    <div class="div-cell fw-bold">{{__('Total_Trade')}}</div>
                     @foreach($chart_data['total'] as $item)
                     <div class="div-cell">{{ $item }}</div>
                     @endforeach
@@ -136,7 +141,7 @@
 
                 {{-- Win Ratio row --}}
                 <div class="div-row">
-                    <div class="div-cell fw-bold">{{ __('front_end.win_ratio') }}</div>
+                    <div class="div-cell fw-bold">{{ __('base.Win_Ratio') }}</div>
                     @foreach($chart_data['winratio'] as $item)
                     <div class="div-cell">{{ $item }}</div>
                     @endforeach
@@ -144,7 +149,7 @@
 
                 {{-- Time Start row --}}
                 <div class="div-row">
-                    <div class="div-cell fw-bold">{{ __('front_end.time_start') }}</div>
+                    <div class="div-cell fw-bold">{{ __('base.Time_Start') }}</div>
                     @foreach($chart_data['startDate'] as $item)
                     <div class="div-cell">{{ (new DateTime($item))->format('Y') }}</div>
                     @endforeach
@@ -192,6 +197,7 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0-rc/dist/chartjs-plugin-datalabels.min.js"></script>
 <script>
+        window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 

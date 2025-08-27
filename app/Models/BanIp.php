@@ -11,7 +11,7 @@ class BanIp extends Model
     protected $googleDriveService;
     public $table = 'ban_ip';
     protected $fillable = [
-        'ip','reason'
+        'ip','reason','description'
     ];
 
 }

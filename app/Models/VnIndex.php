@@ -253,6 +253,29 @@ class VnIndex extends Model
             ->groupBy('signal')
             ->get()->toArray();
     }
+      public function getGroupSignalV2()
+    {
+        $data = $this->select('signal', \DB::raw('count(*) as total'))
+        ->groupBy('signal')
+            ->get()
+            ->toArray();
+
+        // Đảm bảo đủ 4 loại signal cố định
+        $signals = ['TIỀN MẶT', 'NẮM GIỮ', 'MUA', 'BÁN'];
+        $result = [];
+
+        // Convert $data thành map [signal => total]
+        $map = collect($data)->pluck('total','signal')->toArray();
+
+        foreach ($signals as $sig) {
+            $result[] = [
+                'signal' => $sig,
+                'total'  => $map[$sig] ?? 0
+            ];
+        }
+
+        return $result;
+    }
     public function getTopStockByGroup($group)
     {
         $listStock =  CompanyInfo::where('industry', $group)->get()->pluck('code')->toArray();

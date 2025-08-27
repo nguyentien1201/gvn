@@ -55,7 +55,7 @@
       <div class="card-custom bg-white">
         <div class="d-flex justify-content-between align-items-start">
           <div>
-            <div class="status-label">Highest Profit</div>
+            <div class="status-label">{{__('base.Highest_Profit')}}</div>
             <div class="profit-value text-success">{{$list_signal['highest_profit'] ?? 0}}</div>
             <div class="symbol-text">{{$list_signal['highest_profit_code'] ?? 0}}</div>
           </div>
@@ -69,7 +69,7 @@
       <div class="card-custom bg-white">
         <div class="d-flex justify-content-between align-items-start">
           <div>
-            <div class="status-label">Lowest Profit</div>
+            <div class="status-label">{{__('base.Lowest_Profit')}}</div>
             <div class="profit-value text-danger">{{$list_signal['lowest_profit'] ?? 0}}</div>
             <div class="symbol-text">{{$list_signal['lowest_profit_code'] ?? 0}}</div>
           </div>
@@ -83,9 +83,9 @@
       <div class="card-custom bg-white">
         <div class="d-flex justify-content-between align-items-start">
           <div>
-            <div class="status-label">Open Trade</div>
+            <div class="status-label">{{__('base.Open_Trade')}}</div>
             <div class="profit-value text-warning">{{$list_signal['buy_count'] ?? 0}}</div>
-            <div class="symbol-text">Symbol</div>
+            <div class="symbol-text">{{__('base.Symbol')}}</div>
           </div>
           <div class="card-icon icon-yellow">✏️</div>
         </div>
@@ -97,9 +97,9 @@
       <div class="card-custom bg-white">
         <div class="d-flex justify-content-between align-items-start">
           <div>
-            <div class="status-label">Hold</div>
+            <div class="status-label">{{__('base.Hold')}}</div>
             <div class="profit-value text-primary">{{$list_signal['buy_count'] ?? 0}}</div>
-            <div class="symbol-text">Symbol</div>
+            <div class="symbol-text">{{__('base.Symbol')}}</div>
           </div>
           <div class="card-icon icon-blue">⏸️</div>
         </div>
@@ -111,11 +111,11 @@
       <div class="card-custom bg-white">
         <div class="d-flex justify-content-between align-items-start">
           <div>
-            <div class="status-label">Take Profit BUY</div>
+            <div class="status-label">{{__('base.TakeProfitBuy')}}</div>
             <div class="profit-value text-success">{{$list_signal['signal_close_types']['TakeProfitBUY'] ?? 0}}</div>
-            <div class="symbol-text">Symbol</div>
+            <div class="symbol-text">{{__('base.Symbol')}}</div>
           </div>
-          <div class="card-icon icon-green">BUY</div>
+          <div class="card-icon icon-green">{{__('base.BUY')}}</div>
         </div>
       </div>
     </div>
@@ -125,11 +125,11 @@
       <div class="card-custom bg-white">
         <div class="d-flex justify-content-between align-items-start">
           <div>
-            <div class="status-label">Take Profit SELL</div>
+            <div class="status-label">{{__('base.TakeProfitSell')}}</div>
             <div class="profit-value text-danger">{{$list_signal['signal_close_types']['TakeProfitSELL'] ?? 0}}</div>
-            <div class="symbol-text">Symbol</div>
+            <div class="symbol-text">{{__('base.Symbol')}}</div>
           </div>
-          <div class="card-icon icon-red">SELL</div>
+          <div class="card-icon icon-red">{{__('base.SELL')}}</div>
         </div>
       </div>
     </div>
@@ -139,11 +139,11 @@
       <div class="card-custom bg-white">
         <div class="d-flex justify-content-between align-items-start">
           <div>
-            <div class="status-label">Cut Loss BUY</div>
+            <div class="status-label">{{__('base.CutLossBuy')}}</div>
             <div class="profit-value text-success">{{$list_signal['signal_close_types']['CutLossBUY'] ?? 0}}</div>
-            <div class="symbol-text">Symbol</div>
+            <div class="symbol-text">{{__('base.Symbol')}}</div>
           </div>
-          <div class="card-icon icon-green">BUY</div>
+          <div class="card-icon icon-green">{{__('base.BUY')}}</div>
         </div>
       </div>
     </div>
@@ -153,11 +153,11 @@
       <div class="card-custom bg-white">
         <div class="d-flex justify-content-between align-items-start">
           <div>
-            <div class="status-label">Cut Loss SELL</div>
+            <div class="status-label">{{__('base.CutLossSell')}}</div>
             <div class="profit-value text-danger">{{$list_signal['signal_close_types']['CutLossSELL'] ?? 0}}</div>
-            <div class="symbol-text">Symbol</div>
+            <div class="symbol-text">{{__('base.Symbol')}}</div>
           </div>
-          <div class="card-icon icon-red">SELL</div>
+          <div class="card-icon icon-red">{{__('base.SELL')}}</div>
         </div>
       </div>
     </div>

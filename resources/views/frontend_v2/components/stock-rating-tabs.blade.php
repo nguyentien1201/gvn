@@ -1,6 +1,6 @@
 <section id="top-stock-rating-by-gvn">
     <div class="container">
-        <h2 class="text-center rating-title">{{__('home.top_stock_rating_by_gvn')}}</h2>
+        <h2 class="text-center rating-title">{{__('base.GVN_Rating')}}</h2>
         <div class="tabs-green mb-3">
             <ul class="nav nav-pills" id="pills-tab1" role="tablist">
                 <li class="nav-item" role="presentation">
@@ -9,13 +9,13 @@
                             data-bs-target="#pills-green-stock-NAS100"
                             type="button" role="tab"
                             aria-controls="pills-green-stock-NAS100"
-                            aria-selected="true">{{__('home.green_stock_NAS100')}}</button>
+                            aria-selected="true">Green Stock NAS100</button>
                 </li>
                 <li class="nav-item" role="presentation">
                     <button class="nav-link btn-tab" id="pills-green-stock-vn-index-tab" data-bs-toggle="pill"
                             data-bs-target="#pills-green-stock-vn-index" type="button" role="tab"
                             aria-controls="pills-green-stock-vn-index"
-                            aria-selected="false">{{__('home.green_stock_vn_index')}}</button>
+                            aria-selected="false">Green Stock VNINDEX</button>
                 </li>
             </ul>
         </div>
@@ -26,15 +26,15 @@
                     <table id="green-stock-NAS100-table" class="table table-striped table-hover">
                         <thead>
                             <tr>
-                                <th class="text-capitalize text-center text-nowrap">{{__('home.rating')}}</th>
-                                <th class="text-capitalize text-center text-nowrap">{{__('home.stock')}}</th>
-                                <th class="text-capitalize text-center text-nowrap">{{__('home.last_sale')}}</th>
-                                <th class="text-capitalize text-center text-nowrap">{{__('home.trend')}}</th>
-                                <th class="text-capitalize text-center text-nowrap">{{__('home.action')}}</th>
-                                <th class="text-capitalize text-center text-nowrap">{{__('home.profit')}}</th>
-                                <th class="text-capitalize text-center text-nowrap">{{__('home.after_sell')}}</th>
-                                <th class="text-capitalize text-center text-nowrap">{{__('home.price')}}</th>
-                                <th class="text-capitalize text-center text-nowrap">{{__('home.time')}}</th>
+                                <th class="text-capitalize text-center text-nowrap">{{__('const_signal.RATING')}}</th>
+                                <th class="text-capitalize text-center text-nowrap">{{__('const_signal.STOCK')}}</th>
+                                <th class="text-capitalize text-center text-nowrap">{{__('const_signal.LAST_SALE')}}</th>
+                                <th class="text-capitalize text-center text-nowrap">{{__('const_signal.TREND')}}</th>
+                                <th class="text-capitalize text-center text-nowrap">{{__('const_signal.ACTION')}}</th>
+                                <th class="text-capitalize text-center text-nowrap">{{__('const_signal.PROFIT')}}</th>
+                                <th class="text-capitalize text-center text-nowrap">{{__('const_signal.AFTER_SELL')}}</th>
+                                <th class="text-capitalize text-center text-nowrap">{{__('const_signal.PRICE')}}</th>
+                                <th class="text-capitalize text-center text-nowrap">{{__('const_signal.TIME')}}</th>
                             </tr>
                         </thead>
                     </table>
@@ -46,15 +46,15 @@
                     <table id="green-stock-vn-index-table" class="table table-striped table-hover">
                         <thead>
                         <tr>
-                            <th class="text-capitalize text-center text-nowrap">{{__('home.rating')}}</th>
-                            <th class="text-capitalize text-center text-nowrap">{{__('home.stock')}}</th>
-                            <th class="text-capitalize text-center text-nowrap">{{__('home.last_sale')}}</th>
-                            <th class="text-capitalize text-center text-nowrap">{{__('home.trend')}}</th>
-                            <th class="text-capitalize text-center text-nowrap">{{__('home.action')}}</th>
-                            <th class="text-capitalize text-center text-nowrap">{{__('home.profit')}}</th>
-                            <th class="text-capitalize text-center text-nowrap">{{__('home.after_sell')}}</th>
-                            <th class="text-capitalize text-center text-nowrap">{{__('home.price')}}</th>
-                            <th class="text-capitalize text-center text-nowrap">{{__('home.time')}}</th>
+                            <th class="text-capitalize text-center text-nowrap">{{__('const_signal.RATING')}}</th>
+                            <th class="text-capitalize text-center text-nowrap">{{__('const_signal.STOCK')}}</th>
+                            <th class="text-capitalize text-center text-nowrap">{{__('const_signal.LAST_SALE')}}</th>
+                            <th class="text-capitalize text-center text-nowrap">{{__('const_signal.TREND')}}</th>
+                            <th class="text-capitalize text-center text-nowrap">{{__('const_signal.ACTION')}}</th>
+                            <th class="text-capitalize text-center text-nowrap">{{__('const_signal.PROFIT')}}</th>
+                            <th class="text-capitalize text-center text-nowrap">{{__('const_signal.AFTER_SELL')}}</th>
+                            <th class="text-capitalize text-center text-nowrap">{{__('const_signal.PRICE')}}</th>
+                            <th class="text-capitalize text-center text-nowrap">{{__('const_signal.TIME')}}</th>
                         </tr>
                         </thead>
                     </table>
@@ -156,11 +156,15 @@
                     {
                         targets: 3, // Index of the date column
                         createdCell: function (td, cellData, rowData, row, col) {
+                            let string_key_language =''
                             trending = '';
                             color = '';
                             background = '';
                             if (rowData.trending != null) {
                                 trending = rowData.trending.trim().toLowerCase();
+                                string_key_language =  trending.replace(/ /g, "_");
+                                string_key_language = string_key_language.trim().toUpperCase()
+                                
                             }
                             if (trending == 'breaking high price') {
                                 color = '#9B54FF';
@@ -193,7 +197,7 @@
                                 font-size: 13px;
                                 padding: 4px 16px;
                                 width: 176px;
-                            ">${trending}</span>`);
+                            ">${i18nKey[string_key_language]}</span>`);
                             $(td).css('witdh', '176px');
                             $(td).addClass('text-center');
                         }
@@ -203,9 +207,11 @@
                         createdCell: function (td, cellData, rowData, row, col) {
                             signal = '';
                             color = '';
+                            let string_key_language ='';
                             background = '';
                             if (cellData != null) {
                                 signal = cellData.trim().toLowerCase();
+                                string_key_language = signal.trim().toUpperCase()
                             }
                             if (signal == 'buy') {
                                 color = '#157347';
@@ -229,7 +235,7 @@
                                 border: 1px solid ${color};
                                 font-size: 14px;
                                 padding: 4px 16px;
-                            ">${signal}</span>`);
+                            ">${i18nKey[string_key_language]}</span>`);
                         }
                     },
                     {

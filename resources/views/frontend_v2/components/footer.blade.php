@@ -24,20 +24,20 @@
                     <div class="row">
                         <!-- My Company -->
                         <div class="col-6 col-lg-6">
-                            <h6 class="blocks-title mb-3">My Company</h6>
+                            <h6 class="blocks-title mb-3">{{__('base.My_Company')}}</h6>
                             <ul class="list-unstyled">
-                                <li><a href="{{route('front.home.mission')}}" class="text-decoration-none text-muted d-block mb-2">About Us</a></li>
-                                <li><a href="{{route('front.home.trading-system')}}" class="text-decoration-none text-muted d-block mb-2">My System</a></li>
-                                <li><a href="{{route('front.home.contact')}}" class="text-decoration-none text-muted d-block">Our Service</a></li>
+                                <li><a href="{{route('front.home.mission')}}" class="text-decoration-none text-muted d-block mb-2">{{__('base.About_Us')}}</a></li>
+                                <li><a href="{{route('front.home.trading-system')}}" class="text-decoration-none text-muted d-block mb-2">{{__('base.My_System')}}</a></li>
+                                <li><a href="{{route('front.home.contact')}}" class="text-decoration-none text-muted d-block">{{__('base.Our_Service')}}</a></li>
                             </ul>
                         </div>
                         <!-- Useful references -->
                         <div class="col-6 col-lg-6">
-                            <h6 class="blocks-title mb-3">Useful references</h6>
+                            <h6 class="blocks-title mb-3">{{__('base.Useful_references')}}</h6>
                             <ul class="list-unstyled">
-                                <li><a href="{{route('front.home.contact')}}" class="text-decoration-none text-muted d-block mb-2">Our Performance</a></li>
-                                <li><a href="{{route('front.home.mission')}}" class="text-decoration-none text-muted d-block mb-2">How It Work</a></li>
-                                <li><a href="#" class="text-decoration-none text-muted d-block">Research Investment</a></li>
+                                <li><a href="{{route('front.home.contact')}}" class="text-decoration-none text-muted d-block mb-2">{{__('base.Our_Performance')}}</a></li>
+                                <li><a href="{{route('front.home.mission')}}" class="text-decoration-none text-muted d-block mb-2">{{__('base.How_It_Work')}}</a></li>
+                                <li><a href="#" class="text-decoration-none text-muted d-block">{{__('base.Research_Investment')}}</a></li>
                             </ul>
                         </div>
                     </div>

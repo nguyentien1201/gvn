@@ -13,21 +13,22 @@
             <i><span class="date-js"></span> <span class="time-js"></span> (UTC+3)</i>
         </h5>
         @include('frontend_v2.components.sumary-list')
-        <div class="table-responsive mt-5" style="">
+        <div class="table-responsive mt-5" >
             <table id="green-beta-table" class="table table-striped table-hover" style="margin:none">
                 <thead>
                     <tr>
-                        <th class="text-capitalize text-center text-nowrap">Signal Open</th>
-                        <th class="text-capitalize text-center text-nowrap">Price Open</th>
-                        <th class="text-capitalize text-center text-nowrap">Open Time</th>
-                        <th class="text-capitalize text-center text-nowrap">Trend Price</th>
-                        <th class="text-capitalize text-center text-nowrap">Market</th>
-                        <th class="text-capitalize text-center text-nowrap">Symbol</th>
-                        <th class="text-capitalize text-center text-nowrap">Last Sale</th>
-                        <th class="text-capitalize text-center text-nowrap">Profit</th>
-                        <th class="text-capitalize text-center text-nowrap">Signal Close</th>
-                        <th class="text-capitalize text-center text-nowrap">Price Close</th>
-                        <th class="text-capitalize text-center text-nowrap">Close Time</th>
+                        <th class="text-capitalize text-center text-nowrap">{{__('base.Signal_Open')}}</th>
+                        <th class="text-capitalize text-center text-nowrap">{{__('base.Price_Open')}}</th>
+                        <th class="text-capitalize text-center text-nowrap">{{__('base.Open_Time')}}</th>
+                        <th class="text-capitalize text-center text-nowrap">{{__('base.Trend_Price')}}</th>
+                        <th class="text-capitalize text-center text-nowrap">{{__('base.Market')}}</th>
+                        <th class="text-capitalize text-center text-nowrap">{{__('base.Symbol')}}</th>
+                        <th class="text-capitalize text-center text-nowrap">{{__('base.Last_Sale')}}</th>
+                        <th class="text-capitalize text-center text-nowrap">{{__('base.Profit')}}</th>
+                        <th class="text-capitalize text-center text-nowrap">{{__('base.Signal_Close')}}</th>
+                        <th class="text-capitalize text-center text-nowrap">{{__('base.Price_Close')}}</th>
+                        <th class="text-capitalize text-center text-nowrap">{{__('base.Close_Time')}}</th>
+
                     </tr>
                 </thead>
             </table>
@@ -76,7 +77,7 @@
                                 signalOpenText = "BUY";
                                 signalOpenClass = "buy";
                             }
-                            $(td).html(`<span class="text-capitalize signal-open ${signalOpenClass}">${signalOpenText}</span>`);
+                            $(td).html(`<span class="text-capitalize signal-open ${signalOpenClass}">${i18nKey[signalOpenText]}</span>`);
                             $(td).addClass('text-center');
                         }
                     },
@@ -165,11 +166,10 @@
                         targets: 8,
                         createdCell: (td, cellData, rowData, row, col) => {
                             let signalClose = rowData.signal_close;
-
                             if(signalClose == null || signalClose == '' || signalClose == undefined || signalClose == 'Hold'){
                                 signalClose = "HOLD";
                             }
-                            if(signalClose !='' || signalClose != null){
+                             if(signalClose !='' || signalClose != null){
                                 signal_close = signalClose.trim().toLowerCase();
                             }
                             let colorClass = "";
@@ -181,9 +181,8 @@
                             } else {
                                 colorClass += "hold";
                             }
-
                             if(signalClose) {
-                                $(td).html(`<span class="signal-close ${colorClass}">${signalClose}</span>`);
+                                $(td).html(`<span class="signal-close ${colorClass}">${i18nKey[signalClose]}</span>`);
                                 $(td).addClass('text-center');
                             }
                         }

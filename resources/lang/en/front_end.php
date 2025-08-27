@@ -94,7 +94,7 @@ return [
     'quote_benjamin'=>'"The trend is your friend" - Benjamin Graham',
     'description_quote_benjamin'=>"Identifying the correct trend is the golden key that opens the door to success in trading and accounts for up to 70% of the chance of winning. Getting the right market trend is a key factor for every investor in the financial market. GVN's Green Beta Robot is a combined engineering of searching for bullish trends with smart algorithms and self-adapting when market trends show signs of change. With an average trend prediction accuracy rate of 70-80%, Green Beta Robot is a great assistant for every investor.",
     'description_greenbeta'=>"Green Beta is able to work on different 20 indicators in Stock, Commodity and Cryptocurrency markets, giving investors a holistic view of the changing trends of shark's money flow in the global market.",
-    'quote_soros'=>'“It’s not whether you’re right or wrong, but how much money you make when you’re right and how much you lose when you’re wrong.”– George Soros',
+    'quote_soros'=>'“It’s not whether you’re right or wrong, but how much money you make when you’re right and how much you lose when you’re wrong.”',
     'description_quote_soros'=>"You can't control the market, but you can control yourself. GVN's Green Alpha Robot will be a powerful tool to help you master your emotions, make disciplined trading decisions and achieve high efficiency in Trading. GVN's Green Alpha Robot analyzes the market's momentum during the session, identifies trends and gives specific trading actions. Green Beta Robot is suitable for Day trader in the markets.",
     'manage_profit_month'=>"FOLLOW MONTHLY PERFORMANCE",
     'profit_accumulation'=>"ACCUMULATE PERFORMANCE",
