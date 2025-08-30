@@ -25,4 +25,5 @@ return [
      'UPTREND' =>'UPTREND',
       'DOWNTREND' =>'DOWNTREND',
       'CLOSED' => 'ĐÃ ĐÓNG',
+       'SIDEWAY' => 'SIDEWAY',
 ];

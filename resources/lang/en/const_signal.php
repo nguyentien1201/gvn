@@ -23,7 +23,8 @@ return [
     'HOLD' => 'HOLD',
     'CASH' => 'CASH',
     'UPTREND' =>'UPTREND',
-     'DOWNTREND' =>'DOWNTREND',
-       'CLOSED' => 'CLOSED',
-       
+    'DOWNTREND' =>'DOWNTREND',
+    'CLOSED' => 'CLOSED',
+    'SIDEWAY' => 'SIDEWAY',
+
 ];

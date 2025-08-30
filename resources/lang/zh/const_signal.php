@@ -25,5 +25,6 @@ return [
      'UPTREND' =>'UPTREND',
      'DOWNTREND' =>'DOWNTREND',
       'CLOSED' => '已平仓',
+       'SIDEWAY' => 'SIDEWAY',
 
 ];
