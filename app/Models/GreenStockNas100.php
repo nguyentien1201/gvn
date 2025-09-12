@@ -41,6 +41,7 @@ class GreenStockNas100 extends Model
     {
         $this->googleDriveService = new GoogleDriveService();
         $fileUrl = config('drivefile.drivefile.nas100');
+
         $subGroupCapDetail = new SubGroupCapDetail();
         $isCompany = true;
         if ($isCompany == true) {
@@ -214,6 +215,7 @@ class GreenStockNas100 extends Model
                 }
 
             } catch (\Exception $e) {
+                \Log::info($e->getMessage());
                 return redirect()->route('admin.nas100.index')->with('error', __('panel.error'));
             }
         }
