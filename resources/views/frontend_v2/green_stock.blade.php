@@ -648,17 +648,49 @@
         const startColorUp = "rgb(5, 100, 40)"; // Red
         const endColorUp = "rgb(8, 190, 75)"; // Yellow
         var barCurentMonthGroup = null;
+function showChartMutil(index) {
+    const keys = ["month", "quarter", "year"];
+    const key = keys[index] || "month";
 
+    // Luôn sort theo key đã chọn
+    const sorted = [...baseCombined].sort((a, b) => b[key] - a[key]);
+
+    // Cập nhật labels + tất cả dataset theo cùng 1 thứ tự
+    barCurentMonthGroup.data.labels = sorted.map(item => item.label);
+    barCurentMonthGroup.data.datasets[0].data = sorted.map(item => item.month);
+    barCurentMonthGroup.data.datasets[1].data = sorted.map(item => item.quarter);
+    barCurentMonthGroup.data.datasets[2].data = sorted.map(item => item.year);
+
+    // Chỉ hiển thị dataset được chọn
+    barCurentMonthGroup.data.datasets.forEach((ds, i) => {
+        ds.hidden = i !== index;
+    });
+
+    barCurentMonthGroup.update();
+}
         function showChart(index) {
-            // Ẩn tất cả các datasets
-            barCurentMonthGroup.data.datasets.forEach((dataset, i) => {
-                dataset.hidden = true;
-            });
+             // Chọn key để sort dựa trên index
+            const keys = ["month", "quarter", "year"];
+            const key = keys[index] || "month";
 
-            // Hiển thị dataset theo index
+            // Sort lại dữ liệu
+            const sorted = [...baseCombined].sort((a, b) => b[key] - a[key]);
+
+            // Cập nhật labels
+            barCurentMonthGroup.data.labels = sorted.map(item => item.label);
+
+            // Cập nhật dữ liệu từng dataset
+            barCurentMonthGroup.data.datasets[0].data = sorted.map(item => item.month);
+            barCurentMonthGroup.data.datasets[1].data = sorted.map(item => item.quarter);
+            barCurentMonthGroup.data.datasets[2].data = sorted.map(item => item.year);
+
+            // Ẩn tất cả datasets
+            barCurentMonthGroup.data.datasets.forEach(ds => ds.hidden = true);
+
+            // Hiện dataset theo index
             barCurentMonthGroup.data.datasets[index].hidden = false;
 
-            // Cập nhật biểu đồ
+            // Update chart
             barCurentMonthGroup.update();
         }
 
@@ -857,28 +889,32 @@
 
                 var current_monthctx = document.getElementById('current_month').getContext('2d');
 
-                    let labels = result.chart_group_data.current_month.labels;
-                    let monthData   = mapValues(labels, result.chart_group_data.current_month);
-                    let quarterData = mapValues(labels, result.chart_group_data.quarter);
-                    let yearData    = mapValues(labels, result.chart_group_data.current_year);
+             let labels = result.chart_group_data.current_month.labels;
+            let monthData   = mapValues(labels, result.chart_group_data.current_month);
+            let quarterData = mapValues(labels, result.chart_group_data.quarter);
+            let yearData    = mapValues(labels, result.chart_group_data.current_year);
 
-                    // Gộp labels + monthData thành 1 mảng để sort
-                    let combined = labels.map((label, i) => ({
-                        label,
-                        month: monthData[i],
-                        quarter: quarterData[i],
-                        year: yearData[i]
-                    }));
+            // Gộp lại thành mảng object
+            let baseCombined = labels.map((label, i) => ({
+                label,
+                month: monthData[i],
+                quarter: quarterData[i],
+                year: yearData[i]
+            }));
 
-                    // Sort giảm dần theo month (hoặc theo dataset bạn muốn)
-                    combined.sort((a, b) => b.month - a.month);
+            // ❌ Không sort ở đây
+            // ✅ Chỉ sort khi render chart lần đầu theo mặc định (vd: month)
+            const sorted = [...baseCombined].sort((a, b) => b.month - a.month);
 
-                    // Sau khi sort, tách lại ra
-                    labels      = combined.map(item => item.label);
-                    monthData   = combined.map(item => item.month);
-                    quarterData = combined.map(item => item.quarter);
-                    yearData    = combined.map(item => item.year);
-                barCurentMonthGroup = new Chart(current_monthctx, {
+            // Tách ra để vẽ chart ban đầu
+            labels      = sorted.map(item => item.label);
+            monthData   = sorted.map(item => item.month);
+            quarterData = sorted.map(item => item.quarter);
+            yearData    = sorted.map(item => item.year);
+
+            // Lưu baseCombined để dùng lại trong showChart
+            window.baseCombined = baseCombined;
+                    barCurentMonthGroup = new Chart(current_monthctx, {
                     type: 'bar',
                     barPercentage: 0.5,
                     barThickness: 20,
@@ -976,7 +1012,7 @@
                                 onClick: (e, legendItem, legend) => {
                                     // Xử lý sự kiện khi nhấp vào nhãn trong legend
                                     const datasetIndex = legendItem.datasetIndex;
-                                    showChart(datasetIndex);
+                                    showChartMutil(datasetIndex);
                                 }
                             },
                         },
