@@ -320,7 +320,7 @@
 
   <td class="his-steel">${tx.buy_price}</td>
   <td class="his-steel">${tx.sell_price}</td>
-  <td class="his-profit ${tx.profit >= 0 ? 'positive' : 'negative'}">${tx.profit >= 0 ? '+' : ''}${tx.profit}</td>
+  <td class="his-profit ${tx.profit >= 0 ? 'positive' : 'negative'}">${tx.profit >= 0 ? '+' : ''}${tx.profit} %</td>
   <td class="his-days">${tx.holding_days}</td>
               </tr>
             `;

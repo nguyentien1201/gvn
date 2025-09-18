@@ -110,8 +110,8 @@ class VnIndex extends Model
                         ];
                     }
                 } catch (Exception $e) {
-                    dump($block);
-                    dd($e->getMessage());
+                    \Log::info($e->getMessage());
+                    continue;
                 }
             }
         }
@@ -134,7 +134,7 @@ class VnIndex extends Model
                 );
                 } catch (\Exception $e) {
                     \Log::info($e->getMessage());
-                    dd(1);
+
                     continue;
                 }
 
@@ -381,14 +381,14 @@ class VnIndex extends Model
             $closeTime = $signal['close_time'] ? Carbon::parse($signal['close_time']) : Carbon::now();
             $closePrice = $signal['close_price'] ?? $price ?? null;
 
-            $profit = $closePrice !== null ? $closePrice - $signal['open_price'] : null;
+            $profit = $closePrice !== null ?($closePrice - $signal['open_price']) / $signal['open_price'] : null;
             $holdingDays = $closeTime->diffInDays($openTime);
 
             $result[] = [
                 'code' => $signal['code'],
                 'buy_price' => $signal['open_price'],
                 'sell_price' => $signal['close_price'] ?? null,
-                'profit' =>round($profit, 2) ,
+                'profit' => round($profit, 2) ,
                 'holding_days' => $holdingDays,
             ];
         }
