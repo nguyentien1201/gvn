@@ -77,9 +77,9 @@ class VnIndex extends Model
         $fileContent =$this->googleDriveService->getSheetData($fileUrl, 'Stock-VNindex!A2:AX');
         //  $this->googleDriveService->getFile($fileUrl);
 
-        // $listSignal =$this->googleDriveService->getSheetData($fileUrl, 'Stock-VNindex!AZ:CE');
-        $filePath = __DIR__ . '/stock_signals.json';
-        $listSignal = json_decode(file_get_contents($filePath), true);
+        $listSignal =$this->googleDriveService->getSheetData($fileUrl, 'Stock-VNindex!AZ:CE');
+        // $filePath = __DIR__ . '/stock_signals.json';
+        // $listSignal = json_decode(file_get_contents($filePath), true);
 
 
         $listSignal = array_slice($listSignal, 2);
