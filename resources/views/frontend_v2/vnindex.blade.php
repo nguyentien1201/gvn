@@ -806,7 +806,26 @@
             const startColorUp = "rgb(5, 100, 40)"; // Red
             const endColorUp = "rgb(8, 190, 75)"; // Yellow
             var barCurentMonthGroup = null;
+function showChartMutil(index) {
+    const keys = ["month", "quarter", "year"];
+    const key = keys[index] || "month";
 
+    // Luôn sort theo key đã chọn
+    const sorted = [...baseCombined].sort((a, b) => b[key] - a[key]);
+
+    // Cập nhật labels + tất cả dataset theo cùng 1 thứ tự
+    barCurentMonthGroup.data.labels = sorted.map(item => item.label);
+    barCurentMonthGroup.data.datasets[0].data = sorted.map(item => item.month);
+    barCurentMonthGroup.data.datasets[1].data = sorted.map(item => item.quarter);
+    barCurentMonthGroup.data.datasets[2].data = sorted.map(item => item.year);
+
+    // Chỉ hiển thị dataset được chọn
+    barCurentMonthGroup.data.datasets.forEach((ds, i) => {
+        ds.hidden = i !== index;
+    });
+
+    barCurentMonthGroup.update();
+}
             function showChart(index) {
                 console.log(index);
                 // Ẩn tất cả các datasets
@@ -1014,24 +1033,49 @@
                     });
 
                     var current_monthctx = document.getElementById('current_month').getContext('2d');
+                       let labels = result.chart_group_data.current_month.labels;
+                        let monthData   = mapValues(labels, result.chart_group_data.current_month);
+                        let quarterData = mapValues(labels, result.chart_group_data.quarter);
+                        let yearData    = mapValues(labels, result.chart_group_data.current_year);
+
+                        // Gộp lại thành mảng object
+                        let baseCombined = labels.map((label, i) => ({
+                            label,
+                            month: monthData[i],
+                            quarter: quarterData[i],
+                            year: yearData[i]
+                        }));
+
+                        // ❌ Không sort ở đây
+                        // ✅ Chỉ sort khi render chart lần đầu theo mặc định (vd: month)
+                        const sorted = [...baseCombined].sort((a, b) => b.month - a.month);
+
+                        // Tách ra để vẽ chart ban đầu
+                        labels      = sorted.map(item => item.label);
+                        monthData   = sorted.map(item => item.month);
+                        quarterData = sorted.map(item => item.quarter);
+                        yearData    = sorted.map(item => item.year);
+
+                        // Lưu baseCombined để dùng lại trong showChart
+                        window.baseCombined = baseCombined;
                     barCurentMonthGroup = new Chart(current_monthctx, {
                         type: 'bar',
                         barPercentage: 0.5,
                         barThickness: 20,
                         categoryPercentage: 0.5,
                         data: {
-                            labels: result.chart_group_data.current_month.labels,
+                            labels: labels,
                             datasets: [{
-                                label: 'Current Month',
-                                data: result.chart_group_data.current_month.values,
-                                backgroundColor: '#008000',
-                                fontweight: 600,
-                                minBarLength: 5,
-                                hidden: false // Hiển thị mặc định
-                            },
+                                    label: 'Current Month',
+                                    data: monthData,
+                                    backgroundColor: '#008000',
+                                    fontweight: 600,
+                                    minBarLength: 5,
+                                    hidden: false // Hiển thị mặc định
+                                },
                                 {
                                     label: 'Current Quarter',
-                                    data: result.chart_group_data.quarter.values,
+                                    data: quarterData,
                                     backgroundColor: '#008000',
                                     fontweight: 600,
                                     minBarLength: 5,
@@ -1039,12 +1083,13 @@
                                 },
                                 {
                                     label: 'Current Year',
-                                    data: result.chart_group_data.current_year.values,
+                                    data: yearData,
                                     backgroundColor: '#008000',
                                     fontweight: 600,
                                     minBarLength: 5,
                                     hidden: true // Hiển thị mặc định
-                                },]
+                                },
+                            ]
                         },
                         options: {
                             indexAxis: 'y', // Chuyển sang biểu đồ cột ngang
@@ -1111,7 +1156,7 @@
                                     onClick: (e, legendItem, legend) => {
                                         // Xử lý sự kiện khi nhấp vào nhãn trong legend
                                         const datasetIndex = legendItem.datasetIndex;
-                                        showChart(datasetIndex);
+                                        showChartMutil(datasetIndex);
                                     }
                                 },
                             },
@@ -2014,6 +2059,12 @@
         $('a[data-bs-toggle="pill"]').on('shown.bs.tab', function () {
             $($.fn.dataTable.tables(true)).DataTable().columns.adjust().responsive.recalc();
         });
+         function mapValues(labels, dataset) {
+        return labels.map(label => {
+            const idx = dataset.labels.indexOf(label);
+            return idx > -1 ? dataset.values[idx] : 0;
+        });
+    }
     </script>
 @endpush
 
