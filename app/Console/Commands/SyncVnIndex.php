@@ -35,6 +35,11 @@ class SyncVnIndex extends Command
     {
         parent::__construct();
     }
+        /**
+     * Execute the console command.
+     *
+     * @return int
+     */
 
     /**
      * Execute the console command.

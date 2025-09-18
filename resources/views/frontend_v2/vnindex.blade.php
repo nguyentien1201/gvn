@@ -6,6 +6,102 @@
 
     <!-- App CSS -->
     <link rel="stylesheet" href="{{ asset('css/green_stock.css') }}">
+    <style>
+        /* CSS cho giá trị có màu sắt */
+.his-steel {
+    color: #797979; /* steel xám */
+    font-weight: bold;
+}
+
+/* Nếu muốn thêm hiệu ứng hover hoặc thay đổi nhẹ màu */
+.his-steel.light {
+    color: #B4BDC7; /* stainless steel */
+}
+
+.his-steel.dark {
+    color: #404854; /* soft steel */
+}
+
+ /* Hover cell */
+.row-hover {
+    background-color: rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+}
+
+/* Tooltip container */
+.tooltip-box {
+    display: none;
+    position: absolute;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+    border-radius: 6px;
+    padding: 8px 12px;
+    font-size: 13px;
+    color: #333;
+    z-index: 10000;
+    max-width: 350px;
+    overflow: hidden;
+}
+
+/* Tiêu đề tooltip */
+.tooltip-header {
+    font-weight: bold;
+    margin-bottom: 8px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 4px;
+    font-size: 14px;
+    color: #222;
+}
+
+/* Nội dung bảng */
+.tooltip-body {
+    margin-top: 4px;
+}
+
+/* Bảng trong tooltip */
+.tooltip-table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+.tooltip-table th,
+.tooltip-table td {
+    border: 1px solid #ddd;
+    padding: 4px 6px;
+    text-align: left;
+    font-size: 12px;
+}
+
+.tooltip-table th {
+    background-color: #f5f5f5;
+    font-weight: bold;
+}
+
+.tooltip-table tbody tr:nth-child(even) {
+    background-color: #fafafa;
+}
+
+.tooltip-table tbody tr:nth-child(odd) {
+    background-color: #fff;
+}
+
+/* Profit màu sắc */
+.his-profit {
+    /* mặc định */
+}
+
+.his-profit.positive {
+    color: #2e7d32;
+}
+
+.his-profit.negative {
+    color: #c62828;
+}
+
+
+    </style>
 @endpush
 @push('scripts')
     <!-- Chart.js + Plugin -->
@@ -210,29 +306,96 @@
                     },
                     {
                         targets: 1, // Index of the date column
-                        createdCell: function (td, cellData, rowData, row, col) {
-                            $(td).css('font-weight', 'bold');
-                            var company = rowData.company_name;
+                     createdCell: function (td, cellData, rowData, row, col) {
+    $(td).css('font-weight', 'bold');
+    const company = rowData.company_name;
+    const history = rowData.history; // danh sách giao dịch
 
-                            $(td).hover(
-                                function () {
-                                    $(this).addClass('row-hover');
-                                    // Show custom tooltip
-                                    $('<div class="custom-tooltip">' + company + '</div>').appendTo('body').fadeIn('slow');
-                                },
-                                function () {
-                                    $(this).removeClass('row-hover');
-                                    // Hide custom tooltip
-                                    $('.custom-tooltip').remove();
-                                }
-                            ).mousemove(function (e) {
-                                // Move tooltip with mouse
-                                $('.custom-tooltip').css({
-                                    top: e.pageY + 15 + 'px',
-                                    left: e.pageX + 20 + 'px'
-                                });
-                            });
-                        },
+    // Tạo nội dung bảng lịch sử
+    let historyTableRows = '';
+    if (history && history.length > 0) {
+        history.forEach(tx => {
+            historyTableRows += `
+              <tr>
+
+  <td class="his-steel">${tx.buy_price}</td>
+  <td class="his-steel">${tx.sell_price}</td>
+  <td class="his-profit ${tx.profit >= 0 ? 'positive' : 'negative'}">${tx.profit >= 0 ? '+' : ''}${tx.profit}</td>
+  <td class="his-days">${tx.holding_days}</td>
+              </tr>
+            `;
+        });
+    } else {
+        historyTableRows = `<tr><td colspan="5">Chưa có lịch sử giao dịch</td></tr>`;
+    }
+
+    const tooltipHTML = `
+      <div class="tooltip-box">
+        <div class="tooltip-header">${company}</div>
+        <div class="tooltip-body">
+          <table class="tooltip-table">
+            <thead>
+              <tr>
+                <th>Mua</th>
+                <th>Bán</th>
+                <th>Lợi nhuận</th>
+                <th>Số ngày</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${historyTableRows}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    `;
+
+    $(td).hover(
+        function () {
+            $(this).addClass('row-hover');
+            $('body').append(tooltipHTML);
+            $('.tooltip-box')
+                .css({
+                  position: 'absolute',
+                  background: '#ffffff',
+                  border: '1px solid #ccc',
+                  'box-shadow': '0px 4px 12px rgba(0,0,0,0.15)',
+                  'border-radius': '6px',
+                  padding: '8px',
+                  'font-size': '13px',
+                  color: '#333',
+                  'z-index': 10000,
+                  'max-width': '350px'
+                })
+                .fadeIn(150);
+        },
+        function () {
+            $(this).removeClass('row-hover');
+            $('.tooltip-box').remove();
+        }
+    ).mousemove(function (e) {
+        const tooltip = $('.tooltip-box');
+        if (tooltip.length) {
+            let top = e.pageY + 15;
+            let left = e.pageX + 20;
+            const tooltipWidth = tooltip.outerWidth();
+            const tooltipHeight = tooltip.outerHeight();
+            const windowWidth = $(window).width();
+            const windowHeight = $(window).height();
+            if (left + tooltipWidth > windowWidth) {
+                left = e.pageX - tooltipWidth - 20;
+            }
+            if (top + tooltipHeight > windowHeight) {
+                top = e.pageY - tooltipHeight - 20;
+            }
+            tooltip.css({ top: top + 'px', left: left + 'px' });
+        }
+    });
+},
+
+
+
+
                         render: function(data, type, row) {
                                     if (data == 'fas fa-lock') {
                                         return '<i style="color:green" class="fas fa-lock"></i>';
