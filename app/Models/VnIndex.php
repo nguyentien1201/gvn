@@ -381,7 +381,7 @@ class VnIndex extends Model
             $closeTime = $signal['close_time'] ? Carbon::parse($signal['close_time']) : Carbon::now();
             $closePrice = $signal['close_price'] ?? $price ?? null;
 
-            $profit = $closePrice !== null ?($closePrice - $signal['open_price']) / $signal['open_price'] : null;
+            $profit = $closePrice !== null ?(($closePrice - $signal['open_price']) / $signal['open_price'] ) *100: null;
             $holdingDays = $closeTime->diffInDays($openTime);
 
             $result[] = [
