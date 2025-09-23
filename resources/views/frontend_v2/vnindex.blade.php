@@ -1757,7 +1757,7 @@ function showChartMutil(index) {
                                     color: 'white',
                                     borderWidth: 1,
                                     pointRadius: 0,
-                                    fill: false
+                                    fill: true
                                 },
                                 {
                                     label: 'Bán',
@@ -1768,7 +1768,7 @@ function showChartMutil(index) {
                                     color: 'white',
                                     borderWidth: 1,
                                     pointRadius: 0,
-                                    fill: false
+                                    fill: true
                                 },
                                 {
                                     label: 'Nắm giữ',
@@ -1779,7 +1779,7 @@ function showChartMutil(index) {
                                     color: 'white',
                                     borderWidth: 1,
                                     pointRadius: 0,
-                                    fill: false
+                                    fill: true
                                 },
                                 {
                                     label: 'Tiền mặt',
@@ -1790,12 +1790,13 @@ function showChartMutil(index) {
                                     color: 'white',
                                     borderWidth: 1,
                                     pointRadius: 0,
-                                    fill: false
+                                    fill: true
                                 },
                             ]
                         },
                         options: {
                             responsive: true,
+                            stacked: true, 
                             maintainAspectRatio: false,
                             plugins: {
                                 legend: {
@@ -1842,6 +1843,16 @@ function showChartMutil(index) {
                                             weight: '400'                       // 👈 Font-weight (bold/400/600...)
                                         },
                                         color: '#000C2A',
+                                    }
+                                },
+                                y: {
+                                    stacked: true,
+                                     min: 0,
+                                    max: 100,
+                                    ticks: {
+                                        callback: function(value) {
+                                            return value + "%";
+                                        }
                                     }
                                 }
                             }

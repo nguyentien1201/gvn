@@ -31,9 +31,9 @@ class TransactionPortfolio extends Model
         foreach ($data as $item) {
             $total = $item['buy'] + $item['sell'] + $item['hold'] + $item['cash'];
             $labels[] = $item['time'];
-            $b = round(($item['buy']  / $total) * 100, 2);
-            $s = round(($item['sell'] / $total) * 100, 2);
-            $h = round(($item['hold'] / $total) * 100, 2);
+            $b = $item['buy'] == 0 ? 0 : round(($item['buy']  / $total) * 100, 2);
+            $s = $item['sell'] == 0 ? 0 : round(($item['sell'] / $total) * 100, 2);
+            $h = $item['hold'] == 0 ? 0 : round(($item['hold'] / $total) * 100, 2);
             $c = 100 - ($b + $s + $h);
             $buy[]  = $b;
             $sell[] = $s;
