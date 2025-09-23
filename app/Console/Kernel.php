@@ -26,10 +26,10 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->command('sync:nas100')->dailyAt('23:30')->withoutOverlapping(10);
-        $schedule->command('sync:vnindex')->dailyAt('06:00')->withoutOverlapping(10);
-        $schedule->command('sync:vnindex')->dailyAt('08:00')->withoutOverlapping(10);
-        $schedule->command('sync:vnindex')->dailyAt('10:00')->withoutOverlapping(10);
-        $schedule->command('sync:vnindex')->dailyAt('12:00')->withoutOverlapping(10);
+        // $schedule->command('sync:vnindex')->dailyAt('06:00')->withoutOverlapping(10);
+        // $schedule->command('sync:vnindex')->dailyAt('08:00')->withoutOverlapping(10);
+        // $schedule->command('sync:vnindex')->dailyAt('10:00')->withoutOverlapping(10);
+        // $schedule->command('sync:vnindex')->dailyAt('12:00')->withoutOverlapping(10);
         $schedule->command('send-profit-today')->dailyAt('23:59')->withoutOverlapping(10);
         $schedule->command('delete:user')->dailyAt('23:00')->withoutOverlapping(10);
         // $schedule->command('send:promotion')->everyMinute()->withoutOverlapping(10);
