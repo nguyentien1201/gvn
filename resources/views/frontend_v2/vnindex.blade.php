@@ -1750,7 +1750,7 @@ function showChartMutil(index) {
                             datasets: [
                                 {
                                     label: 'Mua',
-                                    data: result.transaction_Portfolio.buy_values,
+                                    data: result.transaction_Portfolio.buy,
                                     borderColor: '#28a745',
                                     backgroundColor: '#28a745',
                                     yAxisID: 'y',  // Gắn với trục y đầu tiên
