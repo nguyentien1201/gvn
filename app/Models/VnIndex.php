@@ -74,12 +74,14 @@ class VnIndex extends Model
                 }
             }
         }
-        $fileContent =$this->googleDriveService->getSheetData($fileUrl, 'Stock-VNindex!A2:AX');
+        $fileContent =$this->googleDriveService->getSheetData($fileUrl, 'Stock-VNindex!A2:BB');
         //  $this->googleDriveService->getFile($fileUrl);
 
-        $listSignal =$this->googleDriveService->getSheetData($fileUrl, 'Stock-VNindex!AZ:CE');
-        // $filePath = __DIR__ . '/stock_signals.json';
-        // $listSignal = json_decode(file_get_contents($filePath), true);
+        $listSignal =$this->googleDriveService->getSheetData($fileUrl, 'Stock-VNindex!BD:CI');
+        // // $filePath = __DIR__ . '/stock_signals.json';
+        // // $listSignal = json_decode(file_get_contents($filePath), true);
+        //     $content = Storage::disk('local')->get('data/history.json');
+        //     $fileContent = json_decode($content, true);
 
 
         $listSignal = array_slice($listSignal, 2);
@@ -150,16 +152,16 @@ class VnIndex extends Model
             try {
                 $greenstock_nas100 = [];
                 if($index ==0 ){
-                    Cache::put('vnindex_win', $item[33]);
-                    Cache::put('vnindex_loss', $item[34]);
+                    Cache::put('vnindex_win', $item[37]);
+                    Cache::put('vnindex_loss', $item[38]);
                 }
                 foreach ($item as $key => $value) {
-                    if ($key < 40) continue;
+                    if ($key < 44) continue;
                     if(empty($header[$key])) continue;
                     $date =Carbon::createFromFormat('d/m/y', $header[$key])->format('Y-m-d') ?? null;
                     if(empty($date)) continue;
                     $subgroupcap = [
-                        'group_name' => $item[39] ?? '',
+                        'group_name' => $item[43] ?? '',
                         'avg_cap' => (float) $value,
                         'date' => $date,
                     ];
@@ -189,6 +191,22 @@ class VnIndex extends Model
                         MaVnIndex::create($ma);
                     }
                 }
+                $transaction_Portfolio = [
+                        'time' => Carbon::createFromFormat('d/m/y', $item[14])->format('Y-m-d') ?? null,
+                        'buy' => (int) $item[20],
+                        'hold' => (int) $item[21],
+                        'sell' => (int) $item[22],
+                        'cash' => (int) $item[23],
+                    ];
+
+                    $portfolio = TransactionPortfolio::where('time', $ma['time'])->first();
+
+                    if ($portfolio) {
+
+                        $portfolio->update($transaction_Portfolio);
+                    } else {
+                        TransactionPortfolio::create($transaction_Portfolio);
+                    }
                 if (!empty($item[11])) {
                     $subgroups = [
                         'group_name' => $item[11] ?? '',
@@ -203,10 +221,10 @@ class VnIndex extends Model
                         SubGroupVnIndex::create($subgroups);
                     }
                 }
-                if (!empty($item[21])) {
+                if (!empty($item[25])) {
                     $subgroups_year = [
-                        'group_name' => $item[21] ?? '',
-                        'current_year' => (float) $item[22],
+                        'group_name' => $item[25] ?? '',
+                        'current_year' => (float) $item[26],
                     ];
                     $subgroup = SubGroupVnIndex::where('group_name', $subgroups_year['group_name'])->first();
                     if ($subgroup) {
@@ -215,10 +233,10 @@ class VnIndex extends Model
                         SubGroupVnIndex::create($subgroups_year);
                     }
                 }
-                if (!empty($item[24])) {
+                if (!empty($item[28])) {
                     $subgroups_year = [
-                        'group_name' => $item[24] ?? '',
-                        'quarter' => (float) $item[25],
+                        'group_name' => $item[28] ?? '',
+                        'quarter' => (float) $item[29],
                     ];
                     $subgroup = SubGroupVnIndex::where('group_name', $subgroups_year['group_name'])->first();
                     if ($subgroup) {
@@ -227,10 +245,10 @@ class VnIndex extends Model
                         SubGroupVnIndex::create($subgroups_year);
                     }
                 }
-                if (!empty($item[27])) {
+                if (!empty($item[31])) {
                     $subgroups_year = [
-                        'group_name' => $item[27] ?? '',
-                        'current_month' => (float)$item[28],
+                        'group_name' => $item[31] ?? '',
+                        'current_month' => (float)$item[32],
                     ];
                     $subgroup = SubGroupVnIndex::where('group_name', $subgroups_year['group_name'])->first();
                     if ($subgroup) {
@@ -239,10 +257,10 @@ class VnIndex extends Model
                         SubGroupVnIndex::create($subgroups_year);
                     }
                 }
-                if (!empty($item[36])) {
+                if (!empty($item[40])) {
                     $subgroups_year = [
-                        'group_name' => $item[36] ?? '',
-                        'avg_cap' => (float) $item[37],
+                        'group_name' => $item[40] ?? '',
+                        'avg_cap' => (float) $item[41],
                     ];
                     $subgroup = SubGroupVnIndex::where('group_name', $subgroups_year['group_name'])->first();
                     if ($subgroup) {
@@ -251,10 +269,10 @@ class VnIndex extends Model
                         SubGroupVnIndex::create($subgroups_year);
                     }
                 }
-                if (!empty($item[30])) {
+                if (!empty($item[34])) {
                     $group_cap = [
-                        'group' => $item[30] ?? '',
-                        'avg_day' => (float) $item[31],
+                        'group' => $item[34] ?? '',
+                        'avg_day' => (float) $item[35],
                     ];
                     $cap = GroupCapVnIndex::where('group', $group_cap['group'])->first();
                     if ($cap) {
