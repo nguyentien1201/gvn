@@ -1741,7 +1741,112 @@ function showChartMutil(index) {
 
                         return result;
                     }
+                    var ctx_transaction = document.getElementById('transaction_portfolio').getContext('2d');
 
+                    const chartTransaction = new Chart(ctx_transaction, {
+                        type: 'line',
+                        data: {
+                            labels: result.transaction_Portfolio.labels,
+                            datasets: [
+                                {
+                                    label: 'Mua',
+                                    data: result.transaction_Portfolio.buy_values,
+                                    borderColor: '#28a745',
+                                    backgroundColor: '#28a745',
+                                    yAxisID: 'y',  // Gắn với trục y đầu tiên
+                                    color: 'white',
+                                    borderWidth: 1,
+                                    pointRadius: 0,
+                                    fill: false
+                                },
+                                {
+                                    label: 'Bán',
+                                    data: result.transaction_Portfolio.sell,
+                                    borderColor: '#dc3545',
+                                    backgroundColor: '#dc3545',
+                                    yAxisID: 'y',  // Gắn với trục y đầu tiên
+                                    color: 'white',
+                                    borderWidth: 1,
+                                    pointRadius: 0,
+                                    fill: false
+                                },
+                                {
+                                    label: 'Nắm giữ',
+                                    data: result.transaction_Portfolio.hold,
+                                    borderColor: '#1E71B8',
+                                    backgroundColor: '#1E71B8',
+                                    yAxisID: 'y',  // Gắn với trục y đầu tiên
+                                    color: 'white',
+                                    borderWidth: 1,
+                                    pointRadius: 0,
+                                    fill: false
+                                },
+                                {
+                                    label: 'Tiền mặt',
+                                    data: result.transaction_Portfolio.cash,
+                                    borderColor: '#F1C32A',
+                                    backgroundColor: '#F1C32A',
+                                    yAxisID: 'y',  // Gắn với trục y đầu tiên
+                                    color: 'white',
+                                    borderWidth: 1,
+                                    pointRadius: 0,
+                                    fill: false
+                                },
+                            ]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            plugins: {
+                                legend: {
+                                    onHover: function (event, legendItem, legend) {
+                                        event.native.target.style.cursor = 'pointer';
+                                    },
+                                    onLeave: function (event, legendItem, legend) {
+                                        event.native.target.style.cursor = 'default';
+                                    },
+                                    display: true,
+                                    labels: {
+                                        font: {
+                                            family: 'Montserrat, sans-serif',   // 👈 Font chữ
+                                            size: 16,                           // 👈 Kích thước chữ (px)
+                                            weight: '400'                       // 👈 Font-weight (bold/400/600...)
+                                        },
+                                        color: '#000C2A',
+                                        usePointStyle: true,    // 👈 Sử dụng hình tròn thay vì hình vuông
+                                        pointStyle: 'circle',   // 👈 Kiểu là hình tròn
+                                        pointStyleWidth: 8,     // 👈 Thu nhỏ width marker (mặc định là ~10-12)
+                                        boxHeight: 5,            // 👈 Thu nhỏ height marker (mặc định là ~10-12)
+                                        padding: 20             // (Tuỳ chọn) Khoảng cách giữa các legend item
+                                    }
+                                },
+                            },
+                            scales: {
+                                x: {
+                                    ticks: {
+                                        maxRotation: 0,
+                                        minRotation: 0,
+                                        // callback: function(value) {
+                                        //     const month = parseInt(this.getLabelForValue(value));
+                                        //     if (month === 12) {
+                                        //         return '2024'; // hoặc new Date().getFullYear()
+                                        //     }
+                                        //
+                                        //     // Tạo Date object tạm để lấy tên tháng viết tắt
+                                        //     const date = new Date(2023, month - 1); // tháng trong JS là 0-indexed
+                                        //     return date.toLocaleString('en-US', { month: 'short' }); // Jan, Feb, ...
+                                        // },
+                                        font: {
+                                            family: 'Montserrat, sans-serif',   // 👈 Font chữ
+                                            size: 12,                           // 👈 Kích thước chữ (px)
+                                            weight: '400'                       // 👈 Font-weight (bold/400/600...)
+                                        },
+                                        color: '#000C2A',
+                                    }
+                                }
+                            }
+                        }
+                    });
                     var ctx_ma = document.getElementById('group_ma').getContext('2d');
                     var mappedMaLabels = [];
                     var rawMaLabels = result.ma?.labels; // optional chaining
@@ -2325,15 +2430,16 @@ function showChartMutil(index) {
                                     </div>
                                 </div>
                             </div>
+                           
                             <hr class="border-primary my-80">
                             <div class="container">
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="container-chart" style="padding: 32px 32px !important;">
-                                            <h4 class="title-chart text-uppercase text-center">{{__('front_end.top_10_trading_value')}}</h4>
-                                            <div style="height: 425px;"
-                                                 class="chart-contianer d-flex flex-column justify-content-center align-items-center">
-                                                <canvas id="avg_cap"></canvas>
+                                            <h4 class="title-chart text-uppercase text-center">{{__('front_end.market_with_MA')}}</h4>
+                                            <div style="height:394.5px;"
+                                                 class="chart-container d-flex flex-column justify-content-center align-items-center">
+                                                <canvas id="group_ma"></canvas>
                                             </div>
                                         </div>
                                     </div>
@@ -2344,10 +2450,24 @@ function showChartMutil(index) {
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="container-chart" style="padding: 32px 32px !important;">
-                                            <h4 class="title-chart text-uppercase text-center">{{__('front_end.market_with_MA')}}</h4>
+                                            <h4 class="title-chart text-uppercase text-center">{{__('front_end.transaction_portfolio')}}</h4>
                                             <div style="height:394.5px;"
                                                  class="chart-container d-flex flex-column justify-content-center align-items-center">
-                                                <canvas id="group_ma"></canvas>
+                                                <canvas id="transaction_portfolio"></canvas>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                             <hr class="border-primary my-80">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="container-chart" style="padding: 32px 32px !important;">
+                                            <h4 class="title-chart text-uppercase text-center">{{__('front_end.top_10_trading_value')}}</h4>
+                                            <div style="height: 425px;"
+                                                 class="chart-contianer d-flex flex-column justify-content-center align-items-center">
+                                                <canvas id="avg_cap"></canvas>
                                             </div>
                                         </div>
                                     </div>

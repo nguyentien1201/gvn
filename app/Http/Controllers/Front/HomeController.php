@@ -29,7 +29,7 @@ use App\Models\Subscription;
 use App\Models\UserFollowStock;
 use App\Models\BanIp;
 use App\Models\UserFollowStockVnIndex;
-
+use App\Models\TransactionPortfolio;
 
 class HomeController
 {
@@ -772,6 +772,7 @@ $result = [
         $vnindex_loss = Cache::get('vnindex_loss');
         $cap = [$vnindex_win,$vnindex_loss];
         $ma = (new MaVnIndex())->getMaApi();
+        $transaction_Portfolio = (new TransactionPortfolio())->getTransactionPortfolioApi();
         $current_cap =  (new SubGroupCapDetailVnIndex())->getCurrentCap();
         $marketOverview = [
             'market_cap' => $market_cap,
@@ -779,7 +780,8 @@ $result = [
             'top_stock' => $top_stock,
             'cap' => $cap,
             'ma' => $ma,
-            'current_cap' => $current_cap
+            'current_cap' => $current_cap,
+            'transaction_Portfolio' => $transaction_Portfolio,
         ];
         // Cache::put('market_overview', $marketOverview, 60*60);
         return [
