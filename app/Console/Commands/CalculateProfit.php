@@ -2,22 +2,20 @@
 
 namespace App\Console\Commands;
 
-use App\Models\VnIndex;
-use App\Models\Token;
-use App\Service\WooCommerceApiService;
+use App\Models\GreenAlpha;
 use DateTime;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
-class SyncVnIndex extends Command
+class CalculateProfit extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'sync:vnindex';
+    protected $signature = 'CalculateProfit:greenalpha';
 
     /**
      * The console command description.
@@ -35,11 +33,6 @@ class SyncVnIndex extends Command
     {
         parent::__construct();
     }
-        /**
-     * Execute the console command.
-     *
-     * @return int
-     */
 
     /**
      * Execute the console command.
@@ -48,12 +41,12 @@ class SyncVnIndex extends Command
      */
     public function handle()
     {
-        $orderModel = new VnIndex();
+        $greenAlpha = new GreenAlpha();
         Log::info('Batch sync order start at: ' . date('Y-m-d H:i:s'));
 
         DB::beginTransaction();
         try {
-            $orderModel->import();
+            $greenAlpha->calculateImprortProfit();
             DB::commit();
         } catch (\Exception $e) {
             DB::rollBack();

@@ -496,4 +496,83 @@ public function calculateProfitByMonth($id){
     return $totalProfitToday;
 }
 
+    public function calculateImprortProfit(){
+        $codes = MstStock::pluck('code','id')->toArray();
+
+        $records = DB::table('green_alpha')
+                ->selectRaw("
+                    DATE_FORMAT(open_time, '%m/%Y') AS month_year,
+                    code AS code_id,
+                    SUM((price_close - price_open) / price_open ) AS profit
+                ")
+                ->whereNotNull('price_open')
+                ->whereNotNull('price_close')
+                ->groupBy('month_year', 'code_id')
+                ->get();
+
+        foreach ($records as $row) {
+        $data = [];
+        $data = [
+            'month_year'  => $row->month_year,
+            'code_id'     => $row->code_id,
+            'code'        => $codes[$row->code_id] ?? null,
+            'profit'      => $row->profit,
+            'created_at'  => now(),
+            'updated_at'  => now(),
+            'version'     => '10.7.10',
+        ];
+        try {
+            DB::table('green_alpha_portfolio')->updateOrInsert(
+                [
+                    'month_year' => $row->month_year,
+                    'code_id'    => $row->code_id,
+                ], // unique keys để check
+                $data // các cột cần update nếu tồn tại
+            );
+            } catch (\Exception $e) {
+            \Log::info($e->getMessage());
+            }
+        }
+    }
+    public function calculateImprortProfitDaily()
+    {
+        $codes = MstStock::pluck('code','id')->toArray();
+
+        $records = DB::table('green_alpha')
+            ->selectRaw("
+                DATE_FORMAT(open_time, '%m/%Y') AS month_year,
+                code AS code_id,
+                SUM((price_close - price_open) / price_open) * 100 AS profit
+            ")
+            ->whereNotNull('price_open')
+            ->whereNotNull('price_close')
+            ->whereMonth('open_time', now()->month)   // chỉ lấy tháng hiện tại
+            ->whereYear('open_time', now()->year)     // chỉ lấy năm hiện tại
+            ->groupBy('month_year', 'code_id')
+            ->get();
+        dd($records);
+        foreach ($records as $row) {
+            $data = [
+                'month_year'  => $row->month_year,
+                'code_id'     => $row->code_id,
+                'code'        => $codes[$row->code_id] ?? null,
+                'profit'      => $row->profit,
+                'created_at'  => now(),
+                'updated_at'  => now(),
+                'version'     => '10.7.10',
+            ];
+
+            try {
+                DB::table('green_alpha_portfolio')->updateOrInsert(
+                    [
+                        'month_year' => $row->month_year,
+                        'code_id'    => $row->code_id,
+                    ],
+                    $data
+                );
+            } catch (\Exception $e) {
+                \Log::error("Import profit error: " . $e->getMessage());
+            }
+        }
+    }
 }

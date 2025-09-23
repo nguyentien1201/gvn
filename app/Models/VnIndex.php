@@ -14,6 +14,8 @@ use App\Models\SubGroupVnIndex;
 use App\Models\GroupCapVnIndex;
 use App\Models\SubGroupCapDetailVnIndex;
 use Illuminate\Support\Facades\Cache;
+use App\Models\StockSignalVnIndex;
+use DateTime;
 class VnIndex extends Model
 {
     use SoftDeletes;
@@ -36,6 +38,16 @@ class VnIndex extends Model
     {
         $data = $this->orderBy('rating', 'asc')->paginate(ConstantModel::$PAGINATION);
         return $data;
+    }
+       public static function normalizeDate($date) {
+    // Nếu format là dd/mm/YYYY thì convert sang dd/mm/yy
+        $d = DateTime::createFromFormat("d/m/Y", $date);
+
+        if ($d && $d->format("d/m/Y") === $date) {
+            return $d->format("d/m/y"); // -> 14/10/24
+        }
+
+            return $date;
     }
     public function import($isCompany = false)
     {
@@ -65,6 +77,70 @@ class VnIndex extends Model
         $fileContent =$this->googleDriveService->getSheetData($fileUrl, 'Stock-VNindex!A2:AX');
         //  $this->googleDriveService->getFile($fileUrl);
 
+        $listSignal =$this->googleDriveService->getSheetData($fileUrl, 'Stock-VNindex!AZ:CE');
+        // $filePath = __DIR__ . '/stock_signals.json';
+        // $listSignal = json_decode(file_get_contents($filePath), true);
+
+
+        $listSignal = array_slice($listSignal, 2);
+
+        $result = [];
+        foreach ($listSignal as $row) {
+            $ma_ck = $row[0]; // mã chứng khoán
+            // bỏ 2 phần tử đầu tiên trong mỗi row (mã CK + ngành)
+            $signals = array_slice($row, 2);
+
+            // chia thành block 8 phần tử
+            for ($i = 0; $i < count($signals); $i += 6) {
+                $block = array_slice($signals, $i, 6);
+                try {
+                    if (count($block) == 6 && !empty($block[5])) {
+                        dump($block[5]);
+                        $open_time = !empty($block[5]) ? self::normalizeDate($block[5]) : null;
+                        $close_time = !empty($block[5]) ? self::normalizeDate($block[2]) : null;
+
+
+                        $result[] = [
+                            'code' => $ma_ck,
+                            'close_price' => $block[1], // vị trí 4 trong mảng gốc
+                            'close_time' => Carbon::createFromFormat('d/m/y', trim($close_time))->format('Y-m-d')?? null,
+                            'open_price' => $block[4], // vị trí 7 trong mảng gốc
+                            'open_time' => Carbon::createFromFormat('d/m/y', trim( $open_time ))->format('Y-m-d')?? null
+
+                        ];
+                    }
+                } catch (Exception $e) {
+                    \Log::info($e->getMessage());
+                    continue;
+                }
+            }
+        }
+
+        if(!empty($result)){
+
+            foreach ($result as $row) {
+                try {
+                     DB::table('stock_signal_vnindex')->updateOrInsert(
+                    [
+                        'code' => $row['code'],
+                        'open_time' => $row['open_time'],
+                        'open_price' => $row['open_price'],
+                    ],
+                    [
+                        'close_price' => $row['close_price'],
+                        'close_time' => $row['close_time'],
+                        'updated_at' => now(),
+                    ]
+                );
+                } catch (\Exception $e) {
+                    \Log::info($e->getMessage());
+
+                    continue;
+                }
+
+            }
+
+        }
         $listData =  $fileContent;
 
         $header = $listData[0] ?? [];
@@ -217,12 +293,17 @@ class VnIndex extends Model
     }
     public function getListNas100Api($limit = 200)
     {
-        $getData = $this->with('companyInfo');
+        $getData = $this->with(['companyInfo','stockSignalsHistory'=> function($query) {
+            $query->orderBy('updated_at', 'desc');
+        }]);
+
         $data = $getData->orderBy('rating', 'asc')->limit($limit)->get();
+
         $list_code = $getData->orderBy('code', 'asc');
         $data = $data->map(function ($item) {
             if ($item->companyInfo) {
                 $item['company_name'] = $item->companyInfo->company_name;
+                $item['history'] = self::processDataHistory($item->stockSignalsHistory->toArray(), $item->current_price);
             }
             return $item;
         });
@@ -288,6 +369,29 @@ class VnIndex extends Model
         });
         return $data;
     }
+    public function stockSignalsHistory()
+    {
+        return $this->hasMany(StockSignalVnIndex::class, 'code', 'code');
+    }
+    public static function processDataHistory($signals, $price) {
+        $result = [];
+        $signals = array_slice($signals, 0, 5);
+        foreach ($signals as $signal) {
+            $openTime = Carbon::parse($signal['open_time']);
+            $closeTime = $signal['close_time'] ? Carbon::parse($signal['close_time']) : Carbon::now();
+            $closePrice = $signal['close_price'] ?? $price ?? null;
 
+            $profit = $closePrice !== null ?(($closePrice - $signal['open_price']) / $signal['open_price'] ) *100: null;
+            $holdingDays = $closeTime->diffInDays($openTime);
 
+            $result[] = [
+                'code' => $signal['code'],
+                'buy_price' => $signal['open_price'],
+                'sell_price' => $signal['close_price'] ?? null,
+                'profit' => round($profit, 2) ,
+                'holding_days' => $holdingDays,
+            ];
+        }
+        return $result;
+    }
 }

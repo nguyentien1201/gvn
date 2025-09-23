@@ -31,6 +31,7 @@ class Kernel extends ConsoleKernel
         // $schedule->command('sync:vnindex')->dailyAt('10:00')->withoutOverlapping(10);
         // $schedule->command('sync:vnindex')->dailyAt('12:00')->withoutOverlapping(10);
         $schedule->command('send-profit-today')->dailyAt('23:59')->withoutOverlapping(10);
+        $schedule->command('CalculateProfitDaily:greenalpha')->dailyAt('23:55')->withoutOverlapping(10);
         $schedule->command('delete:user')->dailyAt('23:00')->withoutOverlapping(10);
         // $schedule->command('send:promotion')->everyMinute()->withoutOverlapping(10);
 //        $schedule->command('send:birthday')->dailyAt('09:30')->withoutOverlapping(10);
