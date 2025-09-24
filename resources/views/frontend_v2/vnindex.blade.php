@@ -2461,7 +2461,7 @@ function showChartMutil(index) {
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="container-chart" style="padding: 32px 32px !important;">
-                                            <h4 class="title-chart text-uppercase text-center">Lịch Sử MUA-BÁN-NẮM GIỮ-TIỀN MẶT </h4>
+                                            <h4 class="title-chart text-uppercase text-center">Lịch sử giao dịch và phân bổ tiền mặt</h4>
                                             <div style="height:394.5px;"
                                                  class="chart-container d-flex flex-column justify-content-center align-items-center">
                                                 <canvas id="transaction_portfolio"></canvas>

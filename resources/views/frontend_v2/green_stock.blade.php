@@ -791,7 +791,7 @@ function showChartMutil(index) {
                             labels: result.transaction_Portfolio.labels,
                             datasets: [
                                 {
-                                    label: 'Mua',
+                                    label: 'Buy',
                                     data: result.transaction_Portfolio.buy,
                                     borderColor: '#28a745',
                                     backgroundColor: '#28a745',
@@ -802,7 +802,7 @@ function showChartMutil(index) {
                                     fill: true
                                 },
                                 {
-                                    label: 'Bán',
+                                    label: 'Sell',
                                     data: result.transaction_Portfolio.sell,
                                     borderColor: '#dc3545',
                                     backgroundColor: '#dc3545',
@@ -813,7 +813,7 @@ function showChartMutil(index) {
                                     fill: true
                                 },
                                 {
-                                    label: 'Nắm giữ',
+                                    label: 'Hold',
                                     data: result.transaction_Portfolio.hold,
                                     borderColor: '#1E71B8',
                                     backgroundColor: '#1E71B8',
@@ -824,7 +824,7 @@ function showChartMutil(index) {
                                     fill: true
                                 },
                                 {
-                                    label: 'Tiền mặt',
+                                    label: 'Cash',
                                     data: result.transaction_Portfolio.cash,
                                     borderColor: '#F1C32A',
                                     backgroundColor: '#F1C32A',
@@ -2374,7 +2374,7 @@ function showChartMutil(index) {
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="container-chart" style="padding: 32px 32px !important;">
-                                            <h4 class="title-chart text-uppercase text-center">Lịch Sử MUA-BÁN-NẮM GIỮ-TIỀN MẶT </h4>
+                                            <h4 class="title-chart text-uppercase text-center">Historical Trading and Cash Allocation</h4>
                                             <div style="height:394.5px;"
                                                  class="chart-container d-flex flex-column justify-content-center align-items-center">
                                                 <canvas id="transaction_portfolio"></canvas>
