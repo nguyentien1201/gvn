@@ -30,6 +30,7 @@ use App\Models\UserFollowStock;
 use App\Models\BanIp;
 use App\Models\UserFollowStockVnIndex;
 use App\Models\TransactionPortfolio;
+use App\Models\TransactionPortfolioNas100;
 
 class HomeController
 {
@@ -488,13 +489,15 @@ $result = [
         $cap = [$nas_win,$nas_loss];
         $ma = (new Ma())->getMaApi();
         $current_cap =  (new SubGroupCapDetail())->getCurrentCap();
+        $transaction_Portfolio = (new TransactionPortfolioNas100())->getTransactionPortfolioApi();
         $marketOverview = [
             'market_cap' => $market_cap,
             'chart_group_data' => $chart_group_data,
             'top_stock' => $top_stock,
             'cap' => $cap,
             'ma' => $ma,
-            'current_cap' => $current_cap
+            'current_cap' => $current_cap,
+            'transaction_Portfolio' => $transaction_Portfolio,
         ];
         Cache::put('market_overview', $marketOverview, 60*60);
         return [
