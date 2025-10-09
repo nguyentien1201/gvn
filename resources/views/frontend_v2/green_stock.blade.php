@@ -295,6 +295,7 @@
                                 font-size: 13px;
                                 padding: 4px 16px;
                                 width: 176px;
+                                min-width:176px;
                             ">${trending}</span>`);
                         $(td).css('witdh', '176px');
                         $(td).addClass('text-center');
@@ -331,6 +332,7 @@
                                 border: 1px solid ${color};
                                 font-size: 14px;
                                 padding: 4px 16px;
+                                min-width:176px;
                             ">${signal}</span>`);
                     }
                 },
@@ -1302,7 +1304,8 @@ function showChartMutil(index) {
                                                             border: 1px solid ${color};
                                                             font-size: 13px;
                                                             padding: 4px 16px;
-                                                            width: 176px;
+                                                            min-width:176px ;
+                                                           width: 176px;
                                                         ">${trending}</span>`);
                                                         $(td).css('witdh', '176px');
                                                     }
@@ -1338,6 +1341,7 @@ function showChartMutil(index) {
                                                             border: 1px solid ${color};
                                                             font-size: 14px;
                                                             padding: 4px 16px;
+                                                            min-width:176px ;
                                                         ">${signal}</span>`);
                                                     }
                                                 },
@@ -1538,6 +1542,7 @@ function showChartMutil(index) {
                                 border: 1px solid ${color};
                                 font-size: 13px;
                                 padding: 4px 16px;
+                                min-width:176px ;
                                 width: 176px;
                             ">${trending}</span>`);
                                 $(td).css('witdh', '176px');
@@ -1574,6 +1579,7 @@ function showChartMutil(index) {
                                     border: 1px solid ${color};
                                     font-size: 14px;
                                     padding: 4px 16px;
+                                    min-width:176px ;
                                 ">${signal}</span>`);
                             }
                         },
