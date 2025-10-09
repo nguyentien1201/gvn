@@ -165,4 +165,5 @@ Người ta nói "Đồng tiền đi liền khúc ruột", nếu anh chị có �
 
     'comming_soon'=>'SẮP RA MẮT',
     'contact_us'=>'Contact Us',
+    'my_watchlist'=>'Danh sách quan tâm'
 ];

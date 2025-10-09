@@ -92,7 +92,7 @@
                                 <div class="col-md-12 text-center m-auto">
                                 <div class="container-chart">
                                     <canvas id="myChart" style="width:100%"
-                                        height="260"></canvas>
+                                        height="280"></canvas>
                                 </div>
                                 </div>
                             </div>

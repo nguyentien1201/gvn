@@ -50,7 +50,7 @@ Route::group(['prefix' => '', 'as' => 'front.', 'namespace' => 'Front'], functio
     Route::get('follow-stock-vnindex/{stock_id}', 'HomeController@followUnfollowStockVnIndex')->middleware(['auth']);
     Route::delete('unfollow-stock-vnindex/{stock_id}', 'HomeController@unfollowStockVnIndex')->middleware(['auth']);
 
-    Route::get('/greenstock-vnindex', 'HomeController@vnIndex')->name('home.vnindex')->middleware(['auth']);
+    Route::get('/greenstock-vnindex', 'HomeController@vnIndex')->name('home.vnindex')->middleware(['auth', 'force.locale.vnindex']);
 
 
 });
