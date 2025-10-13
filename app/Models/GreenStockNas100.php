@@ -127,7 +127,7 @@ class GreenStockNas100 extends Model
                         'cash' => (int) $item[23],
                     ];
 
-                    $portfolio = TransactionPortfolioNas100::where('time', $ma['time'])->first();
+                    $portfolio = TransactionPortfolioNas100::where('time', $transaction_Portfolio['time'])->first();
 
                     if ($portfolio) {
 

@@ -97,7 +97,6 @@ class VnIndex extends Model
                 $block = array_slice($signals, $i, 6);
                 try {
                     if (count($block) == 6 && !empty($block[5])) {
-                        dump($block[5]);
                         $open_time = !empty($block[5]) ? self::normalizeDate($block[5]) : null;
                         $close_time = !empty($block[5]) ? self::normalizeDate($block[2]) : null;
 
@@ -199,7 +198,7 @@ class VnIndex extends Model
                         'cash' => (int) $item[23],
                     ];
 
-                    $portfolio = TransactionPortfolio::where('time', $ma['time'])->first();
+                    $portfolio = TransactionPortfolio::where('time', $transaction_Portfolio['time'])->first();
 
                     if ($portfolio) {
 
