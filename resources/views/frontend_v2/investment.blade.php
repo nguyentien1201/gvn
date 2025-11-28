@@ -80,7 +80,7 @@
 
                                 <th class="text-capitalize text-center text-nowrap">STT</th>
                                 <th class="text-capitalize text-center text-nowrap">TÊN KHOẢN ĐẦU TƯ</th>
-                                <th class="text-capitalize text-center text-nowrap">TỔNG GIÁ TRỊ VỐN GIẢI NGÂN (triệu đồng)</th>
+                                <th class="text-capitalize text-center text-nowrap">TỔNG GIÁ TRỊ VỐN GIẢI NGÂN (đồng)</th>
                                 <th class="text-capitalize text-center text-nowrap">SỐ LƯỢNG CỔ PHIẾU</th>
                                 <th class="text-capitalize text-center text-nowrap">GIÁ VỐN TRUNG BÌNH/CỔ PHIẾU</th>
                                 <th class="text-capitalize text-center text-nowrap">THỜI GIAN GIẢI NGÂN</th>
