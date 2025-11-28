@@ -40,36 +40,14 @@
        <div id="heroCarousel" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item container-heading active">
-                <h3 class="heading-page">Green Beta</h3>
+                <h3 class="heading-page">BẢNG THEO DÕI CÁC KHOẢN ĐẦU TƯ</h3>
 
             </div>
         </div>
     </div>
-
-                    <!-- End heading tab -->
-        <section id="trading-on" class="py-0 py-lg-5 common-services" style="border-bottom: 1px solid #eff4f1;">
-            <div class="container">
-            <div class="row gy-4 gy-lg-0">
-                        <div class="co-12 col-lg-6 trading-container">
-                            <div class="trading-on-content">
-                                <div class="head-text">
-                                    <span>{{__('base.description_title_green_beta')}}</span>
-                                </div>
-                                <div class="last-text">
-                                    <span>{{__('base.description_title_end_green_beta')}}</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="co-12 col-lg-6">
-                            <img class="img-fluid" src="{{asset('images/robot-beta.png')}}" alt="{{asset('images/robot-alpha.png')}}">
-                        </div>
-                    </div>
-            </div>
-        </section>
-
        <section id="most_interested" class="py-5">
-            <div class="container">
-                <h2 class="text-center services-title pb-3 pb-lg-2">INVESTMENT</h2>
+            <div class="container-fluid">
+
                 <h5 class="time-live mb-0 text-right">
                     <i><span class="date-js"></span> <span class="time-js"></span> (UTC+3)</i>
                 </h5>
@@ -119,7 +97,7 @@
 
 
         <section class="py-2">
-            <div class="container">
+            <div class="container-fluid">
                 <div class="row">
                     <div class="col-12 col-md-6 col-lg-4">
                     <div class="table-responsive mt-5 cot-noi-dung" >
