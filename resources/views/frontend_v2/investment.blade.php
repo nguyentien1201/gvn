@@ -49,7 +49,7 @@
             <div class="container-fluid">
 
                 <h5 class="time-live mb-0 text-right">
-                    <i><span class="date-js"></span> <span class="time-js"></span> (UTC+3)</i>
+                    <i><span class="date-js"></span> <span class="time-js"></span> (UTC+7)</i>
                 </h5>
                 <div class="table-responsive mt-5" >
                     <table id="green-beta-table" class="table table-striped table-hover" style="margin:none">
@@ -82,10 +82,14 @@
                                     <td class="text-center">{{number_format($invest->total_shares, 0, ',', '.')}}</td>
                                     <td class="text-center">{{ $invest->avg_price }}</td>
                                     <td class="text-center">{{ $invest->invest_date }}</td>
-                                    <td class="text-center">{{ $invest->current_profit_percent }}</td>
+                                    <td class="text-center">{{ $invest->current_price }}</td>
+                                    <td class="text-center" style="font-weight: 500; color: {{ $invest->current_profit_percent > 0 ? 'green' : ($invest->current_profit_percent < 0 ? 'red' : 'inherit') }};">{{ $invest->current_profit_percent }}</td>
                                     <td class="text-center">{{ $invest->take_profit_price }}</td>
-                                    <td class="text-center">{{ $invest->take_profit_percent }}</td>
+                                    <td class="text-center" style="font-weight: 500; color: {{ $invest->take_profit_percent > 0 ? 'green' : ($invest->take_profit_percent < 0 ? 'red' : 'inherit') }};">{{ $invest->take_profit_percent }}</td>
                                     <td class="text-center">{{ $invest->take_profit_expected }}</td>
+                                    <td class="text-center">
+                                        {{ $invest->status == 0 ? 'ĐANG MỞ GỌI VỐN' : ($invest->status == 1 ? 'ĐANG NẮM GIỮ' : 'ĐÃ TẤT TOÁN CHO NHÀ ĐẦU TƯ') }}
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>
@@ -256,13 +260,13 @@
         const now = new Date();
         // Lấy thời gian và ngày tháng theo múi giờ
         const dateOptions = {
-            timeZone: 'Europe/Moscow',
+            timeZone: 'Asia/Ho_Chi_Minh',
             year: 'numeric',
             month: '2-digit',
             day: '2-digit'
         };
         const timeOptions = {
-            timeZone: 'Europe/Moscow',
+            timeZone: 'Asia/Ho_Chi_Minh',
             hour: '2-digit',
             minute: '2-digit',
             second: '2-digit',
