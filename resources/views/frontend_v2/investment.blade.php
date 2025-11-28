@@ -105,9 +105,9 @@
                                     <td class="text-center align-middle">{{ $invest->avg_price }}</td>
                                     <td class="text-center align-middle">{{ $invest->invest_date }}</td>
                                     <td class="text-center align-middle">{{ $invest->current_price }}</td>
-                                    <td class="text-center align-middle" style="font-weight: 500; color: {{ $invest->current_profit_percent > 0 ? 'green' : ($invest->current_profit_percent < 0 ? 'red' : 'inherit') }};">{{ $invest->current_profit_percent }}%</td>
+                                    <td class="text-center align-middle" style="font-weight: 500; color: {{ $invest->current_profit_percent > 0 ? 'green' : ($invest->current_profit_percent < 0 ? 'red' : 'inherit') }};">{{ !empty($invest->current_profit_percent) ? $invest->current_profit_percent . '%' : '' }}</td>
                                     <td class="text-center align-middle">{{ $invest->take_profit_price }}</td>
-                                    <td class="text-center align-middle" style="font-weight: 500; color: {{ $invest->take_profit_percent > 0 ? 'green' : ($invest->take_profit_percent < 0 ? 'red' : 'inherit') }};">{{ $invest->take_profit_percent }}%</td>
+                                    <td class="text-center align-middle" style="font-weight: 500; color: {{ $invest->take_profit_percent > 0 ? 'green' : ($invest->take_profit_percent < 0 ? 'red' : 'inherit') }};"> {{ !empty($invest->take_profit_percent) ? $invest->take_profit_percent . '%' : '' }}%</td>
                                     <td class="text-center align-middle">{{ $invest->take_profit_expected }}</td>
                                     <td class="text-center align-middle">
                                         {{ $invest->status == 0 ? 'ĐANG MỞ GỌI VỐN' : ($invest->status == 1 ? 'ĐANG NẮM GIỮ' : 'ĐÃ TẤT TOÁN CHO NHÀ ĐẦU TƯ') }}
