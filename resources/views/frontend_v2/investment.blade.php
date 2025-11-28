@@ -99,8 +99,9 @@
                                        {{$key + 1}}
                                     </td>
                                     <td class="text-center">{{ $invest->name }}</td>
-                                    <td class="text-center">{{ $invest->total_value }}</td>
-                                    <td class="text-center">{{ $invest->total_shares }}</td>
+
+                                    <td class="text-center">{{number_format($invest->total_value, 0, ',', '.')}}</td>
+                                    <td class="text-center">{{number_format($invest->total_shares, 0, ',', '.')}}</td>
                                     <td class="text-center">{{ $invest->avg_price }}</td>
                                     <td class="text-center">{{ $invest->invest_date }}</td>
                                     <td class="text-center">{{ $invest->current_profit_percent }}</td>
@@ -141,7 +142,7 @@
                                     @foreach($investments_funds[0]->funds as $key => $fund)
                                     <tr>
                                         <td>{{ $fund->date }}</td>
-                                        <td>{{$fund->nav}}</td>
+                                           <td>{{number_format($fund->nav, 0, ',', '.')}}</td>
                                         <td>{{$fund->note}}</td>
                                     </tr>
                                     @endforeach
@@ -177,7 +178,7 @@
                                     @foreach($investments_funds[1]->funds as $key => $fund)
                                     <tr>
                                         <td>{{ $fund->date }}</td>
-                                        <td>{{$fund->nav}}</td>
+                                           <td>{{number_format($fund->nav, 0, ',', '.')}}</td>
                                         <td>{{$fund->note}}</td>
                                     </tr>
                                     @endforeach
@@ -213,7 +214,7 @@
                                         @foreach($investments_funds[2]->funds as $key => $fund)
                                         <tr>
                                             <td>{{ $fund->date }}</td>
-                                            <td>{{$fund->nav}}</td>
+                                            <td>{{number_format($fund->nav, 0, ',', '.')}}</td>
                                             <td>{{$fund->note}}</td>
                                         </tr>
                                         @endforeach
