@@ -31,7 +31,7 @@ use App\Models\BanIp;
 use App\Models\UserFollowStockVnIndex;
 use App\Models\TransactionPortfolio;
 use App\Models\TransactionPortfolioNas100;
-
+use App\Models\Investment;
 class HomeController
 {
     public function index(Request $request)
@@ -818,5 +818,16 @@ $result = [
             'status' => 200,
             'data' => $top_stock
         ];
+    }
+
+    public function investment(){
+$user = \Auth::user();
+         $role = $user->role_id ?? null;
+
+         if($role == 1 || $role == 2){
+
+            $investments = (new Investment())->getListInvestment();
+             return view('frontend_v2.investment',compact('investments'));
+         }
     }
 }
