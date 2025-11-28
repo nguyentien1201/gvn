@@ -99,7 +99,6 @@
                                     </td>
                                     <td class="text-center align-middle">{{ $invest->name }}</td>
 
-                                    <td class="text-center align-middle">{{ $invest->take_profit_price }}</td>
                                     <td class="text-center align-middle">{{number_format($invest->total_value, 0, ',', '.') }}</td>
                                     <td class="text-center align-middle">{{number_format($invest->total_shares, 0, ',', '.')}}</td>
                                     <td class="text-center align-middle">{{ $invest->avg_price }}</td>
