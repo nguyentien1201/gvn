@@ -32,6 +32,7 @@ use App\Models\UserFollowStockVnIndex;
 use App\Models\TransactionPortfolio;
 use App\Models\TransactionPortfolioNas100;
 use App\Models\Investment;
+use App\Models\InvestmentFunds;
 class HomeController
 {
     public function index(Request $request)
@@ -821,13 +822,14 @@ $result = [
     }
 
     public function investment(){
-$user = \Auth::user();
+        $user = \Auth::user();
          $role = $user->role_id ?? null;
 
          if($role == 1 || $role == 2){
 
             $investments = (new Investment())->getListInvestment();
-             return view('frontend_v2.investment',compact('investments'));
+            $investments_funds = (new Investment())->getListInvestmentFunding();
+            return view('frontend_v2.investment',compact('investments','investments_funds'));
          }
     }
 }

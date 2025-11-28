@@ -4,17 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use App\Service\GoogleDriveService;
-use Carbon\Carbon;
-use App\Models\CompanyInfo;
-use App\Models\MaVnIndex;
-use App\Models\SubGroupVnIndex;
-use App\Models\GroupCapVnIndex;
-use App\Models\SubGroupCapDetailVnIndex;
-use Illuminate\Support\Facades\Cache;
-use App\Models\StockSignalVnIndex;
+use App\Models\InvestmentFunds;
 use DateTime;
 class Investment extends Model
 {
@@ -30,5 +20,14 @@ class Investment extends Model
         $data = $this->orderBy('code', 'asc')->paginate(ConstantModel::$PAGINATION);
         return $data;
     }
-
+    public function getListInvestmentFunding()
+    {
+        $data = $this->with('funds')->where('status','!=',2)->orderBy('code', 'desc')->limit(3)->get();
+        return $data;
+    }
+   public function funds()
+    {
+        // 'investment_id' là tên cột khóa ngoại trên bảng 'investment_funds'
+        return $this->hasMany(InvestmentFunds::class, 'investment_id');
+    }
 }
