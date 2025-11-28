@@ -831,5 +831,6 @@ $result = [
             $investments_funds = (new Investment())->getListInvestmentFunding();
             return view('frontend_v2.investment',compact('investments','investments_funds'));
          }
+        return redirect()->route('front.home.index');
     }
 }
