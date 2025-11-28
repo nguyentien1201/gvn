@@ -30,6 +30,27 @@
         .container {
             margin-top: 20px;
         }
+        #investment-table th,
+    #investment-table td {
+        /* Bắt buộc nội dung phải xuống dòng khi tràn ô */
+        white-space: normal;
+        min-width: 60px;
+        /* Đảm bảo nội dung dài được ngắt từ bất kỳ đâu */
+        word-break: break-word;
+    }
+
+    /* 2. Đảm bảo container không bị tràn */
+    .table-responsive {
+        /* Ghi đè lại hành vi cuộn ngang mặc định của Bootstrap */
+        overflow-x: hidden !important;
+    }
+
+    /* 3. Tùy chọn: Đặt chiều rộng tối đa linh hoạt */
+    #investment-table {
+            border: 1px solid #ececec;
+        width: 100%;
+
+    }
 </style>
 @endpush
 
@@ -52,42 +73,42 @@
                     <i><span class="date-js"></span> <span class="time-js"></span> (UTC+7)</i>
                 </h5>
                 <div class="table-responsive mt-5" >
-                    <table id="green-beta-table" class="table table-striped table-hover" style="margin:none">
+                    <table id="investment-table" class="table table-striped table-hover" style="margin:none">
                         <thead>
                             <tr>
 
-                                <th class="text-capitalize text-center text-nowrap">STT</th>
-                                <th class="text-capitalize text-center text-nowrap">TÊN KHOẢN ĐẦU TƯ</th>
-                                <th class="text-capitalize text-center text-nowrap">TỔNG GIÁ TRỊ VỐN GIẢI NGÂN (đồng)</th>
-                                <th class="text-capitalize text-center text-nowrap">SỐ LƯỢNG CỔ PHIẾU</th>
-                                <th class="text-capitalize text-center text-nowrap">GIÁ VỐN TRUNG BÌNH/CỔ PHIẾU</th>
-                                <th class="text-capitalize text-center text-nowrap">THỜI GIAN GIẢI NGÂN</th>
-                                <th class="text-capitalize text-center text-nowrap">GIÁ HIỆN TẠI</th>
-                                <th class="text-capitalize text-center text-nowrap">LÃI/LỖ HIỆN TẠI</th>
-                                <th class="text-capitalize text-center text-nowrap">GIÁ THỰC HIỆN CHỐT LỜI/CẮT LỖ</th>
-                                <th class="text-capitalize text-center text-nowrap">LÃI/LỖ CHỐT LỜI</th>
-                                <th class="text-capitalize text-center text-nowrap">THỜI GIAN CHỐT LỜI DỰ KIẾN</th>
-                                <th class="text-capitalize text-center text-nowrap">HIỆN TRẠNG ĐẦU TƯ</th>
+                                <th class="text-capitalize text-center align-middle">STT</th>
+                                <th class="text-capitalize text-center align-middle">TÊN KHOẢN ĐẦU TƯ</th>
+                                <th class="text-capitalize text-center align-middle">TỔNG GIÁ TRỊ VỐN GIẢI NGÂN (đồng)</th>
+                                <th class="text-capitalize text-center align-middle">SỐ LƯỢNG CỔ PHIẾU</th>
+                                <th class="text-capitalize text-center  align-middle">GIÁ VỐN TRUNG BÌNH/CỔ PHIẾU</th>
+                                <th class="text-capitalize text-center align-middle">THỜI GIAN GIẢI NGÂN</th>
+                                <th class="text-capitalize text-center align-middle">GIÁ HIỆN TẠI</th>
+                                <th class="text-capitalize text-center align-middle">LÃI/LỖ HIỆN TẠI</th>
+                                <th class="text-capitalize text-center align-middle">GIÁ THỰC HIỆN CHỐT LỜI/CẮT LỖ</th>
+                                <th class="text-capitalize text-center align-middle">LÃI/LỖ CHỐT LỜI</th>
+                                <th class="text-capitalize text-center align-middle">THỜI GIAN CHỐT LỜI DỰ KIẾN</th>
+                                <th class="text-capitalize text-center align-middle">HIỆN TRẠNG ĐẦU TƯ</th>
                             </tr>
                         </thead>
                         <tbody>
                              @foreach($investments as $key => $invest)
                                 <tr data-id="{{$invest->code}}">
-                                    <td class="text-center">
+                                    <td class="text-center align-middle">
                                        {{$key + 1}}
                                     </td>
-                                    <td class="text-center">{{ $invest->name }}</td>
+                                    <td class="text-center align-middle">{{ $invest->name }}</td>
 
-                                    <td class="text-center">{{number_format($invest->total_value, 0, ',', '.')}}</td>
-                                    <td class="text-center">{{number_format($invest->total_shares, 0, ',', '.')}}</td>
-                                    <td class="text-center">{{ $invest->avg_price }}</td>
-                                    <td class="text-center">{{ $invest->invest_date }}</td>
-                                    <td class="text-center">{{ $invest->current_price }}</td>
-                                    <td class="text-center" style="font-weight: 500; color: {{ $invest->current_profit_percent > 0 ? 'green' : ($invest->current_profit_percent < 0 ? 'red' : 'inherit') }};">{{ $invest->current_profit_percent }}</td>
-                                    <td class="text-center">{{ $invest->take_profit_price }}</td>
-                                    <td class="text-center" style="font-weight: 500; color: {{ $invest->take_profit_percent > 0 ? 'green' : ($invest->take_profit_percent < 0 ? 'red' : 'inherit') }};">{{ $invest->take_profit_percent }}</td>
-                                    <td class="text-center">{{ $invest->take_profit_expected }}</td>
-                                    <td class="text-center">
+                                    <td class="text-center align-middle">{{number_format($invest->total_value, 0, ',', '.')}}</td>
+                                    <td class="text-center align-middle">{{number_format($invest->total_shares, 0, ',', '.')}}</td>
+                                    <td class="text-center align-middle">{{ $invest->avg_price }}</td>
+                                    <td class="text-center align-middle">{{ $invest->invest_date }}</td>
+                                    <td class="text-center align-middle">{{ $invest->current_price }}</td>
+                                    <td class="text-center align-middle" style="font-weight: 500; color: {{ $invest->current_profit_percent > 0 ? 'green' : ($invest->current_profit_percent < 0 ? 'red' : 'inherit') }};">{{ $invest->current_profit_percent }}</td>
+                                    <td class="text-center align-middle">{{ $invest->take_profit_price }}</td>
+                                    <td class="text-center align-middle" style="font-weight: 500; color: {{ $invest->take_profit_percent > 0 ? 'green' : ($invest->take_profit_percent < 0 ? 'red' : 'inherit') }};">{{ $invest->take_profit_percent }}</td>
+                                    <td class="text-center align-middle">{{ $invest->take_profit_expected }}</td>
+                                    <td class="text-center align-middle">
                                         {{ $invest->status == 0 ? 'ĐANG MỞ GỌI VỐN' : ($invest->status == 1 ? 'ĐANG NẮM GIỮ' : 'ĐÃ TẤT TOÁN CHO NHÀ ĐẦU TƯ') }}
                                     </td>
                                 </tr>

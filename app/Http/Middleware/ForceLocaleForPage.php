@@ -10,7 +10,7 @@ class ForceLocaleForPage
     public function handle($request, Closure $next)
     {
         // Nếu URL hiện tại là 'about' (hoặc route name)
-        if ($request->is('greenstock-vnindex')) {
+        if ($request->is('greenstock-vnindex') || $request->is('vietnaminvestment')) {
             App::setLocale('vi'); // hoặc 'vi', 'ja', ...
         }
 

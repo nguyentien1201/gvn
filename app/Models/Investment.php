@@ -17,7 +17,7 @@ class Investment extends Model
     ];
     public function getListInvestment()
     {
-        $data = $this->orderBy('code', 'asc')->paginate(ConstantModel::$PAGINATION);
+        $data = $this->orderBy('code', 'desc')->paginate(ConstantModel::$PAGINATION);
         return $data;
     }
     public function getListInvestmentFunding()

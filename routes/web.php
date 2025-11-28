@@ -52,7 +52,7 @@ Route::group(['prefix' => '', 'as' => 'front.', 'namespace' => 'Front'], functio
 
     Route::get('/greenstock-vnindex', 'HomeController@vnIndex')->name('home.vnindex')->middleware(['auth', 'force.locale.vnindex']);
 
-   Route::get('/vietnaminvestment', 'HomeController@investment')->name('home.investments')->middleware(['auth']);
+   Route::get('/vietnaminvestment', 'HomeController@investment')->name('home.investments')->middleware(['auth', 'force.locale.vnindex']);
 });
 Route::get('/inactive', function () {
     return view('front.common.inactive');
