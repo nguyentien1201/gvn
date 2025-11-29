@@ -49,6 +49,7 @@
     #investment-table {
             border: 1px solid #ececec;
         width: 100%;
+        table-layout: fixed;
 
     }
 </style>
