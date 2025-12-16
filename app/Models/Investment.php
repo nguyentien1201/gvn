@@ -28,6 +28,6 @@ class Investment extends Model
    public function funds()
     {
         // 'investment_id' là tên cột khóa ngoại trên bảng 'investment_funds'
-        return $this->hasMany(InvestmentFunds::class, 'investment_id');
+        return $this->hasMany(InvestmentFunds::class, 'investment_id')->orderBy('date', 'desc');;
     }
 }
