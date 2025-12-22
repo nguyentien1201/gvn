@@ -110,7 +110,8 @@
                                     <td class="text-center align-middle" style="font-weight: 500; color: {{ $invest->take_profit_percent > 0 ? 'green' : ($invest->take_profit_percent < 0 ? 'red' : 'inherit') }};"> {{ !empty($invest->take_profit_percent) ? $invest->take_profit_percent . '%' : '' }}</td>
                                     <td class="text-center align-middle">{{ $invest->take_profit_expected }}</td>
                                     <td class="text-center align-middle">
-                                        {{ $invest->status == 0 ? 'ĐANG MỞ GỌI VỐN' : ($invest->status == 1 ? 'ĐANG NẮM GIỮ' : 'ĐÃ TẤT TOÁN CHO NHÀ ĐẦU TƯ') }}
+                                        {{ $statusText[$invest->status] ?? 'KHÔNG XÁC ĐỊNH' }}
+
                                     </td>
                                 </tr>
                             @endforeach
