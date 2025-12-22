@@ -828,7 +828,7 @@ $result = [
          if($role == 1 || $role == 2){
             $statusText = [
                 0 => 'ĐANG MỞ GỌI VỐN',
-                1 => 'ĐANG MỞ GIẢI NGÂN',
+                1 => 'ĐANG GIẢI NGÂN',
                 2 => 'ĐANG NẮM GIỮ',
                 3 => 'ĐÃ TẤT TOÁN CHO NHÀ ĐẦU TƯ'
             ];
