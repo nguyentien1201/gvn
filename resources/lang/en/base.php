@@ -83,8 +83,42 @@ return [
     'time_line_greenstock_develop' => 'Green Stock-NAS100 is under development',
     'time_line_alpha_testing' => 'The beta version of Green Alpha is under testing.',
     'The_first_models' => 'The first models of Alpha and Beta are officially under development.',
+    'our_mission' => 'Our Mission',
     'Our_Team' => 'Our Team',
     'Meet_the_Experts' => 'Meet the Experts Driving GVN’s Success with Years of Financial Innovation',
+    'time_line_head'=>"TimeLine",
+    'timelines' => [
+        '2012_2018' => [
+            'time' => '2012 -2018',
+            'name' => 'Start',
+            'des' => 'The first models of Alpha and Beta are officially under development.'
+        ],
+        '2019' => [
+            'time' => '2019',
+            'name' => 'Green Alpha Testing',
+            'des' => 'The beta version of Green Alpha is under testing'
+        ],
+        '2020' => [
+            'time' => '2020',
+            'name' => 'NAS100 Developing',
+            'des' => 'Green Stock-NAS100 is under development'
+        ],
+        '2021' => [
+            'time' => '2021',
+            'name' => 'NAS100 Available',
+            'des' => 'Green Stock-NAS100 is available for use now'
+        ],
+        '2022' => [
+            'time' => '2022',
+            'name' => 'Green Beta Release',
+            'des' => 'Green Beta is our first version for trading'
+        ],
+        '2023' => [
+            'time' => '2023',
+            'name' => 'GVN-Fintrade Portal Launch',
+            'des' => 'The project officially launched with the goal of conveying useful inisghts to investors via the the portal at GVN-Fintrade.'
+        ],
+    ],
     'intro_contact' => [
         'danh_contact'=> [
             'name' => 'Nguyen Ngoc Danh',
@@ -160,8 +194,8 @@ return [
     'Birthdate_*' => 'Birthdate *',
     'Save_Profile' => 'Save Profile',
     'Profit_Today'=>'Profit Today',
-    'green_beta_trading_on'=>'Trading on Green Beta',	
-    'green_alpha_trading_on'=>'Trading on Green Alpha',	
+    'green_beta_trading_on'=>'Trading on Green Beta',
+    'green_alpha_trading_on'=>'Trading on Green Alpha',
     'trade_on' => 'Trade on',
 
     'basic_plan' => 'Basic Plan',
@@ -176,5 +210,7 @@ return [
     'year' => 'year',
     'trial_1_year' => '1-year trial',
     'get_started' => 'Get started',
-    'most_plan_note' => 'Most popular plan',										
+    'most_plan_note' => 'Most popular plan',
+    'vnindex_trading_on'=>'Trading on Green Stock vnIndex',
+    'description_title_green_stock_vnIndex' => 'GreenStock-VnIndex is a system that analyzes stocks in the pool of NASDAQ100 stocks of the US market. The system automatically analyzes short-term and long-term trends of stocks, rank trends and cash flow momentum on each stock, thereby creating a technical Rating scorecard to give users actionable insights. A circle of action in users\' trading: BUY-HOLD-SELL-CASH',
 ];

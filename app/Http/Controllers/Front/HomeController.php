@@ -149,7 +149,30 @@ class HomeController
         $ma['down'] = [$ma['downMA50'],$ma['downMA200']];
         $chart_group_data = (new SubGroup())->getDataSubGroup(20);
         $chart_group_data = array_slice($chart_group_data, 0, 20);
-        return view('frontend_v2.home',compact('signals','green_data','green_vnindex','default_chart','last_signal','data_chart_default','chart_group_data','ma','chart_signal','labels'));
+
+        //vnindex
+
+         $chart_signal_vnindex = (new VnIndex())->getGroupSignalV2();
+
+        $totalCount = array_reduce($chart_signal_vnindex, function ($carry, $item) {
+            return $carry + $item['total'];
+        }, 0);
+
+        $labels_vnindex = array_column($chart_signal_vnindex, 'signal');
+
+        $chart_signal_vnindex = array_map(function($item) use ($totalCount) {
+            return $totalCount > 0
+                ? round($item['total'] / $totalCount * 100, 2)
+                : 0;
+        }, $chart_signal_vnindex);
+
+        $ma_vnindex = (new MaVnIndex())->getMa();
+        $chart_group_data_vnindex = (new SubGroupVnIndex())->getDataSubGroup(20);
+        $chart_group_data_vnindex = array_slice($chart_group_data_vnindex, 0, 20);
+
+        $ma_vnindex['up'] = [$ma_vnindex['upMA50'],$ma_vnindex['upMA200']];
+        $ma_vnindex['down'] = [$ma_vnindex['downMA50'],$ma_vnindex['downMA200']];
+        return view('frontend_v2.home',compact('signals','green_data','green_vnindex','default_chart','last_signal','data_chart_default','chart_group_data','ma','chart_signal','labels','chart_signal_vnindex','labels_vnindex','ma_vnindex','chart_group_data_vnindex'));
     }
     public function greenBeta(Request $request)
     {
@@ -556,9 +579,9 @@ $result = [
             $timelines[] = [
                 'image' => $file->getFilename(),
                 'color' => $colors[$key],
-                'timeline_time' => __('mission.timelines.' . $timelineTimes[$key] . '.time'),
-                'timeline_name' => __('mission.timelines.' . $timelineTimes[$key] . '.name'),
-                'timeline_des' => __('mission.timelines.' . $timelineTimes[$key] . '.des')
+                'timeline_time' => __('base.timelines.' . $timelineTimes[$key] . '.time'),
+                'timeline_name' => __('base.timelines.' . $timelineTimes[$key] . '.name'),
+                'timeline_des' => __('base.timelines.' . $timelineTimes[$key] . '.des')
             ];
         }
 
@@ -728,19 +751,6 @@ $result = [
                 : 0;
         }, $chart_signal);
 
-        // usort($chart_signal, function($a, $b) {
-        //     return strcmp($a['signal'], $b['signal']);
-        // });
-        // $totalCount = array_reduce($chart_signal, function ($carry, $item) {
-        //     return $carry + $item['total'];
-        // }, 0);
-        // $labels = array_map(function($item) {
-        //     return $item['signal'];
-        // }, $chart_signal);
-
-        // $chart_signal = array_map(function($item) use ($totalCount) {
-        //     return  round($item['total']/$totalCount*100,2);
-        // }, $chart_signal);
         $ma = (new MaVnIndex())->getMa();
         $chart_group_data = (new SubGroupVnIndex())->getDataSubGroup(10);
         $chart_group_data = array_slice($chart_group_data, 0, 10);

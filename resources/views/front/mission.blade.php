@@ -469,7 +469,7 @@ padding: 0.75rem;
 <body>
 @auth
     <div style="position: fixed; bottom: 20px; right: 20px; text-align: center; z-index: 1000;">
-<div class="sc-9qme4p-0 hELAUe"><button class="decription_telegram"><span class="sc-1ee9gtf-2 bxZLwE">{{__('front_end.chat_with_me')}}</span></button></div>
+<div class="sc-9qme4p-0 hELAUe"><button class="decription_telegram"><span class="sc-1ee9gtf-2 bxZLwE">{{__('base.chat_with_me')}}</span></button></div>
   <a href="https://t.me/{{config('config.telegram_user')}}" target="_blank" style="text-decoration: none;">
     <button style="
         float: right;
@@ -507,10 +507,10 @@ padding: 0.75rem;
 
     <div class="container">
     <div class="row  mt-5">
-        <p><i> {{__('front_end.mission_gvn')}}</i></p>
+        <p><i> {{__('base.mission_gvn')}}</i></p>
     </div>
     <div class="row mt-2 text-center" >
-            <h4><b>{{__('front_end.maxim_gvn')}}</b> </h4>
+            <h4><b>{{__('base.maxim_gvn')}}</b> </h4>
     </div>
   <div class="row  mt-4">
     <div class="col">
@@ -519,7 +519,7 @@ padding: 0.75rem;
           <div class="timeline-content">
             <span class="timeline-year">2023</span>
             <div class="content">
-              <p class="description">{!!__('front_end.idea_gvn')!!}
+              <p class="description">{!!__('base.idea_gvn')!!}
               </p>
             </div>
           </div>
@@ -530,7 +530,7 @@ padding: 0.75rem;
 
             <div class="content">
               <h3 class="title"></h3>
-              <p class="description">{!!__('front_end.time_line_beta')!!}
+              <p class="description">{!!__('base.time_line_beta')!!}
 
               </p>
             </div>
@@ -543,7 +543,7 @@ padding: 0.75rem;
             <div class="content">
               <h3 class="title"></h3>
               <p class="description">
-              {{__('front_end.time_line_greenstock')}}
+              {{__('base.time_line_greenstock')}}
               </p>
             </div>
           </a>
@@ -554,7 +554,7 @@ padding: 0.75rem;
 
             <div class="content">
               <h3 class="title"></h3>
-              <p class="description">{{__('front_end.time_line_greenstock_develop')}}
+              <p class="description">{{__('base.time_line_greenstock_develop')}}
 
               </p>
             </div>
@@ -566,7 +566,7 @@ padding: 0.75rem;
 
             <div class="content">
               <h3 class="title"></h3>
-              <p class="description">{{__('front_end.time_line_alpha_testing')}}
+              <p class="description">{{__('base.time_line_alpha_testing')}}
 
               </p>
             </div>
@@ -577,8 +577,8 @@ padding: 0.75rem;
             <span class="timeline-year">2012-2018</span>
 
             <div class="content">
-              <h3 class="title">{{__('front_end.start')}}</h3>
-              <p class="description">{{__('front_end.time_line_start_alpha_beta')}}
+              <h3 class="title">{{__('base.start')}}</h3>
+              <p class="description">{{__('base.time_line_start_alpha_beta')}}
               </p>
             </div>
           </a>

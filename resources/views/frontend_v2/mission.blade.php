@@ -22,17 +22,17 @@
         <div id="heroCarousel" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item container-heading active">
-                    <h3 class="heading-page">{{ __('mission.our_mission') }}</h3>
+                    <h3 class="heading-page">{{ __('base.our_mission') }}</h3>
                 </div>
             </div>
         </div>
         <div class="container  px-5">
             <div class="content-our-mission mb-4">
-                <h3 class="heading-page my-5">{{ __('mission.descipline_responsibility_efficiency') }}</h3>
+                <h3 class="heading-page my-5">{{ __('base.maxim_gvn') }}</h3>
                 <img class="m-auto img-fluid" src="{{ asset('images/mission/device-macbook-air.png') }}"
                      alt="{{ asset('images/mission/device-macbook-air.png') }}">
                 <p class="text-center des-title">
-                    {{ __('mission.mission_content') }}
+                    {{ __('base.mission_gvn') }}
                 </p>
             </div>
             <hr>
@@ -123,8 +123,8 @@
         <hr>
         <!--Our Team -->
         <div id="our-team">
-            <h3 class="text-center heading-page">{{__('mission.our_team')}}</h3>
-            <p class="text-center des-title">{{__('mission.text_title')}}</p>
+            <h3 class="text-center heading-page">{{__('base.Our_Team')}}</h3>
+            <p class="text-center des-title">{{__('base.Meet_the_Experts')}}</p>
             <div class="container-our-team container container-xxl my-3">
                 <div class="row gy-4">
                         <div class="col-6 col-md-4 col-lg-3">

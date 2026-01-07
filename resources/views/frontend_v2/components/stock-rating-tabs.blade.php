@@ -39,6 +39,7 @@
                         </thead>
                     </table>
                 </div>
+                @include('frontend_v2.components.trading-green-stock-NAS100')
             </div>
             <div class="tab-pane fade" id="pills-green-stock-vn-index" role="tabpanel"
                  aria-labelledby="pills-green-stock-vn-index-tab">
@@ -59,6 +60,7 @@
                         </thead>
                     </table>
                 </div>
+                @include('frontend_v2.components.trading-green-stock-vnindex')
             </div>
         </div>
     </div>
@@ -164,7 +166,7 @@
                                 trending = rowData.trending.trim().toLowerCase();
                                 string_key_language =  trending.replace(/ /g, "_");
                                 string_key_language = string_key_language.trim().toUpperCase()
-                                
+
                             }
                             if (trending == 'breaking high price') {
                                 color = '#9B54FF';

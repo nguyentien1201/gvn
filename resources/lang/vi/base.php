@@ -75,7 +75,7 @@ return [
     'quote_templeton' => '\"Thay vì cố gắng dự đoán thị trường, hãy tập trung vào việc tìm kiếm cơ hội đầu tư.\"',
     'description_greenstock' => 'Hệ thống GreenStock-NAS100 tự động sắp xếp các cổ phiếu theo độ mạnh xung lực dòng tiền và xu hướng cổ phiếu trong rổ NAS100 hằng ngày, đưa ra hành động để nhà đầu tư theo dõi',
     'system_product' => 'Hệ thống sắp xếp các nhóm cổ phiếu có hiệu suất sinh lời trong khoảng thời gian năm, quý, tháng tốt hơn thị trường chung',
-    'mission_gvn' => '\"GVN được xây dựng bởi những Co-founder có nhiều năm kinh nghiệm trong lĩnh vực tài chính. Chúng tôi hiểu rõ những khó khăn mà nhà đầu tư gặp phải và luôn mong muốn mang đến những giải pháp tốt nhất. GVN xây dựng những hệ thống thông minh, biết thích ứng với nhiều thị trường tài chính khác nhau và có hiệu quả giao dịch sinh lời tốt. Với GVN, nhà đầu tư hoàn toàn yên tâm về sự an toàn của tài sản. GVN giúp nhà đầu tư tiết kiệm thời gian và ra quyết định hiệu quả khi đầu tư. Hãy cùng GVN xây dựng một tương lai tài chính thịnh vượng.\"',
+    'mission_gvn' => 'GVN được xây dựng bởi những Co-founder có nhiều năm kinh nghiệm trong lĩnh vực tài chính. Chúng tôi hiểu rõ những khó khăn mà nhà đầu tư gặp phải và luôn mong muốn mang đến những giải pháp tốt nhất. GVN xây dựng những hệ thống thông minh, biết thích ứng với nhiều thị trường tài chính khác nhau và có hiệu quả giao dịch sinh lời tốt. Với GVN, nhà đầu tư hoàn toàn yên tâm về sự an toàn của tài sản. GVN giúp nhà đầu tư tiết kiệm thời gian và ra quyết định hiệu quả khi đầu tư. Hãy cùng GVN xây dựng một tương lai tài chính thịnh vượng.',
     'maxim_gvn' => 'KỶ LUẬT - TRÁCH NHIỆM - HIỆU QUẢ',
     'idea_gvn' => 'Dự án chính thức khởi động với mục tiêu truyền tải thông điệp hữu ích đến các nhà đầu tư thông qua tên miền tại GVN-Fintrade.com',
     'time_line_beta' => 'Green Beta phiên bản đầu tiên được đưa vào giao dịch',
@@ -83,6 +83,40 @@ return [
     'time_line_greenstock_develop' => 'Green Stock-NAS100 được bắt đầu xây dựng',
     'time_line_alpha_testing' => 'Green Alpha phiên bản hoàn chỉnh đầu tiên được đưa vào vận hành thử nghiệm',
     'The_first_models' => 'Bắt đầu xây dựng các mô hình đầu tiên của Alpha và Beta',
+    'time_line_head'=>"Lộ trình hình thành & phát triển",
+    'our_mission' => 'Sứ mệnh của chúng tôi',
+    'timelines' => [
+        '2012_2018' => [
+            'time' => '2012 -2018',
+            'name' => 'Bắt đầu dự án',
+            'des' => 'Bắt đầu xây dựng các mô hình đầu tiên của Alpha và Beta.'
+        ],
+        '2019' => [
+            'time' => '2019',
+            'name' => 'Chạy thử nghiệm Green Alpha ',
+            'des' => 'Green Alpha phiên bản hoàn chỉnh đầu tiên được đưa vào vận hành thử nghiệm'
+        ],
+        '2020' => [
+            'time' => '2020',
+            'name' => 'Xây dựng hệ thống NAS100',
+            'des' => 'Green Stock-NAS100 được bắt đầu xây dựng'
+        ],
+        '2021' => [
+            'time' => '2021',
+            'name' => 'NAS100 chính thức ra mắt',
+            'des' => 'Green Stock-NAS100 được đưa vào vận hành thực tế'
+        ],
+        '2022' => [
+            'time' => '2022',
+            'name' => 'Green Beta chính thức ra mắt',
+            'des' => 'Green Beta phiên bản đầu tiên được đưa vào giao dịch'
+        ],
+        '2023' => [
+            'time' => '2023',
+            'name' => 'GVN-Fintrade chính thức ra mắt',
+            'des' => 'Dự án chính thức khởi động với mục tiêu truyền tải thông điệp hữu ích đến các nhà đầu tư thông qua tên miền tại GVN-Fintrade.com.'
+        ],
+    ],
     'Our_Team' => 'Đội ngũ của chúng tôi',
     'Meet_the_Experts' => 'Gặp gỡ các chuyên gia thúc đẩy thành công của GVN với nhiều năm đổi mới tài chính.',
     'intro_contact' => [
@@ -91,12 +125,12 @@ return [
             'position' => 'Người sáng lập',
             'bio' => 'Với hơn năm kinh nghiệm trong lĩnh vực tài chính, ông đã thành lập GVN nhằm giúp nhà đầu tư thành công hơn.',
     ],
-    'thong_contact'=> [
-            'name' => 'Huỳnh Duy Thông',
-            'position' => 'Đồng sáng lập',
-            'bio' => 'Chuyên viên tư vấn tài chính, có hơn 10 năm kinh nghiệp trong lĩnh vực tài chính',
-    ],
-],
+        'thong_contact'=> [
+                'name' => 'Huỳnh Duy Thông',
+                'position' => 'Đồng sáng lập',
+                'bio' => 'Chuyên viên tư vấn tài chính, có hơn 10 năm kinh nghiệp trong lĩnh vực tài chính',
+        ],
+        ],
  'note_contact' => "Gửi nhà đầu tư, <br>GVN Fin Trade luôn mong muốn được kết nối với quý khách hàng và cung cấp cho khách hàng những công cụ hỗ trợ đầu tư tốt nhất và những giải pháp tối ưu hơn cho quý vị. Nếu quý vị có bất gì thắc mắc nào, vui lòng liên hệ với chúng tôi:",
     'Location' => 'Địa điểm',
     'address_company' => 'Phường An Khánh, Tp.Thủ Đức, HCM',
@@ -173,5 +207,6 @@ return [
     'business_plan' => 'Gói doanh nghiệp',
     'year' => 'năm',
     'trial_1_year' => 'Trải nghiệm 1 năm',
-    'get_started' => 'Bắt đầu',					
+    'get_started' => 'Bắt đầu',
+    'vnindex_trading_on'=>'Giao dich với Green Stock vnIndex',
 ];
