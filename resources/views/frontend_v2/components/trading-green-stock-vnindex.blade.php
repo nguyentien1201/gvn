@@ -13,7 +13,7 @@
                         </div>
                         <div class="last-text">
                             <span>
-                                {{__('base.description_title_green_stock')}}
+                                {{__('base.description_title_green_stock_vnIndex')}}
                             </span>
                         </div>
                     </div>
