@@ -212,5 +212,5 @@ return [
     'get_started' => 'Get started',
     'most_plan_note' => 'Most popular plan',
     'vnindex_trading_on'=>'Trading on Green Stock vnIndex',
-    'description_title_green_stock_vnIndex' => 'GreenStock-VnIndex is a system that analyzes stocks in the pool of NASDAQ100 stocks of the US market. The system automatically analyzes short-term and long-term trends of stocks, rank trends and cash flow momentum on each stock, thereby creating a technical Rating scorecard to give users actionable insights. A circle of action in users\' trading: BUY-HOLD-SELL-CASH',
+    'description_title_green_stock_vnIndex' => 'GreenStock-VnIndex is a system that analyzes stocks in the pool of VNINDEX stocks of the Viet Nam market. The system automatically analyzes short-term and long-term trends of stocks, rank trends and cash flow momentum on each stock, thereby creating a technical Rating scorecard to give users actionable insights. A circle of action in users\' trading: BUY-HOLD-SELL-CASH',
 ];
