@@ -22,12 +22,12 @@ class Investment extends Model
     }
     public function getListInvestmentFunding()
     {
-        $data = $this->with('funds')->where('status','!=',2)->orderBy('code', 'desc')->limit(3)->get();
+        $data = $this->with('funds')->where('status','!=',3)->orderBy('code', 'desc')->limit(3)->get();
         return $data;
     }
    public function funds()
     {
         // 'investment_id' là tên cột khóa ngoại trên bảng 'investment_funds'
-        return $this->hasMany(InvestmentFunds::class, 'investment_id');
+        return $this->hasMany(InvestmentFunds::class, 'investment_id')->orderBy('date', 'desc');;
     }
 }
