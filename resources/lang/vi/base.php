@@ -208,6 +208,6 @@ return [
     'year' => 'năm',
     'trial_1_year' => 'Trải nghiệm 1 năm',
     'get_started' => 'Bắt đầu',
-    'vnindex_trading_on'=>'Giao dich với Green Stock vnIndex',
+    'vnindex_trading_on'=> 'Giao dịch với GREENSTOCK-VNINDEX',
     'description_title_green_stock_vnIndex' => 'GreenStock-VnIndex là hệ thống phân tích các cổ phiếu của thị trường chứng khoán Việt Nam. Hệ thống sẽ tự động phân tích xu hướng ngắn hạn và dài hạn của các cổ phiếu, xếp hạng xu hướng và xung lực dòng tiền trên từng cổ phiếu, từ đó tạo ra bảng điểm Rating theo kỹ thuật để đưa ra nhận định hành động cho người dùng. Một vòng tròn hành động trong việc đầu tư của người dùng: BUY-HOLD-SELL-CASH',
     ];
