@@ -35,7 +35,7 @@
                             </div>
                         </div>
                         <div class="co-12 col-lg-6">
-                            <img style="border-radius: 8px;" class="img-fluid" src="{{asset('images/robotbeta.jpg')}}" alt="{{asset('images/robotbeta.jpg')}}">
+                            <img class="img-fluid services-img"  src="{{asset('images/robotbeta.jpg')}}" alt="{{asset('images/robotbeta.jpg')}}">
                         </div>
                     </div>
                 </div>
@@ -49,7 +49,7 @@
                 <div class="trading-container my-4">
                     <div class="row gy-4 gy-lg-0">
                         <div class="co-12 col-lg-6">
-                            <img style="border-radius: 8px;"  class="img-fluid" src="{{asset('images/robot-alpha.png')}}" alt="{{asset('images/robot-alpha.png')}}">
+                            <img   class="img-fluid services-img" src="{{asset('images/robot-alpha.png')}}" alt="{{asset('images/robot-alpha.png')}}">
                         </div>
                         <div class="co-12 col-lg-6">
                             <div class="trading-on-content">
