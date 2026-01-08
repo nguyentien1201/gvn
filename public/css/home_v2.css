@@ -480,3 +480,9 @@
         padding: 80px 0;
     }
 }
+.services-img {
+    height: 400px;
+    width: 100%;
+    border: 2px solid var(--primary-color);
+    border-radius: 21px;
+}
