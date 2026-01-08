@@ -9,7 +9,7 @@
                 <div class="co-12 col-lg-6 d-flex flex-column justify-content-center">
                     <div class="trading-on-content">
                         <div class="head-text mb-2">
-                            <span>GreenStock-VnIndex</span>
+                            <span>GREENSTOCK-VNINDEX</span>
                         </div>
                         <div class="last-text">
                             <span>
