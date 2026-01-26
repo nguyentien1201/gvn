@@ -88,7 +88,7 @@
                                 <th class="text-capitalize text-center align-middle">LÃI/LỖ HIỆN TẠI</th>
                                 <th class="text-capitalize text-center align-middle">TỔNG GIÁ TRỊ KHI TẤT TOÁN (triệu đồng)</th>
                                 <th class="text-capitalize text-center align-middle">LÃI/LỖ CHỐT LỜI</th>
-                                <th class="text-capitalize text-center align-middle">LÃI/LỖ CHỐT LỜI</th>
+
                                 <th class="text-capitalize text-center align-middle">VNINDEX CÙNG THỜI GIAN</th>
                                 <th class="text-capitalize text-center align-middle">HIỆN TRẠNG ĐẦU TƯ</th>
                             </tr>
