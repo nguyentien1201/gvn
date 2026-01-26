@@ -12,7 +12,7 @@ class Investment extends Model
 
     public $table = 'investments';
     protected $fillable = [
-    'code','name','total_value','total_shares','avg_price','invest_date','current_price','current_profit_percent','take_profit_price','take_profit_percent','take_profit_expected','status',
+    'code','name','total_value','stock','avg_price','invest_date','current_price','current_profit_percent','take_profit_price','take_profit_percent','take_profit_expected','vnindex_current_percent','status',
         'created_at'
     ];
     public function getListInvestment()
