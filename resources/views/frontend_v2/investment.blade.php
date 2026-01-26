@@ -88,8 +88,8 @@
                                 <th class="text-capitalize text-center align-middle">LÃI/LỖ HIỆN TẠI</th>
                                 <th class="text-capitalize text-center align-middle">TỔNG GIÁ TRỊ KHI TẤT TOÁN (triệu đồng)</th>
                                 <th class="text-capitalize text-center align-middle">LÃI/LỖ CHỐT LỜI</th>
-
                                 <th class="text-capitalize text-center align-middle">VNINDEX CÙNG THỜI GIAN</th>
+                                <th class="text-capitalize text-center align-middle">THỜI GIAN CHỐT LỜI DỰ KIẾN</th>
                                 <th class="text-capitalize text-center align-middle">HIỆN TRẠNG ĐẦU TƯ</th>
                             </tr>
                         </thead>
@@ -109,7 +109,7 @@
                                     <td class="text-center align-middle" style="font-weight: 500; color: {{ $invest->current_profit_percent > 0 ? 'green' : ($invest->current_profit_percent < 0 ? 'red' : 'inherit') }};">{{ !empty($invest->current_profit_percent) ? $invest->current_profit_percent . '%' : '' }}</td>
                                     <td class="text-center align-middle">{{ $invest->take_profit_price }}</td>
                                     <td class="text-center align-middle" style="font-weight: 500; color: {{ $invest->take_profit_percent > 0 ? 'green' : ($invest->take_profit_percent < 0 ? 'red' : 'inherit') }};"> {{ !empty($invest->take_profit_percent) ? $invest->take_profit_percent . '%' : '' }}</td>
-                                   <td class="text-center align-middle" style="font-weight: 500; color: {{ $invest->take_profit_percent > 0 ? 'green' : ($invest->vnindex_current_percent < 0 ? 'red' : 'inherit') }};"> {{ !empty($invest->vnindex_current_percent) ? $invest->vnindex_current_percent . '%' : '' }}</td>
+                                   <td class="text-center align-middle" style="font-weight: 500; color: {{ $invest->vnindex_current_percent > 0 ? 'green' : ($invest->vnindex_current_percent < 0 ? 'red' : 'inherit') }};"> {{ !empty($invest->vnindex_current_percent) ? $invest->vnindex_current_percent . '%' : '' }}</td>
                                     <td class="text-center align-middle">{{ $invest->take_profit_expected }}</td>
                                     <td class="text-center align-middle">
                                         {{ $statusText[$invest->status] ?? 'KHÔNG XÁC ĐỊNH' }}
