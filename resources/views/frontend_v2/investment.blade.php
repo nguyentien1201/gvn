@@ -80,16 +80,16 @@
 
                                 <th class="text-capitalize text-center align-middle">STT</th>
                                 <th class="text-capitalize text-center align-middle">TÊN KHOẢN ĐẦU TƯ</th>
-                                <th class="text-capitalize text-center align-middle">TỔNG GIÁ TRỊ VỐN GIẢI NGÂN (đồng)</th>
+                                <th class="text-capitalize text-center align-middle">TỔNG GIÁ TRỊ VỐN GIẢI NGÂN</th>
                                 <th class="text-capitalize text-center align-middle">TÊN CỔ PHIẾU</th>
                                 <th class="text-capitalize text-center  align-middle">GIÁ VỐN TRUNG BÌNH/CỔ PHIẾU</th>
                                 <th class="text-capitalize text-center align-middle">THỜI GIAN GIẢI NGÂN</th>
                                 <th class="text-capitalize text-center align-middle">GIÁ HIỆN TẠI</th>
                                 <th class="text-capitalize text-center align-middle">LÃI/LỖ HIỆN TẠI</th>
-                                <th class="text-capitalize text-center align-middle">TỔNG GIÁ TRỊ KHI TẤT TOÁN (triệu đồng)</th>
+                                <th class="text-capitalize text-center align-middle">TỔNG GIÁ TRỊ KHI TẤT TOÁN</th>
                                 <th class="text-capitalize text-center align-middle">LÃI/LỖ CHỐT LỜI</th>
                                 <th class="text-capitalize text-center align-middle">VNINDEX CÙNG THỜI GIAN</th>
-                                <th class="text-capitalize text-center align-middle">THỜI GIAN CHỐT LỜI DỰ KIẾN</th>
+                                <th class="text-capitalize text-center align-middle">THỜI GIAN CHỐT LỜI</th>
                                 <th class="text-capitalize text-center align-middle">HIỆN TRẠNG ĐẦU TƯ</th>
                             </tr>
                         </thead>
