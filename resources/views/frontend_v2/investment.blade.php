@@ -135,42 +135,62 @@
         <section class="py-2">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-12 col-md-6 col-lg-4">
-                    <div class="table-responsive mt-5 cot-noi-dung" >
-                        <table class="table table-striped table-hover" style="margin:none">
-                            <thead>
-                                <tr id="code_header">
-                                    <th colspan="6" style="text-align:center" class="code_header">
-                                        {{ empty($investments_funds[0]) ? 'Khoản đầu tư chưa mở' : $investments_funds[0]->name }}
-                                    </th>
-                                </tr>
-                                <tr>
-                                    <th>NGÀY</th>
-                                    <th>NAV</th>
-                                    <th>GHI CHÚ</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @if(!empty($investments_funds[0]))
-                                    @if(!empty($investments_funds[0]->funds))
-                                    @foreach($investments_funds[0]->funds as $key => $fund)
-                                    <tr>
-                                        <td>{{ $fund->date }}</td>
-                                           <td>{{number_format($fund->nav, 0, ',', '.')}}</td>
-                                        <td>{{$fund->note}}</td>
-                                    </tr>
-                                    @endforeach
-                                    @else
-                                    <td class="text-center">Chưa có hợp đồng nào</td>
-                                    @endif
-                                @else
-                                      <td class="text-center">Khoản đầu tư chưa mở</td>
-                                @endif
-                            </tbody>
-                        </table>
-                    </div>
+                    <div class="col-3 col-md-6 col-lg-4">
+                        <div class="table-responsive mt-5 cot-noi-dung" >
+                            <table class="table table-striped table-hover" style="margin:none">
+                                <thead>
 
+                                    <tr>
+                                        <th>TỔNG TÀI SẢN ĐẦU TƯ HIỆN TẠI</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                     <tr>
+                                            <td>{{ $total_investment }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
                 </div>
+                <div class="row">
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="table-responsive mt-5 cot-noi-dung" >
+                            <table class="table table-striped table-hover" style="margin:none">
+                                <thead>
+                                    <tr id="code_header">
+                                        <th colspan="6" style="text-align:center" class="code_header">
+                                            {{ empty($investments_funds[0]) ? 'Khoản đầu tư chưa mở' : $investments_funds[0]->name }}
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <th>NGÀY</th>
+                                        <th>NAV</th>
+                                        <th>GHI CHÚ</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if(!empty($investments_funds[0]))
+                                        @if(!empty($investments_funds[0]->funds))
+                                        @foreach($investments_funds[0]->funds as $key => $fund)
+                                        <tr>
+                                            <td>{{ $fund->date }}</td>
+                                            <td>{{number_format($fund->nav, 0, ',', '.')}}</td>
+                                            <td>{{$fund->note}}</td>
+                                        </tr>
+                                        @endforeach
+                                        @else
+                                        <td class="text-center">Chưa có hợp đồng nào</td>
+                                        @endif
+                                    @else
+                                        <td class="text-center">Khoản đầu tư chưa mở</td>
+                                    @endif
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
             <div class="col-12 col-md-6 col-lg-4">
                 <div class="table-responsive mt-5 cot-noi-dung" >
                         <table class="table table-striped table-hover" style="margin:none">
