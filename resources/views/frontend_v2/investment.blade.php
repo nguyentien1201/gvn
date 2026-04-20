@@ -73,7 +73,7 @@
                 <h5 class="time-live mb-0 text-right">
                     <i><span class="date-js"></span> <span class="time-js"></span> (UTC+7)</i>
                 </h5>
-                <h3 class="heading-page time-live">TỔNG TÀI SẢN ĐẦU TƯ HIỆN TẠI: {{ number_format($total_investment, 0, ',', '.') }}</h3>
+                <h3 class="heading-page time-live" style="font-size:30px !important">TỔNG TÀI SẢN ĐẦU TƯ HIỆN TẠI: {{ number_format($total_investment, 0, ',', '.') }}</h3>
 
                 <div class="table-responsive mt-5" >
                     <table id="investment-table" class="table table-striped table-hover" style="margin:none">
