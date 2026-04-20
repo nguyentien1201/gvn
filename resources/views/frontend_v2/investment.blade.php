@@ -146,7 +146,7 @@
                                 </thead>
                                 <tbody>
                                      <tr>
-                                            <td>{{ $total_investment }}</td>
+                                            <td>{{ number_format($total_investment, 0, ',', '.') }}</td>
                                     </tr>
                                 </tbody>
                             </table>
