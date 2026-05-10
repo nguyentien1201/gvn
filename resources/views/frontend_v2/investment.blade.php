@@ -114,7 +114,7 @@
                                    <td class="text-center align-middle" style="font-weight: 500; color: {{ $invest->vnindex_current_percent > 0 ? 'green' : ($invest->vnindex_current_percent < 0 ? 'red' : 'inherit') }};"> {{ !empty($invest->vnindex_current_percent) ? $invest->vnindex_current_percent . '%' : '' }}</td>
                                     <td class="text-center align-middle">{{ $invest->take_profit_expected }}</td>
                                     <td class="text-center align-middle">
-                                        {{ $statusText[$invest->status] ?? 'KHÔNG XÁC ĐỊNH' }}
+                                        {{ $statusText[$invest->status] ?? '' }}
 
                                     </td>
                                 </tr>
