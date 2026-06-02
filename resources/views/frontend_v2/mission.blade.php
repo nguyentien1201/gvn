@@ -27,13 +27,49 @@
             </div>
         </div>
         <div class="container  px-5">
+            <div id="our-team">
+            <h3 class="text-center heading-page">{{__('base.Our_Team')}}</h3>
+            <p class="text-center des-title">{{__('base.Meet_the_Experts')}}</p>
+            <div class="container-our-team container container-xxl my-3">
+                <div class="row gy-4">
+                        <div class="col-6 col-md-4 col-lg-3">
+                            <div class="member flex flex-column gap-2">
+                                <img class="img-fluid" src="{{asset('images/mission/danh.jpg')}}"
+                                     alt="{{asset('images/mission/danh.jpg')}}">
+                                <h3 class="member-name">{{__('base.intro_contact.danh_contact.name')}}</h3>
+                                <h4 class="member-position">{{__('base.intro_contact.danh_contact.position')}}</h4>
+                                <p class="member-introduce">{{__('base.intro_contact.danh_contact.bio')}}</p>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-4 col-lg-3">
+                            <div class="member flex flex-column gap-2">
+                                <img class="img-fluid" src="{{asset('images/mission/thong.jpg')}}"
+                                     alt="{{asset('images/mission/thong.jpg')}}">
+                                 <h3 class="member-name">{{__('base.intro_contact.thong_contact.name')}}</h3>
+                                <h4 class="member-position">{{__('base.intro_contact.thong_contact.position')}}</h4>
+                                <p class="member-introduce">{{__('base.intro_contact.thong_contact.bio')}}</p>
+                            </div>
+                        </div>
+                        <!-- <div class="col-6 col-md-4 col-lg-3">
+                            <div class="member flex flex-column gap-2">
+                                <img class="img-fluid" src="{{asset('images/mission/member.png')}}"
+                                     alt="{{asset('images/mission/member.png')}}">
+                                <h3 class="member-name">{{__('base.intro_contact.d')}}</h3>
+                                <h4 class="member-position">Chief Technology Officer</h4>
+                                <p class="member-introduce">20 years in finance, founded GVN to empower investors.
+                                    Ex-Senior Executive at a hedge fund.</p>
+                            </div>
+                        </div> -->
+                </div>
+            </div>
+        </div>
             <div class="content-our-mission mb-4">
                 <h3 class="heading-page my-5">{{ __('base.maxim_gvn') }}</h3>
-                <img class="m-auto img-fluid" src="{{ asset('images/mission/device-macbook-air.png') }}"
-                     alt="{{ asset('images/mission/device-macbook-air.png') }}">
+
                 <p class="text-center des-title">
                     {{ __('base.mission_gvn') }}
                 </p>
+
             </div>
             <hr>
             <h3 class="text-center heading-page my-4">{{__('mission.timeline')}}</h3>
@@ -122,42 +158,7 @@
         </div>
         <hr>
         <!--Our Team -->
-        <div id="our-team">
-            <h3 class="text-center heading-page">{{__('base.Our_Team')}}</h3>
-            <p class="text-center des-title">{{__('base.Meet_the_Experts')}}</p>
-            <div class="container-our-team container container-xxl my-3">
-                <div class="row gy-4">
-                        <div class="col-6 col-md-4 col-lg-3">
-                            <div class="member flex flex-column gap-2">
-                                <img class="img-fluid" src="{{asset('images/mission/danh.jpg')}}"
-                                     alt="{{asset('images/mission/danh.jpg')}}">
-                                <h3 class="member-name">{{__('base.intro_contact.danh_contact.name')}}</h3>
-                                <h4 class="member-position">{{__('base.intro_contact.danh_contact.position')}}</h4>
-                                <p class="member-introduce">{{__('base.intro_contact.danh_contact.bio')}}</p>
-                            </div>
-                        </div>
-                        <div class="col-6 col-md-4 col-lg-3">
-                            <div class="member flex flex-column gap-2">
-                                <img class="img-fluid" src="{{asset('images/mission/thong.jpg')}}"
-                                     alt="{{asset('images/mission/thong.jpg')}}">
-                                 <h3 class="member-name">{{__('base.intro_contact.thong_contact.name')}}</h3>
-                                <h4 class="member-position">{{__('base.intro_contact.thong_contact.position')}}</h4>
-                                <p class="member-introduce">{{__('base.intro_contact.thong_contact.bio')}}</p>
-                            </div>
-                        </div>
-                        <!-- <div class="col-6 col-md-4 col-lg-3">
-                            <div class="member flex flex-column gap-2">
-                                <img class="img-fluid" src="{{asset('images/mission/member.png')}}"
-                                     alt="{{asset('images/mission/member.png')}}">
-                                <h3 class="member-name">{{__('base.intro_contact.d')}}</h3>
-                                <h4 class="member-position">Chief Technology Officer</h4>
-                                <p class="member-introduce">20 years in finance, founded GVN to empower investors.
-                                    Ex-Senior Executive at a hedge fund.</p>
-                            </div>
-                        </div> -->
-                </div>
-            </div>
-        </div>
+
     </div>
     @auth
         <div style="position: fixed; bottom: 20px; right: 20px; text-align: center; z-index: 1000;">
