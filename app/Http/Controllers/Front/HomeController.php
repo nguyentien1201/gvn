@@ -33,6 +33,8 @@ use App\Models\TransactionPortfolio;
 use App\Models\TransactionPortfolioNas100;
 use App\Models\Investment;
 use App\Models\InvestmentFunds;
+use App\Models\TotalInvestment;
+
 class HomeController
 {
     public function index(Request $request)
@@ -844,8 +846,9 @@ $result = [
             ];
             $investments = (new Investment())->getListInvestment();
             $investments_funds = (new Investment())->getListInvestmentFunding();
-            return view('frontend_v2.investment',compact('investments','investments_funds','statusText'));
-        }
+            $total_investment = (new TotalInvestment())->getTotalInvestment();
+            return view('frontend_v2.investment',compact('investments','investments_funds','statusText','total_investment'));
+         }
         return redirect()->route('front.home.index');
     }
 }

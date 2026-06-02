@@ -73,6 +73,8 @@
                 <h5 class="time-live mb-0 text-right">
                     <i><span class="date-js"></span> <span class="time-js"></span> (UTC+7)</i>
                 </h5>
+                <h3 class="heading-page time-live" style="font-size:30px !important">TỔNG TÀI SẢN ĐẦU TƯ HIỆN TẠI: {{ number_format($total_investment, 0, ',', '.') }}</h3>
+
                 <div class="table-responsive mt-5" >
                     <table id="investment-table" class="table table-striped table-hover" style="margin:none">
                         <thead>
@@ -80,15 +82,16 @@
 
                                 <th class="text-capitalize text-center align-middle">STT</th>
                                 <th class="text-capitalize text-center align-middle">TÊN KHOẢN ĐẦU TƯ</th>
-                                <th class="text-capitalize text-center align-middle">TỔNG GIÁ TRỊ VỐN GIẢI NGÂN (đồng)</th>
-                                <th class="text-capitalize text-center align-middle">SỐ LƯỢNG CỔ PHIẾU</th>
+                                <th class="text-capitalize text-center align-middle">TỔNG GIÁ TRỊ VỐN GIẢI NGÂN</th>
+                                <th class="text-capitalize text-center align-middle">TÊN CỔ PHIẾU</th>
                                 <th class="text-capitalize text-center  align-middle">GIÁ VỐN TRUNG BÌNH/CỔ PHIẾU</th>
                                 <th class="text-capitalize text-center align-middle">THỜI GIAN GIẢI NGÂN</th>
                                 <th class="text-capitalize text-center align-middle">GIÁ HIỆN TẠI</th>
                                 <th class="text-capitalize text-center align-middle">LÃI/LỖ HIỆN TẠI</th>
-                                <th class="text-capitalize text-center align-middle">GIÁ THỰC HIỆN CHỐT LỜI/CẮT LỖ</th>
+                                <th class="text-capitalize text-center align-middle">TỔNG GIÁ TRỊ KHI TẤT TOÁN</th>
                                 <th class="text-capitalize text-center align-middle">LÃI/LỖ CHỐT LỜI</th>
-                                <th class="text-capitalize text-center align-middle">THỜI GIAN CHỐT LỜI DỰ KIẾN</th>
+                                <th class="text-capitalize text-center align-middle">VNINDEX CÙNG THỜI GIAN</th>
+                                <th class="text-capitalize text-center align-middle">THỜI GIAN CHỐT LỜI</th>
                                 <th class="text-capitalize text-center align-middle">HIỆN TRẠNG ĐẦU TƯ</th>
                             </tr>
                         </thead>
@@ -101,16 +104,17 @@
                                     <td class="text-center align-middle">{{ $invest->name }}</td>
 
                                     <td class="text-center align-middle">{{number_format($invest->total_value, 0, ',', '.') }}</td>
-                                    <td class="text-center align-middle">{{number_format($invest->total_shares, 0, ',', '.')}}</td>
+                                    <td class="text-center align-middle">{{$invest->stock}}</td>
                                     <td class="text-center align-middle">{{ $invest->avg_price }}</td>
                                     <td class="text-center align-middle">{{ $invest->invest_date }}</td>
                                     <td class="text-center align-middle">{{ $invest->current_price }}</td>
                                     <td class="text-center align-middle" style="font-weight: 500; color: {{ $invest->current_profit_percent > 0 ? 'green' : ($invest->current_profit_percent < 0 ? 'red' : 'inherit') }};">{{ !empty($invest->current_profit_percent) ? $invest->current_profit_percent . '%' : '' }}</td>
-                                    <td class="text-center align-middle">{{ $invest->take_profit_price }}</td>
+                                    <td class="text-center align-middle">{{number_format($invest->take_profit_price, 0, ',', '.')}}</td>
                                     <td class="text-center align-middle" style="font-weight: 500; color: {{ $invest->take_profit_percent > 0 ? 'green' : ($invest->take_profit_percent < 0 ? 'red' : 'inherit') }};"> {{ !empty($invest->take_profit_percent) ? $invest->take_profit_percent . '%' : '' }}</td>
+                                   <td class="text-center align-middle" style="font-weight: 500; color: {{ $invest->vnindex_current_percent > 0 ? 'green' : ($invest->vnindex_current_percent < 0 ? 'red' : 'inherit') }};"> {{ !empty($invest->vnindex_current_percent) ? $invest->vnindex_current_percent . '%' : '' }}</td>
                                     <td class="text-center align-middle">{{ $invest->take_profit_expected }}</td>
                                     <td class="text-center align-middle">
-                                        {{ $statusText[$invest->status] ?? 'KHÔNG XÁC ĐỊNH' }}
+                                        {{ $statusText[$invest->status] ?? '' }}
 
                                     </td>
                                 </tr>
@@ -132,43 +136,44 @@
     </div>
         <section class="py-2">
             <div class="container-fluid">
+
                 <div class="row">
                     <div class="col-12 col-md-6 col-lg-4">
-                    <div class="table-responsive mt-5 cot-noi-dung" >
-                        <table class="table table-striped table-hover" style="margin:none">
-                            <thead>
-                                <tr id="code_header">
-                                    <th colspan="6" style="text-align:center" class="code_header">
-                                        {{ empty($investments_funds[0]) ? 'Khoản đầu tư chưa mở' : $investments_funds[0]->name }}
-                                    </th>
-                                </tr>
-                                <tr>
-                                    <th>NGÀY</th>
-                                    <th>NAV</th>
-                                    <th>GHI CHÚ</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @if(!empty($investments_funds[0]))
-                                    @if(!empty($investments_funds[0]->funds))
-                                    @foreach($investments_funds[0]->funds as $key => $fund)
-                                    <tr>
-                                        <td>{{ $fund->date }}</td>
-                                           <td>{{number_format($fund->nav, 0, ',', '.')}}</td>
-                                        <td>{{$fund->note}}</td>
+                        <div class="table-responsive mt-5 cot-noi-dung" >
+                            <table class="table table-striped table-hover" style="margin:none">
+                                <thead>
+                                    <tr id="code_header">
+                                        <th colspan="6" style="text-align:center" class="code_header">
+                                            {{ empty($investments_funds[0]) ? 'Khoản đầu tư chưa mở' : $investments_funds[0]->name }}
+                                        </th>
                                     </tr>
-                                    @endforeach
+                                    <tr>
+                                        <th>NGÀY</th>
+                                        <th>NAV</th>
+                                        <th>GHI CHÚ</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if(!empty($investments_funds[0]))
+                                        @if(!empty($investments_funds[0]->funds))
+                                        @foreach($investments_funds[0]->funds as $key => $fund)
+                                        <tr>
+                                            <td>{{ $fund->date }}</td>
+                                            <td>{{number_format($fund->nav, 0, ',', '.')}}</td>
+                                            <td>{{$fund->note}}</td>
+                                        </tr>
+                                        @endforeach
+                                        @else
+                                        <td class="text-center">Chưa có hợp đồng nào</td>
+                                        @endif
                                     @else
-                                    <td class="text-center">Chưa có hợp đồng nào</td>
+                                        <td class="text-center">Khoản đầu tư chưa mở</td>
                                     @endif
-                                @else
-                                      <td class="text-center">Khoản đầu tư chưa mở</td>
-                                @endif
-                            </tbody>
-                        </table>
-                    </div>
+                                </tbody>
+                            </table>
+                        </div>
 
-                </div>
+                    </div>
             <div class="col-12 col-md-6 col-lg-4">
                 <div class="table-responsive mt-5 cot-noi-dung" >
                         <table class="table table-striped table-hover" style="margin:none">

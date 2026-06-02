@@ -4,7 +4,7 @@
         <div class="trading-container mb-5 d-flex align-items-center justify-content-around">
             <div class="row gy-4 gy-lg-0">
                 <div class="co-12 col-lg-6">
-                    <img class="img-fluid" src="{{asset('images/home/green-stock-NAS100.png')}}" alt="{{asset('images/home/green-stock-NAS100.png')}}">
+                    <img class="img-fluid services-img" src="{{asset('images/home/green-stock-NAS100.png')}}" alt="{{asset('images/home/green-stock-NAS100.png')}}">
                 </div>
                 <div class="co-12 col-lg-6 d-flex flex-column justify-content-center">
                     <div class="trading-on-content">
