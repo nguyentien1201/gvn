@@ -29,7 +29,7 @@
         <div class="container  px-5">
             <div id="our-team">
             <h3 class="text-center heading-page">{{__('base.Our_Team')}}</h3>
-            <p class="text-center des-title">{{__('base.Meet_the_Experts')}}</p>
+
             <div class="container-our-team container container-xxl my-3">
                 <div class="row gy-4">
                         <div class="col-6 col-md-4 col-lg-3">
