@@ -73,8 +73,8 @@ class RegisterController extends Controller
                 }
             }],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'role_id' => ['required', 'in:2,3']
+            'number_phone' => ['required', 'string', 'max:11', 'unique:users'],
+            'password' => ['required', 'string', 'min:8', 'confirmed']
         ]);
     }
 
@@ -86,22 +86,22 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'number_phone' => $data['number_phone'],
             'activation_token' => Str::random(60),
-            'role_id' => $data['role_id'] ?? 3, // Default to user role if not provided
+            'role_id' => 3, // Default to user role if not provided
             'ip' => $data['ip']
         ]);
     }
     public function register(Request $request)
     {
         $userData = $request->all();
-      
+
          $validator = $this->validator($userData);
-        
+
     if ($validator->fails()) {
         return redirect()
             ->back()
@@ -110,7 +110,7 @@ class RegisterController extends Controller
     }
 
         $validatedData = $validator->validated();
-      
+
         $userData['ip'] =  $request->ip() ?? '';
         $user = $this->create($userData);
         if(!empty($request['manager_id'])) {
@@ -123,7 +123,7 @@ class RegisterController extends Controller
                 \Log::error($e->getMessage());
             }
         }
-       
+
         return redirect()->route('front.home.index'); // Redirect to a desired route after registration
     }
     public function activate($token)

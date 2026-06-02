@@ -30,6 +30,7 @@
                                 <th width="10%" class="text-center">{{__('panel.no')}}</th>
                                 <th width="20%" class="">{{ __('user.name') }}</th>
                                 <th width="30%" class="">{{ __('user.email') }}</th>
+                                 <th width="30%" class="">Phone</th>
                                 <th width="15%" class="text-center">{{ __('user.role') }}</th>
                                 <th width="10%" class="text-nowrap text-center">{{ __('panel.action') }}</th>
                             </tr>
@@ -40,6 +41,7 @@
                                     <td class="text-center">{{$idx + 1}}</td>
                                     <td>{{$user->name}}</td>
                                     <td>{{$user->email}}</td>
+                                     <td>{{$user->number_phone}}</td>
                                     <td class="text-center">{{$user->role_id ? ucfirst(array_search($user->role_id, $roles)) : ''}}</td>
                                     <td class="text-center text-nowrap">
                                         <a href="{{ route('admin.users.edit', [$user->id]) }}"

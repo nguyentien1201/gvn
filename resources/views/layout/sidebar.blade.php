@@ -165,6 +165,24 @@
 {{--                        </ul>--}}
 {{--                    </li>--}}
                 @endif
+                   <li class="nav-item">
+                            <a href="{{route('admin.events.index')}}"
+                               class="nav-link @if(!empty($routeName) && strpos($routeName, 'events') != false) active @endif">
+                                <i class="nav-icon far fa-user"></i>
+                                <p>
+                                    Event
+                                </p>
+                            </a>
+                        </li>
+                         <li class="nav-item">
+                            <a href="{{route('admin.timeline.index')}}"
+                               class="nav-link @if(!empty($routeName) && strpos($routeName, 'timeline') != false) active @endif">
+                                <i class="nav-icon far fa-user"></i>
+                                <p>
+                                    Mission
+                                </p>
+                            </a>
+                        </li>
                 <li class="nav-item">
                     <a href="javascript:void(0)" class="logout nav-link"
                        onclick="event.preventDefault(); document.getElementById('logoutform').submit();">

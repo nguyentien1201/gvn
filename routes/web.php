@@ -111,6 +111,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin'], fu
     Route::resource('subscription', 'SubscriptionController')->middleware('admin');
     Route::resource('product-version', 'ProductVersionController')->middleware('admin');
     Route::resource('approve-account','ApproveAccountController')->middleware('admin');
+    Route::resource('events','EventController')->middleware('admin');
+    Route::resource('timeline','TimelineController')->middleware('admin');
 
 });
 Route::get('admin/greenalpha/{id}', 'Admin\GreenAlphaController@getListMstock')->middleware('admin')->name('admin.green-alpha.list-stock');

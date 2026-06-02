@@ -124,7 +124,19 @@
 
                             </div>
                         </div>
+                        <div class="mb-3">
+                            <label class="form-label">Number Phone <span class="text-danger">*</span></label>
+                            <div class="input-group has-validation">
+                                <input type="number" class="form-control @error('number_phone') is-invalid @enderror" name="number_phone" value="{{ old('number_phone') }}">
+                                <span class="input-group-text"><i class="bi bi-envelope"></i></span>
+                                @error('number_phone')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
 
+                            </div>
+                        </div>
                         <!-- Password -->
                         <div class="mb-3">
                             <label class="form-label">Password <span class="text-danger">*</span></label>
@@ -152,7 +164,7 @@
 
                             </div>
                         </div>
-                        <div class="mb-4">
+                        <!-- <div class="mb-4">
                             <label class="custom-radio">
                                 <input type="radio" name="role_id" value="3" checked>
                                 <span class="radio-mark"></span> Cá nhân
@@ -162,7 +174,7 @@
                                 <input type="radio" name="role_id" value="2">
                                 <span class="radio-mark"></span> Doanh nghiệp
                             </label>
-                        </div>
+                        </div> -->
                         <!-- Register Button -->
                         <div class="d-grid mb-2">
                             <button class="btn btn-success">Register</button>

@@ -833,9 +833,9 @@ $result = [
 
     public function investment(){
         $user = \Auth::user();
-         $role = $user->role_id ?? null;
+        $role = $user->role_id ?? null;
 
-         if($role == 1 || $role == 2){
+        if($role == 1 || $role == 2){
             $statusText = [
                 0 => 'ĐANG MỞ GỌI VỐN',
                 1 => 'ĐANG GIẢI NGÂN',
@@ -845,7 +845,7 @@ $result = [
             $investments = (new Investment())->getListInvestment();
             $investments_funds = (new Investment())->getListInvestmentFunding();
             return view('frontend_v2.investment',compact('investments','investments_funds','statusText'));
-         }
+        }
         return redirect()->route('front.home.index');
     }
 }
