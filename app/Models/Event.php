@@ -26,4 +26,13 @@ class Event extends Model
         'start_date' => 'datetime',
         'end_date' => 'datetime',
     ];
+
+    public function registrations()
+    {
+        return $this->hasMany(
+            EventRegistration::class,
+            'event_id',
+            'id'
+        );
+    }
 }

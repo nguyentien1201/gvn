@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Front\EventController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -53,6 +54,8 @@ Route::group(['prefix' => '', 'as' => 'front.', 'namespace' => 'Front'], functio
     Route::get('/greenstock-vnindex', 'HomeController@vnIndex')->name('home.vnindex')->middleware(['auth', 'force.locale.vnindex']);
 
    Route::get('/vietnaminvestment', 'HomeController@investment')->name('home.investments')->middleware(['auth', 'force.locale.vnindex']);
+
+
 });
 Route::get('/inactive', function () {
     return view('front.common.inactive');
@@ -71,6 +74,9 @@ Route::group([ 'namespace' => 'Front'], function () {
     Route::get('api/get-product', 'SubscriptionController@getProduct')->name('api.get-product')->middleware('customer');
     Route::post('/change-language','HomeController@changeLanguage')->name('changeLanguage');
     Route::post('/contact','HomeController@postContact')->middleware('throttle:3,1')->name('contact');
+     Route::post('/event/register','EventController@register')->middleware('throttle:3,1')->name('event.register');
+    // routes/web.php
+
 
 });
 
@@ -113,6 +119,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin'], fu
     Route::resource('approve-account','ApproveAccountController')->middleware('admin');
     Route::resource('events','EventController')->middleware('admin');
     Route::resource('timeline','TimelineController')->middleware('admin');
+    Route::get(
+    'events/{id}/registrations',
+    'EventController@registrations'
+)->name('events.registrations');
 
 });
 Route::get('admin/greenalpha/{id}', 'Admin\GreenAlphaController@getListMstock')->middleware('admin')->name('admin.green-alpha.list-stock');
@@ -124,7 +134,12 @@ Route::get('admin/list-code', 'Admin\GreenAlphaController@portfolio')->middlewar
 Route::post('admin/green-alpha/import-portfolio', 'Admin\GreenAlphaController@importPortfolio')->middleware('admin')->name('admin.green-alpha.import-portfolio');
 Route::post('admin/signal-free/import', 'Admin\SignalFreeController@import')->middleware('admin')->name('admin.signalfree.import');
 Route::post('admin/green-stock-nas100/import', 'Admin\GreenStockNas100Controller@import')->middleware('admin')->name('admin.nas100.import');
+// routes/web.php
 
+Route::post(
+    '/event/register',
+    [EventController::class, 'register']
+)->name('event.register');
 Route::post('admin/vnindex/import', 'Admin\VnIndexController@import')->middleware('admin')->name('admin.vnindex.import');
 
 Route::post('admin/green-alpha/import-by-drive', 'Admin\GreenAlphaController@importByDrive')->middleware('admin')->name('admin.green-alpha.import-by-drive');

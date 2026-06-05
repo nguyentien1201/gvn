@@ -10,6 +10,7 @@
         @include('frontend_v2.components.hero')
         @include('frontend_v2.components.service')
         @include('frontend_v2.components.most-interested')
+        @include('frontend_v2.components.event')
         @include('frontend_v2.components.trade-tab')
         @include('frontend_v2.components.top-signals')
         @include('frontend_v2.components.scan-qr')

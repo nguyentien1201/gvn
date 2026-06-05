@@ -34,6 +34,7 @@ use App\Models\TransactionPortfolioNas100;
 use App\Models\Investment;
 use App\Models\InvestmentFunds;
 use App\Models\TotalInvestment;
+use App\Models\Event;
 
 class HomeController
 {
@@ -121,6 +122,10 @@ class HomeController
         //     }
         // }
 
+        $event = Event::where('status',1)
+            ->where('start_date','>=',now())
+            ->orderBy('start_date')
+            ->first();
 
         $last_signal =  GreenAlpha::whereIn('close_time', function ($query) {
             $query->select(DB::raw('MAX(close_time)'))
@@ -174,7 +179,7 @@ class HomeController
 
         $ma_vnindex['up'] = [$ma_vnindex['upMA50'],$ma_vnindex['upMA200']];
         $ma_vnindex['down'] = [$ma_vnindex['downMA50'],$ma_vnindex['downMA200']];
-        return view('frontend_v2.home',compact('signals','green_data','green_vnindex','default_chart','last_signal','data_chart_default','chart_group_data','ma','chart_signal','labels','chart_signal_vnindex','labels_vnindex','ma_vnindex','chart_group_data_vnindex'));
+        return view('frontend_v2.home',compact('signals','green_data','green_vnindex','default_chart','last_signal','data_chart_default','chart_group_data','ma','chart_signal','labels','chart_signal_vnindex','labels_vnindex','ma_vnindex','chart_group_data_vnindex','event'));
     }
     public function greenBeta(Request $request)
     {

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Event;
+use App\Models\EventRegistration;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -12,9 +13,10 @@ class EventController extends Controller
 {
     public function index()
     {
-        $events = Event::orderBy('sort_order')
-            ->paginate(20);
 
+         $events = Event::withCount('registrations')
+        ->orderBy('sort_order')
+        ->paginate(20);
         return view('admin.events.index', compact('events'));
     }
 
@@ -82,4 +84,23 @@ class EventController extends Controller
 
         return back()->with('success', 'Xóa thành công');
     }
+    public function registrations($id)
+        {
+            $event = Event::findOrFail($id);
+
+            $registrations = EventRegistration::where(
+                'event_id',
+                $id
+            )
+            ->latest()
+            ->paginate(20);
+
+            return view(
+                'admin.events.registrations',
+                compact(
+                    'event',
+                    'registrations'
+                )
+            );
+        }
 }

@@ -61,7 +61,11 @@
                            class="btn btn-warning btn-sm">
                             Sửa
                         </a>
-
+                         <a href="{{ route('admin.events.registrations', $event->id) }}"
+                            class="btn btn-info btn-sm">
+                                DS Đăng ký
+                                ({{ $event->registrations_count }})
+                            </a>
                         <form method="POST"
                               action="{{ route('admin.events.destroy',$event) }}"
                               style="display:inline">
