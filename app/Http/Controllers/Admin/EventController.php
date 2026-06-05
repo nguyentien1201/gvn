@@ -50,19 +50,31 @@ class EventController extends Controller
             ->with('success', 'Tạo sự kiện thành công');
     }
 
-    public function edit(Event $event)
+    public function edit($id)
     {
+        $event =  Event::where('id', $id)->firstOrFail();
+
         return view('admin.events.edit', compact('event'));
     }
 
-    public function update(Request $request, Event $event)
+    // public function edit($id)
+    // {
+    //     $event = Event::findOrFail($id);
+
+    //     return view(
+    //         'admin.events.form',
+    //         compact('event')
+    //     );
+    // }
+
+    public function update(Request $request, $id)
     {
         $request->validate([
             'title' => 'required|max:255',
         ]);
 
-        $data = $request->all();
-
+            $data = $request->all();
+         $event =  Event::where('id', $id)->firstOrFail();
         if ($request->hasFile('thumbnail')) {
 
             $path = $request->file('thumbnail')

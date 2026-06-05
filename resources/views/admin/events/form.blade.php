@@ -45,13 +45,13 @@
 
     <input type="datetime-local"
            name="start_date"
-           class="form-control">
+           class="form-control" value="{{ old('start_date',$event->start_date ?? '') }}">
 </div>
 
 <div class="form-group">
     <label>Ngày kết thúc</label>
 
-    <input type="datetime-local"
+    <input type="datetime-local" value="{{ old('end_date',$event->end_date ?? '') }}"
            name="end_date"
            class="form-control">
 </div>
