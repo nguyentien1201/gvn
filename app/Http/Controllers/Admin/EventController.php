@@ -74,6 +74,7 @@ class EventController extends Controller
         ]);
 
         $data = $request->all();
+        $data['status'] = $request->has('status') ? 1 : 0;
         $event =  Event::where('id', $id)->firstOrFail();
         if ($request->hasFile('thumbnail')) {
 
