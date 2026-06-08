@@ -19,13 +19,11 @@
     /* lớp phủ để dễ đọc chữ */
     .event-poster::before {
         content: "";
-
         position: absolute;
         inset: 0;
 
-        background: rgba(255,255,255,0.75);
-        backdrop-filter: blur(2px);
-    }
+        background: rgba(255,255,255,0.4);
+        }
 
 .event-overlay {
     position: relative;
