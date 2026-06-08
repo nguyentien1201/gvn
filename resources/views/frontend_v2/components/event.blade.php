@@ -16,14 +16,18 @@
             align-items: center;
         }
 
-    /* lớp phủ để dễ đọc chữ */
-    .event-poster::before {
-        content: "";
-        position: absolute;
-        inset: 0;
+   .event-poster::before {
+    content: "";
+    position: absolute;
+    inset: 0;
 
-        background: rgba(255,255,255,0.4);
-        }
+        background: linear-gradient(
+            90deg,
+            rgba(255,255,255,0.85) 0%,
+            rgba(255,255,255,0.65) 35%,
+            rgba(255,255,255,0.1) 100%
+        );
+    }
 
 .event-overlay {
     position: relative;
