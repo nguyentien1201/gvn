@@ -1,5 +1,39 @@
 @push('styles')
     <style>
+        .event-poster {
+            position: relative;
+
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+
+            min-height: 450px;
+
+            border-radius: 12px;
+            overflow: hidden;
+
+            display: flex;
+            align-items: center;
+        }
+
+    /* lớp phủ để dễ đọc chữ */
+    .event-poster::before {
+        content: "";
+
+        position: absolute;
+        inset: 0;
+
+        background: rgba(255,255,255,0.75);
+        backdrop-filter: blur(2px);
+    }
+
+.event-overlay {
+    position: relative;
+    z-index: 1;
+
+    width: 100%;
+    padding: 30px;
+}
         .event-poster::before {
             content: "";
 
