@@ -1,17 +1,21 @@
 @push('styles')
     <style>
-        .event-poster {
-            background: #f5f8f3;
-            border: 1px solid #e5e7eb;
-            border-radius: 12px;
+        .event-poster::before {
+            content: "";
 
-            padding: 25px 30px;
+            position: absolute;
+            inset: 0;
 
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 30px;
-            margin: 30px auto;
+            background: rgba(255,255,255,0.75);
+            backdrop-filter: blur(2px);
+        }
+
+        .event-overlay {
+            position: relative;
+            z-index: 1;
+
+            width: 100%;
+            padding: 30px;
         }
 
         .event-left {
@@ -111,7 +115,7 @@
 @endpush
 @if($event)
     <section class="py-5">
-        <div class="event-poster container">
+        <div class="event-poster container"  style="background-image: url('{{ asset('storage/' . $event->thumbnail) }}')">
 
             <div class="event-left">
 
@@ -128,11 +132,7 @@
 
             </div>
 
-            <div class="event-right">
 
-                <img src="{{ asset('storage/' . $event->thumbnail) }}" alt="{{ $event->title }}">
-
-            </div>`
 
         </div>
 

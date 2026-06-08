@@ -73,8 +73,8 @@ class EventController extends Controller
             'title' => 'required|max:255',
         ]);
 
-            $data = $request->all();
-         $event =  Event::where('id', $id)->firstOrFail();
+        $data = $request->all();
+        $event =  Event::where('id', $id)->firstOrFail();
         if ($request->hasFile('thumbnail')) {
 
             $path = $request->file('thumbnail')
