@@ -34,23 +34,6 @@
     width: 100%;
     padding: 30px;
 }
-        .event-poster::before {
-            content: "";
-
-            position: absolute;
-            inset: 0;
-
-            background: rgba(255,255,255,0.75);
-            backdrop-filter: blur(2px);
-        }
-
-        .event-overlay {
-            position: relative;
-            z-index: 1;
-
-            width: 100%;
-            padding: 30px;
-        }
 
         .event-left {
             flex: 1;
