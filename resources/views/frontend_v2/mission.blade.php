@@ -118,8 +118,11 @@
                                                 stroke-dasharray="8 8"
                                         />
                                     </svg>
-                                    <img src="{{asset('images/mission/timeline/'.$timeline['image'])}}"
+                                      @if(!empty($timeline['image']))
+                                    <img src="{{asset('storage/'.$timeline['image'])}}"
                                          alt="{{$timeline['timeline_name']}}">
+                                    @endif
+
 
                                 </div>
                                 <p class="text-center time-des mb-3 mt-1">

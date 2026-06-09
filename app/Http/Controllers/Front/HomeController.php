@@ -603,6 +603,7 @@ class HomeController
                 'timeline_des' => $item->description,
             ];
         });
+        Log::info($timelines);
         return view('frontend_v2.mission', compact('timelines'));
     }
 
