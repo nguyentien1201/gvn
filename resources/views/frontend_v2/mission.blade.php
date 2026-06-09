@@ -82,7 +82,7 @@
                             <div class="d-flex flex-column align-items-center timeline-item">
                                 <div class="position-relative">
                                     @if(!empty($timeline['image']))
-                                    <img src="{{asset($timeline['image'])}}"
+                                    <img src="{{asset('storage/'.$timeline['image'])}}"
                                          alt="{{$timeline['timeline_name']}}">
                                     @endif
                                     <svg width="110" height="89" viewBox="0 0 5 89" fill="none"
