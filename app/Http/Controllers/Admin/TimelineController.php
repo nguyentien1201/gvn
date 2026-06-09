@@ -66,7 +66,6 @@ class TimelineController extends Controller
         ]);
         $icon = null;
         if ($request->hasFile('icon')) {
-
             $icon = $request->file('icon')
                 ->store('timeline-icons', 'public');
         }

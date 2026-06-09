@@ -81,8 +81,10 @@
                         @if(!($key % 2) || $key == 0)
                             <div class="d-flex flex-column align-items-center timeline-item">
                                 <div class="position-relative">
-                                    <img src="{{asset('images/mission/timeline/'.$timeline['image'])}}"
+                                    @if(!empty($timeline['image']))
+                                    <img src="{{asset($timeline['image'])}}"
                                          alt="{{$timeline['timeline_name']}}">
+                                    @endif
                                     <svg width="110" height="89" viewBox="0 0 5 89" fill="none"
                                          xmlns="http://www.w3.org/2000/svg">
                                         <path
