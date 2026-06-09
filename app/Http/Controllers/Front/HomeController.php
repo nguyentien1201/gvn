@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Front;
 
 use App\Models\GroupCapVnIndex;
 use App\Models\SubGroupCapDetailVnIndex;
+use App\Models\Timeline;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Mail;
 use App\Models\GreenBeta;
@@ -215,47 +216,46 @@ class HomeController
 
         $default_chart = $nas100['data'];
         $list_signal = $this->countResultSignalBeta($signals);
-        \Log::info($list_signal);
         return view('frontend_v2.green_beta',compact('signals',
         'chart_data','default_chart','list_signal'));
 
     }
     public function countResultSignalBeta($signals){
         $openBuyCount       = 0;
-$closeHoldCount     = 0;
-$closeTakeProfit    = 0;
-$closeCutLoss       = 0;
+        $closeHoldCount     = 0;
+        $closeTakeProfit    = 0;
+        $closeCutLoss       = 0;
 
-// 4) Duyệt mảng và tăng counter
-foreach ($signals as $item) {
-    // count signal_open = BUY
-    if (isset($item['signal_open']) && $item['signal_open'] === 'BUY') {
-        $openBuyCount++;
-    }
+        // 4) Duyệt mảng và tăng counter
+        foreach ($signals as $item) {
+            // count signal_open = BUY
+            if (isset($item['signal_open']) && $item['signal_open'] === 'BUY') {
+                $openBuyCount++;
+            }
 
-    // count signal_close
-    $c = $item['signal_close'];
-    if (is_null($c) || $c === '' || $c === 'Hold') {
-        // null/empty cũng tính vào Hold
-        $closeHoldCount++;
-    }
-    elseif ($c === 'TakeProfitBUY') {
-        $closeTakeProfit++;
-    }
-    elseif (strcasecmp($c, 'CutLossBUY') === 0) {
-        // so sánh không phân biệt hoa thường
-        $closeCutLoss++;
-    }
-}
+            // count signal_close
+            $c = $item['signal_close'];
+            if (is_null($c) || $c === '' || $c === 'Hold') {
+                // null/empty cũng tính vào Hold
+                $closeHoldCount++;
+            }
+            elseif ($c === 'TakeProfitBUY') {
+                $closeTakeProfit++;
+            }
+            elseif (strcasecmp($c, 'CutLossBUY') === 0) {
+                // so sánh không phân biệt hoa thường
+                $closeCutLoss++;
+            }
+        }
 
-// 5) Kết quả
-$result = [
-    'signal_open'        => $openBuyCount,
-    'signal_hold'      => $closeHoldCount,
-    'signal_TakeProfitBUY' => $closeTakeProfit,
-    'signal_CutLossBUY'=> $closeCutLoss,
-];
-    return $result;
+        // 5) Kết quả
+        $result = [
+            'signal_open'        => $openBuyCount,
+            'signal_hold'      => $closeHoldCount,
+            'signal_TakeProfitBUY' => $closeTakeProfit,
+            'signal_CutLossBUY'=> $closeCutLoss,
+        ];
+            return $result;
     }
 
     public function countResultSignalAlpha($signals){
@@ -578,20 +578,31 @@ $result = [
     }
 
     public function mission(){
-        $directory = public_path('images/mission/timeline');
-        $files = File::files($directory);
-        $colors = ['#D80027','#EF4A25','#F1C32A','#005BBF','#00B1A7','#008000'];
-        $timelineTimes = ['2012_2018', '2019', '2020', '2021', '2022', '2023'];
-        foreach ($files as $key => $file) {
-            $timelines[] = [
-                'image' => $file->getFilename(),
-                'color' => $colors[$key],
-                'timeline_time' => __('base.timelines.' . $timelineTimes[$key] . '.time'),
-                'timeline_name' => __('base.timelines.' . $timelineTimes[$key] . '.name'),
-                'timeline_des' => __('base.timelines.' . $timelineTimes[$key] . '.des')
+        // $directory = public_path('images/mission/timeline');
+        // $files = File::files($directory);
+        // $colors = ['#D80027','#EF4A25','#F1C32A','#005BBF','#00B1A7','#008000'];
+        // $timelineTimes = ['2012_2018', '2019', '2020', '2021', '2022', '2023'];
+        // foreach ($files as $key => $file) {
+        //     $timelines[] = [
+        //         'image' => $file->getFilename(),
+        //         'color' => $colors[$key],
+        //         'timeline_time' => __('base.timelines.' . $timelineTimes[$key] . '.time'),
+        //         'timeline_name' => __('base.timelines.' . $timelineTimes[$key] . '.name'),
+        //         'timeline_des' => __('base.timelines.' . $timelineTimes[$key] . '.des')
+        //     ];
+        // }
+        $timelines = Timeline::where('status', 1)
+        ->orderBy('sort_order')
+        ->get()
+        ->map(function ($item) {
+            return [
+                'image' => $item->icon,
+                'color' => $item->color,
+                'timeline_time' => $item->year,
+                'timeline_name' => $item->title,
+                'timeline_des' => $item->description,
             ];
-        }
-
+        });
         return view('frontend_v2.mission', compact('timelines'));
     }
 

@@ -28,39 +28,18 @@
 <div class="form-group">
     <label>Icon</label>
 
-    <select name="icon" class="form-control">
+    @if(!empty($timeline->icon))
+        <div class="mb-2">
+            <img src="{{ asset('storage/' . $timeline->icon) }}"
+                 width="80"
+                 alt="icon">
+        </div>
+    @endif
 
-        <option value="fa-play"
-            {{ ($timeline->icon ?? '') == 'fa-play' ? 'selected' : '' }}>
-            Start
-        </option>
-
-        <option value="fa-list-check"
-            {{ ($timeline->icon ?? '') == 'fa-list-check' ? 'selected' : '' }}>
-            Checklist
-        </option>
-
-        <option value="fa-code"
-            {{ ($timeline->icon ?? '') == 'fa-code' ? 'selected' : '' }}>
-            Code
-        </option>
-
-        <option value="fa-award"
-            {{ ($timeline->icon ?? '') == 'fa-award' ? 'selected' : '' }}>
-            Award
-        </option>
-
-        <option value="fa-rocket"
-            {{ ($timeline->icon ?? '') == 'fa-rocket' ? 'selected' : '' }}>
-            Rocket
-        </option>
-
-        <option value="fa-leaf"
-            {{ ($timeline->icon ?? '') == 'fa-leaf' ? 'selected' : '' }}>
-            Leaf
-        </option>
-
-    </select>
+    <input type="file"
+           name="icon"
+           class="form-control-file"
+           accept="image/*">
 </div>
 
 <div class="form-group">

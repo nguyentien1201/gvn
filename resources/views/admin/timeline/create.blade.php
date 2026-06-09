@@ -10,7 +10,7 @@
 
     <div class="card-body">
 
-        <form method="POST"
+        <form method="POST"  enctype="multipart/form-data"
               action="{{ route('admin.timeline.store') }}">
 
             @csrf
