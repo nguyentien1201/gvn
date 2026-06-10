@@ -78,19 +78,19 @@
 }
 
 .timeline-icon{
-    width:60px;
-    height:60px;
-    margin:auto auto 20px;
+     width:90px;
+    height:90px;
     border-radius:50%;
-    background:#11ae39;
-    display:flex;
-    justify-content:center;
-    align-items:center;
+    background:#fff;
+    padding:12px;
+    box-shadow:0 10px 30px rgba(17,174,57,.25);
+    border:4px solid #11ae39;
+    margin:-70px auto 20px;
 }
 
 .timeline-icon img{
-    width:36px;
-    height:36px;
+    width:100%;
+    height:100%;
     object-fit:contain;
 }
 
