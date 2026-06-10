@@ -52,14 +52,17 @@
 
 .timeline-card{
     position:absolute;
-    width:260px;
+    width:280px;
     left:50%;
     transform:translateX(-50%);
     background:#fff;
     border-radius:24px;
-    padding:24px;
+    padding:28px;
+    overflow:hidden;
+
     box-shadow:
         0 10px 40px rgba(0,0,0,.08);
+
     transition:.3s;
 }
 
@@ -67,8 +70,10 @@
     transform:
         translateX(-50%)
         translateY(-8px);
-}
 
+    box-shadow:
+        0 20px 60px rgba(17,174,57,.15);
+}
 .timeline-node.top .timeline-card{
     bottom:50px;
 }
@@ -110,6 +115,49 @@
 .timeline-card p{
     color:#64748b;
     line-height:1.7;
+}
+.timeline-watermark{
+    position:absolute;
+    right:-20px;
+    bottom:-20px;
+
+    width:120px;
+    height:120px;
+
+    opacity:.06;
+
+    pointer-events:none;
+
+    z-index:0;
+}
+
+.timeline-watermark img{
+    width:100%;
+    height:100%;
+    object-fit:contain;
+}
+.timeline-card h4,
+.timeline-card p,
+.timeline-card .timeline-year{
+    position:relative;
+    z-index:2;
+}
+.timeline-year{
+    font-size:32px;
+    font-weight:800;
+    color:#11ae39;
+    line-height:1;
+}
+.timeline-card h4{
+    font-size:20px;
+    font-weight:700;
+    color:#0f172a;
+    margin:12px 0;
+}
+.timeline-desc{
+    color:#64748b;
+    line-height:1.7;
+    font-size:14px;
 }
     </style>
 @endpush
@@ -182,39 +230,61 @@
             <div class="timeline-container">
             <div class="fintrade-timeline">
 
-                @foreach($timelines as $key => $timeline)
+                @@foreach($timelines as $key => $timeline)
 
-                    <div class="timeline-node {{ $key % 2 == 0 ? 'bottom' : 'top' }}">
+                        <div class="timeline-node {{ $key % 2 == 0 ? 'bottom' : 'top' }}">
 
-                        <div class="timeline-dot"></div>
+                            <div class="timeline-dot"></div>
 
-                        <div class="timeline-card">
+                            <div class="timeline-card">
 
-                            @if(!empty($timeline['image']))
-                                <div class="timeline-icon">
-                                    <img
-                                        src="{{ asset('storage/'.$timeline['image']) }}"
-                                        alt="{{ $timeline['timeline_name'] }}">
-                                </div>
-                            @endif
+                                @if($key % 2 == 1)
 
-                            <h4>
-                                {{ $timeline['timeline_name'] }}
-                            </h4>
+                                    {{-- Card phía trên line --}}
 
-                            <div class="timeline-year">
-                                {{ $timeline['timeline_time'] }}
+                                    <p class="timeline-desc">
+                                        {{ $timeline['timeline_des'] }}
+                                    </p>
+
+                                    <h4>
+                                        {{ $timeline['timeline_name'] }}
+                                    </h4>
+
+                                    <div class="timeline-year">
+                                        {{ $timeline['timeline_time'] }}
+                                    </div>
+
+                                @else
+
+                                    {{-- Card phía dưới line --}}
+
+                                    <div class="timeline-year">
+                                        {{ $timeline['timeline_time'] }}
+                                    </div>
+
+                                    <h4>
+                                        {{ $timeline['timeline_name'] }}
+                                    </h4>
+
+                                    <p class="timeline-desc">
+                                        {{ $timeline['timeline_des'] }}
+                                    </p>
+
+                                @endif
+
+                                @if(!empty($timeline['image']))
+                                    <div class="timeline-watermark">
+                                        <img
+                                            src="{{ asset('storage/'.$timeline['image']) }}"
+                                            alt="{{ $timeline['timeline_name'] }}">
+                                    </div>
+                                @endif
+
                             </div>
-
-                            <p>
-                                {{ $timeline['timeline_des'] }}
-                            </p>
 
                         </div>
 
-                    </div>
-
-                @endforeach
+                    @endforeach
 
             </div>
             </div>
