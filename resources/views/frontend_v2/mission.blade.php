@@ -230,7 +230,7 @@
             <div class="timeline-container">
             <div class="fintrade-timeline">
 
-                @@foreach($timelines as $key => $timeline)
+                @foreach($timelines as $key => $timeline)
 
                         <div class="timeline-node {{ $key % 2 == 0 ? 'bottom' : 'top' }}">
 
