@@ -13,6 +13,7 @@
     display:flex;
     justify-content:space-between;
     align-items:center;
+    min-height: 700px; /* thêm */
     margin:120px 0;
 }
 
