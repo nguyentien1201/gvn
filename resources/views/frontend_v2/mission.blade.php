@@ -41,13 +41,23 @@
 }
 
 .timeline-dot{
-    width:20px;
-    height:20px;
-    border-radius:50%;
-    background:#11ae39;
-    border:4px solid #fff;
-    box-shadow:0 0 20px rgba(17,174,57,.4);
+    position:relative;
+
+    width:22px;
+    height:22px;
+
     margin:auto;
+
+    border-radius:50%;
+
+    background:#11ae39;
+
+    border:4px solid #fff;
+
+    box-shadow:
+        0 0 20px rgba(17,174,57,.3);
+
+    z-index:5;
 }
 
 .timeline-card{
@@ -77,11 +87,20 @@
 .timeline-node.top .timeline-card{
     bottom:50px;
 }
-
+.timeline-node.top .timeline-logo{
+    top:35px;
+}
+.timeline-node.bottom .timeline-logo{
+    bottom:35px;
+}
 .timeline-node.bottom .timeline-card{
     top:50px;
 }
-
+.timeline-logo img{
+    width:100%;
+    height:100%;
+    object-fit:contain;
+}
 .timeline-icon{
      width:90px;
     height:90px;
@@ -159,6 +178,27 @@
     line-height:1.7;
     font-size:14px;
 }
+.timeline-logo{
+    position:absolute;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    width:70px;
+    height:70px;
+
+    background:#fff;
+
+    border-radius:50%;
+
+    padding:8px;
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,.12);
+
+    border:2px solid #f1f5f9;
+}
     </style>
 @endpush
 @push('scripts')
@@ -232,59 +272,61 @@
 
                 @foreach($timelines as $key => $timeline)
 
-                        <div class="timeline-node {{ $key % 2 == 0 ? 'bottom' : 'top' }}">
+                    <div class="timeline-node {{ $key % 2 == 0 ? 'bottom' : 'top' }}">
 
-                            <div class="timeline-dot"></div>
+                        <div class="timeline-dot">
 
-                            <div class="timeline-card">
-
-                                @if($key % 2 == 1)
-
-                                    {{-- Card phía trên line --}}
-
-                                    <p class="timeline-desc">
-                                        {{ $timeline['timeline_des'] }}
-                                    </p>
-
-                                    <h4>
-                                        {{ $timeline['timeline_name'] }}
-                                    </h4>
-
-                                    <div class="timeline-year">
-                                        {{ $timeline['timeline_time'] }}
-                                    </div>
-
-                                @else
-
-                                    {{-- Card phía dưới line --}}
-
-                                    <div class="timeline-year">
-                                        {{ $timeline['timeline_time'] }}
-                                    </div>
-
-                                    <h4>
-                                        {{ $timeline['timeline_name'] }}
-                                    </h4>
-
-                                    <p class="timeline-desc">
-                                        {{ $timeline['timeline_des'] }}
-                                    </p>
-
-                                @endif
-
-                                @if(!empty($timeline['image']))
-                                    <div class="timeline-watermark">
-                                        <img
-                                            src="{{ asset('storage/'.$timeline['image']) }}"
-                                            alt="{{ $timeline['timeline_name'] }}">
-                                    </div>
-                                @endif
-
-                            </div>
+                            @if(!empty($timeline['image']))
+                                <div class="timeline-logo">
+                                    <img
+                                        src="{{ asset('storage/'.$timeline['image']) }}"
+                                        alt="{{ $timeline['timeline_name'] }}">
+                                </div>
+                            @endif
 
                         </div>
 
-                    @endforeach
+                        <div class="timeline-card">
+
+                            @if($key % 2 == 1)
+
+                                {{-- CARD TRÊN --}}
+
+                                <p class="timeline-desc">
+                                    {{ $timeline['timeline_des'] }}
+                                </p>
+
+                                <h4 class="timeline-title">
+                                    {{ $timeline['timeline_name'] }}
+                                </h4>
+
+                                <div class="timeline-year">
+                                    {{ $timeline['timeline_time'] }}
+                                </div>
+
+                            @else
+
+                                {{-- CARD DƯỚI --}}
+
+                                <div class="timeline-year">
+                                    {{ $timeline['timeline_time'] }}
+                                </div>
+
+                                <h4 class="timeline-title">
+                                    {{ $timeline['timeline_name'] }}
+                                </h4>
+
+                                <p class="timeline-desc">
+                                    {{ $timeline['timeline_des'] }}
+                                </p>
+
+                            @endif
+
+                        </div>
+
+                    </div>
+
+                @endforeach
 
             </div>
             </div>
