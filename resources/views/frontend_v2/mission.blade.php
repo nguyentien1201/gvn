@@ -6,6 +6,111 @@
 
     <!-- App CSS -->
     <link rel="stylesheet" href="{{ asset('css/mission.css') }}">
+
+    <style>
+        .fintrade-timeline{
+    position:relative;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin:120px 0;
+}
+
+.fintrade-timeline::before{
+    content:'';
+    position:absolute;
+    left:0;
+    right:0;
+    top:50%;
+    height:4px;
+    border-radius:100px;
+    background:linear-gradient(
+        90deg,
+        #0f5132,
+        #11ae39,
+        #28c76f
+    );
+}
+
+.timeline-node{
+    position:relative;
+    width:16%;
+    text-align:center;
+    z-index:2;
+}
+
+.timeline-dot{
+    width:20px;
+    height:20px;
+    border-radius:50%;
+    background:#11ae39;
+    border:4px solid #fff;
+    box-shadow:0 0 20px rgba(17,174,57,.4);
+    margin:auto;
+}
+
+.timeline-card{
+    position:absolute;
+    width:260px;
+    left:50%;
+    transform:translateX(-50%);
+    background:#fff;
+    border-radius:24px;
+    padding:24px;
+    box-shadow:
+        0 10px 40px rgba(0,0,0,.08);
+    transition:.3s;
+}
+
+.timeline-card:hover{
+    transform:
+        translateX(-50%)
+        translateY(-8px);
+}
+
+.timeline-node.top .timeline-card{
+    bottom:50px;
+}
+
+.timeline-node.bottom .timeline-card{
+    top:50px;
+}
+
+.timeline-icon{
+    width:60px;
+    height:60px;
+    margin:auto auto 20px;
+    border-radius:50%;
+    background:#11ae39;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.timeline-icon img{
+    width:36px;
+    height:36px;
+    object-fit:contain;
+}
+
+.timeline-year{
+    font-size:32px;
+    font-weight:800;
+    color:#11ae39;
+    margin:10px 0;
+}
+
+.timeline-card h4{
+    font-size:22px;
+    font-weight:700;
+    color:#0f172a;
+}
+
+.timeline-card p{
+    color:#64748b;
+    line-height:1.7;
+}
+    </style>
 @endpush
 @push('scripts')
    <script>
@@ -74,91 +179,43 @@
             <hr>
             <h3 class="text-center heading-page my-4">{{__('mission.timeline')}}</h3>
             <div class="timeline-container">
-                <!--Time line -->
-                <img class="w-100 vector" src="{{asset('images/mission/vector.svg')}}" alt="">
-                <div class="timeline flex flex-row">
-                    @foreach($timelines as $key => $timeline)
-                        @if(!($key % 2) || $key == 0)
-                            <div class="d-flex flex-column align-items-center timeline-item">
-                                <div class="position-relative">
-                                    @if(!empty($timeline['image']))
-                                    <img src="{{asset('storage/'.$timeline['image'])}}"
-                                         alt="{{$timeline['timeline_name']}}">
-                                    @endif
-                                    <svg width="110" height="89" viewBox="0 0 5 89" fill="none"
-                                         xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                                d="M2.49219 2.20898V86.709"
-                                                stroke="{{$timeline['color']}}"
-                                                stroke-width="4"
-                                                stroke-linecap="round"
-                                                stroke-dasharray="8 8"
-                                        />
-                                    </svg>
+            <div class="fintrade-timeline">
+
+                @foreach($timelines as $key => $timeline)
+
+                    <div class="timeline-node {{ $key % 2 == 0 ? 'bottom' : 'top' }}">
+
+                        <div class="timeline-dot"></div>
+
+                        <div class="timeline-card">
+
+                            @if(!empty($timeline['image']))
+                                <div class="timeline-icon">
+                                    <img
+                                        src="{{ asset('storage/'.$timeline['image']) }}"
+                                        alt="{{ $timeline['timeline_name'] }}">
                                 </div>
-                                <h5 style="color: {{$timeline['color']}};"
-                                    class="time-range mt-3 mb-1">{{$timeline['timeline_time']}}</h5>
-                                <h6 style="color: {{$timeline['color']}};"
-                                    class="time-name text-center">{{$timeline['timeline_name']}}</h6>
-                                <p class="text-center time-des">
-                                    {{$timeline['timeline_des']}}
-                                </p>
-                            </div>
-                        @else
-                            <div class="d-flex flex-column-reverse align-items-center timeline-item">
+                            @endif
 
-                                <div class="position-relative">
-                                    <svg width="110" height="89" viewBox="0 0 5 89" fill="none"
-                                         xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                                d="M2.49219 2.20898V86.709"
-                                                stroke="{{$timeline['color']}}"
-                                                stroke-width="4"
-                                                stroke-linecap="round"
-                                                stroke-dasharray="8 8"
-                                        />
-                                    </svg>
-                                      @if(!empty($timeline['image']))
-                                    <img src="{{asset('storage/'.$timeline['image'])}}"
-                                         alt="{{$timeline['timeline_name']}}">
-                                    @endif
+                            <h4>
+                                {{ $timeline['timeline_name'] }}
+                            </h4>
 
+                            <div class="timeline-year">
+                                {{ $timeline['timeline_time'] }}
+                            </div>
 
-                                </div>
-                                <p class="text-center time-des mb-3 mt-1">
-                                    {{$timeline['timeline_des']}}
-                                </p>
-                                <h5 style="color: {{$timeline['color']}};"
-                                    class="time-range mt-3 mb-1">{{$timeline['timeline_time']}}</h5>
-                                <h6 style="color: {{$timeline['color']}};"
-                                    class="time-name text-center">{{$timeline['timeline_name']}}</h6>
+                            <p>
+                                {{ $timeline['timeline_des'] }}
+                            </p>
 
-                            </div>
-                        @endif
-                    @endforeach
-                </div>
-                <!--Time line mobile -->
-                <div class="timeline-mobile position-relative">
-                    <div class="timeline-items clearfix">
-                    @foreach($timelines as $key => $timeline)
-                        <div class="d-flex flex-row timeline-item clearfix {{(($key ) != count($timeline)) ? 'mb-5' : ''}}">
-                            <div style="flex-shrink: 0;" class="timeline-img">
-                                <img class="img-fluid object-fit-cover" src="{{asset('images/mission/timeline/'.$timeline['image'])}}"
-                                     alt="{{$timeline['timeline_name']}}">
-                            </div>
-                            <div class="timeline-info d-flex flex-column">
-                                <h5 style="color: {{$timeline['color']}};"
-                                    class="time-range">{{$timeline['timeline_time']}}</h5>
-                                <h6 style="color: {{$timeline['color']}};"
-                                    class="time-name">{{$timeline['timeline_name']}}</h6>
-                                <p class="time-des">
-                                    {{$timeline['timeline_des']}}
-                                </p>
-                            </div>
                         </div>
-                    @endforeach
+
                     </div>
-                </div>
+
+                @endforeach
+
+            </div>
             </div>
         </div>
         <hr>
