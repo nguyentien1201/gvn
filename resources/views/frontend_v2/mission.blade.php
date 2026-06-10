@@ -181,23 +181,26 @@
 .timeline-logo{
     position:absolute;
 
+    width:56px;
+    height:56px;
+
     left:50%;
+    top:50%;
 
-    transform:translateX(-50%);
-
-    width:70px;
-    height:70px;
+    transform:translate(-50%, -50%);
 
     background:#fff;
 
     border-radius:50%;
 
-    padding:8px;
+    padding:6px;
 
     box-shadow:
-        0 10px 30px rgba(0,0,0,.12);
+        0 6px 20px rgba(0,0,0,.15);
 
     border:2px solid #f1f5f9;
+
+    z-index:10;
 }
     </style>
 @endpush
