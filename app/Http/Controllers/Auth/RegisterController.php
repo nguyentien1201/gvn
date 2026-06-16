@@ -120,7 +120,7 @@ class RegisterController extends Controller
             try {
                 Mail::to($user->email)->send(new UserActivationMail($user));
             }catch(\Exception $e){
-                \Log::error($e->getMessage());
+                \Log::info($e->getMessage());
             }
         }
 
