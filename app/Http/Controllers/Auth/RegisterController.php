@@ -73,7 +73,7 @@ class RegisterController extends Controller
                 }
             }],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'number_phone' => ['required', 'string', 'max:11', 'unique:users'],
+            'number_phone' => ['required', 'string', 'max:11'],
             'password' => ['required', 'string', 'min:8', 'confirmed']
         ]);
     }
@@ -120,7 +120,7 @@ class RegisterController extends Controller
             try {
                 Mail::to($user->email)->send(new UserActivationMail($user));
             }catch(\Exception $e){
-                \Log::error($e->getMessage());
+                \Log::info($e->getMessage());
             }
         }
 

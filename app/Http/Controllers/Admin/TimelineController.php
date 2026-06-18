@@ -26,13 +26,19 @@ class TimelineController extends Controller
         $request->validate([
             'year' => 'required|max:50',
             'title' => 'required|max:255',
+            'icon' => 'nullable|image|mimes:png,jpg,jpeg,svg,webp|max:2048'
         ]);
+        $icon = null;
+        if ($request->hasFile('icon')) {
 
+            $icon = $request->file('icon')
+                ->store('timeline-icons', 'public');
+        }
         Timeline::create([
             'year' => $request->year,
             'title' => $request->title,
             'description' => $request->description,
-            'icon' => $request->icon,
+            'icon' =>  $icon,
             'color' => $request->color,
             'sort_order' => $request->sort_order ?? 0,
             'status' => $request->status ? 1 : 0,
@@ -58,12 +64,16 @@ class TimelineController extends Controller
             'year' => 'required|max:50',
             'title' => 'required|max:255',
         ]);
-
+        $icon = null;
+        if ($request->hasFile('icon')) {
+            $icon = $request->file('icon')
+                ->store('timeline-icons', 'public');
+        }
         $timeline->update([
             'year' => $request->year,
             'title' => $request->title,
             'description' => $request->description,
-            'icon' => $request->icon,
+            'icon' => $icon,
             'color' => $request->color,
             'sort_order' => $request->sort_order ?? 0,
             'status' => $request->status ? 1 : 0,

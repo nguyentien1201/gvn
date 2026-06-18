@@ -61,6 +61,6 @@
 
     <input type="checkbox"
            name="status"
-           value="1"
-           checked>
+           value="{{ old('status',$event->status ?? '') }}" {{ $event->status ==1  ? 'checked' : ''}}
+            >
 </div>
