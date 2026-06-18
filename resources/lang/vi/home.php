@@ -12,7 +12,7 @@ return [
     'see_more' => 'See more',
     'our_service' => 'Our service',
     'most_interested' => 'Most interested',
-    'trade_on' => 'Trade on',
+    'trade_on' => 'Giao dịch',
     'trading_on_green_beta' => 'Trading on Green Beta',
     'trading_on_green_alpha' => 'Trading on Green Alpha',
     'trade_on_content' => [
@@ -24,7 +24,7 @@ return [
             'head_text' => 'Green Alpha is an intelligent automated trading robot, designed to maximize short-term trading opportunities in the market. With the ability to analyze multiple levels of short-term indicators and the Day Trading method, Green Alpha helps investors find entry points with high and stable winning probability. It\'s suitable for investors who prefer active trading and the fast daily pace of the market.',
         ]
     ],
-    'top_signal_previous_session' => 'Top signals previous session',
+    'top_signal_previous_session' => 'Các tín hiệu trước đó của Alpha',
     'top_stock_rating_by_gvn' => 'Top Stocks Rating by GVN',
     'green_stock_NAS100' => 'Green Stock NAS100',
     'green_stock_vn_index' => 'Green Stock VN-INDEX',
