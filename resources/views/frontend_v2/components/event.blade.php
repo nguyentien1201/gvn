@@ -1,44 +1,41 @@
 @push('styles')
     <style>
-       .event-poster{
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+   .event-poster{
+    position: relative;
+    text-align: center;
+}
 
-    min-height: 500px;
+.event-image{
+    width: 100%;
+    height: auto;
+    display: block;
     border-radius: 12px;
-
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-
-    padding: 30px;
 }
 
 .event-btn{
-    background: #00b300;
-    color: #fff;
-    border: none;
-
-    padding: 12px 30px;
-    border-radius: 8px;
-
-    font-weight: 600;
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
 }
     </style>
 @endpush
 @if($event)
 <section class="py-5">
-    <div class="event-poster container"
-         style="background-image: url('{{ asset('storage/' . $event->thumbnail) }}')">
 
-        <button class="event-btn"
-                data-bs-toggle="modal"
-                data-bs-target="#registerModal">
-            ĐĂNG KÝ THAM GIA
-        </button>
+    <div class="event-poster container">
+    <img
+        src="{{ asset('storage/' . $event->thumbnail) }}"
+        class="event-image"
+        alt=""
+    >
 
-    </div>
+    <button class="event-btn"
+            data-bs-toggle="modal"
+            data-bs-target="#registerModal">
+        ĐĂNG KÝ THAM GIA
+    </button>
+</div>
 </section>
 
 <!-- Modal đăng ký -->
