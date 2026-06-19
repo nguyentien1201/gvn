@@ -123,9 +123,10 @@ class HomeController
         //     }
         // }
 
-        $event = Event::where('status',1)
-            ->where('start_date','>=',now())
-            ->orderBy('start_date')
+       $event = Event::where('status', 1)
+            ->where('start_date', '<=', now())
+            ->where('end_date', '>=', now())
+            ->orderByDesc('start_date')
             ->first();
 
         $last_signal =  GreenAlpha::whereIn('close_time', function ($query) {
