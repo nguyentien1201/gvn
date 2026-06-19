@@ -18,6 +18,32 @@
     left: 50%;
     transform: translateX(-50%);
 }
+.event-btn{
+    position: absolute;
+    bottom: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    background: #00c300;
+    color: #fff;
+
+    border: none;
+    border-radius: 8px;
+
+    padding: 12px 30px;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: all .2s ease;
+}
+
+.event-btn:hover{
+    background: #009900;
+    transform: translateX(-50%) translateY(-2px);
+}
     </style>
 @endpush
 @if($event)
