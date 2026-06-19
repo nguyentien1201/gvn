@@ -22,7 +22,8 @@ class EventController extends Controller
 
     public function create()
     {
-        return view('admin.events.create');
+        $event = null;
+        return view('admin.events.create', compact('event'));
     }
 
     public function store(Request $request)
